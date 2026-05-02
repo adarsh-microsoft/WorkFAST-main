@@ -1,0 +1,44 @@
+Loading C:\Users\v-adevashish\Downloads\TabularEditor.2.26.0\TabularEditor.exe ...
+Loaded: TabularEditor, Version=2.26.9218.28510, Culture=neutral, PublicKeyToken=null
+Invoking entry: TabularEditor.Program.Main
+[Resolve] System.Management.Automation.resources, Version=3.0.0.0, Culture=en-US, PublicKeyToken=31bf3856ad364e35
+[Resolve] System.Management.Automation.resources, Version=3.0.0.0, Culture=en-US, PublicKeyToken=31bf3856ad364e35
+[Resolve] TOMWrapper, Version=2.26.9218.26604, Culture=neutral, PublicKeyToken=null
+
+Microsoftr Windowsr Operating System 10.0.26100.5074 (build 2.26.9218.28510)
+--------------------------------
+[Resolve] Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+[Resolve] FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b
+[Resolve] Crad.Windows.Forms.Actions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=81de48f2c6979a5b
+[Resolve] Antlr4.Runtime, Version=4.6.0.0, Culture=neutral, PublicKeyToken=09abb75b9ed49849
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en-US, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+[Resolve] TabularEditor.resources, Version=2.26.9218.28510, Culture=en, PublicKeyToken=null
+
+Process is terminated due to StackOverflowException.

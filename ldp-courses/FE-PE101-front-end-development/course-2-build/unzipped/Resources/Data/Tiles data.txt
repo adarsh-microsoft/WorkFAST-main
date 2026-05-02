@@ -1,0 +1,68 @@
+	{
+            "Customer": [
+                {
+                    id: "countTile",
+                    name: "Total number of customers",
+                    value: 847
+                },
+                {
+                    id: "descriptionTile",
+                    name: "Most recently added customer",
+                    value: "Jay Adams"
+                },
+                {
+                    id: "idTile",
+                    name: "ID of most recently added customer",
+                    value: 544
+                },
+                {
+                    id: "metricTile",
+                    name: "Phone number of most recently added customer",
+                    value: "158-555-0142"
+                }
+            ],
+            "Product": [
+                {
+                    id: "countTile",
+                    name: "Total number of products",
+                    value: 295
+                },
+                {
+                    id: "descriptionTile",
+                    name: "Most recently added product",
+                    value: "HL Road Pedal"
+                },
+                {
+                    id: "idTile",
+                    name: "ID of most recently added product",
+                    value: 940
+                },
+                {
+                    id: "metricTile",
+                    name: "List price of most recently added product",
+                    value: 80.99
+                }
+            ],
+            "Sales": [
+                {
+                    id: "countTile",
+                    name: "Total number of orders",
+                    value: 542
+                },
+                {
+                    id: "descriptionTile",
+                    name: "Name of the product for most recently added order",
+                    value: "ML Road Frame-W - Yellow, 48"
+                },
+                {
+                    id: "idTile",
+                    name: "ID of most recently added order",
+                    value: 71774
+                },
+                {
+                    id: "metricTile",
+                    name: "Unit price of most recently added order",
+                    value: 356.898
+                }
+            ]
+        }       	

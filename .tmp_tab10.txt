@@ -1,0 +1,176 @@
+181" [level=5] [ref=e3951]
+            - generic [ref=e3952]:
+              - 'heading "Weightage: 1" [level=6] [ref=e3953]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e3954]'
+          - generic [ref=e3955]:
+            - paragraph [ref=e3956]: Basic OOPS concepts
+            - paragraph
+            - list [ref=e3957]:
+              - listitem [ref=e3958]: Classes and Objects
+              - listitem [ref=e3959]: Inheritance
+              - listitem [ref=e3960]:
+                - text: Constructor
+                - list [ref=e3961]:
+                  - listitem [ref=e3962]: Initialization
+              - listitem [ref=e3963]:
+                - text: Access modifier's
+                - list [ref=e3964]:
+                  - listitem [ref=e3965]: When to use what type of access modifier
+            - paragraph [ref=e3966]:
+              - generic [ref=e3967]: Web API filters
+              - link "https://code-maze.com/action-filters-aspnetcore/" [ref=e3969] [cursor=pointer]:
+                - /url: https://code-maze.com/action-filters-aspnetcore/
+            - list [ref=e3970]:
+              - listitem [ref=e3971]: What is Web API?
+              - listitem [ref=e3972]: What are Web API filters?
+              - listitem [ref=e3973]:
+                - text: Various Web API filters
+                - list [ref=e3974]:
+                  - listitem [ref=e3975]: Authorization
+                  - listitem [ref=e3976]: Action
+                  - listitem [ref=e3977]: Result
+                  - listitem [ref=e3978]: Exception
+              - listitem [ref=e3979]: Explain working of CacheResultFilter from Premier Hub solution
+              - listitem [ref=e3980]:
+                - text: How to create a new Action filter?
+                - link "link" [ref=e3981] [cursor=pointer]:
+                  - /url: https://damienbod.com/2014/01/04/web-api-2-using-actionfilterattribute-overrideactionfiltersattribute-and-ioc-injection/
+            - paragraph [ref=e3982]:
+              - generic [ref=e3983]: Claims
+            - list [ref=e3984]:
+              - listitem [ref=e3985]: What is Claims principle
+              - listitem [ref=e3986]: What is Claims Identity
+              - listitem [ref=e3987]: How to authorize claim
+              - listitem [ref=e3988]: How to add a new claims in services hub
+            - paragraph [ref=e3989]: "Training Video:"
+            - paragraph [ref=e3990]:
+              - link "https://web.microsoftstream.com/video/1baef24d-5fea-4260-97c9-42df5c72a8d4" [ref=e3991] [cursor=pointer]:
+                - /url: https://web.microsoftstream.com/video/1baef24d-5fea-4260-97c9-42df5c72a8d4
+            - paragraph [ref=e3992]
+            - paragraph [ref=e3993]: This namespace includes filter attribute classes and interface
+            - paragraph [ref=e3994]: 1. Microsoft.Web.API
+            - paragraph [ref=e3995]: 2. System.Web.Filters
+            - paragraph [ref=e3996]: 3. System.Web.API.Filters
+            - paragraph [ref=e3997]: 4. System.Web.Http.Filters
+            - paragraph
+          - generic [ref=e3998]:
+            - generic [ref=e3999]: Your Submission
+----
+182" [level=5] [ref=e4005]
+            - generic [ref=e4006]:
+              - 'heading "Weightage: 1" [level=6] [ref=e4007]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4008]'
+          - generic [ref=e4009]:
+            - paragraph [ref=e4010]: This filter is used to restrict access to action methods to specific users or groups.
+            - paragraph [ref=e4011]: 1. Authentication Filter
+            - paragraph [ref=e4012]: 2. Authorization Filter
+            - paragraph [ref=e4013]: 3. Action Filter
+            - paragraph [ref=e4014]: 4. Override Filter
+          - generic [ref=e4015]:
+            - generic [ref=e4016]: Your Submission
+----
+183" [level=5] [ref=e4022]
+            - generic [ref=e4023]:
+              - 'heading "Weightage: 1" [level=6] [ref=e4024]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4025]'
+          - generic [ref=e4026]:
+            - paragraph [ref=e4027]: Which of these is not a Web API filter?
+            - paragraph [ref=e4028]: 1. Simple Filter
+            - paragraph [ref=e4029]: 2. Action Filter
+            - paragraph [ref=e4030]: 3. Attribute Filter
+            - paragraph [ref=e4031]: 4. Exception Filter
+          - generic [ref=e4032]:
+            - generic [ref=e4033]: Your Submission
+----
+184" [level=5] [ref=e4039]
+            - generic [ref=e4040]:
+              - 'heading "Weightage: 1" [level=6] [ref=e4041]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4042]'
+          - generic [ref=e4043]:
+            - paragraph [ref=e4044]: Which of these applications does not support Claims based authentication?
+            - paragraph [ref=e4045]: 1. Microsoft Sharepoint
+            - paragraph [ref=e4046]: 2. Active Directory Federation Services (ADFS)
+            - paragraph [ref=e4047]: 3. Windows Azure Access Control Services (ACS)
+            - paragraph [ref=e4048]: 4. Visual Studio Code (VCS)
+          - generic [ref=e4049]:
+            - generic [ref=e4050]: Your Submission
+----
+185" [level=5] [ref=e4056]
+            - generic [ref=e4057]:
+              - 'heading "Weightage: 1" [level=6] [ref=e4058]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4059]'
+          - generic [ref=e4060]:
+            - paragraph [ref=e4061]: Which device/browser would NOT support an application built in ASP.NET API?
+            - paragraph [ref=e4062]: 1. Chrome
+            - paragraph [ref=e4063]: 2. Tablet
+            - paragraph [ref=e4064]: 3. iPhone
+            - paragraph [ref=e4065]: 4. MS-DOS
+          - generic [ref=e4066]:
+            - generic [ref=e4067]: Your Submission
+----
+186" [level=5] [ref=e4073]
+            - generic [ref=e4074]:
+              - 'heading "Weightage: 1" [level=6] [ref=e4075]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4076]'
+          - generic [ref=e4077]:
+            - paragraph [ref=e4078]: By default, Web API sends HTTP response with which of the following status code for all uncaught exception?
+            - paragraph [ref=e4079]: 1. 404 - Not Found
+            - paragraph [ref=e4080]: 2. 500 – Internal Server Error
+            - paragraph [ref=e4081]: 3. 501 - Not Implemented
+            - paragraph [ref=e4082]: 4. 503 - Service Unavailable
+          - generic [ref=e4083]:
+            - generic [ref=e4084]: Your Submission
+----
+187" [level=5] [ref=e4090]
+            - generic [ref=e4091]:
+              - 'heading "Weightage: 3" [level=6] [ref=e4092]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4093]'
+          - generic [ref=e4094]:
+            - paragraph [ref=e4095]: How can we use Web API with ASP.NET Web Form (Select 3 steps)?
+            - paragraph [ref=e4096]: 1. Create a Web API Controller
+            - paragraph [ref=e4097]: 2. Create a Document model
+            - paragraph [ref=e4098]: 3. Add a routing table to Application_Start method of Global.asax
+            - paragraph [ref=e4099]: 4. Make a jQuery AJAX Call to Web API method and get data
+          - generic [ref=e4100]:
+            - generic [ref=e4101]: Your Submission
+----
+188" [level=5] [ref=e4107]
+            - generic [ref=e4108]:
+              - 'heading "Weightage: 1" [level=6] [ref=e4109]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4110]'
+          - generic [ref=e4111]:
+            - paragraph [ref=e4112]: Which of these status code are returned when a person is Not authorised or not authenticated respectively?
+            - paragraph [ref=e4113]: 1. 400, 406
+            - paragraph [ref=e4114]: 2. 401, 403
+            - paragraph [ref=e4115]: 3. 401, 406
+            - paragraph [ref=e4116]: 4. 403, 407
+          - generic [ref=e4117]:
+            - generic [ref=e4118]: Your Submission
+----
+189" [level=5] [ref=e4124]
+            - generic [ref=e4125]:
+              - 'heading "Weightage: 1" [level=6] [ref=e4126]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4127]'
+          - generic [ref=e4128]:
+            - paragraph [ref=e4129]: What are the benefits of using a token-based approach?
+            - paragraph [ref=e4130]: 1. Cross-domain / CORS calls
+            - paragraph [ref=e4131]: 2. Stateless sessions
+            - paragraph [ref=e4132]: 3. Mobile ready
+            - paragraph [ref=e4133]: 4. All of these
+          - generic [ref=e4134]:
+            - generic [ref=e4135]: Your Submission
+----
+190" [level=5] [ref=e4141]
+            - generic [ref=e4142]:
+              - 'heading "Weightage: 3" [level=6] [ref=e4143]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e4144]'
+          - generic [ref=e4145]:
+            - paragraph [ref=e4146]: 3 steps to use Claims based authentication
+            - paragraph [ref=e4147]: 1. Setup
+            - paragraph [ref=e4148]: 2. Arrange
+            - paragraph [ref=e4149]: 3. Initialize
+            - paragraph [ref=e4150]: 4. Implement
+            - paragraph [ref=e4151]: 5. Assert
+          - generic [ref=e4152]:
+            - generic [ref=e4153]: Your Submission
+----

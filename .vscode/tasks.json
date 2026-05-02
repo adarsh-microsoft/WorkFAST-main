@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "WorkFast: MCP Startup Hint",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "Write-Host 'MCP servers start on first chat tool use, or run \"MCP: List Servers\" → Start All from the Command Palette.' -ForegroundColor Cyan"
+      ],
+      "presentation": { "reveal": "silent", "close": true, "showReuseMessage": false },
+      "runOptions": { "runOn": "folderOpen" },
+      "problemMatcher": []
+    }
+  ]
+}

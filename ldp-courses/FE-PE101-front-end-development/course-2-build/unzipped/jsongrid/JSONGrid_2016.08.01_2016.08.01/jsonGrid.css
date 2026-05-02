@@ -1,0 +1,379 @@
+﻿/*CSS Validator count: 3
+::-ms-expand is an unknown vendor extended pseudo-element
+Property -moz-background-size is an unknown vendor extension
+Property -moz-background-size is an unknown vendor extension
+    */
+.jsonGrid, .jsonGridFooter a {
+    color: #2a2a2a !important;
+}
+
+    .jsonGrid td {
+        padding: 3px 15px 0;
+    }
+
+    .jsonGrid .cur-pointer {
+        cursor: pointer;
+    }
+
+    .jsonGrid .click-disabled {
+        color: #dbdbdb !important;
+        cursor: default;
+    }
+
+    .jsonGridFooter div, .jsonGrid .middle {
+        display: inline;
+        float: left;
+    }
+
+    .jsonGrid .middle, .jsonGridFooter div {
+        vertical-align: middle;
+    }
+
+    .jsonGrid .next, .jsonGrid .first {
+        float: left;
+        height: 20px;
+        width: 20px;
+    }
+
+    .jsonGrid .prev, .jsonGrid .last {
+        float: right;
+        height: 20px;
+        width: 20px;
+    }
+
+.jsonGridOverflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+.inlineblockdiv {
+    display: inline-block;
+}
+
+.jsonGridHeader, td.jsonGridHeader {
+    font-size: 12px;
+    background-color: #505050;
+    color: #fff;
+    border: 0;
+    border-right: 1px solid #fff;
+    vertical-align: bottom;
+    padding: 9px 15px 4px;
+    min-height: 17px;
+}
+
+.jsonGrid .jsonFooter {
+    height: 30px;
+    border-top: 1px solid #d2d2d2;
+    padding: 0;
+}
+
+    .jsonGrid .jsonFooter .jsonGridFooter > div {
+        margin-top: 12px;
+    }
+
+        .jsonGrid .jsonFooter .jsonGridFooter > div:last-child {
+            margin-top: 7px;
+        }
+
+.jsonGridFooter .PaginationPrevArrowDiv {
+    margin-right: 10px;
+}
+
+.jsonGridFooter {
+    width: 100%;
+    display: inline;
+    padding: 5px 0;
+}
+
+    .jsonGridFooter .PaginationPrevArrowDiv, .jsonGridFooter .PaginationNextArrowDiv {
+        height: 20px;
+        width: 20px;
+    }
+
+.jsonGrid .jsonPaginationMargin {
+    height: 35px;
+    padding: 0;
+}
+
+.jsonGrid .ViewRecordDiv, .jsonGridRow {
+    font-size: 12px;
+}
+
+.GridRow:last-child .jsonGridRow, .GridRow_alt:last-child .jsonGridRow {
+    border-bottom-width: 0;
+}
+
+.GridRow_alt td {
+    background-color: #eee;
+}
+
+td.jsonGridRow {
+    font-size: 12px;
+    height: 30px;
+    vertical-align: middle;
+    border-right: 1px #fff solid;
+}
+
+.jsonGrid .jsonGridFooter .ViewRecordDiv {
+    text-align: center;
+    color: #1570a6;
+    margin: 0 10px 0 0;
+}
+
+.jsonGridFooter a {
+    outline: none !important;
+}
+
+.jsonGridFooter .jsonFooterLabel {
+    text-align: center;
+    vertical-align: middle;
+    font: 12px 'Segoe UI';
+    color: #969696;
+    margin-right: 10px;
+    margin-left: 30px;
+    line-height: 20px;
+}
+
+.PaginationPrevArrowDiv {
+    margin-right: 10px;
+}
+
+.jsonGridRow a:hover {
+    color: #0095c4 !important;
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.jsonGridRow a, .jsonGridRow a:visited {
+    color: #00749e !important;
+    text-decoration: none !important;
+}
+
+.SortIndicator {
+    display: table-cell;
+    padding-left: 10px;
+    padding-top: 0;
+    width: 1%;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+    .SortIndicator img {
+        height: 12px;
+        width: 12px;
+    }
+
+.itemHide {
+    visibility: hidden;
+}
+
+.SortedColumn {
+    background-color: #0072C6 !important;
+}
+
+#MASABGrid_Grid_First, #MASABGrid_Grid_Last {
+    height: 24px;
+}
+
+a#MASABGrid_Grid_Prev, a#MASABGrid_Grid_Next {
+    text-decoration: none;
+}
+
+.jsonGridRow {
+    border-bottom: 1px #F0F0F0 solid;
+}
+
+table {
+    border-spacing: 0;
+    width: 100%;
+}
+
+.ColumnText {
+    display: table-cell;
+    max-width: 80%;
+    padding-bottom: 3px;
+    word-wrap: break-word;
+    line-height: 15px;
+}
+
+td.jsonGridParentHeader {
+    height: 30px;
+    font-size: 12px;
+    border-right: 1px solid #fff;
+    padding: 3px 15px;
+}
+
+.LegendSection {
+    display: table-row;
+}
+
+    .LegendSection > div {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+div.PageListItem {
+    min-width: 8px;
+    height: 20px;
+    margin-right: 4px;
+    line-height: 20px;
+    cursor: pointer;
+    padding: 0 6px;
+}
+
+    div.PageListItem:hover {
+        box-shadow: inset 0 0 0 1px #1570A6;
+    }
+
+    div.PageListItem:last-child {
+        margin-right: 0;
+    }
+
+.Hidden {
+    display: none !important;
+}
+
+div.ListOptionContainerParent {
+    width: 60px;
+}
+
+.ListOptionContainer {
+    height: 30px;
+    border: 1px solid #ccc;
+    width: 60px;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px !important;
+    font: 12px 'Segoe UI';
+}
+
+input.ListOptionContainer[type='text'] {
+    height: 18px;
+    text-align: center;
+    font: 12px 'Segoe UI';
+    width: 50px;
+}
+
+    input.ListOptionContainer[type='text']:hover {
+        cursor: auto;
+    }
+
+select::-ms-expand {
+    background-color: transparent;
+    border: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.ListOption {
+    color: #2a2a2a;
+}
+
+.SelectedPage, select.ListOptionContainer option:focus, select.ListOptionContainer option:hover {
+    color: #fff;
+    background-color: #1570A6 !important;
+}
+
+.jsonScrollHeader {
+    position: absolute;
+}
+
+.jsonScrollContainer {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.RightGrid {
+    width: 70%;
+    float: right;
+    overflow-x: auto;
+}
+
+.LeftGrid {
+    float: left;
+    width: 30%;
+}
+
+.DrillExpandIcon {
+    background: center right no-repeat url("/_layouts/15/commoncomponents/Images/Metro_Expand.png");
+    width: 10px;
+    background-position-x: 12px;
+    -moz-background-size: 10px 10px;
+    background-size: 10px 10px;
+}
+
+    .DrillExpandIcon.DrillCollpaseIcon {
+        background: center right no-repeat url("/_layouts/15/commoncomponents/Images/Metro_Collapse.png");
+        background-position-x: 12px;
+        -moz-background-size: 10px 10px;
+        background-size: 10px 10px;
+    }
+
+.HandIcon {
+    color: #1570A6;
+    cursor: pointer;
+}
+
+.DrillExpandCell, td.ExpandHeader {
+    padding-left: 12px;
+    padding-right: 8px;
+    height: 100%;
+    float: left;
+}
+
+td.DrillDownCell {
+    padding-left: 0;
+}
+
+.DrillDownCell > .jsonGridOverflow {
+    width: 75% !important; /*Required since width is set inline in jsongrid.js*/
+    float: left;
+    padding-top: 2px;
+}
+
+td.GridEndRow {
+    font-size: 15px;
+    height: 30px;
+}
+
+.jsonGridFooter .click-disabled, .HiddenSection {
+    display: none;
+}
+
+.PartnerIcon {
+    background: left no-repeat url(/layouts/15/customerinsights/Images/partnerIcon.png);
+    padding-right: 10px;
+}
+
+.paginationBorder.RightGrid {
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.TileGrid_PaginationPart {
+    clear: both;
+}
+
+.totalPagesLabel {
+    margin-left: 10px !important;
+    margin-top: 12px !important;
+    font-style: italic !important;
+}
+
+.DropDownRecords {
+    margin-top: 7px !important;
+}
+
+td.jsonGridRow .gridCellWrap {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+td.SubTableHeader {
+    font: 12px "Segoe UI";
+    color: #2a2a2a;
+    background-color: #d2d2d2;
+}

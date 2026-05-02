@@ -1,0 +1,40 @@
+README
+ModernCop 6.1.1000.0
+Overview
+This README document contains important information that should be read before installing ModernCop 6.1.1000.  It covers the following topics:
+•	New features of ModernCop 
+•	Installation guidance 
+•	Finding supplemental product information
+•	Contacting support
+
+What's New in ModernCop 6.1.1000.0
+This is a new tool to address SDL compliance for JS/HTML code and Windows Store App packages.
+
+Enhancements and fixes in this Drop:
+•	Added models for WinRT & WinJS APIs to reduce noise 
+•	Dependency update to resolve crashes reported by users
+•	Noise reduction for TypeScript-generated JavaScript
+•	Resolved RED Log file reporting issue that causes multiple detections of the same issue type to not be shown in QE
+•	Resolved bugs in command line log option and help link results for Prefast log creation
+•	Resolved issue type ID collision on JS2078 (JS2087 to DoNotDeleteObjectProperties)
+•	Resolved other minor content bugs in help info for the ANALYZE mode
+
+
+Installation Notes
+Operating System Support
+
+-	Server 2008 and above
+-	Win 7 and above 
+
+The LKG version (including this document) of ModernCop can be found at http://codebox/moderncop
+
+Known Issues/FAQ:
+
+-> Use the following command line to enable sdl 6 analysis for browser-based JS and HTML: 
+mod50 analyze /groups:sdl /dir <yoursourcepathhere> /out:redlog.xml
+
+-> Use the following command line to enable sdl 6 analysis for Windows Store packages: 
+mod50 analyze /groups:sdl /appx <your appx file path or appx expanded directory here> /out:redlog.xml
+
+Support
+For issues regarding either product or documentation email: moderncop@microsoft.com.

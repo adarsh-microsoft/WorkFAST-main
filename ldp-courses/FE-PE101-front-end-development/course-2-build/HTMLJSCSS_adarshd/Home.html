@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAQ Software - HTML, JS, and CSS Assignment</title>
+    <link rel="stylesheet" href="Styles/jsonGrid.css">
+    <link rel="stylesheet" href="Main.css">
+</head>
+<body>
+    <header id="siteHeader" class="site-header">
+        <div class="header-inner">
+            <a href="#" class="logo-link" id="logoLink">
+                <img src="Resources/Images/MAQLogo.svg" alt="MAQ Software" class="logo-image">
+            </a>
+            <nav id="mainNav" class="main-nav" aria-label="Primary">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link" data-nav="Home">Home</a></li>
+                    <li class="nav-item has-submenu">
+                        <a href="#" class="nav-link" data-nav="Category" aria-haspopup="true">
+                            Category
+                            <img src="Resources/Images/dropdownArrow.png" alt="" class="dropdown-arrow">
+                        </a>
+                        <ul class="sub-nav">
+                            <li><a href="#" class="sub-nav-link" data-category="Customer">Customer</a></li>
+                            <li><a href="#" class="sub-nav-link" data-category="Product">Product</a></li>
+                            <li><a href="#" class="sub-nav-link" data-category="Sales">Sales</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#" class="nav-link" data-nav="Contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="mainContent" class="main-content">
+        <section id="tilesSection" class="tiles-section" aria-label="Category summary tiles">
+            <h2 id="tilesHeading" class="tiles-heading">Customer</h2>
+            <div class="tiles-row" id="tilesRow">
+                <article class="tile" id="countTile">
+                    <h3 class="tile-title"></h3>
+                    <p class="tile-value"></p>
+                </article>
+                <article class="tile" id="descriptionTile">
+                    <h3 class="tile-title"></h3>
+                    <p class="tile-value"></p>
+                </article>
+                <article class="tile" id="idTile">
+                    <h3 class="tile-title"></h3>
+                    <p class="tile-value"></p>
+                </article>
+                <article class="tile" id="metricTile">
+                    <h3 class="tile-title"></h3>
+                    <p class="tile-value"></p>
+                </article>
+            </div>
+        </section>
+
+        <section id="chartSection" class="chart-section" aria-label="MAQ chart">
+            <h2 class="section-heading">Orders by Discount</h2>
+            <div id="maqChart" class="maq-chart" role="img" aria-label="Number of orders by discount"></div>
+        </section>
+
+        <section id="gridSection" class="grid-section" aria-label="Sales orders grid">
+            <h2 class="section-heading">Sales Order Details</h2>
+            <div id="jsonGrid" class="json-grid-container"></div>
+        </section>
+    </main>
+
+    <footer id="siteFooter" class="site-footer">
+        <div class="footer-inner">
+            <p class="copyright">&copy; 2026 MAQ Software. All rights reserved.</p>
+            <ul class="social-list">
+                <li>
+                    <a href="http://www.linkedin.com/company/20688?trk=tyah&amp;trkInfo=tas%3AMAQ%20Software%2Cidx%3A2-1-2"
+                       class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="Resources/Images/linkedin.svg" alt="LinkedIn">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/MAQSoftware"
+                       class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <img src="Resources/Images/facebook.svg" alt="Facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="http://twitter.com/MAQSoftware"
+                       class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <img src="Resources/Images/twitter.svg" alt="Twitter">
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.youtube.com/maqsoftware"
+                       class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <img src="Resources/Images/youtube.svg" alt="YouTube">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="Scripts/maqUtility.js"></script>
+    <script src="Scripts/jsonGrid.js"></script>
+    <script src="Scripts/formatter.js"></script>
+    <script src="Main.js"></script>
+</body>
+</html>

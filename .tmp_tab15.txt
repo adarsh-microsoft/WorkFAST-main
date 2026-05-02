@@ -1,0 +1,235 @@
+254" [level=5] [ref=e5347]
+            - generic [ref=e5348]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5349]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5350]'
+          - generic [ref=e5351]:
+            - paragraph [ref=e5352]: Unit test basics
+            - paragraph [ref=e5353]:
+              - link "https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019" [ref=e5354] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019
+            - paragraph
+            - paragraph [ref=e5355]: Scenario based testing - take scenarios and write test cases for each of the following scenarios and show them
+            - list [ref=e5356]:
+              - listitem [ref=e5357]:
+                - text: General
+                - list [ref=e5358]:
+                  - listitem [ref=e5359]: Simple IF/Else
+                  - listitem [ref=e5360]: For Loop - we need to test how many times loop being executed
+                  - listitem [ref=e5361]: Feature on/off
+              - listitem [ref=e5362]: Controller/service end points
+              - list [ref=e5363]:
+                - listitem [ref=e5364]:
+                  - text: Check for the constructor initialization
+                  - list [ref=e5365]:
+                    - listitem [ref=e5366]: Check all components as part of constructor
+                - listitem [ref=e5367]: Check for claims
+                - listitem [ref=e5368]: Check for input parameters
+                - listitem [ref=e5369]: Check for circuit breakers (if any)
+                - listitem [ref=e5370]:
+                  - text: Check for logic
+                  - list [ref=e5371]:
+                    - listitem [ref=e5372]: All general points mentioned above are applicable here
+                - listitem [ref=e5373]:
+                  - text: Check for exceptions
+                  - list [ref=e5374]:
+                    - listitem [ref=e5375]: All type of exceptions
+                    - listitem [ref=e5376]: Check for logs
+                - listitem [ref=e5377]: Check for success
+                - list [ref=e5378]:
+                  - listitem [ref=e5379]: Check for return data
+                  - listitem [ref=e5380]: Check for serializations/de-serializations (if any)
+                  - listitem [ref=e5381]: Check for logs
+            - paragraph
+            - paragraph [ref=e5382]:
+              - 'link "Walkthrough: Create and run unit tests for managed code" [ref=e5383] [cursor=pointer]':
+                - /url: https://docs.microsoft.com/en-us/visualstudio/test/walkthrough-creating-and-running-unit-tests-for-managed-code?view=vs-2019
+            - paragraph [ref=e5384]:
+              - 'link "Quickstart: Test driven development with Test Explorer" [ref=e5385] [cursor=pointer]':
+                - /url: https://docs.microsoft.com/en-us/visualstudio/test/quick-start-test-driven-development-with-test-explorer?view=vs-2019
+            - paragraph
+            - paragraph [ref=e5386]:
+              - link "Write unit tests for C/C++ in Visual Studio" [ref=e5387] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/visualstudio/test/writing-unit-tests-for-c-cpp?view=vs-2019
+            - paragraph [ref=e5388]
+            - paragraph [ref=e5389]: The individual units/ components of a software are tested in
+            - paragraph [ref=e5390]: 1. Acceptance Testing
+            - paragraph [ref=e5391]: 2. System Testing
+            - paragraph [ref=e5392]: 3. Integration Testing
+            - paragraph [ref=e5393]: 4. Unit Testing
+            - paragraph
+          - generic [ref=e5394]:
+            - generic [ref=e5395]: Your Submission
+----
+255" [level=5] [ref=e5401]
+            - generic [ref=e5402]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5403]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5404]'
+          - generic [ref=e5405]:
+            - paragraph [ref=e5406]: Benefits of Unit testing are?
+            - paragraph [ref=e5407]: 1. Improve design implementations.
+            - paragraph [ref=e5408]: 2. Allows refactoring.
+            - paragraph [ref=e5409]: 3. Both a and b
+            - paragraph [ref=e5410]: 4. none
+          - generic [ref=e5411]:
+            - generic [ref=e5412]: Your Submission
+----
+256" [level=5] [ref=e5418]
+            - generic [ref=e5419]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5420]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5421]'
+          - generic [ref=e5422]:
+            - paragraph [ref=e5423]: "Identify number of code path:"
+            - paragraph [ref=e5424]:
+              - img "Database diagram" [ref=e5425]
+            - paragraph [ref=e5426]: 1. 3
+            - paragraph [ref=e5427]: 2. 4
+            - paragraph [ref=e5428]: 3. 5
+            - paragraph [ref=e5429]: 4. 6
+          - generic [ref=e5430]:
+            - generic [ref=e5431]: Your Submission
+----
+257" [level=5] [ref=e5437]
+            - generic [ref=e5438]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5439]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5440]'
+          - generic [ref=e5441]:
+            - paragraph [ref=e5442]: "Identify number of code path:"
+            - paragraph [ref=e5443]:
+              - img "Database diagram" [ref=e5444]
+            - paragraph [ref=e5445]: 1. 2
+            - paragraph [ref=e5446]: 2. 3
+            - paragraph [ref=e5447]: 3. 4
+            - paragraph [ref=e5448]: 4. 5
+          - generic [ref=e5449]:
+            - generic [ref=e5450]: Your Submission
+----
+258" [level=5] [ref=e5456]
+            - generic [ref=e5457]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5458]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5459]'
+          - generic [ref=e5460]:
+            - paragraph [ref=e5461]: In which type of testing, the dependencies are replaced with objects that simulate the behavior of the real ones?
+            - paragraph [ref=e5462]: 1. Mock Testing
+            - paragraph [ref=e5463]: 2. Smoke Testing
+            - paragraph [ref=e5464]: 3. End to End Testing
+            - paragraph [ref=e5465]: 4. All of these
+          - generic [ref=e5466]:
+            - generic [ref=e5467]: Your Submission
+----
+259" [level=5] [ref=e5473]
+            - generic [ref=e5474]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5475]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5476]'
+          - generic [ref=e5477]:
+            - paragraph [ref=e5478]: Do we to check the application insights log method call in unit testing?
+            - paragraph [ref=e5479]: 1. Yes
+            - paragraph [ref=e5480]: 2. No
+          - generic [ref=e5481]:
+            - generic [ref=e5482]: Your Submission
+----
+260" [level=5] [ref=e5488]
+            - generic [ref=e5489]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5490]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5491]'
+          - generic [ref=e5492]:
+            - paragraph [ref=e5493]: What are the best practices for mock testing?
+            - paragraph [ref=e5494]: 1. Avoid mocking concrete classes
+            - paragraph [ref=e5495]: 2. Values should not be mocked
+            - paragraph [ref=e5496]: 3. Don't mock everything
+            - paragraph [ref=e5497]: 4. All of the above
+          - generic [ref=e5498]:
+            - generic [ref=e5499]: Your Submission
+----
+261" [level=5] [ref=e5505]
+            - generic [ref=e5506]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5507]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5508]'
+          - generic [ref=e5509]:
+            - paragraph [ref=e5510]: Do we need to test external api/microservice call in unit testing?
+            - paragraph [ref=e5511]: 1. Yes
+            - paragraph [ref=e5512]: 2. No
+          - generic [ref=e5513]:
+            - generic [ref=e5514]: Your Submission
+----
+262" [level=5] [ref=e5520]
+            - generic [ref=e5521]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5522]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5523]'
+          - generic [ref=e5524]:
+            - paragraph [ref=e5525]: Do we validate method parameter in unit testing?
+            - paragraph [ref=e5526]: 1. Yes
+            - paragraph [ref=e5527]: 2. No
+          - generic [ref=e5528]:
+            - generic [ref=e5529]: Your Submission
+----
+263" [level=5] [ref=e5535]
+            - generic [ref=e5536]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5537]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5538]'
+          - generic [ref=e5539]:
+            - paragraph [ref=e5540]: Which of the following provide an execution environment for the automation test scripts?
+            - paragraph [ref=e5541]: 1. Software Framework
+            - paragraph [ref=e5542]: 2. Test Framework
+            - paragraph [ref=e5543]: 3. Unit Testing
+            - paragraph [ref=e5544]: 4. None
+          - generic [ref=e5545]:
+            - generic [ref=e5546]: Your Submission
+----
+264" [level=5] [ref=e5552]
+            - generic [ref=e5553]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5554]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5555]'
+          - generic [ref=e5556]:
+            - paragraph [ref=e5557]: In Unit testing, we check whether the system satisfies its business requirements?
+            - paragraph [ref=e5558]: 1. Yes
+            - paragraph [ref=e5559]: 2. No
+          - generic [ref=e5560]:
+            - generic [ref=e5561]: Your Submission
+----
+265" [level=5] [ref=e5567]
+            - generic [ref=e5568]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5569]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5570]'
+          - generic [ref=e5571]:
+            - paragraph [ref=e5572]: Which of the following are client-side test framework?
+            - paragraph [ref=e5573]: 1. NUnit
+            - paragraph [ref=e5574]: 2. Jasmine
+            - paragraph [ref=e5575]: 3. MochaJS
+            - paragraph [ref=e5576]: 4. Both a and b
+            - paragraph [ref=e5577]: 5. Both b and c
+          - generic [ref=e5578]:
+            - generic [ref=e5579]: Your Submission
+----
+266" [level=5] [ref=e5585]
+            - generic [ref=e5586]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5587]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5588]'
+          - generic [ref=e5589]:
+            - paragraph [ref=e5590]: Do we need to mock every method call in unit testing?
+            - paragraph [ref=e5591]: 1. Yes
+            - paragraph [ref=e5592]: 2. No
+          - generic [ref=e5593]:
+            - generic [ref=e5594]: Your Submission
+----
+267" [level=5] [ref=e5600]
+            - generic [ref=e5601]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5602]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5603]'
+          - generic [ref=e5604]:
+            - paragraph [ref=e5605]: In unit testing, do we need to create unit test for each type of catch/exception inside the method?
+            - paragraph [ref=e5606]: 1. Yes
+            - paragraph [ref=e5607]: 2. No
+          - generic [ref=e5608]:
+            - generic [ref=e5609]: Your Submission
+----
+268" [level=5] [ref=e5615]
+            - generic [ref=e5616]:
+              - 'heading "Weightage: 1" [level=6] [ref=e5617]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e5618]'
+          - generic [ref=e5619]:
+            - paragraph [ref=e5620]: In mocking, do we change behavior or state of external dependencies?
+            - paragraph [ref=e5621]: 1. Yes
+            - paragraph [ref=e5622]: 2. No
+          - generic [ref=e5623]:
+            - generic [ref=e5624]: Your Submission
+----

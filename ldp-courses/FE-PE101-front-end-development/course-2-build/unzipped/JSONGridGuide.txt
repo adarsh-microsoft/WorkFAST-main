@@ -1,0 +1,148 @@
+How to use JSONGrid?
+ 
+To include the required JS and CSS file you need to use the below code to include JSONGrid. You will need to add jQuery reference if already not included.
+
+<link href="Styles/jsonGrid.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="Scripts/maqUtility.js"></script>
+<script src="Scripts/jsonGrid.js"></script>
+<script src="Scripts/formatter.js"></script>
+ 
+In a script tag in the head of your web page, or in a separate .js file, add the JavaScript code to initialize the JSONGrid. Note that the id of the div where you want to put the grid is given in the container property, as mentioned below:
+  
+   function showJSONGrid() {
+        "use strict";
+        var oJSONGrid = new MAQ.JsonGrid({
+            container: "jsonGrid",
+            data: [{name: “ABC”, eid: “EMP001” }, {name: “XYZ”, eid: “EMP002” }, {name:null, eid: “EMP003”}],
+            columnHeader: arrColumnHeader,
+            pagination: {
+                maxRows: 10,
+                paginate: true
+            },
+            rows: {
+                alternate: false
+            },
+            fixedHeaderEnd: "4"
+        });
+    }
+
+Following are the grid properties to be specified while generating a JSONGrid:
+
+#
+Option
+Data Type
+Description
+1.
+container
+String
+The target element(DIV) where grid should be rendered.
+2.
+gridName
+String 
+Name of the grid 
+3.
+data
+Array Object
+An array of JSON objects which should be displayed on the grid.
+4.
+columnHeader
+Array Object
+Array with column header configuration object. This specifies the column order properties for the column data, e.g. formatting, sorting, data type etc.
+ 
+var columnHeader = [
+            {
+                columnText: "Text on the column",
+                name: "JSON data name",
+                sortable: true,
+                sortType: "parseInteger",
+                sortKey: "[JSON data name]",
+                headerClassName: "gridHeader",
+                formatter: "",
+                style: {
+                    "textAlign": "left",
+                    "min-width": "160px"
+                }
+            }
+]
+ 
+sortType can be any of the following constants:
+parseDate
+parseUSD
+parseInteger
+parseDecimal
+parseString
+parseSalesStage
+ 
+formatter can be any of the following constant:
+trimOnOverflowAndShowToolTip
+parseCustomBarChart
+parseDealValue
+parsePastDueDeals
+parseOpportunitiesTrack
+parseOpportunitiesMissing
+parseQuotaCoverage
+calculatePercentByTotal
+customPipelineBar
+ 
+5.
+headerTemplate
+Array Object
+Specify HTML header tag template with properties such as colspan, headerClassName, and style.
+6.
+pagination
+Object
+Specify pagination properties such as maximum rows to be displayed per page.
+E.g.
+pagination: {
+                maxRows: 0,
+                retainPageOnSort: true,
+                iLast: -1,
+                paginate: false
+            }
+7.
+rows
+
+Object
+
+Specify CSS class for row and set an alternate row style property (true/false) to display rows with alternate row styles.
+8.
+FixedHeaderEnd
+String
+
+Specify the number of columns to be fixed in the grid.
+9.
+gridSort
+
+Object
+
+Specify the default sorting behavior of the grid (ascending/descending), based on specified column names
+ 
+gridSort: {
+                sortby: "",
+                sortorder: "asc",
+                sortType: ""
+            }
+ 
+10.
+Style
+CSS Object
+
+Specify CSS style for the JSONGrid 
+style: {        fontFamily: '"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif', // default font        fontSize: '12px'}
+11.
+altRowColor
+String
+Color to be used for alternative rows. A valid hex CSS color value is acceptable.
+12.
+Scrolling
+Object
+An object with properties to specify scrollbar style and enabling scroll 
+scrolling: {
+                enabled: false,
+                scrollStyle: {}
+            }
+ 
+You can explore rest of the properties and their usage from jsonGrid.js file under 'gridOptions' object or try these properties in ‘Grid Builder’ present in MAQ Charting Control.
+
+

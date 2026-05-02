@@ -1,0 +1,28 @@
+{
+  "courseCode": "FE-PE101",
+  "specializationId": 7,
+  "specializationName": "Front-end Development",
+  "specializationUrl": "https://ldp.maqsoftware.com/tracks/specialization/7",
+  "track": "Frontend",
+  "credits": 1,
+  "courses": [
+    {
+      "courseId": 2,
+      "name": "HTML, JS, and CSS",
+      "url": "https://ldp.maqsoftware.com/tracks/specialization/7/course/2",
+      "status": "Not Started",
+      "numQuestions": 1,
+      "passingCriteria": "70%"
+    },
+    {
+      "courseId": 25,
+      "name": "HTML, CSS and JS Coding Standards",
+      "url": "https://ldp.maqsoftware.com/tracks/specialization/7/course/25",
+      "status": "In Progress",
+      "score": "0 out of 56 (0%)",
+      "startDate": "May 2, 2026",
+      "passingCriteria": "90%"
+    }
+  ],
+  "discoveredAt": "2026-05-02T17:54:00Z"
+}

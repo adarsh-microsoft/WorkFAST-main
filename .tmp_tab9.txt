@@ -1,0 +1,244 @@
+164" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: "Module Description:"
+              - paragraph: What has changed from Angular JS in Angular 2+?
+              - paragraph
+              - list:
+                - listitem: Angular CLI https://angular.io
+                - listitem: Framework changes (Banana in the box for two way data binding), component-based architecture
+                - listitem: Goodbye ng-app, hello Bootstrap
+                - listitem: Controllers no longer exist
+                - listitem: No $scope
+                - listitem: Dependency Injection
+                - listitem: Performance updates
+                - listitem: Demo
+              - paragraph: "Reference:"
+              - paragraph:
+                - link "https://www.sitepoint.com/angularjs-vs-angular/":
+                  - /url: https://www.sitepoint.com/angularjs-vs-angular/
+              - paragraph:
+                - link "https://www.guru99.com/angularjs-1-vs-2-vs-4-vs-5-difference.html":
+                  - /url: https://www.guru99.com/angularjs-1-vs-2-vs-4-vs-5-difference.html
+              - paragraph: "Training Video:"
+              - paragraph:
+                - link "https://web.microsoftstream.com/video/5607b6ed-8f29-40c4-8318-c595005b36de":
+                  - /url: "https://web.microsoftstream.com/video/5607b6ed-8f29-40c4-8318-c595005b36de "
+              - paragraph
+              - paragraph: In Angular, you can pass data from parent component to child component using...
+              - paragraph: 1. @Output()
+              - paragraph: 2. @Input()
+              - paragraph: 3. Input
+              - paragraph: 4. Output
+            - generic:
+              - generic: Your Submission
+----
+165" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: In Angular, you can pass data from child component to parent component using
+              - paragraph: 1. @Output()
+              - paragraph: 2. @Input()
+              - paragraph: 3. Input
+              - paragraph: 4. Output
+            - generic:
+              - generic: Your Submission
+----
+166" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: A directive which modifies DOM hierarchy is called
+              - paragraph: 1. Structural directive
+              - paragraph: 2. Attribute directive
+            - generic:
+              - generic: Your Submission
+----
+167" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: Select correct form control class name which is set to true via [(ngModel)] whenever value is modified
+              - paragraph: 1. .ng-invalid
+              - paragraph: 2. .ng-pending
+              - paragraph: 3. .ng-pristine
+              - paragraph: 4. .ng-dirty
+            - generic:
+              - generic: Your Submission
+----
+168" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: If you provide a custom service in two components’ “providers” section of @Component decorator, how many instances of service shall get created?
+              - paragraph: 1. 1
+              - paragraph: 2. 2
+              - paragraph: 3. 3
+              - paragraph: 4. 4
+            - generic:
+              - generic: Your Submission
+----
+169" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: In Angular routing, below tag is used to render matched component via active route.
+              - paragraph: 1. <router></router>
+              - paragraph: 2. <router-output></router-output>
+              - paragraph: 3. <router-outlet></router-outlet>
+              - paragraph: 4. <router-display></router-display>
+            - generic:
+              - generic: Your Submission
+----
+170" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: We need to call below method of RouterModule for providing all routes in AppModule
+              - paragraph: 1. RouterModule.forChild
+              - paragraph: 2. RouterModule.forRoot
+              - paragraph: 3. RouterModule
+              - paragraph: 4. RouterModule.import
+            - generic:
+              - generic: Your Submission
+----
+171" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: To build application in production mode, use below command
+              - paragraph: 1. ng build
+              - paragraph: 2. ng serve
+              - paragraph: 3. ng build --prod
+              - paragraph: 4. ng lint
+            - generic:
+              - generic: Your Submission
+----
+172" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: Using below wild card we can define page not found route
+              - paragraph: 1. *
+              - paragraph: 2. **
+              - paragraph: 3. 404
+              - paragraph: 4. ^
+            - generic:
+              - generic: Your Submission
+----
+173" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: HTTP service’s get/put/post/delete function returns
+              - paragraph: 1. object of type “any”
+              - paragraph: 2. Observable
+              - paragraph: 3. Json data
+              - paragraph: 4. callback function
+            - generic:
+              - generic: Your Submission
+----
+174" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: Observer sends data to multiple clients via below method
+              - paragraph: 1. send()
+              - paragraph: 2. next()
+              - paragraph: 3. emit()
+              - paragraph: 4. publish()
+            - generic:
+              - generic: Your Submission
+----
+175" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: To use HttpClient component you need to import below module
+              - paragraph: 1. HttpModule
+              - paragraph: 2. HttpClientModule
+              - paragraph: 3. Http
+              - paragraph: 4. None of the above
+            - generic:
+              - generic: Your Submission
+----
+176" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: Which of the following method is executed at first during component lifecycle
+              - paragraph: 1. ngAfterContentChecked
+              - paragraph: 2. ngOnInit
+              - paragraph: 3. ngDoCheck
+              - paragraph: 4. ngAfterContentInit
+            - generic:
+              - generic: Your Submission
+----
+177" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: Which file is responsible for startup of angular 2 project ?
+              - paragraph: 1. main.ts
+              - paragraph: 2. index.js
+              - paragraph: 3. app.ts
+              - paragraph: 4. angular.cli.json
+            - generic:
+              - generic: Your Submission
+----
+178" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: What does AOT stands for?
+              - paragraph: 1. Angular Object Templates
+              - paragraph: 2. ahead-of-time compilation
+              - paragraph: 3. Angular Open Terminal
+            - generic:
+              - generic: Your Submission
+----
+179" [level=5]
+              - generic:
+                - 'heading "Weightage: 1" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: Which line of code implements the Bootstrapping logic from below screenshot?
+              - paragraph:
+                - img "Database diagram"
+              - paragraph: 1. Line 1
+              - paragraph: 2. Line 4
+              - paragraph: 3. Line 8
+              - paragraph: 4. Line 2
+            - generic:
+              - generic: Your Submission
+----
+180" [level=5]
+              - generic:
+                - 'heading "Weightage: 2" [level=6]'
+                - 'heading "Status: Unattempted" [level=6]'
+            - generic:
+              - paragraph: Which commands is used to generate component using Angular CLI?
+              - paragraph: 1. Ng generate component
+              - paragraph: 2. Node generate component
+              - paragraph: 3. Npm run generate component
+              - paragraph: 4. Ng g c
+            - generic:
+              - generic: Your Submission
+----

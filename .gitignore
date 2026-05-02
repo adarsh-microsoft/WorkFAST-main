@@ -1,0 +1,37 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/settings.json
+*.swp
+*.swo
+
+# User-specific config (created from .template.yaml files)
+config/user-context.yaml
+config/.mcp-secrets
+
+# Sensitive workspace/environment catalogs (created from .template files)
+.github/skills/fabric-devops/config/workspace-catalog.yaml
+.github/skills/databricks-devops/config/workspace-catalog.yaml
+.github/skills/compare-semantic-models/dataset-catalog.yaml
+.github/skills/ssas-connector/config/ssas-catalog.yaml
+.vscode/mcp.json
+
+# Sensitive config
+# **/*-secrets.yaml
+# **/*-credentials.yaml
+
+# One-time release bootstrap script
+create-releases.ps1
+
+# Playwright MCP browser automation artifacts
+.playwright-mcp/
+
+# Memory system — personal memory files (created from .template.md)
+memory/MEMORY.md
+memory/daily/*.md
+memory/session/*.md
+memory/knowledgebase/**/*.md
+!memory/**/.gitkeep

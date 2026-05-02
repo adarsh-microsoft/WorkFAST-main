@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Co-sell 360 — Consolidated Report Design Spec</title>
+<style>
+  :root {
+    --bg: #0f172a; --bg-2: #1e293b; --panel: #ffffff; --panel-2: #f8fafc;
+    --ink: #0f172a; --muted: #64748b; --muted-2: #94a3b8;
+    --accent: #2563eb; --accent-2: #0ea5e9; --accent-3: #6366f1;
+    --good: #16a34a; --warn: #f59e0b; --bad: #dc2626;
+    --border: #e2e8f0; --border-2: #cbd5e1;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-lg: 0 10px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.05);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; background:var(--panel-2); color:var(--ink); line-height:1.55; }
+
+  header.hero {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(14,165,233,.4) 0%, transparent 50%),
+      radial-gradient(circle at 80% 100%, rgba(99,102,241,.3) 0%, transparent 50%),
+      linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color:#fff; padding:36px 40px 32px; box-shadow:var(--shadow); position:relative; overflow:hidden;
+  }
+  header.hero::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px; pointer-events:none;
+  }
+  header.hero > * { position:relative; }
+  header.hero .eyebrow { display:inline-block; font-size:11px; text-transform:uppercase; letter-spacing:0.12em; opacity:0.7; margin-bottom:8px; }
+  header.hero h1 { margin:0 0 8px; font-size:32px; letter-spacing:-0.02em; font-weight:700; }
+  header.hero p { margin:0; opacity:0.9; font-size:15px; max-width:800px; }
+  header.hero .meta { display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; font-size:12px; opacity:0.85; }
+  header.hero .meta span { background:rgba(255,255,255,.1); padding:5px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.1); }
+
+  .layout { display:grid; grid-template-columns:280px 1fr; min-height:calc(100vh - 152px); }
+  nav.side { background:var(--bg-2); color:#cbd5e1; padding:18px 0; position:sticky; top:0; height:100vh; overflow-y:auto; border-right:1px solid #334155; }
+  nav.side::-webkit-scrollbar { width:6px; }
+  nav.side::-webkit-scrollbar-thumb { background:#475569; border-radius:3px; }
+  nav.side h3 { color:#fff; font-size:10px; text-transform:uppercase; letter-spacing:0.1em; margin:18px 20px 6px; opacity:0.5; font-weight:600; }
+  nav.side a { display:flex; gap:8px; padding:8px 20px; color:#cbd5e1; text-decoration:none; font-size:13px; border-left:3px solid transparent; transition:all 0.15s; }
+  nav.side a:hover { background:rgba(255,255,255,.05); color:#fff; }
+  nav.side a.active { background:rgba(37,99,235,.2); color:#fff; border-left-color:var(--accent-2); }
+  nav.side a .num { display:inline-block; min-width:22px; color:#64748b; font-variant-numeric:tabular-nums; font-size:11px; }
+
+  main { padding:28px 40px 80px; max-width:1280px; }
+
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:22px; }
+  .stat { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:14px 16px; transition:transform .15s; }
+  .stat:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
+  .stat .num { font-size:26px; font-weight:700; color:var(--accent); }
+  .stat .lbl { font-size:11px; text-transform:uppercase; color:var(--muted); letter-spacing:0.05em; margin-top:2px; }
+
+  details.expander { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:18px; }
+  details.expander summary { font-weight:600; cursor:pointer; font-size:14px; color:var(--ink); list-style:none; display:flex; align-items:center; gap:8px; }
+  details.expander summary::-webkit-details-marker { display:none; }
+  details.expander summary::before { content:'\25B6'; font-size:10px; color:var(--muted); transition:transform .2s; }
+  details.expander[open] summary::before { transform:rotate(90deg); }
+  details.expander table { width:100%; border-collapse:collapse; margin-top:12px; font-size:12px; }
+  details.expander th, details.expander td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+  details.expander th { background:var(--panel-2); color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
+  details.expander tr:last-child td { border-bottom:none; }
+
+  .toolbar { display:flex; gap:10px; align-items:center; margin-bottom:20px; flex-wrap:wrap; position:sticky; top:0; background:var(--panel-2); padding:12px 0; z-index:10; border-bottom:1px solid var(--border); }
+  .search { flex:1; min-width:240px; padding:10px 14px; border:1px solid var(--border); border-radius:8px; font-size:13px; background:#fff; transition:border-color .12s,box-shadow .12s; }
+  .search:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(37,99,235,.1); }
+  .filter-btn { padding:7px 14px; border:1px solid var(--border); background:#fff; border-radius:999px; font-size:12px; cursor:pointer; color:var(--muted); transition:all .12s; font-weight:500; }
+  .filter-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .filter-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  h2.section-title { font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin:30px 0 12px; font-weight:600; padding-bottom:8px; border-bottom:2px solid var(--border); }
+
+  .page-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:16px; box-shadow:var(--shadow); overflow:hidden; transition:box-shadow .15s,border-color .15s; }
+  .page-card:hover { box-shadow:var(--shadow-lg); border-color:var(--border-2); }
+  .page-head { padding:16px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+  .page-head .title { display:flex; align-items:center; gap:14px; flex:1; }
+  .page-head .badge { width:40px; height:40px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,#2563eb,#0ea5e9); color:#fff; font-weight:700; font-size:14px; flex-shrink:0; }
+  .page-head h2 { margin:0; font-size:16px; font-weight:600; }
+  .page-head .subtitle { margin:2px 0 0; font-size:12px; color:var(--muted); }
+  .page-head .right { display:flex; align-items:center; gap:12px; }
+  .page-head .meta-pill { font-size:10px; padding:3px 8px; border-radius:999px; background:var(--panel-2); color:var(--muted); border:1px solid var(--border); text-transform:uppercase; letter-spacing:.04em; }
+  .page-head .chev { color:var(--muted); transition:transform .2s; font-size:14px; }
+  .page-card.open .chev { transform:rotate(90deg); }
+  .page-card.open .page-head { border-bottom:1px solid var(--border); }
+
+  .page-body { display:none; padding:20px 22px 24px; background:var(--panel-2); }
+  .page-card.open .page-body { display:block; }
+
+  .page-grid { display:grid; grid-template-columns:1fr 280px; gap:18px; }
+  @media (max-width:1100px) { .page-grid { grid-template-columns:1fr; } }
+
+  .section { margin-bottom:18px; }
+  .section h4 { margin:0 0 8px; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:600; }
+  .purpose-box { background:linear-gradient(135deg,#eff6ff,#f0fdfa); border-left:3px solid var(--accent); padding:10px 14px; border-radius:6px; font-size:13px; margin-bottom:14px; }
+  .audience { font-size:12px; color:var(--muted); margin-top:4px; }
+  .audience strong { color:var(--ink); }
+
+  .visual-list { list-style:none; padding:0; margin:0; display:grid; gap:6px; }
+  .visual-list li { background:#fff; border:1px solid var(--border); border-radius:8px; padding:10px 12px; font-size:13px; display:flex; gap:10px; align-items:flex-start; transition:border-color .12s; }
+  .visual-list li:hover { border-color:var(--border-2); }
+  .visual-list li .vtype { flex-shrink:0; font-size:9px; font-weight:700; text-transform:uppercase; background:#e0e7ff; color:#4338ca; padding:3px 7px; border-radius:4px; letter-spacing:0.04em; min-width:50px; text-align:center; }
+  .visual-list li .vtype.kpi { background:#dcfce7; color:#15803d; }
+  .visual-list li .vtype.table { background:#fef3c7; color:#a16207; }
+  .visual-list li .vtype.chart { background:#dbeafe; color:#1e40af; }
+  .visual-list li .vtype.matrix { background:#fce7f3; color:#be185d; }
+  .visual-list li .vtype.slicer { background:#e9d5ff; color:#7e22ce; }
+  .visual-list li .vtype.map { background:#ccfbf1; color:#0f766e; }
+  .visual-list li .vtype.text { background:#f1f5f9; color:#475569; }
+  .visual-list li .vtype.tooltip { background:#ffe4e6; color:#be123c; }
+  .visual-list li .vtype.button { background:#fed7aa; color:#c2410c; }
+  .visual-list li .vbody { flex:1; }
+  .visual-list li .vname { font-weight:600; color:var(--ink); }
+  .visual-list li .vdesc { color:var(--muted); font-size:12px; margin-top:2px; }
+  .visual-list li .vmeasures { margin-top:4px; font-size:11px; color:var(--muted-2); font-family:'SF Mono',Consolas,monospace; }
+  .visual-list li .vmeasures code { background:#f1f5f9; padding:1px 5px; border-radius:3px; color:var(--accent); margin-right:4px; }
+
+  .wireframe { background:#fff; border:1px solid var(--border); border-radius:8px; padding:10px; display:grid; gap:4px; grid-template-columns:repeat(12,1fr); font-size:9px; color:var(--muted); }
+  .wf-cell { background:linear-gradient(135deg,#f1f5f9,#e2e8f0); border:1px dashed #cbd5e1; border-radius:4px; padding:8px 6px; text-align:center; min-height:36px; display:grid; place-items:center; }
+  .wf-cell.kpi { background:linear-gradient(135deg,#dcfce7,#bbf7d0); border-color:#86efac; color:#15803d; }
+  .wf-cell.chart { background:linear-gradient(135deg,#dbeafe,#bfdbfe); border-color:#93c5fd; color:#1e40af; }
+  .wf-cell.matrix { background:linear-gradient(135deg,#fce7f3,#fbcfe8); border-color:#f9a8d4; color:#be185d; }
+  .wf-cell.slicer { background:linear-gradient(135deg,#e9d5ff,#d8b4fe); border-color:#c084fc; color:#7e22ce; }
+  .wf-cell.map { background:linear-gradient(135deg,#ccfbf1,#99f6e4); border-color:#5eead4; color:#0f766e; }
+  .wf-cell.text { background:#f8fafc; }
+
+  .side-panel { display:flex; flex-direction:column; gap:14px; }
+  .side-panel .panel-block { background:#fff; border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+  .side-panel .panel-block h5 { margin:0 0 8px; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:600; }
+  .side-panel .panel-block ul { margin:0; padding-left:16px; font-size:12px; }
+  .side-panel .panel-block ul li { margin-bottom:4px; }
+  .source-tags { display:flex; flex-wrap:wrap; gap:5px; }
+  .source-tags .tag { font-size:10px; padding:3px 8px; border-radius:999px; background:#f1f5f9; color:var(--muted); border:1px solid var(--border); }
+  .drill-arrow { color:var(--accent); font-weight:600; }
+
+  .swatch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-top:10px; }
+  .swatch { border:1px solid var(--border); border-radius:8px; overflow:hidden; background:#fff; }
+  .swatch .color { height:50px; }
+  .swatch .label { padding:8px 10px; font-size:11px; }
+  .swatch .label .name { font-weight:600; }
+  .swatch .label .hex { color:var(--muted); font-family:monospace; font-size:10px; }
+
+  .risk { display:flex; gap:8px; padding:10px 12px; border-radius:6px; font-size:12px; margin-bottom:6px; }
+  .risk.warn { background:#fef9c3; border-left:3px solid var(--warn); color:#713f12; }
+  .risk.info { background:#dbeafe; border-left:3px solid var(--accent); color:#1e3a8a; }
+  .risk.bad { background:#fee2e2; border-left:3px solid var(--bad); color:#7f1d1d; }
+  .risk.good { background:#dcfce7; border-left:3px solid var(--good); color:#14532d; }
+
+  footer { text-align:center; padding:22px; color:var(--muted); font-size:12px; border-top:1px solid var(--border); margin-top:40px; }
+
+  @media (max-width:900px) { .layout { grid-template-columns:1fr; } nav.side { position:static; height:auto; } main { padding:20px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow">Power BI Report Design Specification</span>
+  <h1>Co-sell 360 — Consolidated Report Design</h1>
+  <p>A unified Power BI report consolidating <strong>7 source reports</strong> built on <strong>CosellSemanticModel</strong> — covering pipeline health, revenue, partner readiness, IP Co-sell, solution attach, and Power 5 workloads. Designed to eliminate redundancy, standardize KPIs, and provide a single source of truth.</p>
+  <div class="meta">
+    <span>Workspace: GPS_PRD_CoSell_PBIReporting</span>
+    <span>Dataset: CosellSemanticModel</span>
+    <span>Source reports: 7</span>
+    <span>Pages analyzed: 42</span>
+    <span>Target pages: 11 visible + 5 hidden</span>
+    <span>Spec date: 2026-04-28</span>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="side">
+    <h3>Spec Sections</h3>
+    <a href="#design-system" class="nav-link"><span class="num">&sect;</span> Design System</a>
+    <a href="#data-model" class="nav-link"><span class="num">&sect;</span> Data Model Notes</a>
+    <a href="#measures" class="nav-link"><span class="num">&sect;</span> Measures Catalog</a>
+    <a href="#filters" class="nav-link"><span class="num">&sect;</span> Global Filters</a>
+    <h3>Executive</h3>
+    <a href="#p1" class="nav-link"><span class="num">01</span> Read Me &amp; Overview</a>
+    <a href="#p2" class="nav-link"><span class="num">02</span> Executive KPI Summary</a>
+    <h3>Pipeline</h3>
+    <a href="#p3" class="nav-link"><span class="num">03</span> Open / In-Progress</a>
+    <a href="#p4" class="nav-link"><span class="num">04</span> Won &amp; Performance</a>
+    <a href="#p5" class="nav-link"><span class="num">05</span> Lost &amp; Slipped</a>
+    <h3>Revenue &amp; Consumption</h3>
+    <a href="#p6" class="nav-link"><span class="num">06</span> Billed Opportunity</a>
+    <a href="#p7" class="nav-link"><span class="num">07</span> Consumption</a>
+    <h3>Co-sell Insights</h3>
+    <a href="#p8" class="nav-link"><span class="num">08</span> Readiness &amp; Prioritization</a>
+    <a href="#p9" class="nav-link"><span class="num">09</span> Incentive Eligibility</a>
+    <a href="#p10" class="nav-link"><span class="num">10</span> Solution &amp; Power 5</a>
+    <a href="#p11" class="nav-link"><span class="num">11</span> IP Co-sell &amp; Reported ACR</a>
+    <h3>Hidden</h3>
+    <a href="#p12" class="nav-link"><span class="num">+</span> Tooltip / Drill Layer</a>
+    <h3>Build</h3>
+    <a href="#performance" class="nav-link"><span class="num">&sect;</span> Performance &amp; Refresh</a>
+    <a href="#risks" class="nav-link"><span class="num">&sect;</span> Risks &amp; Open Questions</a>
+  </nav>
+
+  <main>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">7</div><div class="lbl">Source reports</div></div>
+      <div class="stat"><div class="num">42</div><div class="lbl">Source pages</div></div>
+      <div class="stat"><div class="num">16</div><div class="lbl">Target pages (11 + 5)</div></div>
+      <div class="stat"><div class="num">~62%</div><div class="lbl">Page reduction</div></div>
+      <div class="stat"><div class="num">14&rarr;5</div><div class="lbl">Tooltip consolidation</div></div>
+      <div class="stat"><div class="num">~85</div><div class="lbl">Estimated visuals</div></div>
+    </div>
+
+    <details class="expander" open>
+      <summary>Source-to-Target Mapping</summary>
+      <table>
+        <thead><tr><th>Source Report</th><th>Pages</th><th>Mapped To</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>GPS SingleMPN Sell With</td><td>3</td><td>Pages 06, 07, 08</td><td>Single-partner views; merged with multi-partner equivalents</td></tr>
+          <tr><td>GPS Insights Hub &mdash; Referral &amp; Co-Sell</td><td>17 (incl. 11 tooltips)</td><td>Pages 02, 08, 09, 12</td><td>Tooltip layer collapsed via field parameters</td></tr>
+          <tr><td>IP Co-sell</td><td>6</td><td>Page 11 (Azure / BizApps toggle)</td><td>Performance + Pipeline duplicated for BizApps; toggle replaces them</td></tr>
+          <tr><td>PDM Pipeline Insights</td><td>10</td><td>Pages 03, 05, 06, 07, 08, 12</td><td>"Pipeline Insights Details" appears twice &mdash; kept one</td></tr>
+          <tr><td>Solution Performance</td><td>6</td><td>Page 10</td><td>"_WW" suffix variants merged via region selector</td></tr>
+          <tr><td>Services Co-sell Dashboard</td><td>8 (4 are UAT dupes)</td><td>Pages 03, 04, 05</td><td>UAT pages dropped; Won-Colors merged into main Won page</td></tr>
+          <tr><td>Power 5</td><td>n/a (REST format error)</td><td>Page 10 (Power 5 tab)</td><td>Page list unreadable &mdash; design inferred from report name</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <div class="toolbar">
+      <input type="text" class="search" id="searchBox" placeholder="Search pages, visuals, measures, or sources..." />
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="exec">Executive</button>
+      <button class="filter-btn" data-filter="pipeline">Pipeline</button>
+      <button class="filter-btn" data-filter="revenue">Revenue</button>
+      <button class="filter-btn" data-filter="cosell">Co-sell</button>
+      <button class="filter-btn" data-filter="expand">Expand all</button>
+    </div>
+
+    <h2 class="section-title" id="design-system">&sect; Design System</h2>
+    <div class="page-card open" data-cat="exec">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">DS</div><div><h2>Visual identity, theme &amp; layout grid</h2><div class="subtitle">Color tokens, typography, spacing, accessibility</div></div></div>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="page-body">
+        <div class="section">
+          <h4>Color tokens</h4>
+          <div class="swatch-grid">
+            <div class="swatch"><div class="color" style="background:#0078D4"></div><div class="label"><div class="name">Microsoft Blue (Primary)</div><div class="hex">#0078D4</div></div></div>
+            <div class="swatch"><div class="color" style="background:#50E6FF"></div><div class="label"><div class="name">Azure Cyan (Accent)</div><div class="hex">#50E6FF</div></div></div>
+            <div class="swatch"><div class="color" style="background:#107C10"></div><div class="label"><div class="name">Won / Positive</div><div class="hex">#107C10</div></div></div>
+            <div class="swatch"><div class="color" style="background:#D83B01"></div><div class="label"><div class="name">Lost / Negative</div><div class="hex">#D83B01</div></div></div>
+            <div class="swatch"><div class="color" style="background:#FFB900"></div><div class="label"><div class="name">At Risk / Warning</div><div class="hex">#FFB900</div></div></div>
+            <div class="swatch"><div class="color" style="background:#5C2D91"></div><div class="label"><div class="name">IP Co-sell</div><div class="hex">#5C2D91</div></div></div>
+            <div class="swatch"><div class="color" style="background:#0099BC"></div><div class="label"><div class="name">BizApps</div><div class="hex">#0099BC</div></div></div>
+            <div class="swatch"><div class="color" style="background:#605E5C"></div><div class="label"><div class="name">Neutral</div><div class="hex">#605E5C</div></div></div>
+          </div>
+        </div>
+        <div class="section">
+          <h4>Typography</h4>
+          <ul class="visual-list">
+            <li><span class="vtype text">font</span><div class="vbody"><div class="vname">Segoe UI Semibold 18pt</div><div class="vdesc">Page titles</div></div></li>
+            <li><span class="vtype text">font</span><div class="vbody"><div class="vname">Segoe UI 28&ndash;36pt</div><div class="vdesc">KPI numerics with dynamic format strings</div></div></li>
+            <li><span class="vtype text">font</span><div class="vbody"><div class="vname">Segoe UI 11pt</div><div class="vdesc">Table cells, axis labels, slicer values</div></div></li>
+          </ul>
+        </div>
+        <div class="section">
+          <h4>Layout grid (16:9 &mdash; 1280&times;720)</h4>
+          <div class="wireframe" style="grid-template-rows:repeat(8,1fr); height:280px;">
+            <div class="wf-cell text" style="grid-column:1/13">Banner: page title &middot; last refresh &middot; bookmark nav</div>
+            <div class="wf-cell slicer" style="grid-column:1/13">Filter Bar &mdash; FY &middot; Quarter &middot; Region &middot; Solution Area &middot; Segment &middot; Partner Type</div>
+            <div class="wf-cell kpi" style="grid-column:1/4; grid-row:3/5">KPI 1</div>
+            <div class="wf-cell kpi" style="grid-column:4/7; grid-row:3/5">KPI 2</div>
+            <div class="wf-cell kpi" style="grid-column:7/10; grid-row:3/5">KPI 3</div>
+            <div class="wf-cell kpi" style="grid-column:10/13; grid-row:3/5">KPI 4</div>
+            <div class="wf-cell chart" style="grid-column:1/8; grid-row:5/9">Primary visual (chart / matrix)</div>
+            <div class="wf-cell matrix" style="grid-column:8/13; grid-row:5/9">Detail / breakdown</div>
+          </div>
+          <p class="audience" style="margin-top:8px;">Pages standardize on a <strong>4-KPI strip + 2-visual main band</strong> &mdash; banner sticky, filter bar shared via sync slicers across all pages.</p>
+        </div>
+        <div class="section">
+          <h4>Accessibility</h4>
+          <div class="risk good">All colors meet WCAG AA contrast (4.5:1 minimum) on white background.</div>
+          <div class="risk good">Tables include alt-text per visual; tab order set explicitly.</div>
+          <div class="risk info">Use color-blind safe palette &mdash; pair red/green with icon or text.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="data-model">&sect; Data Model Notes &mdash; CosellSemanticModel</h2>
+    <div class="page-card" data-cat="exec">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">DM</div><div><h2>Key tables &amp; relationships</h2><div class="subtitle">Star-schema overview, role-playing dimensions, RLS</div></div></div>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="page-body">
+        <div class="section">
+          <h4>Likely table groups (inferred from report usage)</h4>
+          <ul class="visual-list">
+            <li><span class="vtype matrix">fact</span><div class="vbody"><div class="vname">Fact_Opportunity / Fact_Pipeline</div><div class="vdesc">Grain: opportunity &times; snapshot date. Holds ACV/TPV, stage, owner, dates.</div></div></li>
+            <li><span class="vtype matrix">fact</span><div class="vbody"><div class="vname">Fact_BilledRevenue</div><div class="vdesc">Grain: invoice line. Bill date, amount, currency, partner attribution.</div></div></li>
+            <li><span class="vtype matrix">fact</span><div class="vbody"><div class="vname">Fact_Consumption (ACR)</div><div class="vdesc">Grain: subscription &times; month. Azure Consumed Revenue per customer.</div></div></li>
+            <li><span class="vtype matrix">fact</span><div class="vbody"><div class="vname">Fact_PartnerReportedACR</div><div class="vdesc">Partner-submitted ACR with validation status.</div></div></li>
+            <li><span class="vtype slicer">dim</span><div class="vbody"><div class="vname">Dim_Partner</div><div class="vdesc">MPN ID, Tier (Co-sell Ready / Prioritized), Type (IP / Services).</div></div></li>
+            <li><span class="vtype slicer">dim</span><div class="vbody"><div class="vname">Dim_Customer</div><div class="vdesc">TPID, Segment, Industry, Geo.</div></div></li>
+            <li><span class="vtype slicer">dim</span><div class="vbody"><div class="vname">Dim_Solution / Dim_Workload</div><div class="vdesc">Solution Area hierarchy + Power 5 mapping flag.</div></div></li>
+            <li><span class="vtype slicer">dim</span><div class="vbody"><div class="vname">Dim_Date</div><div class="vdesc">Mark as date table; FY/FQ/FM hierarchy aligned to Microsoft fiscal calendar (Jul&ndash;Jun).</div></div></li>
+            <li><span class="vtype slicer">dim</span><div class="vbody"><div class="vname">Dim_Geography / Dim_Area</div><div class="vdesc">Area &rarr; Subsidiary &rarr; Region hierarchy.</div></div></li>
+          </ul>
+        </div>
+        <div class="section">
+          <h4>Relationships &amp; security</h4>
+          <ul class="visual-list">
+            <li><span class="vtype text">rel</span><div class="vbody"><div class="vname">Single-direction filtering</div><div class="vdesc">Dimensions &rarr; facts. Avoid bi-directional unless required for partner-customer many-many.</div></div></li>
+            <li><span class="vtype text">rls</span><div class="vbody"><div class="vname">Row-Level Security</div><div class="vdesc">Likely Area-based RLS &mdash; verify and document at publish time. Confirm if HQ/WW role exists.</div></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="measures">&sect; Measures Catalog</h2>
+    <details class="expander" open>
+      <summary>Standardized measure names used across pages</summary>
+      <table>
+        <thead><tr><th>Measure</th><th>Returns</th><th>Used on Pages</th></tr></thead>
+        <tbody>
+          <tr><td><code>[Pipeline ACV]</code></td><td>Sum of open opportunity ACV</td><td>02, 03, 11</td></tr>
+          <tr><td><code>[Pipeline TPV]</code></td><td>Total Partner Value (committed)</td><td>02, 03, 04</td></tr>
+          <tr><td><code>[Won Revenue]</code></td><td>Sum of won deal value (FY-to-date)</td><td>02, 04</td></tr>
+          <tr><td><code>[Win Rate %]</code></td><td>Won / (Won + Lost) by count</td><td>04</td></tr>
+          <tr><td><code>[Avg Sales Cycle Days]</code></td><td>AVG(close &minus; create)</td><td>04</td></tr>
+          <tr><td><code>[Billed Revenue]</code></td><td>Sum of invoiced amount</td><td>02, 06</td></tr>
+          <tr><td><code>[Billed YoY %]</code></td><td>(Current FY &minus; Prior FY) / Prior FY</td><td>06</td></tr>
+          <tr><td><code>[Total ACR]</code></td><td>Azure Consumed Revenue</td><td>02, 07</td></tr>
+          <tr><td><code>[Partner Reported ACR]</code></td><td>Sum from Fact_PartnerReportedACR</td><td>11</td></tr>
+          <tr><td><code>[Co-sell Ready Partners]</code></td><td>DISTINCTCOUNT MPN where Tier="Ready"</td><td>02, 08</td></tr>
+          <tr><td><code>[Co-sell Prioritized Partners]</code></td><td>DISTINCTCOUNT MPN where Tier="Prioritized"</td><td>02, 08</td></tr>
+          <tr><td><code>[Co-sell Attach Rate %]</code></td><td>Co-sell deals / Total deals</td><td>02</td></tr>
+          <tr><td><code>[Azure Eligible Partners]</code></td><td>Partners flagged Azure-incentive</td><td>09</td></tr>
+          <tr><td><code>[BizApps Eligible Partners]</code></td><td>Partners flagged BizApps-incentive</td><td>09</td></tr>
+          <tr><td><code>[Solutions Attached]</code></td><td>COUNT solutions per opp</td><td>10</td></tr>
+          <tr><td><code>[Power 5 Attach %]</code></td><td>Power-5-flagged solutions / Total</td><td>10</td></tr>
+          <tr><td><code>[Slipped Deals Count]</code></td><td>Deals where new_close &gt; original_close</td><td>05</td></tr>
+          <tr><td><code>[Days Slipped]</code></td><td>AVG(new_close &minus; original_close)</td><td>05</td></tr>
+          <tr><td><code>[IPCS Transitioned Partners]</code></td><td>Partners with IPCS=1 in current FY</td><td>11</td></tr>
+          <tr><td><code>[IP Co-sell Registrations]</code></td><td>Count of registered IP deals</td><td>11</td></tr>
+        </tbody>
+      </table>
+      <p class="audience" style="margin-top:10px;">Measures should live in a dedicated <strong>"_Measures"</strong> table with display folders by domain (Pipeline, Revenue, Partner, Solution, IP).</p>
+    </details>
+
+    <h2 class="section-title" id="filters">&sect; Global Filter Strategy</h2>
+    <details class="expander" open>
+      <summary>Sync slicers, report-level filters, drill-through fields</summary>
+      <table>
+        <thead><tr><th>Scope</th><th>Field</th><th>Behavior</th></tr></thead>
+        <tbody>
+          <tr><td>Report-level</td><td>Fiscal Year</td><td>Default = Current FY; sync across all visible pages</td></tr>
+          <tr><td>Report-level</td><td>Fiscal Quarter</td><td>Default = "All"; sync across all visible pages</td></tr>
+          <tr><td>Page-level (pipeline)</td><td>Region / Area</td><td>Sync 03&ndash;05; defaults from RLS</td></tr>
+          <tr><td>Page-level (partner)</td><td>Partner Tier (Ready / Prioritized / Both)</td><td>Sync 08&ndash;11</td></tr>
+          <tr><td>Page-level (revenue)</td><td>Solution Area</td><td>Sync 06&ndash;07, 10</td></tr>
+          <tr><td>Drill-through</td><td>Opp ID</td><td>Open Tooltip Layer (Page 12) for deal-level detail</td></tr>
+          <tr><td>Drill-through</td><td>Partner MPN</td><td>Open Partner Tier tooltip (Page 12)</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <h2 class="section-title">Page-by-Page Specification</h2>
+
+    <article class="page-card open" id="p1" data-cat="exec">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">01</div><div><h2>Read Me &amp; Overview</h2><div class="subtitle">Onboarding, navigation, refresh status, ownership</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> First-touch landing page. Replaces the disjointed "Read Me" pages scattered across source reports. Acts as a navigation hub and contract document for users.<div class="audience"><strong>Audience:</strong> All consumers (new and recurring)</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>Visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype text">text</span><div class="vbody"><div class="vname">Welcome &amp; Purpose</div><div class="vdesc">2-paragraph intro: what this report consolidates and the Co-sell motion glossary.</div></div></li>
+                <li><span class="vtype button">button</span><div class="vbody"><div class="vname">Page Navigator (10 buttons)</div><div class="vdesc">Bookmarked navigation buttons grouped by domain (Executive / Pipeline / Revenue / Co-sell / IP).</div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Last Refresh Timestamp</div><div class="vdesc">Dynamic measure showing last successful semantic-model refresh.</div><div class="vmeasures"><code>[Last Refresh]</code> = MAX(Dim_Date[RefreshDateTime])</div></div></li>
+                <li><span class="vtype text">text</span><div class="vbody"><div class="vname">Glossary card</div><div class="vdesc">Defines: Co-sell Ready, Prioritized, ACR, MPN, Sell-With, Sell-To, IPCS, Power 5.</div></div></li>
+                <li><span class="vtype text">text</span><div class="vbody"><div class="vname">Owners &amp; Support</div><div class="vdesc">DRI list, Teams channel link, ADO project, refresh schedule.</div></div></li>
+                <li><span class="vtype text">text</span><div class="vbody"><div class="vname">Change log link</div><div class="vdesc">Bookmark to "What's new" pop-up.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Services Co-sell &rsaquo; Read Me</span></div></div>
+            <div class="panel-block"><h5>Filters</h5><ul><li>None (intentionally clean)</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p2" data-cat="exec">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">02</div><div><h2>Executive KPI Summary</h2><div class="subtitle">One-glance health of the entire Co-sell motion</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Replaces the scattered summary tabs in Insights Hub and PDM with a single executive scorecard. Anchored by 6 headline KPIs and 3 trend visuals.<div class="audience"><strong>Audience:</strong> GMs, sales leadership, partner-org leads</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>KPI strip (6 cards)</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Pipeline ACV</div><div class="vdesc">Current FY total open pipeline; YoY arrow + sparkline.</div><div class="vmeasures"><code>[Pipeline ACV]</code> <code>[Pipeline ACV YoY %]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Won Revenue (FYTD vs Target)</div><div class="vdesc">Bullet card with target line.</div><div class="vmeasures"><code>[Won Revenue]</code> <code>[Target]</code> <code>[Attainment %]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Billed Revenue (Current Q)</div><div class="vdesc">QoQ delta with arrow.</div><div class="vmeasures"><code>[Billed Revenue]</code> <code>[Billed QoQ %]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Total ACR (Current Q)</div><div class="vdesc">Azure Consumed Revenue this quarter.</div><div class="vmeasures"><code>[Total ACR]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Active Partners (Ready + Prioritized)</div><div class="vdesc">Distinct count with QoQ change.</div><div class="vmeasures"><code>[Co-sell Ready Partners] + [Co-sell Prioritized Partners]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Co-sell Attach Rate %</div><div class="vdesc">Co-sell-tagged deals / total deals.</div><div class="vmeasures"><code>[Co-sell Attach Rate %]</code></div></div></li>
+              </ul>
+            </div>
+            <div class="section"><h4>Trend &amp; mix visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Pipeline trend (stacked column)</div><div class="vdesc">Last 12 months: Open / Won / Lost stacked. Drill-down to Quarter / Month.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Revenue mix (donut)</div><div class="vdesc">Azure / Modern Work / BizApps / M365 split of billed revenue.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Top 10 partners (matrix)</div><div class="vdesc">Pipeline ACV, Won Rev, # Deals, QoQ delta &mdash; conditional formatting bars.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Wireframe</h5>
+              <div class="wireframe" style="grid-template-rows:repeat(6,1fr); height:220px;">
+                <div class="wf-cell text" style="grid-column:1/13">Banner</div>
+                <div class="wf-cell slicer" style="grid-column:1/13">Filter Bar</div>
+                <div class="wf-cell kpi" style="grid-column:1/3">K1</div><div class="wf-cell kpi" style="grid-column:3/5">K2</div><div class="wf-cell kpi" style="grid-column:5/7">K3</div><div class="wf-cell kpi" style="grid-column:7/9">K4</div><div class="wf-cell kpi" style="grid-column:9/11">K5</div><div class="wf-cell kpi" style="grid-column:11/13">K6</div>
+                <div class="wf-cell chart" style="grid-column:1/8; grid-row:4/7">Trend</div>
+                <div class="wf-cell chart" style="grid-column:8/13; grid-row:4/6">Mix</div>
+                <div class="wf-cell matrix" style="grid-column:8/13; grid-row:6/7">Top 10</div>
+              </div>
+            </div>
+            <div class="panel-block"><h5>Slicers</h5><ul><li>Fiscal Year (default = Current)</li><li>Fiscal Quarter</li><li>Region / Area</li><li>Solution Area</li><li>Segment</li></ul></div>
+            <div class="panel-block"><h5>Drill-through targets</h5><ul><li>Top 10 partners &rarr; Page 08</li><li>Trend &rarr; Page 03/04</li></ul></div>
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Insights Hub &rsaquo; Summary</span><span class="tag">PDM &rsaquo; Partner Deal Summary</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p3" data-cat="pipeline">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">03</div><div><h2>Open / In-Progress Pipeline</h2><div class="subtitle">Active deals &mdash; health, age, blockers, funnel</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> The single page sellers and partner managers open every morning. Combines Services Co-sell, PDM Pipeline Insights, and IP Co-sell pipeline views into one funnel-driven view.<div class="audience"><strong>Audience:</strong> Sellers, PDMs, partner managers</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>KPI strip (4 cards)</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Open Pipeline Count</div><div class="vmeasures"><code>[Open Deals Count]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Open ACV</div><div class="vmeasures"><code>[Pipeline ACV]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Avg Deal Size</div><div class="vmeasures"><code>DIVIDE([Pipeline ACV], [Open Deals Count])</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Avg Days in Stage</div><div class="vmeasures"><code>[Avg Days in Stage]</code></div></div></li>
+              </ul>
+            </div>
+            <div class="section"><h4>Main visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Sales funnel</div><div class="vdesc">Stages 1&rarr;2&rarr;3&rarr;4 with count + value labels and conversion rate between stages.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Aging buckets (clustered bar)</div><div class="vdesc">0&ndash;30 / 31&ndash;60 / 61&ndash;90 / 90+ days; coloring red after 60.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Pipeline by Solution Area</div><div class="vdesc">100% stacked bar with Power 5 highlight.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Open Deal table</div><div class="vdesc">Opp ID, Partner, Customer, Workload, Stage, ACV, Days in Stage, Owner &mdash; conditional formatting bars on aging.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Top 5 Blocked Deals</div><div class="vdesc">Hover &rarr; Top 5 Blocked tooltip (Page 12). <span class="drill-arrow">&rarr; drill-through enabled</span></div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Slicers</h5><ul><li>Region / Area</li><li>Segment</li><li>Partner Type (IP / Services)</li><li>Stage</li><li>Owner (multi-select)</li><li>Aging (&gt;60 days toggle)</li></ul></div>
+            <div class="panel-block"><h5>Drill-through</h5><ul><li>Right-click any deal &rarr; Tooltip Layer (Page 12) &rarr; Deal detail</li></ul></div>
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Services Co-sell &rsaquo; Open/In-Progress</span><span class="tag">PDM &rsaquo; Pipeline Insights</span><span class="tag">PDM &rsaquo; Pipeline Insights Details</span><span class="tag">IP Co-sell &rsaquo; Pipeline</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p4" data-cat="pipeline">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">04</div><div><h2>Won Pipeline &amp; Performance</h2><div class="subtitle">Closed-won deals, win-rate, attainment vs target</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Performance pulse for closed business. Merges Services Co-sell "Won" with IP Co-sell "Performance" (Azure + BizApps) into a single page using a workload toggle.<div class="audience"><strong>Audience:</strong> Sales leadership, partner ops</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>KPI strip (4 cards)</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Won Count</div><div class="vmeasures"><code>[Won Deals Count]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Won Revenue</div><div class="vmeasures"><code>[Won Revenue]</code> <code>[Attainment %]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Win Rate %</div><div class="vmeasures"><code>[Win Rate %]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Avg Sales Cycle (days)</div><div class="vmeasures"><code>[Avg Sales Cycle Days]</code></div></div></li>
+              </ul>
+            </div>
+            <div class="section"><h4>Main visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Won trend (8 quarters)</div><div class="vdesc">Column + target line overlay; YoY bands.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Win-rate heatmap</div><div class="vdesc">Workload &times; Region; diverging color scale around 30% benchmark.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Top 10 winning partners (bar)</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Won-deal detail table</div><div class="vdesc">Partner, Customer, Workload, ACV, Close Date, Sales Cycle.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Top 5 Active Co-sell wins</div><div class="vdesc">&rarr; Tooltip on Page 12.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Slicers</h5><ul><li>Workload toggle: Azure / BizApps / All</li><li>Region / Area</li><li>Segment</li><li>Partner Tier</li></ul></div>
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Services Co-sell &rsaquo; Won Pipeline</span><span class="tag">IP Co-sell &rsaquo; Performance</span><span class="tag">IP Co-sell &rsaquo; Performance BizApps</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p5" data-cat="pipeline">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">05</div><div><h2>Lost &amp; Slipped Deals</h2><div class="subtitle">Loss-reason analysis, slippage trends, recovery candidates</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Diagnostic page &mdash; why are we losing or slipping deals? Combines Services Co-sell "Lost" page with PDM "Slipped Deal" tooltip into a full analysis surface.<div class="audience"><strong>Audience:</strong> Sales managers, deal coaches</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>KPI strip (4 cards)</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Lost Count</div><div class="vmeasures"><code>[Lost Deals Count]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Lost Value</div><div class="vmeasures"><code>[Lost ACV]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Slipped Count</div><div class="vmeasures"><code>[Slipped Deals Count]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Slipped Value</div><div class="vmeasures"><code>[Slipped ACV]</code></div></div></li>
+              </ul>
+            </div>
+            <div class="section"><h4>Main visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Loss reason pareto</div><div class="vdesc">Sorted bars + cumulative %; top 5 reasons highlighted.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Slippage trend</div><div class="vdesc">Quarterly count of slipped deals with line for avg days slipped.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Slipped deal table</div><div class="vdesc">Opp ID, Partner, Original Close, New Close, Days Slipped, Reason.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Top 5 Slipped Deals</div><div class="vdesc">&rarr; Tooltip on Page 12.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Services Co-sell &rsaquo; Lost Pipeline</span><span class="tag">PDM &rsaquo; Top 5 Slipped Tooltip</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p6" data-cat="revenue">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">06</div><div><h2>Billed Opportunity</h2><div class="subtitle">Billed revenue from Co-sell deals &mdash; partner-attributed</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Tracks billed dollars flowing from Co-sell wins. Merges GPS SingleMPN and PDM "Billed Opportunity" pages.<div class="audience"><strong>Audience:</strong> Finance, partner ops, channel leads</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>Visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Total Billed (FY/Q)</div><div class="vmeasures"><code>[Billed Revenue]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Billed YoY %</div><div class="vmeasures"><code>[Billed YoY %]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Avg Bill / Opp</div><div class="vmeasures"><code>DIVIDE([Billed Revenue], [Billed Opp Count])</code></div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Billed trend (combo)</div><div class="vdesc">Monthly column (current FY) + cumulative YTD line.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Partner &times; Workload matrix</div><div class="vdesc">Heat-shaded billed amount; sortable.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Billed opp detail table</div><div class="vdesc">Opp ID, Customer, Partner, Workload, Bill Date, Amount.</div></div></li>
+                <li><span class="vtype map">map</span><div class="vbody"><div class="vname">Geo map</div><div class="vdesc">Filled map of billed revenue by Area / Subsidiary; click &rarr; cross-filter all visuals.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">GPS SingleMPN &rsaquo; Billed Opportunity</span><span class="tag">PDM &rsaquo; Billed Opportunity</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p7" data-cat="revenue">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">07</div><div><h2>Consumption Opportunity</h2><div class="subtitle">Azure consumption / ACR tied to Co-sell deals</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Tracks downstream Azure consumption from Co-sell-won customers. Merges GPS SingleMPN and PDM "Consumption Opportunity" pages.<div class="audience"><strong>Audience:</strong> Azure CSAs, partner technical leads, consumption analysts</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>Visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Total ACR</div><div class="vmeasures"><code>[Total ACR]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">ACR YoY %</div><div class="vmeasures"><code>[ACR YoY %]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Active Consuming Customers</div><div class="vmeasures"><code>[Active Consumers]</code></div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">ACR trend by month</div><div class="vdesc">Column + QoQ growth line.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">ACR by Solution Area</div><div class="vdesc">Stacked bar &mdash; Azure Infra / Data &amp; AI / Apps &amp; Infra.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Top 25 consuming customers</div><div class="vdesc">Customer, Partner, ACR, MoM growth.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Cohort: time to first consumption</div><div class="vdesc">Histogram of days from win &rarr; first ACR.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">GPS SingleMPN &rsaquo; Consumption</span><span class="tag">PDM &rsaquo; Consumption</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p8" data-cat="cosell">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">08</div><div><h2>Co-sell Readiness &amp; Prioritization</h2><div class="subtitle">Partner segmentation by readiness tier</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Single source of truth for partner readiness &mdash; replaces 3 Insights Hub pages (Ready / Prioritized / Ready+Prioritized) plus partner-deal pages from GPS SingleMPN and PDM.<div class="audience"><strong>Audience:</strong> Partner managers, channel leads</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>Visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Co-sell Ready partners</div><div class="vmeasures"><code>[Co-sell Ready Partners]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Co-sell Prioritized partners</div><div class="vmeasures"><code>[Co-sell Prioritized Partners]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Ready + Prioritized total</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Stacked column &mdash; partners over time by tier</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Partner directory</div><div class="vdesc">Partner Name, MPN, Tier, Solution Areas, Geo, # Active Deals, ACV &mdash; sortable; right-click drill to partner tooltip.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Bubble chart</div><div class="vdesc">Partners plotted: x=#deals, y=pipeline value, bubble size=win-rate, color=tier.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Field Parameters</h5><ul><li>Tier selector (Ready / Prioritized / Both / Any)</li><li>Solution Area selector</li></ul></div>
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Insights Hub &rsaquo; Ready</span><span class="tag">Insights Hub &rsaquo; Prioritized</span><span class="tag">Insights Hub &rsaquo; Ready or Prioritized</span><span class="tag">GPS SingleMPN &rsaquo; Partner Deals</span><span class="tag">PDM &rsaquo; Partner Deal</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p9" data-cat="cosell">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">09</div><div><h2>Incentive Eligibility</h2><div class="subtitle">Azure &amp; BizApps incentive-eligible partners and deals</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Consolidates the two Insights Hub eligibility pages (Azure / BizApps) into one toggleable view with cross-program comparison.<div class="audience"><strong>Audience:</strong> Incentives team, partner ops</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>Visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Azure-eligible partners</div><div class="vmeasures"><code>[Azure Eligible Partners]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">BizApps-eligible partners</div><div class="vmeasures"><code>[BizApps Eligible Partners]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Total eligible deals</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Eligibility split donut</div><div class="vdesc">Azure / BizApps / Both / Neither.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Eligible partner table</div><div class="vdesc">Partner, Programs, Deal Count, Payout potential.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Eligibility trend</div><div class="vdesc">QoQ partner movement (became eligible / lost eligibility).</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Slicers</h5><ul><li>Program toggle: Azure / BizApps / Combined</li></ul></div>
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Insights Hub &rsaquo; Azure Eligible</span><span class="tag">Insights Hub &rsaquo; BizApps Eligible</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p10" data-cat="cosell">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">10</div><div><h2>Solution &amp; Power 5 Performance</h2><div class="subtitle">Solution-area attach, Power 5 priority workloads, WW comparison</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Merges all 6 Solution Performance pages plus the entire Power 5 report into a single tab-bookmarked page (Solutions / Co-sell Prioritized / Power 5 / WW comparison).<div class="audience"><strong>Audience:</strong> Solution leads, Power 5 program managers</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>Tab 1 &mdash; Solution Attach</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Total Solutions Attached</div><div class="vmeasures"><code>[Solutions Attached]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Co-sell Prioritized Attach %</div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Power 5 Attach %</div><div class="vmeasures"><code>[Power 5 Attach %]</code></div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Attach rates clustered bar</div><div class="vdesc">All Up vs Co-sell Prioritized side-by-side per Solution Area.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">All Up Solutions Attached detail</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Co-sell Prioritized Attached detail</div></div></li>
+              </ul>
+            </div>
+            <div class="section"><h4>Tab 2 &mdash; Power 5</h4>
+              <ul class="visual-list">
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Power 5 workload heatmap</div><div class="vdesc">5 priority workloads &times; 3 metrics (Pipeline / Win / Revenue) &mdash; diverging color.</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Power 5 attach trend (last 6 quarters)</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Power 5 detail by partner</div></div></li>
+              </ul>
+            </div>
+            <div class="section"><h4>Tab 3 &mdash; WW comparison</h4>
+              <ul class="visual-list">
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">My Region vs WW benchmark</div><div class="vdesc">Variance % column with conditional formatting.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Bookmarks</h5><ul><li>3 tab bookmarks: Solution / Power 5 / WW</li></ul></div>
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">Solution Performance (all 6)</span><span class="tag">Power 5 (full report)</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p11" data-cat="cosell">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">11</div><div><h2>IP Co-sell &amp; Partner Reported ACR</h2><div class="subtitle">IPCS transitions, registrations, partner-reported ACR</div></div></div>
+        <div class="right"><span class="meta-pill">Visible</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Folds the entire IP Co-sell report (6 pages) into one page using a workload toggle (Azure / BizApps) and a tab strip for Performance / Pipeline / Reported ACR.<div class="audience"><strong>Audience:</strong> IP Co-sell PMs, ISV partner team</div></div>
+        <div class="page-grid">
+          <div>
+            <div class="section"><h4>KPI strip</h4>
+              <ul class="visual-list">
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">IPCS-transitioned partners</div><div class="vmeasures"><code>[IPCS Transitioned Partners]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">IP Co-sell Registrations (FY)</div><div class="vmeasures"><code>[IP Co-sell Registrations]</code></div></div></li>
+                <li><span class="vtype kpi">kpi</span><div class="vbody"><div class="vname">Partner-Reported ACR total</div><div class="vmeasures"><code>[Partner Reported ACR]</code></div></div></li>
+              </ul>
+            </div>
+            <div class="section"><h4>Visuals</h4>
+              <ul class="visual-list">
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Transition Partner Performance</div><div class="vdesc">Top transitioned partners by pipeline + ACR (clustered bar).</div></div></li>
+                <li><span class="vtype chart">chart</span><div class="vbody"><div class="vname">Registration trend (monthly)</div><div class="vdesc">New vs Renewed split.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Pipeline detail</div><div class="vdesc">Toggleable Azure / BizApps view.</div></div></li>
+                <li><span class="vtype matrix">matrix</span><div class="vbody"><div class="vname">Partner-Reported ACR table</div><div class="vdesc">Partner, Customer, Workload, Reported ACR, Validation status, Submission date.</div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="side-panel">
+            <div class="panel-block"><h5>Slicers / Toggles</h5><ul><li>Workload toggle: Azure / BizApps</li><li>FY, Quarter, Geo, Partner Tier</li></ul></div>
+            <div class="panel-block"><h5>Source pages</h5><div class="source-tags"><span class="tag">IP Co-sell &rsaquo; IPCS Transition</span><span class="tag">IP Co-sell &rsaquo; Registration</span><span class="tag">IP Co-sell &rsaquo; Pipeline</span><span class="tag">IP Co-sell &rsaquo; Reported ACR</span><span class="tag">IP Co-sell &rsaquo; Performance BizApps</span><span class="tag">IP Co-sell &rsaquo; Pipeline BizApps</span></div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="page-card" id="p12" data-cat="exec">
+      <div class="page-head" onclick="togglePage(this)">
+        <div class="title"><div class="badge">+</div><div><h2>Tooltip / Drill Layer (Hidden)</h2><div class="subtitle">5 reusable hidden pages backing all hover/drill interactions</div></div></div>
+        <div class="right"><span class="meta-pill">Hidden</span><span class="chev">&#9654;</span></div>
+      </div>
+      <div class="page-body">
+        <div class="purpose-box"><strong>Purpose:</strong> Replaces 14 source tooltip pages with 5 parameterized ones using <strong>Power BI Field Parameters</strong>. Reduces model size, eliminates duplication, simplifies maintenance.<div class="audience"><strong>Audience:</strong> N/A &mdash; invoked by other pages</div></div>
+        <div class="section"><h4>Hidden tooltip pages</h4>
+          <ul class="visual-list">
+            <li><span class="vtype tooltip">tooltip</span><div class="vbody"><div class="vname">T1 &mdash; Partner Tier Tooltip</div><div class="vdesc">Single tooltip replacing the 5 Insights Hub tooltips (Any / 1+ / 4+ / 6+ / 10+ Partners) using a tier field parameter.</div></div></li>
+            <li><span class="vtype tooltip">tooltip</span><div class="vbody"><div class="vname">T2 &mdash; Co-sell Tier Tooltip</div><div class="vdesc">Replaces Co-sell Ready / Prioritized / Ready+Prioritized / Azure-Eligible / BizApps-Eligible tooltips via dynamic field parameter.</div></div></li>
+            <li><span class="vtype tooltip">tooltip</span><div class="vbody"><div class="vname">T3 &mdash; Top 5 Blocked Deals</div><div class="vdesc">Drill-through with deal-level detail and blocking reason.</div></div></li>
+            <li><span class="vtype tooltip">tooltip</span><div class="vbody"><div class="vname">T4 &mdash; Top 5 Active Co-sell</div><div class="vdesc">Partner + customer + workload + recent activity.</div></div></li>
+            <li><span class="vtype tooltip">tooltip</span><div class="vbody"><div class="vname">T5 &mdash; Top 5 Slipped Deals</div><div class="vdesc">Slip reason + days slipped + recovery owner + suggested next action.</div></div></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <h2 class="section-title" id="performance">&sect; Performance &amp; Refresh</h2>
+    <details class="expander">
+      <summary>Refresh schedule, query optimization, capacity sizing</summary>
+      <table>
+        <thead><tr><th>Topic</th><th>Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>Refresh frequency</td><td>Daily 06:00 UTC (aligned to upstream Lakehouse refresh); incremental on Fact_Opportunity</td></tr>
+          <tr><td>Aggregations</td><td>Pre-aggregated table at Partner &times; Workload &times; Month grain to back KPI cards</td></tr>
+          <tr><td>DirectQuery</td><td>Avoid; full Import. Only the Partner-Reported ACR table may benefit from DQ if &gt;50M rows</td></tr>
+          <tr><td>Visual count per page</td><td>Cap at 12 visuals; current pages target 6&ndash;10</td></tr>
+          <tr><td>Field parameters</td><td>Use to collapse tooltip variants (Page 12)</td></tr>
+          <tr><td>Bookmarks</td><td>Tab navigation on Page 10 &amp; 11; reset bookmark on every page</td></tr>
+          <tr><td>Performance Analyzer target</td><td>Each visual &lt; 500 ms render; KPI strip &lt; 200 ms</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <h2 class="section-title" id="risks">&sect; Risks &amp; Open Questions</h2>
+    <div class="risk warn"><div><strong>Power 5 report metadata unreadable</strong> &mdash; the source report returned <code>ExplorationFormatVersionError</code> from the Power BI REST API. Visual list inferred from the report name only. <strong>Action:</strong> open in Power BI Desktop and confirm visual inventory before consolidating.</div></div>
+    <div class="risk warn"><div><strong>Visual-level metadata not extracted</strong> &mdash; the GetReportMetadata tool failed with a JSON parser error on all 6 readable reports. Visual recommendations are inferred from page titles + domain patterns; should be validated against live reports during build.</div></div>
+    <div class="risk info"><div><strong>RLS verification needed</strong> &mdash; assumption is Area-based RLS. Confirm with the dataset owner whether HQ/WW roles exist and how partner-org users are scoped.</div></div>
+    <div class="risk info"><div><strong>Deprecation plan</strong> &mdash; propose 60-day overlap where source reports remain alongside the consolidated report; gather usage telemetry before sunsetting.</div></div>
+    <div class="risk good"><div><strong>Single dataset</strong> &mdash; all 7 reports already share <code>CosellSemanticModel</code>, so no data-model migration is required. Pure presentation-layer consolidation.</div></div>
+
+    <footer>Generated from CosellSemanticModel lineage scan &middot; Workspace 45f61a28-a8a4-4966-a98d-0d7ce7093d38<br>Click any card to expand &middot; Use search/filters above to navigate &middot; Spec is design-time guidance, not auto-generated PBIR</footer>
+  </main>
+</div>
+
+<script>
+  function togglePage(headEl) { headEl.parentElement.classList.toggle('open'); }
+
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(l => l.addEventListener('click', () => {
+    links.forEach(x => x.classList.remove('active'));
+    l.classList.add('active');
+  }));
+
+  const searchBox = document.getElementById('searchBox');
+  searchBox.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    document.querySelectorAll('.page-card').forEach(card => {
+      const txt = card.innerText.toLowerCase();
+      const match = !q || txt.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (q && match) card.classList.add('open');
+    });
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      if (f === 'expand') {
+        const cards = document.querySelectorAll('.page-card');
+        const allOpen = [...cards].every(c => c.classList.contains('open'));
+        cards.forEach(c => c.classList.toggle('open', !allOpen));
+        btn.textContent = allOpen ? 'Expand all' : 'Collapse all';
+        return;
+      }
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.page-card[data-cat]').forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        if (!id) return;
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('[id]').forEach(c => {
+    if (c.id && (c.id.startsWith('p') || ['design-system','data-model','measures','filters','performance','risks'].includes(c.id))) obs.observe(c);
+  });
+</script>
+
+</body>
+</html>

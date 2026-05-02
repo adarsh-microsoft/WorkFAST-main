@@ -1,0 +1,195 @@
+131" [level=5] [ref=e2887]
+            - generic [ref=e2888]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2889]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2890]'
+          - generic [ref=e2891]:
+            - paragraph [ref=e2892]:
+              - text: Bindings
+              - link "https://blog.krawaller.se/posts/dissecting-bindings-in-angularjs/" [ref=e2893] [cursor=pointer]:
+                - /url: https://blog.krawaller.se/posts/dissecting-bindings-in-angularjs/
+            - list [ref=e2894]:
+              - listitem [ref=e2895]: What are bindings in AngularJS?
+              - listitem [ref=e2896]: Why are they needed?
+              - listitem [ref=e2897]:
+                - text: How to pass data to directive?
+                - list [ref=e2898]:
+                  - listitem [ref=e2899]: Pass string (@)
+                  - listitem [ref=e2900]: Pass dynamic expressions (<)
+                  - listitem [ref=e2901]: Catch output (&)
+                  - listitem [ref=e2902]: Two-way data bindings (=)
+              - listitem [ref=e2903]: Usage
+              - listitem [ref=e2904]: There are many examples in Premier Hub on this, explain few of them
+            - paragraph [ref=e2905]
+            - paragraph [ref=e2906]:
+              - text: Services
+              - link "https://docs.angularjs.org/guide/services" [ref=e2907] [cursor=pointer]:
+                - /url: https://docs.angularjs.org/guide/services
+            - list [ref=e2908]:
+              - listitem [ref=e2909]: What are Services?
+              - listitem [ref=e2910]: Services are lazily instantiated, so it is a candidate for writing business and common logic across your app. For instance, writing a service for all Ajax methods can reside in a service
+              - listitem [ref=e2911]: How to register a Service?
+              - listitem [ref=e2912]: Dependencies
+              - listitem [ref=e2913]: Usage
+            - paragraph [ref=e2914]
+            - paragraph [ref=e2915]: Localization (This is applicable for only static content localization)
+            - list [ref=e2916]:
+              - listitem [ref=e2917]: Any string that is being to your HTML, should be localized unless specified otherwise
+              - listitem [ref=e2918]: What is localization?
+              - listitem [ref=e2919]:
+                - text: How localization is implemented in Services Hub?
+                - list [ref=e2920]:
+                  - listitem [ref=e2921]: Resource files
+                  - listitem [ref=e2922]:
+                    - text: "Process:"
+                    - list [ref=e2923]:
+                      - listitem [ref=e2924]: All English files from \PremierHubWeb\Content\src\resources gets picked once in a month
+                      - listitem [ref=e2925]: This is a manual process
+                      - listitem [ref=e2926]: Many of these languages are human translated (~32 languages) and rest are machine translated (~20 languages)
+                  - listitem [ref=e2927]: "Note: It can take up to a month to get localized version of a recently string in all languages"
+              - listitem [ref=e2928]: Simple demo of how to add new string in Services hub, in such a way, that it supports localization
+            - paragraph [ref=e2929]
+            - paragraph [ref=e2930]: "Training Video:"
+            - paragraph [ref=e2931]:
+              - link "https://web.microsoftstream.com/video/9b751f57-eb0f-4443-8da7-0f725b9d7304" [ref=e2932] [cursor=pointer]:
+                - /url: https://web.microsoftstream.com/video/9b751f57-eb0f-4443-8da7-0f725b9d7304
+            - paragraph [ref=e2933]
+            - paragraph [ref=e2934]: Go through all the training material links shared above for this module. Answer the below questions to complete the course.
+            - paragraph [ref=e2935]: Select the correct bindings for the use case mentioned.
+            - paragraph [ref=e2936]
+            - paragraph [ref=e2937]: We have created a loader component. We need to pass the size of the loader as displayed below. Choose the correct binding
+            - paragraph [ref=e2938]:
+              - img "Database diagram" [ref=e2939]
+            - list [ref=e2940]:
+              - listitem [ref=e2941]: "@"
+              - listitem [ref=e2942]: "&"
+              - listitem [ref=e2943]: =
+              - listitem [ref=e2944]: <
+          - generic [ref=e2945]:
+            - generic [ref=e2946]: Your Submission
+----
+132" [level=5] [ref=e2952]
+            - generic [ref=e2953]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2954]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2955]'
+          - generic [ref=e2956]:
+            - paragraph [ref=e2957]: Select the correct bindings for the use case mentioned. We have a pagination component to which we pass the page count. Pagination component will be used to render the pagination and handle the next and previous calls.
+            - paragraph [ref=e2958]: Note – Page size will be available at client side (service call)
+            - paragraph [ref=e2959]:
+              - img "Database diagram" [ref=e2960]
+              - text: 1. @
+            - paragraph [ref=e2961]: 2. &
+            - paragraph [ref=e2962]: 3. =
+            - paragraph [ref=e2963]: 4. <
+            - paragraph [ref=e2964]
+          - generic [ref=e2965]:
+            - generic [ref=e2966]: Your Submission
+----
+133" [level=5] [ref=e2972]
+            - generic [ref=e2973]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2974]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2975]'
+          - generic [ref=e2976]:
+            - paragraph [ref=e2977]: Below is a code snapshot of component used in a html file. What will be the name of that component defined in ts
+            - paragraph [ref=e2978]:
+              - img "Database diagram" [ref=e2979]
+            - paragraph [ref=e2980]: 1. Paginationv2
+            - paragraph [ref=e2981]: 2. PaginationV2
+            - paragraph [ref=e2982]: 3. pagination-v2
+            - paragraph [ref=e2983]: 4. Pagination-V2
+          - generic [ref=e2984]:
+            - generic [ref=e2985]: Your Submission
+----
+134" [level=5] [ref=e2991]
+            - generic [ref=e2992]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2993]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2994]'
+          - generic [ref=e2995]:
+            - paragraph [ref=e2996]: Select the correct reason for using an ‘&’ binding in a component
+            - paragraph [ref=e2997]: 1. This allows the parent controller to listen or catch any changes/messages
+            - paragraph [ref=e2998]: 2. This allows the child to listed to any changes made in the parent controller
+            - paragraph [ref=e2999]: 3. This is used to pass an object from parent to child
+            - paragraph [ref=e3000]: 4. This is not recommended to be used
+          - generic [ref=e3001]:
+            - generic [ref=e3002]: Your Submission
+----
+135" [level=5] [ref=e3008]
+            - generic [ref=e3009]:
+              - 'heading "Weightage: 2" [level=6] [ref=e3010]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e3011]'
+          - generic [ref=e3012]:
+            - paragraph [ref=e3013]: What is the correct difference between a directive and a component? (Choose all that apply)
+            - paragraph [ref=e3014]: 1. Components have their own view (HTML and styles). Directives are just "behavior" added to existing elements and components.
+            - paragraph [ref=e3015]: 2. There can only be one component on a host element, but multiple directives
+            - paragraph [ref=e3016]: 3. Directives have their own view (HTML and styles). Components are just "behavior" added to existing elements and components.
+            - paragraph [ref=e3017]: 4. Directives are no longer used and are completely replaced by components
+          - generic [ref=e3018]:
+            - generic [ref=e3019]: Your Submission
+----
+136" [level=5] [ref=e3025]
+            - generic [ref=e3026]:
+              - 'heading "Weightage: 1" [level=6] [ref=e3027]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e3028]'
+          - generic [ref=e3029]:
+            - paragraph [ref=e3030]: In which scenario would you use a service?
+            - paragraph [ref=e3031]: 1. To create an HTML view such as a Carousel that you can use anywhere in your application
+            - paragraph [ref=e3032]: 2. To attach a specific behaviour to a DOM element or to transform the DOM and its children
+            - paragraph [ref=e3033]: 3. To share business logic, models, or data and functions with different components of your application
+            - paragraph [ref=e3034]: 4. All of the above
+          - generic [ref=e3035]:
+            - generic [ref=e3036]: Your Submission
+----
+137" [level=5] [ref=e3042]
+            - generic [ref=e3043]:
+              - 'heading "Weightage: 1" [level=6] [ref=e3044]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e3045]'
+          - generic [ref=e3046]:
+            - paragraph [ref=e3047]: Which of the following ways can be used to register a service?
+            - paragraph [ref=e3048]: 1. Using app.factory
+            - paragraph [ref=e3049]: 2. Using app.service
+            - paragraph [ref=e3050]: 3. Using app.Provider
+            - paragraph [ref=e3051]: 4. All of the above
+          - generic [ref=e3052]:
+            - generic [ref=e3053]: Your Submission
+----
+138" [level=5] [ref=e3059]
+            - generic [ref=e3060]:
+              - 'heading "Weightage: 1" [level=6] [ref=e3061]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e3062]'
+          - generic [ref=e3063]:
+            - paragraph [ref=e3064]: A service cannot depend on another service
+            - paragraph [ref=e3065]: 1. True
+            - paragraph [ref=e3066]: 2. False
+          - generic [ref=e3067]:
+            - generic [ref=e3068]: Your Submission
+----
+139" [level=5] [ref=e3074]
+            - generic [ref=e3075]:
+              - 'heading "Weightage: 1" [level=6] [ref=e3076]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e3077]'
+          - generic [ref=e3078]:
+            - paragraph [ref=e3079]: Which of these is not an inbuilt Angular service?
+            - paragraph [ref=e3080]: 1. $http
+            - paragraph [ref=e3081]: 2. httpServiceWrapper
+            - paragraph [ref=e3082]: 3. $q
+            - paragraph [ref=e3083]: 4. $rootScope
+          - generic [ref=e3084]:
+            - generic [ref=e3085]: Your Submission
+----
+140" [level=5] [ref=e3091]
+            - generic [ref=e3092]:
+              - 'heading "Weightage: 1" [level=6] [ref=e3093]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e3094]'
+          - generic [ref=e3095]:
+            - paragraph [ref=e3096]: Which of these is the correct syntax for registering a service?
+            - list [ref=e3097]:
+              - listitem [ref=e3098]:
+                - img "Database diagram" [ref=e3099]
+              - listitem [ref=e3100]:
+                - img "Database diagram" [ref=e3101]
+              - listitem [ref=e3102]:
+                - img "Database diagram" [ref=e3103]
+              - listitem [ref=e3104]:
+                - img "Database diagram" [ref=e3105]
+          - generic [ref=e3106]:
+            - generic [ref=e3107]: Your Submission
+----

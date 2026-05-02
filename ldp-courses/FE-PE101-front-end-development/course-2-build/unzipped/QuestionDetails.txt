@@ -1,0 +1,95 @@
+Problem statement
+Create a web page and submit the zipped folder of assignment which should have following files (along with other supportive files and folders):
+Home.html
+Main.js
+Main.css
+UI should be as per the redlines <Redlines.pdf>.
+Follow HTML, JS, and CSS coding standards. Do not use inline styles.
+Run ModernCop, HTML validator and CSS validator on code. Code should have 0 errors and warnings.
+Use proper IDs and Classes as mentioned in the redlines document (Page 2, IDs and Classes).
+Implement below mentioned components as shown in mock-up:
+Header (MAQ logo and two level navigation):
+Four dynamic tiles
+MAQ chart
+JSONGrid 
+Footer (Copyright and social media links)
+Two level navigation should have the following links:
+Home
+Category:
+Customer
+Product
+Sales
+Contact
+Note: Menu item should be displayed on mouse hover action (e.g. Customer, Product, and Sales should be displayed with hover on Category menu)
+Data in the tiles should change on selecting ‘Customer’, ‘Product’, or ‘Sales’ from ‘Category’ navigation item. Use provided JSON <Tiles data.txt> for data and refer below table for tile titles: 
+Navigation item
+Tile
+Tile title
+Customer
+Count tile
+Total number of customers
+
+Description tile
+Most recently added customer
+
+ID tile
+ID of most recently added customer
+
+Metric tile
+Phone number of most recently added customer
+Product
+Count tile
+Total number of products
+
+Description tile
+Most recently added product
+
+ID tile
+ID of most recently added product
+
+Metric tile
+List price of most recently added product
+Sales
+Count tile
+Total number of orders
+
+Description tile
+Name of the product for most recently added order
+
+ID tile
+ID of most recently added order
+
+Metric tile
+Unit price of most recently added order
+MAQ Chart:
+Use MAQ Charting Library to render this chart.
+Show ‘Number of orders’ (Y-axis) w.r.t. ‘Discount’ (X-axis) using column chart.
+Use proper X-axis and Y-axis labels.
+All the columns on the chart should have a different color. Use provided color palette.
+Use provided JSON <Chart data.txt> for the data.
+JSONGrid (Refer to the document provided <JSONGrid Guide.docx>):
+Use JSON Grid to render this grid.
+Show following columns in the grid:
+Sales Order ID
+Sales Order Detail ID
+Product ID
+Order Quantity
+Unit price
+Unit Price Discount
+Line Total
+Columns ‘Sales Order ID’ and ‘Sales Order Detail ID’ should be fixed and implement horizontal scroll for remaining columns.
+Implement sort functionality on all the columns.
+Implement pagination. One page should have 10 records.
+Use provided JSON <Grid data.txt> for the data.
+Note: By default, ascending order should be applied on ‘Sales Order ID’ column (‘Table sort_Up active.svg’ icon will be displayed on column)
+On clicking social media icons in footer, user should be redirected to following links:
+LinkedIn: http://www.linkedin.com/company/20688?trk=tyah&amp;trkInfo=tas%3AMAQ%20Software%2Cidx%3A2-1-2
+Facebook: https://www.facebook.com/MAQSoftware
+Twitter: http://twitter.com/MAQSoftware
+YouTube: http://www.youtube.com/maqsoftware
+Icons are present in the Resources.zip
+Use below mentioned color palette:
+
+colorPalette: ["#4572a7", "#aa4643", "#89a54e", "#80699b", "#3d96ae", "#db843d"]
+
+

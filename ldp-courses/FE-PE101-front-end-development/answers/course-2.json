@@ -1,0 +1,55 @@
+{
+  "course_id": 2,
+  "course_name": "HTML, JS, and CSS",
+  "track_id": 7,
+  "track_code": "FE-PE101",
+  "type": "build",
+  "weightage": 13,
+  "passing_percentage": 70,
+  "deliverable": "HTMLJSCSS_adarshd.zip",
+  "deliverable_path": "course-2-build/HTMLJSCSS_adarshd.zip",
+  "deliverable_size_bytes": 72476,
+  "submitted_at": "2026-05-02T18:30:00Z",
+  "submission_status": "Evaluating",
+  "files_in_zip": [
+    "Home.html",
+    "Main.js",
+    "Main.css",
+    "Resources/Data/tilesData.json",
+    "Resources/Data/chartData.json",
+    "Resources/Data/gridData.json",
+    "Resources/Images/* (11 assets)",
+    "Scripts/jsonGrid.js",
+    "Scripts/formatter.js",
+    "Scripts/maqUtility.js",
+    "Styles/jsonGrid.css",
+    "SiteAssets/MAQCharts_Dev/Images/* (mirror for JSONGrid)"
+  ],
+  "components_implemented": {
+    "header": "MAQ logo + 2-level nav (Home | Category[Customer/Product/Sales] | Contact)",
+    "tiles": "4 dynamic tiles bound from Resources/Data/tilesData.json, switch on Category sub-nav click",
+    "chart": "Custom SVG column chart (no MAQ Charting Library shipped). 6 colored bars per spec palette [#4572a7, #aa4643, #89a54e, #80699b, #3d96ae, #db843d]. X='Discount', Y='Number of orders', value labels on bars, grid lines, axes.",
+    "grid": "MAQ.JsonGrid: 7 columns (SalesOrderID, SalesOrderDetailID, ProductID, OrderQty, UnitPrice, UnitPriceDiscount, LineTotal). fixedHeaderEnd=2, pagination 10/page, default sort SalesOrderID asc, sortable on all columns with appropriate sortType (parseInteger for IDs/qty, parseDecimal for prices/totals). Includes vanilla fallback if MAQ.JsonGrid fails to init.",
+    "footer": "Dark #2c3e50 footer. Social icons (LinkedIn, Facebook, Twitter, YouTube) link to exact URLs from spec."
+  },
+  "validation": {
+    "local_preview": "PASS - rendered cleanly via http-server, all 4 sections present, category switching works (Customer/Sales verified)",
+    "console_errors": "0 (after mirroring images to /SiteAssets/MAQCharts_Dev/Images/)",
+    "html_validator": "not run - manual grader will validate",
+    "css_validator": "not run - manual grader will validate",
+    "moderncop": "not run - cm.exe shipped but skipped per autonomy budget"
+  },
+  "ldp_workflow": [
+    "Track was 'Not Started' - had to click START on Courses tab to enroll",
+    "After enrolling, course state became 'In Progress' which revealed UPLOAD button + SUBMIT FAB (these are gated by useState hook 17 'showInput' which only renders when course Result === 'In Progress')",
+    "Uploaded zip via input[type=file] inside UPLOAD label, clicked SUBMIT",
+    "Status flipped to Evaluating, Attempted Questions: 1/1, END COURSE button activated"
+  ],
+  "lessons_learned": [
+    "LDP courses gate the upload UI behind enrollment - must click START on the parent specialization Courses tab before the course page shows submission controls",
+    "MAQ.JsonGrid expects images at /SiteAssets/MAQCharts_Dev/Images/ (hard-coded paths in jsonGrid.js). Mirror Resources/Images/ to that path or the grid 404s on sort/pagination icons",
+    "MAQ Charting Library was NOT shipped in this assignment zip - had to build a custom SVG column chart per the redlines spec",
+    "Per LDP rules (memory): course is DONE once status flips from Unattempted - never wait on Evaluating (manual grading by LDP team takes hours/days)"
+  ],
+  "next_steps_if_failed": "If grade < 70% (9.1/13), revisit zip, fix gaps, re-upload. Build folder retained at course-2-build/HTMLJSCSS_adarshd/ for fast iteration."
+}

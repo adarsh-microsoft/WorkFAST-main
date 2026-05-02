@@ -1,0 +1,14 @@
+xAxis: {
+            title: "Discount",
+            labelsSeries: ["5%", "10%", "15%", "20%", "25%", "30%"]
+        },
+        yAxis: {
+            title: "Number of orders"
+        },
+        colorPalette: ["#4572a7", "#aa4643", "#89a54e", "#80699b", "#3d96ae", "#db843d"],
+        data: [
+                {
+                    "name": "Discount",
+                    "data": [499, 250, 327, 185, 89, 46]
+                }
+        ]

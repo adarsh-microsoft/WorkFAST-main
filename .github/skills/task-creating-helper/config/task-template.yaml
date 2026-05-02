@@ -1,0 +1,218 @@
+# =============================================================================
+# Task Creating Helper — Template Config
+# =============================================================================
+# This config defines the canonical structure used when creating ADO tasks
+# via the `task-creating-helper` skill. The skill asks ONLY for:
+#   1. Title
+#   2. Description (free text — gets formatted into the HTML template below)
+#   3. Original estimates
+#
+# Tags are NOT asked. They are auto-resolved as:
+#   - Always-on:  CoMarketing, Copilot
+#   - Auto-picked: ONE of Target 1 / Target 2 / Target 3 / Target 4
+#                  selected by scoring the Description against the
+#                  keyword lists in `tags.targetClassifier`.
+#
+# All other fields (project, area path, iteration, activity, priority,
+# assignee, state, parent, work item type, description format, discussion
+# comment format) are filled from this config.
+#
+# Reference task used as the structural source-of-truth: #43370
+# https://dev.azure.com/MCAPSDataEngineering/Global%20Partner%20Solutions/_workitems/edit/43370
+# =============================================================================
+
+version: 1.0
+
+# ── Static defaults applied to every new task ─────────────
+defaults:
+  project: "Global Partner Solutions"
+  workItemType: "Task"
+  areaPath: "Global Partner Solutions\\Co-sell"
+  iterationPath: "current"          # Special token: resolve via work_list_team_iterations (timeframe=current)
+  assignedTo: "v-adevashish@microsoft.com"
+  activity: "Requirements"
+  priority: 2
+  state: "Closed"                    # Reference task is created in Closed state
+  reason: "Completed"
+  completedWork: 8                   # Default completed work in hours
+
+# ── Default parent (override via chat) ────────────────────
+# If the user says: "create child task under [ID]" or "parent it to [ID]"
+# OR provides a Scenario Detail / User Story URL, that ID overrides this default.
+parent:
+  defaultId: 40737                   # [CMD M7] UAT Reviews
+  defaultTitle: "[CMD M7] UAT Reviews"
+  # Override behaviour:
+  #   - User can specify a numeric work item ID
+  #   - User can paste an ADO URL — extract the trailing /edit/<id>
+  #   - When overridden, inherit Area Path + Iteration Path from the new parent
+  inheritFromParent:
+    - areaPath
+    - iterationPath
+
+# ── Title prefix convention ───────────────────────────────
+# The reference task uses a "[CoMarketing]:" prefix. If the user-supplied
+# Title already starts with a "[...]:" prefix, leave it alone. Otherwise
+# prepend the default prefix below.
+title:
+  defaultPrefix: "[CoMarketing]"
+  autoPrependIfMissing: true
+
+# ── Tags ──────────────────────────────────────────────────
+# Tags are NOT asked from the user. Two always-on tags + one auto-selected
+# Target tag (1..4) classified from the Description content.
+tags:
+  alwaysInclude:
+    - "CoMarketing"
+    - "Copilot"
+  separator: "; "
+  # ── Target tag auto-classifier ──────────────────────────
+  # Exactly ONE Target tag must be added per task. The skill scores the
+  # Description against each target's keyword list and picks the highest.
+  # If no keywords match, fall back to `defaultTarget`.
+  targetClassifier:
+    defaultTarget: "Target 1"
+    targets:
+      - tag: "Target 1"
+        name: "Data Engineering & Pipeline Optimization"
+        keywords:
+          - "pipeline"
+          - "ingestion"
+          - "ingest"
+          - "etl"
+          - "synapse"
+          - "fabric notebook"
+          - "notebook"
+          - "reporting"
+          - "report build"
+          - "performance"
+          - "optimi"            # optimize / optimise / optimization
+          - "source"
+          - "destination"
+          - "documentation"
+          - "data engineering"
+          - "build"
+          - "dev build"
+          - "refresh"
+          - "logic"
+      - tag: "Target 2"
+        name: "Code Review & Testing Optimization"
+        keywords:
+          - "code review"
+          - "pr review"
+          - "pull request"
+          - "unit test"
+          - "test case"
+          - "test coverage"
+          - "qa"
+          - "bug fix"
+          - "syntax"
+          - "refactor"
+          - "code quality"
+          - "lint"
+          - "review code"
+          - "testing"
+      - tag: "Target 3"
+        name: "Semantic Models & Data Product Creation"
+        keywords:
+          - "semantic model"
+          - "dax"
+          - "power bi model"
+          - "powerbi model"
+          - "data product"
+          - "reusable"
+          - "sql logic"
+          - "measure"
+          - "calculation"
+          - "tabular"
+          - "dataset"
+          - "dimfield"
+          - "dim"
+          - "fact"
+          - "schema"
+          - "geography"
+          - "subsidiary"
+          - "subsidaries"
+          - "investmentask"
+          - "disparency"
+          - "discrepancy"
+      - tag: "Target 4"
+        name: "Environment, Monitoring & Deployment Automation"
+        keywords:
+          - "deploy"
+          - "deployment"
+          - "infrastructure"
+          - "infra"
+          - "monitor"
+          - "monitoring"
+          - "anomaly"
+          - "anomalies"
+          - "sync dataset"
+          - "dataset sync"
+          - "devops"
+          - "ci/cd"
+          - "pipeline release"
+          - "automation"
+          - "environment"
+          - "alerting"
+          - "azure ai"
+
+# ── Description HTML template ─────────────────────────────
+# The skill takes the user-supplied free-text Description, splits it into
+# bullet points (one per newline / sentence), and renders it inside this
+# HTML template. {{BULLETS}}, {{OWNER}}, {{WHEN}} are placeholders.
+description:
+  format: "html"
+  ownerDisplayName: "Adarsh"
+  whenFormat: "MM/dd"                # e.g., 04/28
+  template: |
+    <div style="box-sizing:border-box;"><b style="box-sizing:border-box;">What:</b> </div><div style="box-sizing:border-box;"><ul style="box-sizing:border-box;padding:0px 0px 0px 40px;">{{BULLETS}}</ul><b style="box-sizing:border-box;">Owner:<span>&nbsp;</span></b>{{OWNER}} </div><div style="box-sizing:border-box;"><b style="box-sizing:border-box;">When:<span>&nbsp;</span></b>{{WHEN}} </div>
+  bulletTemplate: |
+    <li style="box-sizing:border-box;">{{TEXT}} </li>
+
+# ── Discussion comment template ───────────────────────────
+# The skill auto-generates an Updates section by converting each Description
+# bullet into an "Update" past-tense bullet (e.g., "Work on X" → "Worked on X",
+# "List out Y" → "Listed out Y"). Risks/Known Issues/Spell Check/Action Items
+# default to "NA" / "Yes" unless the user specifies otherwise.
+discussion:
+  format: "html"
+  autoGenerateFromDescription: true
+  pastTenseRules:
+    # Simple rewrite rules applied to each description bullet to produce
+    # the corresponding "Updates" bullet in the discussion comment.
+    - match: "^Work on "
+      replace: "Worked on "
+    - match: "^List out "
+      replace: "Listed out "
+    - match: "^Update "
+      replace: "Updated "
+    - match: "^Add "
+      replace: "Added "
+    - match: "^Fix "
+      replace: "Fixed "
+    - match: "^Validate "
+      replace: "Validated "
+    - match: "^Create "
+      replace: "Created "
+    - match: "^Build "
+      replace: "Built "
+    - match: "^Implement "
+      replace: "Implemented "
+    - match: "^Review "
+      replace: "Reviewed "
+    - match: "^Investigate "
+      replace: "Investigated "
+    - match: "^Analyze "
+      replace: "Analyzed "
+  defaults:
+    risks: "NA"
+    knownIssues: "NA"
+    spellCheck: "Yes"
+    actionItemsToRedmond: "NA"
+    aiToolUsed: "GitHub Copilot"
+    aiValueAdded: "Helped in drafting and structuring the task work"
+  template: |
+    <div style="box-sizing:border-box;margin:0px;font-size:15px;"><b style="box-sizing:border-box;">Updates:</b></div><ul style="box-sizing:border-box;padding:0px 0px 0px 40px;margin:0px;">{{UPDATE_BULLETS}}</ul><div style="box-sizing:border-box;margin:0px;font-size:15px;"><b style="box-sizing:border-box;">Risks, if any: {{RISKS}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Known Issues, if any: {{KNOWN_ISSUES}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Spell Check: {{SPELL_CHECK}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Action Items to Redmond, If any: {{ACTION_ITEMS}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">AI Efficiency:</b><p style="box-sizing:border-box;margin:0px 0px 16px 40px;"><b style="box-sizing:border-box;">Tool Used:</b><span style="box-sizing:border-box;">&nbsp;</span>{{AI_TOOL}}<br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Value Added:<span>&nbsp;</span></b>{{AI_VALUE}}</p></div>
+  updateBulletTemplate: |
+    <li style="font-size:15px;box-sizing:border-box;margin-top:4px;">{{TEXT}}</li>
