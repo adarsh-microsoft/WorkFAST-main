@@ -2,6 +2,21 @@
 
 Master folder owned by the **`ldp-course-automate`** agent. Each subfolder is one MAQ Software LDP course the agent has worked on.
 
+## Master Catalog (entire LDP portal)
+
+A complete read-only inventory of every track / specialization / course on https://ldp.maqsoftware.com is kept here:
+
+- **[MASTER-INVENTORY.md](MASTER-INVENTORY.md)** — human-readable summary (7 tracks, 90 specializations, 192 courses; status per spec).
+- **[inventory.json](inventory.json)** — machine-readable schema for automated lookup (use this when routing "complete course X" requests to find `specId`, `courseId`, `passingPct`, etc.).
+
+Snapshot summary:
+
+| Tracks | Specializations | Courses | Completed | In Progress | Not Started |
+|--------|-----------------|---------|-----------|-------------|-------------|
+| 7 | 90 | 192 | 9 | 5 | 76 |
+
+> No course is started by writing this catalog — it is pure discovery via the LDP read APIs.
+
 ## Layout
 
 ```
