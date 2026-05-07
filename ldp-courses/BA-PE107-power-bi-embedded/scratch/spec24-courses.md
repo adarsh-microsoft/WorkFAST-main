@@ -1,0 +1,82 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[BA-PE107] Power BI Embedded" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/24
+              - generic [ref=e22]: "[BA-PE107] Power BI Embedded"
+      - button [ref=e24] [cursor=pointer]:
+        - img [ref=e25]
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+  - generic [ref=e34]:
+    - generic [ref=e35]:
+      - heading "[BA-PE107] Power BI Embedded" [level=4] [ref=e36]
+      - button [ref=e37] [cursor=pointer]:
+        - img [ref=e38]
+    - 'heading "Credits: 0.5" [level=6] [ref=e40]'
+    - separator [ref=e41]
+    - generic [ref=e42]:
+      - tablist [ref=e46]:
+        - tab "Introduction" [ref=e47] [cursor=pointer]: Introduction
+        - tab "Courses" [selected] [ref=e48] [cursor=pointer]: Courses
+      - generic [ref=e67]:
+        - heading "Modules" [level=5] [ref=e68]
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - paragraph [ref=e72]: LDP Power BI (Advanced)
+            - separator [ref=e73]
+            - generic [ref=e74]:
+              - list [ref=e75]:
+                - heading "Course Status:" [level=6] [ref=e76]
+                - heading "In Progress" [level=6] [ref=e77]
+                - 'heading "Start Date: December 19, 2025" [level=6] [ref=e78]'
+                - 'heading "Score: 19 out of 30 (63.33%)" [level=6] [ref=e79]'
+                - 'heading "Passing Criteria: 70%" [level=6] [ref=e80]'
+              - link "Open" [ref=e82] [cursor=pointer]:
+                - /url: /tracks/specialization/24/course/33
+                - text: Open
+          - generic [ref=e83]:
+            - paragraph [ref=e85]: Power BI Embedded
+            - separator [ref=e86]
+            - generic [ref=e87]:
+              - list [ref=e88]:
+                - heading "Course Status:" [level=6] [ref=e89]
+                - heading "In Progress" [level=6] [ref=e90]
+                - 'heading "Start Date: December 19, 2025" [level=6] [ref=e91]'
+                - 'heading "Score: 0 out of 18 (0%)" [level=6] [ref=e92]'
+                - 'heading "Passing Criteria: 70%" [level=6] [ref=e93]'
+              - link "Open" [ref=e95] [cursor=pointer]:
+                - /url: /tracks/specialization/24/course/87
+                - text: Open
+        - separator [ref=e96]
+        - heading "Quizzes" [level=5] [ref=e97]
+        - generic [ref=e99]:
+          - paragraph [ref=e101]: Power BI Embedded Quiz
+          - separator [ref=e102]
+          - generic [ref=e103]:
+            - list [ref=e104]:
+              - heading "Course Status:" [level=6] [ref=e105]
+              - heading "In Progress" [level=6] [ref=e106]
+              - 'heading "Start Date: May 4, 2026" [level=6] [ref=e107]'
+              - 'heading "Score: 0 out of 33 (0%)" [level=6] [ref=e108]'
+              - 'heading "Passing Criteria: 70%" [level=6] [ref=e109]'
+            - link "Open" [ref=e111] [cursor=pointer]:
+              - /url: /tracks/specialization/24/course/88
+              - text: Open

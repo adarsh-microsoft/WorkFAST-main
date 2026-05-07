@@ -21,7 +21,7 @@
 # https://dev.azure.com/MCAPSDataEngineering/Global%20Partner%20Solutions/_workitems/edit/43370
 # =============================================================================
 
-version: 1.0
+version: 1.1
 
 # ── Static defaults applied to every new task ─────────────
 defaults:
@@ -210,8 +210,36 @@ discussion:
     knownIssues: "NA"
     spellCheck: "Yes"
     actionItemsToRedmond: "NA"
+    # Fallback values — only used if the dynamic pool selection fails.
     aiToolUsed: "GitHub Copilot"
     aiValueAdded: "Helped in drafting and structuring the task work"
+  # ── Dynamic AI Efficiency pools ─────────────────────────
+  # Per task, the skill picks ONE entry from each pool so the discussion
+  # comment doesn't read the same across tasks.
+  #
+  # Tool Used selection rule (see Step 5 of SKILL.md):
+  #   - Created via WorkFast / multi-agent orchestration → "WorkFast"
+  #   - Created via direct Copilot Chat call             → "GitHub Copilot"
+  #   - Otherwise                                        → random from pool
+  #   - Q4 "Anything else?" override always wins.
+  aiToolPool:
+    - "GitHub Copilot"
+    - "WorkFast"
+  # Value Added pool — short, general sentences about how the AI helped with
+  # the actual task work (analysis, debugging, code, data, design choices).
+  # Skill picks one at random per task; avoid repeating the immediately
+  # previous selection when possible.
+  aiValueAddedPool:
+    - "Helped explore the problem faster and suggested a working approach to move forward with."
+    - "Sped up the analysis by surfacing relevant logic and edge cases to consider while implementing."
+    - "Assisted in figuring out the right fix and validating it before applying the change."
+    - "Helped break the task into smaller steps and unblock a couple of tricky areas quickly."
+    - "Useful in reasoning through the data flow and spotting issues that would have taken longer manually."
+    - "Helped iterate on the solution faster by suggesting alternatives and catching small mistakes early."
+    - "Sped up the investigation and helped narrow down the root cause without going down dead ends."
+    - "Assisted with drafting the logic and refining it after a couple of quick review passes."
+    - "Helped accelerate the implementation by handling repetitive parts and leaving the judgement calls to me."
+    - "Useful in cross-checking assumptions during the work and confirming the change behaved as expected."
   template: |
     <div style="box-sizing:border-box;margin:0px;font-size:15px;"><b style="box-sizing:border-box;">Updates:</b></div><ul style="box-sizing:border-box;padding:0px 0px 0px 40px;margin:0px;">{{UPDATE_BULLETS}}</ul><div style="box-sizing:border-box;margin:0px;font-size:15px;"><b style="box-sizing:border-box;">Risks, if any: {{RISKS}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Known Issues, if any: {{KNOWN_ISSUES}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Spell Check: {{SPELL_CHECK}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Action Items to Redmond, If any: {{ACTION_ITEMS}}</b><br style="box-sizing:border-box;"><b style="box-sizing:border-box;">AI Efficiency:</b><p style="box-sizing:border-box;margin:0px 0px 16px 40px;"><b style="box-sizing:border-box;">Tool Used:</b><span style="box-sizing:border-box;">&nbsp;</span>{{AI_TOOL}}<br style="box-sizing:border-box;"><b style="box-sizing:border-box;">Value Added:<span>&nbsp;</span></b>{{AI_VALUE}}</p></div>
   updateBulletTemplate: |

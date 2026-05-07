@@ -1,0 +1,228 @@
+table IOPO
+	lineageTag: 1d65e53f-e0fb-4243-822e-65e81dd5703b
+	sourceLineageTag: [CoSell].[DimIOPO]
+
+	measure 'Total Spend' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE('Fact IOPO'
+			                 ,'Fact IOPO'[IOPOKey]
+			                 ,'Fact IOPO'[DateTimeKey]
+			                 ,'Fact IOPO'[Actual]
+			        ),[Actual] 
+			    ),
+			    ALL('Time')
+			)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 22a3ef02-2e33-43ba-a3de-2bbfeeabd8c3
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Open PO' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE('Fact IOPO'
+			                 ,'Fact IOPO'[IOPOKey]
+			                 ,'Fact IOPO'[DateTimeKey]
+			                 ,'Fact IOPO'[PO Vendor Name]
+			                 ,'Fact IOPO'[PO Line Item & Description]
+			                 ,'Fact IOPO'[OpenAmount]
+			        ),[OpenAmount] 
+			    )
+			)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: dc8a6318-da50-4ea5-a89a-5f4eeab4ce02
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Invoice Amount' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE('Fact IOPO'
+			                 ,'Fact IOPO'[IOPOKey]
+			                 ,'Fact IOPO'[DateTimeKey]
+			                 ,'Fact IOPO'[PO Vendor Name]
+			                 ,'Fact IOPO'[PO Line Item & Description]
+			                 ,'Fact IOPO'[InvoicedAmount]
+			        ),[InvoicedAmount] 
+			    )
+			)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 4434219e-82ce-490f-a4ff-79615d34f867
+
+		changedProperty = FormatString
+
+	measure 'PO Amount' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE('Fact IOPO'
+			                 ,'Fact IOPO'[IOPOKey]
+			                 ,'Fact IOPO'[DateTimeKey]
+			                 ,'Fact IOPO'[PO Vendor Name]
+			                 ,'Fact IOPO'[PO Line Item & Description]
+			                 ,'Fact IOPO'[POAmount]
+			        ),[POAmount] 
+			    )
+			)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: bb500877-ec91-4604-82ab-5449e4a2e5f9
+
+		changedProperty = FormatString
+
+	measure 'Committed Amount' = CALCULATE([Open PO] + [Spend],ALL('Time'))
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 3f966db4-d4cc-44f0-8b33-30ffa83b716e
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure JE/Accrual =
+			
+			CALCULATE(
+			    [Spend],
+			    FILTER('IOPO', 'IOPO'[PO Number] = "0")
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: d776dca0-db71-4e10-887e-6f09e661a488
+
+		changedProperty = FormatString
+
+	measure Committed = [Open PO] + [Spend]
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: efb78a8b-1c69-4e93-a0d6-e2a5e6e3e8c7
+
+		changedProperty = FormatString
+
+	measure Spend = ```
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE('Fact IOPO'
+			                 ,'Fact IOPO'[IOPOKey]
+			                 ,'Fact IOPO'[DateTimeKey]
+			                 ,'Fact IOPO'[Actual]
+			        ),[Actual] 
+			    )
+			)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 47eb9937-7185-4275-9c07-91571d2e3b23
+
+		changedProperty = FormatString
+
+	measure 'Total Spend Trailing18Months' =
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE(
+			            'Fact IOPO',
+			            'Fact IOPO'[IOPOKey],
+			            'Fact IOPO'[DateTimeKey],
+			            'Fact IOPO'[Actual]
+			        ),
+			        [Actual]
+			    )
+			    ,
+			    DATESINPERIOD(
+			        'Time'[Date],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: e914e8a2-4621-4d3d-b282-5580b97df499
+
+	column IOPOKey
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b7364f1d-9792-4060-95a8-35f000b70652
+		sourceLineageTag: IOPOKey
+		summarizeBy: none
+		sourceColumn: IOPOKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IO Number'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d358f474-5d62-42fd-bb84-a86f5bf58d36
+		sourceLineageTag: IONumber
+		summarizeBy: none
+		sourceColumn: IONumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IO Owner'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ba6257b6-5b3a-4aea-8d87-1c50126b3454
+		sourceLineageTag: IOOwner
+		summarizeBy: none
+		sourceColumn: IOOwner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Number'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d9d53421-8ef1-4c7a-8726-39766f2cfcd0
+		sourceLineageTag: PoNumber
+		summarizeBy: none
+		sourceColumn: PoNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IO No & Description'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f3c7a47c-4e1d-49b0-91dd-caf1f0b43866
+		sourceLineageTag: IoNoDescription
+		summarizeBy: none
+		sourceColumn: IoNoDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PartnerOne ID'
+		dataType: int64
+		sourceProviderType: varchar(8000)
+		lineageTag: 5e4317d6-53c0-486b-96fb-63ff3280905c
+		sourceLineageTag: PartnerOneID
+		summarizeBy: none
+		sourceColumn: PartnerOneID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Company Code'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5333fc2f-7959-4ec5-8643-c43200f22d45
+		sourceLineageTag: CompanyCode
+		summarizeBy: none
+		sourceColumn: CompanyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition IOPO = entity
+		mode: directLake
+		source
+			entityName: DimIOPO
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

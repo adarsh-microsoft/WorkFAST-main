@@ -1,0 +1,27 @@
+table Perspective
+	lineageTag: 3641faba-3c37-4bf2-b783-c8483e5b55fe
+
+	column Perspective
+		lineageTag: 716f0efb-647d-42cf-83d9-5bed7e5a01fa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Perspective]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Perspective = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE(
+				    "Perspective", STRING,
+				    {
+				        { "Enterprise Partner Solutions" },
+				        { "Global Channel Partner Sales" }
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = 77538fc460524c8e96685b65a4398eb7
+

@@ -1,0 +1,188 @@
+relationship cf2b2aa6-31c2-4487-a325-3a395f0cb485
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Fact Opportunity'.OpportunityKey
+	toColumn: Opportunity.OpportunityKey
+
+relationship 38f508f8-077b-4db0-882a-5b97a11d34c0
+	fromColumn: 'Fact Engagement Milestone'.OpportunityKey
+	toColumn: Opportunity.OpportunityKey
+
+relationship 40f8edde-2433-495e-9ea6-4cc035eae87f
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Fact Partner Deal'.OpportunityKey
+	toColumn: Opportunity.OpportunityKey
+
+relationship a68cd442-b8de-414c-bef7-0d4a4ecf0bee
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Fact Partner Deal'.PartnerDealKey
+	toColumn: 'Partner Deal'.PartnerDealKey
+
+relationship b253133a-9ac1-49b5-a982-0b9fce9482d8
+	fromColumn: 'Fact Partner Deal'.TPAccountKey
+	toColumn: Customer.TPAccountKey
+
+relationship 1cec05b3-b2d7-42aa-87ea-e3b556ed53f2
+	isActive: false
+	fromColumn: 'Fact Partner Deal'.CustomerGeographyKey
+	toColumn: 'Customer Geography'.CustomerGeographyKey
+
+relationship 45fb4b95-9e5c-4b0f-9ce8-2f713caf38e3
+	fromColumn: 'Fact Partner Deal'.CustomerSegmentKey
+	toColumn: 'Customer Segment'.CustomerSegmentKey
+
+relationship 4c65dd79-746c-4dc8-846f-054e984f9102
+	fromColumn: 'Fact Partner Deal'.SolutionKey
+	toColumn: Solution.SolutionKey
+
+relationship 096df197-57f9-47b7-bd54-3f9ba4588add
+	fromColumn: 'Fact Opportunity'.EngagementMilestoneKey
+	toColumn: 'Engagement Milestone'.EngagementMilestoneKey
+
+relationship a49a822d-329b-4d4e-9b82-c941bc960ce3
+	fromColumn: 'Fact Opportunity'.OpptySolutionAreaKey
+	toColumn: 'Solution Area (Oppty)'.OpptySolutionAreaKey
+
+relationship 6dc09433-c8d4-481a-8714-8cfce06ddbf0
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Fact Solution'.SolutionKey
+	toColumn: Solution.SolutionKey
+
+relationship 61d09904-1ca7-4e62-ba39-71d36575b33c
+	fromColumn: 'Fact Solution'.SolutionAreaKey
+	toColumn: 'Solution Area'.SolutionAreaSKID
+
+relationship 5e8f5f7b-3f9b-4564-902b-28c2f441b503
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Fact Partner Deal'.PartnerOneKey
+	toColumn: 'Reporting PartnerOne'.'PartnerOne ID'
+
+relationship a37da7f7-7ed7-43e7-896b-ae8a0d2a1660
+	fromColumn: 'Fact Partner Deal'.CreatedDateKey
+	toColumn: Time.DateTimeKey
+
+relationship 8da1733c-775d-4a8d-b6ed-7df5bef37b82
+	fromColumn: 'Forecast Amount'.'PartnerOne ID'
+	toColumn: 'Reporting PartnerOne'.'PartnerOne ID'
+
+relationship 3315e593-798c-4b32-b724-fd887339e655
+	fromColumn: IOPO.'PartnerOne ID'
+	toColumn: 'Reporting PartnerOne'.'PartnerOne ID'
+
+relationship a4966a14-1fb8-4c89-8439-48fbcbc46594
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Fact IOPO'.IOPOKey
+	toColumn: IOPO.IOPOKey
+
+relationship f5d3b357-19d4-4588-8bfd-c4be5651ee9f
+	fromColumn: 'Fact IOPO'.DateTimeKey
+	toColumn: Time.DateTimeKey
+
+relationship 418fe5a6-46d2-4cfa-919b-8a2083c61cfb
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Budget Program'.'PartnerOne ID'
+	toColumn: 'Reporting PartnerOne'.'PartnerOne ID'
+
+relationship 8a61996f-137c-4ef2-b08c-0aa8a9f817b4
+	toCardinality: many
+	fromColumn: 'Forecast Amount'.FiscalQuarter
+	toColumn: Time.'Fiscal Quarter'
+
+relationship AutoDetected_9c203ebc-acc3-4031-99e0-2702ba7896a6
+	fromColumn: 'Fact Opportunity'.SharingTypeKey
+	toColumn: 'Sharing Type'.SharingTypeKey
+
+relationship 82a03752-4162-5ef8-8588-6c648691681b
+	fromColumn: 'Opportunity Snapshot'.SnapshotDateTimeKey
+	toColumn: Time.DateTimeKey
+
+relationship ff6f8ec8-6599-ce42-63d1-c89884d2e73d
+	fromColumn: 'Opportunity Snapshot'.PartnerOneKey
+	toColumn: 'Reporting PartnerOne'.'PartnerOne ID'
+
+relationship 458d5358-7c0a-4357-8c4e-60b9419ceb00
+	fromColumn: 'Fact Engagement Milestone'.EngagementMilestoneKey
+	toColumn: 'Engagement Milestone'.EngagementMilestoneKey
+
+relationship 63b84708-7f55-c93c-6cb4-46a3b87c2665
+	crossFilteringBehavior: bothDirections
+	fromColumn: InvCustomPartnerReportingGeography.SubsidiaryID
+	toColumn: InvBridgeGeography.SubsidiaryID
+
+relationship c658428c-f883-5a2c-b509-775ce33b49ed
+	crossFilteringBehavior: bothDirections
+	fromColumn: CustomPartnerReportingGeography.SubsidiaryID
+	toColumn: BridgeGeography.SubsidiaryID
+
+relationship 10c183ab-a794-960f-b822-ae68dc0e70ec
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Inv Bridge Area'.InvestmentAskID
+	toColumn: 'Investment Ask'.InvestmentAskID
+
+relationship 11e8365e-6302-357c-3026-637ecc9f88b5
+	fromColumn: 'Inv Bridge Area'.Subsidiary
+	toColumn: InvBridgeGeography.SubsidiaryName
+
+relationship 0bc2509e-7fe3-b1d2-87a6-597930b19767
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Inv Bridge SolutionPlay'.Investment
+	toColumn: 'Investment Ask'.InvestmentAskID
+
+relationship f8c05b46-16c8-c53a-cc28-536541dfb158
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Investment Ask'.PartnerOneId
+	toColumn: 'Reporting PartnerOne'.'PartnerOne ID'
+
+relationship 2d423496-ae3f-949d-241a-bc6134782552
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Inv Bridge SolutionArea'.Investment
+	toColumn: 'Investment Ask'.InvestmentAskID
+
+relationship ba44f6e2-ce8a-2b37-dd7c-8641c8d16298
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Inv Bridge Industry'.Investment
+	toColumn: 'Investment Ask'.InvestmentAskID
+
+relationship 4b136df6-9107-7183-1eb1-54f964ef0dae
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Comarketing TPM Budget'.'Investment Source'
+	toColumn: BridgeInvestmentSource.InvestmentSource
+
+relationship 08af1730-8e53-4d25-2614-d92a40b1f155
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Investment Ask'.InvestmentSource
+	toColumn: BridgeInvestmentSource.InvestmentSource
+
+relationship b479d924-0a1a-19f0-a84e-565cec46424e
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'Fact Partner Deal'.Category2
+	toColumn: 'Funnel Category 2'.'Actual Category'
+
+relationship ccd06249-fc82-3492-19da-2ecc2214b484
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'Fact Partner Deal'.Category
+	toColumn: 'Funnel Category'.'Actual Category'
+
+relationship 8c6da5ae-bc9a-861f-7b53-228a8a5ef5ee
+	crossFilteringBehavior: bothDirections
+	fromColumn: DimFieldGeography.FieldSubsidiary
+	toColumn: BridgeFieldSubsidiary.FieldSubsidiary
+
+relationship ea91ee45-4bac-1d84-5822-319f159f6f71
+	fromColumn: InvBridgeGCPSArea.FieldSubsidiary
+	toColumn: BridgeFieldSubsidiary.FieldSubsidiary
+
+relationship 4a371fcb-e14b-08e4-b4ed-ef1a558888f7
+	crossFilteringBehavior: bothDirections
+	fromColumn: InvBridgeGCPSArea.InvestmentAskID
+	toColumn: 'Investment Ask'.InvestmentAskID
+
+relationship bfb8319e-a9cb-91d9-e9e0-9920edeaf7bd
+	fromColumn: DimAccountGeographyHierarchyReporting.SubsidiaryId
+	toColumn: BridgeGeography.SubsidiaryID
+
+relationship ce320e6e-1a8d-4801-41ea-9cc969f199ed
+	fromColumn: 'Fact Partner Deal'.DimAccountGeographyHierarchyKey
+	toColumn: DimAccountGeographyHierarchyReporting.DimAccountGeographyHierarchyKey
+

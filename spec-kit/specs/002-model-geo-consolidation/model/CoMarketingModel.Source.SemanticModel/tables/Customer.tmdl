@@ -1,0 +1,78 @@
+table Customer
+	lineageTag: a58bb45a-725a-45a2-b2b1-df6533ca9d11
+	sourceLineageTag: [CoSell].[DimCustomerCD]
+
+	column TPAccountKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 33ab8243-e895-4a57-8a78-ab2a92db9c75
+		sourceLineageTag: TPAccountKey
+		summarizeBy: count
+		sourceColumn: TPAccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer TPID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 455917fb-d2a4-4676-9832-a09de2bae9db
+		sourceLineageTag: CustomerTPID
+		summarizeBy: count
+		sourceColumn: CustomerTPID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0d0997d8-37d7-46fc-a1a1-109b2b4b983c
+		sourceLineageTag: CustomerName
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Industry
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 12295162-36a8-41f5-a3f9-729970ea61d6
+		sourceLineageTag: Industry
+		summarizeBy: none
+		sourceColumn: Industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vertical
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2d77c33f-5661-45e1-a462-a8958105fb77
+		sourceLineageTag: Vertical
+		summarizeBy: none
+		sourceColumn: Vertical
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Customer Industry Hierarchy'
+		lineageTag: a90792d9-6d6d-446c-97eb-b59cab919120
+
+		level Industry
+			lineageTag: 9b68d675-dd72-4a8c-90f5-b3ecd3a30032
+			column: Industry
+
+		level Vertical
+			lineageTag: f38eb025-9cde-4d0b-bcb7-607deefd731c
+			column: Vertical
+
+	partition Customer = entity
+		mode: directLake
+		source
+			entityName: DimCustomerCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

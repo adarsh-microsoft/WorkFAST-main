@@ -1,0 +1,83 @@
+table DimFieldGeography
+	lineageTag: 93937758-b871-4fff-a188-d5ea2826db82
+	sourceLineageTag: [CoSell].[DimFieldGeography]
+
+	column Perspective
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 285c5209-33ae-48ae-8500-94a636fb9a9a
+		sourceLineageTag: Perspective
+		summarizeBy: none
+		sourceColumn: Perspective
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeZone
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9d8a3da6-bb81-4e6e-9698-c93c76923df8
+		sourceLineageTag: TimeZone
+		summarizeBy: none
+		sourceColumn: TimeZone
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldArea
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 52c85ccc-9bc2-4464-95b1-88ae6d53201e
+		sourceLineageTag: FieldArea
+		summarizeBy: none
+		sourceColumn: FieldArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldRegion
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f08efb47-8bdc-4063-8f18-6ce03961b0c9
+		sourceLineageTag: FieldRegion
+		summarizeBy: none
+		sourceColumn: FieldRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldSubRegion
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 645f814c-c3a5-4223-924f-f25afa0c80b0
+		sourceLineageTag: FieldSubRegion
+		summarizeBy: none
+		sourceColumn: FieldSubRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column LowerFieldAccountabilityUnit
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a6a60ef7-33bd-4645-a1bd-5031b386cc5c
+		sourceLineageTag: LowerFieldAccountabilityUnit
+		summarizeBy: none
+		sourceColumn: LowerFieldAccountabilityUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldSubsidiary
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7c4a1453-e0fe-444f-89a6-91bc95a1ef52
+		sourceLineageTag: FieldSubsidiary
+		summarizeBy: none
+		sourceColumn: FieldSubsidiary
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFieldGeography = entity
+		mode: directLake
+		source
+			entityName: DimFieldGeography
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

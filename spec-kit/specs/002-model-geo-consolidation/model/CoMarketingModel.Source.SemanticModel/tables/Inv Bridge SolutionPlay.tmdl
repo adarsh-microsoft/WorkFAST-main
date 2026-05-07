@@ -1,0 +1,35 @@
+table 'Inv Bridge SolutionPlay'
+	lineageTag: 131c7b0d-4b23-485a-b2fa-50ea8757a8d1
+	sourceLineageTag: [CoSell].[InvBridgeSolutionPlay]
+
+	column Investment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dfbfd608-d45b-4605-a796-3914c770031b
+		sourceLineageTag: gps_investmentid
+		summarizeBy: none
+		sourceColumn: gps_investmentid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Investment Solution Play'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5cd30a38-71b0-4a50-8887-73b4925f3863
+		sourceLineageTag: InvestmentSolutionPlay
+		summarizeBy: none
+		sourceColumn: InvestmentSolutionPlay
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Inv Bridge SolutionPlay' = entity
+		mode: directLake
+		source
+			entityName: InvBridgeSolutionPlay
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

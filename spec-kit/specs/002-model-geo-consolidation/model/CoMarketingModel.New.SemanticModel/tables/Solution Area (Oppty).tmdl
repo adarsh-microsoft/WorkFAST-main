@@ -1,0 +1,76 @@
+table 'Solution Area (Oppty)'
+	lineageTag: a7b56bf4-18e9-4722-adc7-d4087493a099
+	sourceLineageTag: [CoSell].[DimSolutionAreaOppty]
+
+	column OpptySolutionAreaKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 82b8ed80-3ceb-4cbb-ab30-1cc3002971fc
+		sourceLineageTag: OpptySolutionAreaKey
+		summarizeBy: count
+		sourceColumn: OpptySolutionAreaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Solution Area'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fa701351-53ca-4270-a2f1-2509c1221c9f
+		sourceLineageTag: SolutionArea
+		summarizeBy: none
+		sourceColumn: SolutionArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Solution Play'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f801a9d7-0d8b-4eff-b0de-14327b47d66c
+		sourceLineageTag: SolutionPlay
+		summarizeBy: none
+		sourceColumn: SolutionPlay
+
+		annotation SummarizationSetBy = Automatic
+
+	column Workload
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ec22e2b7-7b02-4420-92e3-7beee32ddddc
+		sourceLineageTag: Workload
+		summarizeBy: none
+		sourceColumn: Workload
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rev Sum Category'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 09f30c53-7b0d-4ab8-9ac7-2d95f2e0b28e
+		sourceLineageTag: RevSumCategory
+		summarizeBy: none
+		sourceColumn: RevSumCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rev Sum Division'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f684ac6a-a26b-4f92-968a-9844b851e806
+		sourceLineageTag: RevSumDivision
+		summarizeBy: none
+		sourceColumn: RevSumDivision
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Solution Area (Oppty)' = entity
+		mode: directLake
+		source
+			entityName: DimSolutionAreaOppty
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

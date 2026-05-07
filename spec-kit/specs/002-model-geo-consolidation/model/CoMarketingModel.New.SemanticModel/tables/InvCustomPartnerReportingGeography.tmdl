@@ -1,0 +1,84 @@
+table InvCustomPartnerReportingGeography
+	lineageTag: 6761e4a0-ea6e-4fdd-bac9-74d6a1f2e2d1
+	sourceLineageTag: [CoSell].[CustomPartnerReportingGeography]
+
+	column SubsidiaryID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: ba02cb79-6307-4a1c-b297-b896e7693656
+		sourceLineageTag: SubsidiaryID
+		summarizeBy: none
+		sourceColumn: SubsidiaryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subsidiary
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1e7c0957-d904-4169-aaec-127ee4e47e8e
+		sourceLineageTag: Subsidiary
+		summarizeBy: none
+		sourceColumn: Subsidiary
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subregion
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 72812c78-64ed-46e9-bd3b-85eae0c92b90
+		sourceLineageTag: Subregion
+		summarizeBy: none
+		sourceColumn: Subregion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bd35101d-bca8-4127-ab44-653cc55a462d
+		sourceLineageTag: Region
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 283ebe48-265a-465f-b18b-669d23e75042
+		sourceLineageTag: Area
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column BigArea
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9fb09835-2a99-42c7-bede-b125a0960041
+		sourceLineageTag: BigArea
+		summarizeBy: none
+		sourceColumn: BigArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column Perspective
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d5081550-bdc8-4fac-8fdd-9105eb0fa8b8
+		sourceLineageTag: Perspective
+		summarizeBy: none
+		sourceColumn: Perspective
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InvCustomPartnerReportingGeography = entity
+		mode: directLake
+		source
+			entityName: CustomPartnerReportingGeography
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

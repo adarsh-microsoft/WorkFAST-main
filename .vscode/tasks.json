@@ -8,7 +8,7 @@
       "args": [
         "-NoProfile",
         "-Command",
-        "Write-Host 'MCP servers start on first chat tool use, or run \"MCP: List Servers\" → Start All from the Command Palette.' -ForegroundColor Cyan"
+        "Write-Host 'MCP servers: ask the chat to ''start all mcps'' or run ''/start-mcps'', or use Command Palette -> MCP: List Servers.' -ForegroundColor Cyan"
       ],
       "presentation": { "reveal": "silent", "close": true, "showReuseMessage": false },
       "runOptions": { "runOn": "folderOpen" },

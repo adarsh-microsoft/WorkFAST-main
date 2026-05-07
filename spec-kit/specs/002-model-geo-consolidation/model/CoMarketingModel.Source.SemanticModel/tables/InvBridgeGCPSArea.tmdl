@@ -1,0 +1,43 @@
+table InvBridgeGCPSArea
+	lineageTag: a1a9b2f7-2635-4afd-a9e4-9f0a89356bca
+	sourceLineageTag: [CoSell].[InvBridgeGCPSArea]
+
+	column InvestmentAskID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e1d215db-d47d-48a3-9e19-670763f45539
+		sourceLineageTag: InvestmentAskID
+		summarizeBy: none
+		sourceColumn: InvestmentAskID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LowerFieldAccountabilityUnit
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2774dfb5-e8fd-4fc8-8fbb-6f502f64e1e1
+		sourceLineageTag: LowerFieldAccountabilityUnit
+		summarizeBy: none
+		sourceColumn: LowerFieldAccountabilityUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column FieldSubsidiary
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fcb70906-37f8-438a-b6b4-14084efa3004
+		sourceLineageTag: FieldSubsidiary
+		summarizeBy: none
+		sourceColumn: FieldSubsidiary
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InvBridgeGCPSArea = entity
+		mode: directLake
+		source
+			entityName: InvBridgeGCPSArea
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

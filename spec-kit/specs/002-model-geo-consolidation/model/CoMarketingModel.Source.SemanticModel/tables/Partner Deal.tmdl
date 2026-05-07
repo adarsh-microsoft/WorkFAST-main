@@ -1,0 +1,632 @@
+table 'Partner Deal'
+	lineageTag: b241a877-d49e-4bec-b1a5-ccdbfcff86aa
+	sourceLineageTag: [CoSell].[DimPartnerDealCD]
+
+	measure '# Partner Deals' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Partner Deal',
+			                'Partner Deal'[PartnerDealKey],
+			                "Value",1
+			            ),
+			            [Value]
+			        ),
+			        REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM])
+			    )
+		formatString: #,0
+		lineageTag: 9adac328-a1b2-4feb-b25d-c357180cbb72
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure 'Partners using #PartnerGTM' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Reporting PartnerOne',
+			                'Reporting PartnerOne'[PartnerOne ID],
+			                "value",1
+			            ),
+			            [value]
+			        ),KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1)
+			    )
+		formatString: 0
+		lineageTag: 96fda8d2-a1f8-4288-8102-890d27a55e76
+
+	measure '# Total Wins' = ```
+			
+			CALCULATE(
+			    [# Partner Deals], 
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM]),
+			    KEEPFILTERS('Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Won"),
+			    KEEPFILTERS(('Opportunity'[Consumption Status Reason] = "Completed" && 
+			                'Opportunity'[Consumption Status] = "Closed") || 
+			                'Opportunity'[Billed Revenue Status] = "Won"
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: f72f862f-ff93-4047-9e15-ed463bb00b54
+
+	measure 'Partner Deal Revenue' =
+			SUMX (
+			    SUMMARIZE (
+			        'Fact Partner Deal',
+			        'Fact Partner Deal'[PartnerDealKey],
+			        'Fact Partner Deal'[PartnerRevenueCD]
+			    ),
+			    [PartnerRevenueCD]
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 680f3ee0-f91d-4d2f-8702-140adeef98a1
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '# Inbound Referrals' = ```
+			CALCULATE ( 
+			    [# Partner Deals], 
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    REMOVEFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] )
+			)
+			```
+		formatString: #,0
+		lineageTag: 61cd1aae-5ae9-44ab-ab64-c37dbe631f2a
+
+	measure '# Outbound Referrals ' = ```
+			
+			CALCULATE ( 
+			
+			        [# Partner Deals], 
+			        KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Outbound") 
+			
+			    ) 
+			```
+		formatString: 0
+		lineageTag: 24cc3419-0cea-43b2-83af-4b9f0f47f6d9
+
+	measure '# Partner Deals PartnerGTM' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Partner Deal',
+			                'Partner Deal'[PartnerDealKey],
+			                "Value",1
+			            ),
+			            [Value]
+			        )
+			    )
+		formatString: #,0
+		lineageTag: 5fcfc23e-a97c-40b7-8da0-7b8275e027ae
+
+	measure 'Partner Reported # Wins' = ```
+			
+			CALCULATE ( 
+			        [# Partner Deals], 
+			        // ALL('Partner Deal'[IsDealWith#PartnerGTM]),
+			        KEEPFILTERS('Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Won")
+			    )
+			```
+		formatString: 0
+		lineageTag: e948d1a9-3ed7-4343-85f9-2c34c04b02fa
+
+	measure 'Partner Reported $ Wins' = ```
+			
+			CALCULATE ( 
+			        [Partner Deal Revenue], 
+			        KEEPFILTERS('Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Won")
+			    )
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: fae87646-e397-45f6-9edc-c59d14fcc950
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '# Inbound PartnerGTM Referrals' = ```
+			
+			CALCULATE ( 
+			
+			        'Partner Deal'[# Partner Deals PartnerGTM], 
+			        KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Inbound") ,
+			        KEEPFILTERS( 'Partner Deal'[IsDealWith#PartnerGTM] =1)
+			    ) 
+			```
+		formatString: #,0
+		lineageTag: 71330a83-d81e-4643-96b0-35b6fdef18e6
+
+	measure 'Marketing Contribution to Referrals %' = DIVIDE( [# Inbound PartnerGTM Referrals], [# Inbound Referrals old],0)
+		formatString: 0%;-0%;0%
+		lineageTag: 1135b794-ce2a-47d3-82b7-fba0ca7ccbcc
+
+	measure '% Partners using #PartnerGTM' = ```
+			
+			DIVIDE(
+			    [Partners using #PartnerGTM], 
+			    [# Partner Investment], 
+			    0
+			)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 29934e5c-c247-4fe3-828c-7d5c247c5028
+
+	measure 'Partner Deal Revenue (Aligned)' =
+			
+			CALCULATE(
+			    [Partner Deal Revenue],
+			    TREATAS(
+			        VALUES(InvCustomPartnerReportingGeography[BigArea]),
+			        CustomPartnerReportingGeography[BigArea]
+			    )
+			)
+		formatString: 0
+		lineageTag: d9acb7b8-9c57-4bca-88c8-31d53e4c8e11
+
+		changedProperty = Name
+
+	measure '# Partner Deals PartnerGTM (Aligned)' =
+			
+			CALCULATE(
+			    [# Partner Deals PartnerGTM],
+			    TREATAS(
+			        VALUES(InvCustomPartnerReportingGeography[BigArea]),
+			        CustomPartnerReportingGeography[BigArea]
+			    )
+			)
+		formatString: 0
+		lineageTag: 952a9e6a-7fbc-4d9a-9436-e1ca4331a731
+
+		changedProperty = Name
+
+	measure '# Referrals' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Partner Deal',
+			                'Partner Deal'[PartnerDealKey],
+			                "Value",1
+			            ),
+			            [Value]
+			        )
+			    )
+		formatString: 0
+		lineageTag: 448d27d1-9231-4547-ab94-93a13e73043d
+
+		changedProperty = Name
+
+	measure '$ Referrals' = ```
+			
+			  SUMX (
+			    SUMMARIZE (
+			        'Fact Partner Deal',
+			        'Fact Partner Deal'[PartnerDealKey],
+			        'Fact Partner Deal'[PartnerRevenueCD]
+			    ),
+			    [PartnerRevenueCD]
+			)
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: dc9e63ff-21b3-49e9-b427-715b22bc84d7
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '# Inbound Referrals old' = ```
+			
+			CALCULATE ( 
+			
+			        [# Partner Deals], 
+			        KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Inbound") 
+			
+			    ) 
+			```
+		formatString: #,0
+		lineageTag: 9debacc5-69b7-4a06-911b-4e93278246b7
+
+	measure '# Inbound Active-Co-sell Referral' = ```
+			CALCULATE ( 
+			    [# Partner Deals], 
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" ),
+			    REMOVEFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] )
+			)
+			```
+		formatString: #,0
+		lineageTag: 8fc5eaf0-daf7-43be-9466-47489d2889e7
+
+	measure '$ Inbound Referral' =
+			CALCULATE (
+			    SUMX (
+			        SUMMARIZE (
+			            'Fact Partner Deal',
+			            'Fact Partner Deal'[PartnerDealKey],
+			            'Fact Partner Deal'[PartnerRevenueCD]
+			        ),
+			        [PartnerRevenueCD]
+			    ),
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    REMOVEFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 41f763d5-214d-4065-b4e9-d2bae85145cb
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '$ Inbound Active-Co-sell Referral' =
+			CALCULATE (
+			    SUMX (
+			        SUMMARIZE (
+			            'Fact Partner Deal',
+			            'Fact Partner Deal'[PartnerDealKey],
+			            'Fact Partner Deal'[PartnerRevenueCD]
+			        ),
+			        [PartnerRevenueCD]
+			    ),
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" ),
+			    REMOVEFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: a3c34d77-fd54-48af-9fe3-efc5c268035e
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Inbound Active-Co-sell Referral $ w/PartnerGTM' =
+			CALCULATE (
+			    SUMX (
+			        SUMMARIZE (
+			            'Fact Partner Deal',
+			            'Fact Partner Deal'[PartnerDealKey],
+			            'Fact Partner Deal'[PartnerRevenueCD]
+			        ),
+			        [PartnerRevenueCD]
+			    ),
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: cc19bf66-5fe1-4a44-8d58-5a26ebec9160
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Inbound Active-Co-sell Referral # w/PartnerGTM' = ```
+			CALCULATE ( 
+			    [# Partner Deals PartnerGTM], 
+			    KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Inbound"),
+			    KEEPFILTERS('Partner Deal'[Referral SubType] = "Active Co-sell - PC")
+			)
+			```
+		formatString: #,0
+		lineageTag: 423c1e5f-fb29-4bea-adbb-f1496a801ddc
+
+	measure '#% Inbound Active Co-sell' = ```
+			DIVIDE (
+			    [Inbound Active-Co-sell Referral # w/PartnerGTM],   
+			    [# Inbound Active-Co-sell Referral],   -
+			    0                    -- fallback when denominator is 0 or BLANK
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5725511c-bc33-4b8e-87df-71800705255f
+
+		changedProperty = FormatString
+
+	measure '$% Inbound Active Co-sell' = ```
+			DIVIDE (
+			    [Inbound Active-Co-sell Referral $ w/PartnerGTM],   
+			    [$ Inbound Active-Co-sell Referral],  
+			    0                    -- fallback when denominator is 0 or BLANK
+			)
+			```
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		lineageTag: e72d4c77-f720-4d15-a922-95e4642b49be
+
+		changedProperty = FormatString
+
+	measure '#% Acceptance' = ```
+			DIVIDE (
+			    [Co-sell Opportunities # (PartnerGTM)],
+			    [Inbound Active-Co-sell Referral # w/PartnerGTM],   
+			
+			    0                    -- fallback when denominator is 0 or BLANK
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 49d5286f-82cc-4f6e-a858-7579e6caadce
+
+		changedProperty = FormatString
+
+	column PartnerDealKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: c1c88a02-6619-4aea-816e-4baace5f7301
+		sourceLineageTag: PartnerDealKey
+		summarizeBy: count
+		sourceColumn: PartnerDealKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PSX Deal ID'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4d618fe2-2eaf-4cb6-85a9-3cdd88eadf59
+		sourceLineageTag: PSXDealID
+		summarizeBy: none
+		sourceColumn: PSXDealID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Created Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 7d1c0c96-438a-404b-a794-23e60cc14063
+		sourceLineageTag: PartnerDealCreatedDate
+		summarizeBy: none
+		sourceColumn: PartnerDealCreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Created Fiscal Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7a253b54-44f9-4306-b18a-2f6dfb9faf69
+		sourceLineageTag: PartnerDealCreatedFiscalMonth
+		summarizeBy: none
+		sourceColumn: PartnerDealCreatedFiscalMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Created Fiscal Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: db964df8-9c9f-488e-a59c-c7c42a24f98d
+		sourceLineageTag: PartnerDealCreatedFiscalMonthID
+		summarizeBy: count
+		sourceColumn: PartnerDealCreatedFiscalMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Created Fiscal Quarter'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 74405fb6-6f4a-4185-84af-069d9f882d3a
+		sourceLineageTag: PartnerDealCreatedFiscalQuarter
+		summarizeBy: none
+		sourceColumn: PartnerDealCreatedFiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Created Fiscal Year'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7af36c08-8a06-477d-b087-c9f6d6f435ca
+		sourceLineageTag: PartnerDealCreatedFiscalYear
+		summarizeBy: none
+		sourceColumn: PartnerDealCreatedFiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Due Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 6e2425c0-57d0-4e37-86a2-3bc5e6569287
+		sourceLineageTag: PartnerDealDueDate
+		summarizeBy: none
+		sourceColumn: PartnerDealDueDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Due Fiscal Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b27bcaa8-4c93-4057-95a6-574d48e2d38f
+		sourceLineageTag: PartnerDealDueFiscalMonth
+		summarizeBy: none
+		sourceColumn: PartnerDealDueFiscalMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Due Fiscal Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1eaeb449-4e3a-4645-8aec-a2ce82296573
+		sourceLineageTag: PartnerDealDueFiscalMonthID
+		summarizeBy: count
+		sourceColumn: PartnerDealDueFiscalMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Due Fiscal Quarter'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1c789d51-dce1-4d6c-a41a-9ad74d69facd
+		sourceLineageTag: PartnerDealDueFiscalQuarter
+		summarizeBy: none
+		sourceColumn: PartnerDealDueFiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Due Fiscal Year'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6e3e5098-edb8-419b-a876-77d6cb3d4810
+		sourceLineageTag: PartnerDealDueFiscalYear
+		summarizeBy: none
+		sourceColumn: PartnerDealDueFiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDealWith#PartnerGTM
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8e7d90e4-74b1-4c9d-8ffb-4297af90b55e
+		sourceLineageTag: IsDealWith#PartnerGTM
+		summarizeBy: sum
+		sourceColumn: IsDealWith#PartnerGTM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 88a742fa-5b71-4b7f-97d5-b905cbbe0bef
+		sourceLineageTag: PartnerDealName
+		summarizeBy: none
+		sourceColumn: PartnerDealName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal Direction'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c59e9169-c5f4-4d17-a94a-b0c5505ee7f8
+		sourceLineageTag: PartnerDealDirection
+		summarizeBy: none
+		sourceColumn: PartnerDealDirection
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referral Type'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b37c3d54-84bc-4f09-9aec-4109e8f5a08b
+		sourceLineageTag: ReferralType
+		summarizeBy: none
+		sourceColumn: ReferralType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PSX Description'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 99a02789-f05c-43af-89d2-2b3c49272789
+		sourceLineageTag: PSXDescription
+		summarizeBy: none
+		sourceColumn: PSXDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campaign ID'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b5551f2e-6c69-482b-8cc1-b0f14a04888e
+		sourceLineageTag: CampaignID
+		summarizeBy: none
+		sourceColumn: CampaignID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Acceptance Status(PartnerCenter)'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 751d34d0-cf7e-42fc-be88-c17f53a48afb
+		sourceLineageTag: PartnerAcceptanceStatusPartnerCenter
+		summarizeBy: none
+		sourceColumn: PartnerAcceptanceStatusPartnerCenter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Acceptance SubStatus(PartnerCenter)'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f120437a-91d7-4d33-89ac-ffd0a229ab5f
+		sourceLineageTag: PartnerAcceptanceSubStatusPartnerCenter
+		summarizeBy: none
+		sourceColumn: PartnerAcceptanceSubStatusPartnerCenter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referral Microsoft Status(PartnerCenter)'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bb34c007-e866-4639-b071-9983db8d6c3a
+		sourceLineageTag: ReferralMicrosoftStatusPartnerCenter
+		summarizeBy: none
+		sourceColumn: ReferralMicrosoftStatusPartnerCenter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referral Microsoft SubStatus(PartnerCenter)'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 443e9440-9f36-4092-932e-0ed030deef41
+		sourceLineageTag: ReferralMicrosoftSubStatusPartnerCenter
+		summarizeBy: none
+		sourceColumn: ReferralMicrosoftSubStatusPartnerCenter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Deal URL'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 53487231-2dfc-4464-9fa7-35ae53614164
+		sourceLineageTag: PartnerDealURL
+		summarizeBy: none
+		sourceColumn: PartnerDealURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referral SubType'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a28c927a-99f9-482e-b8f4-a0db28a196a7
+		sourceLineageTag: ReferralSubType
+		summarizeBy: none
+		sourceColumn: ReferralSubType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Marketplace Intent'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4e16606f-c593-43a1-a68e-a3744a6f6769
+		sourceLineageTag: MarketplaceIntent
+		summarizeBy: none
+		sourceColumn: MarketplaceIntent
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealSolutionArea
+		dataType: string
+		lineageTag: 2a5d19db-5481-41c9-bb22-b374e6c8a846
+		summarizeBy: none
+		sourceColumn: DealSolutionArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealSolutionPlay
+		dataType: string
+		lineageTag: b7dbc148-ecd5-4b85-9f74-6490357dcd70
+		summarizeBy: none
+		sourceColumn: DealSolutionPlay
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Partner Deal' = entity
+		mode: directLake
+		source
+			entityName: DimPartnerDealCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

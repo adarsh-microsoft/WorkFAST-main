@@ -1,0 +1,58 @@
+table 'Forecast Amount'
+	lineageTag: af6e1611-e678-433d-8672-c9ee2e2ff09b
+	sourceLineageTag: [CoSell].[ForecastAmount]
+
+	measure 'Forecast Amount' = SUMX('Forecast Amount','Forecast Amount'[ForecastAmount])
+		formatString: \$#,0;(\$#,0);\$#,0
+		isHidden
+		lineageTag: 8e02077f-8da8-4719-a886-fef3490ab573
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'PartnerOne ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 068cc0d4-50a9-489d-a931-4746f2a5e3e7
+		sourceLineageTag: PartnerOneID
+		summarizeBy: count
+		sourceColumn: PartnerOneID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastAmount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: decimal(10, 0)
+		lineageTag: 297833b7-4825-41fb-b3cb-d2d8d44ff0ac
+		sourceLineageTag: ForecastAmount
+		summarizeBy: sum
+		sourceColumn: ForecastAmount
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalQuarter
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6d3b43f7-cffe-442d-9d8d-49c73537e486
+		sourceLineageTag: FiscalQuarter
+		summarizeBy: none
+		sourceColumn: FiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Forecast Amount' = entity
+		mode: directLake
+		source
+			entityName: ForecastAmount
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

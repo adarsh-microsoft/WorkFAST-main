@@ -1,0 +1,23 @@
+table BridgeFieldSubsidiary
+	lineageTag: 02b77e1a-ed1e-4271-959a-1d28f0880489
+	sourceLineageTag: [CoSell].[BridgeFieldSubsidiary]
+
+	column FieldSubsidiary
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 417b1291-c059-45e0-b710-9f6a15524011
+		sourceLineageTag: FieldSubsidiary
+		summarizeBy: none
+		sourceColumn: FieldSubsidiary
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeFieldSubsidiary = entity
+		mode: directLake
+		source
+			entityName: BridgeFieldSubsidiary
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,46 @@
+table 'Solution Area'
+	lineageTag: c5bcaf9c-5833-4814-8629-ffa55dadbb2f
+	sourceLineageTag: [CoSell].[DimSolutionArea]
+
+	column SolutionAreaSKID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 38262a09-cdc7-466e-b6ec-243c8ced5397
+		sourceLineageTag: SolutionAreaSKID
+		summarizeBy: count
+		sourceColumn: SolutionAreaSKID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Solution Area'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1a6cef46-7f5b-4c50-acea-441b949928e5
+		sourceLineageTag: SolutionArea
+		summarizeBy: none
+		sourceColumn: SolutionAreaLevel1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Solution Play'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ae54906a-ab70-4bcb-8f66-aec23e95fc1b
+		sourceLineageTag: SolutionPlay
+		summarizeBy: none
+		sourceColumn: SolutionAreaLevel2
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Solution Area' = entity
+		mode: directLake
+		source
+			entityName: DimSolutionArea
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,1005 @@
+table Opportunity
+	lineageTag: ccebab48-88f2-4518-91de-cf8ee821df75
+	sourceLineageTag: [CoSell].[DimOpportunityCD]
+
+	measure '# Shared Opportunities' = ```
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Opportunity',
+			                'Opportunity'[Opportunity Number],
+			                "Value",1
+			            ),
+			            [Value]
+			        ),KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1)
+			        ,FILTER('Partner Deal','Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted" 
+			        || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted")
+			    )
+			```
+		formatString: #,0
+		lineageTag: 0fb6c92b-66ae-453d-a9a0-a16ad3b7ae64
+
+		changedProperty = FormatString
+
+	measure '# Pipeline Wins' = ```
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Opportunity',
+			                'Opportunity'[Opportunity Number],
+			                "Value",1
+			            ),
+			            [Value]
+			        )
+			        ,KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1)
+			        ,FILTER('Partner Deal','Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted" 
+			            || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted" || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Won")
+			        ,FILTER('Opportunity','Opportunity'[Billed Revenue Status] = "Won" 
+			            || ('Opportunity'[Consumption Status] = "Closed" && 'Opportunity'[Consumption Status Reason] = "Completed")
+			    ))
+			```
+		formatString: #,0
+		lineageTag: 7199cc22-491e-490e-be34-59f11ad887f2
+
+		changedProperty = FormatString
+
+	measure '$ Shared Opportunities' = ```
+			
+			CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    KEEPFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] = 1 ),
+			    KEEPFILTERS (
+			        FILTER(
+			            'Partner Deal',
+			            'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted"
+			                || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			        )
+			    )
+			)
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 010f1cdd-d008-49d7-82fa-7d4808f87b84
+
+		changedProperty = FormatString
+
+	measure '$ Pipeline Wins' = ```
+			
+			CALCULATE([$ Shared Opportunities dup],
+			            // REMOVEFILTERS('Partner Deal'[Referral SubType]),
+			          FILTER('Opportunity','Opportunity'[Billed Revenue Status] = "Won" 
+			             || ('Opportunity'[Consumption Status] = "Closed" && 'Opportunity'[Consumption Status Reason] = "Completed")
+			    )
+			)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 3b245b23-db84-4c03-aa59-5695b638d03c
+
+		changedProperty = FormatString
+
+	measure 'ROI old' = DIVIDE([$ Pipeline Wins], [Investment Approved Amount])
+		formatString: 0%;-0%;0%
+		lineageTag: 7b950c5e-4d31-42c2-b1e2-468cdf48e0ee
+
+		changedProperty = FormatString
+
+	measure 'Billed Opportunity Revenue' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Fact Opportunity',
+			                'Fact Opportunity'[OpportunityKey],
+			                'Fact Opportunity'[ProductKey],
+			                'Fact Opportunity'[RevSumDivisionKey],
+			                'Fact Opportunity'[OpportunityRevenue]
+			            ),
+			            [OpportunityRevenue]
+			        ),
+			        KEEPFILTERS ( 'Fact Opportunity'[IsMultiPartner] = "no" ),
+			        KEEPFILTERS ( 'Opportunity'[Is Billed Opportunity] = "Yes" ),
+			        KEEPFILTERS ( 'Opportunity'[Opportunity Due Fiscal Year] IN {"FY23","FY24","FY25","FY26"} )
+			    )
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 6be6529e-6d56-4656-b2cc-06c9b7684b9e
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure '# Oppty' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Opportunity',
+			                'Opportunity'[Opportunity Number],
+			                "Value",1
+			            ),
+			            [Value]
+			        )
+			    )
+		formatString: #,0
+		lineageTag: f8101c11-c03c-474e-8f52-6a329b687f05
+
+	measure '# Shared Inbound Opportunities ' =
+			
+			CALCULATE(
+			    [# Oppty],
+			    KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Inbound")
+			)
+		formatString: #,0
+		lineageTag: c564294e-5149-4d7b-919b-4056385dc123
+
+	measure '# Shared Outbound Opportunities' =
+			
+			CALCULATE(
+			    [# Oppty],
+			    KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Outbound")
+			)
+		formatString: #,0
+		lineageTag: ac06c3a6-bb87-4524-b577-ad3914d44664
+
+	measure 'Inbound Oppty Wins' =
+			
+			CALCULATE (
+			    [# Oppty],
+			    KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Inbound"),
+			    KEEPFILTERS(
+			        ('Opportunity'[Consumption Status Reason] = "Completed" &&
+			        'Opportunity'[Consumption Status] = "Closed") ||
+			        'Opportunity'[Billed Revenue Status] = "Won"
+			    )
+			)
+		formatString: 0
+		lineageTag: 52c73716-3165-4eb5-8853-48bf2b0d8ca7
+
+	measure 'Outbound Oppty Wins' =
+			
+			CALCULATE (
+			    [# Oppty],
+			    KEEPFILTERS('Partner Deal'[Partner Deal Direction] = "Outbound"),
+			    KEEPFILTERS(
+			        ('Opportunity'[Consumption Status Reason] = "Completed" &&
+			        'Opportunity'[Consumption Status] = "Closed") ||
+			        'Opportunity'[Billed Revenue Status] = "Won"
+			    )
+			)
+		formatString: 0
+		lineageTag: 6e65893f-4bb4-4bf7-9df5-ff02a8acfed4
+
+	measure '# Partner GTM Shared Pipeline Growth' =
+			
+			CALCULATE(
+			    [# Oppty],
+			    KEEPFILTERS(
+			        'Partner Deal'[Partner Deal Direction] IN {"Inbound", "Outbound"}
+			    ),
+			    KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1)
+			)
+		formatString: #,0
+		lineageTag: e0c0a7ea-880e-4581-b4c1-c74612976c69
+
+	measure '# Shared Opportunities Won' = ```
+			
+			CALCULATE(
+			    [# Oppty],
+			    KEEPFILTERS('Sharing Type'[SharingType] = "Shared"),
+			    KEEPFILTERS(
+			        'Opportunity'[Billed Revenue Status] = "Won"
+			    )
+			)
+			
+			
+			
+			```
+		formatString: #,0
+		lineageTag: 3ffd28e4-8f73-4a18-8d6a-33d4f0eee5f3
+
+	measure '# All Up Shared Pipeline Growth' =
+			
+			IF(SELECTEDVALUE('Partner Deal'[Referral SubType]) = "Partner Led - PC",
+			CALCULATE(
+			    [# Oppty],
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM]),
+			    REMOVEFILTERS('Partner Deal'[Referral SubType]),
+			    KEEPFILTERS(
+			        'Partner Deal'[Partner Deal Direction] IN {"Inbound", "Outbound"}
+			    )
+			),
+			CALCULATE(
+			    [# Oppty],
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM]),
+			    KEEPFILTERS(
+			        'Partner Deal'[Partner Deal Direction] IN {"Inbound", "Outbound"}
+			    )
+			))
+		formatString: #,0
+		lineageTag: b1ed45de-3ef8-43ad-8751-61ad8ac608d6
+
+	measure '# All up Shared Opportunities' = ```
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Opportunity',
+			                'Opportunity'[Opportunity Number],
+			                "Value",1
+			            ),
+			            [Value]
+			        ),ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			        ,FILTER('Partner Deal','Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted" 
+			        || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted")
+			    )
+			```
+		formatString: #,0
+		lineageTag: 70164565-7dad-4b03-bfc3-f88b290e16ed
+
+	measure '$ All Up Shared Opportunities' =
+			
+			CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM])
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: ca74ddea-548f-4d8a-beb3-0a61f73a6fd7
+
+	measure '# Shared Opportunities dup' = ```
+			
+			VAR IsPartnerLedPC = SELECTEDVALUE('Partner Deal'[Referral SubType]) = "Partner Led - PC"
+			 
+			VAR TotalWithAllSubTypes =
+			    CALCULATE(CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Opportunity',
+			                'Opportunity'[Opportunity Number],
+			                "Value", 1
+			            ),
+			            [Value]
+			        ),
+			        KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1),
+			        FILTER (
+			            'Partner Deal',
+			            'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted" ||
+			            'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			        )
+			         -- Remove slicer filter only on Referral SubType
+			    ),REMOVEFILTERS('Partner Deal'[Referral SubType]))
+			 
+			VAR TotalWithCurrentSelection =
+			    CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Opportunity',
+			                'Opportunity'[Opportunity Number],
+			                "Value", 1
+			            ),
+			            [Value]
+			        ),
+			        KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1),
+			        FILTER (
+			            'Partner Deal',
+			            'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted" ||
+			            'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			        )
+			    )
+			 
+			RETURN
+			    IF (IsPartnerLedPC, TotalWithAllSubTypes, TotalWithCurrentSelection)
+			```
+		formatString: #,0
+		lineageTag: c07f893b-9ec1-49ff-b08a-dbca80eea2e7
+
+		changedProperty = IsHidden
+
+	measure '$ Shared Opportunities dup' = ```
+			
+			VAR Base = [$ Shared Opportunities]
+			VAR SubType = SELECTEDVALUE('Partner Deal'[Referral SubType])
+			RETURN
+			IF(
+			    HASONEVALUE('Partner Deal'[Referral SubType])
+			        && SubType = "Partner Led - PC",
+			    CALCULATE(
+			        Base,
+			        REMOVEFILTERS('Partner Deal'[Referral SubType])
+			    ),
+			    Base
+			)
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: ace7bafa-c687-41b4-a1fb-2ba8c000691a
+
+		changedProperty = IsHidden
+
+	measure '# All Up Shared Pipeline Growth dup' =
+			
+			IF(SELECTEDVALUE('Partner Deal'[Referral SubType]) = "Partner Led - PC",
+			CALCULATE(
+			    [# Oppty],
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM]),
+			    REMOVEFILTERS('Partner Deal'[Referral SubType]),
+			    KEEPFILTERS(
+			        'Partner Deal'[Partner Deal Direction] IN {"Inbound", "Outbound"}
+			    )
+			),
+			CALCULATE(
+			    [# Oppty],
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM]),
+			    KEEPFILTERS(
+			        'Partner Deal'[Partner Deal Direction] IN {"Inbound", "Outbound"}
+			    )
+			))
+		formatString: #,0
+		isHidden
+		lineageTag: 3efd58e7-e857-4db1-b597-97facb72b8ec
+
+		changedProperty = IsHidden
+
+	measure '$ All Up Shared Opportunities dup' = ```
+			IF(SELECTEDVALUE('Partner Deal'[Referral SubType]) = "Partner Led - PC",
+			CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    REMOVEFILTERS('Partner Deal'[Referral SubType]),
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM])
+			    
+			),
+			CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    REMOVEFILTERS('Partner Deal'[IsDealWith#PartnerGTM])
+			))
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		isHidden
+		lineageTag: 4169435c-7b71-4f25-a658-9ab73593b878
+
+		changedProperty = IsHidden
+
+	measure '# Partner GTM Shared Pipeline Growth dup' = ```
+			
+			VAR IsPartnerLedPC = SELECTEDVALUE('Partner Deal'[Referral SubType]) = "Partner Led - PC"
+			 
+			VAR TotalWithAllSubTypes =
+			    CALCULATE(CALCULATE(
+			        [# Oppty],
+			        KEEPFILTERS(
+			            'Partner Deal'[Partner Deal Direction] IN { "Inbound", "Outbound" }
+			        ),
+			        KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1),
+			        REMOVEFILTERS('Partner Deal'[Referral SubType]) ),REMOVEFILTERS('Partner Deal'[Referral SubType]))
+			 
+			VAR TotalWithCurrentSelection =
+			    CALCULATE(
+			        [# Oppty], -- Base measure
+			        KEEPFILTERS(
+			            'Partner Deal'[Partner Deal Direction] IN { "Inbound", "Outbound" }
+			        ),
+			        KEEPFILTERS('Partner Deal'[IsDealWith#PartnerGTM] = 1)
+			    )
+			 
+			RETURN
+			    IF(IsPartnerLedPC, TotalWithAllSubTypes, TotalWithCurrentSelection)
+			 
+			 
+			```
+		formatString: #,0
+		isHidden
+		lineageTag: 15761dfe-b8ff-40f7-a1c7-8dda0ea682ce
+
+		changedProperty = IsHidden
+
+	measure 'Percent of Previous' = DIVIDE( [# Shared Opportunities dup], [# Partner Deals PartnerGTM])
+		lineageTag: 16f0eaec-add0-4d38-8a8a-fa5dc0c0610b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Percent of Next' = DIVIDE([# Shared Opportunities Won],[# Shared Opportunities dup])
+		lineageTag: eff0b390-0b00-4c01-9344-7b311417c518
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '$ Pipeline Wins dup' = ```
+			
+			VAR IsPartnerLedPC = SELECTEDVALUE('Partner Deal'[Referral SubType]) = "Partner Led - PC"
+			 
+			VAR TotalWithAllSubTypes =
+			    CALCULATE(CALCULATE (
+			        [$ Shared Opportunities],
+			        FILTER (
+			            'Opportunity',
+			            'Opportunity'[Billed Revenue Status] = "Won" ||
+			            ('Opportunity'[Consumption Status] = "Closed" && 'Opportunity'[Consumption Status Reason] = "Completed")
+			        )
+			    ),REMOVEFILTERS('Partner Deal'[Referral SubType]) )
+			 
+			VAR TotalWithCurrentSelection =
+			    CALCULATE (
+			        [$ Shared Opportunities],
+			        FILTER (
+			            'Opportunity',
+			            'Opportunity'[Billed Revenue Status] = "Won" ||
+			            ('Opportunity'[Consumption Status] = "Closed" && 'Opportunity'[Consumption Status Reason] = "Completed")
+			        )
+			    )
+			 
+			RETURN
+			    IF (IsPartnerLedPC, TotalWithAllSubTypes, TotalWithCurrentSelection)
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		isHidden
+		lineageTag: 3001e9d0-39d8-4497-b28a-f397c6d95d66
+
+		changedProperty = IsHidden
+
+	measure '# Shared Opportunities (Aligned)' =
+			
+			CALCULATE(
+			    [# Shared Opportunities],
+			    TREATAS(
+			        VALUES(InvCustomPartnerReportingGeography[BigArea]),
+			        CustomPartnerReportingGeography[BigArea]
+			    )
+			)
+		formatString: 0
+		lineageTag: 64f874cc-b975-4c07-9821-30ed8096a2bb
+
+		changedProperty = Name
+
+	measure '$ Shared Opportunities (Aligned)' =
+			
+			CALCULATE(
+			    [$ Shared Opportunities],
+			    TREATAS(
+			        VALUES(InvCustomPartnerReportingGeography[BigArea]),
+			        CustomPartnerReportingGeography[BigArea]
+			    )
+			)
+		lineageTag: 80bced8b-6fdb-46b1-a601-8f63adb43359
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Pipeline Wins (Aligned)' =
+			
+			CALCULATE(
+			    [# Pipeline Wins],
+			    TREATAS(
+			        VALUES(InvCustomPartnerReportingGeography[BigArea]),
+			        CustomPartnerReportingGeography[BigArea]
+			    )
+			)
+		formatString: 0
+		lineageTag: a396d45d-7766-49de-afde-e6bcf3e1db67
+
+		changedProperty = Name
+
+	measure '$ Pipeline Wins (Aligned)' =
+			
+			CALCULATE(
+			    [$ Pipeline Wins],
+			    TREATAS(
+			        VALUES(InvCustomPartnerReportingGeography[BigArea]),
+			        CustomPartnerReportingGeography[BigArea]
+			    )
+			)
+		lineageTag: 1e9ad818-f7f6-4a6d-8c45-6f86d21e18e8
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Oppty ROI' = DIVIDE([Co-sell Opportunities $ (PartnerGTM)], [Investment Approved Amount])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9892572d-476c-461f-939e-bdb0ef5110c1
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	measure '$ Shared Opportunities Stage 1' = ```
+			
+			CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    KEEPFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] = 1 ),
+			    KEEPFILTERS (
+			        FILTER(
+			            'Partner Deal',
+			            'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted"
+			                || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			        )
+			    ),
+			    KEEPFILTERS (
+			        FILTER(
+			            'Opportunity',
+			            'Opportunity'[MSX Sales Stage] = "1-Listen & Consult"
+			        )
+			    )
+			)
+			
+			```
+		lineageTag: 44e99375-8574-4c13-ad81-9e7df81795f9
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '$ Shared Opportunities Stage 2+' = ```
+			
+			CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    KEEPFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] = 1 ),
+			    KEEPFILTERS (
+			        FILTER(
+			            'Partner Deal',
+			            'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted"
+			                || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			        )
+			    ),
+			    KEEPFILTERS (
+			        FILTER(
+			            'Opportunity',
+			            'Opportunity'[MSX Sales Stage] IN {
+			                "2-Inspire & Design",
+			                "3-Empower & Achieve",
+			                "4-Realize Value",
+			                "5-Manage & Optimize"
+			}
+			        )
+			    )
+			)
+			
+			```
+		lineageTag: f221da3f-572d-4ad2-b28d-828751f2980a
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Oppty ROI old' = DIVIDE([$ Shared Opportunities], [Investment Approved Amount])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e2540825-7eca-4b57-9d56-8643bb907723
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	measure 'Co-sell Opportunities # (PartnerGTM)' =
+			CALCULATE (
+			    SUMX (
+			        SUMMARIZE (
+			            'Opportunity',
+			            'Opportunity'[Opportunity Number],
+			            "Value", 1
+			        ),
+			        [Value]
+			    ),
+			    KEEPFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] = 1 ),
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" ),
+			    FILTER (
+			        'Partner Deal',
+			        'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted"
+			            || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			    )
+			)
+		lineageTag: 36e56c97-de04-40a6-9585-b0d5458c9b06
+
+	measure 'Co-sell Opportunities $ (PartnerGTM)' =
+			CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    KEEPFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] = 1 ),
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" ),
+			    KEEPFILTERS (
+			        FILTER(
+			            'Partner Deal',
+			            'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted"
+			                || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			        )
+			    )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 8aae999e-2793-4976-aad9-1108d134033b
+
+		changedProperty = FormatString
+
+	measure 'Co-sell Opportunities win # (PartnerGTM)' =
+			CALCULATE (
+			    SUMX (
+			        SUMMARIZE (
+			            'Opportunity',
+			            'Opportunity'[Opportunity Number],
+			            "Value", 1
+			        ),
+			        [Value]
+			    ),
+			    KEEPFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] = 1 ),
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" ),
+			    FILTER (
+			        'Partner Deal',
+			        'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted"
+			            || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			            || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Won"
+			    ),
+			    FILTER (
+			        'Opportunity',
+			        'Opportunity'[Billed Revenue Status] = "Won"
+			            || (
+			                'Opportunity'[Consumption Status] = "Closed"
+			                && 'Opportunity'[Consumption Status Reason] = "Completed"
+			            )
+			    )
+			)
+		lineageTag: 041304eb-aa74-4a6b-8837-217573a460e2
+
+	measure 'Co-sell Opportunities win $ (PartnerGTM)' = ```
+			/*CALCULATE(
+			    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],
+			    KEEPFILTERS ( 'Partner Deal'[IsDealWith#PartnerGTM] = 1 ),
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" ),
+			    //KEEPFILTERS ( 'Opportunity'[Billed Revenue Status] = "Won" ),
+			    /*KEEPFILTERS (
+			        FILTER(
+			            'Partner Deal',
+			            'Partner Deal'[Referral Microsoft SubStatus(PartnerCenter)] = "Accepted"
+			                || 'Partner Deal'[Partner Acceptance SubStatus(PartnerCenter)] = "Accepted"
+			        )
+			    ),*/
+			    FILTER (
+			        'Opportunity',
+			        'Opportunity'[Billed Revenue Status] = "Won"
+			            || (
+			                'Opportunity'[Consumption Status] = "Closed"
+			                && 'Opportunity'[Consumption Status Reason] = "Completed"
+			            )
+			    )
+			)*/
+			
+			CALCULATE([$ Shared Opportunities dup],
+			            // REMOVEFILTERS('Partner Deal'[Referral SubType]),
+			          FILTER('Opportunity','Opportunity'[Billed Revenue Status] = "Won" 
+			             || ('Opportunity'[Consumption Status] = "Closed" && 'Opportunity'[Consumption Status Reason] = "Completed")
+			    ),
+			    
+			    KEEPFILTERS ( 'Partner Deal'[Partner Deal Direction] = "Inbound" ),
+			    KEEPFILTERS ( 'Partner Deal'[Referral SubType] = "Active Co-sell - PC" )
+			)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 61f61896-6eb8-4565-b397-d61eec0479f5
+
+		changedProperty = FormatString
+
+	measure 'Win ROI' = DIVIDE([Co-sell Opportunities win $ (PartnerGTM)], [Investment Approved Amount])
+		formatString: 0%;-0%;0%
+		lineageTag: 3ea89bc9-0ba7-4e04-b48f-45fa6b974ccf
+
+		changedProperty = FormatString
+
+	column OpportunityKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 811f5c0a-2135-454b-b782-b12ecd7c4e86
+		sourceLineageTag: OpportunityKey
+		summarizeBy: count
+		sourceColumn: OpportunityKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 487919a4-bca3-449c-81b3-b25ef50aa2b8
+		sourceLineageTag: OpportunityName
+		summarizeBy: none
+		sourceColumn: OpportunityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Number'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8fa892c0-c810-4454-9079-1caa35505c94
+		sourceLineageTag: OpportunityNumber
+		summarizeBy: none
+		sourceColumn: OpportunityNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Created Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: a1b2dd0e-fdd8-4e11-a5b7-a3c174a45a42
+		sourceLineageTag: OpportunityCreatedDate
+		summarizeBy: none
+		sourceColumn: OpportunityCreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Created Fiscal Year'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9baa8f91-c05b-4587-9dff-076ade5c3beb
+		sourceLineageTag: OpportunityCreatedFiscalYear
+		summarizeBy: none
+		sourceColumn: OpportunityCreatedFiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Created Fiscal Quarter'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0e74e272-2a2d-43db-ba1e-c776d2b917b0
+		sourceLineageTag: OpportunityCreatedFiscalQuarter
+		summarizeBy: none
+		sourceColumn: OpportunityCreatedFiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Created Fiscal Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8f8d2302-f663-4542-9aaa-e4c1728d112c
+		sourceLineageTag: OpportunityCreatedFiscalMonth
+		summarizeBy: none
+		sourceColumn: OpportunityCreatedFiscalMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Created Fiscal Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7cf49302-af11-41ee-9739-cc9b2dae50e4
+		sourceLineageTag: OpportunityCreatedFiscalMonthID
+		summarizeBy: count
+		sourceColumn: OpportunityCreatedFiscalMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Due Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: d179cfd6-f3e9-441d-b777-17589d05c526
+		sourceLineageTag: OpportunityDueDate
+		summarizeBy: none
+		sourceColumn: OpportunityDueDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Due Fiscal Year'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 03be506b-5e30-41bb-bfa0-180330a65845
+		sourceLineageTag: OpportunityDueFiscalYear
+		summarizeBy: none
+		sourceColumn: OpportunityDueFiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Due Fiscal Quarter'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 218d52c5-c500-4d15-8b03-8dea2fb0ff2b
+		sourceLineageTag: OpportunityDueFiscalQuarter
+		summarizeBy: none
+		sourceColumn: OpportunityDueFiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Due Fiscal Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c042b253-2128-4f51-8fb2-12dd2d2bc334
+		sourceLineageTag: OpportunityDueFiscalMonth
+		summarizeBy: none
+		sourceColumn: OpportunityDueFiscalMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Due Fiscal Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 478cb4b5-f884-42af-9570-71573d044f6a
+		sourceLineageTag: OpportunityDueFiscalMonthID
+		summarizeBy: count
+		sourceColumn: OpportunityDueFiscalMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MSX Sales Stage'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c4fb6100-0caa-4eab-b92e-5479410347c1
+		sourceLineageTag: MSXSalesStage
+		summarizeBy: none
+		sourceColumn: MSXSalesStage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Actual Close Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: d30fc570-f898-4506-b349-725905ef4d84
+		sourceLineageTag: ActualOpportunityCloseDate
+		summarizeBy: none
+		sourceColumn: ActualOpportunityCloseDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsOpportunityCloseInTrailing12Months
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cefa6e37-2df8-4fa8-a5bc-6bc01435090e
+		sourceLineageTag: IsOpportunityCloseInTrailing12Months
+		summarizeBy: none
+		sourceColumn: IsOpportunityCloseInTrailing12Months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Actual Close Fiscal Year'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ecbf67d6-b285-4edd-a64b-f4efc90e9e74
+		sourceLineageTag: OpportunityActualCloseFiscalYear
+		summarizeBy: none
+		sourceColumn: OpportunityActualCloseFiscalYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Actual Close Fiscal Quarter'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0662f4ef-5292-4380-8b0e-7117b015ccbc
+		sourceLineageTag: OpportunityActualCloseFiscalQuarter
+		summarizeBy: none
+		sourceColumn: OpportunityActualCloseFiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Actual Close Fiscal Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c41e54ab-dea8-4541-a499-bf72a1d6e5ab
+		sourceLineageTag: OpportunityActualCloseFiscalMonth
+		summarizeBy: none
+		sourceColumn: OpportunityActualCloseFiscalMonth
+		sortByColumn: 'Opportunity Actual Close Fiscal Month ID'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Actual Close Fiscal Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3a0d350d-37b6-430b-bb83-802aeab6cdfe
+		sourceLineageTag: OpportunityActualCloseFiscalMonthID
+		summarizeBy: count
+		sourceColumn: OpportunityActualCloseFiscalMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Solution Area (Seller Tagged)'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6b311624-dcd4-4248-b703-56bed030fff1
+		sourceLineageTag: SolutionArea
+		summarizeBy: none
+		sourceColumn: SolutionArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Solution Play (Seller Tagged)'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a806eb73-77cc-4f63-92c9-161d562ead9b
+		sourceLineageTag: SolutionPlay
+		summarizeBy: none
+		sourceColumn: SolutionPlay
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Billed Revenue Status'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 10d74892-82d2-4340-9ce9-ef9595041e04
+		sourceLineageTag: BilledRevenueStatus
+		summarizeBy: none
+		sourceColumn: BilledRevenueStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consumption Status'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d45e9ec7-2f23-4bf2-8a2e-d7f2631acf87
+		sourceLineageTag: ConsumptionStatus
+		summarizeBy: none
+		sourceColumn: ConsumptionStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consumption Status Reason'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3aa8690c-b6a1-4b57-8adc-05da3b6001b4
+		sourceLineageTag: ConsumptionStatusReason
+		summarizeBy: none
+		sourceColumn: ConsumptionStatusReason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity URL'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 29df6fc7-7a02-46a6-8548-03bb446c461e
+		sourceLineageTag: OpportunityURL
+		summarizeBy: none
+		sourceColumn: OpportunityURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Consumption Opportunity'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a27df0f0-b67c-4d7c-8568-67c2101a85ee
+		sourceLineageTag: IsConsumptionOpportunity
+		summarizeBy: none
+		sourceColumn: IsConsumptionOpportunity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Billed Opportunity'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5da0428d-18ce-40bf-9fd7-9893f766ac21
+		sourceLineageTag: IsBilledOpportunity
+		summarizeBy: none
+		sourceColumn: IsBilledOpportunity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Actual Close Calendar Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: acea3fca-d57e-4841-8908-d1ebbd55bf1e
+		sourceLineageTag: OpportunityActualCloseCalendarMonth
+		summarizeBy: none
+		sourceColumn: OpportunityActualCloseCalendarMonth
+		sortByColumn: 'Opportunity Actual Close Calendar Month ID'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Actual Close Calendar Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2b2fdd90-5198-47e1-a60c-8c9408e593c4
+		sourceLineageTag: OpportunityActualCloseCalendarMonthID
+		summarizeBy: count
+		sourceColumn: OpportunityActualCloseCalendarMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Opportunity = entity
+		mode: directLake
+		source
+			entityName: DimOpportunityCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

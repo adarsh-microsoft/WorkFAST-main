@@ -1,0 +1,104 @@
+table 'Fact IOPO'
+	lineageTag: ca01fe4d-49ef-4811-b37c-e30030be0a18
+	sourceLineageTag: [CoSell].[FactIOPO]
+
+	column IOPOKey
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cc1a5f88-a62a-42a6-9771-ca468fb87e16
+		sourceLineageTag: IOPOKey
+		summarizeBy: none
+		sourceColumn: IOPOKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateTimeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 96605f8f-380c-40b5-a43e-00f3aee84fb1
+		sourceLineageTag: DateKey
+		summarizeBy: count
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Vendor Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d0262c6d-0b70-40cc-89c7-46847f7f82d3
+		sourceLineageTag: POVendorName
+		summarizeBy: none
+		sourceColumn: POVendorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Line Item & Description'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9cabd0e3-5f00-4006-b7e3-57d318db45ab
+		sourceLineageTag: POLineItemDescription
+		summarizeBy: none
+		sourceColumn: POLineItemDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Actual
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3b69e03f-a0c7-41a7-b23f-3dd713ed85cb
+		sourceLineageTag: Actual
+		summarizeBy: sum
+		sourceColumn: Actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InvoicedAmount
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4050a031-d2c0-43a0-81f8-fbd275e5d761
+		sourceLineageTag: InvoicedAmount
+		summarizeBy: sum
+		sourceColumn: InvoicedAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OpenAmount
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d8dbc889-c436-49b8-8d69-14feac3b110f
+		sourceLineageTag: OpenAmount
+		summarizeBy: sum
+		sourceColumn: OpenAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column POAmount
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 9e99e589-0be6-434e-93af-79f2fee1bed8
+		sourceLineageTag: POAmount
+		summarizeBy: sum
+		sourceColumn: POAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Fact IOPO' = entity
+		mode: directLake
+		source
+			entityName: FactIOPO
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

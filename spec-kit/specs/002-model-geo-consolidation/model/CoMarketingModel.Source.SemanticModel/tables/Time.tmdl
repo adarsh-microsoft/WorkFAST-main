@@ -1,0 +1,164 @@
+table Time
+	lineageTag: badfa04b-368d-4ece-b121-63ca82751b61
+	sourceLineageTag: [CoSell].[DimTimeCD]
+
+	measure 'Maximum Fiscal Month ID' = CALCULATE ( MAX ( 'Time'[Fiscal Month ID] ) )
+		formatString: 0
+		isHidden
+		lineageTag: fbc2d0b7-0776-4bd3-a215-725bb045898f
+
+		changedProperty = IsHidden
+
+	measure CurrentYear = Year(Today())
+		formatString: 0
+		lineageTag: 788e594c-bf11-4b2d-961c-73e545f9a617
+
+	measure Year = YEAR(VALUES('Time'[Date]))
+		formatString: 0
+		lineageTag: 8252cccc-eefd-4570-a589-4901adfdc673
+
+	column DateTimeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a2261047-7c4d-4bbf-aaae-665c5fa450d7
+		sourceLineageTag: DateKey
+		summarizeBy: count
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: dabe0d13-07b8-40f1-a3f1-68464542d648
+		sourceLineageTag: CalendarDate
+		summarizeBy: none
+		sourceColumn: CalendarDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calender Month Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dd12f5a6-c5ee-4d42-9103-fa23ba3cce42
+		sourceLineageTag: CalendarMonthName
+		summarizeBy: none
+		sourceColumn: CalendarMonthName
+		sortByColumn: 'Calendar Month ID'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bdea496b-bf5a-434d-a4c7-b9b136b82057
+		sourceLineageTag: FiscalMonthName
+		summarizeBy: none
+		sourceColumn: FiscalMonthName
+		sortByColumn: 'Fiscal Month ID'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f76b6f9a-1d4c-4767-8cf1-d798388c7b61
+		sourceLineageTag: FiscalQuarterName
+		summarizeBy: none
+		sourceColumn: FiscalQuarterName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 342497da-f085-4765-bf1c-1fddab8fb953
+		sourceLineageTag: FiscalYearName
+		summarizeBy: none
+		sourceColumn: FiscalYearName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1d8e00ea-e30e-48d7-9723-024044985cab
+		sourceLineageTag: FiscalMonthID
+		summarizeBy: count
+		sourceColumn: FiscalMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b9825e2d-e0f7-47c7-b1e0-6fe52d06d452
+		sourceLineageTag: FiscalQuarterID
+		summarizeBy: count
+		sourceColumn: FiscalQuarterID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsTrailing12Months
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 40850a40-199d-48e8-9377-c248e95c0c00
+		sourceLineageTag: IsTrailing12Months
+		summarizeBy: none
+		sourceColumn: IsTrailing12Months
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsInTrailing18Months
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 756d419f-dec5-489b-910c-a9018637c47c
+		sourceLineageTag: IsTrailing18Months
+		summarizeBy: none
+		sourceColumn: IsTrailing18Months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 55c263b7-25c6-4b08-bbb7-5a3a26afc9e3
+		sourceLineageTag: Month
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e88962c7-55a2-4b97-bffb-fbf03d99f16a
+		sourceLineageTag: MonthName
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: 'Fiscal Month ID'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Time = entity
+		mode: directLake
+		source
+			entityName: DimTimeCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,35 @@
+table 'Funnel Category'
+	lineageTag: 48837142-42e3-4cce-a067-628d7fdaf26d
+	sourceLineageTag: [CoSell].[FunnelCategory]
+
+	column 'Chart Category'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e19ccb1b-137b-4d01-9b06-fcd72297a3de
+		sourceLineageTag: ChartCategory
+		summarizeBy: none
+		sourceColumn: ChartCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Actual Category'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 73d3eaaf-1d0e-4357-a477-d5c2f0b0f2c4
+		sourceLineageTag: ActualCategory
+		summarizeBy: none
+		sourceColumn: ActualCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Funnel Category' = entity
+		mode: directLake
+		source
+			entityName: FunnelCategory
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,28 @@
+/// Conformed Investment Source dim. Replaces the bidi pair
+///   Investment Ask[InvestmentSource] <-> BridgeInvestmentSource <-> Comarketing TPM Budget[Investment Source]
+/// by making this table the One side that both facts join into M:1 single-direction.
+/// The legacy BridgeInvestmentSource is kept for back-compat reads but is no longer the join hub.
+table DimInvestmentSource
+	lineageTag: e2c11000-0001-4000-9000-000000000002
+
+	column InvestmentSource
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: [InvestmentSource]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimInvestmentSource = calculated
+		mode: import
+		source =
+				DISTINCT(
+					UNION(
+						SELECTCOLUMNS(BridgeInvestmentSource, "InvestmentSource", BridgeInvestmentSource[InvestmentSource]),
+						SELECTCOLUMNS('Investment Ask',         "InvestmentSource", 'Investment Ask'[InvestmentSource]),
+						SELECTCOLUMNS('Comarketing TPM Budget', "InvestmentSource", 'Comarketing TPM Budget'[Investment Source])
+					)
+				)
+
+	annotation PBI_ResultType = Table
+

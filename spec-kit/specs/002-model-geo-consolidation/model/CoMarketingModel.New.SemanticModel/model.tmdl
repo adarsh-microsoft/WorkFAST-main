@@ -1,0 +1,65 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit","MCP-PBIModeling"]
+
+annotation TabularEditor_SerializeOptions = {"IgnoreInferredObjects":true,"IgnoreInferredProperties":true,"IgnoreTimestamps":true,"SplitMultilineStrings":true,"PrefixFilenames":false,"LocalTranslations":false,"LocalPerspectives":false,"LocalRelationships":false,"Levels":["Data Sources","Perspectives","Relationships","Roles","Shared Expressions","Tables","Tables/Calculation Items","Tables/Columns","Tables/Hierarchies","Tables/Measures","Tables/Partitions","Translations"]}
+
+annotation __TEdtr = 1
+
+annotation __LastRPTime = 134063611671204999
+
+ref table 'Fact Partner Deal'
+ref table 'Solution Area (Oppty)'
+ref table 'Customer Geography'
+ref table 'Sharing Type'
+ref table Solution
+ref table Customer
+ref table 'Solution Area'
+ref table 'Engagement Milestone'
+ref table Opportunity
+ref table Time
+ref table 'Customer Segment'
+ref table 'Fact Solution'
+ref table 'Fact Opportunity'
+ref table 'Inv Bridge SolutionPlay'
+ref table 'Budget Program'
+ref table 'Comarketing TPM Budget'
+ref table 'Funnel Category'
+ref table 'Partner Deal'
+ref table 'Inv Bridge Area'
+ref table 'Fact Engagement Milestone'
+ref table 'Forecast Amount'
+ref table IOPO
+ref table 'Fact IOPO'
+ref table 'Inv Bridge SolutionArea'
+ref table 'Inv Bridge Industry'
+ref table 'Funnel Category 2'
+ref table 'Opportunity Snapshot'
+ref table 'Reporting PartnerOne'
+ref table InvCustomPartnerReportingGeography
+ref table InvBridgeGeography
+ref table CustomPartnerReportingGeography
+ref table BridgeGeography
+ref table 'Investment Ask'
+ref table Perspective
+ref table BridgeInvestmentSource
+ref table InvBridgeGCPSArea
+ref table DimFieldGeography
+ref table BridgeFieldSubsidiary
+ref table DimAccountGeographyHierarchyReporting
+ref table DimSubsidiary
+ref table DimInvestmentSource
+ref table BridgeFunnelCategory
+ref table BridgeFunnelCategory2
+

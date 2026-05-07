@@ -1,0 +1,34 @@
+table InvBridgeGeography
+	lineageTag: 73126828-db5b-4e04-989e-ff30cc301d20
+	sourceLineageTag: [CoSell].[BridgeGeography]
+
+	column SubsidiaryID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 6049b783-cc1e-4b7f-8a8d-c93bf585cc7f
+		sourceLineageTag: SubsidiaryID
+		summarizeBy: none
+		sourceColumn: SubsidiaryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubsidiaryName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 754d60c6-a3b0-414e-8eb0-7704d8b5004b
+		sourceLineageTag: SubsidiaryName
+		summarizeBy: none
+		sourceColumn: SubsidiaryName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InvBridgeGeography = entity
+		mode: directLake
+		source
+			entityName: BridgeGeography
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

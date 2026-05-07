@@ -1,0 +1,599 @@
+table 'Investment Ask'
+	lineageTag: aea869f4-f1bc-4f3a-8acc-24254f1a91c3
+	sourceLineageTag: [CoSell].[InvestmentAsk]
+
+	measure 'Investment Approved Amount' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Investment Ask',
+			                'Investment Ask'[InvestmentAskID],
+			                'Investment Ask'[ApprovedAmount]
+			            ),
+			            [ApprovedAmount]
+			        ),ALL('Time'), ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			    )
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c4475f67-86ee-4404-a687-8b77d9687f4a
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '# Partner Investment' =
+			CALCULATE(
+			    DISTINCTCOUNT('Investment Ask'[PartnerOneId]),
+			    ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			)
+		formatString: 0
+		lineageTag: 2fd43468-3da3-4bd4-a0a4-ff8afd630de2
+
+		changedProperty = IsHidden
+
+	measure 'Partner Co-Investment Approved Amount' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Investment Ask',
+			                'Investment Ask'[InvestmentAskID],
+			                'Investment Ask'[Coinvestmentfrompartners]
+			            ),
+			            [Coinvestmentfrompartners]
+			        ),ALL('Time'),'Investment Ask'[Stage] = "Approved", ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			    )
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: bb1f5285-a9e7-4a9c-991c-dc72d4c57fea
+
+	measure '# Estimated Opportunities' = CALCULATE(SUM('Investment Ask'[ForecastedSQLs]), 'Investment Ask'[Stage] = "Approved", ALL('Partner Deal'[IsDealWith#PartnerGTM]))
+		formatString: #,0
+		lineageTag: daa338f1-e1b3-4902-b33b-d63b1e5a89c0
+
+		changedProperty = IsHidden
+
+	measure '$ Estimated Pipeline Revenue' = CALCULATE(SUM('Investment Ask'[ForecastedRevenue]),'Investment Ask'[Stage] = "Approved", ALL('Partner Deal'[IsDealWith#PartnerGTM]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 44f25862-24ae-4a39-8afa-42239e205596
+
+	measure '# Estimated Opportunities Trailing18Months' =
+			
+			CALCULATE(
+			    SUM('Investment Ask'[ForecastedSQLs]),
+			    'Investment Ask'[Stage] = "Approved",
+			    DATESINPERIOD(
+			        'Investment Ask'[EstimatedCampaignStartDate],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    )
+			)
+		formatString: #,0
+		lineageTag: af949fba-f3ce-46d1-b56d-e6ee553a345a
+
+	measure '# Microsoft Investment Trailing18Months' =
+			
+			CALCULATE(
+			    COUNT('Investment Ask'[InvestmentAskID]),
+			    'Investment Ask'[Stage] = "Approved",
+			    DATESINPERIOD(
+			        'Investment Ask'[EstimatedCampaignStartDate],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    )
+			)
+		formatString: #,0
+		lineageTag: 050ed730-d13d-4d95-ae5c-ddcb70c7470e
+
+	measure '# Shared Referrals Trailing18Months' =
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE(
+			            'Investment Ask',
+			            'Investment Ask'[InvestmentAskID],
+			            'Investment Ask'[ForecastedSQLs]
+			        ),
+			        [ForecastedSQLs]
+			    ),
+			    DATESINPERIOD(
+			        'Investment Ask'[EstimatedCampaignStartDate],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    )
+			)
+		formatString: 0
+		lineageTag: f5542703-e210-4415-9710-f62b97ef136e
+
+	measure 'Investment Approved Amount Trailing18Months' =
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE(
+			            'Investment Ask',
+			            'Investment Ask'[InvestmentAskID],
+			            'Investment Ask'[ApprovedAmount]
+			        ),
+			        [ApprovedAmount]
+			    ),
+			    DATESINPERIOD(
+			        'Investment Ask'[EstimatedCampaignStartDate],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 05c63cfd-2d3a-4893-9bba-d4a068878c03
+
+	measure 'Investment Requested Amount Trailing18Months' =
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE(
+			            'Investment Ask',
+			            'Investment Ask'[InvestmentAskID],
+			            'Investment Ask'[RequestedAmount]
+			        ),
+			        [RequestedAmount]
+			    ),
+			    DATESINPERIOD(
+			        'Investment Ask'[EstimatedCampaignStartDate],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: e12eaa21-0cd2-48dd-8254-24804573112f
+
+	measure 'Partner Co-Investment Approved Amount Trailing18Months' =
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE(
+			            'Investment Ask',
+			            'Investment Ask'[InvestmentAskID],
+			            'Investment Ask'[Coinvestmentfrompartners]
+			        ),
+			        [Coinvestmentfrompartners]
+			    ),
+			    DATESINPERIOD(
+			        'Investment Ask'[EstimatedCampaignStartDate],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    ),
+			    'Investment Ask'[Stage] = "Approved"
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c04b292b-c81f-4c65-8bab-31ee5f8f238c
+
+	measure 'Focused Areas' = ```
+			
+			CONCATENATEX(
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            FILTER(
+			                'CustomPartnerReportingGeography',
+			                'CustomPartnerReportingGeography'[Subsidiary] IN
+			                SELECTCOLUMNS('Inv Bridge Area', "Subsidiary", 'Inv Bridge Area'[Subsidiary])
+			            ),
+			            "Area", 'CustomPartnerReportingGeography'[Area]
+			        )
+			    ),
+			    [Area],
+			    ", ",
+			    [Area],
+			    ASC
+			)
+			
+			```
+		lineageTag: 9367a97f-2efd-4f10-b844-165fff5edc2f
+
+		changedProperty = Name
+
+	measure InvestmentAsk_Areas_Improved = ```
+			
+			CONCATENATEX(
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            FILTER(
+			                'CustomPartnerReportingGeography',
+			                'CustomPartnerReportingGeography'[Subsidiary] IN
+			                SELECTCOLUMNS('Inv Bridge Area', "Subsidiary", 'Inv Bridge Area'[Subsidiary])
+			            ),
+			            "Area", 'CustomPartnerReportingGeography'[Area]
+			        )
+			    ),
+			    [Area],
+			    ", ",
+			    [Area],
+			    ASC
+			)
+			
+			```
+		lineageTag: 409b332a-f94a-415a-8d67-187d8c709588
+
+		changedProperty = Name
+
+	measure '# Shared Referrals' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Investment Ask',
+			                'Investment Ask'[InvestmentAskID],
+			                'Investment Ask'[ForecastedSQLs]
+			            ),
+			            [ForecastedSQLs]
+			        )
+			        ,ALL('Time'), ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			    )
+		lineageTag: e9ff2bf0-8937-4263-95ba-74f7216c5c1e
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Investment Ask' =
+			CALCULATE (
+			        DISTINCTCOUNT('Investment Ask'[InvestmentAskID]), ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			    )
+		formatString: 0
+		lineageTag: cb1f4c54-14ef-46b9-9cc4-908b69ac2c5a
+
+		changedProperty = Name
+
+	measure '# Investment Ask Trailing18Months' =
+			
+			CALCULATE(
+			    SUMX(
+			        SUMMARIZE(
+			            'Investment Ask',
+			            'Investment Ask'[InvestmentAskID],
+			            "Value", 1
+			        ),
+			        [Value]
+			    ),
+			    DATESINPERIOD(
+			        'Investment Ask'[EstimatedCampaignStartDate],
+			        TODAY(),
+			        -18,
+			        MONTH
+			    )
+			)
+		formatString: 0
+		lineageTag: ae9663ad-070e-4950-9166-33ffdd59314e
+
+		changedProperty = Name
+
+	measure '$ Shared Referrals' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Investment Ask',
+			                'Investment Ask'[InvestmentAskID],
+			                'Investment Ask'[ForecastedRevenue]
+			            ),
+			            [ForecastedRevenue]
+			        ),ALL('Time'), ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			    )
+		formatString: 0
+		lineageTag: f6eb1698-54e5-4931-a3c5-a5db7a35cd5f
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Investment Asks' = CALCULATE(DISTINCTCOUNT('Investment Ask'[InvestmentAskID]),ALL('Time'), ALL('Partner Deal'[IsDealWith#PartnerGTM]) )
+		formatString: 0
+		lineageTag: caef5383-36b6-4b65-a0bd-6fe7359c3878
+
+		changedProperty = Name
+
+	measure 'Investment Partners' =
+			CALCULATE (
+			        DISTINCTCOUNT('Investment Ask'[PartnerOneId]),ALL('Time'), ALL('Partner Deal'[IsDealWith#PartnerGTM])//,FILTER(InvestmentAsk,InvestmentAsk[Account ID] <> "NULL")
+			    )
+		formatString: 0
+		lineageTag: ab68b157-004b-4185-b03f-f4839cb094eb
+
+		changedProperty = Name
+
+	measure 'Investment Requested Amount' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Investment Ask',
+			                'Investment Ask'[InvestmentAskID],
+			                'Investment Ask'[RequestedAmount]
+			            ),
+			            [RequestedAmount]
+			        ), ALL('Partner Deal'[IsDealWith#PartnerGTM])
+			    )
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: ff038318-d537-4ca7-874c-c0f2cb893902
+
+		changedProperty = Name
+
+	measure InvestmentAsk_Areas = ```
+			
+			VAR CurrentInvestmentAskID = SELECTEDVALUE('Investment Ask'[InvestmentAskID])
+			RETURN
+			IF(
+			    NOT ISBLANK(CurrentInvestmentAskID),
+			    CONCATENATEX(
+			        DISTINCT(
+			            SELECTCOLUMNS(
+			                FILTER(
+			                    RELATEDTABLE('CustomPartnerReportingGeography'),
+			                    'CustomPartnerReportingGeography'[Subsidiary] IN 
+			                    VALUES('Inv Bridge Area'[Subsidiary])
+			                ),
+			                "Area", 'CustomPartnerReportingGeography'[Area]
+			            )
+			        ),
+			        [Area],
+			        ", ",
+			        [Area], ASC
+			    ),
+			    BLANK()
+			)
+			```
+		lineageTag: a90f7630-0baa-4fd1-860e-25d90e4f6c7b
+
+		changedProperty = Name
+
+	measure 'Partner Co-Investment' = CALCULATE(sum('Investment Ask'[Coinvestmentfrompartners]), 'Investment Ask'[Stage] = "Approved")
+		lineageTag: b6d2d288-b09d-4388-b76b-8b7b3cbd7022
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '$ Approved (Global Investments)' =
+			CALCULATE (
+			    SUMX (
+			        SUMMARIZE (
+			            'Investment Ask',
+			            'Investment Ask'[InvestmentAskID],
+			            'Investment Ask'[ApprovedAmount]
+			        ),
+			        [ApprovedAmount]
+			    ),
+			    ALL('Time'),
+			    ALL('Partner Deal'[IsDealWith#PartnerGTM]),
+			    'Investment Ask'[InvestmentSource] = "WW GTM Investments"
+			)
+		lineageTag: af6e4f0c-57ac-4910-ab21-7da4533c2cdb
+
+	measure 'Global Investment %' = DIVIDE ( [$ Approved (Global Investments)], [Investment Approved Amount] )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7a44b5d4-0619-44db-a4b0-a19ba774140c
+
+		changedProperty = FormatString
+
+	column InvestmentAskID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 80526927-c6e4-4445-ad07-de023a7babcc
+		sourceLineageTag: InvestmentAskID
+		summarizeBy: none
+		sourceColumn: InvestmentAskID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stage
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 048d2918-c228-4a29-98b2-d925e9192681
+		sourceLineageTag: Stage
+		summarizeBy: none
+		sourceColumn: Stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequestedAmount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 9b0bf8dd-f624-4fad-886a-89dc6879c7c4
+		sourceLineageTag: RequestedAmount
+		summarizeBy: sum
+		sourceColumn: RequestedAmount
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvestmentSource
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 468c4ea2-5ee5-463e-9dca-0455b8b9632a
+		sourceLineageTag: InvestmentSource
+		summarizeBy: none
+		sourceColumn: InvestmentSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvestmentCreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 9ca47499-7fd9-4c71-8724-5e1c18482a05
+		sourceLineageTag: InvestmentCreatedDate
+		summarizeBy: none
+		sourceColumn: InvestmentCreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ApprovedAmount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 0d2747d6-8f9e-4eb7-87dc-a9c107db49f8
+		sourceLineageTag: ApprovedAmount
+		summarizeBy: sum
+		sourceColumn: ApprovedAmount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subsidiary
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7f1872ac-d765-4ae3-90ae-8f777bcf7007
+		sourceLineageTag: Subsidiary
+		summarizeBy: none
+		sourceColumn: Subsidiary
+
+		annotation SummarizationSetBy = Automatic
+
+	column FocusedIndustries
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d2adfa4d-d585-4e0c-9975-330a5bc48b4e
+		sourceLineageTag: FocusedIndustries
+		summarizeBy: none
+		sourceColumn: FocusedIndustries
+
+		annotation SummarizationSetBy = Automatic
+
+	column ScaleProgramName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f403832c-518a-44bd-89f6-1b082b866454
+		sourceLineageTag: ScaleProgramName
+		summarizeBy: none
+		sourceColumn: ScaleProgramName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastedRevenue
+		dataType: double
+		sourceProviderType: decimal(34, 6)
+		lineageTag: d42b322c-404a-4ea5-a314-812a754ee674
+		sourceLineageTag: ForecastedRevenue
+		summarizeBy: sum
+		sourceColumn: ForecastedRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ForecastedSQLs
+		dataType: double
+		sourceProviderType: decimal(34, 6)
+		lineageTag: e9b27bff-fd55-4311-8a22-cff46c6fecf2
+		sourceLineageTag: ForecastedSQLs
+		summarizeBy: sum
+		sourceColumn: ForecastedSQLs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EstimatedCampaignStartDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 1583e8d4-2898-4e97-b918-cdbf546e453f
+		sourceLineageTag: EstimatedCampaignStartDate
+		summarizeBy: none
+		sourceColumn: EstimatedCampaignStartDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedBy
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d005e26f-a888-4b8a-a918-f2e1e4f2e69e
+		sourceLineageTag: CreatedBy
+		summarizeBy: none
+		sourceColumn: CreatedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerOneId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: b7dc1d4c-ea0b-45a6-8471-5b679b8d2440
+		sourceLineageTag: PartnerOneId
+		summarizeBy: none
+		sourceColumn: PartnerOneId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coinvestmentfrompartners
+		dataType: double
+		sourceProviderType: decimal(34, 6)
+		lineageTag: bc26784c-bcc9-42b1-a1e5-7576e3f4b5bc
+		sourceLineageTag: Coinvestmentfrompartners
+		summarizeBy: sum
+		sourceColumn: Coinvestmentfrompartners
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InvestmentSolutionAreas
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f3b3d22d-52c4-4b5f-bf23-6f25d1c852b8
+		sourceLineageTag: InvestmentSolutionAreas
+		summarizeBy: none
+		sourceColumn: InvestmentSolutionAreas
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvestmentSolutionPlay
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8009a8a7-fe62-4948-bf86-f80caac27202
+		sourceLineageTag: InvestmentSolutionPlay
+		summarizeBy: none
+		sourceColumn: InvestmentSolutionPlay
+
+		annotation SummarizationSetBy = Automatic
+
+	column AttachmentLink
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 565a1a0d-ca26-4443-af76-d43e9335f32d
+		sourceLineageTag: AttachmentLink
+		summarizeBy: none
+		sourceColumn: AttachmentLink
+
+		annotation SummarizationSetBy = Automatic
+
+	column CampaignStartDateFiscalQuarter
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e5c845d3-ed74-4047-9a67-fbab507efe1d
+		sourceLineageTag: CampaignStartDateFiscalQuarter
+		summarizeBy: none
+		sourceColumn: CampaignStartDateFiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvestmentRequestFiscalQuarter
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 270edac6-014d-4722-9e45-6bd32972a69d
+		sourceLineageTag: InvestmentRequestFiscalQuarter
+		summarizeBy: none
+		sourceColumn: InvestmentRequestFiscalQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InvestmentAsk = entity
+		mode: directLake
+		source
+			entityName: InvestmentAsk
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

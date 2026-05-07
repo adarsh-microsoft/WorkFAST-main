@@ -1,0 +1,170 @@
+table 'Fact Opportunity'
+	lineageTag: 5add9317-f954-4bb7-afdc-f49c1da49aed
+	sourceLineageTag: [CoSell].[FactOpportunityCD]
+
+	column OpportunityKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: ac986132-2e84-497f-bcf9-31e454235f88
+		sourceLineageTag: OpportunityKey
+		summarizeBy: count
+		sourceColumn: OpportunityKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EngagementMilestoneKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 60c5c92c-a4cf-48b8-9e23-b50b5632de23
+		sourceLineageTag: EngagementMilestoneKey
+		summarizeBy: count
+		sourceColumn: EngagementMilestoneKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SharingTypeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c3567dba-2d81-47d5-8ea3-2836e8e32fb0
+		sourceLineageTag: SharingTypeKey
+		summarizeBy: count
+		sourceColumn: SharingTypeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsMultiPartner
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5e2d1a54-e71b-4c7e-8d9e-606968a4f120
+		sourceLineageTag: IsMultiPartner
+		summarizeBy: none
+		sourceColumn: IsMultiPartner
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpportunityRevenue
+		dataType: double
+		sourceProviderType: decimal(38, 4)
+		lineageTag: 37b269e6-9a2d-4c9a-a652-9f88415564e3
+		sourceLineageTag: OpportunityRevenue
+		summarizeBy: sum
+		sourceColumn: OpportunityRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RevSumDivisionKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: fafcdef0-eaad-41ca-897f-768cff9a33cb
+		sourceLineageTag: RevSumDivisionKey
+		summarizeBy: count
+		sourceColumn: RevSumDivisionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPAccountKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: bd1a5415-715d-4958-ad11-3bf713c9405d
+		sourceLineageTag: TPAccountKey
+		summarizeBy: count
+		sourceColumn: TPAccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e69d8eef-fdf8-4c08-b8c8-1850d085ba8f
+		sourceLineageTag: CreatedDateKey
+		summarizeBy: count
+		sourceColumn: CreatedDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActualCloseDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f4ec4aa9-eeb3-4c41-9611-e333995551ce
+		sourceLineageTag: ActualCloseDateKey
+		summarizeBy: count
+		sourceColumn: ActualCloseDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 6398b327-594e-4675-820f-207cbaae70ce
+		sourceLineageTag: ProductKey
+		summarizeBy: count
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerDealKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: f0e50254-f6a5-4bb8-b0d2-3a6a128c99ae
+		sourceLineageTag: PartnerDealKey
+		summarizeBy: count
+		sourceColumn: PartnerDealKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpptyDueOREstimatedMilestoneDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 92ef6cee-4b48-4096-aeac-b31d6d9f83d1
+		sourceLineageTag: OpptyDueOREstimatedMilestoneDateKey
+		summarizeBy: count
+		sourceColumn: OpptyDueOREstimatedMilestoneDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpptySolutionAreaKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 9cbc1764-f6a0-43f0-9d90-b9ede3428d87
+		sourceLineageTag: OpptySolutionAreaKey
+		summarizeBy: count
+		sourceColumn: OpptySolutionAreaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedMonthlyUsage
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 602d24f8-c139-445a-bd07-b399b434e6b8
+		sourceLineageTag: EstimatedMonthlyUsage
+		summarizeBy: sum
+		sourceColumn: EstimatedMonthlyUsage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Fact Opportunity' = entity
+		mode: directLake
+		source
+			entityName: FactOpportunityCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

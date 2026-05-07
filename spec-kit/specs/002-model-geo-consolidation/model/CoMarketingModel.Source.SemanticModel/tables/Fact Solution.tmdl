@@ -1,0 +1,37 @@
+table 'Fact Solution'
+	lineageTag: 0b6bce87-e45f-4fff-8370-02e49b4eb15e
+	sourceLineageTag: [CoSell].[FactSolutionCD]
+
+	column SolutionKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 96a6488e-9407-4fe0-b30e-ea60c775ffd6
+		sourceLineageTag: SolutionKey
+		summarizeBy: count
+		sourceColumn: SolutionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SolutionAreaKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 5fe3d343-38d6-45fd-b357-9794b7ec33f0
+		sourceLineageTag: SolutionAreaKey
+		summarizeBy: count
+		sourceColumn: SolutionAreaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Solution' = entity
+		mode: directLake
+		source
+			entityName: FactSolutionCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

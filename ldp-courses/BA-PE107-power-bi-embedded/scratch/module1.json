@@ -1,0 +1,159 @@
+{
+  "count": 22,
+  "items": [
+    {
+      "tbId": ":r5:",
+      "title": "Problem Statement 1",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 1\nWeightage: 1\nStatus: Unattempted\nWhich of the library is used for embedding a Power BI report in a web page?\n\n\n\n\n1. Power BI Report Authoring client\n\n2. Power BI JavaScript client\n\n3. Power BI API\n\n4. Power BI Models client\n\n5. None of the above\n\nYour Submission"
+    },
+    {
+      "tbId": ":r6:",
+      "title": "Problem Statement 2",
+      "w": "Weightage: 4",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 2\nWeightage: 4\nStatus: Unattempted\nIdentify the events that are available in Power BI JavaScript client\n\n\n\n\n1. loaded\n\n2. error\n\n3. embedded\n\n4. rendered\n\n5. buttonClicked\n\n6. All of the above\n\nYour Submission"
+    },
+    {
+      "tbId": ":r7:",
+      "title": "Problem Statement 3",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 3\nWeightage: 1\nStatus: Unattempted\nWhich approach is recommended by Microsoft for improving performance while embedding a report?\n\n\n\n\n1. Using Preload function\n\n2. Using Bootstrap function\n\n3. Phased loading approach for embedding\n\nYour Submission"
+    },
+    {
+      "tbId": ":r8:",
+      "title": "Problem Statement 4",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 4\nWeightage: 1\nStatus: Unattempted\nWhich of the following command is to be executed to remove the embedded report iframe from the DOM?\n\n\n\n\n1. powerbi.init(element)\n\n2. powerbi.clear(element)\n\n3. powerbi.reset(element)\n\n4. powerbi.resetEmbed(element)\n\nYour Submission"
+    },
+    {
+      "tbId": ":r9:",
+      "title": "Problem Statement 5",
+      "w": "Weightage: 2",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 5\nWeightage: 2\nStatus: Unattempted\nWhich of the following scenario is suitable for Phased embedding?\n\n\n\n\n1. Apply filter(s) to the report\n\n2. Hide some report pages from user\n\n3. While using Power BI Report Authoring client\n\n4. All of the above\n\nYour Submission"
+    },
+    {
+      "tbId": ":ra:",
+      "title": "Problem Statement 6",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 6\nWeightage: 1\nStatus: Unattempted\nIt is possible to attach a click listener to a Button visual of an embedded report.\n\n\n\n\n1. True\n\n2. False\n\nYour Submission"
+    },
+    {
+      "tbId": ":rb:",
+      "title": "Problem Statement 7",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 7\nWeightage: 1\nStatus: Unattempted\nWhich of the following function is for updating underlying Embed token without reloading the embedded report?\n\n\n\n\n1. setAccessToken()\n\n2. setEmbedToken()\n\n3. refreshEmbedToken()\n\n4. refreshAccessToken()\n\nYour Submission"
+    },
+    {
+      "tbId": ":rc:",
+      "title": "Problem Statement 8",
+      "w": "Weightage: 3",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 8\nWeightage: 3\nStatus: Unattempted\nWhich of the following can be used for configuring embedded report accessibility?\n\n\n\n\n1. setComponentTitle()\n\n2. setComponentTabIndex()\n\n3. contrastMode\n\n4. setFocusMode()\n\n5. setScreenReaderOn()\n\n6. All of the above\n\nYour Submission"
+    },
+    {
+      "tbId": ":rd:",
+      "title": "Problem Statement 9",
+      "w": "Weightage: 2",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 9Weightage: 2Status: UnattemptedWhich of the following are the different methods of embedded a Power BI report?1. User Owns Data2. App Owns Data3. Customer Owns Data4. All of the aboveYour Submission"
+    },
+    {
+      "tbId": ":re:",
+      "title": "Problem Statement 10",
+      "w": "Weightage: 2",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 10Weightage: 2Status: UnattemptedWhat is the library that should be used to generate AAD token for invoking Power BI APIs?1. ADAL2. MSAL3. Microsoft Identity Web (>=1.0.0)4. All of the aboveYour Submission"
+    },
+    {
+      "tbId": ":rf:",
+      "title": "Problem Statement 11",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 11Weightage: 1Status: UnattemptedIt is not required for the user to have a Power BI Pro license when User Owns Data embedding is used.1. True2. FalseYour Submission"
+    },
+    {
+      "tbId": ":rg:",
+      "title": "Problem Statement 12",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 12Weightage: 1Status: UnattemptedWhat is the recommended authentication approach for embedding a report for customers?1. Using a Service Principal2. Using a service account3. Asking user to login into the websiteYour Submission"
+    },
+    {
+      "tbId": ":rh:",
+      "title": "Problem Statement 13",
+      "w": "Weightage: 2",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 13Weightage: 2Status: UnattemptedWhich of the following is an ideal configuration while using Service Principal for report embedding?1. Report.Read.All permission in the AAD app, Member privileges to Service Principal in Power BI workspace2. No permissions in the AAD app, Member privileges to Service Principal in Power BI workspace3. Report.ReadWrite.All permission in the AAD app, Member privileges to Service Principal in Power BI workspace4. Report.ReadWrite.All permission in the AAD app, Admin privileges to Service Principal in Power BI workspace5. Report.Read.Workspace and Report.Read.All permissions in the AAD app, Member privileges to Service Principal in Power BI workspace6. Report.Read.Workspace and Report.Read.All permissions in the AAD app, Admin privileges to Service Principal in Power BI workspaceYour Submission"
+    },
+    {
+      "tbId": ":ri:",
+      "title": "Problem Statement 14",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 14Weightage: 1Status: UnattemptedWhich .NET library should be used for generating Embed tokens?1. Power BI JavaScript client2. Power BI .NET SDK v23. Power BI .NET client v34. Power BI Report authoring clientYour Submission"
+    },
+    {
+      "tbId": ":rj:",
+      "title": "Problem Statement 15",
+      "w": "Weightage: 3",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 15Weightage: 3Status: UnattemptedWhich of the following file types are supported by Power BI Export API?1. PNG2. JPEG3. PDF4. PPTX5. All of the aboveYour Submission"
+    },
+    {
+      "tbId": ":rk:",
+      "title": "Problem Statement 16",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 16Weightage: 1Status: UnattemptedIt is not possible to implement Role Based Data Access for an embedded report.1. True2. FalseYour Submission"
+    },
+    {
+      "tbId": ":rl:",
+      "title": "Problem Statement 17",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 17Weightage: 1Status: UnattemptedIt is possible to change the expiration timespan of an Embed token via Power BI .NET client v31. True2. FalseYour Submission"
+    },
+    {
+      "tbId": ":rm:",
+      "title": "Problem Statement 18",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 18Weightage: 1Status: UnattemptedAll of the C# methods ending with or having \"V2\" in their name work only with new Power BI workspace experience.1. True2. FalseYour Submission"
+    },
+    {
+      "tbId": ":rn:",
+      "title": "Problem Statement 19",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 19Weightage: 1Status: UnattemptedWhich of the following are the capabilities of Power BI Report Authoring client?1. Create visual2. Change visual type3. Remove visual4. Add/Remove data fields5. Get visual capabilities6. Set/Get visual property value7. Reset visual property value8. All of the aboveYour Submission"
+    },
+    {
+      "tbId": ":ro:",
+      "title": "Problem Statement 20",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 20Weightage: 1Status: UnattemptedWhich of the following is/are not a part of Power BI Playground?1. Dynamic report layout2. Capture & share bookmarks3. Personalize report design4. Insight to action5. Quick visual creator6. None of the aboveYour Submission"
+    },
+    {
+      "tbId": ":rp:",
+      "title": "Problem Statement 21",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 21Weightage: 1Status: UnattemptedIs it possible to edit a Power BI report from an embedded session?1. Yes2. NoYour Submission"
+    },
+    {
+      "tbId": ":rq:",
+      "title": "Problem Statement 22",
+      "w": "Weightage: 1",
+      "s": "Status: Unattempted",
+      "text": "Problem Statement 22Weightage: 1Status: UnattemptedLive tile/dashboard embedding is not supported by Power BI Embedded.1. True2. FalseYour Submission"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[BA-PE107] Power BI Embedded" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/24
+              - generic [ref=e22]: "[BA-PE107] Power BI Embedded"
+      - button [ref=e24] [cursor=pointer]:
+        - img [ref=e25]
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+  - generic [ref=e34]:
+    - generic [ref=e35]:
+      - heading "[BA-PE107] Power BI Embedded" [level=4] [ref=e36]
+      - button [ref=e37] [cursor=pointer]:
+        - img [ref=e38]
+    - 'heading "Credits: 0.5" [level=6] [ref=e40]'
+    - separator [ref=e41]
+    - generic [ref=e42]:
+      - tablist [ref=e46]:
+        - tab "Introduction" [selected] [ref=e47] [cursor=pointer]: Introduction
+        - tab "Courses" [ref=e48] [cursor=pointer]: Courses
+      - paragraph [ref=e50]:
+        - paragraph [ref=e51]: Power BI Embedded is an advanced course designed to provide students with comprehensive knowledge and practical skills in leveraging the capabilities of Microsoft Power BI to embed powerful visualizations, dashboards, and reports into their own applications. This course is ideal for developers, data analysts, and professionals who want to extend the reach and impact of their data-driven applications.
+        - paragraph [ref=e52]: Throughout the course, students will gain hands-on experience with Power BI Embedded, which enables them to integrate interactive data visualizations seamlessly into their applications, websites, and portals. They will learn the fundamental concepts of Power BI, understand the architecture of Power BI Embedded, and explore its various deployment options.
+        - paragraph [ref=e53]: The course will cover topics such as embedding Power BI reports and dashboards into web and mobile applications, implementing custom branding and customization options, managing authentication and authorization for embedded Power BI content, and optimizing performance for large-scale deployments. Students will also learn about Power BI REST APIs and how to programmatically interact with embedded visualizations.
+        - paragraph [ref=e54]: "Key Topics Covered:"
+        - list [ref=e55]:
+          - listitem [ref=e56]: Introduction to Power BI Embedded
+          - listitem [ref=e57]: Power BI Embedded architecture and components
+          - listitem [ref=e58]: Embedding Power BI reports and dashboards
+          - listitem [ref=e59]: Customizing the appearance and branding of embedded content
+          - listitem [ref=e60]: Authentication and authorization for embedded Power BI
+          - listitem [ref=e61]: Performance optimization for large-scale deployments
+          - listitem [ref=e62]: Programmatically interacting with embedded Power BI visualizations
+          - listitem [ref=e63]: Power BI REST APIs and integration options
+          - listitem [ref=e64]: Troubleshooting and best practices for Power BI Embedded
+        - paragraph [ref=e65]: By the end of the course, students will have a solid understanding of Power BI Embedded and its capabilities. They will be equipped with the skills to integrate interactive and visually compelling data visualizations directly into their applications, enabling them to deliver enhanced data-driven experiences to their users.
+        - paragraph [ref=e66]: "Prerequisites: To enroll in this course, students should have a basic understanding of Microsoft Power BI and familiarity with web development concepts such as HTML, CSS, and JavaScript. Some experience with data analysis and visualization will be beneficial but not mandatory."

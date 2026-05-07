@@ -1,0 +1,100 @@
+table Solution
+	lineageTag: 2fcb4515-5566-43f8-a54a-fba4b0eca09a
+	sourceLineageTag: [CoSell].[DimSolutionCD]
+
+	measure 'Partner Deals with Transactable Solution' =
+			
+			CALCULATE(
+			    'Partner Deal'[# Partner Deals],
+			    FILTER(
+			        'Fact Partner Deal',
+			        RELATED(Solution[Is Transactable In MarketPlace]) = "Yes"
+			    )
+			)
+		formatString: 0
+		lineageTag: 9d92fe63-0ebd-4540-908d-1ce9ca51e335
+
+	measure 'Marketplace Leads' =
+			
+			CALCULATE(
+			    'Partner Deal'[# Partner Deals],
+			    FILTER(
+			        'Fact Partner Deal',
+			        'Fact Partner Deal'[IsMarketplaceDealReg] = "Yes"
+			    )
+			)
+		formatString: 0
+		lineageTag: a9be3e8b-da1a-495b-aa53-03e4627ff8b1
+
+	column SolutionKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 162b34bc-cb54-43f6-8cf0-1ca02f427a74
+		sourceLineageTag: SolutionKey
+		summarizeBy: count
+		sourceColumn: SolutionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Solution Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9a79bd8b-6540-45f2-a475-ad07eba706f3
+		sourceLineageTag: SolutionName
+		summarizeBy: none
+		sourceColumn: SolutionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GPS CRM Solution ID'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5d15e3be-cef9-4732-ac87-a186239a30c2
+		sourceLineageTag: GPSCRMSolutionID
+		summarizeBy: none
+		sourceColumn: GPSCRMSolutionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Transactable In MarketPlace'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8a8dea6a-71ac-4038-b913-846395147995
+		sourceLineageTag: IsTransactableInMarketPlace
+		summarizeBy: none
+		sourceColumn: IsTransactableInMarketPlace
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incentive Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0a6e3d6c-1a03-40ae-b73f-25e236060b8c
+		sourceLineageTag: IncentiveName
+		summarizeBy: none
+		sourceColumn: IncentiveName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Incentive Eligible'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fc123282-0f3d-4fff-b36e-4d3b2122ba82
+		sourceLineageTag: IsIncentiveEligible
+		summarizeBy: none
+		sourceColumn: IsIncentiveEligible
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Solution = entity
+		mode: directLake
+		source
+			entityName: DimSolutionCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

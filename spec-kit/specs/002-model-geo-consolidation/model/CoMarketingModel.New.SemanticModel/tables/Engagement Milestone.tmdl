@@ -1,0 +1,123 @@
+table 'Engagement Milestone'
+	lineageTag: fac693c8-7950-4dd3-8e5b-66e16ae1362e
+	sourceLineageTag: [CoSell].[DimEngagementMilestoneCD]
+
+	measure 'Milestone Estimated Annualized Revenue Base' = ```
+			
+			VAR varMaxFiscalMonthID = 432  // FY25-June (This value should be last month of Next fiscal year)
+			VAR varMaxEstFiscalMonthID = MIN( CALCULATE ( MAX('Engagement Milestone'[Estimated Fiscal Month ID])), 433) //FY26 July (This value should be one month ahead of the previous variable)
+			VAR varIsNonRecurringMilestone = CALCULATE ( MAX( 'Engagement Milestone'[Is Non Recurring Engagement Milestone] ) )
+			RETURN
+			    IF ( varIsNonRecurringMilestone = "No"
+			        ,CALCULATE( [Milestone Estimated Monthly Revenue] * IF( (varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) <= 0 || (varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) > 24
+			                                                                ,BLANK()
+			                                                                ,(varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) 
+			                                                            )
+			                       
+			            )
+			        ,IF((varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) <= 0 || (varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) > 24, BLANK(), [Milestone Estimated Monthly Revenue])
+			    )   
+			```
+		isHidden
+		lineageTag: f3ef23e2-15dd-40c5-a7c8-9ac6e12ce78b
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Milestone Estimated Annualized Revenue' = ```
+			SUMX('Engagement Milestone',[Milestone Estimated Annualized Revenue Base])
+			
+			
+			```
+		lineageTag: f755b124-7f7d-4fdf-b391-6bf357545fea
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Milestone Estimated Monthly Revenue' =
+			CALCULATE (
+			        SUMX (
+			            SUMMARIZE (
+			                'Fact Engagement Milestone',
+			                'Engagement Milestone'[EngagementMilestoneKey],
+			                'Fact Engagement Milestone'[EstimatedMonthlyUsage]
+			            ),
+			            [EstimatedMonthlyUsage]
+			        ),
+			        KEEPFILTERS ( 'Fact Engagement Milestone'[IsMultiPartner] = "no" )
+			    )
+		isHidden
+		lineageTag: 7ea6ad60-92ec-444d-83dc-418ef38c12e4
+
+		changedProperty = IsHidden
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EngagementMilestoneKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 079f7ca8-b3ab-41e8-bf3f-71dde2a0061e
+		sourceLineageTag: EngagementMilestoneKey
+		summarizeBy: count
+		sourceColumn: EngagementMilestoneKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estimated Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 7a547e71-6955-40dc-8856-3b528ff039e8
+		sourceLineageTag: EstimatedDate
+		summarizeBy: none
+		sourceColumn: EstimatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estimated Fiscal Month ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8e0bc72e-bff0-441e-951e-abaff413d460
+		sourceLineageTag: EstimatedFiscalMonthID
+		summarizeBy: count
+		sourceColumn: EstimatedFiscalMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Milestone Number'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b5d9c22d-e94e-4b01-b127-20f93fc6f6d9
+		sourceLineageTag: MilestoneNumber
+		summarizeBy: none
+		sourceColumn: MilestoneNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Non Recurring Engagement Milestone'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a637db58-6489-4bd2-bc46-75d392b7217e
+		sourceLineageTag: IsNonRecurringEngagementMilestone
+		summarizeBy: none
+		sourceColumn: IsNonRecurringEngagementMilestone
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Engagement Milestone' = entity
+		mode: directLake
+		source
+			entityName: DimEngagementMilestoneCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,89 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[BA-PE107] Power BI Embedded" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/24
+              - generic [ref=e22]: "[BA-PE107] Power BI Embedded"
+          - listitem [ref=e23]: ›
+          - listitem [ref=e24]:
+            - link "Power BI Embedded" [ref=e25] [cursor=pointer]:
+              - /url: /tracks/specialization/24/course/87
+              - generic [ref=e26]: Power BI Embedded
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+      - button [ref=e32] [cursor=pointer]:
+        - img [ref=e33]
+  - generic [ref=e37]:
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - heading "Power BI Embedded" [level=4] [ref=e40]
+        - button "End Course" [disabled]
+      - generic [ref=e41]:
+        - 'heading "Score: 0 out of 18 (0%)" [level=6] [ref=e42]'
+        - 'heading "Passing Criteria: 70%" [level=6] [ref=e43]'
+        - 'heading "Attempted Questions: 0/5" [level=6] [ref=e44]'
+    - separator [ref=e45]
+    - group "Question Filters" [ref=e47]:
+      - button "Passed" [ref=e48] [cursor=pointer]: Passed
+      - button "Failed" [ref=e49] [cursor=pointer]: Failed
+      - button "Evaluating" [ref=e50] [cursor=pointer]: Evaluating
+      - button "Unattempted" [ref=e51] [cursor=pointer]: Unattempted
+      - button "Partial" [ref=e52] [cursor=pointer]: Partial
+    - generic [ref=e53]:
+      - tablist [ref=e58]:
+        - tab "Assignment 1" [selected] [ref=e59] [cursor=pointer]: Assignment 1
+        - tab "Assignment 2" [ref=e60] [cursor=pointer]: Assignment 2
+        - tab "Assignment 3" [ref=e61] [cursor=pointer]: Assignment 3
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - heading "Problem Statement 1" [level=5] [ref=e66]
+            - generic [ref=e67]:
+              - 'heading "Weightage: 10" [level=6] [ref=e68]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e69]'
+          - generic [ref=e70]:
+            - text: Embed a Power BI report using User Owns Data method using .NET 5 latest version for server-side
+            - paragraph [ref=e71]
+            - paragraph [ref=e72]: Submit source code and snapshot of embedded report view in a zip file
+            - paragraph [ref=e73]: Please ensure that your snapshot includes the date and time when it was captured, as well as the logged-in username.
+          - button "Upload" [ref=e75] [cursor=pointer]: Upload
+          - separator [ref=e76]
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - heading "Problem Statement 2" [level=5] [ref=e79]
+            - generic [ref=e80]:
+              - 'heading "Weightage: 2" [level=6] [ref=e81]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e82]'
+          - generic [ref=e83]:
+            - paragraph
+            - table [ref=e84]:
+              - rowgroup [ref=e87]:
+                - row "Remove border from the embedded report Submit source code zip" [ref=e88]:
+                  - cell "Remove border from the embedded report Submit source code zip" [ref=e89]:
+                    - generic [ref=e90]: Remove border from the embedded report
+                    - paragraph [ref=e91]: Submit source code zip
+            - paragraph
+            - paragraph
+            - paragraph
+            - paragraph [ref=e92]: Please ensure that your snapshot includes the date and time when it was captured, as well as the logged-in username.
+          - button "Upload" [ref=e94] [cursor=pointer]: Upload
+          - separator [ref=e95]
+    - generic [ref=e96]:
+      - button "submit" [disabled]: Submit

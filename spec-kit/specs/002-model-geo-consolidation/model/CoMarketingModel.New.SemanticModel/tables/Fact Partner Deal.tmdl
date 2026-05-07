@@ -1,0 +1,258 @@
+table 'Fact Partner Deal'
+	lineageTag: 497c1413-98f3-4466-b57c-ec63971eb57a
+	sourceLineageTag: [CoSell].[FactPartnerDealCD]
+
+	measure 'Funnel Common Measure' =
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Shared Referrals", [# Partner Deals],
+			    SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Pipeline Wins", [# Pipeline Wins],
+			    SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Shared Opportunities", [# Shared Opportunities]
+			)
+			// IF(
+			//     SELECTEDVALUE('Partner Deal'[Referral SubType]) = "Partner Led - PC",
+			//     CALCULATE(
+			//         SWITCH(
+			//             TRUE(),
+			//             SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Shared Referrals", [# Partner Deals],
+			//             SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Pipeline Wins", [# Pipeline Wins],
+			//             SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Shared Opportunities", [# Shared Opportunities],
+			//             BLANK()
+			//         ),
+			//         REMOVEFILTERS('Partner Deal'[Referral SubType])
+			//     ),
+			//     SWITCH(
+			//         TRUE(),
+			//         SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Shared Referrals", [# Partner Deals],
+			//         SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Pipeline Wins", [# Pipeline Wins],
+			//         SELECTEDVALUE('Funnel Category'[Chart Category]) = "# Shared Opportunities", [# Shared Opportunities]
+			//     )
+			// )
+		formatString: #,0
+		lineageTag: bfe8f11e-b32c-44e2-b115-0b604416752c
+
+		changedProperty = IsHidden
+
+		changedProperty = FormatString
+
+	measure 'Funnel Common Measure Partner Reporting' =
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE('Funnel Category 2'[Chart Category]) = "# Shared Referrals", [# Partner Deals],
+			    SELECTEDVALUE('Funnel Category 2'[Chart Category]) = "Partner Reported # Wins", [Partner Reported # Wins],
+			    SELECTEDVALUE('Funnel Category 2'[Chart Category]) = "# Shared Opportunities", [# Shared Opportunities]
+			)
+		formatString: 0
+		lineageTag: 6cefbb51-859e-49b5-aa77-a87e67f02135
+
+		changedProperty = IsHidden
+
+	column PartnerDealKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: af1ac430-6612-482b-a024-a78da7b500e0
+		sourceLineageTag: PartnerDealKey
+		summarizeBy: none
+		sourceColumn: PartnerDealKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerOneKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 08293038-8516-4370-81aa-0b3183eb7324
+		sourceLineageTag: PartnerOneKey
+		summarizeBy: none
+		sourceColumn: PartnerOneKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerOneReportingKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: e84a3362-6808-4006-9d31-b88268659e60
+		sourceLineageTag: PartnerOneReportingKey
+		summarizeBy: count
+		sourceColumn: PartnerOneReportingKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsMarketplaceDealReg
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: df55d03c-03f7-4ce5-b3ba-9c94443a1874
+		sourceLineageTag: IsMarketplaceDealReg
+		summarizeBy: none
+		sourceColumn: IsMarketplaceDealReg
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpportunityKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 19874603-bf5f-4eac-b938-c4c177d9a4c4
+		sourceLineageTag: OpportunityKey
+		summarizeBy: none
+		sourceColumn: OpportunityKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerRevenueCD
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3e3540f5-d2e3-4ae9-9b4e-7143b248b732
+		sourceLineageTag: PartnerRevenueCD
+		summarizeBy: sum
+		sourceColumn: PartnerRevenueCD
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerGeographyKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: e51fb3e3-2ada-4d9d-80d2-28497a278fe1
+		sourceLineageTag: CustomerGeographyKey
+		summarizeBy: count
+		sourceColumn: CustomerGeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerSegmentKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 8352feb7-4182-458b-8d0a-2e7cf0533033
+		sourceLineageTag: CustomerSegmentKey
+		summarizeBy: none
+		sourceColumn: CustomerSegmentKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPAccountKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 4a4b5271-764f-460c-b0f1-723f1acc29ab
+		sourceLineageTag: TPAccountKey
+		summarizeBy: none
+		sourceColumn: TPAccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 22cdab73-b835-4274-b602-7aee47fe649b
+		sourceLineageTag: CreatedDateKey
+		summarizeBy: none
+		sourceColumn: CreatedDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SolutionKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: acb6a525-af79-47a6-ad6b-5d71fa29e6d3
+		sourceLineageTag: SolutionKey
+		summarizeBy: none
+		sourceColumn: SolutionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerDealDueDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3a349101-5ec3-4cfc-96f5-8cb242a4785e
+		sourceLineageTag: DueDateKey
+		summarizeBy: count
+		sourceColumn: DueDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column IPPartnerOneReportingKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 5db23a3b-af48-4ba2-8e43-4d36a7c78c65
+		sourceLineageTag: IPPartnerOneReportingKey
+		summarizeBy: count
+		sourceColumn: IPPartnerOneReportingKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SolutionPartnerDealCompositeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2830982c-2ce9-48f1-86e5-8de8a5af03ad
+		sourceLineageTag: SolutionPartnerDealCompositeKey
+		summarizeBy: count
+		sourceColumn: SolutionPartnerDealCompositeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDealAccepted
+		dataType: string
+		lineageTag: 4d5d77ba-6c0d-410b-816d-d555bb24b90d
+		summarizeBy: none
+		sourceColumn: IsDealAccepted
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsOpportunityWon
+		dataType: string
+		lineageTag: 7010ac00-c49c-464b-ad02-fdee6a15c77c
+		summarizeBy: none
+		sourceColumn: IsOpportunityWon
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 83c500fc-cbfa-4656-8789-b12e459afca9
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category2
+		dataType: string
+		lineageTag: 270691c5-01ed-4181-8f53-bcd8178aab2d
+		summarizeBy: none
+		sourceColumn: Category2
+
+		annotation SummarizationSetBy = Automatic
+
+	column DimAccountGeographyHierarchyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: eaca2d97-a0df-4573-94a7-aba5004b2174
+		summarizeBy: none
+		sourceColumn: DimAccountGeographyHierarchyKey
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Partner Deal' = entity
+		mode: directLake
+		source
+			entityName: FactPartnerDealCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

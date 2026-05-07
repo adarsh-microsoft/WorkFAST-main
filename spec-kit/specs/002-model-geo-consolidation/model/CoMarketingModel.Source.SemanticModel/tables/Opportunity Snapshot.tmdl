@@ -1,0 +1,115 @@
+table 'Opportunity Snapshot'
+	lineageTag: 8966472a-64c8-46f6-9b63-cfd06d0de6b6
+	sourceLineageTag: [CoSell].[Opportunity_MonthlySnapshot]
+
+	measure '# Partners' = DISTINCTCOUNT('Opportunity Snapshot'[PartnerOneKey])
+		formatString: 0
+		lineageTag: 3a43e978-0369-425b-b54d-562d6203180e
+
+	column OpportunityKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: e524294a-de0d-40c6-9f89-96d1bc13ee89
+		sourceLineageTag: OpportunityKey
+		summarizeBy: count
+		sourceColumn: OpportunityKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerOneKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b02b11f5-1346-4fda-99a5-db589920173f
+		sourceLineageTag: PartnerOneKey
+		summarizeBy: count
+		sourceColumn: PartnerOneKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartnerDealDirection
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 93efbef4-6f3b-4e4b-934a-3dd9cabc97fd
+		sourceLineageTag: PartnerDealDirection
+		summarizeBy: none
+		sourceColumn: PartnerDealDirection
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPAccountKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 8ee95d30-3a7b-4a7e-a412-b2d2213c77cb
+		sourceLineageTag: TPAccountKey
+		summarizeBy: count
+		sourceColumn: TPAccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerSegment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 829ad706-0060-4584-bd87-dc649e2e1f9e
+		sourceLineageTag: CustomerSegment
+		summarizeBy: none
+		sourceColumn: CustomerSegment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerArea
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: edca6914-0ff7-4e7f-b297-78339e087151
+		sourceLineageTag: CustomerArea
+		summarizeBy: none
+		sourceColumn: CustomerArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column Industry
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 307b84c1-0c25-43d8-afbe-92349a792c90
+		sourceLineageTag: Industry
+		summarizeBy: none
+		sourceColumn: Industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalRevenue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: af9d605d-daee-4896-8888-efc502ef6a47
+		sourceLineageTag: TotalRevenue
+		summarizeBy: sum
+		sourceColumn: TotalRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SnapshotDateTimeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6b72b021-d764-4f12-8425-fe41e16af8d0
+		sourceLineageTag: SnapshotDateTimeKey
+		summarizeBy: count
+		sourceColumn: SnapshotDateTimeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Opportunity Snapshot' = entity
+		mode: directLake
+		source
+			entityName: Opportunity_MonthlySnapshot
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

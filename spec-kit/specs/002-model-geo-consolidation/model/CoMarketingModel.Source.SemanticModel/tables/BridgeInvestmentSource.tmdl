@@ -1,0 +1,26 @@
+table BridgeInvestmentSource
+	lineageTag: d70b27d6-43cc-44b7-bd36-ccc80e9e8139
+	sourceLineageTag: [CoSell].[BridgeInvestmentSource]
+
+	column InvestmentSource
+		dataType: string
+		lineageTag: 84418656-82ac-444e-bfa8-a2a22c061ddb
+		sourceLineageTag: InvestmentSource
+		summarizeBy: none
+		sourceColumn: InvestmentSource
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeInvestmentSource = entity
+		mode: directLake
+		source
+			entityName: BridgeInvestmentSource
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = IsHidden
+
+	annotation IsTableInBiModel = True
+

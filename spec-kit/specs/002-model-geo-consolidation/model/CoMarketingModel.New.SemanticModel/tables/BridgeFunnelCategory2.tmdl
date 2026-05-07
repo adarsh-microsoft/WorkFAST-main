@@ -1,0 +1,26 @@
+/// Twin of BridgeFunnelCategory for the Category2 axis.
+/// Replaces the M:M bidi Fact Partner Deal[Category2] <-> Funnel Category 2[Actual Category]
+/// with two single-direction M:1 edges into this bridge.
+table BridgeFunnelCategory2
+	lineageTag: e2c11000-0001-4000-9000-000000000004
+
+	column 'Actual Category'
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: [Actual Category]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeFunnelCategory2 = calculated
+		mode: import
+		source =
+				DISTINCT(
+					UNION(
+						SELECTCOLUMNS('Funnel Category 2', "Actual Category", 'Funnel Category 2'[Actual Category]),
+						SELECTCOLUMNS('Fact Partner Deal', "Actual Category", 'Fact Partner Deal'[Category2])
+					)
+				)
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,98 @@
+table 'Customer Segment'
+	lineageTag: bc693e48-547e-45cf-be2e-118acceb494f
+	sourceLineageTag: [CoSell].[DimCustomerSegment]
+
+	column CustomerSegmentKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 9af5dbaa-c9f0-453d-b534-82f836c1a3e8
+		sourceLineageTag: CustomerSegmentKey
+		summarizeBy: count
+		sourceColumn: CustomerSegmentKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Summary Segment'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b09447c8-c003-4f35-9476-1e20a4959ae4
+		sourceLineageTag: SummarySegment
+		summarizeBy: none
+		sourceColumn: SummarySegmentName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Segment ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5beb4df8-7d0e-44ec-84c5-8f1b2c7ac5bb
+		sourceLineageTag: SegmentID
+		summarizeBy: count
+		sourceColumn: SegmentID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0259525e-8edc-40b7-9b31-4986b422b3b8
+		sourceLineageTag: Segment
+		summarizeBy: none
+		sourceColumn: SegmentName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Segment ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ac8fcbd8-7e4c-477f-ba1e-5b0f96fc6140
+		sourceLineageTag: SubSegmentID
+		summarizeBy: count
+		sourceColumn: SubSegmentID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Segment'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dcf73efa-815c-4f69-9bf1-42b562e1aa8f
+		sourceLineageTag: SubSegment
+		summarizeBy: none
+		sourceColumn: SubSegmentName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reported Summary Segment'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3740ddf3-a7bf-4ac5-b4e2-4d6e3073e43b
+		sourceLineageTag: ReportedSummarySegment
+		summarizeBy: none
+		sourceColumn: ReportedSummarySegmentName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reporting Custom Segment'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8d395914-ddcd-460a-8f8f-f1a5bd3d3fdc
+		sourceLineageTag: ReportingCustomSegment
+		summarizeBy: none
+		sourceColumn: ReportedCustomSegment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Segment' = entity
+		mode: directLake
+		source
+			entityName: DimCustomerSegment
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

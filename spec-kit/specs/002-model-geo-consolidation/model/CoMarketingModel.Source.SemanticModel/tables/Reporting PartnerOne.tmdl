@@ -1,0 +1,71 @@
+table 'Reporting PartnerOne'
+	lineageTag: a86a721b-b3c7-44de-aa6d-1ded8d726356
+	sourceLineageTag: [CoSell].[ReportingPartnerOneCD]
+
+	column 'PartnerOne ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 81ddf083-2d56-491a-8d66-8d66d61f9fa4
+		sourceLineageTag: PartnerOneId
+		summarizeBy: none
+		sourceColumn: PartnerOneId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Segment'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5f72db9d-d009-4296-a38f-76fefa12aaf0
+		sourceLineageTag: PartnerSegment
+		summarizeBy: none
+		sourceColumn: PartnerSegment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PartnerOne Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0096c4c3-4370-4fb5-917f-ac641a5e25ef
+		sourceLineageTag: PartnerOneName
+		summarizeBy: none
+		sourceColumn: PartnerOneName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Sub Segment'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1f1f3168-7f45-428c-8f9a-8768a0a30076
+		sourceLineageTag: PartnerSubSegment
+		summarizeBy: none
+		sourceColumn: PartnerSubSegment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PartnerOne Name ID'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 294a2b57-5baa-4eb0-a470-05c5ab4db981
+		sourceLineageTag: PartnerOneNameID
+		summarizeBy: none
+		sourceColumn: PartnerOneNameID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Business Model'
+		dataType: string
+		lineageTag: b773701e-e1a9-43ca-9eb3-87071c2086d9
+		sourceColumn: PartnerBusinessModel
+
+	partition 'Reporting PartnerOne' = entity
+		mode: directLake
+		source
+			entityName: ReportingPartnerOneCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

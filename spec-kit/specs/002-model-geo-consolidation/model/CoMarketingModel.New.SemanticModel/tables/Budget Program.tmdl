@@ -1,0 +1,35 @@
+table 'Budget Program'
+	lineageTag: 6777a493-5f2a-4154-a430-9aa32502ad0d
+	sourceLineageTag: [CoSell].[BudgetProgram]
+
+	column 'PartnerOne ID'
+		dataType: int64
+		sourceProviderType: varchar(8000)
+		lineageTag: 10d50ce9-189f-48c0-b21c-d2c6b56f3610
+		sourceLineageTag: PartnerOneID
+		summarizeBy: none
+		sourceColumn: PartnerOneID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Investment Source'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3970674c-bf56-4f94-9587-aea8f53a83b8
+		sourceLineageTag: InvestmentSource
+		summarizeBy: none
+		sourceColumn: InvestmentSource
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Budget Program' = entity
+		mode: directLake
+		source
+			entityName: BudgetProgram
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,32 @@
+{
+  "specializationId": 24,
+  "items": [
+    {
+      "category": "Modules",
+      "title": "LDP Power BI (Advanced)",
+      "courseId": 33,
+      "url": "https://ldp.maqsoftware.com/tracks/specialization/24/course/33",
+      "status": "In Progress",
+      "score": "28/30",
+      "startDate": "2025-12-19"
+    },
+    {
+      "category": "Modules",
+      "title": "Power BI Embedded",
+      "courseId": 87,
+      "url": "https://ldp.maqsoftware.com/tracks/specialization/24/course/87",
+      "status": "In Progress",
+      "score": "0/18",
+      "startDate": "2025-12-19"
+    },
+    {
+      "category": "Quizzes",
+      "title": "Power BI Embedded Quiz",
+      "courseId": 88,
+      "url": "https://ldp.maqsoftware.com/tracks/specialization/24/course/88",
+      "status": "In Progress",
+      "score": "28/33",
+      "startDate": "2026-05-04"
+    }
+  ]
+}

@@ -56,6 +56,11 @@ ldp-courses/<courseFolder>/assignments/<assignmentSlug>/
 2. Implement requirements file by file. Use the project's own toolchain via `terminal/runInTerminal`:
    - `npm install` / `pip install` / `dotnet restore` etc. inside `build/`.
    - Run any provided test suite; iterate until tests pass (or no test suite provided).
+3. **Cloud-credential auth (Power BI / Azure / M365 deliverables):** if the deliverable needs the user's tenant access (e.g. embed a Power BI report, call Graph), DO NOT build MSAL.js / AAD app registration / iframe sign-in flows — they fail on locked-down tenants and on third-party-cookie-blocked iframes. Instead:
+   - Open the corresponding portal (`app.powerbi.com`, `portal.azure.com`, etc.) in a sibling Playwright tab while the user is signed in.
+   - Extract the access token from `sessionStorage` (MSAL cache key contains `accesstoken`; filter by `target`/`scopes` for the right audience like `analysis.windows.net/powerbi`).
+   - Inject into the deliverable app via `localStorage.setItem('<key>', token)` and consume from there.
+   - Token is good for ~1h; re-extract if expired.
 3. **Self-review checklist** before zipping:
    - Every functional requirement from `requirements.md` covered? (re-read each one).
    - All starter scaffolding still present and unrenamed (unless instructions said otherwise)?
@@ -82,12 +87,18 @@ ldp-courses/<courseFolder>/assignments/<assignmentSlug>/
 ### Phase 5 — Upload
 
 1. Re-open the LDP module page.
-2. Locate the file input. Patterns:
-   - `input[type="file"]` (often hidden behind a styled button)
-   - "Choose file" / "Upload" button that triggers the input
-3. Use `browser_file_upload` with the absolute path to `submission.zip`.
-4. Click the module's Submit / Submit Assignment button.
-5. Wait for upload progress (toast / progress bar / status change).
+2. **Detect course shape first** — count `<input type=file>` elements and check for a master `Submit (N)` button:
+   - **Single-PS course:** 1 file input → set file → click PS-local Submit.
+   - **Multi-PS shared-form course** (e.g. course 87): N file inputs + 1 global `Submit (N)` button at page bottom. The visual Assignment tabs are grouping only — all inputs live in ONE form. File-input index maps 1:1 to PS index (input[0]→PS1, input[1]→PS2, ...). Set ALL files in one shot, then click the single Submit:
+     ```js
+     for (let i = 1; i <= N; i++) {
+       await page.locator('input[type=file]').nth(i-1).setInputFiles(`PS${i}_<user>.zip`);
+       await page.waitForTimeout(1500);
+     }
+     await page.locator(`button:has-text("Submit (${N})")`).click();
+     ```
+3. **Always use `page.locator('input[type=file]').setInputFiles(absPath)` directly on the hidden input.** Do NOT click the styled "Upload" label first — `browser_file_upload` works but the direct `setInputFiles` approach is more reliable across LDP's MUI variants.
+4. Wait for upload progress (toast / progress bar / status change).
 
 ### Phase 6 — Verify
 
@@ -99,7 +110,8 @@ ldp-courses/<courseFolder>/assignments/<assignmentSlug>/
    ```powershell
    Get-FileHash submission.zip -Algorithm SHA256
    ```
-3. Trigger `ldp-progress-tracker` to update `course.json`.
+3. Update session memory at `/memories/session/<course-slug>-progress.md` with final state. (Skip `ldp-progress-tracker` / `course.json` — `progress.md` + session memory is the canonical record.)
+4. **DONE the moment `Attempted Questions: N/N` shows.** Per `/memories/ldp-rules.md`, never wait on `Status: Evaluating` — manual grading is asynchronous.
 
 ## Output Contract
 

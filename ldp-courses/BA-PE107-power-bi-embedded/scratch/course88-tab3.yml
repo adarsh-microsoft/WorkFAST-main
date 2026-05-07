@@ -1,0 +1,147 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[BA-PE107] Power BI Embedded" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/24
+              - generic [ref=e22]: "[BA-PE107] Power BI Embedded"
+          - listitem [ref=e23]: ›
+          - listitem [ref=e24]:
+            - link "Power BI Embedded Quiz" [ref=e25] [cursor=pointer]:
+              - /url: /tracks/specialization/24/course/88
+              - generic [ref=e26]: Power BI Embedded Quiz
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+      - button [ref=e32] [cursor=pointer]:
+        - img [ref=e33]
+  - generic [ref=e45]:
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - heading "Power BI Embedded Quiz" [level=4] [ref=e48]
+        - button "End Course" [disabled]
+      - generic [ref=e49]:
+        - 'heading "Score: 0 out of 33 (0%)" [level=6] [ref=e50]'
+        - 'heading "Passing Criteria: 70%" [level=6] [ref=e51]'
+        - 'heading "Attempted Questions: 0/22" [level=6] [ref=e52]'
+    - separator [ref=e53]
+    - group "Question Filters" [ref=e55]:
+      - button "Passed" [ref=e56] [cursor=pointer]: Passed
+      - button "Failed" [ref=e57] [cursor=pointer]: Failed
+      - button "Evaluating" [ref=e58] [cursor=pointer]: Evaluating
+      - button "Unattempted" [ref=e59] [cursor=pointer]: Unattempted
+      - button "Partial" [ref=e60] [cursor=pointer]: Partial
+    - generic [ref=e61]:
+      - tablist [ref=e66]:
+        - tab "Module 1" [ref=e67] [cursor=pointer]: Module 1
+        - tab "Module 2" [ref=e68] [cursor=pointer]: Module 2
+        - tab "Module 3" [active] [selected] [ref=e69] [cursor=pointer]: Module 3
+        - tab "Module 4" [ref=e70] [cursor=pointer]: Module 4
+      - generic [ref=e72]:
+        - generic [ref=e296]:
+          - generic [ref=e297]:
+            - heading "Problem Statement 14" [level=5] [ref=e298]
+            - generic [ref=e299]:
+              - 'heading "Weightage: 1" [level=6] [ref=e300]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e301]'
+          - generic [ref=e302]:
+            - text: Which .NET library should be used for generating Embed tokens?
+            - paragraph [ref=e303]
+            - paragraph
+            - paragraph [ref=e304]: 1. Power BI JavaScript client
+            - paragraph [ref=e305]: 2. Power BI .NET SDK v2
+            - paragraph [ref=e306]: 3. Power BI .NET client v3
+            - paragraph [ref=e307]: 4. Power BI Report authoring client
+            - paragraph
+          - generic [ref=e308]:
+            - generic [ref=e309]: Your Submission
+            - textbox "Your Submission" [ref=e311]
+          - separator [ref=e312]
+        - generic [ref=e313]:
+          - generic [ref=e314]:
+            - heading "Problem Statement 15" [level=5] [ref=e315]
+            - generic [ref=e316]:
+              - 'heading "Weightage: 3" [level=6] [ref=e317]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e318]'
+          - generic [ref=e319]:
+            - text: Which of the following file types are supported by Power BI Export API?
+            - paragraph [ref=e320]
+            - paragraph
+            - paragraph [ref=e321]: 1. PNG
+            - paragraph [ref=e322]: 2. JPEG
+            - paragraph [ref=e323]: 3. PDF
+            - paragraph [ref=e324]: 4. PPTX
+            - paragraph [ref=e325]: 5. All of the above
+            - paragraph
+          - generic [ref=e326]:
+            - generic [ref=e327]: Your Submission
+            - textbox "Your Submission" [ref=e329]
+          - separator [ref=e330]
+        - generic [ref=e331]:
+          - generic [ref=e332]:
+            - heading "Problem Statement 16" [level=5] [ref=e333]
+            - generic [ref=e334]:
+              - 'heading "Weightage: 1" [level=6] [ref=e335]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e336]'
+          - generic [ref=e337]:
+            - text: It is not possible to implement Role Based Data Access for an embedded report.
+            - paragraph [ref=e338]
+            - paragraph
+            - paragraph [ref=e339]: 1. True
+            - paragraph [ref=e340]: 2. False
+            - paragraph
+          - generic [ref=e341]:
+            - generic [ref=e342]: Your Submission
+            - textbox "Your Submission" [ref=e344]
+          - separator [ref=e345]
+        - generic [ref=e346]:
+          - generic [ref=e347]:
+            - heading "Problem Statement 17" [level=5] [ref=e348]
+            - generic [ref=e349]:
+              - 'heading "Weightage: 1" [level=6] [ref=e350]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e351]'
+          - generic [ref=e352]:
+            - text: It is possible to change the expiration timespan of an Embed token via Power BI .NET client v3
+            - paragraph [ref=e353]
+            - paragraph
+            - paragraph [ref=e354]: 1. True
+            - paragraph [ref=e355]: 2. False
+            - paragraph
+          - generic [ref=e356]:
+            - generic [ref=e357]: Your Submission
+            - textbox "Your Submission" [ref=e359]
+          - separator [ref=e360]
+        - generic [ref=e361]:
+          - generic [ref=e362]:
+            - heading "Problem Statement 18" [level=5] [ref=e363]
+            - generic [ref=e364]:
+              - 'heading "Weightage: 1" [level=6] [ref=e365]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e366]'
+          - generic [ref=e367]:
+            - text: All of the C# methods ending with or having "V2" in their name work only with new Power BI workspace experience.
+            - paragraph [ref=e368]
+            - paragraph
+            - paragraph [ref=e369]: 1. True
+            - paragraph [ref=e370]: 2. False
+            - paragraph
+          - generic [ref=e371]:
+            - generic [ref=e372]: Your Submission
+            - textbox "Your Submission" [ref=e374]
+          - separator [ref=e375]
+    - generic [ref=e211]:
+      - button "submit" [disabled]: Submit

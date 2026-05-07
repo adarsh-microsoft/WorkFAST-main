@@ -78,7 +78,9 @@ Recommended Playwright MCP launch flags (configured at MCP-server level, not per
 --user-data-dir <path-to-edge-profile-or-fresh-dir>
 ```
 
-If the agent finds itself on the LDP login page, it stops and tells the user to log in once in the Edge window — subsequent runs reuse the cookie.
+**MANDATORY — open LDP inside the VS Code embedded browser, never an external browser window.** Always use `open_browser_page` / Playwright MCP `browser_navigate` so the page is shared with the agent context (visible in the chat-attached browser pages list). Never instruct the user to open the LDP site in their system Edge/Chrome — the agent cannot see, snapshot, or drive an external browser, and any work done there is invisible to automation.
+
+If the agent finds itself on the LDP login page, it stops and tells the user to log in once in the embedded Edge window — subsequent runs reuse the cookie.
 
 **Network-failure detector (mandatory):** before declaring success on any submit, check `browser_console_messages level=error` for `ERR_INTERNET_DISCONNECTED` or non-200 on `/training/UpdateProgressInfo`. A "click that did nothing" is almost always offline. (Lesson learned from Course 64.)
 
@@ -213,3 +215,4 @@ These come from the Course 64 run — encode them in every skill that touches th
 - **Always run the network-error probe** before declaring submit failure.
 - **Never store LDP credentials.** Rely on Edge persistent profile.
 - **Persist progress after every item.** A crashed session must be resumable from `progress.md`.
+- **Embedded-browser-first (with explicit-need exception).** Default to the VS Code embedded browser (§4). If a real external browser is genuinely required (e.g. a system OS dialog, a tenant SSO flow that refuses the embedded profile, an OAuth redirect that won't return to the agent's context), the agent MUST: (1) **stop and tell the user exactly why** the embedded browser is insufficient, (2) state what the user needs to do in the external browser, and (3) wait for explicit confirmation before proceeding. Never silently fall back to "please open this in your browser" — always justify.

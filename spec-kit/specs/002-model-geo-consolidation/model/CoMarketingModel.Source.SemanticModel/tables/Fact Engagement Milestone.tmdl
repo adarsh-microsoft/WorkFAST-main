@@ -1,0 +1,70 @@
+table 'Fact Engagement Milestone'
+	lineageTag: b37cbb21-fec2-479c-a8bd-994b77ee4726
+	sourceLineageTag: [CoSell].[FactEngagementMilestoneCD]
+
+	column EngagementMilestoneKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 759a59c3-a756-41b1-bc6f-3190364307f4
+		sourceLineageTag: EngagementMilestoneKey
+		summarizeBy: count
+		sourceColumn: EngagementMilestoneKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpportunityKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 4e87c38f-81c2-459b-ac69-8c59df728758
+		sourceLineageTag: OpportunityKey
+		summarizeBy: count
+		sourceColumn: OpportunityKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedCompletionDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 601b93e4-f48b-44f3-a1e7-b7170e1146ae
+		sourceLineageTag: EstimatedCompletionDateKey
+		summarizeBy: count
+		sourceColumn: EstimatedCompletionDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedMonthlyUsage
+		dataType: double
+		sourceProviderType: float
+		lineageTag: e7175796-1ab9-47cd-a03b-075e271b8978
+		sourceLineageTag: EstimatedMonthlyUsage
+		summarizeBy: sum
+		sourceColumn: EstimatedMonthlyUsage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsMultiPartner
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 40539d38-6d28-4c1d-a52b-8291598c761b
+		sourceLineageTag: IsMultiPartner
+		summarizeBy: none
+		sourceColumn: IsMultiPartner
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Engagement Milestone' = entity
+		mode: directLake
+		source
+			entityName: FactEngagementMilestoneCD
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

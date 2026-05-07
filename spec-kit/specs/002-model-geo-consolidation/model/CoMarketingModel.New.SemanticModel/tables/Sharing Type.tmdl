@@ -1,0 +1,36 @@
+table 'Sharing Type'
+	lineageTag: 2a584d01-545d-420b-9472-4ede7750701d
+	sourceLineageTag: [CoSell].[DimSharingType]
+
+	column SharingTypeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: be73f265-8585-41dc-adb1-d0cb041054fa
+		sourceLineageTag: SharingTypeKey
+		summarizeBy: count
+		sourceColumn: SharingTypeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SharingType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6024acef-3011-4686-8a41-74ea56c0af17
+		sourceLineageTag: SharingType
+		summarizeBy: none
+		sourceColumn: SharingType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sharing Type' = entity
+		mode: directLake
+		source
+			entityName: DimSharingType
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

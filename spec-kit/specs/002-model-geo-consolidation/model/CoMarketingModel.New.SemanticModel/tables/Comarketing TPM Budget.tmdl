@@ -1,0 +1,60 @@
+table 'Comarketing TPM Budget'
+	lineageTag: e5982934-8b31-42dd-b515-19fb6bdbe207
+	sourceLineageTag: [CoSell].[ComarketingTPMBudget]
+
+	measure '% TPM Budget Tracked' = DIVIDE('Investment Ask'[Investment Approved Amount], 'Comarketing TPM Budget'[# Budget Sum], 0)
+		lineageTag: 9fa3a5d8-1dc8-4867-ad70-ee9db789100e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Budget Sum' =
+			
+			CALCULATE(
+			    SUM ( 'Comarketing TPM Budget'[Revenue] ),
+			    REMOVEFILTERS ( 'Time' )
+			)
+		formatString: 0
+		lineageTag: 74147ec9-3682-4c29-be29-e5b0e2ae4beb
+
+	measure '% Partner TPM Matched' = 'Investment Ask'[Partner Co-Investment Approved Amount] / 'Investment Ask'[Investment Approved Amount]
+		lineageTag: f85ddc8e-a506-419b-ba38-248c00ba97dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Investment Source'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3d28a511-b1de-4318-be3d-79466cf6b46b
+		sourceLineageTag: InvestmentSource
+		summarizeBy: none
+		sourceColumn: InvestmentSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonth
+		dataType: string
+		lineageTag: 865b2384-55b1-40c6-a27b-28222de4e5d0
+		summarizeBy: none
+		sourceColumn: FiscalMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue
+		dataType: double
+		lineageTag: 1f3a56c1-e271-452b-a8f9-82098450929a
+		summarizeBy: sum
+		sourceColumn: Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Comarketing TPM Budget' = entity
+		mode: directLake
+		source
+			entityName: ComarketingTPMBudget
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

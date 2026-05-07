@@ -1,0 +1,35 @@
+table 'Inv Bridge Industry'
+	lineageTag: 62c15ff2-a16d-4c4e-ae72-f01f05a03854
+	sourceLineageTag: [CoSell].[InvBridgeIndustry]
+
+	column Investment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a92b666e-0af0-4fa5-afca-7cd895741fac
+		sourceLineageTag: gps_investmentid
+		summarizeBy: none
+		sourceColumn: gps_investmentid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Focused Industries'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e3ecd38b-5288-4b4d-bfe0-f51ab93e33ce
+		sourceLineageTag: Focused_Industries
+		summarizeBy: none
+		sourceColumn: Focused_Industries
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Inv Bridge Industry' = entity
+		mode: directLake
+		source
+			entityName: InvBridgeIndustry
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

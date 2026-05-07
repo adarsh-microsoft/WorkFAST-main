@@ -1,0 +1,132 @@
+@{
+    ViewData["Title"] = "Embedded Power BI Report";
+    var embedUrl = (string)ViewBag.EmbedUrl;
+    var reportId = (string)ViewBag.ReportId;
+    var userName = (string)ViewBag.UserName;
+}
+
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#f3f3f3;border:1px solid #ccc;font-family:Segoe UI,Arial;">
+    <div><strong>User:</strong> <span id="lbl-user">@userName</span></div>
+    <div><strong>Captured:</strong> <span id="lbl-now"></span></div>
+</div>
+
+<div style="margin:8px 0;display:flex;gap:8px;align-items:center;">
+    <button id="btn-list-visuals">PS3 - Get all visuals (console)</button>
+    <button id="btn-apply-filter">PS4 - Apply filter</button>
+    <button id="btn-clear-token" style="margin-left:auto;">Clear token</button>
+    <span style="color:#555;">PS5: click any visual - listener logs to console.</span>
+</div>
+
+<div style="margin:6px 0;font-family:Consolas,monospace;font-size:12px;background:#1e1e1e;color:#d4d4d4;padding:8px;height:160px;overflow:auto;border:1px solid #333;">
+    <div style="color:#9cdcfe;font-weight:bold;">On-page event log (also mirrored to browser console):</div>
+    <pre id="event-log" style="margin:4px 0;white-space:pre-wrap;color:#d4d4d4;"></pre>
+</div>
+
+@* PS1: Embed container. PS2: iframe border removed via CSS. *@
+<div id="reportContainer" style="height:600px;width:100%;border:none;outline:none;position:relative;background:#fafafa;"></div>
+
+<style>
+    /* PS2 - Remove default Power BI iframe border */
+    #reportContainer iframe { border: 0 !important; }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/powerbi-client@2.22.4/dist/powerbi.min.js"></script>
+<script>
+    (function () {
+        function tick() { document.getElementById('lbl-now').textContent = new Date().toString(); }
+        tick(); setInterval(tick, 1000);
+
+        const models   = window['powerbi-client'].models;
+        const embedUrl = @Html.Raw(Json.Serialize(embedUrl));
+        const reportId = @Html.Raw(Json.Serialize(reportId));
+        const userName = @Html.Raw(Json.Serialize(userName));
+        const reportContainer = document.getElementById('reportContainer');
+        const logEl = document.getElementById('event-log');
+        function uiLog(...args) {
+            const ts = new Date().toLocaleTimeString();
+            const line = '[' + ts + '] ' + args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' ');
+            logEl.textContent = (line + '\n' + logEl.textContent).substring(0, 8000);
+            console.log(...args);
+        }
+
+        document.getElementById('btn-clear-token').addEventListener('click', () => {
+            localStorage.removeItem('pbiToken'); location.reload();
+        });
+
+        let accessToken = localStorage.getItem('pbiToken');
+        if (!accessToken) {
+            accessToken = prompt('Paste Power BI access token (aud=https://analysis.windows.net/powerbi/api):');
+            if (accessToken) localStorage.setItem('pbiToken', accessToken.trim());
+        }
+
+        if (!accessToken) {
+            reportContainer.innerHTML = '<div style="padding:24px;color:#a00;">No access token. Refresh and paste one.</div>';
+            return;
+        }
+
+        // PS4 - pre-render basic filter against real schema (Store[CountryRegion] In Germany).
+        const preRenderFilter = {
+            $schema: "http://powerbi.com/product/schema#basic",
+            target: { table: "Store", column: "CountryRegion" },
+            operator: "In",
+            values: ["Germany"],
+            filterType: models.FilterType.Basic,
+            requireSingleSelection: false
+        };
+
+        // PS1 - SDK embed using user-owned access token (Embed for your organization).
+        const config = {
+            type: 'report',
+            id: reportId,
+            embedUrl: embedUrl,
+            accessToken: accessToken,
+            tokenType: models.TokenType.Aad,
+            permissions: models.Permissions.All,
+            filters: [preRenderFilter], // PS4 - applied before first render
+            settings: {
+                panes: { filters: { visible: true, expanded: true }, pageNavigation: { visible: true } },
+                background: models.BackgroundType.Transparent,
+                layoutType: models.LayoutType.Custom,
+                customLayout: {
+                    displayOption: models.DisplayOption.FitToPage,
+                    pagesLayout: {}
+                }
+            }
+        };
+        const report = powerbi.embed(reportContainer, config);
+
+        report.on('loaded',           () => uiLog('[PBI] loaded'));
+        report.on('rendered',         () => uiLog('[PBI] rendered'));
+        report.on('buttonClicked',    e => uiLog('[PBI][PS5] buttonClicked',    e.detail));
+        report.on('selectionChanged', e => uiLog('[PBI][PS5] selectionChanged', e.detail));
+        report.on('dataSelected',     e => uiLog('[PBI][PS5] dataSelected',     e.detail));
+        report.on('error',            e => {
+            console.warn('[PBI] error', new Date().toString(), e.detail);
+            const msg = (e.detail && (e.detail.message || e.detail.errorCode)) || '';
+            if (/401|403|TokenExpired|PowerBINotAuthorized/i.test(msg + JSON.stringify(e.detail||{}))) {
+                console.warn('[PBI] Token rejected/expired. Click "Clear token" then refresh to paste a new one.');
+            }
+        });
+
+        // PS3 - list every page + every visual.
+        document.getElementById('btn-list-visuals').addEventListener('click', async function () {
+            try {
+                const pages = await report.getPages();
+                uiLog('[PBI][PS3] Pages:', pages.map(p => p.displayName));
+                for (const page of pages) {
+                    const visuals = await page.getVisuals();
+                    uiLog('[PBI][PS3] Page "' + page.displayName + '" visuals:',
+                        visuals.map(v => ({ title: v.title, type: v.type })));
+                }
+            } catch (err) { uiLog('[PBI][PS3] error', err.message); }
+        });
+
+        // PS4 button - re-apply the same pre-render filter on demand (also useful demo).
+        document.getElementById('btn-apply-filter').addEventListener('click', async function () {
+            try {
+                await report.updateFilters(models.FiltersOperations.Replace, [preRenderFilter]);
+                uiLog('[PBI][PS4] Applied filter', preRenderFilter);
+            } catch (err) { uiLog('[PBI][PS4] error', err.message); }
+        });
+    })();
+</script>

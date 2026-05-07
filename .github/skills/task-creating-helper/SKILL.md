@@ -9,13 +9,35 @@ Quickly create an Azure DevOps Task using a fixed template structure. The skill 
 
 > **Reference task (structural source-of-truth):** [#43370 — `[CoMarketing]: Work on Co-Marketing v1.2 dev build`](https://dev.azure.com/MCAPSDataEngineering/Global%20Partner%20Solutions/_workitems/edit/43370)
 
+## Two Independent Sub-Flows
+
+This skill has exactly two top-level flows. Pick one based on the user's intent and follow only that flow's steps:
+
+1. **Create Task flow** → §`Execution Flow` (Steps 1–11).
+2. **Update Task flow** → §`Update Task Workflow` (Steps U1–U7).
+
+Do not interleave the two. Guardrails and constraints documented under one flow apply only to that flow unless explicitly stated.
+
+## Constraint Precedence
+
+When two rules in this skill appear to conflict, resolve in this order (highest wins):
+
+1. **User input from Q4 ("Anything else?")** — explicit per-task overrides.
+2. **Sub-flow-specific guardrail** — e.g., "Description is verbatim" applies to Create; "Tags are user-owned" applies to Update.
+3. **Global guardrails** in the §`Guardrails` section.
+4. **Config defaults** from `config/task-template.yaml`.
+
+Version-history notes describe historical behaviour and never override the current rules.
+
 ---
 
 ## Version History
 
 | Date | Version | Description |
 |------|---------|-------------|
-| 2026-04-29 | 1.2 | Added **Update Task** workflow (find by ID or by assignee+created-date query, then update only filled fields). Description bullets are now auto-enriched to be more detailed (1–2 sentences with project context). |
+| 2026-05-07 | 1.4 | Added optional **"Anything else?"** 4th question for free-form per-task customizations (state/tags/parent/extra bullets/etc.). Made discussion **AI Efficiency** dynamic — `Tool Used` rotates between **GitHub Copilot** and **WorkFast** per task, and `Value Added` is picked from a varied pool so each task reads differently. |
+| 2026-05-04 | 1.3 | **Description is now verbatim** (no enrichment). Rephrasing/enrichment moved entirely to the **Discussion comment** (1–2 detailed past-tense sentences per bullet). |
+| 2026-04-29 | 1.2 | Added **Update Task** workflow (find by ID or by assignee+created-date query, then update only filled fields). _(Note: this version's auto-enrichment of description bullets was superseded by v1.3 — see below.)_ |
 | 2026-04-29 | 1.1 | Removed Tags question — Target 1/2/3/4 tag now auto-classified from Description content |
 | 2026-04-29 | 1.0 | Initial skill — 4-question prompt flow, config-driven template, auto-generated discussion comment, default parent with chat-override |
 
@@ -71,17 +93,58 @@ Read [`config/task-template.yaml`](./config/task-template.yaml) at runtime. Key 
 
 ### Step 1: Prompt the User (in this exact order)
 
-Ask **only these three questions**, one at a time. Do not ask anything else unless the user explicitly mentioned a parent override (Step 2).
+Ask **only these four questions**, one at a time. Do not ask anything else unless the user explicitly mentioned a parent override (Step 2).
+
+#### Input Validation
+
+Validate each answer before proceeding to the next step. If invalid, re-prompt the same question with a short error message:
+
+| Question | Validation | Re-prompt message |
+|----------|------------|-------------------|
+| Q1 Title | Non-empty after trim. | `"Title cannot be empty. Please enter a short task title."` |
+| Q2 Description | Non-empty after trim. At least one bullet must be parseable. | `"Description cannot be empty. Enter at least one bullet describing the work done."` |
+| Q3 Original Estimate | Numeric, > 0, ≤ 40. Strip a trailing `h`/`hr`/`hrs` if present. | `"Original estimate must be a positive number of hours (e.g., 4, 6.5, 8). You entered: <value>."` |
+| Q4 Anything else? | Optional — blank is valid. If filled but unparseable into any intent in Step 1a, fall back to appending it as an extra discussion bullet (do not error). | — |
+
+If the user cancels or skips Q1, Q2, or Q3 (the three required inputs), abort the create flow with: `"Cannot create task — Title, Description, and Original Estimate are all required. Re-run when ready."` Do not partially create the work item.
 
 | # | Question | Notes |
 |---|----------|-------|
 | 1 | **Title:** | If it doesn't start with `[Prefix]:`, auto-prepend `config.title.defaultPrefix` (e.g., `[CoMarketing]:`) |
 | 2 | **Description:** | Free text. Split into bullets by newline OR by sentence-terminator. Each bullet becomes one `<li>` in the description HTML and one "Updates" bullet in the discussion |
 | 3 | **Original estimate (hours):** | Numeric. Also sets `Microsoft.VSTS.Scheduling.OriginalEstimate`. `CompletedWork` defaults to `config.defaults.completedWork` (8) |
+| 4 | **Anything else?** | **Optional.** Free text. If blank, use all defaults from this skill. If filled, parse and apply per-task customizations on top of the defaults — see Step 1a. |
 
-> Use `vscode_askQuestions` to ask all three questions at once if the user hasn't already provided some answers in the original prompt. If the user provided answers inline (e.g., "create a task titled X with description Y, est 5h"), skip prompting and use the values.
+> Use `vscode_askQuestions` to ask all four questions at once if the user hasn't already provided some answers in the original prompt. If the user provided answers inline (e.g., "create a task titled X with description Y, est 5h"), skip prompting and use the values.
 
 > **Tags are NOT asked** — see Step 6 for auto-classification.
+
+### Step 1a: Apply "Anything else?" Customizations
+
+If the user left Q4 blank: do nothing, proceed with all defaults.
+
+If the user filled Q4: interpret it as a free-form set of overrides and apply them to the task being built. Honour any of the following intents found in the text (use natural-language understanding — the user will not always use exact field names):
+
+| Intent in user text | Effect on the task |
+|---------------------|--------------------|
+| State (e.g., "keep it Active", "set state to New", "don't close it") | Override `defaults.state` and pick a sensible matching `defaults.reason` |
+| Assignee (e.g., "assign to Prince", "assigned to <email>") | Override `System.AssignedTo` |
+| Parent (e.g., "parent #12345", "under <ADO URL>") | Override parent (same as Step 2 logic) and re-inherit area/iteration |
+| Iteration (e.g., "in next sprint", "iteration FY26 Sprint X") | Override `System.IterationPath` |
+| Activity / Priority (e.g., "activity Development", "priority 1") | Override the matching field |
+| Estimate / Completed / Remaining (e.g., "completed 4h", "remaining 2h") | Override the matching scheduling field |
+| Extra tags (e.g., "tag it Hotfix", "add tag Spike") | Append to `tags.alwaysInclude` for this task only (Target tag still auto-classified) |
+| Force a specific Target (e.g., "this is Target 2") | Skip the auto-classifier and use the user-specified Target |
+| Extra discussion bullet (e.g., "also mention I synced with Prince") | Append an additional Updates bullet (rephrase per Step 5 rules) |
+| Risks / Known Issues / Action Items text | Override the matching `discussion.defaults` value for this task |
+| AI tool / value (e.g., "AI tool was WorkFast", "value added: drafted the SQL") | Override `aiToolUsed` / `aiValueAdded` for this task instead of using the dynamic pool |
+| Backdate the "When" token (e.g., "backdate to yesterday", "date 05/06") | Override the `{{WHEN}}` rendered value in the description template |
+| Anything not mappable | Append to the discussion as a single extra Updates bullet so the context is preserved |
+
+**Rules:**
+- Customizations from Q4 always **win over** the config defaults.
+- The Title, Description, and Estimate from Q1–Q3 are still authoritative — Q4 cannot replace them, only refine them.
+- If Q4 contradicts itself or is ambiguous, surface a one-line clarification before proceeding.
 
 ### Step 2: Detect Parent Override
 
@@ -110,36 +173,37 @@ Use the resulting `path`. If parent override applies and parent has its own iter
 
 For each bullet in the user's Description input:
 
-1. **Enrich the bullet text** so it reads as a detailed work item — not a one-liner. The user's input is usually terse (e.g., "work on data slicing issue in the model"). Expand it into 1–2 sentences (target 15–35 words) that include:
-   - **What** is being done (the action verb stays in present-tense — past-tense conversion happens only in the discussion comment in Step 5).
-   - **Where / on which artifact** — pull project context from `config/user-context.yaml` `domain.exampleEntities` and the user's wording (e.g., "co-marketing report", "semantic model", "FactPartnerDeal").
-   - **Why / outcome** — a brief intent clause (e.g., "to ensure measure parity with the source", "so downstream visuals slice correctly by geography").
-   - **Do not invent facts.** Only enrich with context the user provided or context already established in this conversation. If unsure, keep the bullet faithful to the input and add only a generic outcome clause.
-2. Apply `config.description.bulletTemplate` to each enriched bullet, substituting `{{TEXT}}`.
+1. **Use the bullet text VERBATIM** — do NOT enrich, expand, or rephrase. Only minor cleanup is allowed: trim whitespace, capitalize the first letter, and ensure a trailing period. The Description must reflect exactly what the user typed.
+2. Apply `config.description.bulletTemplate` to each bullet, substituting `{{TEXT}}`.
 3. Concatenate all bullets.
 4. Substitute into `config.description.template`:
    - `{{BULLETS}}` → concatenated `<li>` HTML
    - `{{OWNER}}` → `config.description.ownerDisplayName`
    - `{{WHEN}}` → today's date formatted per `config.description.whenFormat` (e.g., `04/29`)
 
-**Enrichment example:**
-
-| User input bullet | Enriched description bullet |
-|-------------------|-----------------------------|
-| `work on validation new measures in co-marketing report` | `Validate the newly added measures in the Co-Marketing report by cross-checking calculated values against the underlying semantic model and source tables to confirm parity before sign-off.` |
-| `work on data slicing issue in the model` | `Investigate and resolve the data slicing issue in the semantic model where filters are not propagating correctly across related dimensions, so report visuals slice as expected.` |
-| `fix DRACR -9999 rows` | `Remove the 8 partner deal rows where PartnerOneId = -9999 from the DRACR dataset and share the impacted deal keys with the team for downstream cleanup.` |
-
 ### Step 5: Build the Discussion Comment HTML
 
-For each bullet in the user's Description input:
+The discussion is where rephrasing/enrichment happens. For each bullet in the user's Description input:
 
-1. Apply each rule in `config.discussion.pastTenseRules` (regex `match` → `replace`) to the bullet text.
-2. If no rule matches, prepend `"Worked on "` as a generic fallback.
-3. Wrap each rewritten bullet in `config.discussion.updateBulletTemplate`.
+1. **Rephrase into a detailed past-tense update** (1–2 sentences, target 15–35 words) that reads like a status report. Include:
+   - **What was done** (past tense — "Worked on", "Added", "Refreshed", etc.).
+   - **Where / on which artifact** — pull project context from `config/user-context.yaml` `domain.exampleEntities` and the user's wording (e.g., "co-marketing UAT build", "InvestmentAsk dataset").
+   - **Outcome / intent** — a brief clause about why or what it enables.
+   - **Do not invent facts.** Only enrich with context already provided.
+2. If the bullet starts with a verb covered by `config.discussion.pastTenseRules`, apply that rule for the opening verb; otherwise prepend `"Worked on "`.
+3. Wrap each rephrased update in `config.discussion.updateBulletTemplate`.
+
+**Rephrasing example:**
+
+| User input bullet | Detailed discussion bullet |
+|-------------------|----------------------------|
+| `work on validation new measures in co-marketing report` | `Validated the newly added measures in the Co-Marketing report by cross-checking calculated values against the underlying semantic model to confirm parity before sign-off.` |
+| `Add Investment Details for mismatching subsidiaries in the excel` | `Added Investment Details into the tracking Excel for the subsidiaries flagged as mismatching during reconciliation, so the partner-to-subsidiary mapping is now complete and aligned with the source.` |
 4. Substitute into `config.discussion.template`:
    - `{{UPDATE_BULLETS}}` → concatenated update `<li>` HTML
-   - `{{RISKS}}`, `{{KNOWN_ISSUES}}`, `{{SPELL_CHECK}}`, `{{ACTION_ITEMS}}`, `{{AI_TOOL}}`, `{{AI_VALUE}}` → from `config.discussion.defaults`
+   - `{{RISKS}}`, `{{KNOWN_ISSUES}}`, `{{SPELL_CHECK}}`, `{{ACTION_ITEMS}}` → from `config.discussion.defaults` (or Q4 overrides)
+   - `{{AI_TOOL}}` → **dynamically pick one** from `config.discussion.aiToolPool` per task. Default rotation: if the task is being created via the WorkFast agent / a multi-agent orchestration, pick **`WorkFast`**; if it is a direct, single-step Copilot Chat creation, pick **`GitHub Copilot`**. If neither signal is clear, pick at random from the pool. Q4 override wins over this logic.
+   - `{{AI_VALUE}}` → **dynamically pick one** short sentence from `config.discussion.aiValueAddedPool` per task so no two tasks read the same. Keep it general (1 sentence, ~12–20 words) — it should feel like a natural "AI helped here" note without being overly specific. Q4 override wins over this logic.
 
 ### Step 6: Build the Final Tag String (auto — no user input)
 
@@ -315,14 +379,19 @@ Return a result table:
 
 ---
 
-## Guardrails
+## Guardrails (Create flow only)
 
-- **Never** ask for fields beyond the 3 required questions unless the user supplied an unparseable parent override.
-- **Never** ask for Tags — they are fully derived (always-on `CoMarketing; Copilot` + auto-classified `Target N`).
-- **Always** apply exactly **one** Target tag (1, 2, 3, or 4) using the keyword classifier. Never omit it. Never include more than one.
+These guardrails apply to the **Create Task flow** (Steps 1–11). The Update Task flow has its own guardrails listed under §`Update Task — Guardrails`.
+
+- **Never** ask for fields beyond the 4 questions (Title, Description, Estimate, Anything else?) unless the user supplied an unparseable parent override.
+- **Q4 "Anything else?" is optional.** Blank → use defaults. Filled → apply per Step 1a; never silently ignore it.
+- **Never** ask for Tags during create — they are fully derived (always-on `CoMarketing; Copilot` + auto-classified `Target N`), unless overridden via Q4.
+- **On create, always** apply exactly **one** Target tag (1, 2, 3, or 4) using the keyword classifier (or the Q4 override). Never omit it. Never include more than one. _(On update, the user owns tags — see Update Guardrails.)_
+- **AI Efficiency is dynamic per task.** Always pick `Tool Used` from `aiToolPool` and `Value Added` from `aiValueAddedPool` (unless Q4 overrides). Never reuse the exact same `Value Added` sentence twice in a row when avoidable.
 - **Always** preserve the exact HTML structure from `config.description.template` and `config.discussion.template` — these match the reference task's rendering.
 - **Always** apply the title prefix logic — if the user types a title without `[...]:`, prepend `config.title.defaultPrefix`.
-- **Always** enrich short user-supplied bullets per Step 4 — never write a single-clause description bullet when 1–2 sentences with project context are possible.
+- **Description is verbatim.** Never enrich, expand, or rephrase user-supplied description bullets. Only minor cleanup (trim, capitalize, trailing period) is allowed. All rephrasing happens in the discussion comment (Step 5).
+- **Discussion is detailed.** Always rephrase each bullet in Step 5 into a 1–2 sentence past-tense status update with project context — never a single-clause restatement.
 - **Never** set `System.State` during creation — set it after parent linking in a separate update call.
 - **Read-only** to the parent work item (only inherit fields, never modify the parent).
 

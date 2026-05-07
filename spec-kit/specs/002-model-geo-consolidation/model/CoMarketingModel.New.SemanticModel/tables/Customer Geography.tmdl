@@ -1,0 +1,113 @@
+table 'Customer Geography'
+	lineageTag: 0d9f511b-4c29-4a4c-a884-7db6d3d0f67f
+	sourceLineageTag: [CoSell].[DimCustomerGeography]
+
+	column CustomerGeographyKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 722f6868-887c-4d4c-85d5-b4abc9096370
+		sourceLineageTag: CustomerGeographyKey
+		summarizeBy: count
+		sourceColumn: CustomerGeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e5b6af9c-3ed8-43c4-8ffa-967b709cccb6
+		sourceLineageTag: Area
+		summarizeBy: none
+		sourceColumn: AreaName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a00b27e5-e803-4cd5-b32d-8e7ec2bf9f1d
+		sourceLineageTag: Region
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Region ID'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9ec7bf9d-4384-4a73-99f9-798afdc8e3b0
+		sourceLineageTag: SubRegionID
+		summarizeBy: count
+		sourceColumn: SubRegionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sub Region'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b8373ea0-d18d-43bc-b2e0-42435ee91fd6
+		sourceLineageTag: SubRegion
+		summarizeBy: none
+		sourceColumn: SubRegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subsidiary
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cfb62edf-6da6-4ed1-947a-2ba356a77c4b
+		sourceLineageTag: Subsidiary
+		summarizeBy: none
+		sourceColumn: SubsidiaryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeZone
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2249917b-0801-43a4-9836-64ca95d7c4a6
+		sourceLineageTag: TimeZone
+		summarizeBy: none
+		sourceColumn: TimeZone
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubsidiaryID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3d6e1dad-4424-4245-a140-d79c975d8fbb
+		sourceLineageTag: SubsidiaryID
+		summarizeBy: count
+		sourceColumn: SubsidiaryID
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Area Hierarchy'
+		lineageTag: 9ad94203-e973-4193-a4d3-13ee039cf613
+
+		level Area
+			lineageTag: 3d71b042-5de3-4fac-9507-2585e051e330
+			column: Area
+
+		level Region
+			lineageTag: 67189c8f-7ccc-490d-93b5-ed7acd1d9dae
+			column: Region
+
+		level Subsidiary
+			lineageTag: 85c0b9b4-02ee-482e-801e-08facf4e89d3
+			column: Subsidiary
+
+	partition 'Customer Geography' = entity
+		mode: directLake
+		source
+			entityName: DimCustomerGeography
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

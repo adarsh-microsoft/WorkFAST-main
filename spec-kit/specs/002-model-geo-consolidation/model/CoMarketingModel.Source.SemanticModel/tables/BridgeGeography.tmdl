@@ -1,0 +1,34 @@
+table BridgeGeography
+	lineageTag: fe68fbcb-c980-4ca0-bf1d-0686c6c198d7
+	sourceLineageTag: [CoSell].[BridgeGeography]
+
+	column SubsidiaryID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 36b01bcf-00ff-487f-9a4a-d3c1c49ee907
+		sourceLineageTag: SubsidiaryID
+		summarizeBy: none
+		sourceColumn: SubsidiaryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubsidiaryName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 419277b4-f9f5-4e8c-98f9-f44130242b87
+		sourceLineageTag: SubsidiaryName
+		summarizeBy: none
+		sourceColumn: SubsidiaryName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeGeography = entity
+		mode: directLake
+		source
+			entityName: BridgeGeography
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

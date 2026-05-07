@@ -1,0 +1,43 @@
+table 'Inv Bridge Area'
+	lineageTag: 8cc18c9b-70b7-4e56-81fc-6ff164866c00
+	sourceLineageTag: [CoSell].[InvBridgeArea]
+
+	column InvestmentAskID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6551f321-95c8-4f35-af9a-f742b6f07276
+		sourceLineageTag: InvestmentAskID
+		summarizeBy: none
+		sourceColumn: InvestmentAskID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subsidiary
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b7deec8b-56d1-40ef-857e-497ca8b63dc0
+		sourceLineageTag: Subsidiary
+		summarizeBy: none
+		sourceColumn: Subsidiary
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6b4eb93b-1af5-4dbc-9fec-bef3b36716dc
+		sourceLineageTag: Area
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Inv Bridge Area' = entity
+		mode: directLake
+		source
+			entityName: InvBridgeArea
+			schemaName: CoSell
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

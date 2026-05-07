@@ -1,0 +1,213 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[BA-PE107] Power BI Embedded" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/24
+              - generic [ref=e22]: "[BA-PE107] Power BI Embedded"
+          - listitem [ref=e23]: ›
+          - listitem [ref=e24]:
+            - link "Power BI Embedded Quiz" [ref=e25] [cursor=pointer]:
+              - /url: /tracks/specialization/24/course/88
+              - generic [ref=e26]: Power BI Embedded Quiz
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+      - button [ref=e32] [cursor=pointer]:
+        - img [ref=e33]
+  - generic [ref=e45]:
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - heading "Power BI Embedded Quiz" [level=4] [ref=e48]
+        - button "End Course" [disabled]
+      - generic [ref=e49]:
+        - 'heading "Score: 0 out of 33 (0%)" [level=6] [ref=e50]'
+        - 'heading "Passing Criteria: 70%" [level=6] [ref=e51]'
+        - 'heading "Attempted Questions: 0/22" [level=6] [ref=e52]'
+    - separator [ref=e53]
+    - group "Question Filters" [ref=e55]:
+      - button "Passed" [ref=e56] [cursor=pointer]: Passed
+      - button "Failed" [ref=e57] [cursor=pointer]: Failed
+      - button "Evaluating" [ref=e58] [cursor=pointer]: Evaluating
+      - button "Unattempted" [ref=e59] [cursor=pointer]: Unattempted
+      - button "Partial" [ref=e60] [cursor=pointer]: Partial
+    - generic [ref=e61]:
+      - tablist [ref=e66]:
+        - tab "Module 1" [selected] [ref=e67] [cursor=pointer]: Module 1
+        - tab "Module 2" [ref=e68] [cursor=pointer]: Module 2
+        - tab "Module 3" [ref=e69] [cursor=pointer]: Module 3
+        - tab "Module 4" [ref=e70] [cursor=pointer]: Module 4
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - heading "Problem Statement 1" [level=5] [ref=e75]
+            - generic [ref=e76]:
+              - 'heading "Weightage: 1" [level=6] [ref=e77]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e78]'
+          - generic [ref=e79]:
+            - text: Which of the library is used for embedding a Power BI report in a web page?
+            - paragraph [ref=e80]
+            - paragraph
+            - paragraph [ref=e81]: 1. Power BI Report Authoring client
+            - paragraph [ref=e82]: 2. Power BI JavaScript client
+            - paragraph [ref=e83]: 3. Power BI API
+            - paragraph [ref=e84]: 4. Power BI Models client
+            - paragraph [ref=e85]: 5. None of the above
+            - paragraph
+            - paragraph
+          - generic [ref=e86]:
+            - generic [ref=e87]: Your Submission
+            - textbox "Your Submission" [ref=e89]
+          - separator [ref=e90]
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - heading "Problem Statement 2" [level=5] [ref=e93]
+            - generic [ref=e94]:
+              - 'heading "Weightage: 4" [level=6] [ref=e95]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e96]'
+          - generic [ref=e97]:
+            - text: Identify the events that are available in Power BI JavaScript client
+            - paragraph [ref=e98]
+            - paragraph
+            - paragraph [ref=e99]: 1. loaded
+            - paragraph [ref=e100]: 2. error
+            - paragraph [ref=e101]: 3. embedded
+            - paragraph [ref=e102]: 4. rendered
+            - paragraph [ref=e103]: 5. buttonClicked
+            - paragraph [ref=e104]: 6. All of the above
+            - paragraph
+            - paragraph
+          - generic [ref=e105]:
+            - generic [ref=e106]: Your Submission
+            - textbox "Your Submission" [ref=e108]
+          - separator [ref=e109]
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - heading "Problem Statement 3" [level=5] [ref=e112]
+            - generic [ref=e113]:
+              - 'heading "Weightage: 1" [level=6] [ref=e114]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e115]'
+          - generic [ref=e116]:
+            - text: Which approach is recommended by Microsoft for improving performance while embedding a report?
+            - paragraph [ref=e117]
+            - paragraph
+            - paragraph [ref=e118]: 1. Using Preload function
+            - paragraph [ref=e119]: 2. Using Bootstrap function
+            - paragraph [ref=e120]: 3. Phased loading approach for embedding
+            - paragraph
+          - generic [ref=e121]:
+            - generic [ref=e122]: Your Submission
+            - textbox "Your Submission" [ref=e124]
+          - separator [ref=e125]
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - heading "Problem Statement 4" [level=5] [ref=e128]
+            - generic [ref=e129]:
+              - 'heading "Weightage: 1" [level=6] [ref=e130]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e131]'
+          - generic [ref=e132]:
+            - text: Which of the following command is to be executed to remove the embedded report iframe from the DOM?
+            - paragraph [ref=e133]
+            - paragraph
+            - paragraph [ref=e134]: 1. powerbi.init(element)
+            - paragraph [ref=e135]: 2. powerbi.clear(element)
+            - paragraph [ref=e136]: 3. powerbi.reset(element)
+            - paragraph [ref=e137]: 4. powerbi.resetEmbed(element)
+            - paragraph
+          - generic [ref=e138]:
+            - generic [ref=e139]: Your Submission
+            - textbox "Your Submission" [ref=e141]
+          - separator [ref=e142]
+        - generic [ref=e143]:
+          - generic [ref=e144]:
+            - heading "Problem Statement 5" [level=5] [ref=e145]
+            - generic [ref=e146]:
+              - 'heading "Weightage: 2" [level=6] [ref=e147]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e148]'
+          - generic [ref=e149]:
+            - text: Which of the following scenario is suitable for Phased embedding?
+            - paragraph [ref=e150]
+            - paragraph
+            - paragraph [ref=e151]: 1. Apply filter(s) to the report
+            - paragraph [ref=e152]: 2. Hide some report pages from user
+            - paragraph [ref=e153]: 3. While using Power BI Report Authoring client
+            - paragraph [ref=e154]: 4. All of the above
+            - paragraph
+          - generic [ref=e155]:
+            - generic [ref=e156]: Your Submission
+            - textbox "Your Submission" [ref=e158]
+          - separator [ref=e159]
+        - generic [ref=e160]:
+          - generic [ref=e161]:
+            - heading "Problem Statement 6" [level=5] [ref=e162]
+            - generic [ref=e163]:
+              - 'heading "Weightage: 1" [level=6] [ref=e164]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e165]'
+          - generic [ref=e166]:
+            - text: It is possible to attach a click listener to a Button visual of an embedded report.
+            - paragraph [ref=e167]
+            - paragraph
+            - paragraph [ref=e168]: 1. True
+            - paragraph [ref=e169]: 2. False
+            - paragraph
+          - generic [ref=e170]:
+            - generic [ref=e171]: Your Submission
+            - textbox "Your Submission" [ref=e173]
+          - separator [ref=e174]
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - heading "Problem Statement 7" [level=5] [ref=e177]
+            - generic [ref=e178]:
+              - 'heading "Weightage: 1" [level=6] [ref=e179]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e180]'
+          - generic [ref=e181]:
+            - text: Which of the following function is for updating underlying Embed token without reloading the embedded report?
+            - paragraph [ref=e182]
+            - paragraph
+            - paragraph [ref=e183]: 1. setAccessToken()
+            - paragraph [ref=e184]: 2. setEmbedToken()
+            - paragraph [ref=e185]: 3. refreshEmbedToken()
+            - paragraph [ref=e186]: 4. refreshAccessToken()
+            - paragraph
+          - generic [ref=e187]:
+            - generic [ref=e188]: Your Submission
+            - textbox "Your Submission" [ref=e190]
+          - separator [ref=e191]
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - heading "Problem Statement 8" [level=5] [ref=e194]
+            - generic [ref=e195]:
+              - 'heading "Weightage: 3" [level=6] [ref=e196]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e197]'
+          - generic [ref=e198]:
+            - text: Which of the following can be used for configuring embedded report accessibility?
+            - paragraph [ref=e199]
+            - paragraph
+            - paragraph [ref=e200]: 1. setComponentTitle()
+            - paragraph [ref=e201]: 2. setComponentTabIndex()
+            - paragraph [ref=e202]: 3. contrastMode
+            - paragraph [ref=e203]: 4. setFocusMode()
+            - paragraph [ref=e204]: 5. setScreenReaderOn()
+            - paragraph [ref=e205]: 6. All of the above
+            - paragraph
+          - generic [ref=e206]:
+            - generic [ref=e207]: Your Submission
+            - textbox "Your Submission" [ref=e209]
+          - separator [ref=e210]
+    - generic [ref=e211]:
+      - button "submit" [disabled]: Submit

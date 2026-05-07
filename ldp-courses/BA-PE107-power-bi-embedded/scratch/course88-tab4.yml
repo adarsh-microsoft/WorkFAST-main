@@ -1,0 +1,135 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[BA-PE107] Power BI Embedded" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/24
+              - generic [ref=e22]: "[BA-PE107] Power BI Embedded"
+          - listitem [ref=e23]: ›
+          - listitem [ref=e24]:
+            - link "Power BI Embedded Quiz" [ref=e25] [cursor=pointer]:
+              - /url: /tracks/specialization/24/course/88
+              - generic [ref=e26]: Power BI Embedded Quiz
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+      - button [ref=e32] [cursor=pointer]:
+        - img [ref=e33]
+  - generic [ref=e45]:
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - heading "Power BI Embedded Quiz" [level=4] [ref=e48]
+        - button "End Course" [disabled]
+      - generic [ref=e49]:
+        - 'heading "Score: 0 out of 33 (0%)" [level=6] [ref=e50]'
+        - 'heading "Passing Criteria: 70%" [level=6] [ref=e51]'
+        - 'heading "Attempted Questions: 0/22" [level=6] [ref=e52]'
+    - separator [ref=e53]
+    - group "Question Filters" [ref=e55]:
+      - button "Passed" [ref=e56] [cursor=pointer]: Passed
+      - button "Failed" [ref=e57] [cursor=pointer]: Failed
+      - button "Evaluating" [ref=e58] [cursor=pointer]: Evaluating
+      - button "Unattempted" [ref=e59] [cursor=pointer]: Unattempted
+      - button "Partial" [ref=e60] [cursor=pointer]: Partial
+    - generic [ref=e61]:
+      - tablist [ref=e66]:
+        - tab "Module 1" [ref=e67] [cursor=pointer]: Module 1
+        - tab "Module 2" [ref=e68] [cursor=pointer]: Module 2
+        - tab "Module 3" [ref=e69] [cursor=pointer]: Module 3
+        - tab "Module 4" [active] [selected] [ref=e70] [cursor=pointer]: Module 4
+      - generic [ref=e72]:
+        - generic [ref=e376]:
+          - generic [ref=e377]:
+            - heading "Problem Statement 19" [level=5] [ref=e378]
+            - generic [ref=e379]:
+              - 'heading "Weightage: 1" [level=6] [ref=e380]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e381]'
+          - generic [ref=e382]:
+            - text: Which of the following are the capabilities of Power BI Report Authoring client?
+            - paragraph [ref=e383]
+            - paragraph
+            - paragraph [ref=e384]: 1. Create visual
+            - paragraph [ref=e385]: 2. Change visual type
+            - paragraph [ref=e386]: 3. Remove visual
+            - paragraph [ref=e387]: 4. Add/Remove data fields
+            - paragraph [ref=e388]: 5. Get visual capabilities
+            - paragraph [ref=e389]: 6. Set/Get visual property value
+            - paragraph [ref=e390]: 7. Reset visual property value
+            - paragraph [ref=e391]: 8. All of the above
+            - paragraph
+          - generic [ref=e392]:
+            - generic [ref=e393]: Your Submission
+            - textbox "Your Submission" [ref=e395]
+          - separator [ref=e396]
+        - generic [ref=e397]:
+          - generic [ref=e398]:
+            - heading "Problem Statement 20" [level=5] [ref=e399]
+            - generic [ref=e400]:
+              - 'heading "Weightage: 1" [level=6] [ref=e401]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e402]'
+          - generic [ref=e403]:
+            - text: Which of the following is/are not a part of Power BI Playground?
+            - paragraph [ref=e404]
+            - paragraph
+            - paragraph [ref=e405]: 1. Dynamic report layout
+            - paragraph [ref=e406]: 2. Capture & share bookmarks
+            - paragraph [ref=e407]: 3. Personalize report design
+            - paragraph [ref=e408]: 4. Insight to action
+            - paragraph [ref=e409]: 5. Quick visual creator
+            - paragraph [ref=e410]: 6. None of the above
+            - paragraph
+          - generic [ref=e411]:
+            - generic [ref=e412]: Your Submission
+            - textbox "Your Submission" [ref=e414]
+          - separator [ref=e415]
+        - generic [ref=e416]:
+          - generic [ref=e417]:
+            - heading "Problem Statement 21" [level=5] [ref=e418]
+            - generic [ref=e419]:
+              - 'heading "Weightage: 1" [level=6] [ref=e420]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e421]'
+          - generic [ref=e422]:
+            - text: Is it possible to edit a Power BI report from an embedded session?
+            - paragraph [ref=e423]
+            - paragraph
+            - paragraph [ref=e424]: 1. Yes
+            - paragraph [ref=e425]: 2. No
+            - paragraph
+          - generic [ref=e426]:
+            - generic [ref=e427]: Your Submission
+            - textbox "Your Submission" [ref=e429]
+          - separator [ref=e430]
+        - generic [ref=e431]:
+          - generic [ref=e432]:
+            - heading "Problem Statement 22" [level=5] [ref=e433]
+            - generic [ref=e434]:
+              - 'heading "Weightage: 1" [level=6] [ref=e435]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e436]'
+          - generic [ref=e437]:
+            - text: Live tile/dashboard embedding is not supported by Power BI Embedded.
+            - paragraph [ref=e438]
+            - paragraph
+            - paragraph [ref=e439]: 1. True
+            - paragraph [ref=e440]: 2. False
+            - paragraph
+          - generic [ref=e441]:
+            - generic [ref=e442]: Your Submission
+            - textbox "Your Submission" [ref=e444]
+          - separator [ref=e445]
+    - generic [ref=e211]:
+      - button "submit" [disabled]: Submit

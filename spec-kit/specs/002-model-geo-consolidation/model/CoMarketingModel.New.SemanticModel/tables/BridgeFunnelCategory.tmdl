@@ -1,0 +1,29 @@
+/// Bridge that converts the M:M Fact Partner Deal[Category] <-> Funnel Category[Actual Category]
+/// edge into two single-direction M:1 edges (Fact -> Bridge, Funnel Category -> Bridge),
+/// so the original bidi can be dropped while preserving the shared key surface.
+/// Forward filter (Funnel Category attributes -> facts) flows through the bridge.
+/// Reverse filter (fact narrowing the visible category list) is preserved by single-direction
+/// propagation because Fact Partner Deal[Category] is also Many on the bridge.
+table BridgeFunnelCategory
+	lineageTag: e2c11000-0001-4000-9000-000000000003
+
+	column 'Actual Category'
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: [Actual Category]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BridgeFunnelCategory = calculated
+		mode: import
+		source =
+				DISTINCT(
+					UNION(
+						SELECTCOLUMNS('Funnel Category',    "Actual Category", 'Funnel Category'[Actual Category]),
+						SELECTCOLUMNS('Fact Partner Deal',  "Actual Category", 'Fact Partner Deal'[Category])
+					)
+				)
+
+	annotation PBI_ResultType = Table
+
