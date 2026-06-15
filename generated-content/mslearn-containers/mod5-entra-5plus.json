@@ -1,0 +1,16 @@
+{
+  "module": "intro-to-azure-ad",
+  "results": [
+    {
+      "unit": "5-get-started",
+      "status": "visited",
+      "title": "Get started with Microsoft Entra ID - Training | Microsoft Learn"
+    },
+    {
+      "unit": "6-summary",
+      "status": "visited",
+      "title": "Summary - Training | Microsoft Learn"
+    }
+  ],
+  "completed": true
+}

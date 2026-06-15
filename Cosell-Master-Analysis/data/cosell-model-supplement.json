@@ -1,0 +1,22 @@
+{
+  "usesDivide": 138,
+  "looseRawDivision": 23,
+  "looseDivSamples": [
+    "IP Co-Sell Deals YTD (Azure)",
+    "# of YTD Leads",
+    "Partner Reported ACR (Azure) YTD",
+    "$ IP Co-Sell Deal Reg YTD (Azure)",
+    "$ IP Co-Sell Deal Reg (Azure) + Partner Reported ACR (Azure) YTD",
+    "Hours",
+    "Days",
+    "Co-Sell Deals EOP (BizApps) {Cumulative}",
+    "Co-Sell Deals YTD (BizApps) {ClosedMonth}",
+    "IP Co-Sell Deals YTD (Azure) {ClosedMonth}",
+    "Co-Sell Deals YTD (BizApps)",
+    "IP Co-Sell Deal Reg + Partner Reported ACR YTD (Azure)",
+    "Partner Reported ACR (Azure) {Cumulative}",
+    "Partner Attach Rate YTD %",
+    "PRACR Targets YTD_Base"
+  ],
+  "usesKeepFilters": 320
+}

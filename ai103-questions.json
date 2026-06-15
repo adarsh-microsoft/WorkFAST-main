@@ -1,0 +1,1205 @@
+{
+  "count": 100,
+  "items": [
+    {
+      "id": "ai-103-q-001",
+      "question": "Which Azure resource is the top-level container in Microsoft Foundry that holds shared infrastructure (storage, key vault, container registry, AI service connections) for one or more AI projects?",
+      "options": [
+        "Microsoft Foundry hub",
+        "Azure Cognitive Services account",
+        "Azure Resource Group",
+        "Azure Subscription"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A Microsoft Foundry hub is the top-level Azure resource that provides shared infrastructure (storage, key vault, container registry, and connections to AI services) for one or more Foundry projects. Projects are where teams actually build and deploy AI apps and agents."
+    },
+    {
+      "id": "ai-103-q-002",
+      "question": "You are building a generative AI app in a Foundry project. Which authentication mechanism is recommended for production code calling Azure OpenAI from Azure-hosted compute?",
+      "options": [
+        "API key embedded in source",
+        "Microsoft Entra ID with managed identity and the Cognitive Services OpenAI User role",
+        "Anonymous access",
+        "Shared admin password"
+      ],
+      "correctAnswer": 1,
+      "explanation": "For production, use Microsoft Entra ID with a managed identity assigned to the compute (App Service, Container Apps, Functions, AKS) and grant it the Cognitive Services OpenAI User data-plane role. This implements keyless, RBAC-based access and avoids embedding secrets."
+    },
+    {
+      "id": "ai-103-q-003",
+      "question": "Which Azure OpenAI model family is best suited for fast, low-cost summarization of short customer messages where reasoning depth is not required?",
+      "options": [
+        "o3 reasoning models",
+        "GPT-4.1 mini or gpt-4o-mini",
+        "DALL-E 3",
+        "Whisper"
+      ],
+      "correctAnswer": 1,
+      "explanation": "GPT-4.1 mini (or gpt-4o-mini) deliver low latency and low cost per token for routine generation tasks like short summarization where deep multistep reasoning isn't required. The o-series reasoning models are slower and more expensive and better suited for complex multi-step problems."
+    },
+    {
+      "id": "ai-103-q-004",
+      "question": "Which Azure OpenAI model class is optimized for complex multistep reasoning, math, code, and chain-of-thought workloads?",
+      "options": [
+        "Embedding models (text-embedding-3-large)",
+        "o-series reasoning models (e.g., o1, o3)",
+        "Whisper",
+        "TTS"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure OpenAI o-series reasoning models (o1, o3 family) are designed for complex multistep reasoning, math, code, and STEM problems. They use additional inference-time compute and produce higher-quality reasoning at the cost of latency and price."
+    },
+    {
+      "id": "ai-103-q-005",
+      "question": "Which Foundry feature provides a low-code visual designer for building, debugging, and evaluating sequences of LLM calls, Python steps, and tool nodes?",
+      "options": [
+        "Azure Logic Apps",
+        "Prompt flow",
+        "Azure Data Factory",
+        "Azure Bastion"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Foundry prompt flow lets you visually design, debug, and evaluate flows that combine LLM nodes, Python tools, and other connectors. It supports variants, batch evaluation, and tracing, and stores its definition in flow.dag.yaml for source control."
+    },
+    {
+      "id": "ai-103-q-006",
+      "question": "What does RAG (retrieval-augmented generation) primarily improve in a generative AI application?",
+      "options": [
+        "Image generation latency",
+        "Grounding answers in current, organization-specific knowledge that the base model wasn't trained on",
+        "GPU utilization on training clusters",
+        "Database backup speed"
+      ],
+      "correctAnswer": 1,
+      "explanation": "RAG retrieves relevant chunks from a knowledge store at query time and supplies them to the LLM as context. This grounds responses in current, organization-specific data that the model never saw during training, reducing hallucinations and enabling accurate domain answers without fine-tuning."
+    },
+    {
+      "id": "ai-103-q-007",
+      "question": "Which Azure service is the most common managed vector store used as the retrieval layer for Foundry RAG applications?",
+      "options": [
+        "Azure SQL Database",
+        "Azure AI Search with vector profiles and HNSW indexes",
+        "Azure Files",
+        "Azure NetApp Files"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure AI Search is the first-class managed vector store for Foundry RAG. It supports HNSW vector indexes, hybrid (keyword + vector) search, semantic ranking, security trimming, and integrated vectorization, making it well-suited for production RAG."
+    },
+    {
+      "id": "ai-103-q-008",
+      "question": "You want Azure AI Search to automatically chunk documents and generate embeddings during indexing. Which feature should you enable?",
+      "options": [
+        "Manual ingestion only",
+        "Integrated vectorization (skillsets with embedding skill and split skill)",
+        "Geo-replication",
+        "Full-text only"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure AI Search integrated vectorization configures a skillset that splits documents into chunks and calls an embedding model (e.g., Azure OpenAI text-embedding-3) to populate vector fields automatically during indexing. This eliminates the need to write custom ingestion code."
+    },
+    {
+      "id": "ai-103-q-009",
+      "question": "Which retrieval strategy in Azure AI Search combines BM25 keyword search and vector similarity, then re-ranks the merged results using a Microsoft cross-encoder model?",
+      "options": [
+        "Pure keyword",
+        "Hybrid search with semantic ranker",
+        "Geo-spatial search",
+        "Faceted search"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Hybrid search runs BM25 and vector queries in parallel and fuses results. When semantic ranking is enabled, the top results are re-ordered by a Microsoft cross-encoder model. This combination typically outperforms keyword-only or vector-only retrieval for RAG."
+    },
+    {
+      "id": "ai-103-q-010",
+      "question": "Which Azure OpenAI capability lets a model decide to invoke a developer-defined function (tool) and have the host app execute it before returning a final answer?",
+      "options": [
+        "Function calling (tool calling)",
+        "Embeddings",
+        "Whisper",
+        "Content filters"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Function calling (also called tool calling) lets you describe one or more functions to the model. The model can then return a structured request to invoke a function with arguments. The host app executes the function and returns the result so the model can produce the final answer."
+    },
+    {
+      "id": "ai-103-q-011",
+      "question": "Which Microsoft Foundry capability provides server-side state, threads, runs, and tool orchestration so you don't have to manage chat history yourself when building an agent?",
+      "options": [
+        "Azure DevOps boards",
+        "Microsoft Foundry Agent Service / Assistants API",
+        "Azure Service Bus queues",
+        "Azure Notification Hubs"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Foundry Agent Service (and the underlying Assistants-style API) manages threads, runs, message history, and tool execution server-side. You define an agent with instructions, tools, and a model; the service handles persistent conversation state and tool orchestration."
+    },
+    {
+      "id": "ai-103-q-012",
+      "question": "Which built-in tool can be attached to a Foundry agent so it can answer questions grounded in a specific Azure AI Search index without you writing retrieval code?",
+      "options": [
+        "Azure AI Search tool (file search / index grounding)",
+        "Azure DNS tool",
+        "Azure Backup tool",
+        "Azure Front Door tool"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry agents support a built-in Azure AI Search tool (also referred to as file search or grounding) that lets the agent retrieve relevant content from a configured index automatically. The agent invokes the tool when it determines retrieval would help answer the user's question."
+    },
+    {
+      "id": "ai-103-q-013",
+      "question": "Which framework is Microsoft's recommended option for building multi-agent orchestrations in .NET and Python that integrate with Foundry?",
+      "options": [
+        "Microsoft Agent Framework (and/or Semantic Kernel)",
+        "Apache Spark",
+        "TensorFlow",
+        "Azure Service Fabric"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Microsoft Agent Framework (which builds on Semantic Kernel concepts) is the recommended .NET and Python framework for building agents and multi-agent orchestrations on Azure. It integrates with Foundry models, prompt flow, and the Foundry Agent Service."
+    },
+    {
+      "id": "ai-103-q-014",
+      "question": "Which Azure AI Vision capability extracts printed and handwritten text from images and PDFs?",
+      "options": [
+        "Image captioning",
+        "Read API (OCR)",
+        "Face detection",
+        "Speaker recognition"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The Read API in Azure AI Vision performs OCR on printed and handwritten text in images and PDFs. It returns text, bounding boxes, language, and confidence scores. For richer document understanding (forms, tables, structured fields), use Azure AI Document Intelligence."
+    },
+    {
+      "id": "ai-103-q-015",
+      "question": "You need to extract structured fields (vendor name, total, invoice number, line items) from invoices in many formats. Which Azure service provides a prebuilt model for this?",
+      "options": [
+        "Azure AI Document Intelligence prebuilt invoice model",
+        "Azure AI Search default analyzer",
+        "Azure Cognitive Services Speech",
+        "Azure Cosmos DB analytical store"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Document Intelligence ships a prebuilt invoice model that extracts vendor, total, invoice number, line items, and many other common invoice fields out of the box. For specialized formats you can train custom extraction or classification models."
+    },
+    {
+      "id": "ai-103-q-016",
+      "question": "Which Azure AI Speech capability converts continuous audio into text, supports multiple languages, and offers custom acoustic and language models?",
+      "options": [
+        "Speech to text",
+        "Text to speech",
+        "Speech translation",
+        "Voice live"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Speech's speech-to-text service transcribes audio into text in many languages and supports custom speech models tuned with your domain audio and lexicon. Text to speech and speech translation are different services within the Speech API family."
+    },
+    {
+      "id": "ai-103-q-017",
+      "question": "Which Azure AI Speech feature lets you control pronunciation, pauses, prosody, and voice style in synthesized output using XML-based markup?",
+      "options": [
+        "JSON config only",
+        "Speech Synthesis Markup Language (SSML)",
+        "ARM templates",
+        "OpenAPI"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SSML (Speech Synthesis Markup Language) is the W3C XML-based markup that Azure AI Speech text-to-speech accepts to control pronunciation, pauses, prosody, voice, role, style, and degree. Using SSML enables natural and brand-aligned voice output."
+    },
+    {
+      "id": "ai-103-q-018",
+      "question": "Which Azure AI Language feature lets you build a conversational understanding model that classifies user utterances into intents and extracts entities?",
+      "options": [
+        "Conversational Language Understanding (CLU)",
+        "Custom Vision",
+        "Speaker Recognition",
+        "Anomaly Detector"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Conversational Language Understanding (CLU) in Azure AI Language is the modern replacement for LUIS. It lets you train a model on labeled utterances to classify intents and extract entities, supporting multi-turn and multi-language scenarios."
+    },
+    {
+      "id": "ai-103-q-019",
+      "question": "Which Azure AI Language capability lets you build a question-answering knowledge base from FAQ pages, manuals, or URLs with multi-turn follow-up support?",
+      "options": [
+        "Question Answering (custom QnA)",
+        "Translator",
+        "Speech to text",
+        "Personalizer"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Question Answering feature in Azure AI Language ingests FAQ pages, URLs, and documents to build a knowledge base, supports multi-turn follow-up prompts, and can be deployed as a REST endpoint. It is the modern replacement for QnA Maker."
+    },
+    {
+      "id": "ai-103-q-020",
+      "question": "Which Azure AI Content Safety category specifically detects user prompts attempting to bypass model safety guardrails (jailbreak attempts)?",
+      "options": [
+        "Hate severity",
+        "Prompt Shields (direct and indirect attack detection)",
+        "Sexual severity",
+        "Violence severity"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure AI Content Safety includes Prompt Shields, which detect direct jailbreak attempts and indirect (cross-prompt) injection attempts in retrieved content. The harm category models (hate, sexual, violence, self-harm) detect harmful content rather than attack patterns."
+    },
+    {
+      "id": "ai-103-q-021",
+      "question": "Which built-in Foundry evaluator measures whether a generated response is supported by the retrieved context in a RAG application?",
+      "options": [
+        "Coherence",
+        "Fluency",
+        "Groundedness",
+        "Latency"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Groundedness measures the degree to which the generated response is supported by the supplied context. It is a core RAG-quality evaluator. Coherence and fluency assess language quality without reference to context, and latency is a performance metric."
+    },
+    {
+      "id": "ai-103-q-022",
+      "question": "Which Foundry feature lets you perform A/B testing of two prompt variants on a fixed evaluation dataset and compare quality metrics?",
+      "options": [
+        "Manual chat in playground",
+        "Bulk test (batch run) with prompt variants and built-in evaluators",
+        "Azure DDoS Protection",
+        "Azure Cost Management"
+      ],
+      "correctAnswer": 1,
+      "explanation": "A bulk test (batch run) executes a flow against many rows of an evaluation dataset for each variant, with built-in evaluators (groundedness, relevance, coherence, fluency) yielding per-variant metrics. This supports objective A/B comparison of prompts."
+    },
+    {
+      "id": "ai-103-q-023",
+      "question": "Which Python SDK is the modern unified entry point for working with Foundry projects, including agents, deployments, evaluations, and connections?",
+      "options": [
+        "azure-ai-projects",
+        "azure-storage-blob",
+        "azure-cosmos",
+        "azure-mgmt-network"
+      ],
+      "correctAnswer": 0,
+      "explanation": "azure-ai-projects is the unified Python SDK for Foundry projects. It exposes clients for agents, deployments, evaluations, datasets, indexes, connections, and more. azure-ai-inference is its companion for direct model inference."
+    },
+    {
+      "id": "ai-103-q-024",
+      "question": "Which Azure SDK package provides a unified inference client that calls deployed Foundry models (Azure OpenAI, open-source, multimodal) via a single API surface?",
+      "options": [
+        "azure-ai-inference",
+        "azure-iot-hub",
+        "azure-monitor-query",
+        "azure-mgmt-resource"
+      ],
+      "correctAnswer": 0,
+      "explanation": "azure-ai-inference provides a unified Python (and .NET) inference client that targets deployed Foundry models with a single API, regardless of whether the model is Azure OpenAI, an open-source serverless API, or a managed-compute deployment. It supports chat, embeddings, and image inputs."
+    },
+    {
+      "id": "ai-103-q-025",
+      "question": "Which content filter setting in an Azure OpenAI deployment determines the severity threshold for hate, sexual, violence, and self-harm categories?",
+      "options": [
+        "TLS protocol version",
+        "Per-category severity (low, medium, high) for both prompt and completion",
+        "Region of the deployment",
+        "Model name"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure OpenAI deployments allow you to configure a content filter per deployment with severity thresholds (low, medium, high) for hate, sexual, violence, and self-harm categories applied to both prompts and completions, plus optional Prompt Shields and protected material detection."
+    },
+    {
+      "id": "ai-103-q-026",
+      "question": "Which Azure AI Vision feature analyzes video streams for events such as people counting and zone violations in retail or industrial scenarios?",
+      "options": [
+        "Speaker Recognition",
+        "Spatial Analysis",
+        "Translator",
+        "QnA Maker"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Spatial Analysis in Azure AI Vision processes video to count people, detect zone entry and exit, social distancing, face mask detection, and other events. It is typically deployed as containers near the camera for low latency."
+    },
+    {
+      "id": "ai-103-q-027",
+      "question": "Which Azure service indexes video content to enable searchable transcripts, face recognition, OCR, sentiment, and topic extraction?",
+      "options": [
+        "Azure AI Video Indexer",
+        "Azure Front Door",
+        "Azure Container Registry",
+        "Azure Service Bus"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Video Indexer extracts insights from video and audio: transcript, translation, OCR, face recognition, speaker identification, topics, keywords, sentiment, and brand detection, exposing them via REST APIs and a UI for search and discovery."
+    },
+    {
+      "id": "ai-103-q-028",
+      "question": "Which Foundry capability deploys a foundation model on dedicated managed VMs inside your VNet, suitable for open-source or custom models that need network isolation?",
+      "options": [
+        "Standard pay-as-you-go API",
+        "Managed compute deployment",
+        "Anonymous endpoint",
+        "Free tier"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Foundry managed compute deployments host a model on Azure-managed dedicated GPU VMs, with optional VNet integration and private endpoints. This is appropriate for open-source models, custom fine-tuned models, or workloads that require network isolation and predictable performance."
+    },
+    {
+      "id": "ai-103-q-029",
+      "question": "Which approach reserves dedicated capacity in Azure OpenAI for a high-volume workload to guarantee throughput and latency?",
+      "options": [
+        "Increase the chat temperature",
+        "Provisioned Throughput Units (PTUs)",
+        "Disable rate limits",
+        "Use embeddings only"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Provisioned Throughput Units (PTUs) reserve dedicated model capacity for a deployment, providing guaranteed throughput and stable latency. This contrasts with the standard pay-as-you-go option, which shares capacity and can be rate-limited under load."
+    },
+    {
+      "id": "ai-103-q-030",
+      "question": "Which prompt-engineering technique gives the LLM a few input/output examples directly in the prompt so it generalizes the pattern?",
+      "options": [
+        "Zero-shot prompting",
+        "Few-shot prompting",
+        "Fine-tuning",
+        "Chain-of-thought distillation"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Few-shot prompting includes a small number of input/output examples in the prompt, teaching the model the desired pattern in-context. Zero-shot omits examples; fine-tuning updates the model itself; chain-of-thought elicits step-by-step reasoning."
+    },
+    {
+      "id": "ai-103-q-031",
+      "question": "Which Azure OpenAI capability allows you to fine-tune a chat model (e.g., GPT-4.1 mini) with curated input/output pairs to improve performance on a specific task?",
+      "options": [
+        "Embeddings",
+        "Fine-tuning (supervised) on the Azure OpenAI service",
+        "Whisper",
+        "Image generation"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure OpenAI supports supervised fine-tuning of selected chat and embedding models with curated input/output pairs in JSONL format. After training, the fine-tuned model is deployed like any other Azure OpenAI deployment and can be called via the standard SDKs."
+    },
+    {
+      "id": "ai-103-q-032",
+      "question": "Which Azure OpenAI embedding model is recommended in 2026 for general-purpose semantic search and retrieval?",
+      "options": [
+        "text-embedding-3-large (or text-embedding-3-small for cheaper use cases)",
+        "DALL-E 3",
+        "Whisper",
+        "TTS"
+      ],
+      "correctAnswer": 0,
+      "explanation": "text-embedding-3-large is Azure OpenAI's high-quality general-purpose embedding model. text-embedding-3-small is a lower-cost option for less demanding use cases. Both produce vectors usable for semantic search, clustering, and recommendations."
+    },
+    {
+      "id": "ai-103-q-033",
+      "question": "What is a key responsible-AI risk you must mitigate when deploying a generative AI assistant that retrieves from user-uploaded content?",
+      "options": [
+        "Prompt injection from malicious documents that try to redirect the assistant",
+        "GPU thermal throttling",
+        "TCP packet loss",
+        "Region failover lag"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Indirect prompt injection occurs when malicious instructions are embedded in retrieved content (web pages, uploaded files, emails). Mitigations include Azure AI Content Safety prompt shields, hardened system prompts that treat retrieved content as untrusted, and tool-call guardrails."
+    },
+    {
+      "id": "ai-103-q-034",
+      "question": "Which Foundry capability enables continuous monitoring of a deployed generative AI app for groundedness, relevance, and safety on a sample of production traffic?",
+      "options": [
+        "Continuous evaluation in Foundry monitoring",
+        "Azure Backup",
+        "Azure Site Recovery",
+        "Azure Bastion"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry continuous evaluation samples production requests/responses and applies configured evaluators (groundedness, relevance, content safety, custom) on a recurring schedule. This shifts evaluation from a pre-release gate to ongoing observability."
+    },
+    {
+      "id": "ai-103-q-035",
+      "question": "Which Azure service provides per-deployment metrics (request count, latency, prompt tokens, completion tokens, content-filter triggers) for an Azure OpenAI deployment?",
+      "options": [
+        "Azure Monitor (Azure OpenAI metric namespace)",
+        "Azure DDoS Protection",
+        "Azure Migrate",
+        "Azure Backup"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure OpenAI emits metrics to Azure Monitor in its dedicated namespace, including per-deployment requests, latency, prompt and completion tokens, and content-filter triggers. Application Insights and Log Analytics can be used to build dashboards and alerts."
+    },
+    {
+      "id": "ai-103-q-036",
+      "question": "Which agent design pattern uses one orchestrator agent that delegates subtasks to specialized worker agents and aggregates their results?",
+      "options": [
+        "Single-agent chat",
+        "Hierarchical multi-agent (orchestrator + workers)",
+        "Round-robin polling",
+        "Pure broadcast"
+      ],
+      "correctAnswer": 1,
+      "explanation": "A hierarchical multi-agent design has a top-level orchestrator agent that decomposes tasks and delegates them to specialized worker agents (e.g., research, coding, summarization), then aggregates the results. Microsoft Agent Framework supports this and other multi-agent topologies."
+    },
+    {
+      "id": "ai-103-q-037",
+      "question": "Which Foundry capability ensures that an agent's tool calls are restricted to a defined allowed list (so injected instructions cannot trigger arbitrary tools)?",
+      "options": [
+        "Tool whitelisting in the agent definition (the agent only exposes the tools you register)",
+        "Disable Azure Monitor",
+        "Use plaintext keys",
+        "Enable anonymous access"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Agents can only call tools you explicitly register with the agent. Restricting the agent to the minimum required toolset (and applying authorization in the tool implementations themselves) limits the blast radius of any prompt-injection or model misbehavior."
+    },
+    {
+      "id": "ai-103-q-038",
+      "question": "Which Azure AI Language feature translates text between many languages and is recommended over standalone Translator for new development inside Foundry workflows?",
+      "options": [
+        "Translator (Azure AI Translator)",
+        "Speech to text",
+        "Custom Vision",
+        "Personalizer"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Translator (part of the Azure AI services / Language family) supports text translation across many languages, document translation, and custom translation (Custom Translator). It is the recommended Azure-native translation API for app developers."
+    },
+    {
+      "id": "ai-103-q-039",
+      "question": "Which Foundry concept stores a named, reusable connection (with credentials) from a project to an external service like Azure OpenAI or Azure AI Search?",
+      "options": [
+        "Connection",
+        "Datastore",
+        "Endpoint",
+        "Compute target"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A Foundry connection is a named, reusable reference to an external service plus its authentication method (managed identity, API key, Entra ID). Flows, code, and agents consume connections by name without embedding credentials."
+    },
+    {
+      "id": "ai-103-q-040",
+      "question": "Which approach is recommended to reduce token cost in a RAG application without significantly degrading quality?",
+      "options": [
+        "Always pass the entire knowledge base in the system prompt",
+        "Improve retrieval precision so fewer, more relevant chunks are sent to the model",
+        "Set max_tokens to a very large value",
+        "Disable embeddings"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Token cost is dominated by prompt length, which is dominated by retrieved context. Improving retrieval precision (better embeddings, hybrid search, semantic re-ranking, smaller k, tighter chunking) reduces context size while preserving or improving quality."
+    },
+    {
+      "id": "ai-103-q-041",
+      "question": "Which Azure AI Search feature filters retrieval results based on a user's group membership so users see only documents they are authorized to view?",
+      "options": [
+        "Security trimming with filter on principal IDs",
+        "TLS termination",
+        "Geo-redundant storage",
+        "Content moderation"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Search supports security trimming by storing principal IDs (e.g., Entra ID groups) on each document and filtering at query time using filter expressions. This ensures users only see documents whose principal list intersects with their group memberships."
+    },
+    {
+      "id": "ai-103-q-042",
+      "question": "Which Azure AI Document Intelligence model type would you use to extract custom fields (e.g., 'student ID', 'enrollment date') from a school enrollment form?",
+      "options": [
+        "Custom extraction model trained on labeled samples",
+        "Prebuilt invoice model",
+        "Read API",
+        "Translator"
+      ],
+      "correctAnswer": 0,
+      "explanation": "When fields are domain-specific and not covered by a prebuilt model, train a custom extraction model in Azure AI Document Intelligence with labeled samples. The trained model can be deployed and called from your application to extract those fields from new documents."
+    },
+    {
+      "id": "ai-103-q-043",
+      "question": "Which multimodal capability of Azure OpenAI gpt-4o lets a single model accept image and text inputs in the same request?",
+      "options": [
+        "Vision-enabled chat completions",
+        "Function calling only",
+        "Embeddings only",
+        "Speech-to-text only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "gpt-4o (and successors) accept multimodal chat completion inputs that combine text and image content parts in the same request. This enables tasks like answering questions about a screenshot, describing a chart, or summarizing a document image, in one model call."
+    },
+    {
+      "id": "ai-103-q-044",
+      "question": "Which Azure OpenAI feature streams generated tokens to the client as they're produced, reducing time-to-first-token in chat UIs?",
+      "options": [
+        "Server-sent events streaming (stream=true) in chat completions",
+        "Batch transcription",
+        "Cold storage",
+        "Synchronous polling once per minute"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Setting stream=true on Azure OpenAI chat completions returns a stream of server-sent events containing partial tokens as they're generated. This dramatically improves perceived latency in chat UIs by letting users start reading immediately."
+    },
+    {
+      "id": "ai-103-q-045",
+      "question": "Which feature of structured outputs in Azure OpenAI ensures the model returns JSON that conforms to a developer-supplied schema?",
+      "options": [
+        "Free-form prose only",
+        "JSON schema-constrained structured outputs",
+        "TLS",
+        "Embeddings"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Structured outputs constrain the model to emit JSON conforming to a developer-supplied JSON schema. This eliminates parsing errors and is ideal for tool calls, function arguments, and downstream automation that expects strict data shapes."
+    },
+    {
+      "id": "ai-103-q-046",
+      "question": "Which Foundry feature enables you to ground a chat agent in a connected Azure AI Search index by attaching it as a data source to an Azure OpenAI deployment?",
+      "options": [
+        "On Your Data (Azure OpenAI On Your Data)",
+        "Azure DNS records",
+        "Azure Bastion",
+        "Azure Front Door"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure OpenAI On Your Data (the data sources feature) lets you attach an Azure AI Search index (or other supported sources) directly to a chat completion call. The service handles retrieval, prompt construction, and citation generation."
+    },
+    {
+      "id": "ai-103-q-047",
+      "question": "Which Azure AI Content Safety classification protects against the model generating verbatim copyrighted content (e.g., song lyrics, code)?",
+      "options": [
+        "Hate severity",
+        "Protected material detection",
+        "Sexual severity",
+        "Self-harm severity"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure AI Content Safety includes protected material detection that identifies generated content matching known copyrighted material such as song lyrics, code, and selected text. It can be enabled per Azure OpenAI deployment as part of the content filter."
+    },
+    {
+      "id": "ai-103-q-048",
+      "question": "Which Foundry construct represents a deployed model endpoint that an app or agent can call, distinct from the underlying model artifact?",
+      "options": [
+        "Deployment",
+        "Hub",
+        "Registry",
+        "Subscription"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A deployment in Foundry / Azure OpenAI is the named, callable instance of a specific model and version with its own throughput, content filter, and (optionally) PTU/managed-compute configuration. Multiple deployments can wrap the same underlying model."
+    },
+    {
+      "id": "ai-103-q-049",
+      "question": "Which technique should you use to limit the maximum length of an LLM response in chat completions?",
+      "options": [
+        "max_tokens parameter (or max_completion_tokens)",
+        "Increase temperature",
+        "Set top_p to 1",
+        "Use a longer system prompt"
+      ],
+      "correctAnswer": 0,
+      "explanation": "max_tokens (or the newer max_completion_tokens for reasoning models) caps the number of tokens the model can generate in the response. This protects against runaway responses, controls cost, and helps fit responses into downstream constraints."
+    },
+    {
+      "id": "ai-103-q-050",
+      "question": "Which sampling parameter controls how deterministic vs. creative an LLM's output is, with 0 being most deterministic?",
+      "options": [
+        "temperature",
+        "frequency_penalty only",
+        "stop sequences",
+        "max_tokens"
+      ],
+      "correctAnswer": 0,
+      "explanation": "temperature controls randomness of the output; near 0 is deterministic and useful for extraction or classification, higher values (e.g., 0.7-1.0) are more creative and useful for ideation. top_p is an alternative nucleus sampling control."
+    },
+    {
+      "id": "ai-103-q-051",
+      "question": "Which Foundry capability provides distributed tracing of every step in a prompt flow (retrieval, prompt build, LLM call, tool invocation) using OpenTelemetry?",
+      "options": [
+        "Tracing in Foundry observability (OpenTelemetry-compatible)",
+        "Azure Service Health",
+        "Azure Cost Alerts",
+        "Azure Backup"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry instruments prompt flows and SDK calls with OpenTelemetry-compatible distributed tracing. Each request produces a trace with spans for retrieval, prompt construction, LLM calls, and tool invocations, surfaced in Application Insights and Foundry's tracing UI."
+    },
+    {
+      "id": "ai-103-q-052",
+      "question": "Which Azure feature lets you alert when an Azure OpenAI deployment's daily token usage exceeds a threshold?",
+      "options": [
+        "Azure Monitor metric alert on token-usage metrics with Action Group notification",
+        "Azure Bastion",
+        "Azure Site Recovery",
+        "Azure Migrate"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure Monitor metric alerts can fire on Azure OpenAI's prompt and completion token metrics with thresholds and action groups (email, webhook, Logic Apps). This is the recommended way to detect and react to runaway token usage."
+    },
+    {
+      "id": "ai-103-q-053",
+      "question": "Which built-in agent tool lets a Foundry agent execute Python code in a sandboxed interpreter (for analysis, math, or chart generation)?",
+      "options": [
+        "Code Interpreter",
+        "Logic Apps connector",
+        "Azure DNS query tool",
+        "Azure Front Door tool"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Code Interpreter tool runs Python in a sandboxed environment as part of an agent's tool call. The agent can analyze uploaded files, perform calculations, generate plots, and return results back into the conversation."
+    },
+    {
+      "id": "ai-103-q-054",
+      "question": "Which agent feature lets you upload reference documents (PDFs, DOCX) and have the agent answer grounded in them without you provisioning an Azure AI Search index?",
+      "options": [
+        "File Search (built-in agent file grounding)",
+        "Azure Storage soft delete",
+        "Azure Cosmos DB throughput",
+        "Azure CDN cache"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The File Search tool lets you attach files to an agent or thread; the service handles chunking, embedding, and retrieval automatically, so the agent can answer questions grounded in those files without you wiring up Azure AI Search yourself."
+    },
+    {
+      "id": "ai-103-q-055",
+      "question": "Which design choice helps ensure that retrieved citations are surfaced to the user so they can verify the source of each grounded statement?",
+      "options": [
+        "Hide all sources",
+        "Use Azure OpenAI On Your Data or a flow that returns citation metadata, and render citations in the UI",
+        "Use temperature 1.5",
+        "Set max_tokens to 8"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure OpenAI On Your Data and well-designed RAG flows return citation metadata alongside the answer, allowing the UI to render footnotes/links to source chunks. This builds user trust and supports verification, a responsible-AI best practice."
+    },
+    {
+      "id": "ai-103-q-056",
+      "question": "Which Azure OpenAI feature lets you batch many independent prompts into a single asynchronous job that completes within 24 hours at a discounted price?",
+      "options": [
+        "Real-time streaming chat",
+        "Batch API (asynchronous batch processing)",
+        "On Your Data",
+        "Embeddings only"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The Azure OpenAI Batch API accepts a JSONL file of independent requests and processes them asynchronously, typically within 24 hours, at significantly reduced per-token cost. It's well-suited to bulk classification, summarization, or evaluation jobs."
+    },
+    {
+      "id": "ai-103-q-057",
+      "question": "Which Azure compute option is most appropriate for hosting a stateless web app that serves a Foundry-powered chat UI with autoscale and easy continuous deployment?",
+      "options": [
+        "Azure App Service or Azure Container Apps",
+        "Azure HPC dedicated bare metal",
+        "Azure Batch",
+        "Azure Sphere"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure App Service and Azure Container Apps are managed compute options that support autoscaling, managed identities, and continuous deployment, making them ideal for stateless chat UIs that call Foundry. AKS is also valid but adds operational complexity."
+    },
+    {
+      "id": "ai-103-q-058",
+      "question": "Which strategy reduces hallucinations in a RAG-grounded chatbot the most?",
+      "options": [
+        "Increase max_tokens",
+        "Improve retrieval quality (chunking, embeddings, hybrid search) and tighten the system prompt to insist on grounding in retrieved context",
+        "Disable evaluation",
+        "Switch off streaming"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Hallucinations in RAG are usually caused by weak retrieval (no relevant context) or weak instructions. Improving retrieval (chunking, embedding choice, hybrid + semantic search) and tightening the system prompt to demand citations and refusal when context is missing is the most effective combination."
+    },
+    {
+      "id": "ai-103-q-059",
+      "question": "Which Foundry capability supports model evaluation against a labeled test set with both built-in (groundedness, relevance, coherence, fluency, F1) and custom evaluators?",
+      "options": [
+        "Foundry Evaluations",
+        "Azure SQL Backups",
+        "Azure ExpressRoute",
+        "Azure Front Door"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry Evaluations let you run built-in (groundedness, relevance, coherence, fluency, F1, similarity, plus risk and safety) and custom evaluators against a labeled test set. Results are stored in the project for comparison across model and prompt versions."
+    },
+    {
+      "id": "ai-103-q-060",
+      "question": "Which OpenAI Whisper-derived service in Azure transcribes audio at scale via a batch transcription REST API?",
+      "options": [
+        "Azure AI Speech batch transcription",
+        "Azure Notification Hubs",
+        "Azure Front Door",
+        "Azure Service Bus"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Speech provides batch transcription that ingests audio files from blob storage and returns transcripts asynchronously. Azure OpenAI also exposes Whisper for short audio. For large-scale batch transcription, Azure AI Speech is the typical choice."
+    },
+    {
+      "id": "ai-103-q-061",
+      "question": "Which Foundry feature lets developers iterate on a flow locally, then publish a new version to a Foundry project from CI/CD?",
+      "options": [
+        "Prompt flow CLI / Foundry CLI commands invoked from GitHub Actions",
+        "Manual portal click only",
+        "Azure DNS",
+        "Azure Bastion"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Prompt flow / Foundry CLI commands (pf flow build, pf run create, az ml ... for endpoints) can be invoked from GitHub Actions to test, evaluate, and deploy flows. This enables proper CI/CD for prompt flows."
+    },
+    {
+      "id": "ai-103-q-062",
+      "question": "Which Foundry construct contains chat history, run state, and tool execution context for an ongoing conversation with an agent?",
+      "options": [
+        "Thread",
+        "Hub",
+        "Registry",
+        "Subscription"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A thread holds the messages and state for an ongoing conversation with an agent. A run executes the agent against a thread, and the service manages tool calls and message persistence within the thread."
+    },
+    {
+      "id": "ai-103-q-063",
+      "question": "Which approach correctly handles retries on 429 rate-limit errors from Azure OpenAI?",
+      "options": [
+        "Immediate retry in a tight loop",
+        "Exponential backoff with jitter, respecting the Retry-After header",
+        "Fail fast and never retry",
+        "Increase temperature on retry"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Azure OpenAI 429 responses include a Retry-After header. Clients should respect it and use exponential backoff with jitter to avoid thundering herds. The Azure SDKs implement this by default; if you write a custom HTTP client, you must implement it yourself."
+    },
+    {
+      "id": "ai-103-q-064",
+      "question": "Which design pattern uses a smaller cheaper model to draft and a larger model to verify, balancing cost and quality?",
+      "options": [
+        "Speculative decoding / draft-and-verify cascade",
+        "Random model selection",
+        "Always use the largest model",
+        "Always use the smallest model"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A cascade pattern uses a small model to draft an answer and a larger model to verify or rewrite. Speculative decoding is a related inference-time technique. Both reduce average cost while maintaining quality on hard cases."
+    },
+    {
+      "id": "ai-103-q-065",
+      "question": "Which capability lets you customize an Azure OpenAI text-to-speech voice with sample recordings to create a brand voice?",
+      "options": [
+        "Custom Neural Voice (Azure AI Speech)",
+        "Custom Vision",
+        "Personalizer",
+        "Custom Translator"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Custom Neural Voice in Azure AI Speech lets you create a unique synthetic voice using approved voice talent recordings. Access requires application and approval due to responsible-AI considerations including consent and disclosure requirements."
+    },
+    {
+      "id": "ai-103-q-066",
+      "question": "Which Azure AI Search vector configuration controls the algorithm and parameters used to build the approximate-nearest-neighbor index?",
+      "options": [
+        "Vector profile referencing a vector search algorithm configuration (e.g., HNSW with m and efConstruction)",
+        "Storage account redundancy setting",
+        "Network rule",
+        "Replica count only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "In Azure AI Search, vector profiles reference a vector search algorithm configuration (typically HNSW with m, efConstruction, efSearch parameters, plus an optional vectorizer). Tuning these affects index build cost, query latency, and recall."
+    },
+    {
+      "id": "ai-103-q-067",
+      "question": "Which approach is required for an enterprise-grade Foundry deployment that must keep all traffic on the Microsoft backbone and prevent data exfiltration?",
+      "options": [
+        "Use private endpoints for the hub, project, OpenAI, AI Search, storage, key vault inside a VNet",
+        "Open all firewall rules",
+        "Use only the public Internet",
+        "Run on a personal laptop"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Configuring private endpoints for every dependent service inside a VNet ensures traffic stays on the Microsoft backbone with private IPs. Combined with disabling public network access, this is the recommended enterprise pattern for sensitive workloads."
+    },
+    {
+      "id": "ai-103-q-068",
+      "question": "Which Azure OpenAI feature lets you store a system prompt and tool definitions as part of an Assistant/Agent so each new conversation starts pre-configured?",
+      "options": [
+        "Agent (Assistant) definition with instructions, tools, and model",
+        "DNS records",
+        "Public IP address",
+        "Storage container ACL"
+      ],
+      "correctAnswer": 0,
+      "explanation": "An agent (Assistant) definition stores instructions (system prompt), allowed tools, and the model and parameters. New threads created against the agent inherit this configuration, ensuring consistent behavior without re-specifying it per request."
+    },
+    {
+      "id": "ai-103-q-069",
+      "question": "Which approach is best to implement memory across sessions for a personal AI assistant in Foundry?",
+      "options": [
+        "Persist user-specific facts to a datastore and inject them into the system prompt at the start of each new thread",
+        "Rely on the model's training data alone",
+        "Store memory in plain DNS TXT records",
+        "Hardcode memories in the system prompt"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Cross-session memory is implemented by persisting user-specific facts to a datastore (e.g., Cosmos DB, Azure SQL, Azure AI Search) keyed by user ID, then injecting relevant memories into the system prompt of new threads. This is sometimes called a memory store pattern."
+    },
+    {
+      "id": "ai-103-q-070",
+      "question": "Which Azure capability lets you replay a captured request/response in Foundry tracing to debug a specific user-reported issue?",
+      "options": [
+        "Tracing UI with end-to-end span details and replay/inspection",
+        "Azure DNS",
+        "Azure Backup vault",
+        "Azure CDN edge cache"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry's tracing UI surfaces full traces of a request including spans for retrieval, prompt, LLM call, and tools, with inputs/outputs at each step. Combined with App Insights logs, this lets engineers reconstruct, inspect, and replay specific user-reported issues."
+    },
+    {
+      "id": "ai-103-q-071",
+      "question": "Which Azure OpenAI deployment property controls how many tokens per minute (TPM) clients can send to a deployment before being throttled?",
+      "options": [
+        "TPM quota assigned to the deployment",
+        "Storage redundancy",
+        "Region",
+        "Model name"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Each Azure OpenAI deployment is allocated a TPM (tokens per minute) quota out of the regional capacity pool. Clients exceeding TPM (or RPM, requests per minute) receive 429 throttling responses. Quota can be requested via support or self-service in the portal."
+    },
+    {
+      "id": "ai-103-q-072",
+      "question": "Which approach lets you efficiently send the same long context (e.g., a static knowledge document) across many requests without paying full token cost each time?",
+      "options": [
+        "Prompt caching (when supported by the model and SDK)",
+        "Increase temperature",
+        "Use embeddings",
+        "Use Whisper"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Prompt caching (supported on selected Azure OpenAI models) detects identical prompt prefixes across requests and reuses cached computation, lowering both latency and per-request cost for the cached portion. This is ideal for repeated long system prompts."
+    },
+    {
+      "id": "ai-103-q-073",
+      "question": "Which Azure AI Document Intelligence model best identifies the type of an unknown document (invoice, receipt, contract, etc.) before downstream extraction?",
+      "options": [
+        "Custom classification model",
+        "Read API",
+        "Translator",
+        "Speech to text"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Custom classification models in Azure AI Document Intelligence are trained on labeled samples to assign incoming documents to one of several classes. The classification result then drives which extraction model is used downstream."
+    },
+    {
+      "id": "ai-103-q-074",
+      "question": "Which Foundry concept represents a single environment (typically per team or per workload) in which AI applications are developed and deployed?",
+      "options": [
+        "Project",
+        "Subscription",
+        "Resource group",
+        "Region"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A Foundry project sits under a hub and is the unit where teams develop and deploy AI apps and agents. Projects own deployments, indexes, connections, datasets, and evaluation results, while inheriting shared infra from the hub."
+    },
+    {
+      "id": "ai-103-q-075",
+      "question": "Which Azure AI service is the recommended starting point for performing real-time speech translation across many languages?",
+      "options": [
+        "Speech translation in Azure AI Speech",
+        "Custom Vision",
+        "Personalizer",
+        "Anomaly Detector"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Speech provides speech translation that combines speech-to-text, machine translation, and (optionally) text-to-speech for real-time multilingual conversations. It is the recommended Azure-native approach for spoken translation scenarios."
+    },
+    {
+      "id": "ai-103-q-076",
+      "question": "Which Azure AI Vision feature analyzes image content and returns a list of detected objects with bounding boxes?",
+      "options": [
+        "Object detection",
+        "Speaker recognition",
+        "QnA Maker",
+        "Personalizer"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Object detection in Azure AI Vision returns a list of detected objects with class labels and bounding box coordinates. For domain-specific objects, train a custom Image Analysis model in Vision Studio with labeled images."
+    },
+    {
+      "id": "ai-103-q-077",
+      "question": "Which approach to building a domain-specific image classifier requires the smallest amount of labeled training data?",
+      "options": [
+        "Train a model from scratch with millions of images",
+        "Train a custom model in Azure AI Vision Image Analysis using transfer learning on the prebuilt foundation model",
+        "Use a pure Python script with no pretrained model",
+        "Use only data augmentation"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Custom Image Analysis in Azure AI Vision uses transfer learning from a pretrained foundation model, so a small labeled dataset (often dozens to hundreds of images per class) is sufficient. Training from scratch requires orders of magnitude more data."
+    },
+    {
+      "id": "ai-103-q-078",
+      "question": "Which Foundry capability lets you ground an agent on a curated set of websites, returning answers with web citations?",
+      "options": [
+        "Bing/Web Grounding tool for agents",
+        "Azure DNS",
+        "Azure Cosmos DB",
+        "Azure Storage"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Web Grounding (Bing) tool for Foundry agents allows the agent to perform web search and use the results as grounding, returning citations to the user. It is intended for use cases where current public web content is needed."
+    },
+    {
+      "id": "ai-103-q-079",
+      "question": "Which Azure OpenAI capability is the most appropriate choice for generating images from text prompts in 2026?",
+      "options": [
+        "DALL-E 3 (or successor)",
+        "Whisper",
+        "text-embedding-3-small",
+        "gpt-4o-mini"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DALL-E 3 (and its successors) is the Azure OpenAI image-generation model. It generates images from text prompts and is appropriate for creative and design scenarios, subject to content policies and content filters."
+    },
+    {
+      "id": "ai-103-q-080",
+      "question": "Which Azure feature lets you store secrets (API keys, connection strings) used by a Foundry-powered app in a secure, RBAC-protected vault?",
+      "options": [
+        "Azure Key Vault",
+        "Azure Storage table",
+        "Azure DNS TXT records",
+        "Azure Front Door"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure Key Vault is the standard Azure secrets store. Apps retrieve secrets at runtime via managed identity with RBAC, eliminating embedded secrets in code or config files. Foundry hubs are linked to a Key Vault for credentials of connections."
+    },
+    {
+      "id": "ai-103-q-081",
+      "question": "Which Foundry capability lets you compare two model versions in production by routing 90% of traffic to the current model and 10% to the new one?",
+      "options": [
+        "Traffic split (canary) on a managed online endpoint",
+        "Single deployment only",
+        "Manual DNS swap",
+        "VPN failover"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Managed online endpoints support multiple deployments behind a single endpoint with weighted traffic routing. A 90/10 split is a canary that exposes a small percentage of users to the new model so you can compare metrics before promoting."
+    },
+    {
+      "id": "ai-103-q-082",
+      "question": "Which evaluator should you choose to detect harmful content (hate, sexual, violence, self-harm) in generated responses?",
+      "options": [
+        "Risk and safety evaluators (Azure AI Content Safety harm models)",
+        "Coherence evaluator",
+        "Latency",
+        "Throughput"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry's risk and safety evaluators wrap Azure AI Content Safety harm classification models to score outputs for hate, sexual, violence, and self-harm severity, plus jailbreak attack and protected material detection."
+    },
+    {
+      "id": "ai-103-q-083",
+      "question": "Which Foundry tool lets an agent execute long-running workflows by calling Azure Logic Apps as an OpenAPI-compatible tool?",
+      "options": [
+        "OpenAPI tool (or Logic Apps connector tool)",
+        "Azure Backup tool",
+        "Azure Bastion tool",
+        "Azure Monitor tool"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry agents can call OpenAPI-described external endpoints, including Azure Logic Apps, as tools. The agent invokes the API by name and the tool's OpenAPI spec lets the model construct correctly typed arguments."
+    },
+    {
+      "id": "ai-103-q-084",
+      "question": "Which Foundry feature ensures that an agent only consumes models, indexes, and connections defined in its current project (preventing access to other projects)?",
+      "options": [
+        "Project-scoped resources and RBAC isolation",
+        "Public endpoints",
+        "Anonymous access",
+        "Disable RBAC"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry scopes model deployments, indexes, datasets, and connections to a project, with RBAC enforced at the project level. An agent can only consume resources within its project, isolating teams and workloads."
+    },
+    {
+      "id": "ai-103-q-085",
+      "question": "Which method should you use to evaluate a flow's quality on every pull request in CI?",
+      "options": [
+        "Run pf flow test or batch evaluations against an evaluation dataset in GitHub Actions and fail PRs that regress thresholds",
+        "Skip evaluation in CI",
+        "Have a developer eyeball it once",
+        "Wait until production complaints"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Continuous evaluation in CI (running prompt flow tests and bulk evaluations against a labeled dataset on every PR) catches regressions before merge. Configure thresholds for groundedness, relevance, safety, etc., and fail PRs that breach them."
+    },
+    {
+      "id": "ai-103-q-086",
+      "question": "Which Foundry capability lets you deploy a prompt flow as a managed online endpoint that other apps can call as a REST API?",
+      "options": [
+        "Deploy flow to a managed online endpoint",
+        "Disable network access",
+        "Save flow as PDF",
+        "Email flow YAML"
+      ],
+      "correctAnswer": 0,
+      "explanation": "After developing and testing a prompt flow, you can deploy it as a managed online endpoint. This packages the flow, dependencies, and configuration into a containerized inference service exposed as a REST API that other applications consume."
+    },
+    {
+      "id": "ai-103-q-087",
+      "question": "Which approach should you use to ensure that an Azure OpenAI deployment used by your app is in the same region as your data, for both latency and data-residency reasons?",
+      "options": [
+        "Choose the deployment region to match the storage region and configure private endpoints in that region",
+        "Always use a different region",
+        "Use a free tier in any region",
+        "Disable region selection"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Co-locating Azure OpenAI deployments and dependent resources (storage, AI Search, app compute) in the same region minimizes latency, reduces egress cost, and simplifies data-residency compliance. Use private endpoints for backbone-only traffic."
+    },
+    {
+      "id": "ai-103-q-088",
+      "question": "Which Azure AI capability identifies known faces (e.g., employees) in images using a Limited Access enrolled face list?",
+      "options": [
+        "Face Recognition (Azure AI Face) with Limited Access controls",
+        "Translator",
+        "QnA Maker",
+        "Speaker Identification"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Face supports face recognition using enrolled face lists. Identify, verify, and group operations are gated behind Microsoft's Limited Access program due to responsible-AI considerations. Speaker Identification recognizes voices, not faces."
+    },
+    {
+      "id": "ai-103-q-089",
+      "question": "Which Microsoft Foundry / Azure AI service is intended to extract insights from unstructured documents combining text, images, and structure (formerly known as Azure AI Studio Content Understanding)?",
+      "options": [
+        "Content Understanding (Azure AI Content Understanding)",
+        "Custom Vision",
+        "Anomaly Detector",
+        "Personalizer"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Content Understanding extracts insights and structured data from documents that combine text, images, audio, or video using configurable analyzers. It is increasingly the preferred way to extract structured information from rich, multi-modal content within Foundry workflows."
+    },
+    {
+      "id": "ai-103-q-090",
+      "question": "Which Foundry feature collects user thumbs-up/thumbs-down feedback on generated responses for offline analysis?",
+      "options": [
+        "User feedback capture in the SDK / endpoint, surfaced in Foundry monitoring",
+        "Azure DNS",
+        "Azure Bastion",
+        "Azure Backup"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry SDKs and managed online endpoints support capturing user feedback signals (thumbs-up/down, ratings, comments) and storing them with request IDs. The signals can be analyzed in Foundry monitoring or exported to Application Insights / Log Analytics."
+    },
+    {
+      "id": "ai-103-q-091",
+      "question": "Which Foundry feature lets you run the same evaluation against multiple deployed models to choose the best one for your task?",
+      "options": [
+        "Model evaluation comparison across deployments using a shared evaluation dataset",
+        "Random selection",
+        "Highest-cost model wins",
+        "Whichever name sounds best"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Foundry evaluations can target multiple deployments with the same dataset and evaluators, producing comparable metrics for each. This is the principled way to select among models (e.g., gpt-4.1 mini vs gpt-4o vs an open-source model) for your workload."
+    },
+    {
+      "id": "ai-103-q-092",
+      "question": "Which Azure AI Speech capability provides low-latency, full-duplex voice conversations suitable for voice agents?",
+      "options": [
+        "Voice Live (real-time conversational voice)",
+        "Batch transcription",
+        "Custom Translator",
+        "Personalizer"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Voice Live (real-time conversational voice) provides low-latency, full-duplex voice interaction by combining streaming speech-to-text, an LLM, and streaming text-to-speech. It targets voice agent and live conversational scenarios."
+    },
+    {
+      "id": "ai-103-q-093",
+      "question": "Which Azure AI Search capability lets you ingest and serve queries against vectors generated outside the index (e.g., by your own embedding pipeline)?",
+      "options": [
+        "Pre-computed vector fields populated by the developer at index time",
+        "Mandatory built-in embedding only",
+        "Vector indexing is unsupported",
+        "Only keyword search"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Search supports pre-computed vectors uploaded as part of documents. You can also use integrated vectorization to compute vectors at index time. Both options coexist, allowing flexibility based on your embedding pipeline."
+    },
+    {
+      "id": "ai-103-q-094",
+      "question": "Which Foundry concept is the JSON-defined evaluation result of running a flow against a dataset, capturing metrics per row and aggregate?",
+      "options": [
+        "Run (evaluation run)",
+        "Subscription",
+        "Storage container",
+        "Region"
+      ],
+      "correctAnswer": 0,
+      "explanation": "An evaluation run in Foundry executes a flow against an evaluation dataset and applies one or more evaluators. The run record includes per-row inputs, outputs, evaluator scores, and aggregate metrics, all viewable in the studio and queryable via the SDK."
+    },
+    {
+      "id": "ai-103-q-095",
+      "question": "Which approach should you use to give a Foundry agent access to internal company REST APIs without exposing them publicly?",
+      "options": [
+        "Expose APIs through a private endpoint or Azure API Management with managed identity authentication, then register them as agent tools",
+        "Make all internal APIs public",
+        "Email the model the API specs",
+        "Disable authentication on internal APIs"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Internal APIs should remain private (private endpoints, VNet access, or fronted by Azure API Management). Register them as agent tools via OpenAPI specs, with the agent's compute using managed identity to authenticate. APIM can also enforce throttling and policy."
+    },
+    {
+      "id": "ai-103-q-096",
+      "question": "Which Foundry capability lets you specify per-deployment content filters that differ from the default (e.g., higher tolerance for medical terminology in a healthcare app)?",
+      "options": [
+        "Custom content filter applied to a specific Azure OpenAI deployment",
+        "Disable all filters globally",
+        "Use Azure DNS",
+        "Use Azure Bastion"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Custom content filters in Azure OpenAI can be created and assigned to specific deployments, allowing per-deployment severity thresholds and optional add-ons (Prompt Shields, protected material). This enables workload-specific tuning while keeping safety controls in place."
+    },
+    {
+      "id": "ai-103-q-097",
+      "question": "Which approach should you use to detect when a deployed prompt flow's groundedness scores degrade over time?",
+      "options": [
+        "Continuous evaluation with groundedness evaluator and Azure Monitor alert on threshold",
+        "Disable monitoring",
+        "Wait for users to complain",
+        "Re-train weekly without measurement"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Continuous evaluation samples production traffic and applies the groundedness evaluator on a schedule. Configuring an Azure Monitor alert on the resulting metric when it falls below a threshold creates an automated quality regression detector."
+    },
+    {
+      "id": "ai-103-q-098",
+      "question": "Which Azure OpenAI capability provides a structured way to ground responses in chat history while using minimal context window (e.g., summarizing prior turns)?",
+      "options": [
+        "Conversation summarization (manual or via tool that summarizes older turns)",
+        "Increase max_tokens to 1 million",
+        "Use embeddings only",
+        "Disable system prompt"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Long conversations exceed practical context windows. Implementing conversation summarization (replacing older turns with a summary, generated by the LLM itself) preserves continuity while keeping the prompt within budget. Memory stores can complement this for cross-session memory."
+    },
+    {
+      "id": "ai-103-q-099",
+      "question": "Which Foundry deployment artifact must be committed to source control to make a flow reproducible?",
+      "options": [
+        "flow.dag.yaml plus requirements.txt and node implementation files (Python/Jinja)",
+        "Only screenshots",
+        "Only the binary state file",
+        "An exported PDF"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A reproducible Foundry flow requires its definition (flow.dag.yaml), Python and Jinja node implementations, and pinned dependencies (requirements.txt) committed to Git. CI/CD then builds, evaluates, and deploys from a known commit."
+    },
+    {
+      "id": "ai-103-q-100",
+      "question": "Which combined practice best characterizes the AI-103 audience profile's responsibilities?",
+      "options": [
+        "Designing UI/UX for marketing pages",
+        "Building AI-infused applications and agents on Microsoft Foundry, integrating Azure OpenAI, Azure AI Search, vision, speech, language, and content safety, while applying responsible AI practices",
+        "Writing GPU drivers",
+        "Configuring on-premises Active Directory"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Per the AI-103 audience profile, candidates build AI-infused applications and agents on Microsoft Foundry, leveraging Azure OpenAI, Azure AI Search, vision, speech, language, document intelligence, and content safety, with Python or C# and Azure SDKs, while applying responsible AI practices."
+    }
+  ]
+}

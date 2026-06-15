@@ -1,0 +1,6 @@
+{
+  "python.analysis.stubPath": "c:\\WorkFAST-main\\Cosell_Fabric_workspace\\.stubs\\pyspark34",
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingModuleSource": "none"
+  }
+}

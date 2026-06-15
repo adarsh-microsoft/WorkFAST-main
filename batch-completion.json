@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/build-azure-vm-templates/7-summary",
+    "status": 200,
+    "fetched": true
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/host-a-web-app-with-azure-app-service/8-summary",
+    "status": 200,
+    "fetched": true
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-ad/6-summary",
+    "status": 200,
+    "fetched": true
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/secure-aspnet-core-identity/7-summary",
+    "status": 404,
+    "fetched": true
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/instrument-web-app-code-with-application-insights/8-summary",
+    "status": 404,
+    "fetched": true
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/capture-page-load-times-application-insights/8-summary",
+    "status": 404,
+    "fetched": true
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/create-azure-storage-account/7-summary",
+    "status": 200,
+    "fetched": true
+  }
+]

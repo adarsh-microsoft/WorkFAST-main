@@ -1,0 +1,145 @@
+{
+  "description": "Gold evaluation dataset of 20 grounded HR policy Q&A scenarios. Each item lists the expected answer, the expected citation(s) (document + page), and whether the question is answerable by the corpus (in-policy) or must be refused.",
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "How many days per week can I work remotely?",
+      "expected_answer": "Eligible employees may work remotely up to three days per week, with manager approval in advance.",
+      "expected_citations": [{"document_name": "Employee Handbook.pdf", "page_number": 3}],
+      "answerable": true
+    },
+    {
+      "id": "Q02",
+      "question": "Can I work remotely from another country?",
+      "expected_answer": "Working remotely from outside your country of employment is not permitted without prior written approval from Human Resources.",
+      "expected_citations": [{"document_name": "Employee Handbook.pdf", "page_number": 3}],
+      "answerable": true
+    },
+    {
+      "id": "Q03",
+      "question": "What are the core collaboration hours?",
+      "expected_answer": "Core collaboration hours are 10:00 AM to 4:00 PM, during which all employees are expected to be available.",
+      "expected_citations": [{"document_name": "Employee Handbook.pdf", "page_number": 4}],
+      "answerable": true
+    },
+    {
+      "id": "Q04",
+      "question": "How many hours is the standard workweek?",
+      "expected_answer": "The standard workweek is forty hours, typically Monday to Friday from 9:00 AM to 5:00 PM.",
+      "expected_citations": [{"document_name": "Employee Handbook.pdf", "page_number": 4}],
+      "answerable": true
+    },
+    {
+      "id": "Q05",
+      "question": "Can I wear jeans to the office?",
+      "expected_answer": "Clean jeans are allowed on Fridays and on days with no external client meetings.",
+      "expected_citations": [{"document_name": "Employee Handbook.pdf", "page_number": 5}],
+      "answerable": true
+    },
+    {
+      "id": "Q06",
+      "question": "How much notice must I give if I cannot come to work?",
+      "expected_answer": "You must notify your direct manager at least two hours before your scheduled start time.",
+      "expected_citations": [{"document_name": "Employee Handbook.pdf", "page_number": 2}],
+      "answerable": true
+    },
+    {
+      "id": "Q07",
+      "question": "What is the limit for accepting gifts from vendors?",
+      "expected_answer": "Accepting gifts valued at more than 50 USD from a vendor or client is prohibited and must be reported to the Ethics Office.",
+      "expected_citations": [{"document_name": "Employee Handbook.pdf", "page_number": 1}],
+      "answerable": true
+    },
+    {
+      "id": "Q08",
+      "question": "How many vacation days do full-time employees get per year?",
+      "expected_answer": "Full-time employees accrue twenty days of paid vacation per calendar year.",
+      "expected_citations": [{"document_name": "Benefits and Leave Policy.pdf", "page_number": 1}],
+      "answerable": true
+    },
+    {
+      "id": "Q09",
+      "question": "How many vacation days can I carry over to next year?",
+      "expected_answer": "A maximum of five unused vacation days may be carried over; any balance above five is forfeited on December 31.",
+      "expected_citations": [{"document_name": "Benefits and Leave Policy.pdf", "page_number": 1}],
+      "answerable": true
+    },
+    {
+      "id": "Q10",
+      "question": "How many consecutive sick days require medical documentation?",
+      "expected_answer": "An absence of three or more consecutive sick days requires a medical certificate submitted within five business days of returning.",
+      "expected_citations": [{"document_name": "Benefits and Leave Policy.pdf", "page_number": 2}],
+      "answerable": true
+    },
+    {
+      "id": "Q11",
+      "question": "How many sick days do employees receive each year?",
+      "expected_answer": "Employees receive ten paid sick days per calendar year.",
+      "expected_citations": [{"document_name": "Benefits and Leave Policy.pdf", "page_number": 2}],
+      "answerable": true
+    },
+    {
+      "id": "Q12",
+      "question": "How long is paid parental leave?",
+      "expected_answer": "Contoso provides twelve weeks of paid parental leave, taken within twelve months of the child's arrival.",
+      "expected_citations": [{"document_name": "Benefits and Leave Policy.pdf", "page_number": 3}],
+      "answerable": true
+    },
+    {
+      "id": "Q13",
+      "question": "How many days of bereavement leave can I take for an immediate family member?",
+      "expected_answer": "Employees are entitled to five days of paid bereavement leave for the death of an immediate family member.",
+      "expected_citations": [{"document_name": "Benefits and Leave Policy.pdf", "page_number": 4}],
+      "answerable": true
+    },
+    {
+      "id": "Q14",
+      "question": "What holidays are company-observed?",
+      "expected_answer": "Contoso observes eleven paid company holidays, including New Year's Day, Memorial Day, Juneteenth, Independence Day, Labor Day, Thanksgiving, and Christmas Day, plus two floating holidays.",
+      "expected_citations": [{"document_name": "Benefits and Leave Policy.pdf", "page_number": 5}],
+      "answerable": true
+    },
+    {
+      "id": "Q15",
+      "question": "What is the minimum password length?",
+      "expected_answer": "Passwords must be a minimum of twelve characters and include upper, lower, number, and special characters.",
+      "expected_citations": [{"document_name": "Information Security SOP.pdf", "page_number": 1}],
+      "answerable": true
+    },
+    {
+      "id": "Q16",
+      "question": "What is the password rotation frequency?",
+      "expected_answer": "Passwords must be rotated every ninety days, and the previous five passwords may not be reused.",
+      "expected_citations": [{"document_name": "Information Security SOP.pdf", "page_number": 1}],
+      "answerable": true
+    },
+    {
+      "id": "Q17",
+      "question": "Is multi-factor authentication required?",
+      "expected_answer": "Multi-factor authentication is mandatory for all employees accessing company systems, including email, VPN, and cloud applications.",
+      "expected_citations": [{"document_name": "Information Security SOP.pdf", "page_number": 2}],
+      "answerable": true
+    },
+    {
+      "id": "Q18",
+      "question": "What are the data classification levels?",
+      "expected_answer": "Company information is classified as Public, Internal, Confidential, or Restricted.",
+      "expected_citations": [{"document_name": "Information Security SOP.pdf", "page_number": 4}],
+      "answerable": true
+    },
+    {
+      "id": "Q19",
+      "question": "How quickly must I report a security incident?",
+      "expected_answer": "A suspected security incident must be reported to the Security Operations Center within one hour of discovery.",
+      "expected_citations": [{"document_name": "Information Security SOP.pdf", "page_number": 5}],
+      "answerable": true
+    },
+    {
+      "id": "Q20",
+      "question": "What is the company's pet adoption reimbursement policy?",
+      "expected_answer": "Not covered by policy.",
+      "expected_citations": [],
+      "answerable": false
+    }
+  ]
+}

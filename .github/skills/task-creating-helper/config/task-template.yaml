@@ -2,13 +2,14 @@
 # Task Creating Helper — Template Config
 # =============================================================================
 # This config defines the canonical structure used when creating ADO tasks
-# via the `task-creating-helper` skill. The skill asks ONLY for:
+# via the `task-creating-helper` skill. The skill asks for FOUR inputs:
 #   1. Title
 #   2. Description (free text — gets formatted into the HTML template below)
-#   3. Original estimates
+#   3. Original estimate (hours)
+#   4. Anything else? (OPTIONAL — free-form per-task overrides; blank = use defaults)
 #
 # Tags are NOT asked. They are auto-resolved as:
-#   - Always-on:  CoMarketing, Copilot
+#   - Always-on:  CoMarketing, Copilot, WorkFAST
 #   - Auto-picked: ONE of Target 1 / Target 2 / Target 3 / Target 4
 #                  selected by scoring the Description against the
 #                  keyword lists in `tags.targetClassifier`.
@@ -21,34 +22,59 @@
 # https://dev.azure.com/MCAPSDataEngineering/Global%20Partner%20Solutions/_workitems/edit/43370
 # =============================================================================
 
-version: 1.1
+version: 1.6
 
 # ── Static defaults applied to every new task ─────────────
 defaults:
   project: "Global Partner Solutions"
   workItemType: "Task"
   areaPath: "Global Partner Solutions\\Co-sell"
-  iterationPath: "current"          # Special token: resolve via work_list_team_iterations (timeframe=current)
+  iterationPath: "current"          # ALWAYS date-derived: resolve via work_list_team_iterations (timeframe=current)
+                                    # = the sprint that CONTAINS the task date (today). Never inherited from the parent.
   assignedTo: "v-adevashish@microsoft.com"
   activity: "Requirements"
   priority: 2
   state: "Closed"                    # Reference task is created in Closed state
   reason: "Completed"
   completedWork: 8                   # Default completed work in hours
+  # ── Scheduling dates ──────────────────────────────────
+  # Start Date and Target Date both use the TASK DATE (the same date rendered in
+  # the description {{WHEN}} token — today's date, or a Q4-backdated date).
+  # Only the time-of-day differs: Start = 09:00, Target = 17:00 (LOCAL time).
+  #
+  # IMPORTANT (timezone): ADO stores dates in UTC and renders them in the
+  # viewer's local timezone. The times below are LOCAL wall-clock times, so
+  # they MUST be sent with an explicit UTC offset (see `timezoneOffset`), e.g.
+  # "2026-06-04T09:00:00-07:00". Sending a naive "...T09:00:00" makes ADO treat
+  # it as 9:00 UTC, which then displays shifted (e.g. 2:00 AM in UTC-7).
+  #
+  # FIELD MAPPING (Task work item Planning panel):
+  #   Start Date  -> Microsoft.VSTS.Scheduling.StartDate
+  #   Target Date -> Microsoft.VSTS.Scheduling.TargetDate   (NOT FinishDate —
+  #                  FinishDate is not shown in the Task Planning panel).
+  startTime: "09:00"                 # Start Date time-of-day (9:00 AM, local)
+  targetTime: "17:00"               # Target Date time-of-day (5:00 PM, local)
+  # UTC offset for the user's local timezone. Use "local" to have the skill
+  # compute the machine's current offset at the task date (handles DST), or
+  # pin an explicit offset like "-07:00". User is currently UTC-7 (Pacific).
+  timezoneOffset: "local"
 
 # ── Default parent (override via chat) ────────────────────
 # If the user says: "create child task under [ID]" or "parent it to [ID]"
 # OR provides a Scenario Detail / User Story URL, that ID overrides this default.
 parent:
-  defaultId: 40737                   # [CMD M7] UAT Reviews
-  defaultTitle: "[CMD M7] UAT Reviews"
+  defaultId: 44959                   # [CMD M7] UAT Reviews - II
+  defaultTitle: "[CMD M7] UAT Reviews - II"
   # Override behaviour:
   #   - User can specify a numeric work item ID
   #   - User can paste an ADO URL — extract the trailing /edit/<id>
-  #   - When overridden, inherit Area Path + Iteration Path from the new parent
+  #   - When overridden, inherit Area Path from the new parent ONLY.
+  #   - Iteration Path is NEVER inherited from the parent — it is always
+  #     date-derived (the current sprint containing today's date). This keeps
+  #     new tasks in the live sprint even when the parent lives in an older/
+  #     future iteration.
   inheritFromParent:
     - areaPath
-    - iterationPath
 
 # ── Title prefix convention ───────────────────────────────
 # The reference task uses a "[CoMarketing]:" prefix. If the user-supplied
@@ -65,6 +91,7 @@ tags:
   alwaysInclude:
     - "CoMarketing"
     - "Copilot"
+    - "WorkFAST"
   separator: "; "
   # ── Target tag auto-classifier ──────────────────────────
   # Exactly ONE Target tag must be added per task. The skill scores the
@@ -225,10 +252,12 @@ discussion:
   aiToolPool:
     - "GitHub Copilot"
     - "WorkFast"
-  # Value Added pool — short, general sentences about how the AI helped with
-  # the actual task work (analysis, debugging, code, data, design choices).
-  # Skill picks one at random per task; avoid repeating the immediately
-  # previous selection when possible.
+  # Value Added — FALLBACK POOL ONLY.
+  # Default behaviour (per SKILL.md Step 5): the skill SYNTHESIZES a fresh
+  # 15–20 word sentence grounded in the actual Updates bullets it just wrote
+  # for the task (referencing the real artifact / activity / outcome). The pool
+  # below is only used if synthesis fails or is unavailable. Q4 override wins
+  # over both synthesis and pool.
   aiValueAddedPool:
     - "Helped explore the problem faster and suggested a working approach to move forward with."
     - "Sped up the analysis by surfacing relevant logic and edge cases to consider while implementing."

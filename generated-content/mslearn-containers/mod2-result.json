@@ -1,0 +1,41 @@
+{
+  "module": "build-and-store-container-images",
+  "results": [
+    {
+      "unit": "1-intro-to-azure-container-registry",
+      "status": "visited",
+      "title": "Introduction to Azure Container Registry - Training | Microsoft Learn"
+    },
+    {
+      "unit": "2-deploy-azure-container-registry",
+      "status": "visited",
+      "title": "Exercise - Deploy an Azure container registry - Training | Microsoft Learn"
+    },
+    {
+      "unit": "3-build-container-image",
+      "status": "visited",
+      "title": "Exercise - Build container images using Azure Container Registry Tasks - Training | Microsoft Learn"
+    },
+    {
+      "unit": "4-deploy-container-image",
+      "status": "visited",
+      "title": "Exercise - Deploy images from Azure Container Registry - Training | Microsoft Learn"
+    },
+    {
+      "unit": "5-replicate-container-image",
+      "status": "visited",
+      "title": "Exercise - Replicate a container image to different Azure regions - Training | Microsoft Learn"
+    },
+    {
+      "unit": "6-knowledge-check",
+      "status": "visited",
+      "title": "Knowledge check - Training | Microsoft Learn"
+    },
+    {
+      "unit": "7-summary",
+      "status": "visited",
+      "title": "404 - Content not found"
+    }
+  ],
+  "completed": true
+}

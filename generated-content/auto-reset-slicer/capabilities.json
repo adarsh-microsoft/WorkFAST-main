@@ -1,0 +1,75 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Field",
+      "description": "The categorical column to slice on. Required.",
+      "name": "field",
+      "kind": "Grouping"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "field": { "max": 1, "min": 1 }
+        }
+      ],
+      "categorical": {
+        "categories": {
+          "for": { "in": "field" },
+          "dataReductionAlgorithm": { "top": { "count": 30000 } }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "behavior": {
+      "displayName": "Reset Behavior",
+      "properties": {
+        "enabled": {
+          "displayName": "Enable auto-reset",
+          "description": "When ON, when other filters on this table change and shrink the available values, this slicer clears its selection and re-selects all currently-available values.",
+          "type": { "bool": true }
+        },
+        "selectAllOnFirstLoad": {
+          "displayName": "Select all on first load",
+          "description": "On initial render, pre-select all values.",
+          "type": { "bool": true }
+        }
+      }
+    },
+    "appearance": {
+      "displayName": "Appearance",
+      "properties": {
+        "fontSize": {
+          "displayName": "Text size",
+          "type": { "formatting": { "fontSize": true } }
+        },
+        "fontColor": {
+          "displayName": "Text color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "checkboxColor": {
+          "displayName": "Checkbox accent",
+          "type": { "fill": { "solid": { "color": true } } }
+        }
+      }
+    },
+    "general": {
+      "properties": {
+        "filter": {
+          "type": { "filter": {} }
+        },
+        "selfFilterApplied": {
+          "type": { "bool": true }
+        }
+      }
+    }
+  },
+  "supportsHighlight": false,
+  "supportsLandingPage": false,
+  "supportsKeyboardFocus": true,
+  "supportsSynchronizingFilterState": true,
+  "suppressDefaultTitle": true,
+  "privileges": []
+}

@@ -1,0 +1,14 @@
+## Model Checklist:
+- [ ] Check if Star schema is used instead of the Snowflake schema when possible
+- [ ] Check if bi-directional and many-to-many relationships are avoided for high-cardinality columns
+- [ ] Check if the auto-generated date table is replaced with a custom date table in the model
+- [ ] Check if referential integrity check for relationships is cross-verified
+- [ ] Check if ISBLANK() is used instead of =Blank()
+- [ ] Check if = 0 is used instead of checking for ISBLANK() | = 0
+- [ ] Check if SELECTEDVALUE() is used instead of HASONEVALUE()
+- [ ] Check if SELECTEDVALUE() is used instead of VALUES()
+- [ ] Check if variables are used instead of repeating measures inside the IF branch
+- [ ] Check if DIVIDE() is used instead of /
+- [ ] Check if KEEPFILTERS() is used instead of FILTER()
+- [ ] Check if COUNTROWS() is used instead of COUNT()
+- [ ] Check if Query Caching is enabled on the Semantic Model

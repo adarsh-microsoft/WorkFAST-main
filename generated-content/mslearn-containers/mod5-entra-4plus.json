@@ -1,0 +1,55 @@
+{
+  "module": "intro-to-azure-ad",
+  "results": [
+    {
+      "unit": "4-essential-features",
+      "status": "knowledge_check",
+      "questions": [
+        {
+          "idx": 0,
+          "question": "What does Microsoft Entra B2B provide?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-0-0",
+              "value": "0",
+              "label": "Microsoft Entra B2B allows you to manage your customers' identities. It provides access to applications and resources."
+            },
+            {
+              "id": "quiz-choice-0-1",
+              "value": "1",
+              "label": "Microsoft Entra B2B allows you to let your users access virtual machines by using their company Microsoft Entra credentials."
+            },
+            {
+              "id": "quiz-choice-0-2",
+              "value": "2",
+              "label": "Microsoft Entra B2B allows you to invite external users to your tenant so that your staff can collaborate with them."
+            }
+          ]
+        },
+        {
+          "idx": 1,
+          "question": "What does Microsoft Entra application proxy do?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-1-0",
+              "value": "0",
+              "label": "You use it to identify applications in your instance of Microsoft Entra ID."
+            },
+            {
+              "id": "quiz-choice-1-1",
+              "value": "1",
+              "label": "You use it to add on-premises applications to your instance of Microsoft Entra ID."
+            },
+            {
+              "id": "quiz-choice-1-2",
+              "value": "2",
+              "label": "You use it to add Microsoft Entra Gallery applications to your instance of Microsoft Entra ID."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

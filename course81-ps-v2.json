@@ -1,0 +1,298 @@
+[
+  {
+    "tab": 0,
+    "tabTitle": "Implement IaaS solutions",
+    "ps": "Problem Statement 1",
+    "weight": "Weightage: 10",
+    "status": "Status: Failed",
+    "modulesCount": 6,
+    "modules": [
+      {
+        "label": "Provision VMs:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/create-windows-virtual-machine-in-azure/"
+      },
+      {
+        "label": "Configure VMs for remote access:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/manage-virtual-machines-with-azure-cli/"
+      },
+      {
+        "label": "Create ARM templates:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/build-azure-vm-templates/"
+      },
+      {
+        "label": "Create container images for solutions by using Docker:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/build-and-store-container-images/"
+      },
+      {
+        "label": "Publish an image to the Azure Container Registry:",
+        "href": "https://docs.microsoft.com/en-us/learn/paths/administer-containers-in-azure/"
+      },
+      {
+        "label": "Run containers by using Azure Container Instance:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/"
+      }
+    ]
+  },
+  {
+    "tab": 1,
+    "tabTitle": "Create Azure App Service Web Apps",
+    "ps": "Problem Statement 2",
+    "weight": "Weightage: 7",
+    "status": "Status: Failed",
+    "modulesCount": 5,
+    "modules": [
+      {
+        "label": "Create an Azure App Service Web App:",
+        "href": "https://docs.microsoft.com/en-us/learn/paths/deploy-a-website-with-azure-app-service/"
+      },
+      {
+        "label": "Enable diagnostics logging:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/host-a-web-app-with-azure-app-service/"
+      },
+      {
+        "label": "Deploy code to a web app:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/capture-application-logs-app-service/"
+      },
+      {
+        "label": "Configure web app settings:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/stage-deploy-app-service-deployment-slots/"
+      },
+      {
+        "label": "Implement autoscaling rules, including scheduled autoscaling, and scaling by operational or system metrics:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/app-service-scale-up-scale-out/"
+      }
+    ]
+  },
+  {
+    "tab": 2,
+    "tabTitle": "Implement Azure functions",
+    "ps": "Problem Statement 3",
+    "weight": "Weightage: 4",
+    "status": "Status: Failed",
+    "modulesCount": 4,
+    "modules": [
+      {
+        "label": "Implement input and output bindings for a function:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/create-serverless-logic-with-azure-functions/"
+      },
+      {
+        "label": "Implement function triggers by using data operations, timers, and webhooks:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/create-long-running-serverless-workflow-with-durable-functions/"
+      },
+      {
+        "label": "Implement Azure Durable Functions:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/execute-azure-function-with-triggers/"
+      },
+      {
+        "label": "",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/chain-azure-functions-data-using-bindings/"
+      }
+    ]
+  },
+  {
+    "tab": 3,
+    "tabTitle": "Develop solutions that use Cosmos DB storage",
+    "ps": "Problem Statement 4",
+    "weight": "Weightage: 2",
+    "status": "Status: Passed",
+    "modulesCount": 2,
+    "modules": [
+      {
+        "label": "Interact with data using the appropriate SDK:",
+        "href": "https://docs.microsoft.com/en-us/learn/paths/work-with-nosql-data-in-azure-cosmos-db/"
+      },
+      {
+        "label": "Create Cosmos DB containers:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/access-data-with-cosmos-db-and-sql-api/"
+      }
+    ]
+  },
+  {
+    "tab": 4,
+    "tabTitle": "Develop solutions that use blob storage",
+    "ps": "Problem Statement 5",
+    "status": "Status: Partial",
+    "modulesCount": 3,
+    "modules": [
+      {
+        "label": "Move items in Blob storage between storage accounts or containers:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/store-app-data-with-azure-blob-storage/"
+      },
+      {
+        "label": "Implement data archiving and retention:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/optimize-archive-costs-blob-storage/"
+      },
+      {
+        "label": "",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/create-azure-storage-account/"
+      }
+    ]
+  },
+  {
+    "tab": 5,
+    "tabTitle": "Implement user authentication and authorization",
+    "ps": "Problem Statement 6",
+    "weight": "Weightage: 2",
+    "status": "Status: Failed",
+    "modulesCount": 2,
+    "modules": [
+      {
+        "label": "Create and implement shared access signatures:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/control-access-to-azure-storage-with-sas/"
+      },
+      {
+        "label": "Register apps and use Azure Active Directory to authenticate users:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/intro-to-azure-ad/"
+      }
+    ]
+  },
+  {
+    "tab": 6,
+    "tabTitle": "Implement secure cloud solutions",
+    "ps": "Problem Statement 7",
+    "status": "Status: Partial",
+    "modulesCount": 3,
+    "modules": [
+      {
+        "label": "Secure app configuration data by using the App Configuration and Key Vault API:",
+        "href": "https://docs.microsoft.com/en-us/learn/paths/secure-your-cloud-apps/"
+      },
+      {
+        "label": "Manage keys, secrets, and certificates by using the Key Vault API:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/manage-secrets-with-azure-key-vault/"
+      },
+      {
+        "label": "Implement Managed Identities for Azure resources:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/secure-aspnet-core-identity/"
+      }
+    ]
+  },
+  {
+    "tab": 7,
+    "tabTitle": "Integrate caching and content delivery within solutions",
+    "ps": "Problem Statement 8",
+    "weight": "Weightage: 2",
+    "status": "Status: Failed",
+    "modulesCount": 3,
+    "modules": [
+      {
+        "label": "Develop code to implement CDN’s in solutions:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/create-cdn-static-resources-blob-storage/"
+      },
+      {
+        "label": "Configure cache and expiration policies for Front Door, CDNs, or Redis caches:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/optimize-your-web-apps-with-redis/"
+      },
+      {
+        "label": "Store and retrieve data in Azure Redis cache:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/work-with-mutable-and-partial-data-in-a-redis-cache/"
+      }
+    ]
+  },
+  {
+    "tab": 8,
+    "tabTitle": "Instrument solutions to support monitoring and logging",
+    "ps": "Problem Statement 9",
+    "weight": "Weightage: 1",
+    "status": "Status: Failed",
+    "modulesCount": 4,
+    "modules": [
+      {
+        "label": "Configure instrumentation in an app or service by using Application Insights:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/instrument-web-app-code-with-application-insights/"
+      },
+      {
+        "label": "Analyze log data and troubleshoot solutions by using Azure Monitor:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/capture-page-load-times-application-insights/"
+      },
+      {
+        "label": "Implement Application Insights Web Test and Alerts:",
+        "href": "https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-overview"
+      },
+      {
+        "label": "Implement code that handles transient faults:",
+        "href": "https://docs.microsoft.com/en-us/azure/architecture/best-practices/transient-faults"
+      }
+    ]
+  },
+  {
+    "tab": 9,
+    "tabTitle": "Develop an App Service Logic App",
+    "ps": "Problem Statement 10",
+    "weight": "Weightage: 4",
+    "status": "Status: Failed",
+    "modulesCount": 3,
+    "modules": [
+      {
+        "label": "Create a Logic App:",
+        "href": "https://docs.microsoft.com/en-us/learn/paths/build-workflows-with-logic-apps/"
+      },
+      {
+        "label": "Create a custom template for Logic Apps:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/create-deploy-logic-apps-using-arm-templates/"
+      },
+      {
+        "label": "",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/intro-to-logic-apps/"
+      }
+    ]
+  },
+  {
+    "tab": 10,
+    "tabTitle": "Implement API Management",
+    "ps": "Problem Statement 11",
+    "weight": "Weightage: 3",
+    "status": "Status: Failed",
+    "modulesCount": 3,
+    "modules": [
+      {
+        "label": "Create an APIM instance:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/publish-manage-apis-with-azure-api-management/"
+      },
+      {
+        "label": "Configure authentication for APIs:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/improve-api-performance-with-apim-caching-policy/"
+      },
+      {
+        "label": "Define policies for APIs:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/protect-apis-on-api-management/"
+      }
+    ]
+  },
+  {
+    "tab": 11,
+    "tabTitle": "Develop event-based solutions",
+    "ps": "Problem Statement 12",
+    "weight": "Weightage: 2",
+    "status": "Status: Failed",
+    "modulesCount": 2,
+    "modules": [
+      {
+        "label": "Implement solutions that use Azure Event Grid:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/index"
+      },
+      {
+        "label": "Implement solutions that use Azure Notification Hubs:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/index"
+      }
+    ]
+  },
+  {
+    "tab": 12,
+    "tabTitle": "Develop message-based solutions",
+    "ps": "Problem Statement 13",
+    "weight": "Weightage: 2",
+    "status": "Status: Failed",
+    "modulesCount": 2,
+    "modules": [
+      {
+        "label": "Implement solutions that use Azure Service Bus:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/implement-message-workflows-with-service-bus/index"
+      },
+      {
+        "label": "Implement solutions that use Azure Queue Storage queues:",
+        "href": "https://docs.microsoft.com/en-us/learn/modules/communicate-between-apps-with-azure-queue-storage/index"
+      }
+    ]
+  }
+]

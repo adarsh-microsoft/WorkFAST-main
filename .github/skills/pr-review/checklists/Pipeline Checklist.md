@@ -1,0 +1,11 @@
+## Pipeline Checklist:
+- [ ] Pipeline name should be <stream_name>_< gold/silver/bronze >_<function/feed>
+- [ ] Check if we are checking status flags start of the pipeline
+- [ ] Pipeline with only execute pipeline activities has prefix <stream_name>_< gold/silver/bronze >_Master
+- [ ] For other pipelines with copy activities, the convention is <stream_name>_Dimension/Fact_Set{Index/MartName}{SourceType}{DestinationType}
+- [ ] For Notebook activities, 'Notebook_' is the prefix
+- [ ] Is Pipelines validated before check-in?
+- [ ] Is internal code review done before every check in?
+- [ ] Is Wait-On complete checked for Execute Pipeline activities ?
+- [ ] Used for-loop or slice for copy activities with daily/weekly/monthly data ?
+- [ ] Have we added Timeout and Retry for all notebook activities?

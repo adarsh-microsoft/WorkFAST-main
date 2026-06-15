@@ -1,0 +1,2028 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[AZR-PE108] Implementing Analytics Solutions Using Microsoft Fabric" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/95
+              - generic [ref=e22]: "[AZR-PE108] Implementing Analytics Solutions Using Microsoft Fabric"
+          - listitem [ref=e96]: ›
+          - listitem [ref=e97]:
+            - link "[AZR-PE108] DP-600" [ref=e98] [cursor=pointer]:
+              - /url: /tracks/specialization/95/course/213
+              - generic [ref=e99]: "[AZR-PE108] DP-600"
+      - button [ref=e24] [cursor=pointer]:
+        - img [ref=e25]
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+  - generic [ref=e109]:
+    - generic [ref=e110]:
+      - generic [ref=e111]:
+        - heading "[AZR-PE108] DP-600" [level=4] [ref=e112]
+        - button "End Course" [disabled]
+      - generic [ref=e113]:
+        - 'heading "Score: 0 out of 247 (0%)" [level=6] [ref=e114]'
+        - 'heading "Passing Criteria: 80%" [level=6] [ref=e115]'
+        - 'heading "Attempted Questions: 0/193" [level=6] [ref=e116]'
+    - separator [ref=e117]
+    - group "Question Filters" [ref=e119]:
+      - button "Passed" [ref=e120] [cursor=pointer]: Passed
+      - button "Failed" [ref=e121] [cursor=pointer]: Failed
+      - button "Evaluating" [ref=e122] [cursor=pointer]: Evaluating
+      - button "Unattempted" [ref=e123] [cursor=pointer]: Unattempted
+      - button "Partial" [ref=e124] [cursor=pointer]: Partial
+    - generic [ref=e125]:
+      - tablist [ref=e130]:
+        - tab "Module 1" [selected] [ref=e131] [cursor=pointer]: Module 1
+        - tab "Module 2" [ref=e132] [cursor=pointer]: Module 2
+      - generic [ref=e134]:
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - heading "Problem Statement 1" [level=5] [ref=e137]
+            - generic [ref=e138]:
+              - 'heading "Weightage: 2" [level=6] [ref=e139]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e140]'
+          - generic [ref=e141]:
+            - paragraph
+            - generic [ref=e142]:
+              - paragraph
+              - generic [ref=e143]:
+                - paragraph [ref=e144]: Which of the following statements are true about Delta?
+                - paragraph [ref=e145]: 1. Delta stores data as Parquet with an additional layer to provide history of events.
+                - paragraph [ref=e146]: 2. Delta allows us to use a single copy of data for both batch and streaming operations.
+                - paragraph [ref=e147]: 3. Delta does not have any default feature to provide history of events.
+                - paragraph
+                - paragraph [ref=e148]: 4. Delta can be used for streaming operations data only.
+              - paragraph
+            - paragraph
+            - paragraph
+          - generic [ref=e149]:
+            - generic [ref=e150]: Your Submission
+            - textbox "Your Submission" [ref=e152]
+          - separator [ref=e153]
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - heading "Problem Statement 2" [level=5] [ref=e156]
+            - generic [ref=e157]:
+              - 'heading "Weightage: 1" [level=6] [ref=e158]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e159]'
+          - generic [ref=e160]:
+            - paragraph [ref=e161]:
+              - generic [ref=e162]: "1."
+              - generic [ref=e163]: State, whether True or False?
+            - paragraph [ref=e164]: Fabric can be enabled in your tenant by Fabric admin or MS 365 admin not by Power Platform admin.
+            - paragraph
+            - list [ref=e165]:
+              - listitem [ref=e166]: "True"
+              - listitem [ref=e167]: "False"
+            - paragraph
+          - generic [ref=e168]:
+            - generic [ref=e169]: Your Submission
+            - textbox "Your Submission" [ref=e171]
+          - separator [ref=e172]
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - heading "Problem Statement 3" [level=5] [ref=e175]
+            - generic [ref=e176]:
+              - 'heading "Weightage: 1" [level=6] [ref=e177]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e178]'
+          - generic [ref=e179]:
+            - paragraph [ref=e180]: For which of the following Fabric cannot be enabled?
+            - list [ref=e181]:
+              - listitem [ref=e182]: Individual users
+              - listitem [ref=e183]: The entire organization
+              - listitem [ref=e184]: Specific security groups
+              - listitem [ref=e185]: Except specific security groups
+          - generic [ref=e186]:
+            - generic [ref=e187]: Your Submission
+            - textbox "Your Submission" [ref=e189]
+          - separator [ref=e190]
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - heading "Problem Statement 4" [level=5] [ref=e193]
+            - generic [ref=e194]:
+              - 'heading "Weightage: 1" [level=6] [ref=e195]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e196]'
+          - generic [ref=e197]:
+            - paragraph [ref=e198]: What is the default storage format for Fabric’s OneLake?
+            - paragraph
+            - list [ref=e199]:
+              - listitem [ref=e200]: JSON
+              - listitem [ref=e201]: CSV
+              - listitem [ref=e202]: Parquet
+              - listitem [ref=e203]: Delta Parquet
+          - generic [ref=e204]:
+            - generic [ref=e205]: Your Submission
+            - textbox "Your Submission" [ref=e207]
+          - separator [ref=e208]
+        - generic [ref=e209]:
+          - generic [ref=e210]:
+            - heading "Problem Statement 5" [level=5] [ref=e211]
+            - generic [ref=e212]:
+              - 'heading "Weightage: 3" [level=6] [ref=e213]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e214]'
+          - generic [ref=e215]:
+            - paragraph [ref=e216]: Which of the following are the ways to ingest data into a Lakehouse?
+            - paragraph
+            - list [ref=e217]:
+              - listitem [ref=e218]: Upload
+              - listitem [ref=e219]: Dataflows (Gen2)
+              - listitem [ref=e220]: Notebooks
+              - listitem [ref=e221]: Azure ML
+          - generic [ref=e222]:
+            - generic [ref=e223]: Your Submission
+            - textbox "Your Submission" [ref=e225]
+          - separator [ref=e226]
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - heading "Problem Statement 6" [level=5] [ref=e229]
+            - generic [ref=e230]:
+              - 'heading "Weightage: 2" [level=6] [ref=e231]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e232]'
+          - generic [ref=e233]:
+            - paragraph [ref=e234]: Which of the following statements is/are TRUE about Shortcuts?
+            - paragraph
+            - list [ref=e235]:
+              - listitem [ref=e236]: Shortcuts can only be created in Lakehouses.
+              - listitem [ref=e237]: Shortcuts can be created in Lakehouses and KQL databases in Real-Time Analytics.
+              - listitem [ref=e238]: Shortcuts can be used to connect to external file storage, such as OneLake or ADLS Gen2 locations.
+              - listitem [ref=e239]: Shortcuts cannot be created for other sources like Amazon S3.
+            - paragraph
+          - generic [ref=e240]:
+            - generic [ref=e241]: Your Submission
+            - textbox "Your Submission" [ref=e243]
+          - separator [ref=e244]
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - heading "Problem Statement 7" [level=5] [ref=e247]
+            - generic [ref=e248]:
+              - 'heading "Weightage: 1" [level=6] [ref=e249]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e250]'
+          - generic [ref=e251]:
+            - paragraph [ref=e252]: You want to use Apache Spark to interactively explore data in a file in lakehouse. What should you do?
+            - paragraph
+            - list [ref=e253]:
+              - listitem [ref=e254]: Create a notebook
+              - listitem [ref=e255]: Switch to the SQL Endpoint mode
+              - listitem [ref=e256]: Create a dataflow (Gen2)
+          - generic [ref=e257]:
+            - generic [ref=e258]: Your Submission
+            - textbox "Your Submission" [ref=e260]
+          - separator [ref=e261]
+        - generic [ref=e262]:
+          - generic [ref=e263]:
+            - heading "Problem Statement 8" [level=5] [ref=e264]
+            - generic [ref=e265]:
+              - 'heading "Weightage: 3" [level=6] [ref=e266]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e267]'
+          - generic [ref=e268]:
+            - paragraph [ref=e269]: Andrew created a Power BI (Business Intelligence) report in MS Fabric using default semantic model and saved it in a workspace. Now he explores the workspace where this report is saved. Which of the following components would she see in the workspace?
+            - paragraph
+            - list [ref=e270]:
+              - listitem [ref=e271]: Data pipeline
+              - listitem [ref=e272]: Semantic model
+              - listitem [ref=e273]: SQL Endpoint
+              - listitem [ref=e274]: Report
+          - generic [ref=e275]:
+            - generic [ref=e276]: Your Submission
+            - textbox "Your Submission" [ref=e278]
+          - separator [ref=e279]
+        - generic [ref=e280]:
+          - generic [ref=e281]:
+            - heading "Problem Statement 9" [level=5] [ref=e282]
+            - generic [ref=e283]:
+              - 'heading "Weightage: 1" [level=6] [ref=e284]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e285]'
+          - generic [ref=e286]:
+            - paragraph [ref=e287]: The video talks about Apache Spark. Which of the following is a FALSE statement about Apache Spark?
+            - paragraph
+            - list [ref=e288]:
+              - listitem [ref=e289]: Apache Spark is an open source
+              - listitem [ref=e290]: Apache Spark is parallel processing framework
+              - listitem [ref=e291]: Apache Spark does not support multi-language processing
+              - listitem [ref=e292]: Apache Spark is fully managed in MS Fabric
+          - generic [ref=e293]:
+            - generic [ref=e294]: Your Submission
+            - textbox "Your Submission" [ref=e296]
+          - separator [ref=e297]
+        - generic [ref=e298]:
+          - generic [ref=e299]:
+            - heading "Problem Statement 10" [level=5] [ref=e300]
+            - generic [ref=e301]:
+              - 'heading "Weightage: 1" [level=6] [ref=e302]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e303]'
+          - generic [ref=e304]:
+            - paragraph [ref=e305]: For the workspace setting to use Apache Spark which of the following are included in specific configuration settings?
+            - paragraph
+            - list [ref=e306]:
+              - listitem [ref=e307]: Node family
+              - listitem [ref=e308]: Runtime version
+              - listitem [ref=e309]: Spark properties
+              - listitem [ref=e310]: All the above
+              - listitem [ref=e311]: Only a and b
+          - generic [ref=e312]:
+            - generic [ref=e313]: Your Submission
+            - textbox "Your Submission" [ref=e315]
+          - separator [ref=e316]
+        - generic [ref=e317]:
+          - generic [ref=e318]:
+            - heading "Problem Statement 11" [level=5] [ref=e319]
+            - generic [ref=e320]:
+              - 'heading "Weightage: 1" [level=6] [ref=e321]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e322]'
+          - generic [ref=e323]:
+            - paragraph [ref=e324]: Which of the following statements are true?
+            - list [ref=e325]:
+              - listitem [ref=e326]: The Spark open-source ecosystem includes a wide selection of code libraries.
+              - listitem [ref=e327]: Library management is performed at workspace level.
+              - list [ref=e328]:
+                - listitem [ref=e329]: Only statement A
+                - listitem [ref=e330]: Only statement B
+                - listitem [ref=e331]: Both A and B
+                - listitem [ref=e332]: None of the statements A and B
+          - generic [ref=e333]:
+            - generic [ref=e334]: Your Submission
+            - textbox "Your Submission" [ref=e336]
+          - separator [ref=e337]
+        - generic [ref=e338]:
+          - generic [ref=e339]:
+            - heading "Problem Statement 12" [level=5] [ref=e340]
+            - generic [ref=e341]:
+              - 'heading "Weightage: 3" [level=6] [ref=e342]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e343]'
+          - generic [ref=e344]:
+            - paragraph [ref=e345]: Which of the following options are available while creating a new pool?
+            - list [ref=e346]:
+              - listitem [ref=e347]: Node family
+              - listitem [ref=e348]: Node size
+              - listitem [ref=e349]: Enable autoscale
+              - listitem [ref=e350]: Deallocate
+          - generic [ref=e351]:
+            - generic [ref=e352]: Your Submission
+            - textbox "Your Submission" [ref=e354]
+          - separator [ref=e355]
+        - generic [ref=e356]:
+          - generic [ref=e357]:
+            - heading "Problem Statement 13" [level=5] [ref=e358]
+            - generic [ref=e359]:
+              - 'heading "Weightage: 2" [level=6] [ref=e360]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e361]'
+          - generic [ref=e362]:
+            - paragraph [ref=e363]: What are the Runtime versions available in Spark Settings?
+            - list [ref=e364]:
+              - listitem [ref=e365]: 1.1 Spark 3.3, Delta 2.2
+              - listitem [ref=e366]: 1.2 Spark 3.4, Delta 2.4
+              - listitem [ref=e367]: 1.3 Spark 3.3, Delta 2.4
+              - listitem [ref=e368]: 1.4 Spark 3.4, Delta 2.2
+          - generic [ref=e369]:
+            - generic [ref=e370]: Your Submission
+            - textbox "Your Submission" [ref=e372]
+          - separator [ref=e373]
+        - generic [ref=e374]:
+          - generic [ref=e375]:
+            - heading "Problem Statement 14" [level=5] [ref=e376]
+            - generic [ref=e377]:
+              - 'heading "Weightage: 1" [level=6] [ref=e378]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e379]'
+          - generic [ref=e380]:
+            - paragraph [ref=e381]: Which of the following commands is used to create a new dataframe while using Spark in Fabric?
+            - list [ref=e382]:
+              - listitem [ref=e383]: Create
+              - listitem [ref=e384]: Select
+              - listitem [ref=e385]: Append
+              - listitem [ref=e386]: Add
+          - generic [ref=e387]:
+            - generic [ref=e388]: Your Submission
+            - textbox "Your Submission" [ref=e390]
+          - separator [ref=e391]
+        - generic [ref=e392]:
+          - generic [ref=e393]:
+            - heading "Problem Statement 15" [level=5] [ref=e394]
+            - generic [ref=e395]:
+              - 'heading "Weightage: 1" [level=6] [ref=e396]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e397]'
+          - generic [ref=e398]:
+            - paragraph [ref=e399]: The order folder data imported here as shown in the demo is loaded into spark memory. Which other memory option is also available?
+            - list [ref=e400]:
+              - listitem [ref=e401]: Pandas
+              - listitem [ref=e402]: Python
+              - listitem [ref=e403]: SQL
+              - listitem [ref=e404]: M
+          - generic [ref=e405]:
+            - generic [ref=e406]: Your Submission
+            - textbox "Your Submission" [ref=e408]
+          - separator [ref=e409]
+        - generic [ref=e410]:
+          - generic [ref=e411]:
+            - heading "Problem Statement 16" [level=5] [ref=e412]
+            - generic [ref=e413]:
+              - 'heading "Weightage: 1" [level=6] [ref=e414]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e415]'
+          - generic [ref=e416]:
+            - paragraph [ref=e417]: In the video which file format has been described as the best while dealing with large scale analytics?
+            - list [ref=e418]:
+              - listitem [ref=e419]: CSV
+              - listitem [ref=e420]: XML
+              - listitem [ref=e421]: Parquet
+              - listitem [ref=e422]: .dbo
+          - generic [ref=e423]:
+            - generic [ref=e424]: Your Submission
+            - textbox "Your Submission" [ref=e426]
+          - separator [ref=e427]
+        - generic [ref=e428]:
+          - generic [ref=e429]:
+            - heading "Problem Statement 17" [level=5] [ref=e430]
+            - generic [ref=e431]:
+              - 'heading "Weightage: 1" [level=6] [ref=e432]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e433]'
+          - generic [ref=e434]:
+            - paragraph [ref=e435]: In the demo shown on ‘Partition’ which column has been used for groupBy?
+            - list [ref=e436]:
+              - listitem [ref=e437]: Category
+              - listitem [ref=e438]: Year
+              - listitem [ref=e439]: Region
+              - listitem [ref=e440]: OrderDate
+          - generic [ref=e441]:
+            - generic [ref=e442]: Your Submission
+            - textbox "Your Submission" [ref=e444]
+          - separator [ref=e445]
+        - generic [ref=e446]:
+          - generic [ref=e447]:
+            - heading "Problem Statement 18" [level=5] [ref=e448]
+            - generic [ref=e449]:
+              - 'heading "Weightage: 1" [level=6] [ref=e450]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e451]'
+          - generic [ref=e452]:
+            - paragraph [ref=e453]: Which of the following statements is correct as discussed in the video?
+            - list [ref=e454]:
+              - listitem [ref=e455]: It is good practice to overwrite existing dataframe after each transformation to save space in OneLake.
+              - listitem [ref=e456]: It is good practice to store data in new dataframes after every transformation and keep the original dataframes untouched.
+          - generic [ref=e457]:
+            - generic [ref=e458]: Your Submission
+            - textbox "Your Submission" [ref=e460]
+          - separator [ref=e461]
+        - generic [ref=e462]:
+          - generic [ref=e463]:
+            - heading "Problem Statement 19" [level=5] [ref=e464]
+            - generic [ref=e465]:
+              - 'heading "Weightage: 1" [level=6] [ref=e466]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e467]'
+          - generic [ref=e468]:
+            - paragraph [ref=e469]: As discussed in the Video File path name to Overwrite a Spark frame is?
+            - list [ref=e470]:
+              - listitem [ref=e471]: Case sensitive
+              - listitem [ref=e472]: Case insensitive
+          - generic [ref=e473]:
+            - generic [ref=e474]: Your Submission
+            - textbox "Your Submission" [ref=e476]
+          - separator [ref=e477]
+        - generic [ref=e478]:
+          - generic [ref=e479]:
+            - heading "Problem Statement 20" [level=5] [ref=e480]
+            - generic [ref=e481]:
+              - 'heading "Weightage: 3" [level=6] [ref=e482]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e483]'
+          - generic [ref=e484]:
+            - paragraph [ref=e485]: What is the use of Spark SQL as discussed in the video?
+            - list [ref=e486]:
+              - listitem [ref=e487]: To store dataframes in file format using Python code
+              - listitem [ref=e488]: To store dataframes in relational table format
+              - listitem [ref=e489]: To create external table
+              - listitem [ref=e490]: To query the data
+          - generic [ref=e491]:
+            - generic [ref=e492]: Your Submission
+            - textbox "Your Submission" [ref=e494]
+          - separator [ref=e495]
+        - generic [ref=e496]:
+          - generic [ref=e497]:
+            - heading "Problem Statement 21" [level=5] [ref=e498]
+            - generic [ref=e499]:
+              - 'heading "Weightage: 1" [level=6] [ref=e500]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e501]'
+          - generic [ref=e502]:
+            - paragraph [ref=e503]: The relational datastore created in Spark is called?
+            - list [ref=e504]:
+              - listitem [ref=e505]: Spark catalog
+              - listitem [ref=e506]: Spark Dataframe
+              - listitem [ref=e507]: External table
+          - generic [ref=e508]:
+            - generic [ref=e509]: Your Submission
+            - textbox "Your Submission" [ref=e511]
+          - separator [ref=e512]
+        - generic [ref=e513]:
+          - generic [ref=e514]:
+            - heading "Problem Statement 22" [level=5] [ref=e515]
+            - generic [ref=e516]:
+              - 'heading "Weightage: 1" [level=6] [ref=e517]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e518]'
+          - generic [ref=e519]:
+            - paragraph [ref=e520]: Which of thefollowing statements is TRUE as discussed in the video?
+            - list [ref=e521]:
+              - listitem [ref=e522]: PySpark has better performance than Spark SQL
+              - listitem [ref=e523]: Spark SQL has better performance than PySpark
+              - listitem [ref=e524]: It cannot be said that which of the two has better performance.
+          - generic [ref=e525]:
+            - generic [ref=e526]: Your Submission
+            - textbox "Your Submission" [ref=e528]
+          - separator [ref=e529]
+        - generic [ref=e530]:
+          - generic [ref=e531]:
+            - heading "Problem Statement 23" [level=5] [ref=e532]
+            - generic [ref=e533]:
+              - 'heading "Weightage: 1" [level=6] [ref=e534]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e535]'
+          - generic [ref=e536]:
+            - paragraph [ref=e537]: "Fill in the blanks with below given options:"
+            - paragraph [ref=e538]: DeltaLake is a/an __________ storage layer that adds _________ semantics to Spark-based data lake processing.
+            - list [ref=e539]:
+              - listitem [ref=e540]: relational database, open source
+              - listitem [ref=e541]: open-source, relational database
+              - listitem [ref=e542]: licensed, column storage
+              - listitem [ref=e543]: open-source, SQL Endpoint
+          - generic [ref=e544]:
+            - generic [ref=e545]: Your Submission
+            - textbox "Your Submission" [ref=e547]
+          - separator [ref=e548]
+        - generic [ref=e549]:
+          - generic [ref=e550]:
+            - heading "Problem Statement 24" [level=5] [ref=e551]
+            - generic [ref=e552]:
+              - 'heading "Weightage: 2" [level=6] [ref=e553]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e554]'
+          - generic [ref=e555]:
+            - paragraph [ref=e556]: Which of the following is TRUE regarding Apache Parquet format?
+            - list [ref=e557]:
+              - listitem [ref=e558]: It has column-based storage and column-based compression
+              - listitem [ref=e559]: It has row-based storage like traditional databases but column-based compression
+              - listitem [ref=e560]: It has column-based compression which reduces data retrieval time
+              - listitem [ref=e561]: It has row-based compression since it is easy to compress data of a particular row
+          - generic [ref=e562]:
+            - generic [ref=e563]: Your Submission
+            - textbox "Your Submission" [ref=e565]
+          - separator [ref=e566]
+        - generic [ref=e567]:
+          - generic [ref=e568]:
+            - heading "Problem Statement 25" [level=5] [ref=e569]
+            - generic [ref=e570]:
+              - 'heading "Weightage: 1" [level=6] [ref=e571]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e572]'
+          - generic [ref=e573]:
+            - paragraph [ref=e574]: Metadata is not stored in the file for Apache Parquet format. True or False?
+            - list [ref=e575]:
+              - listitem [ref=e576]: "True"
+              - listitem [ref=e577]: "False"
+          - generic [ref=e578]:
+            - generic [ref=e579]: Your Submission
+            - textbox "Your Submission" [ref=e581]
+          - separator [ref=e582]
+        - generic [ref=e583]:
+          - generic [ref=e584]:
+            - heading "Problem Statement 26" [level=5] [ref=e585]
+            - generic [ref=e586]:
+              - 'heading "Weightage: 1" [level=6] [ref=e587]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e588]'
+          - generic [ref=e589]:
+            - paragraph [ref=e590]: "Delta Parquet Format stores data as:"
+            - list [ref=e591]:
+              - listitem [ref=e592]: File
+              - listitem [ref=e593]: Folder
+              - listitem [ref=e594]: Table
+              - listitem [ref=e595]: Log Files
+          - generic [ref=e596]:
+            - generic [ref=e597]: Your Submission
+            - textbox "Your Submission" [ref=e599]
+          - separator [ref=e600]
+        - generic [ref=e601]:
+          - generic [ref=e602]:
+            - heading "Problem Statement 27" [level=5] [ref=e603]
+            - generic [ref=e604]:
+              - 'heading "Weightage: 1" [level=6] [ref=e605]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e606]'
+          - generic [ref=e607]:
+            - paragraph [ref=e608]: What is the file format for delta log directory commit file?
+            - list [ref=e609]:
+              - listitem [ref=e610]: Parquet
+              - listitem [ref=e611]: Numbered JSON
+              - listitem [ref=e612]: CSV
+              - listitem [ref=e613]: Delta parquet
+          - generic [ref=e614]:
+            - generic [ref=e615]: Your Submission
+            - textbox "Your Submission" [ref=e617]
+          - separator [ref=e618]
+        - generic [ref=e619]:
+          - generic [ref=e620]:
+            - heading "Problem Statement 28" [level=5] [ref=e621]
+            - generic [ref=e622]:
+              - 'heading "Weightage: 1" [level=6] [ref=e623]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e624]'
+          - generic [ref=e625]:
+            - paragraph [ref=e626]: If you want to work with older versions of your data in Delta parquet and do not want to go through many commit files, what would you use?
+            - list [ref=e627]:
+              - listitem [ref=e628]: Log files
+              - listitem [ref=e629]: Data files
+              - listitem [ref=e630]: Checkpoint files
+          - generic [ref=e631]:
+            - generic [ref=e632]: Your Submission
+            - textbox "Your Submission" [ref=e634]
+          - separator [ref=e635]
+        - generic [ref=e636]:
+          - generic [ref=e637]:
+            - heading "Problem Statement 29" [level=5] [ref=e638]
+            - generic [ref=e639]:
+              - 'heading "Weightage: 1" [level=6] [ref=e640]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e641]'
+          - generic [ref=e642]:
+            - paragraph [ref=e643]: Where is delta table defined?
+            - list [ref=e644]:
+              - listitem [ref=e645]: Meta store of the lakehouse
+              - listitem [ref=e646]: Data files
+              - listitem [ref=e647]: Parquet file folders
+          - generic [ref=e648]:
+            - generic [ref=e649]: Your Submission
+            - textbox "Your Submission" [ref=e651]
+          - separator [ref=e652]
+        - generic [ref=e653]:
+          - generic [ref=e654]:
+            - heading "Problem Statement 30" [level=5] [ref=e655]
+            - generic [ref=e656]:
+              - 'heading "Weightage: 2" [level=6] [ref=e657]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e658]'
+          - generic [ref=e659]:
+            - paragraph [ref=e660]: What are the two types of tables as explained in the video?
+            - list [ref=e661]:
+              - listitem [ref=e662]: Managed table
+              - listitem [ref=e663]: External table
+              - listitem [ref=e664]: Self-managed tables
+          - generic [ref=e665]:
+            - generic [ref=e666]: Your Submission
+            - textbox "Your Submission" [ref=e668]
+          - separator [ref=e669]
+        - generic [ref=e670]:
+          - generic [ref=e671]:
+            - heading "Problem Statement 31" [level=5] [ref=e672]
+            - generic [ref=e673]:
+              - 'heading "Weightage: 1" [level=6] [ref=e674]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e675]'
+          - generic [ref=e676]:
+            - paragraph [ref=e677]: If you need to define schema of the table before then location to store the information is needed for?
+            - list [ref=e678]:
+              - listitem [ref=e679]: Managed table
+              - listitem [ref=e680]: External table
+              - listitem [ref=e681]: Both
+              - listitem [ref=e682]: None
+          - generic [ref=e683]:
+            - generic [ref=e684]: Your Submission
+            - textbox "Your Submission" [ref=e686]
+          - separator [ref=e687]
+        - generic [ref=e688]:
+          - generic [ref=e689]:
+            - heading "Problem Statement 32" [level=5] [ref=e690]
+            - generic [ref=e691]:
+              - 'heading "Weightage: 1" [level=6] [ref=e692]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e693]'
+          - generic [ref=e694]:
+            - paragraph [ref=e695]: As discussed in the video Spark SQL is a variant of?
+            - list [ref=e696]:
+              - listitem [ref=e697]: PySpark
+              - listitem [ref=e698]: Python
+              - listitem [ref=e699]: SQL
+              - listitem [ref=e700]: None of the above
+          - generic [ref=e701]:
+            - generic [ref=e702]: Your Submission
+            - textbox "Your Submission" [ref=e704]
+          - separator [ref=e705]
+        - generic [ref=e706]:
+          - generic [ref=e707]:
+            - heading "Problem Statement 33" [level=5] [ref=e708]
+            - generic [ref=e709]:
+              - 'heading "Weightage: 1" [level=6] [ref=e710]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e711]'
+          - generic [ref=e712]:
+            - paragraph [ref=e713]: While using time travel to retrieve a particular version of a data, which of the following can be used?
+            - list [ref=e714]:
+              - listitem [ref=e715]: timestampAsOf, Date
+              - listitem [ref=e716]: VesrsionAsOf, Version_number
+              - listitem [ref=e717]: Both
+              - listitem [ref=e718]: None
+          - generic [ref=e719]:
+            - generic [ref=e720]: Your Submission
+            - textbox "Your Submission" [ref=e722]
+          - separator [ref=e723]
+        - generic [ref=e724]:
+          - generic [ref=e725]:
+            - heading "Problem Statement 34" [level=5] [ref=e726]
+            - generic [ref=e727]:
+              - 'heading "Weightage: 1" [level=6] [ref=e728]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e729]'
+          - generic [ref=e730]:
+            - paragraph [ref=e731]: "Fill in the blanks the right sequence of options, considering Spark Structured Streaming as discussed in the video:"
+            - text: ___________ , a Spark Streaming, ________, a Spark Engine, Batches of processed data
+            - list [ref=e732]:
+              - listitem [ref=e733]: Batches of input data, Input data stream
+              - listitem [ref=e734]: Input data stream, Batches of input data
+              - listitem [ref=e735]: File data, Delta parquet
+              - listitem [ref=e736]: None
+          - generic [ref=e737]:
+            - generic [ref=e738]: Your Submission
+            - textbox "Your Submission" [ref=e740]
+          - separator [ref=e741]
+        - generic [ref=e742]:
+          - generic [ref=e743]:
+            - heading "Problem Statement 35" [level=5] [ref=e744]
+            - generic [ref=e745]:
+              - 'heading "Weightage: 1" [level=6] [ref=e746]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e747]'
+          - generic [ref=e748]:
+            - paragraph [ref=e749]: Language is an attribute of the cell that you are running to, but you cannot have a notebook with different cells having different languages.
+            - list [ref=e750]:
+              - listitem [ref=e751]: "True"
+              - listitem [ref=e752]: "False"
+          - generic [ref=e753]:
+            - generic [ref=e754]: Your Submission
+            - textbox "Your Submission" [ref=e756]
+          - separator [ref=e757]
+        - generic [ref=e758]:
+          - generic [ref=e759]:
+            - heading "Problem Statement 36" [level=5] [ref=e760]
+            - generic [ref=e761]:
+              - 'heading "Weightage: 1" [level=6] [ref=e762]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e763]'
+          - generic [ref=e764]:
+            - paragraph [ref=e765]: Can we have a default language set for a notebook for all its cells?
+            - list [ref=e766]:
+              - listitem [ref=e767]: "Yes"
+              - listitem [ref=e768]: "No"
+          - generic [ref=e769]:
+            - generic [ref=e770]: Your Submission
+            - textbox "Your Submission" [ref=e772]
+          - separator [ref=e773]
+        - generic [ref=e774]:
+          - generic [ref=e775]:
+            - heading "Problem Statement 37" [level=5] [ref=e776]
+            - generic [ref=e777]:
+              - 'heading "Weightage: 2" [level=6] [ref=e778]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e779]'
+          - generic [ref=e780]:
+            - paragraph [ref=e781]: When we use delta tables for streaming data as shown in the demo, which of the following statements are FALSE?
+            - list [ref=e782]:
+              - listitem [ref=e783]: Nothing changes, other than the type of the object
+              - listitem [ref=e784]: We need to trigger pipelines to add new data in case of streaming data.
+              - listitem [ref=e785]: We cannot check the history of streaming data.
+              - listitem [ref=e786]: Partitioning of streaming data can help in performance tuning.
+          - generic [ref=e787]:
+            - generic [ref=e788]: Your Submission
+            - textbox "Your Submission" [ref=e790]
+          - separator [ref=e791]
+        - generic [ref=e792]:
+          - generic [ref=e793]:
+            - heading "Problem Statement 38" [level=5] [ref=e794]
+            - generic [ref=e795]:
+              - 'heading "Weightage: 1" [level=6] [ref=e796]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e797]'
+          - generic [ref=e798]:
+            - paragraph [ref=e799]: You have loaded a Spark dataframe with data, that you now want to use in a delta table. What format should you use to write the dataframe to storage?
+            - list [ref=e800]:
+              - listitem [ref=e801]: CSV
+              - listitem [ref=e802]: PARQUET
+              - listitem [ref=e803]: DELTA
+          - generic [ref=e804]:
+            - generic [ref=e805]: Your Submission
+            - textbox "Your Submission" [ref=e807]
+          - separator [ref=e808]
+        - generic [ref=e809]:
+          - generic [ref=e810]:
+            - heading "Problem Statement 39" [level=5] [ref=e811]
+            - generic [ref=e812]:
+              - 'heading "Weightage: 3" [level=6] [ref=e813]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e814]'
+          - generic [ref=e815]:
+            - paragraph [ref=e816]: Which of the following core pipeline concepts have been discussed in the video?
+            - list [ref=e817]:
+              - listitem [ref=e818]: Activities
+              - listitem [ref=e819]: Parameters
+              - listitem [ref=e820]: Pipeline runs
+              - listitem [ref=e821]: Pipeline Triggers
+          - generic [ref=e822]:
+            - generic [ref=e823]: Your Submission
+            - textbox "Your Submission" [ref=e825]
+          - separator [ref=e826]
+        - generic [ref=e827]:
+          - generic [ref=e828]:
+            - heading "Problem Statement 40" [level=5] [ref=e829]
+            - generic [ref=e830]:
+              - 'heading "Weightage: 2" [level=6] [ref=e831]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e832]'
+          - generic [ref=e833]:
+            - paragraph [ref=e834]: In the demo shown on ‘Use the copy data activity’ which are the two features available on the Data factory aspects of Fabric?
+            - list [ref=e835]:
+              - listitem [ref=e836]: Data pipeline
+              - listitem [ref=e837]: Dataflow Gen2
+              - listitem [ref=e838]: Synapse
+              - listitem [ref=e839]: ADLS Gen2
+          - generic [ref=e840]:
+            - generic [ref=e841]: Your Submission
+            - textbox "Your Submission" [ref=e843]
+          - separator [ref=e844]
+        - generic [ref=e845]:
+          - generic [ref=e846]:
+            - heading "Problem Statement 41" [level=5] [ref=e847]
+            - generic [ref=e848]:
+              - 'heading "Weightage: 3" [level=6] [ref=e849]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e850]'
+          - generic [ref=e851]:
+            - paragraph [ref=e852]: What are the options available on the home page for building data pipelines aspect?
+            - list [ref=e853]:
+              - listitem [ref=e854]: Add pipeline activity
+              - listitem [ref=e855]: Copy data
+              - listitem [ref=e856]: Import pipeline activity
+              - listitem [ref=e857]: Choose a task to start
+          - generic [ref=e858]:
+            - generic [ref=e859]: Your Submission
+            - textbox "Your Submission" [ref=e861]
+          - separator [ref=e862]
+        - generic [ref=e863]:
+          - generic [ref=e864]:
+            - heading "Problem Statement 42" [level=5] [ref=e865]
+            - generic [ref=e866]:
+              - 'heading "Weightage: 2" [level=6] [ref=e867]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e868]'
+          - generic [ref=e869]:
+            - paragraph [ref=e870]: Which are the additional pipeline activities available here that were not available in batch version of the data factory synapse pipeline?
+            - list [ref=e871]:
+              - listitem [ref=e872]: Notebook
+              - listitem [ref=e873]: Office 365 Outlook (Preview)
+              - listitem [ref=e874]: Teams (Preview)
+              - listitem [ref=e875]: KQL
+          - generic [ref=e876]:
+            - generic [ref=e877]: Your Submission
+            - textbox "Your Submission" [ref=e879]
+          - separator [ref=e880]
+        - generic [ref=e881]:
+          - generic [ref=e882]:
+            - heading "Problem Statement 43" [level=5] [ref=e883]
+            - generic [ref=e884]:
+              - 'heading "Weightage: 1" [level=6] [ref=e885]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e886]'
+          - generic [ref=e887]:
+            - paragraph [ref=e888]: What is the first activity added in the demo shown on ‘Use the copy data activity’?
+            - list [ref=e889]:
+              - listitem [ref=e890]: Copy data
+              - listitem [ref=e891]: Lookup
+              - listitem [ref=e892]: Notebook
+              - listitem [ref=e893]: Script
+          - generic [ref=e894]:
+            - generic [ref=e895]: Your Submission
+            - textbox "Your Submission" [ref=e897]
+          - separator [ref=e898]
+        - generic [ref=e899]:
+          - generic [ref=e900]:
+            - heading "Problem Statement 44" [level=5] [ref=e901]
+            - generic [ref=e902]:
+              - 'heading "Weightage: 1" [level=6] [ref=e903]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e904]'
+          - generic [ref=e905]:
+            - paragraph [ref=e906]: What is sample data used in this demo?
+            - list [ref=e907]:
+              - listitem [ref=e908]: NYC Taxi-Green
+              - listitem [ref=e909]: Public Holidays
+              - listitem [ref=e910]: Covid -19 Data Lake
+              - listitem [ref=e911]: Diabetes
+          - generic [ref=e912]:
+            - generic [ref=e913]: Your Submission
+            - textbox "Your Submission" [ref=e915]
+          - separator [ref=e916]
+        - generic [ref=e917]:
+          - generic [ref=e918]:
+            - heading "Problem Statement 45" [level=5] [ref=e919]
+            - generic [ref=e920]:
+              - 'heading "Weightage: 1" [level=6] [ref=e921]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e922]'
+          - generic [ref=e923]:
+            - paragraph [ref=e924]: What is the destination data type used in the demo?
+            - list [ref=e925]:
+              - listitem [ref=e926]: Amazon S3
+              - listitem [ref=e927]: Azure Blob Storage
+              - listitem [ref=e928]: Azure Data Explorer
+              - listitem [ref=e929]: Azure Data Lake Storage Gen2
+          - generic [ref=e930]:
+            - generic [ref=e931]: Your Submission
+            - textbox "Your Submission" [ref=e933]
+          - separator [ref=e934]
+        - generic [ref=e935]:
+          - generic [ref=e936]:
+            - heading "Problem Statement 46" [level=5] [ref=e937]
+            - generic [ref=e938]:
+              - 'heading "Weightage: 1" [level=6] [ref=e939]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e940]'
+          - generic [ref=e941]:
+            - paragraph [ref=e942]: In the demo shown on ‘Use pipeline templates’ which of the following templates has been used?
+            - list [ref=e943]:
+              - listitem [ref=e944]: Bulk copy from Database
+              - listitem [ref=e945]: Copy data from Azure SQL DB to Lakehouse Table
+              - listitem [ref=e946]: Delta copy from Database
+              - listitem [ref=e947]: Delete files older than 30 days.
+          - generic [ref=e948]:
+            - generic [ref=e949]: Your Submission
+            - textbox "Your Submission" [ref=e951]
+          - separator [ref=e952]
+        - generic [ref=e953]:
+          - generic [ref=e954]:
+            - heading "Problem Statement 47" [level=5] [ref=e955]
+            - generic [ref=e956]:
+              - 'heading "Weightage: 1" [level=6] [ref=e957]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e958]'
+          - generic [ref=e959]:
+            - paragraph [ref=e960]: In the demo shown on Ingest data with a pipeline, a new Lakehouse is created. What is the name given to the Lakehouse?
+            - list [ref=e961]:
+              - listitem [ref=e962]: Lakehouse1
+              - listitem [ref=e963]: LH001
+              - listitem [ref=e964]: LH004
+              - listitem [ref=e965]: LakehouseDemo
+          - generic [ref=e966]:
+            - generic [ref=e967]: Your Submission
+            - textbox "Your Submission" [ref=e969]
+          - separator [ref=e970]
+        - generic [ref=e971]:
+          - generic [ref=e972]:
+            - heading "Problem Statement 48" [level=5] [ref=e973]
+            - generic [ref=e974]:
+              - 'heading "Weightage: 1" [level=6] [ref=e975]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e976]'
+          - generic [ref=e977]:
+            - paragraph [ref=e978]: In the demo shown on Ingest data with a pipeline while using Notebook which table is used as a Parameter?
+            - paragraph
+            - list [ref=e979]:
+              - listitem [ref=e980]: Profit
+              - listitem [ref=e981]: Customer
+              - listitem [ref=e982]: Sales
+              - listitem [ref=e983]: Year
+          - generic [ref=e984]:
+            - generic [ref=e985]: Your Submission
+            - textbox "Your Submission" [ref=e987]
+          - separator [ref=e988]
+        - generic [ref=e989]:
+          - generic [ref=e990]:
+            - heading "Problem Statement 49" [level=5] [ref=e991]
+            - generic [ref=e992]:
+              - 'heading "Weightage: 1" [level=6] [ref=e993]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e994]'
+          - generic [ref=e995]:
+            - paragraph [ref=e996]: In the scheduling aspects of pipeline as discussed in the video which frequency option is NOT available?
+            - list [ref=e997]:
+              - listitem [ref=e998]: Monthly
+              - listitem [ref=e999]: Hourly
+              - listitem [ref=e1000]: Weekly
+              - listitem [ref=e1001]: By the minute
+          - generic [ref=e1002]:
+            - generic [ref=e1003]: Your Submission
+            - textbox "Your Submission" [ref=e1005]
+          - separator [ref=e1006]
+        - generic [ref=e1007]:
+          - generic [ref=e1008]:
+            - heading "Problem Statement 50" [level=5] [ref=e1009]
+            - generic [ref=e1010]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1011]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1012]'
+          - generic [ref=e1013]:
+            - paragraph [ref=e1014]: JSON Code of the pipeline can be viewed and edited in Fabric workspace, like Data factory and Synapse.
+            - list [ref=e1015]:
+              - listitem [ref=e1016]: "True"
+              - listitem [ref=e1017]: "False"
+          - generic [ref=e1018]:
+            - generic [ref=e1019]: Your Submission
+            - textbox "Your Submission" [ref=e1021]
+          - separator [ref=e1022]
+        - generic [ref=e1023]:
+          - generic [ref=e1024]:
+            - heading "Problem Statement 51" [level=5] [ref=e1025]
+            - generic [ref=e1026]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1027]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1028]'
+          - generic [ref=e1029]:
+            - paragraph [ref=e1030]: You want to use pipeline to copy data to a folder with a specified name for each run. What should you do?
+            - list [ref=e1031]:
+              - listitem [ref=e1032]: Create multiple pipelines, one for each folder name
+              - listitem [ref=e1033]: Use a Dataflow (Gen2)
+              - listitem [ref=e1034]: Add a parameter to the pipeline and use to specify the folder name for each run
+              - listitem [ref=e1035]: This is not possible
+          - generic [ref=e1036]:
+            - generic [ref=e1037]: Your Submission
+            - textbox "Your Submission" [ref=e1039]
+          - separator [ref=e1040]
+        - generic [ref=e1041]:
+          - generic [ref=e1042]:
+            - heading "Problem Statement 52" [level=5] [ref=e1043]
+            - generic [ref=e1044]:
+              - 'heading "Weightage: 3" [level=6] [ref=e1045]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1046]'
+          - generic [ref=e1047]:
+            - paragraph [ref=e1048]: As discussed in the video which of the following are correct about a dataflow?
+            - list [ref=e1049]:
+              - listitem [ref=e1050]: It is an ELT tool
+              - listitem [ref=e1051]: It is an ETL tool
+              - listitem [ref=e1052]: We can use Power Query in dataflow
+              - listitem [ref=e1053]: It has option of output destinations
+          - generic [ref=e1054]:
+            - generic [ref=e1055]: Your Submission
+            - textbox "Your Submission" [ref=e1057]
+          - separator [ref=e1058]
+        - generic [ref=e1059]:
+          - generic [ref=e1060]:
+            - heading "Problem Statement 53" [level=5] [ref=e1061]
+            - generic [ref=e1062]:
+              - 'heading "Weightage: 3" [level=6] [ref=e1063]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1064]'
+          - generic [ref=e1065]:
+            - paragraph [ref=e1066]: As shown in the LAB to Ingest data with dataflow (Gen2) in MS Fabric which of the following are the license mode available for a workspace in the workspace setting?
+            - list [ref=e1067]:
+              - listitem [ref=e1068]: Pro
+              - listitem [ref=e1069]: Premium capacity
+              - listitem [ref=e1070]: Fabric capacity
+              - listitem [ref=e1071]: Embedded per user
+          - generic [ref=e1072]:
+            - generic [ref=e1073]: Your Submission
+            - textbox "Your Submission" [ref=e1075]
+          - separator [ref=e1076]
+        - generic [ref=e1077]:
+          - generic [ref=e1078]:
+            - heading "Problem Statement 54" [level=5] [ref=e1079]
+            - generic [ref=e1080]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1081]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1082]'
+          - generic [ref=e1083]:
+            - paragraph [ref=e1084]: Which of the following items are not available in options of a workspace to be created, when clicked on ‘New’?
+            - list [ref=e1085]:
+              - listitem [ref=e1086]: Report
+              - listitem [ref=e1087]: Dataflow Gen2
+              - listitem [ref=e1088]: AI Model
+              - listitem [ref=e1089]: SQL Queryset
+          - generic [ref=e1090]:
+            - generic [ref=e1091]: Your Submission
+            - textbox "Your Submission" [ref=e1093]
+          - separator [ref=e1094]
+        - generic [ref=e1095]:
+          - generic [ref=e1096]:
+            - heading "Problem Statement 55" [level=5] [ref=e1097]
+            - generic [ref=e1098]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1099]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1100]'
+          - generic [ref=e1101]:
+            - paragraph [ref=e1102]: Which of the following statements are true about Lakehouse and Warehouse in Fabric?
+            - list [ref=e1103]:
+              - listitem [ref=e1104]: In lakehouse you can only write data but cannot read
+              - listitem [ref=e1105]: In Warehouse you can read and write data
+              - listitem [ref=e1106]: In lakehouse you can only read data
+              - listitem [ref=e1107]: In warehouse you can only read data
+          - generic [ref=e1108]:
+            - generic [ref=e1109]: Your Submission
+            - textbox "Your Submission" [ref=e1111]
+          - separator [ref=e1112]
+        - generic [ref=e1113]:
+          - generic [ref=e1114]:
+            - heading "Problem Statement 56" [level=5] [ref=e1115]
+            - generic [ref=e1116]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1117]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1118]'
+          - generic [ref=e1119]:
+            - paragraph [ref=e1120]: Which of the following statements are TRUE about lakehouse?
+            - list [ref=e1121]:
+              - listitem [ref=e1122]: You can only upload files
+              - listitem [ref=e1123]: You can only upload folders
+              - listitem [ref=e1124]: You can upload both files and folders
+              - listitem [ref=e1125]: None of the above
+          - generic [ref=e1126]:
+            - generic [ref=e1127]: Your Submission
+            - textbox "Your Submission" [ref=e1129]
+          - separator [ref=e1130]
+        - generic [ref=e1131]:
+          - generic [ref=e1132]:
+            - heading "Problem Statement 57" [level=5] [ref=e1133]
+            - generic [ref=e1134]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1135]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1136]'
+          - generic [ref=e1137]:
+            - paragraph [ref=e1138]: Which first custom column is created in the demo on Ingest data with dataflow (Gen2)?
+            - list [ref=e1139]:
+              - listitem [ref=e1140]: Order ID
+              - listitem [ref=e1141]: MonthNo
+              - listitem [ref=e1142]: ProductID
+              - listitem [ref=e1143]: OrderQty
+          - generic [ref=e1144]:
+            - generic [ref=e1145]: Your Submission
+            - textbox "Your Submission" [ref=e1147]
+          - separator [ref=e1148]
+        - generic [ref=e1149]:
+          - generic [ref=e1150]:
+            - heading "Problem Statement 58" [level=5] [ref=e1151]
+            - generic [ref=e1152]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1153]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1154]'
+          - generic [ref=e1155]:
+            - paragraph [ref=e1156]: Which of the following is NOT an option in destination setting as shown in the demo?
+            - list [ref=e1157]:
+              - listitem [ref=e1158]: Existing data
+              - listitem [ref=e1159]: New Data
+              - listitem [ref=e1160]: Replace
+              - listitem [ref=e1161]: Append
+              - listitem [ref=e1162]: Update
+          - generic [ref=e1163]:
+            - generic [ref=e1164]: Your Submission
+            - textbox "Your Submission" [ref=e1166]
+          - separator [ref=e1167]
+        - generic [ref=e1168]:
+          - generic [ref=e1169]:
+            - heading "Problem Statement 59" [level=5] [ref=e1170]
+            - generic [ref=e1171]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1172]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1173]'
+          - generic [ref=e1174]:
+            - paragraph [ref=e1175]: Is it possible to create parameters in Dataflow (Gen2) and pass those through pipeline?
+            - list [ref=e1176]:
+              - listitem [ref=e1177]: "Yes"
+              - listitem [ref=e1178]: "No"
+          - generic [ref=e1179]:
+            - generic [ref=e1180]: Your Submission
+            - textbox "Your Submission" [ref=e1182]
+          - separator [ref=e1183]
+        - generic [ref=e1184]:
+          - generic [ref=e1185]:
+            - heading "Problem Statement 60" [level=5] [ref=e1186]
+            - generic [ref=e1187]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1188]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1189]'
+          - generic [ref=e1190]:
+            - paragraph [ref=e1191]: What is the file type behind the table at the destination as shown in the Demo?
+            - list [ref=e1192]:
+              - listitem [ref=e1193]: JSON
+              - listitem [ref=e1194]: Parquet
+              - listitem [ref=e1195]: CSV
+              - listitem [ref=e1196]: XML
+          - generic [ref=e1197]:
+            - generic [ref=e1198]: Your Submission
+            - textbox "Your Submission" [ref=e1200]
+          - separator [ref=e1201]
+        - generic [ref=e1202]:
+          - generic [ref=e1203]:
+            - heading "Problem Statement 61" [level=5] [ref=e1204]
+            - generic [ref=e1205]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1206]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1207]'
+          - generic [ref=e1208]:
+            - paragraph [ref=e1209]: As discussed in there cap of the video the table is coming from(source)?
+            - list [ref=e1210]:
+              - listitem [ref=e1211]: SharePoint online
+              - listitem [ref=e1212]: A file on GitHub
+              - listitem [ref=e1213]: Azure SQL DB
+              - listitem [ref=e1214]: Power BI dataset
+          - generic [ref=e1215]:
+            - generic [ref=e1216]: Your Submission
+            - textbox "Your Submission" [ref=e1218]
+          - separator [ref=e1219]
+        - generic [ref=e1220]:
+          - generic [ref=e1221]:
+            - heading "Problem Statement 62" [level=5] [ref=e1222]
+            - generic [ref=e1223]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1224]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1225]'
+          - generic [ref=e1226]:
+            - paragraph [ref=e1227]: Which workload experience lets you create a Dataflow (Gen2)?
+            - list [ref=e1228]:
+              - listitem [ref=e1229]: Real-time Analytics
+              - listitem [ref=e1230]: Data warehouse
+              - listitem [ref=e1231]: Data Factory
+          - generic [ref=e1232]:
+            - generic [ref=e1233]: Your Submission
+            - textbox "Your Submission" [ref=e1235]
+          - separator [ref=e1236]
+        - generic [ref=e1237]:
+          - generic [ref=e1238]:
+            - heading "Problem Statement 63" [level=5] [ref=e1239]
+            - generic [ref=e1240]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1241]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1242]'
+          - generic [ref=e1243]:
+            - paragraph [ref=e1244]: Which of the following is NOT a data destination as shown in the demo?
+            - list [ref=e1245]:
+              - listitem [ref=e1246]: Azure SQL Database
+              - listitem [ref=e1247]: Lakehouse
+              - listitem [ref=e1248]: Azure Blob Storage
+              - listitem [ref=e1249]: Azure Data Explorer (Kusto)
+          - generic [ref=e1250]:
+            - generic [ref=e1251]: Your Submission
+            - textbox "Your Submission" [ref=e1253]
+          - separator [ref=e1254]
+        - generic [ref=e1255]:
+          - generic [ref=e1256]:
+            - heading "Problem Statement 64" [level=5] [ref=e1257]
+            - generic [ref=e1258]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1259]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1260]'
+          - generic [ref=e1261]:
+            - paragraph [ref=e1262]: As shown in the video, the process of building a modern data warehouse typically consists of all the below given steps in sequence EXCEPT
+            - list [ref=e1263]:
+              - listitem [ref=e1264]: Data Ingestion
+              - listitem [ref=e1265]: Data Storage
+              - listitem [ref=e1266]: Data wrangling
+              - listitem [ref=e1267]: Data analysis and delivery
+          - generic [ref=e1268]:
+            - generic [ref=e1269]: Your Submission
+            - textbox "Your Submission" [ref=e1271]
+          - separator [ref=e1272]
+        - generic [ref=e1273]:
+          - generic [ref=e1274]:
+            - heading "Problem Statement 65" [level=5] [ref=e1275]
+            - generic [ref=e1276]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1277]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1278]'
+          - generic [ref=e1279]:
+            - paragraph [ref=e1280]: Which of the following statements are TRUE regarding surrogate key (SK) and alternate key(AK) as discussed in the video?
+            - list [ref=e1281]:
+              - listitem [ref=e1282]: SK maintains a connection to the original data sources
+              - listitem [ref=e1283]: AK is a unique identifier for each record in the data warehouse and acts as a primary key
+              - listitem [ref=e1284]: AK maintains a connection to the original data sources
+              - listitem [ref=e1285]: SK is a unique identifier for each record in the data warehouse and acts as a primary key.
+          - generic [ref=e1286]:
+            - generic [ref=e1287]: Your Submission
+            - textbox "Your Submission" [ref=e1289]
+          - separator [ref=e1290]
+        - generic [ref=e1291]:
+          - generic [ref=e1292]:
+            - heading "Problem Statement 66" [level=5] [ref=e1293]
+            - generic [ref=e1294]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1295]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1296]'
+          - generic [ref=e1297]:
+            - paragraph [ref=e1298]: In most transactional databases that are used in business applications, why is the data normalized?
+            - list [ref=e1299]:
+              - listitem [ref=e1300]: Reduce duplication
+              - listitem [ref=e1301]: Reduce data retrieval time
+              - listitem [ref=e1302]: Increase storage efficiency
+              - listitem [ref=e1303]: None
+          - generic [ref=e1304]:
+            - generic [ref=e1305]: Your Submission
+            - textbox "Your Submission" [ref=e1307]
+          - separator [ref=e1308]
+        - generic [ref=e1309]:
+          - generic [ref=e1310]:
+            - heading "Problem Statement 67" [level=5] [ref=e1311]
+            - generic [ref=e1312]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1313]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1314]'
+          - generic [ref=e1315]:
+            - paragraph [ref=e1316]: Multi-table transactions are possible in
+            - list [ref=e1317]:
+              - listitem [ref=e1318]: Lakehouse but not in warehouse
+              - listitem [ref=e1319]: Warehouse but not in lakehouse
+              - listitem [ref=e1320]: Lakehouse and Warehouse
+              - listitem [ref=e1321]: Neither in Lakehouse nor in Warehouse
+          - generic [ref=e1322]:
+            - generic [ref=e1323]: Your Submission
+            - textbox "Your Submission" [ref=e1325]
+          - separator [ref=e1326]
+        - generic [ref=e1327]:
+          - generic [ref=e1328]:
+            - heading "Problem Statement 68" [level=5] [ref=e1329]
+            - generic [ref=e1330]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1331]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1332]'
+          - generic [ref=e1333]:
+            - paragraph [ref=e1334]: Which of the following is TRUE about the Medallion Architecture?
+            - list [ref=e1335]:
+              - listitem [ref=e1336]: Silver as Raw, Bronze as Validated, Gold as Enriched.
+              - listitem [ref=e1337]: Bronze as Raw, Silver as Validated, Gold as Enriched.
+              - listitem [ref=e1338]: Silver as Raw, Bronze as Enriched, Gold as Validated.
+              - listitem [ref=e1339]: Bronze as Validated, Silver as Enriched, Gold as Raw.
+          - generic [ref=e1340]:
+            - generic [ref=e1341]: Your Submission
+            - textbox "Your Submission" [ref=e1343]
+          - separator [ref=e1344]
+        - generic [ref=e1345]:
+          - generic [ref=e1346]:
+            - heading "Problem Statement 69" [level=5] [ref=e1347]
+            - generic [ref=e1348]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1349]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1350]'
+          - generic [ref=e1351]:
+            - paragraph [ref=e1352]: Which of the following does not support Auto-Create Destination Table?
+            - list [ref=e1353]:
+              - listitem [ref=e1354]: From RDBMS using Data pipeline, copy activity
+              - listitem [ref=e1355]: From Lakehouse using SQL Query, CTAS
+              - listitem [ref=e1356]: From CSV using SQL Query, Copy Into
+              - listitem [ref=e1357]: From Excel using Data pipeline, copy activity
+          - generic [ref=e1358]:
+            - generic [ref=e1359]: Your Submission
+            - textbox "Your Submission" [ref=e1361]
+          - separator [ref=e1362]
+        - generic [ref=e1363]:
+          - generic [ref=e1364]:
+            - heading "Problem Statement 70" [level=5] [ref=e1365]
+            - generic [ref=e1366]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1367]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1368]'
+          - generic [ref=e1369]:
+            - paragraph [ref=e1370]: In the Demo shown on Data warehouse, which dimension table is created first?
+            - list [ref=e1371]:
+              - listitem [ref=e1372]: DimCategory
+              - listitem [ref=e1373]: DimRegion
+              - listitem [ref=e1374]: DimProduct
+              - listitem [ref=e1375]: DimCustomer
+          - generic [ref=e1376]:
+            - generic [ref=e1377]: Your Submission
+            - textbox "Your Submission" [ref=e1379]
+          - separator [ref=e1380]
+        - generic [ref=e1381]:
+          - generic [ref=e1382]:
+            - heading "Problem Statement 71" [level=5] [ref=e1383]
+            - generic [ref=e1384]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1385]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1386]'
+          - generic [ref=e1387]:
+            - paragraph [ref=e1388]: What is equivalent to Semantic Model as discussed in the video?
+            - list [ref=e1389]:
+              - listitem [ref=e1390]: Data source
+              - listitem [ref=e1391]: Data set
+              - listitem [ref=e1392]: Schema
+              - listitem [ref=e1393]: Data model
+          - generic [ref=e1394]:
+            - generic [ref=e1395]: Your Submission
+            - textbox "Your Submission" [ref=e1397]
+          - separator [ref=e1398]
+        - generic [ref=e1399]:
+          - generic [ref=e1400]:
+            - heading "Problem Statement 72" [level=5] [ref=e1401]
+            - generic [ref=e1402]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1403]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1404]'
+          - generic [ref=e1405]:
+            - paragraph [ref=e1406]: What is the cardinality of relationship set in the demo for DimCustomer to FactSalesOrder?
+            - list [ref=e1407]:
+              - listitem [ref=e1408]: Many to many
+              - listitem [ref=e1409]: One to one
+              - listitem [ref=e1410]: One to many
+              - listitem [ref=e1411]: Many to one
+          - generic [ref=e1412]:
+            - generic [ref=e1413]: Your Submission
+            - textbox "Your Submission" [ref=e1415]
+          - separator [ref=e1416]
+        - generic [ref=e1417]:
+          - generic [ref=e1418]:
+            - heading "Problem Statement 73" [level=5] [ref=e1419]
+            - generic [ref=e1420]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1421]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1422]'
+          - generic [ref=e1423]:
+            - paragraph [ref=e1424]: Which of the following visualizations have been created in the demo?
+            - list [ref=e1425]:
+              - listitem [ref=e1426]: Sum of sales by Category
+              - listitem [ref=e1427]: Count of product name
+              - listitem [ref=e1428]: Count of customer
+              - listitem [ref=e1429]: Count of sales ID
+          - generic [ref=e1430]:
+            - generic [ref=e1431]: Your Submission
+            - textbox "Your Submission" [ref=e1433]
+          - separator [ref=e1434]
+        - generic [ref=e1435]:
+          - generic [ref=e1436]:
+            - heading "Problem Statement 74" [level=5] [ref=e1437]
+            - generic [ref=e1438]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1439]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1440]'
+          - generic [ref=e1441]:
+            - paragraph [ref=e1442]: In the demo to explain merge query, which common column has been used to merge DimCustomer with DimCustomer(Current)?
+            - list [ref=e1443]:
+              - listitem [ref=e1444]: CustomerKey
+              - listitem [ref=e1445]: CustomerID and CustomerEmail
+              - listitem [ref=e1446]: FirstName
+              - listitem [ref=e1447]: CustomerEmail
+          - generic [ref=e1448]:
+            - generic [ref=e1449]: Your Submission
+            - textbox "Your Submission" [ref=e1451]
+          - separator [ref=e1452]
+        - generic [ref=e1453]:
+          - generic [ref=e1454]:
+            - heading "Problem Statement 75" [level=5] [ref=e1455]
+            - generic [ref=e1456]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1457]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1458]'
+          - generic [ref=e1459]:
+            - paragraph [ref=e1460]: Which of the following statements is/are FALSE about Data warehouse security in Fabric?
+            - list [ref=e1461]:
+              - listitem [ref=e1462]: Role based access control is to control access to warehouse and its data.
+              - listitem [ref=e1463]: SSL encryption is to secure the communication between the warehouse and the client application.
+              - listitem [ref=e1464]: Azure storage service encryption is to protect the data only in transit, not in rest.
+              - listitem [ref=e1465]: MFA is to add an extra layer of security to user accounts.
+              - listitem [ref=e1466]: Azure AD integration can only manage the user identities but not access to the warehouse.
+          - generic [ref=e1467]:
+            - generic [ref=e1468]: Your Submission
+            - textbox "Your Submission" [ref=e1470]
+          - separator [ref=e1471]
+        - generic [ref=e1472]:
+          - generic [ref=e1473]:
+            - heading "Problem Statement 76" [level=5] [ref=e1474]
+            - generic [ref=e1475]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1476]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1477]'
+          - generic [ref=e1478]:
+            - paragraph [ref=e1479]: Delta Lake format does not support ACID transactions natively.
+            - list [ref=e1480]:
+              - listitem [ref=e1481]: "True"
+              - listitem [ref=e1482]: "False"
+          - generic [ref=e1483]:
+            - generic [ref=e1484]: Your Submission
+            - textbox "Your Submission" [ref=e1486]
+          - separator [ref=e1487]
+        - generic [ref=e1488]:
+          - generic [ref=e1489]:
+            - heading "Problem Statement 77" [level=5] [ref=e1490]
+            - generic [ref=e1491]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1492]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1493]'
+          - generic [ref=e1494]:
+            - paragraph [ref=e1495]: Data ingested in the bronze layer is appended incrementally and can be only streaming data, not from batch transactions.
+            - list [ref=e1496]:
+              - listitem [ref=e1497]: "True"
+              - listitem [ref=e1498]: "False"
+          - generic [ref=e1499]:
+            - generic [ref=e1500]: Your Submission
+            - textbox "Your Submission" [ref=e1502]
+          - separator [ref=e1503]
+        - generic [ref=e1504]:
+          - generic [ref=e1505]:
+            - heading "Problem Statement 78" [level=5] [ref=e1506]
+            - generic [ref=e1507]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1508]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1509]'
+          - generic [ref=e1510]:
+            - paragraph [ref=e1511]: Data transformation and validation occur primarily in?
+            - list [ref=e1512]:
+              - listitem [ref=e1513]: Bronze Layer
+              - listitem [ref=e1514]: Silver Layer
+              - listitem [ref=e1515]: Gold Layer
+              - listitem [ref=e1516]: Bronze or Gold Layer
+          - generic [ref=e1517]:
+            - generic [ref=e1518]: Your Submission
+            - textbox "Your Submission" [ref=e1520]
+          - separator [ref=e1521]
+        - generic [ref=e1522]:
+          - generic [ref=e1523]:
+            - heading "Problem Statement 79" [level=5] [ref=e1524]
+            - generic [ref=e1525]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1526]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1527]'
+          - generic [ref=e1528]:
+            - paragraph [ref=e1529]: Data transformed to knowledge resides in
+            - list [ref=e1530]:
+              - listitem [ref=e1531]: Bronze and Silver Layers
+              - listitem [ref=e1532]: Primarily in Silver Layer
+              - listitem [ref=e1533]: Primarily in Gold Layer
+              - listitem [ref=e1534]: Bronze, Silver, and Gold Layers
+          - generic [ref=e1535]:
+            - generic [ref=e1536]: Your Submission
+            - textbox "Your Submission" [ref=e1538]
+          - separator [ref=e1539]
+        - generic [ref=e1540]:
+          - generic [ref=e1541]:
+            - heading "Problem Statement 80" [level=5] [ref=e1542]
+            - generic [ref=e1543]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1544]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1545]'
+          - generic [ref=e1546]:
+            - paragraph [ref=e1547]: Dataflows and notebooks are generally not used in which of the layers?
+            - list [ref=e1548]:
+              - listitem [ref=e1549]: Bronze only
+              - listitem [ref=e1550]: Gold only
+              - listitem [ref=e1551]: Silver only
+              - listitem [ref=e1552]: Bronze and Silver
+          - generic [ref=e1553]:
+            - generic [ref=e1554]: Your Submission
+            - textbox "Your Submission" [ref=e1556]
+          - separator [ref=e1557]
+        - generic [ref=e1558]:
+          - generic [ref=e1559]:
+            - heading "Problem Statement 81" [level=5] [ref=e1560]
+            - generic [ref=e1561]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1562]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1563]'
+          - generic [ref=e1564]:
+            - paragraph [ref=e1565]: In which layer do we add other elements essential for effective reporting as shown in the video?
+            - list [ref=e1566]:
+              - listitem [ref=e1567]: Gold
+              - listitem [ref=e1568]: Silver
+              - listitem [ref=e1569]: Bronze
+              - listitem [ref=e1570]: Bronze or Gold
+          - generic [ref=e1571]:
+            - generic [ref=e1572]: Your Submission
+            - textbox "Your Submission" [ref=e1574]
+          - separator [ref=e1575]
+        - generic [ref=e1576]:
+          - generic [ref=e1577]:
+            - heading "Problem Statement 82" [level=5] [ref=e1578]
+            - generic [ref=e1579]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1580]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1581]'
+          - generic [ref=e1582]:
+            - paragraph [ref=e1583]: Which layer needs the highest level of balance between flexibility and security as discussed in the video?
+            - list [ref=e1584]:
+              - listitem [ref=e1585]: Gold
+              - listitem [ref=e1586]: Silver
+              - listitem [ref=e1587]: Bronze
+              - listitem [ref=e1588]: Bronze and Gold both
+          - generic [ref=e1589]:
+            - generic [ref=e1590]: Your Submission
+            - textbox "Your Submission" [ref=e1592]
+          - separator [ref=e1593]
+        - generic [ref=e1594]:
+          - generic [ref=e1595]:
+            - heading "Problem Statement 83" [level=5] [ref=e1596]
+            - generic [ref=e1597]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1598]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1599]'
+          - generic [ref=e1600]:
+            - paragraph [ref=e1601]: In the exercise shown for medallion architecture design which original data files from the folder of the source have been used?
+            - list [ref=e1602]:
+              - listitem [ref=e1603]: Customer data
+              - listitem [ref=e1604]: Sales data
+              - listitem [ref=e1605]: Orders data
+              - listitem [ref=e1606]: Product data
+          - generic [ref=e1607]:
+            - generic [ref=e1608]: Your Submission
+            - textbox "Your Submission" [ref=e1610]
+          - separator [ref=e1611]
+        - generic [ref=e1612]:
+          - generic [ref=e1613]:
+            - heading "Problem Statement 84" [level=5] [ref=e1614]
+            - generic [ref=e1615]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1616]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1617]'
+          - generic [ref=e1618]:
+            - paragraph [ref=e1619]: In the exercise shown here, for moving data from bronze to silver layer which tool has been used?
+            - list [ref=e1620]:
+              - listitem [ref=e1621]: Pipeline copy data.
+              - listitem [ref=e1622]: Notebook
+              - listitem [ref=e1623]: Dataflow
+              - listitem [ref=e1624]: SQL Endpoint
+          - generic [ref=e1625]:
+            - generic [ref=e1626]: Your Submission
+            - textbox "Your Submission" [ref=e1628]
+          - separator [ref=e1629]
+        - generic [ref=e1630]:
+          - generic [ref=e1631]:
+            - heading "Problem Statement 85" [level=5] [ref=e1632]
+            - generic [ref=e1633]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1634]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1635]'
+          - generic [ref=e1636]:
+            - paragraph [ref=e1637]: In the exercise, silver layer is created under?
+            - list [ref=e1638]:
+              - listitem [ref=e1639]: Files
+              - listitem [ref=e1640]: Tables
+              - listitem [ref=e1641]: Both
+          - generic [ref=e1642]:
+            - generic [ref=e1643]: Your Submission
+            - textbox "Your Submission" [ref=e1645]
+          - separator [ref=e1646]
+        - generic [ref=e1647]:
+          - generic [ref=e1648]:
+            - heading "Problem Statement 86" [level=5] [ref=e1649]
+            - generic [ref=e1650]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1651]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1652]'
+          - generic [ref=e1653]:
+            - paragraph [ref=e1654]: In the demo, which of the following optimization functions has/have been used?
+            - list [ref=e1655]:
+              - listitem [ref=e1656]: spark.sql.parquet.vorder.enabled
+              - listitem [ref=e1657]: spark.microsoft.delta.optimizeWrite.enabled
+              - listitem [ref=e1658]: both
+              - listitem [ref=e1659]: none
+          - generic [ref=e1660]:
+            - generic [ref=e1661]: Your Submission
+            - textbox "Your Submission" [ref=e1663]
+          - separator [ref=e1664]
+        - generic [ref=e1665]:
+          - generic [ref=e1666]:
+            - heading "Problem Statement 87" [level=5] [ref=e1667]
+            - generic [ref=e1668]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1669]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1670]'
+          - generic [ref=e1671]:
+            - paragraph [ref=e1672]: To access SAP HANA on premise data in Fabric using notebook, what is needed?
+            - list [ref=e1673]:
+              - listitem [ref=e1674]: On premise gateway
+              - listitem [ref=e1675]: A connector
+              - listitem [ref=e1676]: Enabling the port.
+              - listitem [ref=e1677]: All the above
+          - generic [ref=e1678]:
+            - generic [ref=e1679]: Your Submission
+            - textbox "Your Submission" [ref=e1681]
+          - separator [ref=e1682]
+        - generic [ref=e1683]:
+          - generic [ref=e1684]:
+            - heading "Problem Statement 88" [level=5] [ref=e1685]
+            - generic [ref=e1686]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1687]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1688]'
+          - generic [ref=e1689]:
+            - paragraph [ref=e1690]: What is the benefit of using Fabric notebooks over manual uploads for data ingestion?
+            - list [ref=e1691]:
+              - listitem [ref=e1692]: Notebooks provide an automated approach to ingestion and transformation.
+              - listitem [ref=e1693]: Notebooks can orchestrate the Copy Data activity and transformations.
+              - listitem [ref=e1694]: Notebooks offer a user-friendly, low-code experience for large datasets.
+          - generic [ref=e1695]:
+            - generic [ref=e1696]: Your Submission
+            - textbox "Your Submission" [ref=e1698]
+          - separator [ref=e1699]
+        - generic [ref=e1700]:
+          - generic [ref=e1701]:
+            - heading "Problem Statement 89" [level=5] [ref=e1702]
+            - generic [ref=e1703]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1704]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1705]'
+          - generic [ref=e1706]:
+            - paragraph [ref=e1707]: In the demo shown for ‘Connect to external sources’ what is the variable value used for ‘blob_relative_path’?
+            - list [ref=e1708]:
+              - listitem [ref=e1709]: Green
+              - listitem [ref=e1710]: Yellow
+              - listitem [ref=e1711]: White
+              - listitem [ref=e1712]: Red
+          - generic [ref=e1713]:
+            - generic [ref=e1714]: Your Submission
+            - textbox "Your Submission" [ref=e1716]
+          - separator [ref=e1717]
+        - generic [ref=e1718]:
+          - generic [ref=e1719]:
+            - heading "Problem Statement 90" [level=5] [ref=e1720]
+            - generic [ref=e1721]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1722]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1723]'
+          - generic [ref=e1724]:
+            - paragraph [ref=e1725]: In the demo shownfor ‘Write to a file’ which mode has been used?
+            - list [ref=e1726]:
+              - listitem [ref=e1727]: append
+              - listitem [ref=e1728]: new
+              - listitem [ref=e1729]: overwrite
+              - listitem [ref=e1730]: delete first
+          - generic [ref=e1731]:
+            - generic [ref=e1732]: Your Submission
+            - textbox "Your Submission" [ref=e1734]
+          - separator [ref=e1735]
+        - generic [ref=e1736]:
+          - generic [ref=e1737]:
+            - heading "Problem Statement 91" [level=5] [ref=e1738]
+            - generic [ref=e1739]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1740]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1741]'
+          - generic [ref=e1742]:
+            - paragraph [ref=e1743]: As explained in the demo, anything in the delta parquet format, would be treated as?
+            - list [ref=e1744]:
+              - listitem [ref=e1745]: Table
+              - listitem [ref=e1746]: File
+              - listitem [ref=e1747]: File and table
+              - listitem [ref=e1748]: None
+          - generic [ref=e1749]:
+            - generic [ref=e1750]: Your Submission
+            - textbox "Your Submission" [ref=e1752]
+          - separator [ref=e1753]
+        - generic [ref=e1754]:
+          - generic [ref=e1755]:
+            - heading "Problem Statement 92" [level=5] [ref=e1756]
+            - generic [ref=e1757]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1758]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1759]'
+          - generic [ref=e1760]:
+            - paragraph [ref=e1761]: In the Demo tocreate MS Fabric notebook and use PySpark to connect to an Azure Blob Storagepath, the load data into a Lakhouse using write optimizations, in which of thefollowing scenario you can get a subfolder named ‘Unidentified’ under Tablesfolder?
+            - list [ref=e1762]:
+              - listitem [ref=e1763]: If the data loaded under the ‘Tables’ folder is not of delta parquet format
+              - listitem [ref=e1764]: When you load the data into the lakehouse, and tables are not yet registered.
+              - listitem [ref=e1765]: None
+          - generic [ref=e1766]:
+            - generic [ref=e1767]: Your Submission
+            - textbox "Your Submission" [ref=e1769]
+          - separator [ref=e1770]
+        - generic [ref=e1771]:
+          - generic [ref=e1772]:
+            - heading "Problem Statement 93" [level=5] [ref=e1773]
+            - generic [ref=e1774]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1775]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1776]'
+          - generic [ref=e1777]:
+            - paragraph [ref=e1778]: In the workspace setting, while selecting license mode the radio button for Fabric Capacity looked disabled in the Demo initially, why was it so?
+            - list [ref=e1779]:
+              - listitem [ref=e1780]: The user had no Fabric Subscription
+              - listitem [ref=e1781]: Admin had disabled it centrally.
+              - listitem [ref=e1782]: The capacity is not up and running, it must first be resumed before a workspace is created in it.
+              - listitem [ref=e1783]: None of these
+          - generic [ref=e1784]:
+            - generic [ref=e1785]: Your Submission
+            - textbox "Your Submission" [ref=e1787]
+          - separator [ref=e1788]
+        - generic [ref=e1789]:
+          - generic [ref=e1790]:
+            - heading "Problem Statement 94" [level=5] [ref=e1791]
+            - generic [ref=e1792]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1793]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1794]'
+          - generic [ref=e1795]:
+            - paragraph [ref=e1796]: As shown in thedemo, where can you add/subscribe for a new Fabric Capacity, if you have anexisting one?
+            - list [ref=e1797]:
+              - listitem [ref=e1798]: Fabric portal
+              - listitem [ref=e1799]: Azure portal
+              - listitem [ref=e1800]: Both
+              - listitem [ref=e1801]: None
+          - generic [ref=e1802]:
+            - generic [ref=e1803]: Your Submission
+            - textbox "Your Submission" [ref=e1805]
+          - separator [ref=e1806]
+        - generic [ref=e1807]:
+          - generic [ref=e1808]:
+            - heading "Problem Statement 95" [level=5] [ref=e1809]
+            - generic [ref=e1810]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1811]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1812]'
+          - generic [ref=e1813]:
+            - paragraph [ref=e1814]: Which of the following options are available in Fabric admin portal but not in Power BI admin portal?
+            - list [ref=e1815]:
+              - listitem [ref=e1816]: Usage metrics
+              - listitem [ref=e1817]: Users
+              - listitem [ref=e1818]: Domains
+              - listitem [ref=e1819]: Embed codes
+          - generic [ref=e1820]:
+            - generic [ref=e1821]: Your Submission
+            - textbox "Your Submission" [ref=e1823]
+          - separator [ref=e1824]
+        - generic [ref=e1825]:
+          - generic [ref=e1826]:
+            - heading "Problem Statement 96" [level=5] [ref=e1827]
+            - generic [ref=e1828]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1829]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1830]'
+          - generic [ref=e1831]:
+            - paragraph [ref=e1832]: Which of the following functions of admin portal allows you to create a logical layer across all the workspace you created?
+            - list [ref=e1833]:
+              - listitem [ref=e1834]: Domains
+              - listitem [ref=e1835]: Custom branding
+              - listitem [ref=e1836]: Azure connections
+              - listitem [ref=e1837]: Featured content
+          - generic [ref=e1838]:
+            - generic [ref=e1839]: Your Submission
+            - textbox "Your Submission" [ref=e1841]
+          - separator [ref=e1842]
+        - generic [ref=e1843]:
+          - generic [ref=e1844]:
+            - heading "Problem Statement 97" [level=5] [ref=e1845]
+            - generic [ref=e1846]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1847]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1848]'
+          - generic [ref=e1849]:
+            - paragraph [ref=e1850]: You have a notebook running at a time in a workspace for a project and another semantic model is trying to refresh from another workspace. Where can you view this happening and later set timing for both for efficient capacity utilization?
+            - list [ref=e1851]:
+              - listitem [ref=e1852]: Fabric admin portal
+              - listitem [ref=e1853]: Powershell cmdlets
+              - listitem [ref=e1854]: Admin APIs and SDKs
+              - listitem [ref=e1855]: Admin monitoring workspace
+          - generic [ref=e1856]:
+            - generic [ref=e1857]: Your Submission
+            - textbox "Your Submission" [ref=e1859]
+          - separator [ref=e1860]
+        - generic [ref=e1861]:
+          - generic [ref=e1862]:
+            - heading "Problem Statement 98" [level=5] [ref=e1863]
+            - generic [ref=e1864]:
+              - 'heading "Weightage: 4" [level=6] [ref=e1865]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1866]'
+          - generic [ref=e1867]:
+            - paragraph [ref=e1868]: Which of the following options are available in Tenant Settings for ‘User can create Fabric Item’?
+            - list [ref=e1869]:
+              - listitem [ref=e1870]: Enabled
+              - listitem [ref=e1871]: Apply to the entire organization
+              - listitem [ref=e1872]: Apply to specific security groups
+              - listitem [ref=e1873]: Except specific security groups
+          - generic [ref=e1874]:
+            - generic [ref=e1875]: Your Submission
+            - textbox "Your Submission" [ref=e1877]
+          - separator [ref=e1878]
+        - generic [ref=e1879]:
+          - generic [ref=e1880]:
+            - heading "Problem Statement 99" [level=5] [ref=e1881]
+            - generic [ref=e1882]:
+              - 'heading "Weightage: 4" [level=6] [ref=e1883]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1884]'
+          - generic [ref=e1885]:
+            - paragraph [ref=e1886]: Which of the following levels of access are possible for a member for a given workspace?
+            - list [ref=e1887]:
+              - listitem [ref=e1888]: Admin
+              - listitem [ref=e1889]: Member
+              - listitem [ref=e1890]: Contributor
+              - listitem [ref=e1891]: Viewer
+              - listitem [ref=e1892]: Editor
+          - generic [ref=e1893]:
+            - generic [ref=e1894]: Your Submission
+            - textbox "Your Submission" [ref=e1896]
+          - separator [ref=e1897]
+        - generic [ref=e1898]:
+          - generic [ref=e1899]:
+            - heading "Problem Statement 100" [level=5] [ref=e1900]
+            - generic [ref=e1901]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1902]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1903]'
+          - generic [ref=e1904]:
+            - paragraph [ref=e1905]: We can assign permissions at workspace level only but not at object level.
+            - list [ref=e1906]:
+              - listitem [ref=e1907]: "True"
+              - listitem [ref=e1908]: "False"
+          - generic [ref=e1909]:
+            - generic [ref=e1910]: Your Submission
+            - textbox "Your Submission" [ref=e1912]
+          - separator [ref=e1913]
+        - generic [ref=e1914]:
+          - generic [ref=e1915]:
+            - heading "Problem Statement 101" [level=5] [ref=e1916]
+            - generic [ref=e1917]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1918]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1919]'
+          - generic [ref=e1920]:
+            - paragraph [ref=e1921]: With the help of Endorsement and discovery feature available at object level setting, we cannot set it promoted but certified.
+            - list [ref=e1922]:
+              - listitem [ref=e1923]: "True"
+              - listitem [ref=e1924]: "False"
+          - generic [ref=e1925]:
+            - generic [ref=e1926]: Your Submission
+            - textbox "Your Submission" [ref=e1928]
+          - separator [ref=e1929]
+        - generic [ref=e1930]:
+          - generic [ref=e1931]:
+            - heading "Problem Statement 102" [level=5] [ref=e1932]
+            - generic [ref=e1933]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1934]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1935]'
+          - generic [ref=e1936]:
+            - paragraph [ref=e1937]: Which of the following statements best describes the concept of capacity in Fabric?
+            - list [ref=e1938]:
+              - listitem [ref=e1939]: Capacity refers to a dedicated space for organizations to create, store, and manage Fabric items.
+              - listitem [ref=e1940]: Capacity defines the ability of a resource to perform an activity or to produce output.
+              - listitem [ref=e1941]: Capacity is a collection of items that are logically grouped together.
+          - generic [ref=e1942]:
+            - generic [ref=e1943]: Your Submission
+            - textbox "Your Submission" [ref=e1945]
+          - separator [ref=e1946]
+        - generic [ref=e1947]:
+          - generic [ref=e1948]:
+            - heading "Problem Statement 103" [level=5] [ref=e1949]
+            - generic [ref=e1950]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1951]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1952]'
+          - generic [ref=e1953]:
+            - paragraph [ref=e1954]: Which of the following statements is true about the difference between promotion and certification in Fabric?
+            - list [ref=e1955]:
+              - listitem [ref=e1956]: Promotion and certification both allow any workspace member to endorse content.
+              - listitem [ref=e1957]: Promotion requires a higher level of permissions than certification.
+              - listitem [ref=e1958]: Certification must be enabled in the tenant by the admin, while promotion can be done by a workspace member.
+          - generic [ref=e1959]:
+            - generic [ref=e1960]: Your Submission
+            - textbox "Your Submission" [ref=e1962]
+          - separator [ref=e1963]
+        - generic [ref=e1964]:
+          - generic [ref=e1965]:
+            - heading "Problem Statement 104" [level=5] [ref=e1966]
+            - generic [ref=e1967]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1968]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1969]'
+          - generic [ref=e1970]:
+            - paragraph [ref=e1971]: Which of the following resources are available to you in MS Learn exam readiness zone?
+            - list [ref=e1972]:
+              - listitem [ref=e1973]: Study guides
+              - listitem [ref=e1974]: Exam prep videos
+              - listitem [ref=e1975]: Practice tests
+              - listitem [ref=e1976]: All the above
+          - generic [ref=e1977]:
+            - generic [ref=e1978]: Your Submission
+            - textbox "Your Submission" [ref=e1980]
+          - separator [ref=e1981]
+        - generic [ref=e1982]:
+          - generic [ref=e1983]:
+            - heading "Problem Statement 105" [level=5] [ref=e1984]
+            - generic [ref=e1985]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1986]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1987]'
+          - generic [ref=e1988]:
+            - paragraph [ref=e1989]: As discussed in the video, what is the number of questions expected in the exam?
+            - list [ref=e1990]:
+              - listitem [ref=e1991]: 20-30
+              - listitem [ref=e1992]: 40-50
+              - listitem [ref=e1993]: 40-60
+              - listitem [ref=e1994]: 80-100
+          - generic [ref=e1995]:
+            - generic [ref=e1996]: Your Submission
+            - textbox "Your Submission" [ref=e1998]
+          - separator [ref=e1999]
+        - generic [ref=e2000]:
+          - generic [ref=e2001]:
+            - heading "Problem Statement 106" [level=5] [ref=e2002]
+            - generic [ref=e2003]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2004]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2005]'
+          - generic [ref=e2006]:
+            - paragraph [ref=e2007]: What is the exact duration of the exam and what is the recommended duration you should allocate for the overall exam including proprietary work like set up etc.?
+            - list [ref=e2008]:
+              - listitem [ref=e2009]: 2 hours and 3 hours respectively
+              - listitem [ref=e2010]: 3 hours and 4 hours respectively
+              - listitem [ref=e2011]: 2 hours and 2.5 hours respectively
+              - listitem [ref=e2012]: 3 hours and 3.5 hours respectively
+          - generic [ref=e2013]:
+            - generic [ref=e2014]: Your Submission
+            - textbox "Your Submission" [ref=e2016]
+          - separator [ref=e2017]
+        - generic [ref=e2018]:
+          - generic [ref=e2019]:
+            - heading "Problem Statement 107" [level=5] [ref=e2020]
+            - generic [ref=e2021]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2022]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2023]'
+          - generic [ref=e2024]:
+            - paragraph [ref=e2025]: What are Exam score range and the passing score respectively?
+            - list [ref=e2026]:
+              - listitem [ref=e2027]: 0-1000 and 600 (Scaled)
+              - listitem [ref=e2028]: 0-1000 and 700 (Scaled)
+              - listitem [ref=e2029]: 0-1000 and 650 (Scaled)
+              - listitem [ref=e2030]: 500-1000 and 700 (Scaled)
+          - generic [ref=e2031]:
+            - generic [ref=e2032]: Your Submission
+            - textbox "Your Submission" [ref=e2034]
+          - separator [ref=e2035]
+        - generic [ref=e2036]:
+          - generic [ref=e2037]:
+            - heading "Problem Statement 108" [level=5] [ref=e2038]
+            - generic [ref=e2039]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2040]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2041]'
+          - generic [ref=e2042]:
+            - paragraph [ref=e2043]: There is a negative mark for each wrong answer marked in DP-600 examination.
+            - list [ref=e2044]:
+              - listitem [ref=e2045]: "True"
+              - listitem [ref=e2046]: "False"
+          - generic [ref=e2047]:
+            - generic [ref=e2048]: Your Submission
+            - textbox "Your Submission" [ref=e2050]
+          - separator [ref=e2051]
+        - generic [ref=e2052]:
+          - generic [ref=e2053]:
+            - heading "Problem Statement 109" [level=5] [ref=e2054]
+            - generic [ref=e2055]:
+              - 'heading "Weightage: 2" [level=6] [ref=e2056]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2057]'
+          - generic [ref=e2058]:
+            - paragraph [ref=e2059]: Which of the following are suggests Do’s for the exam DP-600?
+            - list [ref=e2060]:
+              - listitem [ref=e2061]: Overthink before the examination.
+              - listitem [ref=e2062]: Do not go with your gut as there are negative marks for wrong answers.
+              - listitem [ref=e2063]: Mark questions for review if it is possible and you need to
+              - listitem [ref=e2064]: Some questions are worth more than one point so dedicate time accordingly.
+          - generic [ref=e2065]:
+            - generic [ref=e2066]: Your Submission
+            - textbox "Your Submission" [ref=e2068]
+          - separator [ref=e2069]
+        - generic [ref=e2070]:
+          - generic [ref=e2071]:
+            - heading "Problem Statement 110" [level=5] [ref=e2072]
+            - generic [ref=e2073]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2074]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2075]'
+          - generic [ref=e2076]:
+            - paragraph [ref=e2077]: All questions in the exam have only one correct option as the answer.
+            - list [ref=e2078]:
+              - listitem [ref=e2079]: "True"
+              - listitem [ref=e2080]: "False"
+          - generic [ref=e2081]:
+            - generic [ref=e2082]: Your Submission
+            - textbox "Your Submission" [ref=e2084]
+          - separator [ref=e2085]
+        - generic [ref=e2086]:
+          - generic [ref=e2087]:
+            - heading "Problem Statement 111" [level=5] [ref=e2088]
+            - generic [ref=e2089]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2090]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2091]'
+          - generic [ref=e2092]:
+            - paragraph [ref=e2093]: Can you change your marked options after taking a break during the exam?
+            - list [ref=e2094]:
+              - listitem [ref=e2095]: "Yes"
+              - listitem [ref=e2096]: "No"
+          - generic [ref=e2097]:
+            - generic [ref=e2098]: Your Submission
+            - textbox "Your Submission" [ref=e2100]
+          - separator [ref=e2101]
+        - generic [ref=e2102]:
+          - generic [ref=e2103]:
+            - heading "Problem Statement 112" [level=5] [ref=e2104]
+            - generic [ref=e2105]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2106]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2107]'
+          - generic [ref=e2108]:
+            - paragraph [ref=e2109]: Timer stops during the break taken by you. True or False?
+            - list [ref=e2110]:
+              - listitem [ref=e2111]: "True"
+              - listitem [ref=e2112]: "False"
+          - generic [ref=e2113]:
+            - generic [ref=e2114]: Your Submission
+            - textbox "Your Submission" [ref=e2116]
+          - separator [ref=e2117]
+        - generic [ref=e2118]:
+          - generic [ref=e2119]:
+            - heading "Problem Statement 113" [level=5] [ref=e2120]
+            - generic [ref=e2121]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2122]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2123]'
+          - generic [ref=e2124]:
+            - paragraph [ref=e2125]: Is it possible to go to the questions marked for review after taking a break?
+            - list [ref=e2126]:
+              - listitem [ref=e2127]: "Yes"
+              - listitem [ref=e2128]: "No"
+          - generic [ref=e2129]:
+            - generic [ref=e2130]: Your Submission
+            - textbox "Your Submission" [ref=e2132]
+          - separator [ref=e2133]
+        - generic [ref=e2134]:
+          - generic [ref=e2135]:
+            - heading "Problem Statement 114" [level=5] [ref=e2136]
+            - generic [ref=e2137]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2138]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2139]'
+          - generic [ref=e2140]:
+            - paragraph [ref=e2141]: In the questions called hot area questions, you do not see any option. How would you answer it?
+            - list [ref=e2142]:
+              - listitem [ref=e2143]: Skip these questions
+              - listitem [ref=e2144]: Select the answer from the image.
+              - listitem [ref=e2145]: Skip the question and write in feedback, it is incorrect question
+          - generic [ref=e2146]:
+            - generic [ref=e2147]: Your Submission
+            - textbox "Your Submission" [ref=e2149]
+          - separator [ref=e2150]
+        - generic [ref=e2151]:
+          - generic [ref=e2152]:
+            - heading "Problem Statement 115" [level=5] [ref=e2153]
+            - generic [ref=e2154]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2155]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2156]'
+          - generic [ref=e2157]:
+            - paragraph [ref=e2158]: In the case study-based questions, we can have?
+            - list [ref=e2159]:
+              - listitem [ref=e2160]: Only one exhibit
+              - listitem [ref=e2161]: One or multiple exhibits
+              - listitem [ref=e2162]: Multiple exhibits always
+          - generic [ref=e2163]:
+            - generic [ref=e2164]: Your Submission
+            - textbox "Your Submission" [ref=e2166]
+          - separator [ref=e2167]
+        - generic [ref=e2168]:
+          - generic [ref=e2169]:
+            - heading "Problem Statement 116" [level=5] [ref=e2170]
+            - generic [ref=e2171]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2172]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2173]'
+          - generic [ref=e2174]:
+            - paragraph [ref=e2175]: You are developing a complex semantic model that contains more than 20 date columns.
+            - paragraph [ref=e2176]: You need to confirm the date format for all the columns as quickly as possible.
+            - paragraph [ref=e2177]: What should you use?
+            - list [ref=e2178]:
+              - listitem [ref=e2179]: ALM Toolkit
+              - listitem [ref=e2180]: DAX Studio
+              - listitem [ref=e2181]: Tabular Editor
+              - listitem [ref=e2182]: VertiPaq Analyzer
+          - generic [ref=e2183]:
+            - generic [ref=e2184]: Your Submission
+            - textbox "Your Submission" [ref=e2186]
+          - separator [ref=e2187]
+        - generic [ref=e2188]:
+          - generic [ref=e2189]:
+            - heading "Problem Statement 117" [level=5] [ref=e2190]
+            - generic [ref=e2191]:
+              - 'heading "Weightage: 1" [level=6] [ref=e2192]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e2193]'
+          - generic [ref=e2194]:
+            - paragraph [ref=e2195]: You are developing a Microsoft Power Bl semantic model. Two tables in the data model are not connected in a physical relationship. You need to establish a virtual relationship between the tables.
+            - paragraph [ref=e2196]: Which DAX function should you use?
+            - list [ref=e2197]:
+              - listitem [ref=e2198]: CROSSFILTER()
+              - listitem [ref=e2199]: PATH()
+              - listitem [ref=e2200]: TREATAS()
+              - listitem [ref=e2201]: USERELATIONSHIP()
+          - generic [ref=e2202]:
+            - generic [ref=e2203]: Your Submission
+            - textbox "Your Submission" [ref=e2205]
+          - separator [ref=e2206]
+    - generic [ref=e2207]:
+      - button "submit" [disabled]: Submit

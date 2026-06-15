@@ -1,0 +1,50 @@
+[
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/app-service/quickstart-custom-container",
+    "status": 200,
+    "isSameUrl": false
+  },
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/capture-application-logs-app-service/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs",
+    "status": 200,
+    "isSameUrl": false
+  },
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/create-serverless-logic-with-azure-functions/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal",
+    "status": 200,
+    "isSameUrl": false
+  },
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/control-access-to-azure-storage-with-sas/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-user-delegation-sas-create-dotnet",
+    "status": 200,
+    "isSameUrl": false
+  },
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/manage-secrets-with-azure-key-vault/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/security/",
+    "status": 200,
+    "isSameUrl": false
+  },
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/publish-manage-apis-with-azure-api-management/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/api-management/import-and-publish",
+    "status": 200,
+    "isSameUrl": false
+  },
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/communicate-between-apps-with-azure-queue-storage/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/storage/queues/storage-quickstart-queues-dotnet",
+    "status": 200,
+    "isSameUrl": false
+  },
+  {
+    "original": "https://learn.microsoft.com/en-us/training/modules/store-app-data-with-azure-blob-storage/",
+    "finalUrl": "https://learn.microsoft.com/en-us/azure/storage/common/storage-srp-overview",
+    "status": 200,
+    "isSameUrl": false
+  }
+]

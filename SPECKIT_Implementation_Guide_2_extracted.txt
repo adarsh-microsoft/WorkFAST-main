@@ -1,0 +1,132 @@
+SPECKIT Assignment Guide for Raw PBIP Files
+ 
+Exercise Scenario
+You are a Power BI/Fabric developer working on semantic model automation using GitHub SPECKIT and TMDL-based development in Visual Studio Code. Your organization is adopting a Spec-Driven Development (SDD) approach using SPECKIT to standardize and automate Power BI semantic model implementation.
+As part of this assignment, you are required to work with raw PBIP files and use SPECKIT workflows to automate relationship creation, semantic model optimization, and measure generation. The assignment focuses on implementing optimized star schema relationships and creating standardized DAX measures using SPECKIT prompts and implementation workflows.
+You will initialize the SPECKIT project, generate the constitution, specification, plan, and task documents, and then use SPECKIT implementation commands to apply all semantic model and measure changes directly into the PBIP/TMDL structure.
+The assignment primarily includes the following implementations:
+Creating and optimizing semantic model relationships using SPECKIT commands and TMDL-based development.
+Removing auto-generated relationships and implementing only optimized business-required relationships.
+Creating Base, FYTD, MOM, and YOY measures using standardized DAX logic and SPECKIT implementation workflows.
+Validating all generated TMDL files, relationships, measures, and report functionality in Power BI Desktop.
+Re-converting the final PBIP project into PBIX format after successful implementation and validation.
+This assignment includes the following tasks:
+Install and configure GitHub SPECKIT.
+Initialize the SPECKIT project in Visual Studio Code.
+Import and validate raw PBIP files.
+Generate constitution.md using semantic model best practices.
+Generate spec.md for relationship and measure implementation requirements.
+Generate plan.md and tasks.md using SPECKIT workflows.
+Implement semantic model relationships using SPECKIT.
+Create Base, FYTD, MOM, and YOY measures using SPECKIT prompts.
+Validate all TMDL changes and Power BI report functionality.
+Submit the final PBIX file and implementation documentation with screenshots.
+ 
+Purpose of the Assignment This assignment provides a detailed step-by-step implementation guide for using SPECKIT with raw PBIP files to automate semantic model development in Power BI/Fabric. The assignment primarily focuses on two major implementations using SPECKIT:
+Creating and optimizing relationships in the semantic model using SPECKIT commands and TMDL-based development.
+Creating Base, FYTD, MOM, and YOY measures using SPECKIT by following standardized DAX patterns and best practices.
+ 
+1. SPECKIT Installation and Project Initialization
+ 
+Step 1: Open a directory in VS Code
+Create a new directory and open it in vs code. For Ex. Speckitworkshop.
+Step 2: Install SPECKIT
+Run the below command in VS Code terminal to install SPECKIT: uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+Step 3: Verify Installation
+Verify the installation using the below command: specify version
+Step 4: Check Available Tools
+Run the below command to validate all required tools: specify check
+Step 5: Initialize Project
+For creating a new project use: specify init <PROJECT_NAME> For initializing inside an existing project use: specify init --here --integration copilot
+Step 6: Verify the spec command 
+After successfully initializing the project, close the folder in VS Code and reopen the previously initialized <Project_Name> folder. Once reopened, verify that the following commands are available in the chat:
+/speckit.constitution /speckit.specify /speckit.clarify /speckit.checklist /speckit.plan /speckit.tasks /speckit.analyze /speckit.implement
+Fallback Installation Command
+If installation fails due to security policies or missing libraries, use the below PowerShell command: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" $env:Path = "$env:USERPROFILE\.local\bin;$env:Path" uv --version uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+2. Import Data into Power BI
+Step 1: Extract Source Files
+Extract the ZIP folder containing all source Excel files into a local working directory.
+Step 2: Load Data into Power BI
+Open Power BI Desktop and import the Excel files using: Home → Get Data → Excel Workbook 
+Load same sheet name as the table name like DimCustomer,DimDate etc.
+
+NOTE: Ensure that no auto-generated relationships are retained. If any relationships are automatically created, delete all existing relationships before proceeding to the next step.
+
+Select the required files and validate all imported tables, columns, and data types.
+ 
+Step 3: Save Project as PBIP
+Save the Power BI file in PBIP format using: File → Save As → Power BI Project (*.pbip)
+3. Open PBIP Project in VS Code
+Step 1: Move PBIP Files
+Move all PBIP files and folders into the initialized SPECKIT project folder including: - .pbip file - Report folder - SemanticModel folder
+Step 2: Validate PBIP Structure
+Open the project in VS Code and validate the following structure: - model.tmdl - database.tmdl - relationships.tmdl - tables folder - definition files Ensure all table-level .tmdl files are present under the tables folder.
+4. SPECKIT Implementation Workflow
+Prerequisites
+Ensure SPECKIT is configured properly and all commands are visible before starting implementation. Commands used during implementation: /speckit.constitution /speckit.specify /speckit.clarify /speckit.checklist /speckit.plan /speckit.tasks /speckit.analyze /speckit.implement
+Step 1: Create Constitution
+Run the command: /speckit.constitution
+Prompt for Constitution
+{ Analyze the provided raw PBIP file and create a modeling constitution based on Microsoft Power BI/Fabric best practices. Include standards for: - Semantic model design with central dimension tables and surrounding fact tables. - Relationship creation (keys, cardinality, filter direction, active/inactive relationships). - Measure and DAX creation best practices. - Report development and visualization standards. - Naming conventions and folder structure. - Model performance optimization and complexity reduction. - Handling bridge tables, surrogate keys, and many-to-many relationships. - Governance, scalability, and documentation standards for future development. }
+Review the generated constitution.md file carefully and update it wherever required.
+Step 2: Create Requirement Specifications
+Run the command: /speckit.specify
+NOTE: Complete all implementation steps and validations for the first prompt before proceeding with the second prompt.
+ 
+Prompt 1 for Specify (For Creating relationships)
+{ Analyze all dimension and fact tables and design an optimized star schema data model with main dim table at the center and fact tables connected around them. Ensure: Relationships are created only on valid key fields. Fact tables connect only to dimension tables. Correct One-to-Many cardinality is maintained wherever applicable. Cross-filter direction remains Single by default. Remove redundant, inactive, duplicate, and circular relationships. Minimize model complexity and optimize query performance. Document relationship type, cardinality, direction, and purpose. Recommend surrogate keys or bridge tables if required for optimization.
+Additionally, while generating the relationship .tmdl file, ensure the file is properly formatted and fully compatible with Power BI Desktop PBIP projects. Do not include descriptions, comments, explanations, or unsupported metadata inside the .tmdl file. The file must be saved in valid UTF-8 encoding with correct indentation and clean formatting throughout. Ensure all relationship definitions follow valid TMDL syntax so the PBIP project opens successfully in Power BI Desktop without errors. }
+ 
+ 
+Prompt 2 for Specify (For Creating DAX Measures)
+{ Create all required measures for the FactReseller table using the SalesAmount field as the primary aggregation column.
+Measure Requirements:
+Create Base, FYTD, MOM, and YOY measures.
+All measures should be created inside the FactReseller table.
+Use SUM(FactReseller[SalesAmount]) as the base aggregation logic.
+Follow the same calculation pattern, structure, formatting, and logic used in the provided AzureAccelerate measures.
+Use DimFiscalMonth[FiscalMonthID] for all fiscal month calculations and slicer-based filtering.
+Ensure MOM and YOY calculations are derived using the Base measure logic and follow the same variable-based approach as the reference measures.
+FYTD should dynamically calculate cumulative values from the fiscal year start up to the previous selected fiscal month.
+Use COALESCE and DIVIDE functions appropriately to avoid blank or divide-by-zero errors.
+Maintain consistent naming conventions and DAX formatting across all measures.
+Ensure all measures return accurate results for slicer selections and fiscal month context.
+Additional Requirements:
+Ensure all generated tables.tmdl and relationship .tmdl files are fully compatible with Power BI Desktop PBIP projects.
+Do not include descriptions, comments, explanations, or unsupported metadata inside .tmdl files.
+Save all .tmdl files in valid UTF-8 encoding.
+Maintain proper indentation and clean formatting throughout all TMDL files.
+Ensure all relationship and measure definitions follow valid TMDL syntax so the PBIP project opens successfully in Power BI Desktop without errors. }
+ 
+Step 3: Run SPECKIT Clarification
+/speckit.clarify Continue running clarify until all ambiguities and implementation questions are resolved.
+Step 4: Generate Checklist
+/speckit.checklist Review checklist.md and spec.md carefully.
+Step 5: Create SPECKIT Plan
+/speckit.plan Validate sequencing and dependencies in plan.md.
+Step 6: Create SPECKIT Tasks
+/speckit.tasks Review task.md for granular implementation activities.
+Step 7: Run SPECKIT Analysis
+/speckit.analyze Analyze dependency issues, conflicts, and implementation risks.
+Step 8: Execute Final Implementation
+/speckit.implement This applies all TMDL modifications and completes implementation.
+Step 9: Validate TMDL Changes
+Validate: - relationships.tmdl - model.tmdl - Table TMDL files
+Step 10: Reopen PBIP and Validate Functionality
+Validate measures, relationships, filters, drillthrough, visuals, accessibility, and report functionality.
+Step 11: Re-convert PBIP to PBIX
+Open the PBIP project in Power BI Desktop and save it back as a PBIX file.
+ 
+Submission guidelines:
+Submit the final converted PBIX file with all SPECKIT implementations completed successfully. Ensure all relationships and measures created through SPECKIT are properly visible and validated in the semantic model.
+Include screenshots for every implementation step and validation step in the Word document.
+Submit the final deliverables in a ZIP folder containing:
+Final PBIX file
+Updated Word document with screenshots
+Save the ZIP file using the below naming convention: <EmployeeID_<Name>zip
+Place the final ZIP file in the below specified location.Within this submission folder, there is sub folder 'PowerBILab' where participants need to submit their Final Zip file.
+SDD_Workshop_Submissions
+ 
+ 
+
+

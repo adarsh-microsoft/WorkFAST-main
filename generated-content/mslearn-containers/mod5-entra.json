@@ -1,0 +1,60 @@
+{
+  "module": "intro-to-azure-ad",
+  "results": [
+    {
+      "unit": "1-introduction",
+      "status": "visited",
+      "title": "Introduction - Training | Microsoft Learn"
+    },
+    {
+      "unit": "2-overview",
+      "status": "knowledge_check",
+      "questions": [
+        {
+          "idx": 0,
+          "question": "What is a tenant in Microsoft Entra ID?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-0-0",
+              "value": "0",
+              "label": "A tenant represents an entire organization."
+            },
+            {
+              "id": "quiz-choice-0-1",
+              "value": "1",
+              "label": "A tenant represents a user in an organization."
+            },
+            {
+              "id": "quiz-choice-0-2",
+              "value": "2",
+              "label": "A tenant represents a geographic location in an organization."
+            }
+          ]
+        },
+        {
+          "idx": 1,
+          "question": "What is an identity security score?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-1-0",
+              "value": "0",
+              "label": "It's a percentage between 1 and 100 that indicates exactly how many identities are secured in your organization."
+            },
+            {
+              "id": "quiz-choice-1-1",
+              "value": "1",
+              "label": "It's a percentage between 1 and 100 that indicates how aligned your security is with Microsoft best practices."
+            },
+            {
+              "id": "quiz-choice-1-2",
+              "value": "2",
+              "label": "It's a percentage between 1 and 100 that indicates how well your organization's tenants align with each other."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Skip to main content" [ref=e4] [cursor=pointer]:
+        - /url: "#main"
+      - generic [ref=e5]:
+        - text: Ｏ Ｐ 
+        - generic [ref=e6]:
+          - link "Microsoft" [ref=e7] [cursor=pointer]:
+            - /url: https://www.microsoft.com
+            - img [ref=e8]
+          - link "Learn" [ref=e14] [cursor=pointer]:
+            - /url: /en-us/
+            - generic [ref=e15]: Learn
+          - generic [ref=e16]:
+            - navigation "Global" [ref=e18]:
+              - text: Ｒ
+              - list [ref=e19]:
+                - listitem [ref=e20]:
+                  - button "Documentation" [ref=e22] [cursor=pointer]:
+                    - generic [ref=e23]: Documentation
+                    - generic [ref=e25]: Ｓ
+                - listitem [ref=e26]:
+                  - button "Training & Labs" [ref=e28] [cursor=pointer]:
+                    - generic [ref=e29]: Training & Labs
+                    - generic [ref=e31]: Ｓ
+                - listitem [ref=e32]:
+                  - button "Q&A" [ref=e34] [cursor=pointer]:
+                    - generic [ref=e35]: Q&A
+                    - generic [ref=e37]: Ｓ
+                - listitem [ref=e38]:
+                  - button "Topics" [ref=e40] [cursor=pointer]:
+                    - generic [ref=e41]: Topics
+                    - generic [ref=e43]: Ｓ
+              - text: Ｔ
+            - generic [ref=e44]:
+              - text: Ｐ
+              - button "Open search" [ref=e45] [cursor=pointer]:
+                - generic [ref=e47]: 
+          - group [ref=e48]:
+            - generic "Your Account" [ref=e49] [cursor=pointer]:
+              - figure [ref=e51]
+        - generic [ref=e53]:
+          - link "Training" [ref=e54] [cursor=pointer]:
+            - /url: /en-us/training/
+            - generic [ref=e55]: Training
+          - navigation "Site" [ref=e56]:
+            - list [ref=e57]:
+              - listitem [ref=e58]:
+                - button "Products" [ref=e59] [cursor=pointer]:
+                  - generic [ref=e60]: Products
+                  - generic [ref=e62]: Ｓ
+              - listitem [ref=e63]:
+                - button "Career Paths" [ref=e64] [cursor=pointer]:
+                  - generic [ref=e65]: Career Paths
+                  - generic [ref=e67]: Ｓ
+              - listitem [ref=e68]:
+                - link "Browse all training" [ref=e69] [cursor=pointer]:
+                  - /url: /en-us/training/browse/
+                  - generic [ref=e70]: Browse all training
+              - listitem [ref=e71]:
+                - button "Learn for Organizations" [ref=e72] [cursor=pointer]:
+                  - generic [ref=e73]: Learn for Organizations
+                  - generic [ref=e75]: Ｓ
+                - text: Ｔ
+              - listitem [ref=e76]:
+                - button "Educator Center" [ref=e77] [cursor=pointer]:
+                  - generic [ref=e78]: Educator Center
+                  - generic [ref=e80]: Ｓ
+                - text: Ｔ Ｔ
+              - listitem [ref=e81]:
+                - button "Student Hub" [ref=e82] [cursor=pointer]:
+                  - generic [ref=e83]: Student Hub
+                  - generic [ref=e85]: Ｓ
+              - listitem [ref=e86]:
+                - link "FAQ & Help" [ref=e87] [cursor=pointer]:
+                  - /url: /en-us/training/support/
+                  - generic [ref=e88]: FAQ & Help
+              - text: Ｓ Ｔ Ｔ Ｔ Ｔ Ｔ Ｔ Ｔ Ｔ
+          - generic [ref=e181]:
+            - generic [ref=e182]: Level 10
+            - progressbar [ref=e184]: 20%
+            - generic [ref=e186]:
+              - generic [ref=e187]: "10300"
+              - text: /49599 XP
+  - main [ref=e89]:
+    - generic [ref=e90]:
+      - generic [ref=e93]:
+        - text: 
+        - group "Breadcrumbs" [ref=e188]:
+          - navigation "Breadcrumb" [ref=e189]:
+            - list [ref=e190]:
+              - listitem [ref=e191]:
+                - link "Learn" [ref=e192] [cursor=pointer]:
+                  - /url: /en-us/
+              - listitem [ref=e193]:
+                - link "Training" [ref=e194] [cursor=pointer]:
+                  - /url: /en-us/training/
+              - listitem [ref=e195]:
+                - link "Browse" [ref=e196] [cursor=pointer]:
+                  - /url: /en-us/training/browse/
+              - listitem [ref=e197]:
+                - link "Manage virtual machines with the Azure CLI" [ref=e198] [cursor=pointer]:
+                  - /url: /en-us/training/modules/manage-virtual-machines-with-azure-cli/
+        - group [ref=e95]:
+          - generic "More actions" [ref=e96] [cursor=pointer]:
+            - generic [ref=e98]: 
+      - navigation "pagination" [ref=e101]:
+        - text: Ｓ ＂ ＂ ＂ ＂ ＂ ＂ ＂ ＂ ＂
+        - generic [ref=e199]: Achievements
+        - text: 󿄐 󿄐
+        - button "Ask Learn" [ref=e107] [cursor=pointer]:
+          - generic [ref=e109]: 󿄐
+          - generic [ref=e110]: Ask Learn
+      - generic [ref=e113]:
+        - generic [ref=e202]: Keep up the great work!
+        - figure "Manage virtual machines with the Azure CLI" [ref=e204]:
+          - img [ref=e205]
+          - generic [ref=e206]: Manage virtual machines with the Azure CLI
+        - generic [ref=e207]:
+          - generic [ref=e208]: You have earned an achievement!
+          - generic [ref=e209]: Congratulations, but what should you do next?
+        - generic [ref=e259]:
+          - generic [ref=e260]: First, let’s share your achievement
+          - generic [ref=e261]: You put in the time to learn something new, let your network share in your victory!
+          - generic [ref=e263]:
+            - generic:
+              - paragraph
+            - generic [ref=e264]:
+              - group "LinkedIn" [ref=e265]:
+                - generic "LinkedIn" [ref=e266] [cursor=pointer]:
+                  - generic [ref=e268]: 
+              - group "Email" [ref=e269]:
+                - generic "Email" [ref=e270] [cursor=pointer]:
+                  - generic [ref=e272]: Ｆ
+              - group "x.com" [ref=e273]:
+                - generic "x.com" [ref=e274] [cursor=pointer]:
+                  - generic [ref=e276]: ﾓ
+              - group "Facebook" [ref=e277]:
+                - generic "Facebook" [ref=e278] [cursor=pointer]:
+                  - generic [ref=e280]: ﾑ
+              - group "Copy URL" [ref=e281]:
+                - generic "Copy URL" [ref=e282] [cursor=pointer]:
+                  - generic [ref=e284]: ﾒ
+        - generic [ref=e285]:
+          - generic [ref=e286]: Don’t lose your momentum, keep learning
+          - generic [ref=e287]: Below you will find recommended content to help you along your path!
+          - generic [ref=e288]:
+            - generic [ref=e289]: Next module in this learning path
+            - article [ref=e291]:
+              - generic [ref=e292]:
+                - paragraph [ref=e293]: Module
+                - link "Add and size disks in Azure virtual machines" [ref=e294] [cursor=pointer]:
+                  - /url: /en-us/training/modules/add-and-size-disks-in-azure-virtual-machines/
+                - generic [ref=e295]:
+                  - list [ref=e296]:
+                    - listitem [ref=e297]:
+                      - generic [ref=e298]: Ｂ
+                      - text: 36 min
+                  - list [ref=e299]:
+                    - listitem [ref=e300]: Azure •
+                    - listitem [ref=e301]: Developer •
+                    - listitem [ref=e302]: Intermediate
+              - group [ref=e306]:
+                - generic "Add" [ref=e307] [cursor=pointer]:
+                  - generic [ref=e309]: 
+                  - generic [ref=e310]: Add
+          - generic [ref=e311]:
+            - generic [ref=e312]: Additional training resources
+            - list [ref=e313]:
+              - listitem [ref=e314]:
+                - article [ref=e315]:
+                  - generic [ref=e316]:
+                    - paragraph [ref=e317]: Module
+                    - link "Describe Azure compute services" [ref=e318] [cursor=pointer]:
+                      - /url: /en-us/training/modules/describe-azure-compute-networking-services/
+                    - generic [ref=e319]:
+                      - list [ref=e320]:
+                        - listitem [ref=e321]:
+                          - generic [ref=e323]: Ｂ
+                          - text: 33 min
+                      - list [ref=e324]:
+                        - listitem [ref=e325]: Azure •
+                        - listitem [ref=e326]: Administrator •
+                        - listitem [ref=e327]: Beginner
+                  - group [ref=e332]:
+                    - generic "Add" [ref=e333] [cursor=pointer]:
+                      - generic [ref=e335]: 
+                      - generic [ref=e336]: Add
+              - listitem [ref=e337]:
+                - article [ref=e338]:
+                  - generic [ref=e339]:
+                    - paragraph [ref=e340]: Module
+                    - link "Introduction to Azure Cloud Shell" [ref=e341] [cursor=pointer]:
+                      - /url: /en-us/training/modules/intro-to-azure-cloud-shell/
+                    - generic [ref=e342]:
+                      - list [ref=e343]:
+                        - listitem [ref=e344]:
+                          - generic [ref=e346]: Ｂ
+                          - text: 20 min
+                      - list [ref=e347]:
+                        - listitem [ref=e348]: Azure •
+                        - listitem [ref=e349]: Administrator •
+                        - listitem [ref=e350]: Beginner
+                  - group [ref=e355]:
+                    - generic "Add" [ref=e356] [cursor=pointer]:
+                      - generic [ref=e358]: 
+                      - generic [ref=e359]: Add
+            - generic [ref=e360]:
+              - link "Previous" [ref=e361] [cursor=pointer]:
+                - /url: /en-us/training/modules/manage-virtual-machines-with-azure-cli/9-cleanup/
+                - generic [ref=e363]: Ｒ
+                - generic [ref=e364]: Previous
+              - link "Browse additional training" [ref=e365] [cursor=pointer]:
+                - /url: https://learn.microsoft.com/en-us/training/browse/?products=azure%2Cazure-virtual-machines%2Cazure-clis&subjects=virtual-machine&levels=beginner&roles=developer%2Cadministrator%2Csolution-architect%2Cstudent
+      - generic [ref=e122]:
+        - separator [ref=e123]
+        - heading "Feedback" [level=2] [ref=e124]
+        - generic [ref=e125]:
+          - paragraph [ref=e126]: Was this page helpful?
+          - generic [ref=e127]:
+            - button "Yes" [ref=e128] [cursor=pointer]:
+              - generic [ref=e130]: 
+              - generic [ref=e131]: "Yes"
+            - text: 
+            - group [ref=e132]:
+              - generic "No" [ref=e133] [cursor=pointer]:
+                - generic [ref=e135]: 
+                - generic [ref=e136]: "No"
+  - text: 󿄐 󿄀 Ｐ ﾖ ／ ｩ 󿄉 ﾔ
+  - contentinfo [ref=e138]:
+    - generic [ref=e139]:
+      - link "Content language selector. Currently set to English (United States)." [ref=e140] [cursor=pointer]:
+        - /url: /en-us/locale?target=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fmanage-virtual-machines-with-azure-cli%2F9-cleanup%23completion
+        - generic [ref=e142]: 
+        - generic [ref=e143]: English (United States)
+      - link "Your Privacy Choices" [ref=e145] [cursor=pointer]:
+        - /url: https://aka.ms/yourcaliforniaprivacychoices
+        - img [ref=e146]
+        - generic [ref=e151]: Your Privacy Choices
+      - button "Theme" [ref=e154] [cursor=pointer]:
+        - generic [ref=e156]: ０
+        - generic [ref=e157]: Theme
+        - generic [ref=e159]: Ｓ
+    - list [ref=e160]:
+      - listitem [ref=e161]:
+        - link "AI Disclaimer" [ref=e162] [cursor=pointer]:
+          - /url: https://learn.microsoft.com/en-us/principles-for-ai-generated-content
+      - listitem [ref=e163]:
+        - link "Previous Versions" [ref=e164] [cursor=pointer]:
+          - /url: https://learn.microsoft.com/en-us/previous-versions/
+      - listitem [ref=e165]:
+        - link "Blog" [ref=e166] [cursor=pointer]:
+          - /url: https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog
+      - listitem [ref=e167]:
+        - link "Contribute" [ref=e168] [cursor=pointer]:
+          - /url: https://learn.microsoft.com/en-us/contribute
+      - listitem [ref=e169]:
+        - link "Privacy" [ref=e170] [cursor=pointer]:
+          - /url: https://go.microsoft.com/fwlink/?LinkId=521839
+      - listitem [ref=e171]:
+        - link "Consumer Health Privacy" [ref=e172] [cursor=pointer]:
+          - /url: https://go.microsoft.com/fwlink/?linkid=2259814
+      - listitem [ref=e173]:
+        - link "Terms of Use" [ref=e174] [cursor=pointer]:
+          - /url: https://learn.microsoft.com/en-us/legal/termsofuse
+      - listitem [ref=e175]:
+        - link "Trademarks" [ref=e176] [cursor=pointer]:
+          - /url: https://www.microsoft.com/legal/intellectualproperty/Trademarks/
+      - listitem [ref=e177]: © Microsoft 2026
+  - alert [ref=e178]
+  - status [ref=e179]

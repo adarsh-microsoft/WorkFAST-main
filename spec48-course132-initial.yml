@@ -1,0 +1,1395 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[FE-PE103] React Library 2" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/48
+              - generic [ref=e22]: "[FE-PE103] React Library 2"
+          - listitem [ref=e72]: ›
+          - listitem [ref=e73]:
+            - link "React JS Quiz" [ref=e74] [cursor=pointer]:
+              - /url: /tracks/specialization/48/course/132
+              - generic [ref=e75]: React JS Quiz
+      - button [ref=e24] [cursor=pointer]:
+        - img [ref=e25]
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+  - generic [ref=e85]:
+    - generic [ref=e86]:
+      - generic [ref=e87]:
+        - heading "React JS Quiz" [level=4] [ref=e88]
+        - button "End Course" [disabled]
+      - generic [ref=e89]:
+        - 'heading "Score: 0 out of 87 (0%)" [level=6] [ref=e90]'
+        - 'heading "Passing Criteria: 80%" [level=6] [ref=e91]'
+        - 'heading "Attempted Questions: 0/67" [level=6] [ref=e92]'
+    - separator [ref=e93]
+    - group "Question Filters" [ref=e95]:
+      - button "Passed" [ref=e96] [cursor=pointer]: Passed
+      - button "Failed" [ref=e97] [cursor=pointer]: Failed
+      - button "Evaluating" [ref=e98] [cursor=pointer]: Evaluating
+      - button "Unattempted" [ref=e99] [cursor=pointer]: Unattempted
+      - button "Partial" [ref=e100] [cursor=pointer]: Partial
+    - generic [ref=e101]:
+      - tablist [ref=e106]:
+        - tab "React JS Quiz" [selected] [ref=e107] [cursor=pointer]: React JS Quiz
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - heading "Problem Statement 1" [level=5] [ref=e112]
+            - generic [ref=e113]:
+              - 'heading "Weightage: 2" [level=6] [ref=e114]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e115]'
+          - generic [ref=e116]:
+            - paragraph [ref=e117]: Which of the following is true about virtual DOM?
+            - paragraph
+            - list [ref=e118]:
+              - listitem [ref=e119]: It updates slowly
+              - listitem [ref=e120]: It can be used to update HTML directly
+              - listitem [ref=e121]: Memory Consumption is more
+              - listitem [ref=e122]: None of the above
+            - paragraph
+            - paragraph [ref=e123]
+          - generic [ref=e124]:
+            - generic [ref=e125]: Your Submission
+            - textbox "Your Submission" [ref=e127]
+          - separator [ref=e128]
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - heading "Problem Statement 2" [level=5] [ref=e131]
+            - generic [ref=e132]:
+              - 'heading "Weightage: 1" [level=6] [ref=e133]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e134]'
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: If JSX is used in React components, then which of the following statements are true?
+            - paragraph
+            - list [ref=e137]:
+              - listitem [ref=e138]: JSX is compiled into HTML
+              - listitem [ref=e139]: JSX is compiled in calls of React.createElement
+              - listitem [ref=e140]: Both a and b
+              - listitem [ref=e141]: None of above
+            - paragraph
+            - paragraph [ref=e142]
+          - generic [ref=e143]:
+            - generic [ref=e144]: Your Submission
+            - textbox "Your Submission" [ref=e146]
+          - separator [ref=e147]
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - heading "Problem Statement 3" [level=5] [ref=e150]
+            - generic [ref=e151]:
+              - 'heading "Weightage: 1" [level=6] [ref=e152]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e153]'
+          - generic [ref=e154]:
+            - paragraph [ref=e155]: In React, which statement is true in relation to keys?
+            - paragraph
+            - list [ref=e156]:
+              - listitem [ref=e157]: Keys are used by developers to traverse react elements
+              - listitem [ref=e158]: Keys are used by React to improve performance
+              - listitem [ref=e159]: Both a and b
+              - listitem [ref=e160]: None of above
+            - paragraph
+            - paragraph [ref=e161]
+          - generic [ref=e162]:
+            - generic [ref=e163]: Your Submission
+            - textbox "Your Submission" [ref=e165]
+          - separator [ref=e166]
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - heading "Problem Statement 4" [level=5] [ref=e169]
+            - generic [ref=e170]:
+              - 'heading "Weightage: 1" [level=6] [ref=e171]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e172]'
+          - generic [ref=e173]:
+            - paragraph [ref=e174]: Which of the following is true about Uncontrolled Components?
+            - paragraph
+            - list [ref=e175]:
+              - listitem [ref=e176]: They do not maintain their own state
+              - listitem [ref=e177]: Data is controlled by the parent Component
+              - listitem [ref=e178]: Refs are used to get their current values
+              - listitem [ref=e179]: None of the above
+            - paragraph
+            - paragraph [ref=e180]
+          - generic [ref=e181]:
+            - generic [ref=e182]: Your Submission
+            - textbox "Your Submission" [ref=e184]
+          - separator [ref=e185]
+        - generic [ref=e186]:
+          - generic [ref=e187]:
+            - heading "Problem Statement 5" [level=5] [ref=e188]
+            - generic [ref=e189]:
+              - 'heading "Weightage: 1" [level=6] [ref=e190]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e191]'
+          - generic [ref=e192]:
+            - paragraph [ref=e193]: State in React is
+            - paragraph
+            - list [ref=e194]:
+              - listitem [ref=e195]: A permanent storage of the component
+              - listitem [ref=e196]: Internal storage of the component
+              - listitem [ref=e197]: Both a and b
+              - listitem [ref=e198]: None of the above
+            - paragraph
+            - paragraph [ref=e199]
+          - generic [ref=e200]:
+            - generic [ref=e201]: Your Submission
+            - textbox "Your Submission" [ref=e203]
+          - separator [ref=e204]
+        - generic [ref=e205]:
+          - generic [ref=e206]:
+            - heading "Problem Statement 6" [level=5] [ref=e207]
+            - generic [ref=e208]:
+              - 'heading "Weightage: 1" [level=6] [ref=e209]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e210]'
+          - generic [ref=e211]:
+            - paragraph [ref=e212]: Can Browser read JSX?
+            - paragraph
+            - list [ref=e213]:
+              - listitem [ref=e214]: "Yes"
+              - listitem [ref=e215]: "No"
+            - paragraph
+            - paragraph [ref=e216]
+            - paragraph
+            - paragraph [ref=e217]
+          - generic [ref=e218]:
+            - generic [ref=e219]: Your Submission
+            - textbox "Your Submission" [ref=e221]
+          - separator [ref=e222]
+        - generic [ref=e223]:
+          - generic [ref=e224]:
+            - heading "Problem Statement 7" [level=5] [ref=e225]
+            - generic [ref=e226]:
+              - 'heading "Weightage: 1" [level=6] [ref=e227]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e228]'
+          - generic [ref=e229]:
+            - paragraph [ref=e230]: How can you create a side effect in a functional component?
+            - paragraph
+            - list [ref=e231]:
+              - listitem [ref=e232]: Using componentDidMount
+              - listitem [ref=e233]: Using createEffect
+              - listitem [ref=e234]: Using useEffect
+              - listitem [ref=e235]: Using setEffect
+            - paragraph
+            - paragraph [ref=e236]
+            - paragraph
+            - paragraph [ref=e237]
+          - generic [ref=e238]:
+            - generic [ref=e239]: Your Submission
+            - textbox "Your Submission" [ref=e241]
+          - separator [ref=e242]
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - heading "Problem Statement 8" [level=5] [ref=e245]
+            - generic [ref=e246]:
+              - 'heading "Weightage: 1" [level=6] [ref=e247]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e248]'
+          - generic [ref=e249]:
+            - paragraph [ref=e250]: What is react.js in MVC?
+            - paragraph
+            - list [ref=e251]:
+              - listitem [ref=e252]: Controller
+              - listitem [ref=e253]: Middleware
+              - listitem [ref=e254]: Model
+              - listitem [ref=e255]: Router
+            - paragraph
+            - paragraph [ref=e256]
+          - generic [ref=e257]:
+            - generic [ref=e258]: Your Submission
+            - textbox "Your Submission" [ref=e260]
+          - separator [ref=e261]
+        - generic [ref=e262]:
+          - generic [ref=e263]:
+            - heading "Problem Statement 9" [level=5] [ref=e264]
+            - generic [ref=e265]:
+              - 'heading "Weightage: 2" [level=6] [ref=e266]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e267]'
+          - generic [ref=e268]:
+            - paragraph [ref=e269]: Pure Components in React.js are? (Multi Select)
+            - paragraph
+            - list [ref=e270]:
+              - listitem [ref=e271]: Faster
+              - listitem [ref=e272]: Slow
+              - listitem [ref=e273]: Simplify the code and increase Performance
+              - listitem [ref=e274]: All the above
+            - paragraph
+            - paragraph [ref=e275]
+          - generic [ref=e276]:
+            - generic [ref=e277]: Your Submission
+            - textbox "Your Submission" [ref=e279]
+          - separator [ref=e280]
+        - generic [ref=e281]:
+          - generic [ref=e282]:
+            - heading "Problem Statement 10" [level=5] [ref=e283]
+            - generic [ref=e284]:
+              - 'heading "Weightage: 1" [level=6] [ref=e285]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e286]'
+          - generic [ref=e287]:
+            - paragraph [ref=e288]: What hook is used to access the previous value of a prop or state variable in a functional component?
+            - paragraph
+            - list [ref=e289]:
+              - listitem [ref=e290]: usePrevious
+              - listitem [ref=e291]: useRef
+              - listitem [ref=e292]: useState
+              - listitem [ref=e293]: useEffect
+            - paragraph
+            - paragraph [ref=e294]
+          - generic [ref=e295]:
+            - generic [ref=e296]: Your Submission
+            - textbox "Your Submission" [ref=e298]
+          - separator [ref=e299]
+        - generic [ref=e300]:
+          - generic [ref=e301]:
+            - heading "Problem Statement 11" [level=5] [ref=e302]
+            - generic [ref=e303]:
+              - 'heading "Weightage: 3" [level=6] [ref=e304]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e305]'
+          - generic [ref=e306]:
+            - paragraph [ref=e307]: Which of the following are rules of Hooks?
+            - paragraph
+            - list [ref=e308]:
+              - listitem [ref=e309]: Only call Hooks at the top level of a component.
+              - listitem [ref=e310]: Only call Hooks from React function components.
+              - listitem [ref=e311]: Hooks can be called inside loops, conditions, or nested functions.
+              - listitem [ref=e312]: Hooks can be called from custom Hooks.
+            - paragraph
+            - paragraph [ref=e313]
+          - generic [ref=e314]:
+            - generic [ref=e315]: Your Submission
+            - textbox "Your Submission" [ref=e317]
+          - separator [ref=e318]
+        - generic [ref=e319]:
+          - generic [ref=e320]:
+            - heading "Problem Statement 12" [level=5] [ref=e321]
+            - generic [ref=e322]:
+              - 'heading "Weightage: 1" [level=6] [ref=e323]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e324]'
+          - generic [ref=e325]:
+            - paragraph [ref=e326]: How do you update lifecycle in Functional Components?
+            - paragraph
+            - list [ref=e327]:
+              - listitem [ref=e328]: useEffect()
+              - listitem [ref=e329]: useState()
+              - listitem [ref=e330]: setState()
+              - listitem [ref=e331]: None of the above
+            - paragraph
+            - paragraph [ref=e332]
+          - generic [ref=e333]:
+            - generic [ref=e334]: Your Submission
+            - textbox "Your Submission" [ref=e336]
+          - separator [ref=e337]
+        - generic [ref=e338]:
+          - generic [ref=e339]:
+            - heading "Problem Statement 13" [level=5] [ref=e340]
+            - generic [ref=e341]:
+              - 'heading "Weightage: 1" [level=6] [ref=e342]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e343]'
+          - generic [ref=e344]:
+            - paragraph [ref=e345]: What kind of component import React from ‘react’ is?
+            - paragraph
+            - list [ref=e346]:
+              - listitem [ref=e347]: Stateless component
+              - listitem [ref=e348]: Stateful component
+              - listitem [ref=e349]: Pure component
+            - paragraph
+            - paragraph [ref=e350]
+          - generic [ref=e351]:
+            - generic [ref=e352]: Your Submission
+            - textbox "Your Submission" [ref=e354]
+          - separator [ref=e355]
+        - generic [ref=e356]:
+          - generic [ref=e357]:
+            - heading "Problem Statement 14" [level=5] [ref=e358]
+            - generic [ref=e359]:
+              - 'heading "Weightage: 1" [level=6] [ref=e360]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e361]'
+          - generic [ref=e362]:
+            - paragraph [ref=e363]: How do you access the Redux store in a functional component?
+            - paragraph
+            - list [ref=e364]:
+              - listitem [ref=e365]: useDispatch()
+              - listitem [ref=e366]: useSelector()
+              - listitem [ref=e367]: Both useDispatch() and useSelector()
+              - listitem [ref=e368]: connect()
+            - paragraph
+            - paragraph [ref=e369]
+          - generic [ref=e370]:
+            - generic [ref=e371]: Your Submission
+            - textbox "Your Submission" [ref=e373]
+          - separator [ref=e374]
+        - generic [ref=e375]:
+          - generic [ref=e376]:
+            - heading "Problem Statement 15" [level=5] [ref=e377]
+            - generic [ref=e378]:
+              - 'heading "Weightage: 1" [level=6] [ref=e379]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e380]'
+          - generic [ref=e381]:
+            - paragraph [ref=e382]: Life cycle methods are mainly used to
+            - paragraph
+            - list [ref=e383]:
+              - listitem [ref=e384]: keep track of event History
+              - listitem [ref=e385]: enhance components
+              - listitem [ref=e386]: free up resources
+              - listitem [ref=e387]: None of the above
+            - paragraph
+            - paragraph [ref=e388]
+          - generic [ref=e389]:
+            - generic [ref=e390]: Your Submission
+            - textbox "Your Submission" [ref=e392]
+          - separator [ref=e393]
+        - generic [ref=e394]:
+          - generic [ref=e395]:
+            - heading "Problem Statement 16" [level=5] [ref=e396]
+            - generic [ref=e397]:
+              - 'heading "Weightage: 1" [level=6] [ref=e398]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e399]'
+          - generic [ref=e400]:
+            - paragraph [ref=e401]: In JSX most of the errors can be caught during
+            - paragraph
+            - list [ref=e402]:
+              - listitem [ref=e403]: Interpretation
+              - listitem [ref=e404]: Execution
+              - listitem [ref=e405]: Compilation
+              - listitem [ref=e406]: Build
+            - paragraph
+            - paragraph [ref=e407]
+          - generic [ref=e408]:
+            - generic [ref=e409]: Your Submission
+            - textbox "Your Submission" [ref=e411]
+          - separator [ref=e412]
+        - generic [ref=e413]:
+          - generic [ref=e414]:
+            - heading "Problem Statement 17" [level=5] [ref=e415]
+            - generic [ref=e416]:
+              - 'heading "Weightage: 1" [level=6] [ref=e417]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e418]'
+          - generic [ref=e419]:
+            - paragraph [ref=e420]: If our elements are dynamic, react can keep track of the changes using
+            - paragraph
+            - list [ref=e421]:
+              - listitem [ref=e422]: State
+              - listitem [ref=e423]: Props
+              - listitem [ref=e424]: Keys
+              - listitem [ref=e425]: None of the above
+            - paragraph
+            - paragraph [ref=e426]
+          - generic [ref=e427]:
+            - generic [ref=e428]: Your Submission
+            - textbox "Your Submission" [ref=e430]
+          - separator [ref=e431]
+        - generic [ref=e432]:
+          - generic [ref=e433]:
+            - heading "Problem Statement 18" [level=5] [ref=e434]
+            - generic [ref=e435]:
+              - 'heading "Weightage: 2" [level=6] [ref=e436]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e437]'
+          - generic [ref=e438]:
+            - paragraph [ref=e439]: Regarding React components, which of the following statements is true?
+            - paragraph
+            - list [ref=e440]:
+              - listitem [ref=e441]: Functional components can have state
+              - listitem [ref=e442]: Functional components are light weight
+              - listitem [ref=e443]: Class components are light weight
+              - listitem [ref=e444]: Class components are faster than functional components
+            - paragraph
+            - paragraph [ref=e445]
+          - generic [ref=e446]:
+            - generic [ref=e447]: Your Submission
+            - textbox "Your Submission" [ref=e449]
+          - separator [ref=e450]
+        - generic [ref=e451]:
+          - generic [ref=e452]:
+            - heading "Problem Statement 19" [level=5] [ref=e453]
+            - generic [ref=e454]:
+              - 'heading "Weightage: 1" [level=6] [ref=e455]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e456]'
+          - generic [ref=e457]:
+            - paragraph [ref=e458]: Which hook should be used to memoize an expensive computation?
+            - paragraph
+            - list [ref=e459]:
+              - listitem [ref=e460]: useEffect
+              - listitem [ref=e461]: useMemo
+              - listitem [ref=e462]: useCallback
+              - listitem [ref=e463]: useReducer
+            - paragraph
+            - paragraph [ref=e464]
+          - generic [ref=e465]:
+            - generic [ref=e466]: Your Submission
+            - textbox "Your Submission" [ref=e468]
+          - separator [ref=e469]
+        - generic [ref=e470]:
+          - generic [ref=e471]:
+            - heading "Problem Statement 20" [level=5] [ref=e472]
+            - generic [ref=e473]:
+              - 'heading "Weightage: 2" [level=6] [ref=e474]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e475]'
+          - generic [ref=e476]:
+            - paragraph [ref=e477]: Which of the following hooks are used for data fetching?
+            - paragraph
+            - list [ref=e478]:
+              - listitem [ref=e479]: useEffect()
+              - listitem [ref=e480]: useState()
+              - listitem [ref=e481]: useReducer()
+              - listitem [ref=e482]: useContext
+            - paragraph
+            - paragraph [ref=e483]
+          - generic [ref=e484]:
+            - generic [ref=e485]: Your Submission
+            - textbox "Your Submission" [ref=e487]
+          - separator [ref=e488]
+        - generic [ref=e489]:
+          - generic [ref=e490]:
+            - heading "Problem Statement 21" [level=5] [ref=e491]
+            - generic [ref=e492]:
+              - 'heading "Weightage: 1" [level=6] [ref=e493]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e494]'
+          - generic [ref=e495]:
+            - paragraph [ref=e496]: Data handling in React is done using
+            - paragraph
+            - list [ref=e497]:
+              - listitem [ref=e498]: state
+              - listitem [ref=e499]: props
+              - listitem [ref=e500]: Both a and b
+              - listitem [ref=e501]: None of the above
+            - paragraph
+            - paragraph [ref=e502]
+          - generic [ref=e503]:
+            - generic [ref=e504]: Your Submission
+            - textbox "Your Submission" [ref=e506]
+          - separator [ref=e507]
+        - generic [ref=e508]:
+          - generic [ref=e509]:
+            - heading "Problem Statement 22" [level=5] [ref=e510]
+            - generic [ref=e511]:
+              - 'heading "Weightage: 1" [level=6] [ref=e512]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e513]'
+          - generic [ref=e514]:
+            - paragraph [ref=e515]: How to pass data to components?
+            - paragraph
+            - list [ref=e516]:
+              - listitem [ref=e517]: props
+              - listitem [ref=e518]: state
+              - listitem [ref=e519]: Both of above
+              - listitem [ref=e520]: None of the above
+            - paragraph
+            - paragraph [ref=e521]
+          - generic [ref=e522]:
+            - generic [ref=e523]: Your Submission
+            - textbox "Your Submission" [ref=e525]
+          - separator [ref=e526]
+        - generic [ref=e527]:
+          - generic [ref=e528]:
+            - heading "Problem Statement 23" [level=5] [ref=e529]
+            - generic [ref=e530]:
+              - 'heading "Weightage: 1" [level=6] [ref=e531]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e532]'
+          - generic [ref=e533]:
+            - paragraph [ref=e534]: What does useReducer return?
+            - paragraph
+            - list [ref=e535]:
+              - listitem [ref=e536]: The current state and a dispatch function
+              - listitem [ref=e537]: A reducer function
+              - listitem [ref=e538]: The initial state
+              - listitem [ref=e539]: None of the above
+            - paragraph
+            - paragraph [ref=e540]
+          - generic [ref=e541]:
+            - generic [ref=e542]: Your Submission
+            - textbox "Your Submission" [ref=e544]
+          - separator [ref=e545]
+        - generic [ref=e546]:
+          - generic [ref=e547]:
+            - heading "Problem Statement 24" [level=5] [ref=e548]
+            - generic [ref=e549]:
+              - 'heading "Weightage: 1" [level=6] [ref=e550]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e551]'
+          - generic [ref=e552]:
+            - paragraph [ref=e553]: Which hook would you use to persist state across component re-renders?
+            - paragraph
+            - list [ref=e554]:
+              - listitem [ref=e555]: useEffect
+              - listitem [ref=e556]: useState
+              - listitem [ref=e557]: useMemo
+              - listitem [ref=e558]: useReducer
+            - paragraph
+            - paragraph [ref=e559]
+          - generic [ref=e560]:
+            - generic [ref=e561]: Your Submission
+            - textbox "Your Submission" [ref=e563]
+          - separator [ref=e564]
+        - generic [ref=e565]:
+          - generic [ref=e566]:
+            - heading "Problem Statement 25" [level=5] [ref=e567]
+            - generic [ref=e568]:
+              - 'heading "Weightage: 1" [level=6] [ref=e569]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e570]'
+          - generic [ref=e571]:
+            - paragraph [ref=e572]: How do you access a DOM element directly in a functional component?
+            - paragraph
+            - list [ref=e573]:
+              - listitem [ref=e574]: useRef
+              - listitem [ref=e575]: getElementById
+              - listitem [ref=e576]: querySelector
+              - listitem [ref=e577]: useDOM
+            - paragraph
+            - paragraph [ref=e578]
+          - generic [ref=e579]:
+            - generic [ref=e580]: Your Submission
+            - textbox "Your Submission" [ref=e582]
+          - separator [ref=e583]
+        - generic [ref=e584]:
+          - generic [ref=e585]:
+            - heading "Problem Statement 26" [level=5] [ref=e586]
+            - generic [ref=e587]:
+              - 'heading "Weightage: 1" [level=6] [ref=e588]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e589]'
+          - generic [ref=e590]:
+            - paragraph [ref=e591]: JSX is acronym for
+            - paragraph
+            - list [ref=e592]:
+              - listitem [ref=e593]: Java Server eXtension
+              - listitem [ref=e594]: JavaScript eXtension
+              - listitem [ref=e595]: Java Script Extender
+              - listitem [ref=e596]: None of the above
+            - paragraph
+            - paragraph [ref=e597]
+          - generic [ref=e598]:
+            - generic [ref=e599]: Your Submission
+            - textbox "Your Submission" [ref=e601]
+          - separator [ref=e602]
+        - generic [ref=e603]:
+          - generic [ref=e604]:
+            - heading "Problem Statement 27" [level=5] [ref=e605]
+            - generic [ref=e606]:
+              - 'heading "Weightage: 1" [level=6] [ref=e607]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e608]'
+          - generic [ref=e609]:
+            - paragraph [ref=e610]: What is the purpose of the useContext hook?
+            - paragraph
+            - list [ref=e611]:
+              - listitem [ref=e612]: To create a new context
+              - listitem [ref=e613]: To subscribe to a context without introducing nesting
+              - listitem [ref=e614]: To dispatch actions to a reducer
+              - listitem [ref=e615]: To create a side effect
+            - paragraph
+            - paragraph [ref=e616]
+          - generic [ref=e617]:
+            - generic [ref=e618]: Your Submission
+            - textbox "Your Submission" [ref=e620]
+          - separator [ref=e621]
+        - generic [ref=e622]:
+          - generic [ref=e623]:
+            - heading "Problem Statement 28" [level=5] [ref=e624]
+            - generic [ref=e625]:
+              - 'heading "Weightage: 1" [level=6] [ref=e626]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e627]'
+          - generic [ref=e628]:
+            - paragraph [ref=e629]: var MyComponent=(props)=>
+            - paragraph [ref=e630]: "{"
+            - paragraph [ref=e631]: return(
+            - paragraph [ref=e632]: <div>
+            - paragraph [ref=e633]: Hello World 1
+            - paragraph [ref=e634]: </div>
+            - paragraph [ref=e635]: <div>
+            - paragraph [ref=e636]: Hello World 2
+            - paragraph [ref=e637]: </div>
+            - paragraph [ref=e638]: );
+            - paragraph [ref=e639]: "}"
+            - paragraph [ref=e640]: ReactDOM.render(<MyComponent />,mountNode)
+            - paragraph [ref=e641]
+            - paragraph [ref=e642]: What will be the output?
+            - paragraph
+            - list [ref=e643]:
+              - listitem [ref=e644]: Hello World 1
+              - listitem [ref=e645]: Hello World 2
+              - listitem [ref=e646]: Hello World 1 Hello World 2
+              - listitem [ref=e647]: Error
+            - paragraph
+            - paragraph [ref=e648]
+          - generic [ref=e649]:
+            - generic [ref=e650]: Your Submission
+            - textbox "Your Submission" [ref=e652]
+          - separator [ref=e653]
+        - generic [ref=e654]:
+          - generic [ref=e655]:
+            - heading "Problem Statement 29" [level=5] [ref=e656]
+            - generic [ref=e657]:
+              - 'heading "Weightage: 2" [level=6] [ref=e658]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e659]'
+          - generic [ref=e660]:
+            - paragraph [ref=e661]: "isEnabled && <div>{Hello}</div>"
+            - paragraph [ref=e662]: Which of the following is true? (Multi Select)
+            - paragraph
+            - list [ref=e663]:
+              - listitem [ref=e664]: If isEnabled is false, it always evaluates to expression after &&
+              - listitem [ref=e665]: If isEnabled is false, it always evaluates to false
+              - listitem [ref=e666]: If isEnabled is true, it always evaluates to expression after &&
+              - listitem [ref=e667]: If isEnabled is false, it always evaluates to true
+            - paragraph
+            - paragraph [ref=e668]
+          - generic [ref=e669]:
+            - generic [ref=e670]: Your Submission
+            - textbox "Your Submission" [ref=e672]
+          - separator [ref=e673]
+        - generic [ref=e674]:
+          - generic [ref=e675]:
+            - heading "Problem Statement 30" [level=5] [ref=e676]
+            - generic [ref=e677]:
+              - 'heading "Weightage: 2" [level=6] [ref=e678]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e679]'
+          - generic [ref=e680]:
+            - paragraph [ref=e681]: Conditional rendering is possible by (Multi Select)
+            - paragraph
+            - list [ref=e682]:
+              - listitem [ref=e683]: If-else
+              - listitem [ref=e684]: Statement
+              - listitem [ref=e685]: While
+            - paragraph
+            - paragraph [ref=e686]
+          - generic [ref=e687]:
+            - generic [ref=e688]: Your Submission
+            - textbox "Your Submission" [ref=e690]
+          - separator [ref=e691]
+        - generic [ref=e692]:
+          - generic [ref=e693]:
+            - heading "Problem Statement 31" [level=5] [ref=e694]
+            - generic [ref=e695]:
+              - 'heading "Weightage: 1" [level=6] [ref=e696]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e697]'
+          - generic [ref=e698]:
+            - paragraph [ref=e699]: If we want to hide component even though it was rendered by another component, what would be best approach to do so? (Multi Select)
+            - paragraph
+            - list [ref=e700]:
+              - listitem [ref=e701]: Remove the component from the parent component from which it is rendered
+              - listitem [ref=e702]: Return null so that the component doesn't render
+              - listitem [ref=e703]: Return undefined, so that the component doesn't render
+              - listitem [ref=e704]: None of the above
+            - paragraph
+            - paragraph [ref=e705]
+          - generic [ref=e706]:
+            - generic [ref=e707]: Your Submission
+            - textbox "Your Submission" [ref=e709]
+          - separator [ref=e710]
+        - generic [ref=e711]:
+          - generic [ref=e712]:
+            - heading "Problem Statement 32" [level=5] [ref=e713]
+            - generic [ref=e714]:
+              - 'heading "Weightage: 1" [level=6] [ref=e715]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e716]'
+          - generic [ref=e717]:
+            - paragraph [ref=e718]: Which hook can be used to ensure that a function doesn’t get recreated on every render?
+            - paragraph
+            - list [ref=e719]:
+              - listitem [ref=e720]: useMemo
+              - listitem [ref=e721]: useEffect
+              - listitem [ref=e722]: useCallback
+              - listitem [ref=e723]: useReducer
+            - paragraph
+            - paragraph [ref=e724]
+          - generic [ref=e725]:
+            - generic [ref=e726]: Your Submission
+            - textbox "Your Submission" [ref=e728]
+          - separator [ref=e729]
+        - generic [ref=e730]:
+          - generic [ref=e731]:
+            - heading "Problem Statement 33" [level=5] [ref=e732]
+            - generic [ref=e733]:
+              - 'heading "Weightage: 1" [level=6] [ref=e734]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e735]'
+          - generic [ref=e736]:
+            - paragraph [ref=e737]: When state or prop value change
+            - paragraph
+            - list [ref=e738]:
+              - listitem [ref=e739]: The whole page re-renders
+              - listitem [ref=e740]: No change occurs
+              - listitem [ref=e741]: Only the component using that state or prop re-renders
+              - listitem [ref=e742]: None of the above
+            - paragraph
+            - paragraph [ref=e743]
+          - generic [ref=e744]:
+            - generic [ref=e745]: Your Submission
+            - textbox "Your Submission" [ref=e747]
+          - separator [ref=e748]
+        - generic [ref=e749]:
+          - generic [ref=e750]:
+            - heading "Problem Statement 34" [level=5] [ref=e751]
+            - generic [ref=e752]:
+              - 'heading "Weightage: 1" [level=6] [ref=e753]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e754]'
+          - generic [ref=e755]:
+            - paragraph [ref=e756]: What function allows you to render React content in an HTML page?
+            - paragraph
+            - list [ref=e757]:
+              - listitem [ref=e758]: React.mount()
+              - listitem [ref=e759]: ReactDOM.start()
+              - listitem [ref=e760]: ReactDOM.render()
+              - listitem [ref=e761]: React.render()
+            - paragraph
+            - paragraph [ref=e762]
+          - generic [ref=e763]:
+            - generic [ref=e764]: Your Submission
+            - textbox "Your Submission" [ref=e766]
+          - separator [ref=e767]
+        - generic [ref=e768]:
+          - generic [ref=e769]:
+            - heading "Problem Statement 35" [level=5] [ref=e770]
+            - generic [ref=e771]:
+              - 'heading "Weightage: 1" [level=6] [ref=e772]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e773]'
+          - generic [ref=e774]:
+            - paragraph [ref=e775]: "React Hooks:"
+            - paragraph
+            - list [ref=e776]:
+              - listitem [ref=e777]: Allows use of state inside a class.
+              - listitem [ref=e778]: Allows use of state without writing a class
+              - listitem [ref=e779]: Both a and b
+              - listitem [ref=e780]: None
+            - paragraph
+            - paragraph [ref=e781]
+          - generic [ref=e782]:
+            - generic [ref=e783]: Your Submission
+            - textbox "Your Submission" [ref=e785]
+          - separator [ref=e786]
+        - generic [ref=e787]:
+          - generic [ref=e788]:
+            - heading "Problem Statement 36" [level=5] [ref=e789]
+            - generic [ref=e790]:
+              - 'heading "Weightage: 1" [level=6] [ref=e791]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e792]'
+          - generic [ref=e793]:
+            - paragraph [ref=e794]: Which React hook is used for working with context?
+            - paragraph
+            - list [ref=e795]:
+              - listitem [ref=e796]: useEffect
+              - listitem [ref=e797]: useContext
+              - listitem [ref=e798]: useReducer
+              - listitem [ref=e799]: useState
+            - paragraph
+            - paragraph [ref=e800]
+          - generic [ref=e801]:
+            - generic [ref=e802]: Your Submission
+            - textbox "Your Submission" [ref=e804]
+          - separator [ref=e805]
+        - generic [ref=e806]:
+          - generic [ref=e807]:
+            - heading "Problem Statement 37" [level=5] [ref=e808]
+            - generic [ref=e809]:
+              - 'heading "Weightage: 3" [level=6] [ref=e810]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e811]'
+          - generic [ref=e812]:
+            - paragraph [ref=e813]: Which of the following is true about hooks? (Multi Select)
+            - paragraph
+            - list [ref=e814]:
+              - listitem [ref=e815]: Hooks can be called anywhere
+              - listitem [ref=e816]: Hooks can be called from other regular JavaScript functions
+              - listitem [ref=e817]: Hooks cannot be called inside loops, conditions, nested functions
+              - listitem [ref=e818]: Hooks can be called from React function components
+              - listitem [ref=e819]: Hooks can be called from top levels
+            - paragraph
+            - paragraph [ref=e820]
+          - generic [ref=e821]:
+            - generic [ref=e822]: Your Submission
+            - textbox "Your Submission" [ref=e824]
+          - separator [ref=e825]
+        - generic [ref=e826]:
+          - generic [ref=e827]:
+            - heading "Problem Statement 38" [level=5] [ref=e828]
+            - generic [ref=e829]:
+              - 'heading "Weightage: 1" [level=6] [ref=e830]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e831]'
+          - generic [ref=e832]:
+            - paragraph [ref=e833]: Is it possible to create custom hooks?
+            - paragraph
+            - list [ref=e834]:
+              - listitem [ref=e835]: "True"
+              - listitem [ref=e836]: "False"
+            - paragraph
+            - paragraph [ref=e837]
+          - generic [ref=e838]:
+            - generic [ref=e839]: Your Submission
+            - textbox "Your Submission" [ref=e841]
+          - separator [ref=e842]
+        - generic [ref=e843]:
+          - generic [ref=e844]:
+            - heading "Problem Statement 39" [level=5] [ref=e845]
+            - generic [ref=e846]:
+              - 'heading "Weightage: 3" [level=6] [ref=e847]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e848]'
+          - generic [ref=e849]:
+            - paragraph [ref=e850]: What are the advantages of React Hooks?
+            - paragraph
+            - list [ref=e851]:
+              - listitem [ref=e852]: Reusing stateful logic without changing the component hierarchy.
+              - listitem [ref=e853]: Hooks work the same across all components, which makes component logic easier to share and manage.
+              - listitem [ref=e854]: Hooks can only be used inside class components.
+              - listitem [ref=e855]: Hooks allow you to use state and lifecycle features without writing a class.
+            - paragraph
+            - paragraph [ref=e856]
+          - generic [ref=e857]:
+            - generic [ref=e858]: Your Submission
+            - textbox "Your Submission" [ref=e860]
+          - separator [ref=e861]
+        - generic [ref=e862]:
+          - generic [ref=e863]:
+            - heading "Problem Statement 40" [level=5] [ref=e864]
+            - generic [ref=e865]:
+              - 'heading "Weightage: 1" [level=6] [ref=e866]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e867]'
+          - generic [ref=e868]:
+            - paragraph [ref=e869]: Hooks are backward-compatible?
+            - paragraph
+            - list [ref=e870]:
+              - listitem [ref=e871]: "True"
+              - listitem [ref=e872]: "False"
+            - paragraph
+            - paragraph [ref=e873]
+          - generic [ref=e874]:
+            - generic [ref=e875]: Your Submission
+            - textbox "Your Submission" [ref=e877]
+          - separator [ref=e878]
+        - generic [ref=e879]:
+          - generic [ref=e880]:
+            - heading "Problem Statement 41" [level=5] [ref=e881]
+            - generic [ref=e882]:
+              - 'heading "Weightage: 1" [level=6] [ref=e883]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e884]'
+          - generic [ref=e885]:
+            - paragraph [ref=e886]: Which is the correct implementation of hook?
+            - paragraph
+            - list [ref=e887]:
+              - listitem [ref=e888]: const count = useState(0)
+              - listitem [ref=e889]: const count = useState(setCount, 0)
+              - listitem [ref=e890]: const [count, setCount] = useState(0)
+            - paragraph
+            - paragraph [ref=e891]
+          - generic [ref=e892]:
+            - generic [ref=e893]: Your Submission
+            - textbox "Your Submission" [ref=e895]
+          - separator [ref=e896]
+        - generic [ref=e897]:
+          - generic [ref=e898]:
+            - heading "Problem Statement 42" [level=5] [ref=e899]
+            - generic [ref=e900]:
+              - 'heading "Weightage: 1" [level=6] [ref=e901]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e902]'
+          - generic [ref=e903]:
+            - paragraph [ref=e904]: Redux solves this problem by managing the application’s state with a single global object called.
+            - paragraph
+            - list [ref=e905]:
+              - listitem [ref=e906]: Directory.
+              - listitem [ref=e907]: File.
+              - listitem [ref=e908]: Store.
+              - listitem [ref=e909]: State
+            - paragraph
+            - paragraph [ref=e910]
+          - generic [ref=e911]:
+            - generic [ref=e912]: Your Submission
+            - textbox "Your Submission" [ref=e914]
+          - separator [ref=e915]
+        - generic [ref=e916]:
+          - generic [ref=e917]:
+            - heading "Problem Statement 43" [level=5] [ref=e918]
+            - generic [ref=e919]:
+              - 'heading "Weightage: 1" [level=6] [ref=e920]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e921]'
+          - generic [ref=e922]:
+            - paragraph [ref=e923]: What is true about Redux?
+            - paragraph
+            - list [ref=e924]:
+              - listitem [ref=e925]: Redux is a predictable state container for JavaScript apps.
+              - listitem [ref=e926]: Redux fundamental principles help in maintaining consistency throughout your application.
+              - listitem [ref=e927]: Redux makes debugging and testing easier.
+              - listitem [ref=e928]: All the Above
+            - paragraph
+            - paragraph [ref=e929]
+          - generic [ref=e930]:
+            - generic [ref=e931]: Your Submission
+            - textbox "Your Submission" [ref=e933]
+          - separator [ref=e934]
+        - generic [ref=e935]:
+          - generic [ref=e936]:
+            - heading "Problem Statement 44" [level=5] [ref=e937]
+            - generic [ref=e938]:
+              - 'heading "Weightage: 2" [level=6] [ref=e939]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e940]'
+          - generic [ref=e941]:
+            - paragraph [ref=e942]: Which of the following statements are true? (Multi Select)
+            - paragraph
+            - list [ref=e943]:
+              - listitem [ref=e944]: ApplyMiddleware is a store enhancer.
+              - listitem [ref=e945]: Redux-Dev tools are store enhancer.
+              - listitem [ref=e946]: Middleware is more powerful than store enhancer.
+              - listitem [ref=e947]: All the Above
+            - paragraph
+            - paragraph [ref=e948]
+          - generic [ref=e949]:
+            - generic [ref=e950]: Your Submission
+            - textbox "Your Submission" [ref=e952]
+          - separator [ref=e953]
+        - generic [ref=e954]:
+          - generic [ref=e955]:
+            - heading "Problem Statement 45" [level=5] [ref=e956]
+            - generic [ref=e957]:
+              - 'heading "Weightage: 1" [level=6] [ref=e958]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e959]'
+          - generic [ref=e960]:
+            - paragraph [ref=e961]: Which of the following statements are true related to reducer?
+            - paragraph
+            - list [ref=e962]:
+              - listitem [ref=e963]: Mutate its arguments
+              - listitem [ref=e964]: Perform side effects like API calls and routing transitions
+              - listitem [ref=e965]: Call non-pure functions, e.g., Date.now() or Math.random()
+              - listitem [ref=e966]: Make async API calls inside a reducer
+              - listitem [ref=e967]: None of the above
+            - paragraph
+            - paragraph [ref=e968]
+          - generic [ref=e969]:
+            - generic [ref=e970]: Your Submission
+            - textbox "Your Submission" [ref=e972]
+          - separator [ref=e973]
+        - generic [ref=e974]:
+          - generic [ref=e975]:
+            - heading "Problem Statement 46" [level=5] [ref=e976]
+            - generic [ref=e977]:
+              - 'heading "Weightage: 1" [level=6] [ref=e978]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e979]'
+          - generic [ref=e980]:
+            - paragraph [ref=e981]: Can we use connect without a <Provider/>?
+            - paragraph
+            - list [ref=e982]:
+              - listitem [ref=e983]: "True"
+              - listitem [ref=e984]: "False"
+            - paragraph
+            - paragraph [ref=e985]
+          - generic [ref=e986]:
+            - generic [ref=e987]: Your Submission
+            - textbox "Your Submission" [ref=e989]
+          - separator [ref=e990]
+        - generic [ref=e991]:
+          - generic [ref=e992]:
+            - heading "Problem Statement 47" [level=5] [ref=e993]
+            - generic [ref=e994]:
+              - 'heading "Weightage: 1" [level=6] [ref=e995]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e996]'
+          - generic [ref=e997]:
+            - paragraph [ref=e998]: Which method allows you to dispatch an action to change a state in your application?
+            - paragraph
+            - list [ref=e999]:
+              - listitem [ref=e1000]: getState
+              - listitem [ref=e1001]: setState
+              - listitem [ref=e1002]: dispatch
+              - listitem [ref=e1003]: subscribe
+            - paragraph
+            - paragraph [ref=e1004]
+          - generic [ref=e1005]:
+            - generic [ref=e1006]: Your Submission
+            - textbox "Your Submission" [ref=e1008]
+          - separator [ref=e1009]
+        - generic [ref=e1010]:
+          - generic [ref=e1011]:
+            - heading "Problem Statement 48" [level=5] [ref=e1012]
+            - generic [ref=e1013]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1014]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1015]'
+          - generic [ref=e1016]:
+            - paragraph [ref=e1017]: Which of the following is react-Redux helper method?
+            - paragraph
+            - list [ref=e1018]:
+              - listitem [ref=e1019]: help()
+              - listitem [ref=e1020]: view()
+              - listitem [ref=e1021]: assist()
+              - listitem [ref=e1022]: connect()
+            - paragraph
+            - paragraph [ref=e1023]
+          - generic [ref=e1024]:
+            - generic [ref=e1025]: Your Submission
+            - textbox "Your Submission" [ref=e1027]
+          - separator [ref=e1028]
+        - generic [ref=e1029]:
+          - generic [ref=e1030]:
+            - heading "Problem Statement 49" [level=5] [ref=e1031]
+            - generic [ref=e1032]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1033]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1034]'
+          - generic [ref=e1035]:
+            - paragraph [ref=e1036]: Can we use useStore() Hook to Create a new instance of store?
+            - paragraph
+            - list [ref=e1037]:
+              - listitem [ref=e1038]: "True"
+              - listitem [ref=e1039]: "False"
+            - paragraph
+            - paragraph [ref=e1040]
+          - generic [ref=e1041]:
+            - generic [ref=e1042]: Your Submission
+            - textbox "Your Submission" [ref=e1044]
+          - separator [ref=e1045]
+        - generic [ref=e1046]:
+          - generic [ref=e1047]:
+            - heading "Problem Statement 50" [level=5] [ref=e1048]
+            - generic [ref=e1049]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1050]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1051]'
+          - generic [ref=e1052]:
+            - paragraph [ref=e1053]: How to pass mapDispatchToProps without mapStateToProps
+            - paragraph
+            - list [ref=e1054]:
+              - listitem [ref=e1055]: connect(null, mapDispatchToProps)(MyComponent)
+              - listitem [ref=e1056]: connect(mapDispatchToProps)(MyComponent)
+              - listitem [ref=e1057]: "connect(mapStateToProps: null, mapDispatchToProps)(MyComponent)"
+              - listitem [ref=e1058]: "connect(mapStateToProps: null, mapDispatchToProps :mapDispatchToProps)(MyComponent)"
+            - paragraph
+            - paragraph [ref=e1059]
+          - generic [ref=e1060]:
+            - generic [ref=e1061]: Your Submission
+            - textbox "Your Submission" [ref=e1063]
+          - separator [ref=e1064]
+        - generic [ref=e1065]:
+          - generic [ref=e1066]:
+            - heading "Problem Statement 51" [level=5] [ref=e1067]
+            - generic [ref=e1068]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1069]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1070]'
+          - generic [ref=e1071]:
+            - paragraph [ref=e1072]: Is it possible to dispatch an action without using mapDispatchToProps?
+            - paragraph
+            - list [ref=e1073]:
+              - listitem [ref=e1074]: "Yes"
+              - listitem [ref=e1075]: "No"
+            - paragraph
+            - paragraph [ref=e1076]
+          - generic [ref=e1077]:
+            - generic [ref=e1078]: Your Submission
+            - textbox "Your Submission" [ref=e1080]
+          - separator [ref=e1081]
+        - generic [ref=e1082]:
+          - generic [ref=e1083]:
+            - heading "Problem Statement 52" [level=5] [ref=e1084]
+            - generic [ref=e1085]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1086]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1087]'
+          - generic [ref=e1088]:
+            - paragraph [ref=e1089]: How can you avoid re-renders caused by frequent state updates?
+            - paragraph
+            - list [ref=e1090]:
+              - listitem [ref=e1091]: Using React.memo
+              - listitem [ref=e1092]: Using useMemo
+              - listitem [ref=e1093]: Using shouldComponentUpdate
+              - listitem [ref=e1094]: Both 1 and 2
+            - paragraph
+            - paragraph [ref=e1095]
+          - generic [ref=e1096]:
+            - generic [ref=e1097]: Your Submission
+            - textbox "Your Submission" [ref=e1099]
+          - separator [ref=e1100]
+        - generic [ref=e1101]:
+          - generic [ref=e1102]:
+            - heading "Problem Statement 53" [level=5] [ref=e1103]
+            - generic [ref=e1104]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1105]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1106]'
+          - generic [ref=e1107]:
+            - paragraph [ref=e1108]: Which of the following is true about redux? (Multi Select)
+            - paragraph
+            - list [ref=e1109]:
+              - listitem [ref=e1110]: Store and change logic are separate
+              - listitem [ref=e1111]: Has singleton dispatcher
+              - listitem [ref=e1112]: Container components utilize connect
+              - listitem [ref=e1113]: All the Above
+            - paragraph
+            - paragraph [ref=e1114]
+          - generic [ref=e1115]:
+            - generic [ref=e1116]: Your Submission
+            - textbox "Your Submission" [ref=e1118]
+          - separator [ref=e1119]
+        - generic [ref=e1120]:
+          - generic [ref=e1121]:
+            - heading "Problem Statement 54" [level=5] [ref=e1122]
+            - generic [ref=e1123]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1124]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1125]'
+          - generic [ref=e1126]:
+            - paragraph [ref=e1127]: The predictability of Redux is determined by.
+            - paragraph
+            - list [ref=e1128]:
+              - listitem [ref=e1129]: Single Source of Truth
+              - listitem [ref=e1130]: State is Read-only
+              - listitem [ref=e1131]: Changes are made with pure functions.
+              - listitem [ref=e1132]: All the above
+            - paragraph
+            - paragraph [ref=e1133]
+          - generic [ref=e1134]:
+            - generic [ref=e1135]: Your Submission
+            - textbox "Your Submission" [ref=e1137]
+          - separator [ref=e1138]
+        - generic [ref=e1139]:
+          - generic [ref=e1140]:
+            - heading "Problem Statement 55" [level=5] [ref=e1141]
+            - generic [ref=e1142]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1143]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1144]'
+          - generic [ref=e1145]:
+            - paragraph [ref=e1146]: In which way saga makes asynchronous calls
+            - paragraph
+            - list [ref=e1147]:
+              - listitem [ref=e1148]: By using Generator functions
+              - listitem [ref=e1149]: Async Await calls.
+              - listitem [ref=e1150]: Both a and b
+              - listitem [ref=e1151]: None of the Above
+            - paragraph
+            - paragraph [ref=e1152]
+          - generic [ref=e1153]:
+            - generic [ref=e1154]: Your Submission
+            - textbox "Your Submission" [ref=e1156]
+          - separator [ref=e1157]
+        - generic [ref=e1158]:
+          - generic [ref=e1159]:
+            - heading "Problem Statement 56" [level=5] [ref=e1160]
+            - generic [ref=e1161]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1162]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1163]'
+          - generic [ref=e1164]:
+            - paragraph [ref=e1165]: Which is true about generator functions? (Multi Select)
+            - paragraph
+            - list [ref=e1166]:
+              - listitem [ref=e1167]: Are available in ES6.
+              - listitem [ref=e1168]: Yield Expression is used to pass the function.
+              - listitem [ref=e1169]: Yield Expression is used to exit the function.
+              - listitem [ref=e1170]: All the Above
+            - paragraph
+            - paragraph [ref=e1171]
+          - generic [ref=e1172]:
+            - generic [ref=e1173]: Your Submission
+            - textbox "Your Submission" [ref=e1175]
+          - separator [ref=e1176]
+        - generic [ref=e1177]:
+          - generic [ref=e1178]:
+            - heading "Problem Statement 57" [level=5] [ref=e1179]
+            - generic [ref=e1180]:
+              - 'heading "Weightage: 4" [level=6] [ref=e1181]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1182]'
+          - generic [ref=e1183]:
+            - paragraph [ref=e1184]: Which of the following are redux workflow features? (Multi Select)
+            - paragraph
+            - list [ref=e1185]:
+              - listitem [ref=e1186]: Reset
+              - listitem [ref=e1187]: Revert
+              - listitem [ref=e1188]: Sweep
+              - listitem [ref=e1189]: Commit
+            - paragraph
+            - paragraph [ref=e1190]
+          - generic [ref=e1191]:
+            - generic [ref=e1192]: Your Submission
+            - textbox "Your Submission" [ref=e1194]
+          - separator [ref=e1195]
+        - generic [ref=e1196]:
+          - generic [ref=e1197]:
+            - heading "Problem Statement 58" [level=5] [ref=e1198]
+            - generic [ref=e1199]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1200]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1201]'
+          - generic [ref=e1202]:
+            - paragraph [ref=e1203]: Which of the following makes stores available?
+            - paragraph
+            - list [ref=e1204]:
+              - listitem [ref=e1205]: Component
+              - listitem [ref=e1206]: Container
+              - listitem [ref=e1207]: Provider
+              - listitem [ref=e1208]: Actions
+            - paragraph
+            - paragraph [ref=e1209]
+          - generic [ref=e1210]:
+            - generic [ref=e1211]: Your Submission
+            - textbox "Your Submission" [ref=e1213]
+          - separator [ref=e1214]
+        - generic [ref=e1215]:
+          - generic [ref=e1216]:
+            - heading "Problem Statement 59" [level=5] [ref=e1217]
+            - generic [ref=e1218]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1219]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1220]'
+          - generic [ref=e1221]:
+            - paragraph [ref=e1222]: React.Lazy() is useful for
+            - paragraph
+            - list [ref=e1223]:
+              - listitem [ref=e1224]: Code spliting
+              - listitem [ref=e1225]: Code Formatting
+              - listitem [ref=e1226]: Code Reusability
+              - listitem [ref=e1227]: None of the Above
+            - paragraph
+            - paragraph [ref=e1228]
+          - generic [ref=e1229]:
+            - generic [ref=e1230]: Your Submission
+            - textbox "Your Submission" [ref=e1232]
+          - separator [ref=e1233]
+        - generic [ref=e1234]:
+          - generic [ref=e1235]:
+            - heading "Problem Statement 60" [level=5] [ref=e1236]
+            - generic [ref=e1237]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1238]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1239]'
+          - generic [ref=e1240]:
+            - paragraph [ref=e1241]: getContext() is an effect that instructs middleware to return specific property of sagas context
+            - paragraph
+            - list [ref=e1242]:
+              - listitem [ref=e1243]: "True"
+              - listitem [ref=e1244]: "False"
+            - paragraph
+            - paragraph [ref=e1245]
+          - generic [ref=e1246]:
+            - generic [ref=e1247]: Your Submission
+            - textbox "Your Submission" [ref=e1249]
+          - separator [ref=e1250]
+        - generic [ref=e1251]:
+          - generic [ref=e1252]:
+            - heading "Problem Statement 61" [level=5] [ref=e1253]
+            - generic [ref=e1254]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1255]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1256]'
+          - generic [ref=e1257]:
+            - paragraph [ref=e1258]: Can Yield* operator be used to compose multiple Sagas in a sequential way.
+            - paragraph
+            - list [ref=e1259]:
+              - listitem [ref=e1260]: "True"
+              - listitem [ref=e1261]: "False"
+            - paragraph
+            - paragraph [ref=e1262]
+          - generic [ref=e1263]:
+            - generic [ref=e1264]: Your Submission
+            - textbox "Your Submission" [ref=e1266]
+          - separator [ref=e1267]
+        - generic [ref=e1268]:
+          - generic [ref=e1269]:
+            - heading "Problem Statement 62" [level=5] [ref=e1270]
+            - generic [ref=e1271]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1272]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1273]'
+          - generic [ref=e1274]:
+            - paragraph [ref=e1275]: When parallel API calls are running, which effect can be used to check which one failed or succeeded first?
+            - paragraph
+            - list [ref=e1276]:
+              - listitem [ref=e1277]: UseEffect
+              - listitem [ref=e1278]: Race
+              - listitem [ref=e1279]: UseContext
+              - listitem [ref=e1280]: None of the Above
+            - paragraph
+            - paragraph [ref=e1281]
+          - generic [ref=e1282]:
+            - generic [ref=e1283]: Your Submission
+            - textbox "Your Submission" [ref=e1285]
+          - separator [ref=e1286]
+        - generic [ref=e1287]:
+          - generic [ref=e1288]:
+            - heading "Problem Statement 63" [level=5] [ref=e1289]
+            - generic [ref=e1290]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1291]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1292]'
+          - generic [ref=e1293]:
+            - paragraph [ref=e1294]: To test failure case of an API call, which method of generator will be used?
+            - paragraph
+            - list [ref=e1295]:
+              - listitem [ref=e1296]: Test
+              - listitem [ref=e1297]: Throw
+              - listitem [ref=e1298]: Fail
+              - listitem [ref=e1299]: Error
+            - paragraph
+            - paragraph [ref=e1300]
+          - generic [ref=e1301]:
+            - generic [ref=e1302]: Your Submission
+            - textbox "Your Submission" [ref=e1304]
+          - separator [ref=e1305]
+        - generic [ref=e1306]:
+          - generic [ref=e1307]:
+            - heading "Problem Statement 64" [level=5] [ref=e1308]
+            - generic [ref=e1309]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1310]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1311]'
+          - generic [ref=e1312]:
+            - paragraph [ref=e1313]: Which keyword do we use to dispatch an action in sagas?
+            - paragraph
+            - list [ref=e1314]:
+              - listitem [ref=e1315]: Put
+              - listitem [ref=e1316]: Take
+              - listitem [ref=e1317]: Fork
+              - listitem [ref=e1318]: Cancel
+            - paragraph
+            - paragraph [ref=e1319]
+          - generic [ref=e1320]:
+            - generic [ref=e1321]: Your Submission
+            - textbox "Your Submission" [ref=e1323]
+          - separator [ref=e1324]
+        - generic [ref=e1325]:
+          - generic [ref=e1326]:
+            - heading "Problem Statement 65" [level=5] [ref=e1327]
+            - generic [ref=e1328]:
+              - 'heading "Weightage: 1" [level=6] [ref=e1329]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1330]'
+          - generic [ref=e1331]:
+            - paragraph [ref=e1332]: Which pattern Redux implements?
+            - paragraph
+            - list [ref=e1333]:
+              - listitem [ref=e1334]: MVC
+              - listitem [ref=e1335]: Flux
+              - listitem [ref=e1336]: MVP
+              - listitem [ref=e1337]: MVVM
+            - paragraph
+            - paragraph [ref=e1338]
+          - generic [ref=e1339]:
+            - generic [ref=e1340]: Your Submission
+            - textbox "Your Submission" [ref=e1342]
+          - separator [ref=e1343]
+        - generic [ref=e1344]:
+          - generic [ref=e1345]:
+            - heading "Problem Statement 66" [level=5] [ref=e1346]
+            - generic [ref=e1347]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1348]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1349]'
+          - generic [ref=e1350]:
+            - paragraph [ref=e1351]: Which of the following is true about the fork model in redux saga? (Multi Select)
+            - paragraph
+            - list [ref=e1352]:
+              - listitem [ref=e1353]: Fork is used to create attached forks.
+              - listitem [ref=e1354]: Fork is used to create detached forks.
+              - listitem [ref=e1355]: Fork is used for non-blocking calls.
+              - listitem [ref=e1356]: All the above
+            - paragraph
+            - paragraph [ref=e1357]
+          - generic [ref=e1358]:
+            - generic [ref=e1359]: Your Submission
+            - textbox "Your Submission" [ref=e1361]
+          - separator [ref=e1362]
+        - generic [ref=e1363]:
+          - generic [ref=e1364]:
+            - heading "Problem Statement 67" [level=5] [ref=e1365]
+            - generic [ref=e1366]:
+              - 'heading "Weightage: 2" [level=6] [ref=e1367]'
+              - 'heading "Status: Unattempted" [level=6] [ref=e1368]'
+          - generic [ref=e1369]:
+            - paragraph [ref=e1370]: Which is true about takeEvery saga Helper? (Multi Select)
+            - paragraph
+            - list [ref=e1371]:
+              - listitem [ref=e1372]: Spawns a saga on each action dispatched to the Store that matches pattern.
+              - listitem [ref=e1373]: It is a high-level API built using take and fork.
+              - listitem [ref=e1374]: It will take the latest saga call.
+              - listitem [ref=e1375]: None of the above
+            - paragraph
+            - paragraph [ref=e1376]
+          - generic [ref=e1377]:
+            - generic [ref=e1378]: Your Submission
+            - textbox "Your Submission" [ref=e1380]
+          - separator [ref=e1381]
+    - generic [ref=e1382]:
+      - button "submit" [disabled]: Submit

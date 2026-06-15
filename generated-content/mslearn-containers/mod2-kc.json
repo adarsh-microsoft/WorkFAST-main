@@ -1,0 +1,87 @@
+{
+  "module": "build-and-store-container-images",
+  "results": [
+    {
+      "unit": "6-knowledge-check",
+      "status": "knowledge_check",
+      "questions": [
+        {
+          "idx": 0,
+          "question": "Which of the following options isn't a benefit of using Azure Container Registry?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-0-0",
+              "value": "0",
+              "label": "Replicate container images to multiple Azure data centers."
+            },
+            {
+              "id": "quiz-choice-0-1",
+              "value": "1",
+              "label": "Pull container images using any Docker container-related technology."
+            },
+            {
+              "id": "quiz-choice-0-2",
+              "value": "2",
+              "label": "Allow public access to container images for pull operations."
+            },
+            {
+              "id": "quiz-choice-0-3",
+              "value": "3",
+              "label": "Build container images without the need for locally installed Docker tools."
+            }
+          ]
+        },
+        {
+          "idx": 1,
+          "question": "What's the recommended authentication method for Azure Container Registry?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-1-0",
+              "value": "0",
+              "label": "Admin account"
+            },
+            {
+              "id": "quiz-choice-1-1",
+              "value": "1",
+              "label": "Username and password"
+            },
+            {
+              "id": "quiz-choice-1-2",
+              "value": "2",
+              "label": "Microsoft Entra identities"
+            },
+            {
+              "id": "quiz-choice-1-3",
+              "value": "3",
+              "label": "No authentication"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "question": "Let's say you use container images to run compute workloads in multiple regions throughout the world. You plan to enable the geo-replication feature of Azure Container Registry to decrease the time required to provision an instance. In which regions should you configure the Azure Container Registry geo-replication feature?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-2-0",
+              "value": "0",
+              "label": "Place a container registry in the region closest to your development team."
+            },
+            {
+              "id": "quiz-choice-2-1",
+              "value": "1",
+              "label": "Place a container registry in each region where images are run."
+            },
+            {
+              "id": "quiz-choice-2-2",
+              "value": "2",
+              "label": "Place a container registry in every Azure region."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

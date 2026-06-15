@@ -1,0 +1,22 @@
+{
+  "name": "auto-reset-slicer",
+  "version": "0.1.0",
+  "description": "Categorical slicer for Power BI that auto-resets and selects all currently-available values when external filters change. Supports an exception list of columns whose changes should not trigger the reset.",
+  "scripts": {
+    "pbiviz": "pbiviz",
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "lint": "eslint src --ext .ts"
+  },
+  "devDependencies": {
+    "@types/node": "~20.12.7",
+    "less": "~4.2.0",
+    "powerbi-visuals-api": "~5.11.0",
+    "powerbi-visuals-tools": "~5.5.1",
+    "powerbi-visuals-utils-formattingmodel": "~6.1.0",
+    "typescript": "~5.4.5"
+  },
+  "dependencies": {
+    "powerbi-models": "^2.0.1"
+  }
+}

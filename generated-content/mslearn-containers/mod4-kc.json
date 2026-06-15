@@ -1,0 +1,97 @@
+{
+  "module": "intro-to-azure-kubernetes-service",
+  "results": [
+    {
+      "unit": "1-introduction",
+      "status": "visited",
+      "title": "Introduction to Azure Kubernetes Service - Training | Microsoft Learn"
+    },
+    {
+      "unit": "2-what-is-azure-kubernetes-service",
+      "status": "visited",
+      "title": "What is Azure Kubernetes Service? - Training | Microsoft Learn"
+    },
+    {
+      "unit": "3-how-azure-kubernetes-service-works",
+      "status": "visited",
+      "title": "How Azure Kubernetes Service works - Training | Microsoft Learn"
+    },
+    {
+      "unit": "4-when-to-use-azure-kubernetes-service",
+      "status": "visited",
+      "title": "When to use Azure Kubernetes Service - Training | Microsoft Learn"
+    },
+    {
+      "unit": "5-knowledge-check",
+      "status": "knowledge_check",
+      "questions": [
+        {
+          "idx": 0,
+          "question": "Suppose you work for a company that builds a Massively Multiplayer Online (MMO) game. You decide to move all your services to Azure Kubernetes Service. Which of the following components contribute to your monthly Azure charge?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-0-0",
+              "value": "0",
+              "label": "The control plane"
+            },
+            {
+              "id": "quiz-choice-0-1",
+              "value": "1",
+              "label": "Per deployed Pod"
+            },
+            {
+              "id": "quiz-choice-0-2",
+              "value": "2",
+              "label": "Per node VM"
+            }
+          ]
+        },
+        {
+          "idx": 1,
+          "question": "Suppose you work for an event-management company. Your events website needs persisted storage. Which feature of AKS should you use?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-1-0",
+              "value": "0",
+              "label": "Azure Container Registry"
+            },
+            {
+              "id": "quiz-choice-1-1",
+              "value": "1",
+              "label": "Storage volume support"
+            },
+            {
+              "id": "quiz-choice-1-2",
+              "value": "2",
+              "label": "The horizontal pod autoscaler"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "question": "Suppose you work for a company that monitors weather conditions. Your team of developers needs to do end-to-end testing with other components in your AKS cluster. The team wants to do testing without replicating or mocking up dependencies. Which service should they use?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-2-0",
+              "value": "0",
+              "label": "Deployment Center"
+            },
+            {
+              "id": "quiz-choice-2-1",
+              "value": "1",
+              "label": "Draft"
+            },
+            {
+              "id": "quiz-choice-2-2",
+              "value": "2",
+              "label": "Bridge to Kubernetes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

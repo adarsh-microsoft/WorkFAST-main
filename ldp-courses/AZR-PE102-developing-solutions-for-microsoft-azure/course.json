@@ -1,0 +1,30 @@
+{
+  "trackId": "28",
+  "trackCode": "AZR-PE102",
+  "trackName": "Developing Solutions for Microsoft Azure",
+  "url": "https://ldp.maqsoftware.com/tracks/specialization/28",
+  "discoveredAt": "2026-05-18T07:27:00Z",
+  "credits": 1,
+  "courses": [
+    {
+      "id": "81",
+      "name": "AZ - 204",
+      "category": "Modules",
+      "url": "https://ldp.maqsoftware.com/tracks/specialization/28/course/81",
+      "status": "In Progress",
+      "score": 4,
+      "total": 48,
+      "passingPct": 70
+    },
+    {
+      "id": "82",
+      "name": "AZR-PE102 Quiz",
+      "category": "Quizzes",
+      "url": "https://ldp.maqsoftware.com/tracks/specialization/28/course/82",
+      "status": "In Progress",
+      "score": 0,
+      "total": 37,
+      "passingPct": 70
+    }
+  ]
+}

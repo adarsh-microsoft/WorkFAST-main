@@ -1,0 +1,329 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage[default]{lato}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{fontawesome5} % Include fontawesome5 here
+\usepackage{enumitem}
+\DeclareFontFamily{U}{fontawesomeOne}{}
+\DeclareFontShape{U}{fontawesomeOne}{m}{n}
+{<-> FontAwesome--fontawesomeone}{}
+\DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeOne}\selectfont}
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
+
+% indentsection style, used for sections that aren't already in lists
+% that need indentation to the level of all text in the document
+\newenvironment{indentsection}[1]%
+{\begin{list}{}%
+{\setlength{\leftmargin}{#1}}%
+     \item[]
+}
+{\end{list}}
+
+% opposite of above; bump a section back toward the left margin
+\newenvironment{unindentsection}[1]%
+{\begin{list}{}%
+{\setlength{\leftmargin}{-0.5#1}}%
+\item[]%
+}
+{\end{list}}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrow}[2]
+{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+#1 &
+#2 \\
+\end{tabular*}}
+
+% make "C++" look pretty when used in text by touching up the plus signs
+\newcommand{\CPP}
+{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
+
+%%new
+
+\usepackage{ragged2e}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}
+\setlength{\multicolsep}{2pt}
+\setlength{\columnsep}{10pt}
+\input{glyphtounicode}
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{cvgreen}{HTML}{3BD80D}
+\definecolor{taggreen}{HTML}{00E278}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{name}{black}
+\colorlet{tagline}{darkcolor}
+\colorlet{heading}{darkcolor}
+\colorlet{headingrule}{cvblue}
+\colorlet{accent}{darkcolor}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-1.0in}
+\addtolength{\textheight}{2.1in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-2pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{1pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      \textit{\large#3} & \textit{\small #4} \\
+      
+    \end{tabular*}\vspace{-2pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-2pt}
+}
+
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-2pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{1pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}, topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=2pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{1pt}}
+
+
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
+
+
+
+% and the actual content starts here
+\begin{document}
+
+
+%----------HEADING----------
+\begin{center}
+    {\LARGE \textbf{Adarsh Devashish}}\\
+    \vspace{0.15cm}
+    {\small Noida, India}\\
+    \vspace{0.2cm}
+    \noindent
+    \small
+    \href{tel:+917632023332}{\raisebox{-0.2\height}{\Large \faPhoneSquare}\ \,+91~76320-23332}\hspace{6pt}
+    \href{mailto:devashishadarsh@gmail.com}{\raisebox{-0.2\height}{\large \faEnvelopeSquare}\ \,devashishadarsh@gmail.com}\hspace{6pt}
+    \href{https://www.linkedin.com/in/adarsh-devashish-9ba49711b/}{\raisebox{-0.2\height}{\large \faLinkedinSquare}\ \,Adarsh~Devashish}\hspace{6pt}
+    \href{https://github.com/AdarshDevashish}{\raisebox{-0.2\height}{\large \faGithubSquare}\ \,AdarshDevashish}
+
+\end{center}
+
+\vspace{-0.2cm}
+%----------------------------------------------------------------------------------------
+%PROFESSIONAL SUMMARY
+%----------------------------------------------------------------------------------------
+
+\section{SUMMARY}
+
+Software Engineer with 1.5+ years of experience building enterprise-scale data and analytics solutions on Microsoft Fabric, Databricks, and Power BI -- delivering end-to-end ETL pipelines, semantic models, advanced DAX, and Copilot/AI integrations, with full-stack web development experience across React.js, Next.js, and Node.js.
+
+\vspace{-0.1cm}
+%----------------------------------------------------------------------------------------
+%Skills
+%----------------------------------------------------------------------------------------
+
+\section{SKILLS}
+\vspace{0.05cm}
+\small
+
+\begin{tabularx}{\linewidth}{@{}l@{\hspace{12pt}}X@{}}
+\textbf{Languages}            & Python, SQL, DAX, PySpark, Java, JavaScript, TypeScript, HTML, CSS, M (Power Query) \\
+\textbf{Data \& BI}           & Microsoft Fabric (Lakehouse, Dataflows Gen2, Notebooks, Data Agent), Azure Databricks, Power BI, Tabular Editor, SSAS / Semantic Models, SSMS, Delta Lake, OneLake, Dataverse \\
+\textbf{Data Engineering}     & ETL / ELT, Star Schema \& Dimensional Modeling, Data Validation, Performance Tuning, Incremental Refresh, Medallion (Bronze/Silver/Gold) \\
+\textbf{Web \& Frameworks}    & React.js, Next.js, Node.js, REST APIs, Prisma, Tailwind CSS, Shadcn/ui, NextAuth, MSAL \\
+\textbf{Cloud \& DevOps}      & Azure, AWS (S3, EC2), Azure DevOps, Git / GitHub, CI/CD, Agile / Scrum \\
+\textbf{CS Fundamentals}      & DSA, OOP, DBMS, Operating Systems, System Design \\
+\end{tabularx}
+
+\vspace{-0.1cm}
+%----------------------------------------------------------------------------------------
+%EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{EXPERIENCE}
+\vspace{-0.1cm}
+\resumeSubHeadingListStart
+\item
+        \headerrow
+        {\textbf{MAQ Software} \emph{(Microsoft Partner)}}
+        {\textbf{Noida, India}}
+        \headerrow
+        {\emph{Software Engineer I}}
+        {\emph{Aug 2025 -- Present}}
+        \begin{itemize*}
+            \item Designed and shipped daily data pipelines on Microsoft Fabric using \textbf{PySpark} and \textbf{SQL}, powering business-critical reporting for \textbf{2000+ Microsoft business users}.
+            \item Engineered ingestion flows from \textbf{5 upstream business systems}, improving data freshness to an \textbf{every-other-day} cadence and eliminating recurring stale-data incidents for downstream consumers.
+            \item Led the re-architecture of the core \textbf{semantic model} and authored \textbf{120+ DAX measures}, migrating complex business logic into a reusable layer that unified analytics across \textbf{4 business areas} (pipeline, revenue, incentives, investments).
+            \item Consolidated \textbf{7 legacy Power BI reports into 1 unified report}, standardizing KPIs across teams and significantly reducing maintenance overhead.
+            \item Developed a \textbf{Copilot}-powered data agent over the semantic model with \textbf{40+ verified Q\&A patterns}, enabling natural-language analytics for Microsoft business users inside Microsoft 365.
+            \item Owned data validation through \textbf{30+ scenarios} and authored the team's design and approach documents, partnering with Microsoft stakeholders to translate business requirements into production-ready releases.
+        \end{itemize*}
+        \headerrow
+        {\emph{Associate Software Engineer}}
+        {\emph{Jan 2025 -- Jul 2025}}
+        \begin{itemize*}
+            \item Built \textbf{SQL} and \textbf{PySpark} ETL pipelines on Microsoft Fabric and tuned query and dataset performance to meet SLA-grade BI requirements.
+        \end{itemize*}
+
+
+    \item
+        \headerrow
+        {\textbf{Adiverse Studios}}
+        {\textbf{Remote, India}}
+        \headerrow
+        {\emph{Software Developer Intern}}
+        {\emph{May 2024 -- Jul 2024}}
+        \begin{itemize*}
+            \item Shipped a production teaching platform with \textbf{Next.js}, \textbf{React.js}, \textbf{TypeScript}, and \textbf{Tailwind CSS}; integrated \textbf{NextAuth}, \textbf{Razorpay} payments, and \textbf{AWS S3} media with secure REST endpoints and role-based access.
+        \end{itemize*}
+\resumeSubHeadingListEnd
+
+
+\vspace{-0.45cm}
+%----------------------------------------------------------------------------------------
+%PROJECTS
+%----------------------------------------------------------------------------------------
+
+\section{PROJECTS}
+\vspace{-0.1cm}
+\resumeSubHeadingListStart
+\item
+\headerrow
+{\href{https://github.com/AdarshDevashish/yapping-chatapp}{\textbf{Yapping }{\raisebox{-0.1\height}\faExternalLink }} -- Real-time Chat Application}
+{\emph{Aug 2024 -- Oct 2024}}
+\begin{itemize*}
+    \item Architected a real-time chat application with secure authentication, presence tracking, and a responsive UI for low-latency messaging across concurrent users.
+\end{itemize*}
+
+\item
+\headerrow
+{\href{https://github.com/AdarshDevashish}{\textbf{Full-Stack E-Commerce + Dashboard \& CMS }{\raisebox{-0.1\height}\faExternalLink }} -- CMS-driven Storefront}
+{\emph{Dec 2023 -- Apr 2024}}
+\begin{itemize*}
+    \item Developed a full-stack e-commerce storefront with an integrated admin dashboard and CMS, supporting product management, secure payments, and media handling.
+\end{itemize*}
+\resumeSubHeadingListEnd
+
+\vspace{-0.1cm}
+%----------------------------------------------------------------------------------------
+%CERTIFICATIONS
+%----------------------------------------------------------------------------------------
+\section{CERTIFICATIONS}
+\vspace{-0.1cm}
+\begin{tabularx}{\linewidth}{X X}
+
+$\sbullet[.75]$
+\href{https://learn.microsoft.com/en-us/users/adarshdevashishmaqsoftware-5603/credentials/fc31c96f7ab6f23}
+{\textbf{DP-700:} Microsoft Fabric Data Engineer Associate -- \textbf{Microsoft}}
+&
+$\sbullet[.75]$
+\href{https://learn.microsoft.com/en-us/users/adarshdevashishmaqsoftware-5603/credentials/86d36a7e40932fe3}
+{\textbf{DP-600:} Microsoft Fabric Analytics Engineer Associate -- \textbf{Microsoft}} \\
+
+$\sbullet[.75]$
+\href{https://coursera.org/share/102fd6ff3a9901d78a7355a8e583c3fe}
+{React Basics -- \textbf{Meta}}
+&
+$\sbullet[.75]$
+\href{https://coursera.org/share/1b8adc4b592aa9cff68a07e3e8d21e73}
+{Server-Side JavaScript with Node.js -- \textbf{NIIT}} \\
+
+$\sbullet[.75]$
+\href{https://coursera.org/share/5a5cc3e88f7195b816a7db0f8933ad6a}
+{Single Page Web Apps with AngularJS -- \textbf{Johns Hopkins}}
+&
+$\sbullet[.75]$
+\href{https://drive.google.com/file/d/17pIxQeNun41oPVjAtsRZs9zZMkErOfo9/view?usp=sharing}
+{Design \& Analysis of Algorithms -- \textbf{NPTEL}} \\
+
+\end{tabularx}
+
+
+\vspace{-0.1cm}
+%----------------------------------------------------------------------------------------
+%EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{EDUCATION}
+\vspace{-0.1cm}
+\resumeSubHeadingListStart
+    \item
+        \headerrow
+        {\textbf{Manipal University Jaipur}}
+        {\textbf{Jaipur, Rajasthan}}
+        \headerrow
+        {\emph{B.Tech. in Information Technology -- GPA: 8.0 / 10}}
+        {\emph{Oct 2021 -- Jul 2025}}
+\resumeSubHeadingListEnd
+
+\end{document}

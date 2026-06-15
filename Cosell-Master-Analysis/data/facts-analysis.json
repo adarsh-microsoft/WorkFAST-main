@@ -1,0 +1,2233 @@
+{
+  "generated": "2026-06-09T15:48:23",
+  "targetFacts": 59,
+  "parsedNotebookFiles": 27,
+  "matched": 25,
+  "missing": [
+    "Cosell_Gold_FactAzureConsumptionCTCG",
+    "Cosell_Gold_FactAzureConsumptionP1CGCT",
+    "Cosell_Gold_FactCosellTargets",
+    "Cosell_Gold_FactCRMPartner",
+    "Cosell_Gold_FactCRMUser",
+    "Cosell_Gold_FactEngagementMilestonePipeline",
+    "Cosell_Gold_FactFY20AllianceReadiness",
+    "Cosell_Gold_FactInvoice",
+    "Cosell_Gold_FactIOPO",
+    "Cosell_Gold_FactISVConnect",
+    "Cosell_Gold_FactLessSolutionEngagement",
+    "Cosell_Gold_FactMarketPlaceOffer",
+    "CoSell_Gold_FactMBSCommercialTargets",
+    "Cosell_Gold_FactMBSCommercialTargetsExcel",
+    "Cosell_Gold_FactMBSTargets",
+    "Cosell_Gold_FactOpportunitiesSalesCycleDuration",
+    "Cosell_Gold_FactOpportunity_int",
+    "Cosell_Gold_FactOpportunityProduct_Internal",
+    "Cosell_Gold_FactOpportunityProduct",
+    "Cosell_Gold_FactPartnerDeal_FY20",
+    "Cosell_Gold_FactPartnerDeal_FY21",
+    "Cosell_Gold_FactPartnerDeal_FY23",
+    "Cosell_Gold_FactPartnerDeal_FY24",
+    "Cosell_Gold_FactPartnerDeal_FY25",
+    "Cosell_Gold_FactPartnerDeal_int",
+    "Cosell_Gold_FactPartnerDealDuration",
+    "Cosell_Gold_FactPartnerOne",
+    "Cosell_Gold_FactPRACRTargets",
+    "CoSell_Gold_FactProject",
+    "Cosell_Gold_FactRecruitISVTargets",
+    "Cosell_Gold_HC360PersonnelFact",
+    "Cosell_Gold_PartnerDealFact",
+    "Cosell_Gold_PipelineFactCurrent",
+    "PSA_Gold_FactAzureConsumptionP1"
+  ],
+  "records": [
+    {
+      "name": "Cosell_Gold_FactMarketplaceBilledSales",
+      "purpose": "Notebook to Populate FactMarketplaceBilledSales Table",
+      "writes": [
+        "FactMarketplaceBilledSales",
+        "DistinctMPNID",
+        "MapMBS",
+        "FactPartnerMBS",
+        "FactCommercialMBS",
+        "FactMarketPlaceBilledSalesReporting",
+        "DistinctSubsidiaryID",
+        "DistinctTPID"
+      ],
+      "readCount": 27,
+      "reads": [
+        {
+          "table": "FactMarketplaceInvoice",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimInvoice",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMarketplaceOffer",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXCustomer",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "CustomerHQAccountsDim_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimRevenueAccount",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimEngagementMilestone_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimReportingPartnerOneSub",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "PartnerMaster",
+          "layer": "Bronze"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "VWDimGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimFirstDatePartition",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimOrganizationSubSegment",
+          "layer": "Silver"
+        },
+        {
+          "table": "FieldGeographyDefinition",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimFieldGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimAccountGeographyHierarchy_RoB",
+          "layer": "Silver"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactMarketplaceBilledSales",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimFirstDatePartition",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesCustomer",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesGroup",
+          "layer": "Silver"
+        }
+      ],
+      "tempViews": 36,
+      "tmpViews": [
+        "Silver_vw_dimgeography",
+        "TPAccountIDToATUDim_FPD_tmp"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 10,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 1,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|2 tmp/vw temp views: Silver_vw_dimgeography, TPAccountIDToATUDim_FPD_tmp",
+        "NIT|1 print() statement(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactAccountPin",
+      "purpose": "Notebook to Populate FactaccountPin Table",
+      "writes": [
+        "FactAccountPIN"
+      ],
+      "readCount": 9,
+      "reads": [
+        {
+          "table": "PartnerImpactNumber",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "ManagedPractice_Full",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimPartnerOne",
+          "layer": "Gold"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimGPSCRMAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPINMetric",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimGPSBusinessUnit",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapAccountTag",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 14,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 5,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "PASS",
+      "findings": []
+    },
+    {
+      "name": "Cosell_Gold_FactPartnerDeal_FY22",
+      "purpose": "Notebook to Populate FactPartnerDeal_FY21 Table",
+      "writes": [
+        "Gold_FactPartnerDeal_FY22"
+      ],
+      "readCount": 10,
+      "reads": [
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSellerCoSellIncentive",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDealSolutionHistory",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimIPPartner",
+          "layer": "Gold"
+        },
+        {
+          "table": "TPAccountsDim_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "PartnerDealFY22_Snapshot",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 12,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 2,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 1,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|1 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactIPCoSellTransition",
+      "purpose": "Notebook for refreshing FactIPcoSellTransition",
+      "writes": [
+        "FactIPCoSellTransition",
+        "FactIPCoSellTransitionActuals_Partner",
+        "FactIPCoSellTransitionActuals"
+      ],
+      "readCount": 16,
+      "reads": [
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXCustomer",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "PartnerMaster",
+          "layer": "Bronze"
+        },
+        {
+          "table": "DimCustomTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimFirstDatePartition",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimAccountGeographyHierarchy_RoB",
+          "layer": "Silver"
+        },
+        {
+          "table": "FieldGeographyDefinition",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimFieldGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimOrganizationSubSegment",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesCustomer",
+          "layer": "Silver"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactIPCoSellTransition",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 4,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 0,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 2,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "NIT",
+      "findings": [
+        "NIT|2 print() statement(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactAHRFeedAudit",
+      "purpose": "Notebook to Populate FactAHRFeedAudit Table",
+      "writes": [
+        "AHRFeed_Audit"
+      ],
+      "readCount": 14,
+      "reads": [
+        {
+          "table": "DimSalesGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "PartnerMaster",
+          "layer": "Bronze"
+        },
+        {
+          "table": "Account",
+          "layer": "Silver"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXCustomer",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "TPAccountsDim_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCRMPartnerAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "PipelinePartnerMaster",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimGPSCRMAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "PartnerDealSolution_Snapshot",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 27,
+      "tmpViews": [
+        "DimGeography_ahrft_tmp",
+        "FactPartnerDeal_tmp_ahrf",
+        "AHRData_ahrft_tmp",
+        "PartnerOneSubID_ahrft_tmp_intermediate",
+        "PartnerOneSubID_ahrft_tmp",
+        "IPPartnerOneSubID_ahrft_tmp",
+        "PartnerTPID_ahrft_tmp",
+        "OneToMany_RowNumber_ahrft_tmp",
+        "OneToMany_Resolved_ahrft_tmp"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 14,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|9 tmp/vw temp views: DimGeography_ahrft_tmp, FactPartnerDeal_tmp_ahrf, AHRData_ahrft_tmp, PartnerOneSubID_ahrft_tmp_intermediate, PartnerOneSubID_ahrft_tmp, IPPartnerOneSubID_ahrft_tmp, PartnerTPID_ahrft_tmp, OneToMany_RowNumber_ahrft_tmp, OneToMany_Resolved_ahrft_tmp"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactCSPSolutionConsumptionOpportunity",
+      "purpose": "",
+      "writes": [
+        "FactCSPSolutionConsumptionOpportunity"
+      ],
+      "readCount": 5,
+      "reads": [
+        {
+          "table": "Opportunity_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXWorkLoad",
+          "layer": "Gold"
+        },
+        {
+          "table": "CSPSolutionInternal",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 7,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 2,
+      "pctSql": false,
+      "ocp": 3,
+      "prints": 0,
+      "commentedSqlCols": 4,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|4 commented-out SQL column(s)",
+        "WARN|OCP occurrence x3 (item 16)"
+      ]
+    },
+    {
+      "name": "FactMSXCombined",
+      "purpose": "Notebook to Populate FactMSXCombined Table",
+      "writes": [
+        "FactMSXCombined"
+      ],
+      "readCount": 20,
+      "reads": [
+        {
+          "table": "DimOpportunityReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSharingType",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerReferralReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerReferralReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimProductHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimRevSumHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSolutionArea",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSolutionAreaDetailReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimProduct",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesPlayReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagementMilestoneReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimFiscalMonth",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimManagedTPAccount",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSegmentHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimWorkload",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactMSXPartnerSharing",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomSellerManagerWorkloadsMaster",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomFieldSolutionAreaMapping",
+          "layer": "Silver"
+        }
+      ],
+      "tempViews": 30,
+      "tmpViews": [
+        "Tmp_FilteredPartnerDeal",
+        "Tmp_MapOpptyCustomDealDirection"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 10,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|2 tmp/vw temp views: Tmp_FilteredPartnerDeal, Tmp_MapOpptyCustomDealDirection"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactAccount",
+      "purpose": "Notebook to Populate FactAccount Table",
+      "writes": [
+        "Gold_FactAccount"
+      ],
+      "readCount": 17,
+      "reads": [
+        {
+          "table": "PartnerImpactNumber",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "Account",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimPartnerOne",
+          "layer": "Gold"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimGPSCRMAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagement",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimGPSBusinessUnit",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimLifecycleStage",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapAccountTag",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCapacityGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolutionEngagementPipeline",
+          "layer": "Gold"
+        },
+        {
+          "table": "OcpTechServiceRequest",
+          "layer": "Silver"
+        },
+        {
+          "table": "OcpCampaign",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimEngagementTagsHidden",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimReportingPartnerOneSub",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimRecruitLead",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 20,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 3,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 10,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|10 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactCSPSolutionBilledOpportunity",
+      "purpose": "",
+      "writes": [
+        "FactCSPSolutionBilledOpportunity"
+      ],
+      "readCount": 6,
+      "reads": [
+        {
+          "table": "Opportunity_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXSolutionArea",
+          "layer": "Gold"
+        },
+        {
+          "table": "Opportunity_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "CSPSolutionInternal",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 8,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 2,
+      "pctSql": false,
+      "ocp": 3,
+      "prints": 0,
+      "commentedSqlCols": 4,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|4 commented-out SQL column(s)",
+        "WARN|OCP occurrence x3 (item 16)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactCSPSolutionPartnerDeal",
+      "purpose": "Notebook to Populate FactCSPSolutionPartnerDeal Table",
+      "writes": [
+        "FactCSPSolutionPartnerDeal"
+      ],
+      "readCount": 5,
+      "reads": [
+        {
+          "table": "CSPSolutionInternal",
+          "layer": "Gold"
+        },
+        {
+          "table": "PCDeal_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "PSCDeal_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapPartnerDealSolutionNameBasedMapping",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 8,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 3,
+      "pctSql": false,
+      "ocp": 3,
+      "prints": 0,
+      "commentedSqlCols": 14,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|14 commented-out SQL column(s)",
+        "WARN|OCP occurrence x3 (item 16)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactPartnerReferralReporting",
+      "purpose": "Notebook to Populate FactPartnerReferralReporting Table",
+      "writes": [
+        "FactPartnerReferralReporting"
+      ],
+      "readCount": 11,
+      "reads": [
+        {
+          "table": "DimPartnerReferralReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "PS_DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSharingType",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSegmentHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesDate",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimFiscalMonth",
+          "layer": "Silver"
+        },
+        {
+          "table": "Associated_DimPartnerReferral",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 16,
+      "tmpViews": [
+        "Tmp_FilteredOppty",
+        "Tmp_MapCustomPartnerDealDirection"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 5,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|2 tmp/vw temp views: Tmp_FilteredOppty, Tmp_MapCustomPartnerDealDirection"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactPartnerDeal",
+      "purpose": "Notebook to Populate FactPartnerDeal Table",
+      "writes": [
+        "FactPartnerDeal"
+      ],
+      "readCount": 22,
+      "reads": [
+        {
+          "table": "MapSolutionPracticeIndustryCountry",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSellerCoSellIncentive",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDealSolutionHistory",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "PartnerDealSolution_Snapshot",
+          "layer": "Gold"
+        },
+        {
+          "table": "PartnerMaster",
+          "layer": "Bronze"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "Bridge_CascadedPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimPartner",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimChannelPartner",
+          "layer": "Gold"
+        },
+        {
+          "table": "SellerCoSellIncentiveSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimISVConnectApp",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactIPCoSell",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimIPPartner",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimIPCosell",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimIPCoSell_D365",
+          "layer": "Gold"
+        },
+        {
+          "table": "MarketplaceDealsACV_Snapshot",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 33,
+      "tmpViews": [
+        "tmp_MPNPartner_tdi",
+        "tmp_IPPartner",
+        "HasD365IncentiveType_fpdi_tmp",
+        "tmp_SnapshotIPPartnerOne",
+        "tmp_IPPartnerOneReporting"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 11,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 6,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|5 tmp/vw temp views: tmp_MPNPartner_tdi, tmp_IPPartner, HasD365IncentiveType_fpdi_tmp, tmp_SnapshotIPPartnerOne, tmp_IPPartnerOneReporting",
+        "WARN|6 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactOpportunityReporting",
+      "purpose": "Notebook to Populate FactOpportunityReporting Table",
+      "writes": [
+        "FactOpportunityReporting"
+      ],
+      "readCount": 14,
+      "reads": [
+        {
+          "table": "DimOpportunityReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSharingType",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerReferralReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerReferralReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactMSXPartnerSharing",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimProductHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimRevSumHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSolutionArea",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSolutionAreaDetailReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimProduct",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesPlayReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapOpportunitySolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomPartnerDealDirectionReporting",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 20,
+      "tmpViews": [
+        "Tmp_FilteredPartnerDeal",
+        "Tmp_MapOpptyCustomDealDirection",
+        "Tmp_FactOpportunityReporting",
+        "Tmp_Calculated_Columns"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 6,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|4 tmp/vw temp views: Tmp_FilteredPartnerDeal, Tmp_MapOpptyCustomDealDirection, Tmp_FactOpportunityReporting, Tmp_Calculated_Columns"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactSolution",
+      "purpose": "Notebook to Populate FactSolution Table",
+      "writes": [
+        "Gold_FactSolution"
+      ],
+      "readCount": 20,
+      "reads": [
+        {
+          "table": "DimSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimIndustry",
+          "layer": "Gold"
+        },
+        {
+          "table": "SolutionIndustryAssociation",
+          "layer": "Silver"
+        },
+        {
+          "table": "OcpCampaign",
+          "layer": "Silver"
+        },
+        {
+          "table": "OcpTechServiceRequest",
+          "layer": "Silver"
+        },
+        {
+          "table": "BuildWithEngagement",
+          "layer": "Silver"
+        },
+        {
+          "table": "MapSolutionPractice",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapIndustrySolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimPartnerOne",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactLessSolutionEngagement",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSellerCoSellIncentive",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagementTagsHidden",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapPartnerOneAccountTag",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionEngagement",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagement",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimISVConnectApp",
+          "layer": "Gold"
+        },
+        {
+          "table": "SellerCoSellIncentiveSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolutionArea",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 24,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 4,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 8,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|8 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactEngagementMilestoneReporting",
+      "purpose": "Notebook to Populate FactEngagementMilestoneReporting Table",
+      "writes": [
+        "FactEngagementMilestoneReporting"
+      ],
+      "readCount": 14,
+      "reads": [
+        {
+          "table": "goldint_FactEngagementMilestone",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagementMilestoneReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSharingType",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunityReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunityReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimFiscalMonth",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimManagedTPAccount",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSegmentHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimWorkload",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSolutionAreaDetailReporting",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 17,
+      "tmpViews": [
+        "Tmp_MilestoneCSPPartner",
+        "Tmp_MapOpptyCustomDealDirection"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 3,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|2 tmp/vw temp views: Tmp_MilestoneCSPPartner, Tmp_MapOpptyCustomDealDirection"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactEngagementMilestone",
+      "purpose": "Notebook to Populate FactEngagementMilestone Table",
+      "writes": [
+        "goldint_FactEngagementMilestone",
+        "FactEngagementMilestone"
+      ],
+      "readCount": 25,
+      "reads": [
+        {
+          "table": "DimEngagementMilestone_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactEngagementMilestone",
+          "layer": "Silver"
+        },
+        {
+          "table": "Hub_vw_Currency",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactPartnerDeal_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSharingType",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCRMPartnerAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "CustomerHQAccountsDim_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimReportingGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "VWDimGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "Bridge_CascadedPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimRevenueAccount",
+          "layer": "Silver"
+        },
+        {
+          "table": "OpportunityDraftIntermediate",
+          "layer": "Gold"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSolutionAreaOppty",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXWorkLoad",
+          "layer": "Gold"
+        },
+        {
+          "table": "goldint_FactEngagementMilestone",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 35,
+      "tmpViews": [
+        "Silver_Hub_vw_Currency",
+        "Silver_vw_dimgeography"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 9,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|2 tmp/vw temp views: Silver_Hub_vw_Currency, Silver_vw_dimgeography"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactSolutionPartnerDeal",
+      "purpose": "Notebook to Populate FactSolutionPartnerDeal Table",
+      "writes": [
+        "FactSolutionPartnerDeal"
+      ],
+      "readCount": 7,
+      "reads": [
+        {
+          "table": "PartnerDealSolutionNameBasedMapping",
+          "layer": "Gold"
+        },
+        {
+          "table": "Solution_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "PSCDeal_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "PCDeal_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapPartnerDealSolutionNameBasedMapping",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 10,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 3,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 12,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|12 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactEngagementMilestonePipeline_int",
+      "purpose": "Notebook to Populate FactEngagementMilestonePipeline_int Table",
+      "writes": [
+        "FactEngagementMilestonePipeline_int"
+      ],
+      "readCount": 6,
+      "reads": [
+        {
+          "table": "FactOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagementMilestone",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimMSXCustomer",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimReportingGeography",
+          "layer": "Silver"
+        }
+      ],
+      "tempViews": 10,
+      "tmpViews": [
+        "ACR_Pipeline_Base_tmp",
+        "ACR_Pipeline_tmp"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 6,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 1,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|2 tmp/vw temp views: ACR_Pipeline_Base_tmp, ACR_Pipeline_tmp",
+        "WARN|1 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactOpportunity",
+      "purpose": "Notebook to Populate FactOpportunity Table",
+      "writes": [
+        "Fact_Opportunity_Pipeline_Base"
+      ],
+      "readCount": 34,
+      "reads": [
+        {
+          "table": "SolutionArea",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactPipelineCurrent",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimAccountGeographyHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimAllAccounts",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimPricingLevelHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimReportedSubSegmentHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "CustomerHQAccountsDim_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimOpportunity",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactOpportunitiesSalesCycleDuration",
+          "layer": "Gold"
+        },
+        {
+          "table": "TPAccountsDim_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimRevenueAccount",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimProductHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimRevSumHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimLead",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactEngagementMilestone",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactEngagementMilestone",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimFiscalMonth",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimHC360Personnel",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimManagerList",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimReportingGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "VWDimGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "Bridge_CascadedPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimChannelManager",
+          "layer": "Gold"
+        },
+        {
+          "table": "OpportunityDraftIntermediate",
+          "layer": "Gold"
+        },
+        {
+          "table": "Hub_vw_Account",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimEngagementMilestone_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "Hub_vw_Currency",
+          "layer": "Silver"
+        }
+      ],
+      "tempViews": 51,
+      "tmpViews": [
+        "Silver_Hub_vw_Account",
+        "Silver_Hub_vw_Currency",
+        "PipelineTMP",
+        "Tmp_AccountGeography_FO",
+        "Tmp_AccountSegment_FO",
+        "Fact_Opportunity_Pipeline_Base_tmp"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 17,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 6,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|6 tmp/vw temp views: Silver_Hub_vw_Account, Silver_Hub_vw_Currency, PipelineTMP, Tmp_AccountGeography_FO, Tmp_AccountSegment_FO, Fact_Opportunity_Pipeline_Base_tmp",
+        "WARN|6 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactMSXPartnerSharing",
+      "purpose": "Notebook to Populate FactMSXPartnerSharing Table",
+      "writes": [
+        "dimpartnersharingexclusion_billedpipeline",
+        "factmsxpartnersharing_stage1",
+        "factmsxpartnersharing_stage2",
+        "factmsxpartnersharing_stage3",
+        "FactMSXPartnerSharing_Billed_tmp",
+        "FactMSXPartnerSharing_Consumption_tmp",
+        "FactMSXPartnerSharing"
+      ],
+      "readCount": 32,
+      "reads": [
+        {
+          "table": "DimOpportunity",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimPricingLevelHierarchy",
+          "layer": "Bronze"
+        },
+        {
+          "table": "DimPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPipeline",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimProductHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimFiscalMonth",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimSalesDate",
+          "layer": "Silver"
+        },
+        {
+          "table": "FactEngagementMilestone",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimEngagementMilestone",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunity",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXCustomer",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCRMPartnerAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPracticeIndustryCountry",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCapacityGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimReportingPartnerOneSub",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolutionAreaOppty",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimRevSumDivision",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXSolutionArea",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXWorkLoad",
+          "layer": "Gold"
+        },
+        {
+          "table": "Associated_DimPartnerReferral",
+          "layer": "Gold"
+        },
+        {
+          "table": "dimpartnersharingexclusion_billedpipeline",
+          "layer": "Gold"
+        },
+        {
+          "table": "factmsxpartnersharing_stage1",
+          "layer": "Gold"
+        },
+        {
+          "table": "factmsxpartnersharing_stage2",
+          "layer": "Gold"
+        },
+        {
+          "table": "factmsxpartnersharing_stage3",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactMSXPartnerSharing_Billed",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactMSXPartnerSharing_Consumption",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 55,
+      "tmpViews": [
+        "tmp_Oppty_Internal_DOCF",
+        "tmp_PrioritizedPartners_DOCF",
+        "tmp_IsOpptyAttachedFlagPopulation_DOCF",
+        "tmp_OpportunityTPID_DOCF",
+        "Tmp_OpportunityRevenue_MPS",
+        "Tmp_OpportunityRevenue_Final_MPS",
+        "FactMSXPartnerSharing_Billed_tmp",
+        "FactMSXPartnerSharing_Billed_tmp",
+        "FactMSXPartnerSharing_Consumption_tmp",
+        "FactMSXPartnerSharing_Consumption_tmp"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 23,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|10 tmp/vw temp views: tmp_Oppty_Internal_DOCF, tmp_PrioritizedPartners_DOCF, tmp_IsOpptyAttachedFlagPopulation_DOCF, tmp_OpportunityTPID_DOCF, Tmp_OpportunityRevenue_MPS, Tmp_OpportunityRevenue_Final_MPS, FactMSXPartnerSharing_Billed_tmp, FactMSXPartnerSharing_Billed_tmp, FactMSXPartnerSharing_Consumption_tmp, FactMSXPartnerSharing_Consumption_tmp"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactIPCoSell",
+      "purpose": "Notebook to Populate FactIPCoSell Table",
+      "writes": [
+        "FactIPCoSell"
+      ],
+      "readCount": 13,
+      "reads": [
+        {
+          "table": "FactPartnerDeal_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimPartnerDeal_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimIPCosell",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimGPSCRMAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "PartnerDealSolution_Snapshot",
+          "layer": "Gold"
+        },
+        {
+          "table": "TrueACRPartnerDeal_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimTopTierMonthlyStatus",
+          "layer": "Gold"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "PartnerMaster",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimMSXCustomer",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "MarketplaceDealsACV_Snapshot",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 26,
+      "tmpViews": [
+        "ACR_excel_tmp_fipcs",
+        "IPCoSell_revcal_fipcs_tmp",
+        "ACR_fipcs_tmp",
+        "AHRFeed_pracr_no_fipcs_tmp",
+        "AHRFeed_pracr_yes_fipcs_tmp",
+        "AHRFeed_Split_fipcs_tmp",
+        "AHRData_fipcs_tmp"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 14,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 2,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|7 tmp/vw temp views: ACR_excel_tmp_fipcs, IPCoSell_revcal_fipcs_tmp, ACR_fipcs_tmp, AHRFeed_pracr_no_fipcs_tmp, AHRFeed_pracr_yes_fipcs_tmp, AHRFeed_Split_fipcs_tmp, AHRData_fipcs_tmp",
+        "WARN|2 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactSolutionConsumptionOpportunity",
+      "purpose": "Notebook to Populate DimPartnerTDPIntent Table",
+      "writes": [
+        "FactSolutionConsumptionOpportunity"
+      ],
+      "readCount": 6,
+      "reads": [
+        {
+          "table": "DimMSXWorkLoad",
+          "layer": "Gold"
+        },
+        {
+          "table": "Opportunity_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagementMilestone_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "Solution_Internal",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 8,
+      "tmpViews": [],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 2,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 4,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|4 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactSolutionBilledOpportunity",
+      "purpose": "Notebook to Populate FactSolutionBilledOpportunity Table",
+      "writes": [
+        "FactSolutionBilledOpportunity"
+      ],
+      "readCount": 9,
+      "reads": [
+        {
+          "table": "FactOpportunityProduct",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactPartnerDeal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactOpportunityProduct_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "Opportunity_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimMSXSolutionArea",
+          "layer": "Gold"
+        },
+        {
+          "table": "Solution_Internal",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 13,
+      "tmpViews": [
+        "Tmp_AllOpptyProduct_Internal"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 4,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 4,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|1 tmp/vw temp views: Tmp_AllOpptyProduct_Internal",
+        "WARN|4 commented-out SQL column(s)"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactLead",
+      "purpose": "Notebook to Populate FactLead Table",
+      "writes": [
+        "FactLead"
+      ],
+      "readCount": 16,
+      "reads": [
+        {
+          "table": "DimLead",
+          "layer": "Gold"
+        },
+        {
+          "table": "VWDimGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactLead_int",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimLead",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimTime",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimAccountGeographyHierarchy",
+          "layer": "Silver"
+        },
+        {
+          "table": "TPAccountsDim_int",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCustomerSegment",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimCRMPartnerAccount",
+          "layer": "Gold"
+        },
+        {
+          "table": "PipelinePartnerMaster",
+          "layer": "Gold"
+        },
+        {
+          "table": "ReportingPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimReportingGeography",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCustomerGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "Bridge_CascadedPartnerOne",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimOpportunity_int",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 20,
+      "tmpViews": [
+        "Silver_VWDimGeography"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 4,
+      "pctSql": false,
+      "ocp": 0,
+      "prints": 0,
+      "commentedSqlCols": 0,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|1 tmp/vw temp views: Silver_VWDimGeography"
+      ]
+    },
+    {
+      "name": "Cosell_Gold_FactSolutionCapacityGeography",
+      "purpose": "Notebook to Populate FactSolutionCapacityGeography Table",
+      "writes": [
+        "Gold_FactSolutionCapacityGeography"
+      ],
+      "readCount": 9,
+      "reads": [
+        {
+          "table": "SellInCountryMapping",
+          "layer": "Silver"
+        },
+        {
+          "table": "DimCapacityGeography",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "FactSolution",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPracticeIndustryCountry",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimEngagement",
+          "layer": "Gold"
+        },
+        {
+          "table": "DimSolutionEngagementPipeline",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapPartnerOneAccountTag",
+          "layer": "Gold"
+        },
+        {
+          "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+          "layer": "Gold"
+        }
+      ],
+      "tempViews": 13,
+      "tmpViews": [
+        "Gold_SellInCountryMapping_Tmp_FSCG"
+      ],
+      "lakehouseAttached": false,
+      "statusStart": true,
+      "statusEnd": true,
+      "sqlBlocks": 4,
+      "pctSql": false,
+      "ocp": 2,
+      "prints": 0,
+      "commentedSqlCols": 9,
+      "revisionHistory": true,
+      "verdict": "WARN",
+      "findings": [
+        "WARN|1 tmp/vw temp views: Gold_SellInCountryMapping_Tmp_FSCG",
+        "WARN|9 commented-out SQL column(s)",
+        "WARN|OCP occurrence x2 (item 16)"
+      ]
+    }
+  ]
+}

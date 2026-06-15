@@ -1,0 +1,25 @@
+{
+  "visual": {
+    "name": "slicerAuto",
+    "displayName": "Slicer-Auto",
+    "guid": "slicerAutoB7C8D9E0F1A2",
+    "visualClassName": "SlicerAuto",
+    "version": "0.1.0.0",
+    "description": "A flexible slicer custom visual that mirrors the look and feel of the built-in Power BI slicer. Supports List, Dropdown, Tile, Hierarchy, Numeric Range and Date Range modes with two-way filter sync.",
+    "supportUrl": "https://example.com/slicer-auto",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "5.11.0",
+  "author": {
+    "name": "WorkFAST",
+    "email": "workfast@example.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": []
+}

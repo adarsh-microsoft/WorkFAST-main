@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PowerBIEmbed_adarshd.props" />
+</Project>

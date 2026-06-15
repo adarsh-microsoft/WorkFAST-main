@@ -1,0 +1,242 @@
+[
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/manage-virtual-machines-with-azure-cli/",
+    "status": null,
+    "lastUnit": "9-cleanup",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 9
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/build-azure-vm-templates/",
+    "status": null,
+    "lastUnit": "7-summary",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 7
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/",
+    "status": null,
+    "lastUnit": "6-knowledge-check",
+    "hasKnowledgeCheck": true,
+    "error": null,
+    "unitCount": 6
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/host-a-web-app-with-azure-app-service/",
+    "status": null,
+    "lastUnit": "8-summary",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 8
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/capture-application-logs-app-service/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/stage-deploy-app-service-deployment-slots/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/app-service-scale-up-scale-out/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/create-serverless-logic-with-azure-functions/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/create-long-running-serverless-workflow-with-durable-functions/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/execute-azure-function-with-triggers/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/chain-azure-functions-data-using-bindings/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/control-access-to-azure-storage-with-sas/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-ad/",
+    "status": null,
+    "lastUnit": "6-summary",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 6
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/manage-secrets-with-azure-key-vault/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/secure-aspnet-core-identity/",
+    "status": null,
+    "lastUnit": "7-summary",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 7
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/create-cdn-static-resources-blob-storage/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/optimize-your-web-apps-with-redis/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/work-with-mutable-and-partial-data-in-a-redis-cache/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/instrument-web-app-code-with-application-insights/",
+    "status": null,
+    "lastUnit": "8-summary",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 8
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/capture-page-load-times-application-insights/",
+    "status": null,
+    "lastUnit": "8-summary",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 8
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/create-deploy-logic-apps-using-arm-templates/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/intro-to-logic-apps/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/publish-manage-apis-with-azure-api-management/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/improve-api-performance-with-apim-caching-policy/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/protect-apis-on-api-management/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/choose-a-messaging-model-in-azure-to-connect-your-services/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/implement-message-workflows-with-service-bus/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/communicate-between-apps-with-azure-queue-storage/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/store-app-data-with-azure-blob-storage/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/optimize-archive-costs-blob-storage/",
+    "status": null,
+    "lastUnit": null,
+    "hasKnowledgeCheck": false,
+    "error": "no units found"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/training/modules/create-azure-storage-account/",
+    "status": null,
+    "lastUnit": "7-summary",
+    "hasKnowledgeCheck": false,
+    "error": null,
+    "unitCount": 7
+  }
+]

@@ -1,0 +1,178 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Field",
+      "description": "The column(s) to slice on. Multiple columns enable Hierarchy mode.",
+      "name": "field",
+      "kind": "Grouping"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "field": { "min": 1 }
+        }
+      ],
+      "categorical": {
+        "categories": {
+          "for": { "in": "field" },
+          "dataReductionAlgorithm": { "top": { "count": 30000 } }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "general": {
+      "properties": {
+        "filter": { "type": { "filter": {} } },
+        "selfFilterApplied": { "type": { "bool": true } }
+      }
+    },
+    "mode": {
+      "displayName": "Slicer mode",
+      "properties": {
+        "displayMode": {
+          "displayName": "Display mode",
+          "description": "List, Dropdown, Tile, Hierarchy, Numeric Range or Date Range. Auto picks the best mode for the bound field type.",
+          "type": {
+            "enumeration": [
+              { "displayName": "Auto", "value": "auto" },
+              { "displayName": "List", "value": "list" },
+              { "displayName": "Dropdown", "value": "dropdown" },
+              { "displayName": "Tile", "value": "tile" },
+              { "displayName": "Hierarchy", "value": "hierarchy" },
+              { "displayName": "Numeric range", "value": "numeric" },
+              { "displayName": "Date range", "value": "date" }
+            ]
+          }
+        },
+        "responsive": {
+          "displayName": "Responsive",
+          "description": "Auto-collapse List into Dropdown when the visual is narrow.",
+          "type": { "bool": true }
+        }
+      }
+    },
+    "selection": {
+      "displayName": "Selection",
+      "properties": {
+        "singleSelect": {
+          "displayName": "Single select",
+          "description": "When ON only one value can be selected at a time.",
+          "type": { "bool": true }
+        },
+        "showSelectAll": {
+          "displayName": "Show 'Select all'",
+          "type": { "bool": true }
+        },
+        "selectAllOnFirstLoad": {
+          "displayName": "Select all on first load",
+          "type": { "bool": true }
+        }
+      }
+    },
+    "header": {
+      "displayName": "Slicer header",
+      "properties": {
+        "show": { "displayName": "Show", "type": { "bool": true } },
+        "title": {
+          "displayName": "Title text",
+          "description": "Override the auto-generated header. Leave blank to use the field name.",
+          "type": { "text": true }
+        },
+        "fontColor": {
+          "displayName": "Font color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "background": {
+          "displayName": "Background",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "fontSize": {
+          "displayName": "Text size",
+          "type": { "formatting": { "fontSize": true } }
+        },
+        "underline": { "displayName": "Underline", "type": { "bool": true } }
+      }
+    },
+    "items": {
+      "displayName": "Items",
+      "properties": {
+        "fontColor": {
+          "displayName": "Font color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "background": {
+          "displayName": "Background",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "selectedBackground": {
+          "displayName": "Selected background",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "selectedFontColor": {
+          "displayName": "Selected font color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "hoverBackground": {
+          "displayName": "Hover background",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "accent": {
+          "displayName": "Checkbox/accent color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "fontSize": {
+          "displayName": "Text size",
+          "type": { "formatting": { "fontSize": true } }
+        }
+      }
+    },
+    "search": {
+      "displayName": "Search",
+      "properties": {
+        "show": { "displayName": "Show search box", "type": { "bool": true } }
+      }
+    },
+    "border": {
+      "displayName": "Border",
+      "properties": {
+        "show": { "displayName": "Show border", "type": { "bool": true } },
+        "color": {
+          "displayName": "Color",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "thickness": {
+          "displayName": "Thickness (px)",
+          "type": { "numeric": true }
+        },
+        "radius": {
+          "displayName": "Corner radius (px)",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "intersectReset": {
+      "displayName": "Intersect on external filter",
+      "properties": {
+        "enabled": {
+          "displayName": "Enable",
+          "description": "When a filter on any watched column changes, intersect the current selection with the new available list. If nothing remains, clear the slicer.",
+          "type": { "bool": true }
+        },
+        "watchedColumns": {
+          "displayName": "Watched columns",
+          "description": "Comma-separated list of Table.Column names to watch (e.g. 'Sales.Region, Sales.Product').",
+          "type": { "text": true }
+        }
+      }
+    }
+  },
+  "supportsHighlight": false,
+  "supportsLandingPage": false,
+  "supportsKeyboardFocus": true,
+  "supportsSynchronizingFilterState": true,
+  "suppressDefaultTitle": true,
+  "privileges": []
+}

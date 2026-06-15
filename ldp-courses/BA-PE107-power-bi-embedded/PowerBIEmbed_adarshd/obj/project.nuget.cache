@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "lhRRIm5HA/Y=",
+  "success": true,
+  "projectFilePath": "C:\\WorkFAST-main\\ldp-courses\\BA-PE107-power-bi-embedded\\PowerBIEmbed_adarshd\\PowerBIEmbed_adarshd.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\microsoft.identity.client\\4.61.3\\microsoft.identity.client.4.61.3.nupkg.sha512",
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.35.0\\microsoft.identitymodel.abstractions.6.35.0.nupkg.sha512",
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\microsoft.powerbi.api\\4.21.1\\microsoft.powerbi.api.4.21.1.nupkg.sha512",
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\microsoft.rest.clientruntime\\2.3.24\\microsoft.rest.clientruntime.2.3.24.nupkg.sha512",
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\v-adevashish\\.nuget\\packages\\system.security.cryptography.cng\\4.7.0\\system.security.cryptography.cng.4.7.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "PowerBIEmbed_adarshd depends on Microsoft.PowerBI.Api (>= 4.20.1) but Microsoft.PowerBI.Api 4.20.1 was not found. An approximate best match of Microsoft.PowerBI.Api 4.21.1 was resolved.",
+      "libraryId": "Microsoft.PowerBI.Api",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}

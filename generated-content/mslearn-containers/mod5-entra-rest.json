@@ -1,0 +1,55 @@
+{
+  "module": "intro-to-azure-ad",
+  "results": [
+    {
+      "unit": "3-understand-licenses-terminology",
+      "status": "knowledge_check",
+      "questions": [
+        {
+          "idx": 0,
+          "question": "What does the term identity mean?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-0-0",
+              "value": "0",
+              "label": "Something that can be authenticated. It can be a user, application, service, or anything that needs to be identified."
+            },
+            {
+              "id": "quiz-choice-0-1",
+              "value": "1",
+              "label": "A user that can be authenticated. It has to be a user. Applications or services can't be considered as identities."
+            },
+            {
+              "id": "quiz-choice-0-2",
+              "value": "2",
+              "label": "The service that does the authentication for users. It can also be an application."
+            }
+          ]
+        },
+        {
+          "idx": 1,
+          "question": "Which licensing plan supports Identity Protection?",
+          "type": "single",
+          "options": [
+            {
+              "id": "quiz-choice-1-0",
+              "value": "0",
+              "label": "Microsoft Entra ID Free"
+            },
+            {
+              "id": "quiz-choice-1-1",
+              "value": "1",
+              "label": "Microsoft Entra ID P1"
+            },
+            {
+              "id": "quiz-choice-1-2",
+              "value": "2",
+              "label": "Microsoft Entra ID P2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

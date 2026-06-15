@@ -1,0 +1,225 @@
+================================================================================
+File: DimAccount.xlsx
+Sheets: ['DimAccount']
+Primary sheet: DimAccount
+Rows: 99 Cols: 10
+Columns / dtypes:
+  - AccountKey: int64
+  - ParentAccountKey: float64
+  - AccountCodeAlternateKey: int64
+  - ParentAccountCodeAlternateKey: float64
+  - AccountDescription: str
+  - AccountType: str
+  - Operator: str
+  - CustomMembers: str
+  - ValueType: str
+  - CustomMemberOptions: float64
+Sample (first 3 rows):
+   AccountKey  ParentAccountKey  AccountCodeAlternateKey  ParentAccountCodeAlternateKey AccountDescription AccountType Operator CustomMembers ValueType  CustomMemberOptions
+            1               NaN                        1                            NaN      Balance Sheet         NaN        ~           NaN  Currency                  NaN
+            2               1.0                       10                            1.0             Assets      Assets        +           NaN  Currency                  NaN
+            3               2.0                      110                           10.0     Current Assets      Assets        +           NaN  Currency                  NaN
+================================================================================
+File: DimCustomer.xlsx
+Sheets: ['DimCustomer']
+Primary sheet: DimCustomer
+Rows: 18484 Cols: 29
+Columns / dtypes:
+  - CustomerKey: int64
+  - GeographyKey: int64
+  - CustomerAlternateKey: str
+  - Title: str
+  - FirstName: str
+  - MiddleName: str
+  - LastName: str
+  - NameStyle: int64
+  - BirthDate: datetime64[us]
+  - MaritalStatus: str
+  - Suffix: str
+  - Gender: str
+  - EmailAddress: str
+  - YearlyIncome: int64
+  - TotalChildren: int64
+  - NumberChildrenAtHome: int64
+  - EnglishEducation: str
+  - SpanishEducation: str
+  - FrenchEducation: str
+  - EnglishOccupation: str
+  - SpanishOccupation: str
+  - FrenchOccupation: str
+  - HouseOwnerFlag: int64
+  - NumberCarsOwned: int64
+  - AddressLine1: str
+  - AddressLine2: str
+  - Phone: str
+  - DateFirstPurchase: datetime64[us]
+  - CommuteDistance: str
+Sample (first 3 rows):
+  [wide table - showing column names only above]
+================================================================================
+File: DimDate.xlsx
+Sheets: ['DimDate']
+Primary sheet: DimDate
+Rows: 3652 Cols: 19
+Columns / dtypes:
+  - DateKey: int64
+  - FullDateAlternateKey: datetime64[us]
+  - DayNumberOfWeek: int64
+  - EnglishDayNameOfWeek: str
+  - SpanishDayNameOfWeek: str
+  - FrenchDayNameOfWeek: str
+  - DayNumberOfMonth: int64
+  - DayNumberOfYear: int64
+  - WeekNumberOfYear: int64
+  - EnglishMonthName: str
+  - SpanishMonthName: str
+  - FrenchMonthName: str
+  - MonthNumberOfYear: int64
+  - CalendarQuarter: int64
+  - CalendarYear: int64
+  - CalendarSemester: int64
+  - FiscalQuarter: int64
+  - FiscalYear: int64
+  - FiscalSemester: int64
+Sample (first 3 rows):
+  [wide table - showing column names only above]
+================================================================================
+File: DimEmployee.xlsx
+Sheets: ['DimEmployee']
+Primary sheet: DimEmployee
+Rows: 296 Cols: 30
+Columns / dtypes:
+  - BirthDate: datetime64[us]
+  - EmailAddress: str
+  - EmergencyContactName: str
+  - EmergencyContactPhone: str
+  - EmployeeNationalIDAlternateKey: int64
+  - EndDate: datetime64[us]
+  - FirstName: str
+  - Gender: str
+  - HireDate: datetime64[us]
+  - LastName: str
+  - LoginID: str
+  - MaritalStatus: str
+  - MiddleName: str
+  - NameStyle: bool
+  - ParentEmployeeNationalIDAlternateKey: float64
+  - Phone: str
+  - SalariedFlag: bool
+  - SalesPersonFlag: bool
+  - StartDate: datetime64[us]
+  - Status: str
+  - Title: str
+  - BaseRate: float64
+  - CurrentFlag: bool
+  - DepartmentName: str
+  - EmployeeKey: int64
+  - ParentEmployeeKey: float64
+  - PayFrequency: int64
+  - SalesTerritoryKey: int64
+  - SickLeaveHours: int64
+  - VacationHours: int64
+Sample (first 3 rows):
+  [wide table - showing column names only above]
+================================================================================
+File: DimFiscalMonth.xlsx
+Sheets: ['DimFiscalMonth']
+Primary sheet: DimFiscalMonth
+Rows: 108 Cols: 3
+Columns / dtypes:
+  - FiscalMonthID: int64
+  - FiscalMonthOfYear: int64
+  - FiscalYear: int64
+Sample (first 3 rows):
+   FiscalMonthID  FiscalMonthOfYear  FiscalYear
+           24055                  7        2005
+           24056                  8        2005
+           24057                  9        2005
+================================================================================
+File: FactFinance.xlsx
+Sheets: ['FactFinance']
+Primary sheet: FactFinance
+Rows: 39409 Cols: 8
+Columns / dtypes:
+  - FinanceKey: int64
+  - DateKey: int64
+  - OrganizationKey: int64
+  - DepartmentGroupKey: int64
+  - ScenarioKey: int64
+  - AccountKey: int64
+  - Amount: float64
+  - Date: datetime64[us]
+Sample (first 3 rows):
+   FinanceKey  DateKey  OrganizationKey  DepartmentGroupKey  ScenarioKey  AccountKey  Amount       Date
+            1 20101229                3                   1            1          60 22080.0 2010-12-29
+            2 20101229                3                   1            2          60 20200.0 2010-12-29
+            3 20101229                3                   1            2          61  2000.0 2010-12-29
+================================================================================
+File: FactInternetSales.xlsx
+Sheets: ['FactInternetSales']
+Primary sheet: FactInternetSales
+Rows: 60398 Cols: 26
+Columns / dtypes:
+  - ProductKey: int64
+  - OrderDateKey: int64
+  - DueDateKey: int64
+  - ShipDateKey: int64
+  - CustomerKey: int64
+  - PromotionKey: int64
+  - CurrencyKey: int64
+  - SalesTerritoryKey: int64
+  - SalesOrderNumber: str
+  - SalesOrderLineNumber: int64
+  - RevisionNumber: int64
+  - OrderQuantity: int64
+  - UnitPrice: float64
+  - ExtendedAmount: float64
+  - UnitPriceDiscountPct: int64
+  - DiscountAmount: int64
+  - ProductStandardCost: float64
+  - TotalProductCost: float64
+  - SalesAmount: float64
+  - TaxAmt: float64
+  - Freight: float64
+  - CarrierTrackingNumber: float64
+  - CustomerPONumber: float64
+  - OrderDate: datetime64[us]
+  - DueDate: datetime64[us]
+  - ShipDate: datetime64[us]
+Sample (first 3 rows):
+  [wide table - showing column names only above]
+================================================================================
+File: FactResellerSales.xlsx
+Sheets: ['FactResellerSales']
+Primary sheet: FactResellerSales
+Rows: 60855 Cols: 27
+Columns / dtypes:
+  - ProductKey: int64
+  - OrderDateKey: int64
+  - DueDateKey: int64
+  - ShipDateKey: int64
+  - ResellerKey: int64
+  - EmployeeKey: int64
+  - PromotionKey: int64
+  - CurrencyKey: int64
+  - SalesTerritoryKey: int64
+  - SalesOrderNumber: str
+  - SalesOrderLineNumber: int64
+  - RevisionNumber: int64
+  - OrderQuantity: int64
+  - UnitPrice: float64
+  - ExtendedAmount: float64
+  - UnitPriceDiscountPct: float64
+  - DiscountAmount: float64
+  - ProductStandardCost: float64
+  - TotalProductCost: float64
+  - SalesAmount: float64
+  - TaxAmt: float64
+  - Freight: float64
+  - CarrierTrackingNumber: str
+  - CustomerPONumber: str
+  - OrderDate: datetime64[us]
+  - DueDate: datetime64[us]
+  - ShipDate: datetime64[us]
+Sample (first 3 rows):
+  [wide table - showing column names only above]

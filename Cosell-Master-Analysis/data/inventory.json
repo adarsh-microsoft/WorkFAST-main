@@ -1,0 +1,4010 @@
+{
+  "generatedUtc": "2026-06-09T09:20:25Z",
+  "totals": {
+    "notebooks": 515,
+    "pipelines": 43,
+    "models": 9,
+    "reports": 14
+  },
+  "areaSummary": [
+    {
+      "area": "Cosell",
+      "total": 387,
+      "bronze": 7,
+      "silver": 51,
+      "gold": 293,
+      "goldpub": 0,
+      "init": 36,
+      "other": 0
+    },
+    {
+      "area": "Joint Planning Reporting",
+      "total": 27,
+      "bronze": 3,
+      "silver": 6,
+      "gold": 10,
+      "goldpub": 1,
+      "init": 7,
+      "other": 0
+    },
+    {
+      "area": "RedCarpet",
+      "total": 27,
+      "bronze": 0,
+      "silver": 13,
+      "gold": 10,
+      "goldpub": 0,
+      "init": 3,
+      "other": 1
+    },
+    {
+      "area": "CoMarketing",
+      "total": 24,
+      "bronze": 0,
+      "silver": 0,
+      "gold": 24,
+      "goldpub": 0,
+      "init": 0,
+      "other": 0
+    },
+    {
+      "area": "Majors Reporting",
+      "total": 20,
+      "bronze": 5,
+      "silver": 3,
+      "gold": 1,
+      "goldpub": 1,
+      "init": 9,
+      "other": 1
+    },
+    {
+      "area": "DRACR Planning",
+      "total": 11,
+      "bronze": 0,
+      "silver": 1,
+      "gold": 8,
+      "goldpub": 0,
+      "init": 0,
+      "other": 2
+    },
+    {
+      "area": "Planning",
+      "total": 11,
+      "bronze": 0,
+      "silver": 1,
+      "gold": 9,
+      "goldpub": 0,
+      "init": 0,
+      "other": 1
+    },
+    {
+      "area": "PRACFlow",
+      "total": 5,
+      "bronze": 0,
+      "silver": 1,
+      "gold": 3,
+      "goldpub": 0,
+      "init": 0,
+      "other": 1
+    },
+    {
+      "area": "ACRValidation",
+      "total": 1,
+      "bronze": 0,
+      "silver": 0,
+      "gold": 0,
+      "goldpub": 0,
+      "init": 0,
+      "other": 1
+    },
+    {
+      "area": "Flag_Update_for_BannerVisible.Notebook",
+      "total": 1,
+      "bronze": 0,
+      "silver": 0,
+      "gold": 0,
+      "goldpub": 0,
+      "init": 0,
+      "other": 1
+    },
+    {
+      "area": "Gold",
+      "total": 1,
+      "bronze": 0,
+      "silver": 0,
+      "gold": 1,
+      "goldpub": 0,
+      "init": 0,
+      "other": 0
+    }
+  ],
+  "kindSummary": [
+    {
+      "kind": "Dimension",
+      "count": 162
+    },
+    {
+      "kind": "Other",
+      "count": 155
+    },
+    {
+      "kind": "Fact",
+      "count": 76
+    },
+    {
+      "kind": "Orchestration",
+      "count": 40
+    },
+    {
+      "kind": "Map",
+      "count": 34
+    },
+    {
+      "kind": "Shortcut",
+      "count": 18
+    },
+    {
+      "kind": "History",
+      "count": 11
+    },
+    {
+      "kind": "Bridge",
+      "count": 10
+    },
+    {
+      "kind": "Snapshot",
+      "count": 9
+    }
+  ],
+  "notebooks": [
+    {
+      "path": "/Fabric/ACRValidation/CoSell_AHR_Validation.Notebook",
+      "name": "CoSell_AHR_Validation",
+      "area": "ACRValidation",
+      "layer": "Other",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_BudgetProgram.Notebook",
+      "name": "Cosell_Gold_BudgetProgram",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_DimCustomerCD.Notebook",
+      "name": "Cosell_Gold_DimCustomerCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_DimFieldGeoCD.Notebook",
+      "name": "Cosell_Gold_DimFieldGeoCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_DimOpportunityCD.Notebook",
+      "name": "Cosell_Gold_DimOpportunityCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_DimTime.Notebook",
+      "name": "Cosell_Gold_DimTime",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_EngagementMilestoneCD.Notebook",
+      "name": "Cosell_Gold_EngagementMilestoneCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_FactEngagementMilestoneCD.Notebook",
+      "name": "Cosell_Gold_FactEngagementMilestoneCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_FactOpportunityCD.Notebook",
+      "name": "Cosell_Gold_FactOpportunityCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_FactPartnerDealCD.Notebook",
+      "name": "Cosell_Gold_FactPartnerDealCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_FactSolutionCD.Notebook",
+      "name": "Cosell_Gold_FactSolutionCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_ForecastAmount.Notebook",
+      "name": "Cosell_Gold_ForecastAmount",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_FunnelCategory.Notebook",
+      "name": "Cosell_Gold_FunnelCategory",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_FunnelCategory2.Notebook",
+      "name": "Cosell_Gold_FunnelCategory2",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/CoSell_Gold_InvBridgeIndustry.Notebook",
+      "name": "CoSell_Gold_InvBridgeIndustry",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/CoMarketing/CoSell_Gold_InvBridgeSolutionArea.Notebook",
+      "name": "CoSell_Gold_InvBridgeSolutionArea",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_InvestBridgeArea.Notebook",
+      "name": "Cosell_Gold_InvestBridgeArea",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_InvestBridgeGCPSArea.Notebook",
+      "name": "Cosell_Gold_InvestBridgeGCPSArea",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_InvestBridgeSolutionPlay.Notebook",
+      "name": "Cosell_Gold_InvestBridgeSolutionPlay",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_InvestmentAsk.Notebook",
+      "name": "Cosell_Gold_InvestmentAsk",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_Opportunity_MonthlySnapshot.Notebook",
+      "name": "Cosell_Gold_Opportunity_MonthlySnapshot",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_PartnerDealCD.Notebook",
+      "name": "Cosell_Gold_PartnerDealCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_ReportingPartnerOneCD.Notebook",
+      "name": "Cosell_Gold_ReportingPartnerOneCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_SolutionAreaCD.Notebook",
+      "name": "Cosell_Gold_SolutionAreaCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/CoMarketing/Cosell_Gold_SolutionCD.Notebook",
+      "name": "Cosell_Gold_SolutionCD",
+      "area": "CoMarketing",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Bronze/Cosell_Bronze_CRP_Solution.Notebook",
+      "name": "Cosell_Bronze_CRP_Solution",
+      "area": "Cosell",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Bronze/Cosell_Bronze_SellInCountryCatRP.Notebook",
+      "name": "Cosell_Bronze_SellInCountryCatRP",
+      "area": "Cosell",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_DealRegistrationPII.Notebook",
+      "name": "Latest_Folder_Path_Bronze_DealRegistrationPII",
+      "area": "Cosell",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY23.Notebook",
+      "name": "Latest_Folder_Path_Bronze_ReferralMasterPIIFY23",
+      "area": "Cosell",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY24.Notebook",
+      "name": "Latest_Folder_Path_Bronze_ReferralMasterPIIFY24",
+      "area": "Cosell",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY25.Notebook",
+      "name": "Latest_Folder_Path_Bronze_ReferralMasterPIIFY25",
+      "area": "Cosell",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY26.Notebook",
+      "name": "Latest_Folder_Path_Bronze_ReferralMasterPIIFY26",
+      "area": "Cosell",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ACR_Pipeline_Table.Notebook",
+      "name": "Cosell_Gold_ACR_Pipeline_Table",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_AgencyFeed.Notebook",
+      "name": "CoSell_Gold_AgencyFeed",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_AHRFeedTable.Notebook",
+      "name": "Cosell_Gold_AHRFeedTable",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Associated_DimPartnerReferral.Notebook",
+      "name": "Cosell_Gold_Associated_DimPartnerReferral",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_Bridge_CoSellPrioritizedSolutionPracticeAndIndustryCountry.Notebook",
+      "name": "CoSell_Gold_Bridge_CoSellPrioritizedSolutionPracticeAndIndustryCountry",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_BridgeCascadedPartnerOne.Notebook",
+      "name": "CoSell_Gold_BridgeCascadedPartnerOne",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_BusinessHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_BusinessHierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ComarketingTPMBudget.Notebook",
+      "name": "Cosell_Gold_ComarketingTPMBudget",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CosellServices.Notebook",
+      "name": "Cosell_Gold_CosellServices",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CSPSolutionInternal.Notebook",
+      "name": "Cosell_Gold_CSPSolutionInternal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomDueANDCreatedDateReporting.Notebook",
+      "name": "Cosell_Gold_CustomDueANDCreatedDateReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomerHQAccountsDim.Notebook",
+      "name": "Cosell_Gold_CustomerHQAccountsDim",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomerReporting.Notebook",
+      "name": "Cosell_Gold_CustomerReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomerSecurity.Notebook",
+      "name": "Cosell_Gold_CustomerSecurity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomPartnerSegment.Notebook",
+      "name": "Cosell_Gold_CustomPartnerSegment",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomSolutionAreaReporting.Notebook",
+      "name": "Cosell_Gold_CustomSolutionAreaReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomStatusReporting.Notebook",
+      "name": "Cosell_Gold_CustomStatusReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DatasetRefresh.Notebook",
+      "name": "Cosell_Gold_DatasetRefresh",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DealPartnerOneMapping.Notebook",
+      "name": "Cosell_Gold_DealPartnerOneMapping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccount_Monthly.Notebook",
+      "name": "Cosell_Gold_DimAccount_Monthly",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccountGeographyHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_DimAccountGeographyHierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccountTagsReporting.Notebook",
+      "name": "Cosell_Gold_DimAccountTagsReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccoutTag.Notebook",
+      "name": "Cosell_Gold_DimAccoutTag",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimATU.Notebook",
+      "name": "Cosell_Gold_DimATU",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimBusinessUnit.Notebook",
+      "name": "Cosell_Gold_DimBusinessUnit",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCapacityGeography.Notebook",
+      "name": "Cosell_Gold_DimCapacityGeography",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimChannelPartner.Notebook",
+      "name": "Cosell_Gold_DimChannelPartner",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCosellPrioritizedPartners.Notebook",
+      "name": "Cosell_Gold_DimCosellPrioritizedPartners",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMAccounts.Notebook",
+      "name": "Cosell_Gold_DimCRMAccounts",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMPartnerAccount.Notebook",
+      "name": "Cosell_Gold_DimCRMPartnerAccount",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMPartnerAccountReporting.Notebook",
+      "name": "Cosell_Gold_DimCRMPartnerAccountReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimCRMsolution.Notebook",
+      "name": "Cosell_Gold_dimCRMsolution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMSolutionArea.Notebook",
+      "name": "Cosell_Gold_DimCRMSolutionArea",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomer.Notebook",
+      "name": "Cosell_Gold_DimCustomer",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DimCustomerFY26.Notebook",
+      "name": "CoSell_Gold_DimCustomerFY26",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimcustomergeography.Notebook",
+      "name": "Cosell_Gold_dimcustomergeography",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomerSegment.Notebook",
+      "name": "Cosell_Gold_DimCustomerSegment",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomGTMReadiness.Notebook",
+      "name": "Cosell_Gold_DimCustomGTMReadiness",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomOpptyStatus.Notebook",
+      "name": "Cosell_Gold_DimCustomOpptyStatus",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimDeliverables.Notebook",
+      "name": "Cosell_Gold_DimDeliverables",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimEngagementMilestone.Notebook",
+      "name": "Cosell_Gold_DimEngagementMilestone",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimEngagementMilestoneint.Notebook",
+      "name": "Cosell_Gold_DimEngagementMilestoneint",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimEngagementMilestoneReporting.Notebook",
+      "name": "Cosell_Gold_DimEngagementMilestoneReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimFiscalMonthReporting.Notebook",
+      "name": "Cosell_Gold_DimFiscalMonthReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimGPSCRMAccount.Notebook",
+      "name": "Cosell_Gold_DimGPSCRMAccount",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIndustry.Notebook",
+      "name": "Cosell_Gold_DimIndustry",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimInvoice.Notebook",
+      "name": "Cosell_Gold_DimInvoice",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIOPO.Notebook",
+      "name": "Cosell_Gold_DimIOPO",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIPCoSell_D365.Notebook",
+      "name": "Cosell_Gold_DimIPCoSell_D365",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIPCosell.Notebook",
+      "name": "Cosell_Gold_DimIPCosell",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIPPartner.Notebook",
+      "name": "Cosell_Gold_DimIPPartner",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimISVConnectApp.Notebook",
+      "name": "Cosell_Gold_DimISVConnectApp",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimLead.Notebook",
+      "name": "Cosell_Gold_DimLead",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimLifecycleStage.Notebook",
+      "name": "Cosell_Gold_DimLifecycleStage",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMarketplaceInvoice.Notebook",
+      "name": "Cosell_Gold_DimMarketplaceInvoice",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimmarketplaceoffer.Notebook",
+      "name": "Cosell_Gold_dimmarketplaceoffer",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMarketPlacePublisher.Notebook",
+      "name": "Cosell_Gold_DimMarketPlacePublisher",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMetric.Notebook",
+      "name": "Cosell_Gold_DimMetric",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXPartnerSharingCategorization.Notebook",
+      "name": "Cosell_Gold_DimMSXPartnerSharingCategorization",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXPartnerSharingCategorizationReporting.Notebook",
+      "name": "Cosell_Gold_DimMSXPartnerSharingCategorizationReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXSolutionArea.Notebook",
+      "name": "Cosell_Gold_DimMSXSolutionArea",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXWinsWithSolutionAttach.Notebook",
+      "name": "Cosell_Gold_DimMSXWinsWithSolutionAttach",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXWorkload.Notebook",
+      "name": "Cosell_Gold_DimMSXWorkload",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunity_Int.Notebook",
+      "name": "Cosell_Gold_DimOpportunity_Int",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunity.Notebook",
+      "name": "Cosell_Gold_DimOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityFeedData.Notebook",
+      "name": "Cosell_Gold_DimOpportunityFeedData",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityMilestoneEstCompletionDate.Notebook",
+      "name": "Cosell_Gold_DimOpportunityMilestoneEstCompletionDate",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityPower5.Notebook",
+      "name": "Cosell_Gold_DimOpportunityPower5",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityProduct.Notebook",
+      "name": "Cosell_Gold_DimOpportunityProduct",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityReporting.Notebook",
+      "name": "Cosell_Gold_DimOpportunityReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerdeal_int.Notebook",
+      "name": "Cosell_Gold_DimPartnerdeal_int",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDeal.Notebook",
+      "name": "Cosell_Gold_DimPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealDuration.Notebook",
+      "name": "Cosell_Gold_DimPartnerDealDuration",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealProfile.Notebook",
+      "name": "Cosell_Gold_DimPartnerDealProfile",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealSolutionAttached.Notebook",
+      "name": "Cosell_Gold_DimPartnerDealSolutionAttached",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealSolutionHistory.Notebook",
+      "name": "Cosell_Gold_DimPartnerDealSolutionHistory",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealTeam.Notebook",
+      "name": "Cosell_Gold_DimPartnerDealTeam",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDesignations.Notebook",
+      "name": "Cosell_Gold_DimPartnerDesignations",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerExternalContact_PII.Notebook",
+      "name": "Cosell_Gold_DimPartnerExternalContact_PII",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerMAICPPStatus.Notebook",
+      "name": "Cosell_Gold_DimPartnerMAICPPStatus",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerOne.Notebook",
+      "name": "Cosell_Gold_DimPartnerOne",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerReferralReporting.Notebook",
+      "name": "Cosell_Gold_DimPartnerReferralReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerReportedACR.Notebook",
+      "name": "Cosell_Gold_DimPartnerReportedACR",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerSharingFlags.Notebook",
+      "name": "Cosell_Gold_DimPartnerSharingFlags",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerSharingMetricType.Notebook",
+      "name": "Cosell_Gold_DimPartnerSharingMetricType",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerSpecializations.Notebook",
+      "name": "Cosell_Gold_DimPartnerSpecializations",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPersonnel.Notebook",
+      "name": "Cosell_Gold_DimPersonnel",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPINMetric.Notebook",
+      "name": "Cosell_Gold_DimPINMetric",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPlanProfile.Notebook",
+      "name": "Cosell_Gold_DimPlanProfile",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPricingLevelHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_DimPricingLevelHierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPrioritizedAndReadyPartnersConsumptionOpportunity.Notebook",
+      "name": "Cosell_Gold_DimPrioritizedAndReadyPartnersConsumptionOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPrioritizedAndReadyPartnersOppty.Notebook",
+      "name": "Cosell_Gold_DimPrioritizedAndReadyPartnersOppty",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPrioritizedPartner.Notebook",
+      "name": "Cosell_Gold_DimPrioritizedPartner",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProduct.Notebook",
+      "name": "Cosell_Gold_DimProduct",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProductHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_DimProductHierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProductPFam.Notebook",
+      "name": "Cosell_Gold_DimProductPFam",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProductReporting.Notebook",
+      "name": "Cosell_Gold_DimProductReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DimProject.Notebook",
+      "name": "CoSell_Gold_DimProject",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRecruitLead.Notebook",
+      "name": "Cosell_Gold_DimRecruitLead",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRedCarpetPartnerDetails.Notebook",
+      "name": "Cosell_Gold_DimRedCarpetPartnerDetails",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimReportingPartnerOne_Median.Notebook",
+      "name": "Cosell_Gold_DimReportingPartnerOne_Median",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimReportingPartnerOneSub.Notebook",
+      "name": "Cosell_Gold_DimReportingPartnerOneSub",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimreportingPartnerOneSubFY26.Notebook",
+      "name": "Cosell_Gold_DimreportingPartnerOneSubFY26",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRevSumDivision.Notebook",
+      "name": "Cosell_Gold_DimRevSumDivision",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRevSumHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_DimRevSumHierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSalesPlayReporting.Notebook",
+      "name": "Cosell_Gold_DimSalesPlayReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSalesProgram.Notebook",
+      "name": "Cosell_Gold_DimSalesProgram",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSalesProgramReporting.Notebook",
+      "name": "Cosell_Gold_DimSalesProgramReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimScoreCardRecognitionTime.Notebook",
+      "name": "Cosell_Gold_DimScoreCardRecognitionTime",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSegmentHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_DimSegmentHierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSellercosellIncentive.Notebook",
+      "name": "Cosell_Gold_DimSellercosellIncentive",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSellInCountry.Notebook",
+      "name": "Cosell_Gold_DimSellInCountry",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimServiceCompGrouping.Notebook",
+      "name": "Cosell_Gold_DimServiceCompGrouping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSharingType.Notebook",
+      "name": "Cosell_Gold_DimSharingType",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolution.Notebook",
+      "name": "Cosell_Gold_DimSolution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionArea.Notebook",
+      "name": "Cosell_Gold_DimSolutionArea",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionAreaDetailReporting.Notebook",
+      "name": "Cosell_Gold_DimSolutionAreaDetailReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionAreaOppty.Notebook",
+      "name": "Cosell_Gold_DimSolutionAreaOppty",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionAreaReporting.Notebook",
+      "name": "Cosell_Gold_DimSolutionAreaReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionEngagementPipeline.Notebook",
+      "name": "Cosell_Gold_DimSolutionEngagementPipeline",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DimTask.Notebook",
+      "name": "CoSell_Gold_DimTask",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechnicalExecutionStrategy.Notebook",
+      "name": "Cosell_Gold_DimTechnicalExecutionStrategy",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechServiceRequestOwner.Notebook",
+      "name": "Cosell_Gold_DimTechServiceRequestOwner",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechTaskActivity.Notebook",
+      "name": "Cosell_Gold_DimTechTaskActivity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechTaskSolutionArea.Notebook",
+      "name": "Cosell_Gold_DimTechTaskSolutionArea",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimtoptiermonthlystatus.Notebook",
+      "name": "Cosell_Gold_dimtoptiermonthlystatus",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimUserSubsidiary.Notebook",
+      "name": "Cosell_Gold_DimUserSubsidiary",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimWorkloadReporting.Notebook",
+      "name": "Cosell_Gold_DimWorkloadReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DirectoryACVFeed.Notebook",
+      "name": "CoSell_Gold_DirectoryACVFeed",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAccount.Notebook",
+      "name": "Cosell_Gold_FactAccount",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAccountPin.Notebook",
+      "name": "Cosell_Gold_FactAccountPin",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAHRFeedAudit.Notebook",
+      "name": "Cosell_Gold_FactAHRFeedAudit",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAzureConsumptionCTCG.Notebook",
+      "name": "Cosell_Gold_FactAzureConsumptionCTCG",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAzureConsumptionP1CGCT.Notebook",
+      "name": "Cosell_Gold_FactAzureConsumptionP1CGCT",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCosellTargets.Notebook",
+      "name": "Cosell_Gold_FactCosellTargets",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCRMPartner.Notebook",
+      "name": "Cosell_Gold_FactCRMPartner",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCRMUser.Notebook",
+      "name": "Cosell_Gold_FactCRMUser",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCSPSolutionBilledOpportunity.Notebook",
+      "name": "Cosell_Gold_FactCSPSolutionBilledOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCSPSolutionConsumptionOpportunity.Notebook",
+      "name": "Cosell_Gold_FactCSPSolutionConsumptionOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCSPSolutionPartnerDeal.Notebook",
+      "name": "Cosell_Gold_FactCSPSolutionPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestone.Notebook",
+      "name": "Cosell_Gold_FactEngagementMilestone",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestonePipeline_int.Notebook",
+      "name": "Cosell_Gold_FactEngagementMilestonePipeline_int",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestonePipeline.Notebook",
+      "name": "Cosell_Gold_FactEngagementMilestonePipeline",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestoneReporting.Notebook",
+      "name": "Cosell_Gold_FactEngagementMilestoneReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactFY20AllianceReadiness.Notebook",
+      "name": "Cosell_Gold_FactFY20AllianceReadiness",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactInvoice.Notebook",
+      "name": "Cosell_Gold_FactInvoice",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactIOPO.Notebook",
+      "name": "Cosell_Gold_FactIOPO",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactIPCoSell.Notebook",
+      "name": "Cosell_Gold_FactIPCoSell",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactIPCoSellTransition.Notebook",
+      "name": "Cosell_Gold_FactIPCoSellTransition",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactISVConnect.Notebook",
+      "name": "Cosell_Gold_FactISVConnect",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactLead.Notebook",
+      "name": "Cosell_Gold_FactLead",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactLessSolutionEngagement.Notebook",
+      "name": "Cosell_Gold_FactLessSolutionEngagement",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMarketplaceBilledSales.Notebook",
+      "name": "Cosell_Gold_FactMarketplaceBilledSales",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMarketPlaceOffer.Notebook",
+      "name": "Cosell_Gold_FactMarketPlaceOffer",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_FactMBSCommercialTargets.Notebook",
+      "name": "CoSell_Gold_FactMBSCommercialTargets",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMBSCommercialTargetsExcel.Notebook",
+      "name": "Cosell_Gold_FactMBSCommercialTargetsExcel",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMBSTargets.Notebook",
+      "name": "Cosell_Gold_FactMBSTargets",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMSXPartnerSharing.Notebook",
+      "name": "Cosell_Gold_FactMSXPartnerSharing",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunitiesSalesCycleDuration.Notebook",
+      "name": "Cosell_Gold_FactOpportunitiesSalesCycleDuration",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunity_int.Notebook",
+      "name": "Cosell_Gold_FactOpportunity_int",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunity.Notebook",
+      "name": "Cosell_Gold_FactOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunityProduct_Internal.Notebook",
+      "name": "Cosell_Gold_FactOpportunityProduct_Internal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunityProduct.Notebook",
+      "name": "Cosell_Gold_FactOpportunityProduct",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunityReporting.Notebook",
+      "name": "Cosell_Gold_FactOpportunityReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY20.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_FY20",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY21.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_FY21",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY22.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_FY22",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY23.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_FY23",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY24.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_FY24",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY25.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_FY25",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_int.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_int",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDealDuration.Notebook",
+      "name": "Cosell_Gold_FactPartnerDealDuration",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerOne.Notebook",
+      "name": "Cosell_Gold_FactPartnerOne",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerReferralReporting.Notebook",
+      "name": "Cosell_Gold_FactPartnerReferralReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPRACRTargets.Notebook",
+      "name": "Cosell_Gold_FactPRACRTargets",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_FactProject.Notebook",
+      "name": "CoSell_Gold_FactProject",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactRecruitISVTargets.Notebook",
+      "name": "Cosell_Gold_FactRecruitISVTargets",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolution.Notebook",
+      "name": "Cosell_Gold_FactSolution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionBilledOpportunity.Notebook",
+      "name": "Cosell_Gold_FactSolutionBilledOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionCapacityGeography.Notebook",
+      "name": "Cosell_Gold_FactSolutionCapacityGeography",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionConsumptionOpportunity.Notebook",
+      "name": "Cosell_Gold_FactSolutionConsumptionOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionPartnerDeal.Notebook",
+      "name": "Cosell_Gold_FactSolutionPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FinalActualAmount.Notebook",
+      "name": "Cosell_Gold_FinalActualAmount",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FinalInvoiceAmount.Notebook",
+      "name": "Cosell_Gold_FinalInvoiceAmount",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FinalPartnerMapping.Notebook",
+      "name": "Cosell_Gold_FinalPartnerMapping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_GeographySubsidiaryHierarchyDim.Notebook",
+      "name": "Cosell_Gold_GeographySubsidiaryHierarchyDim",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HC360GeographyDim.Notebook",
+      "name": "Cosell_Gold_HC360GeographyDim",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HC360PersonnelFact.Notebook",
+      "name": "Cosell_Gold_HC360PersonnelFact",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Hist_Activity.Notebook",
+      "name": "Cosell_Gold_Hist_Activity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Hist_Lead.Notebook",
+      "name": "Cosell_Gold_Hist_Lead",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_hist_solution.Notebook",
+      "name": "Cosell_Gold_hist_solution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoricalRecruitFlags.Notebook",
+      "name": "Cosell_Gold_HistoricalRecruitFlags",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccount.Notebook",
+      "name": "Cosell_Gold_HistoryAccount",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccountHistory.Notebook",
+      "name": "Cosell_Gold_HistoryAccountHistory",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccountToPersonMapping.Notebook",
+      "name": "Cosell_Gold_HistoryAccountToPersonMapping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccountToPersonMappingHistory.Notebook",
+      "name": "Cosell_Gold_HistoryAccountToPersonMappingHistory",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAHRFeedAudit.Notebook",
+      "name": "Cosell_Gold_HistoryAHRFeedAudit",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAHRFeedTable.Notebook",
+      "name": "Cosell_Gold_HistoryAHRFeedTable",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "History"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_int_dimreportingpartneronesub.Notebook",
+      "name": "Cosell_Gold_int_dimreportingpartneronesub",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapAccountSolution.Notebook",
+      "name": "Cosell_Gold_MapAccountSolution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapAccountTag.Notebook",
+      "name": "Cosell_Gold_MapAccountTag",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapCustomPartnerSegment.Notebook",
+      "name": "Cosell_Gold_MapCustomPartnerSegment",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapEngagementMilestone.Notebook",
+      "name": "Cosell_Gold_MapEngagementMilestone",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapIndustrysolution.Notebook",
+      "name": "Cosell_Gold_MapIndustrysolution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOfferPartnerDeal.Notebook",
+      "name": "Cosell_Gold_MapOfferPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunityPartner.Notebook",
+      "name": "Cosell_Gold_MapOpportunityPartner",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunityPartnerDeal.Notebook",
+      "name": "Cosell_Gold_MapOpportunityPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunitySalesProgram.Notebook",
+      "name": "Cosell_Gold_MapOpportunitySalesProgram",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunitySolution.Notebook",
+      "name": "Cosell_Gold_MapOpportunitySolution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunitySolutionArea.Notebook",
+      "name": "Cosell_Gold_MapOpportunitySolutionArea",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOppty.Notebook",
+      "name": "Cosell_Gold_MapOppty",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpptyPartnerAttachAndSolutionAttach.Notebook",
+      "name": "Cosell_Gold_MapOpptyPartnerAttachAndSolutionAttach",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerDeal.Notebook",
+      "name": "Cosell_Gold_MapPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerDealPartnerAttachAndSolutionAttach.Notebook",
+      "name": "Cosell_Gold_MapPartnerDealPartnerAttachAndSolutionAttach",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerDealSolutionNameBasedMapping.Notebook",
+      "name": "Cosell_Gold_MapPartnerDealSolutionNameBasedMapping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerOneAccountTag.Notebook",
+      "name": "Cosell_Gold_MapPartnerOneAccountTag",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_MapPartnerOpportunity.Notebook",
+      "name": "CoSell_Gold_MapPartnerOpportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerSolutionAreaReporting.Notebook",
+      "name": "Cosell_Gold_MapPartnerSolutionAreaReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPrioritizedDealSharingAndWins.Notebook",
+      "name": "Cosell_Gold_MapPrioritizedDealSharingAndWins",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPrioritizedOppty.Notebook",
+      "name": "Cosell_Gold_MapPrioritizedOppty",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionEngagement.Notebook",
+      "name": "Cosell_Gold_MapSolutionEngagement",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPartnerDeal.Notebook",
+      "name": "Cosell_Gold_MapSolutionPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPartnerOneReportingPartnerOneSubAccount_Tab.Notebook",
+      "name": "Cosell_Gold_MapSolutionPartnerOneReportingPartnerOneSubAccount_Tab",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPartnerOneReportingPartnerOneSubAccount.Notebook",
+      "name": "Cosell_Gold_MapSolutionPartnerOneReportingPartnerOneSubAccount",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPractice.Notebook",
+      "name": "Cosell_Gold_MapSolutionPractice",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPracticeIndustryCountry_Capacity.Notebook",
+      "name": "Cosell_Gold_MapSolutionPracticeIndustryCountry_Capacity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPracticeIndustryCountry.Notebook",
+      "name": "Cosell_Gold_MapSolutionPracticeIndustryCountry",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionSellerCoSellIncentive_Capacity.Notebook",
+      "name": "Cosell_Gold_MapSolutionSellerCoSellIncentive_Capacity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionSellInCountry.Notebook",
+      "name": "Cosell_Gold_MapSolutionSellInCountry",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionSolutionAreaIndustryCapacity.Notebook",
+      "name": "Cosell_Gold_MapSolutionSolutionAreaIndustryCapacity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MarketplaceDealsACV_Snapshot.Notebook",
+      "name": "Cosell_Gold_MarketplaceDealsACV_Snapshot",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_MarketplaceFeed.Notebook",
+      "name": "CoSell_Gold_MarketplaceFeed",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_MSXCombinedSnapshot.Notebook",
+      "name": "CoSell_Gold_MSXCombinedSnapshot",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_OpportunityDraftIntermediate.Notebook",
+      "name": "Cosell_Gold_OpportunityDraftIntermediate",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_OpportunityInternal.Notebook",
+      "name": "Cosell_Gold_OpportunityInternal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_OpptyAndMilestoneDate.Notebook",
+      "name": "Cosell_Gold_OpptyAndMilestoneDate",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerAsEndCustomerReporting.Notebook",
+      "name": "Cosell_Gold_PartnerAsEndCustomerReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Partnerdeal_Intermediate.Notebook",
+      "name": "Cosell_Gold_Partnerdeal_Intermediate",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerDealFact.Notebook",
+      "name": "Cosell_Gold_PartnerDealFact",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerDealPartnerReportedACR.Notebook",
+      "name": "Cosell_Gold_PartnerDealPartnerReportedACR",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerDealSolution_Snapshot.Notebook",
+      "name": "Cosell_Gold_PartnerDealSolution_Snapshot",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerSecurity.Notebook",
+      "name": "Cosell_Gold_PartnerSecurity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerSharingSolutionArea_Opportunity.Notebook",
+      "name": "Cosell_Gold_PartnerSharingSolutionArea_Opportunity",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerSharingWeeklySnapshot.Notebook",
+      "name": "Cosell_Gold_PartnerSharingWeeklySnapshot",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PCDeal_Internal.Notebook",
+      "name": "Cosell_Gold_PCDeal_Internal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PDM_PDMM_HierarchyReporting.Notebook",
+      "name": "Cosell_Gold_PDM_PDMM_HierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PipelineFactCurrent.Notebook",
+      "name": "Cosell_Gold_PipelineFactCurrent",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PipelinePartnerMaster.Notebook",
+      "name": "Cosell_Gold_PipelinePartnerMaster",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PossibleDuplicatesFeed.Notebook",
+      "name": "Cosell_Gold_PossibleDuplicatesFeed",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ProjectedBaselineCTCG.Notebook",
+      "name": "Cosell_Gold_ProjectedBaselineCTCG",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ProjectedBaselineP1CGCT.Notebook",
+      "name": "Cosell_Gold_ProjectedBaselineP1CGCT",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PS_DimPartnerDeal.Notebook",
+      "name": "Cosell_Gold_PS_DimPartnerDeal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PSCDeal_Internal.Notebook",
+      "name": "Cosell_Gold_PSCDeal_Internal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReferralCycleTimeUnpivoted.Notebook",
+      "name": "Cosell_Gold_ReferralCycleTimeUnpivoted",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReferralFeed_int.Notebook",
+      "name": "Cosell_Gold_ReferralFeed_int",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReferralMasterPII.Notebook",
+      "name": "Cosell_Gold_ReferralMasterPII",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReportingPartnerOneSubReporting.Notebook",
+      "name": "Cosell_Gold_ReportingPartnerOneSubReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_ResellerFeed.Notebook",
+      "name": "CoSell_Gold_ResellerFeed",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecAccountProductMapReporting.Notebook",
+      "name": "Cosell_Gold_SecAccountProductMapReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecAccountTeamReporting.Notebook",
+      "name": "Cosell_Gold_SecAccountTeamReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecDimSellerReporting.Notebook",
+      "name": "Cosell_Gold_SecDimSellerReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecDistinctSubsidiaryReporting.Notebook",
+      "name": "Cosell_Gold_SecDistinctSubsidiaryReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecOpportunityTeamReporting.Notebook",
+      "name": "Cosell_Gold_SecOpportunityTeamReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecSellerAccountProductmapReporting.Notebook",
+      "name": "Cosell_Gold_SecSellerAccountProductmapReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecSellerHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_SecSellerHierarchyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNAccountTeamReporting.Notebook",
+      "name": "Cosell_Gold_SecUPNAccountTeamReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNDimSellerReporting.Notebook",
+      "name": "Cosell_Gold_SecUPNDimSellerReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNOpportunityTeamReporting.Notebook",
+      "name": "Cosell_Gold_SecUPNOpportunityTeamReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNUserSubsidiaryReporting.Notebook",
+      "name": "Cosell_Gold_SecUPNUserSubsidiaryReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUserSubsidiaryReporting.Notebook",
+      "name": "Cosell_Gold_SecUserSubsidiaryReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SellerCoSellIncentiveSolution.Notebook",
+      "name": "Cosell_Gold_SellerCoSellIncentiveSolution",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SnapshotDimOpportunityWeekly.Notebook",
+      "name": "Cosell_Gold_SnapshotDimOpportunityWeekly",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SnapshotMapSolutionPriorityScenarioIndustryCountry.Notebook",
+      "name": "Cosell_Gold_SnapshotMapSolutionPriorityScenarioIndustryCountry",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Solution_Internal.Notebook",
+      "name": "Cosell_Gold_Solution_Internal",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SolutionArea_OpptyReporting.Notebook",
+      "name": "Cosell_Gold_SolutionArea_OpptyReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SPM_ManagedTopParentAccounts.Notebook",
+      "name": "Cosell_Gold_SPM_ManagedTopParentAccounts",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TechServiceRequestEventCategoryMapping.Notebook",
+      "name": "Cosell_Gold_TechServiceRequestEventCategoryMapping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TechServiceRequestStatusMapping.Notebook",
+      "name": "Cosell_Gold_TechServiceRequestStatusMapping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TPAccountsDim.Notebook",
+      "name": "Cosell_Gold_TPAccountsDim",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TrueACRPartnerDeal_int.Notebook",
+      "name": "Cosell_Gold_TrueACRPartnerDeal_int",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/DimCustomPartnerDealDirectionReporting.Notebook",
+      "name": "DimCustomPartnerDealDirectionReporting",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/FactMSXCombined.Notebook",
+      "name": "FactMSXCombined",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/Notebook_PartnerDealApprovalDate.Notebook",
+      "name": "Notebook_PartnerDealApprovalDate",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PartnerSharing_DAX_Flags.Notebook",
+      "name": "PartnerSharing_DAX_Flags",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_ActiveSubRegionFlag.Notebook",
+      "name": "PSA_ActiveSubRegionFlag",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_Gold_CustomPartnerCategory.Notebook",
+      "name": "PSA_Gold_CustomPartnerCategory",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_Gold_DimCreditingGeography.Notebook",
+      "name": "PSA_Gold_DimCreditingGeography",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_Gold_FactAzureConsumptionP1.Notebook",
+      "name": "PSA_Gold_FactAzureConsumptionP1",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_Gold_PartnerSpecialization.Notebook",
+      "name": "PSA_Gold_PartnerSpecialization",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_Gold_SolutionAreaMapping.Notebook",
+      "name": "PSA_Gold_SolutionAreaMapping",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_Gold_SolutionPartnerDesignation.Notebook",
+      "name": "PSA_Gold_SolutionPartnerDesignation",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Gold/PSA_PsaList&Table.Notebook",
+      "name": "PSA_PsaList&Table",
+      "area": "Cosell",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/CommonUtilityFunctions.Notebook",
+      "name": "CommonUtilityFunctions",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_CreatePublishSchema.Notebook",
+      "name": "Cosell_CreatePublishSchema",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_Latest_PublishSchema_update.Notebook",
+      "name": "Cosell_Latest_PublishSchema_update",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_Initiate_Refresh.Notebook",
+      "name": "Cosell_Redcarpet_Initiate_Refresh",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_RCA_Generation.Notebook",
+      "name": "Cosell_Redcarpet_RCA_Generation",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_Reset_NotebookStatus.Notebook",
+      "name": "Cosell_Redcarpet_Reset_NotebookStatus",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_Schema_Switch.Notebook",
+      "name": "Cosell_Redcarpet_Schema_Switch",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/CoSell_RefreshStatus.Notebook",
+      "name": "CoSell_RefreshStatus",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_Reporting_ZOrderImplementation.Notebook",
+      "name": "Cosell_Reporting_ZOrderImplementation",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_svf_GetCutoffDate.Notebook",
+      "name": "Cosell_svf_GetCutoffDate",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_svf_GetDate.Notebook",
+      "name": "Cosell_svf_GetDate",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Cosell_Update_SchemaAndDataType.Notebook",
+      "name": "Cosell_Update_SchemaAndDataType",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Create_DeltaVersionTable_Silver.Notebook",
+      "name": "Create_DeltaVersionTable_Silver",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Create_DeltaVersionTable.Notebook",
+      "name": "Create_DeltaVersionTable",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Creation_Shortcut_PS.Notebook",
+      "name": "Creation_Shortcut_PS",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Creation_Shortcut.Notebook",
+      "name": "Creation_Shortcut",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/LastCompletedRefreshDate.Notebook",
+      "name": "LastCompletedRefreshDate",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Latest_Folder_Path_Bronze_ReferralMasterPII.Notebook",
+      "name": "Latest_Folder_Path_Bronze_ReferralMasterPII",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Latest_Folder_Path_Silver.Notebook",
+      "name": "Latest_Folder_Path_Silver",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/PartnerSharing_Shortcut_Creation.Notebook",
+      "name": "PartnerSharing_Shortcut_Creation",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/RedCarpet_GPSMart_Schema_Switch.Notebook",
+      "name": "RedCarpet_GPSMart_Schema_Switch",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/RedCarpet_GPSMart_Shortcut_Creation.Notebook",
+      "name": "RedCarpet_GPSMart_Shortcut_Creation",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Reporting_DataTransfer.Notebook",
+      "name": "Reporting_DataTransfer",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Reset_Notebook_Status.Notebook",
+      "name": "Reset_Notebook_Status",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Schema_Switch_Redcarpet_Reporting.Notebook",
+      "name": "Schema_Switch_Redcarpet_Reporting",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Schema_Switch_Reporting.Notebook",
+      "name": "Schema_Switch_Reporting",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Schema_Switch.Notebook",
+      "name": "Schema_Switch",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Shortcut_Creation_Redcarpet_Reporting.Notebook",
+      "name": "Shortcut_Creation_Redcarpet_Reporting",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Shortcut_Utility_Updated.Notebook",
+      "name": "Shortcut_Utility_Updated",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/ShortcutCreationPME_CRP.Notebook",
+      "name": "ShortcutCreationPME_CRP",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/ShortCuts_Creation_Bronze.Notebook",
+      "name": "ShortCuts_Creation_Bronze",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/ShortCuts_Creation_Silver.Notebook",
+      "name": "ShortCuts_Creation_Silver",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/ShortcutScriptPS.Notebook",
+      "name": "ShortcutScriptPS",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Warm_Caching_Temperature_Stats_Cosell.Notebook",
+      "name": "Warm_Caching_Temperature_Stats_Cosell",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Warm_Caching_Temperature_Stats_PartnerSharing.Notebook",
+      "name": "Warm_Caching_Temperature_Stats_PartnerSharing",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Init/Warm_Caching_Temperature_Stats_PSA.Notebook",
+      "name": "Warm_Caching_Temperature_Stats_PSA",
+      "area": "Cosell",
+      "layer": "Init",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/CoSell_CoSellGold_Int_Snapshots.Notebook",
+      "name": "CoSell_CoSellGold_Int_Snapshots",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Account.Notebook",
+      "name": "Cosell_Silver_Account",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_AccountToPersonMapping.Notebook",
+      "name": "Cosell_Silver_AccountToPersonMapping",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Actual.Notebook",
+      "name": "Cosell_Silver_Actual",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_APIFeedData_Markeplace.Notebook",
+      "name": "Cosell_Silver_APIFeedData_Markeplace",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_APIFeedData.Notebook",
+      "name": "Cosell_Silver_APIFeedData",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_BridgeCascadedPartnerOne.Notebook",
+      "name": "Cosell_Silver_BridgeCascadedPartnerOne",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_BusinessUnit.Notebook",
+      "name": "Cosell_Silver_BusinessUnit",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_CountryTaxonomy.Notebook",
+      "name": "Cosell_Silver_CountryTaxonomy",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_CustomOpptyStatus.Notebook",
+      "name": "Cosell_Silver_CustomOpptyStatus",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimAccountGeography.Notebook",
+      "name": "Cosell_Silver_DimAccountGeography",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimGeographySubsidiaryHierarchy.Notebook",
+      "name": "Cosell_Silver_DimGeographySubsidiaryHierarchy",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimLead.Notebook",
+      "name": "Cosell_Silver_DimLead",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimMSXSolution.Notebook",
+      "name": "Cosell_Silver_DimMSXSolution",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimOpportunity_int.Notebook",
+      "name": "Cosell_Silver_DimOpportunity_int",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimOpportunity.Notebook",
+      "name": "Cosell_Silver_DimOpportunity",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimPartnerDealPII.Notebook",
+      "name": "Cosell_Silver_DimPartnerDealPII",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimPricingLevelHierarchy.Notebook",
+      "name": "Cosell_Silver_DimPricingLevelHierarchy",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimProductHierarchy.Notebook",
+      "name": "Cosell_Silver_DimProductHierarchy",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimReportedSubsegmentHierarchy.Notebook",
+      "name": "Cosell_Silver_DimReportedSubsegmentHierarchy",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimReportingGeography.Notebook",
+      "name": "Cosell_Silver_DimReportingGeography",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimRevenueAccount.Notebook",
+      "name": "Cosell_Silver_DimRevenueAccount",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_EMPMtables.Notebook",
+      "name": "Cosell_Silver_EMPMtables",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactLead.Notebook",
+      "name": "Cosell_Silver_FactLead",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactOpportunitySalesProgram.Notebook",
+      "name": "Cosell_Silver_FactOpportunitySalesProgram",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_factpartnerdeal_snapshot.Notebook",
+      "name": "Cosell_Silver_factpartnerdeal_snapshot",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactPBP.Notebook",
+      "name": "Cosell_Silver_FactPBP",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactPipeline.Notebook",
+      "name": "Cosell_Silver_FactPipeline",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Industry.Notebook",
+      "name": "Cosell_Silver_Industry",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Invoice.Notebook",
+      "name": "Cosell_Silver_Invoice",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_MSXCRM_OCPCRM_Mapping.Notebook",
+      "name": "Cosell_Silver_MSXCRM_OCPCRM_Mapping",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_OpportunityPartneraccountDraftPartitioned.Notebook",
+      "name": "Cosell_Silver_OpportunityPartneraccountDraftPartitioned",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_partnerAccount.Notebook",
+      "name": "Cosell_Silver_partnerAccount",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PartnerAccountPersonnel.Notebook",
+      "name": "Cosell_Silver_PartnerAccountPersonnel",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PartnerImpactNumbers.Notebook",
+      "name": "Cosell_Silver_PartnerImpactNumbers",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PartnerMaster.Notebook",
+      "name": "Cosell_Silver_PartnerMaster",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PlanProfile.Notebook",
+      "name": "Cosell_Silver_PlanProfile",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Referralmasterpii.Notebook",
+      "name": "Cosell_Silver_Referralmasterpii",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SellInCountryMapping.Notebook",
+      "name": "Cosell_Silver_SellInCountryMapping",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Solution.Notebook",
+      "name": "Cosell_Silver_Solution",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionArea.Notebook",
+      "name": "Cosell_Silver_SolutionArea",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionIndustryAssociation.Notebook",
+      "name": "Cosell_Silver_SolutionIndustryAssociation",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionIndustryPlacement.Notebook",
+      "name": "Cosell_Silver_SolutionIndustryPlacement",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionSolutionAreaAssociation.Notebook",
+      "name": "Cosell_Silver_SolutionSolutionAreaAssociation",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionSolutionAreaPlacement.Notebook",
+      "name": "Cosell_Silver_SolutionSolutionAreaPlacement",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SPM_SalesGroupHierarchy.Notebook",
+      "name": "Cosell_Silver_SPM_SalesGroupHierarchy",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SPMAllAssignments_int.Notebook",
+      "name": "Cosell_Silver_SPMAllAssignments_int",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_TopTierPartners.Notebook",
+      "name": "Cosell_Silver_TopTierPartners",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_TrueACRPartnerDeal_FY25.Notebook",
+      "name": "Cosell_Silver_TrueACRPartnerDeal_FY25",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_TrueACRPartnerDeal_int.Notebook",
+      "name": "Cosell_Silver_TrueACRPartnerDeal_int",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Cosell/Notebooks/Silver/PowerApps_DboToSilver.Notebook",
+      "name": "PowerApps_DboToSilver",
+      "area": "Cosell",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_DimReportingPartnerOneSub_Planning_Feed.Notebook",
+      "name": "Cosell_Gold_DimReportingPartnerOneSub_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_dimtoptiermonthlystatus_Planning_Feed.Notebook",
+      "name": "Cosell_Gold_dimtoptiermonthlystatus_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_FactIPCoSell_Planning_Feed.Notebook",
+      "name": "Cosell_Gold_FactIPCoSell_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_FactPartnerDeal_Planning_Feed.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_FY27_DimAccountGeographyHierarchyReporting.Notebook",
+      "name": "Cosell_Gold_FY27_DimAccountGeographyHierarchyReporting",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_FY27_TPID_Mapping.Notebook",
+      "name": "Cosell_Gold_FY27_TPID_Mapping",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Map"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_PartnerDealPartnerReportedACR_Planning_Feed.Notebook",
+      "name": "Cosell_Gold_PartnerDealPartnerReportedACR_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Gold_PartnerDealSolution_Snapshot_Planning_Feed.Notebook",
+      "name": "Cosell_Gold_PartnerDealSolution_Snapshot_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Gold",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/Cosell_Silver_TopTierPartners_Planning_Feed.Notebook",
+      "name": "Cosell_Silver_TopTierPartners_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/DRACR_Planning_Feed.Notebook",
+      "name": "DRACR_Planning_Feed",
+      "area": "DRACR Planning",
+      "layer": "Other",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/ShortCut_Creation_DRACR.Notebook",
+      "name": "ShortCut_Creation_DRACR",
+      "area": "DRACR Planning",
+      "layer": "Other",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Flag_Update_for_BannerVisible.Notebook",
+      "name": "Flag_Update_for_BannerVisible",
+      "area": "Flag_Update_for_BannerVisible.Notebook",
+      "layer": "Other",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Gold/CoSell_Gold_BridgeCascadedPartnerOne.Notebook",
+      "name": "CoSell_Gold_BridgeCascadedPartnerOne",
+      "area": "Gold",
+      "layer": "Gold",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Bronze/TPP_Bronze_ImportCRM.Notebook",
+      "name": "TPP_Bronze_ImportCRM",
+      "area": "Joint Planning Reporting",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Bronze/TPP_Create_DeltaVersionTable_Bronze.Notebook",
+      "name": "TPP_Create_DeltaVersionTable_Bronze",
+      "area": "Joint Planning Reporting",
+      "layer": "Bronze",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Bronze/TPP_ShortCuts_Creation_Bronze.Notebook",
+      "name": "TPP_ShortCuts_Creation_Bronze",
+      "area": "Joint Planning Reporting",
+      "layer": "Bronze",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold_Publish/TPP_Gold_Publish_All_Tables.Notebook",
+      "name": "TPP_Gold_Publish_All_Tables",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold_Publish",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/Cosell_Gold_TPP_PlanPriority.Notebook",
+      "name": "Cosell_Gold_TPP_PlanPriority",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Gold_All_Tabels.Notebook",
+      "name": "TPP_Gold_All_Tabels",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolio.Notebook",
+      "name": "TPP_Gold_DimPortfolio",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolioAccount.Notebook",
+      "name": "TPP_Gold_DimPortfolioAccount",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolioPreLoadedPriority.Notebook",
+      "name": "TPP_Gold_DimPortfolioPreLoadedPriority",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolioPriorityTag.Notebook",
+      "name": "TPP_Gold_DimPortfolioPriorityTag",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Gold_FactPortfolioPartnerEngagement.Notebook",
+      "name": "TPP_Gold_FactPortfolioPartnerEngagement",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Gold_LatestRefresh.Notebook",
+      "name": "TPP_Gold_LatestRefresh",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Silver_DimPartnerAccount.Notebook",
+      "name": "TPP_Silver_DimPartnerAccount",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Gold/TPP_Silver_ImportCRM.Notebook",
+      "name": "TPP_Silver_ImportCRM",
+      "area": "Joint Planning Reporting",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/init/TPP_CreatePublishSchema.Notebook",
+      "name": "TPP_CreatePublishSchema",
+      "area": "Joint Planning Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/init/TPP_InitiateConfig_Refresh.Notebook",
+      "name": "TPP_InitiateConfig_Refresh",
+      "area": "Joint Planning Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/init/TPP_Latest_PublishSchema_update.Notebook",
+      "name": "TPP_Latest_PublishSchema_update",
+      "area": "Joint Planning Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/init/TPP_Prerequisites_Notebook.Notebook",
+      "name": "TPP_Prerequisites_Notebook",
+      "area": "Joint Planning Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/init/TPP_Reporting_Schema_Switch.Notebook",
+      "name": "TPP_Reporting_Schema_Switch",
+      "area": "Joint Planning Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/init/TPP_Reset_Notebook_Status.Notebook",
+      "name": "TPP_Reset_Notebook_Status",
+      "area": "Joint Planning Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/init/TPP_ShortCuts_Creation.Notebook",
+      "name": "TPP_ShortCuts_Creation",
+      "area": "Joint Planning Reporting",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Silver/TPP_Create_DeltaVersionTable_Silver.Notebook",
+      "name": "TPP_Create_DeltaVersionTable_Silver",
+      "area": "Joint Planning Reporting",
+      "layer": "Silver",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Silver/TPP_ShortCuts_Creation_Silver.Notebook",
+      "name": "TPP_ShortCuts_Creation_Silver",
+      "area": "Joint Planning Reporting",
+      "layer": "Silver",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Silver/TPP_Silver_DimCyAllAccounts.Notebook",
+      "name": "TPP_Silver_DimCyAllAccounts",
+      "area": "Joint Planning Reporting",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Silver/TPP_Silver_DimPortfolioSubPriority.Notebook",
+      "name": "TPP_Silver_DimPortfolioSubPriority",
+      "area": "Joint Planning Reporting",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Silver/TPP_Silver_DimPortfolioSubPriorityAccount.Notebook",
+      "name": "TPP_Silver_DimPortfolioSubPriorityAccount",
+      "area": "Joint Planning Reporting",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/Silver/TPP_Silver_New_DimPortfolioSubPriority.Notebook",
+      "name": "TPP_Silver_New_DimPortfolioSubPriority",
+      "area": "Joint Planning Reporting",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Bronze/MPR_Bronze_ImportAMM.Notebook",
+      "name": "MPR_Bronze_ImportAMM",
+      "area": "Majors Reporting",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Bronze/MPR_Bronze_ImportPower5.Notebook",
+      "name": "MPR_Bronze_ImportPower5",
+      "area": "Majors Reporting",
+      "layer": "Bronze",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Bronze/MPR_Bronze_Shortcut_Creation.Notebook",
+      "name": "MPR_Bronze_Shortcut_Creation",
+      "area": "Majors Reporting",
+      "layer": "Bronze",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Bronze/MPR_Bronze_UpdateDeltaVersion.Notebook",
+      "name": "MPR_Bronze_UpdateDeltaVersion",
+      "area": "Majors Reporting",
+      "layer": "Bronze",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Bronze/MPR_Extract_DimCustomer.Notebook",
+      "name": "MPR_Extract_DimCustomer",
+      "area": "Majors Reporting",
+      "layer": "Bronze",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Gold_Publish/MPR_Gold_Publish_All_Tables.Notebook",
+      "name": "MPR_Gold_Publish_All_Tables",
+      "area": "Majors Reporting",
+      "layer": "Gold_Publish",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Gold/MPR_Gold_All_Tables.Notebook",
+      "name": "MPR_Gold_All_Tables",
+      "area": "Majors Reporting",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/Majors_Schema_Switch_Reporting.Notebook",
+      "name": "Majors_Schema_Switch_Reporting",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_Create_DeltaVersionTable_Bronze.Notebook",
+      "name": "MPR_Create_DeltaVersionTable_Bronze",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_CreatePublishSchema.Notebook",
+      "name": "MPR_CreatePublishSchema",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_Initiate_Refresh.Notebook",
+      "name": "MPR_Initiate_Refresh",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_Latest_PublishSchema_update.Notebook",
+      "name": "MPR_Latest_PublishSchema_update",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_Prerequisites_Notebook.Notebook",
+      "name": "MPR_Prerequisites_Notebook",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_Reset_Notebook_Status.Notebook",
+      "name": "MPR_Reset_Notebook_Status",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_Set_Refresh_Status_as_Pass.Notebook",
+      "name": "MPR_Set_Refresh_Status_as_Pass",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Init/MPR_Shortcut_Creation.Notebook",
+      "name": "MPR_Shortcut_Creation",
+      "area": "Majors Reporting",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Silver/MPR_Silver_AMM_Data.Notebook",
+      "name": "MPR_Silver_AMM_Data",
+      "area": "Majors Reporting",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Silver/MPR_Silver_SnapshotData.Notebook",
+      "name": "MPR_Silver_SnapshotData",
+      "area": "Majors Reporting",
+      "layer": "Silver",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Silver/MPR_Silver_TransformAndRestrictData.Notebook",
+      "name": "MPR_Silver_TransformAndRestrictData",
+      "area": "Majors Reporting",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Warm_Caching_Temperature_Stats.Notebook",
+      "name": "Warm_Caching_Temperature_Stats",
+      "area": "Majors Reporting",
+      "layer": "Other",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_DimMSXCustomer_Planning.Notebook",
+      "name": "Cosell_Gold_DimMSXCustomer_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_DimPartnerDeal_Planning.Notebook",
+      "name": "Cosell_Gold_DimPartnerDeal_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_DimPartnerOne_Planning.Notebook",
+      "name": "Cosell_Gold_DimPartnerOne_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_DimReportingPartnerOneSub_Planning.Notebook",
+      "name": "Cosell_Gold_DimReportingPartnerOneSub_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_FactCRMPartner_Planning.Notebook",
+      "name": "Cosell_Gold_FactCRMPartner_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_FactOpportunity_int_Planning.Notebook",
+      "name": "Cosell_Gold_FactOpportunity_int_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_FactPartnerDeal_int_Planning.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_int_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_FactPartnerDeal_Planning.Notebook",
+      "name": "Cosell_Gold_FactPartnerDeal_Planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Gold_int_dimreportingpartneronesub_planning.Notebook",
+      "name": "Cosell_Gold_int_dimreportingpartneronesub_planning",
+      "area": "Planning",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/Planning/Cosell_Silver_BridgeCascadedPartnerOne_Planning.Notebook",
+      "name": "Cosell_Silver_BridgeCascadedPartnerOne_Planning",
+      "area": "Planning",
+      "layer": "Silver",
+      "kind": "Bridge"
+    },
+    {
+      "path": "/Fabric/Planning/Shortcuts_Creation_PMPlanning.Notebook",
+      "name": "Shortcuts_Creation_PMPlanning",
+      "area": "Planning",
+      "layer": "Other",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Cosell_Gold_AnalysisFrameWork.Notebook",
+      "name": "Cosell_Gold_AnalysisFrameWork",
+      "area": "PRACFlow",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Cosell_Gold_PRACRImprovementsSendmail.Notebook",
+      "name": "Cosell_Gold_PRACRImprovementsSendmail",
+      "area": "PRACFlow",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/PRACFlow/CoSell_Gold_PRACRSnapshot.Notebook",
+      "name": "CoSell_Gold_PRACRSnapshot",
+      "area": "PRACFlow",
+      "layer": "Gold",
+      "kind": "Snapshot"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Cosell_PRACR_IndividualFilesCopyFromSharepoint.Notebook",
+      "name": "Cosell_PRACR_IndividualFilesCopyFromSharepoint",
+      "area": "PRACFlow",
+      "layer": "Other",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Cosell_Silver_TrueACRPartnerDealBase.Notebook",
+      "name": "Cosell_Silver_TrueACRPartnerDealBase",
+      "area": "PRACFlow",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_Dim_DigitallyOffboardedPartner.Notebook",
+      "name": "Cosell_Gold_Dim_DigitallyOffboardedPartner",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_DimAccountPersonnel.Notebook",
+      "name": "Cosell_Gold_DimAccountPersonnel",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_DimPartner.Notebook",
+      "name": "Cosell_Gold_DimPartner",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_DimRedCarpetActivity.Notebook",
+      "name": "Cosell_Gold_DimRedCarpetActivity",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_DimRedCarpetPartner.Notebook",
+      "name": "Cosell_Gold_DimRedCarpetPartner",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_FactPBP.Notebook",
+      "name": "Cosell_Gold_FactPBP",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Fact"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_Redcarpet_DimMPL.Notebook",
+      "name": "Cosell_Gold_Redcarpet_DimMPL",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/Cosell_Gold_Redcarpet_Geography.Notebook",
+      "name": "Cosell_Gold_Redcarpet_Geography",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/RedCarpet_Flag_Update_for_BannerVisible.Notebook",
+      "name": "RedCarpet_Flag_Update_for_BannerVisible",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Gold/RedCarpet_RefreshStatus.Notebook",
+      "name": "RedCarpet_RefreshStatus",
+      "area": "RedCarpet",
+      "layer": "Gold",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Init/Cosell_Redcarpet_Create_Publish_Schema.Notebook",
+      "name": "Cosell_Redcarpet_Create_Publish_Schema",
+      "area": "RedCarpet",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Init/Create_Redcarpet_DeltaVersionTable_Silver.Notebook",
+      "name": "Create_Redcarpet_DeltaVersionTable_Silver",
+      "area": "RedCarpet",
+      "layer": "Init",
+      "kind": "Orchestration"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Init/Shortcuts_Creation_Redcarpet_Silver.Notebook",
+      "name": "Shortcuts_Creation_Redcarpet_Silver",
+      "area": "RedCarpet",
+      "layer": "Init",
+      "kind": "Shortcut"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_Account.Notebook",
+      "name": "Cosell_RedCarpet_Silver_Account",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_AccountToPersonMapping.Notebook",
+      "name": "Cosell_RedCarpet_Silver_AccountToPersonMapping",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_CountryTaxonomy.Notebook",
+      "name": "Cosell_RedCarpet_Silver_CountryTaxonomy",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_DimMSXSolution.Notebook",
+      "name": "Cosell_RedCarpet_Silver_DimMSXSolution",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_DimReportingGeography.Notebook",
+      "name": "Cosell_RedCarpet_Silver_DimReportingGeography",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Dimension"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_PartnerAccount.Notebook",
+      "name": "Cosell_RedCarpet_Silver_PartnerAccount",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_PartnerAccountPersonnel.Notebook",
+      "name": "Cosell_RedCarpet_Silver_PartnerAccountPersonnel",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_PlanProfile&#32;.Notebook",
+      "name": "Cosell_RedCarpet_Silver_PlanProfile&#32;",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_SellInCountryMapping.Notebook",
+      "name": "Cosell_RedCarpet_Silver_SellInCountryMapping",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_Solution.Notebook",
+      "name": "Cosell_RedCarpet_Silver_Solution",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_SolutionIndustryPlacement.Notebook",
+      "name": "Cosell_RedCarpet_Silver_SolutionIndustryPlacement",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_SolutionSolutionAreaPlacement.Notebook",
+      "name": "Cosell_RedCarpet_Silver_SolutionSolutionAreaPlacement",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Silver/Cosell_Silver_RedCarpetActivity.Notebook",
+      "name": "Cosell_Silver_RedCarpetActivity",
+      "area": "RedCarpet",
+      "layer": "Silver",
+      "kind": "Other"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Warm_Caching_Temperature_Stats_RedCarpet.Notebook",
+      "name": "Warm_Caching_Temperature_Stats_RedCarpet",
+      "area": "RedCarpet",
+      "layer": "Other",
+      "kind": "Other"
+    }
+  ],
+  "pipelines": [
+    {
+      "path": "/Fabric/CoMarketing/Pipeline/CoMarketing_Master_Pipeline.DataPipeline",
+      "name": "CoMarketing_Master_Pipeline",
+      "area": "CoMarketing"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Bronze_Pipeline.DataPipeline",
+      "name": "CoSell_Bronze_Pipeline",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Bronze_Validate.DataPipeline",
+      "name": "CoSell_Bronze_Validate",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/Cosell_Gold_Pipeline_V3.DataPipeline",
+      "name": "Cosell_Gold_Pipeline_V3",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Gold_Pipeline_V4.DataPipeline",
+      "name": "CoSell_Gold_Pipeline_V4",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Gold_Pipeline.DataPipeline",
+      "name": "CoSell_Gold_Pipeline",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Gold_Validation.DataPipeline",
+      "name": "CoSell_Gold_Validation",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Master_Pipeline.DataPipeline",
+      "name": "CoSell_Master_Pipeline",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Publish_Schema_Pipeline.DataPipeline",
+      "name": "CoSell_Publish_Schema_Pipeline",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/Cosell_Reset_Flag.DataPipeline",
+      "name": "Cosell_Reset_Flag",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Silver_Pipeline.DataPipeline",
+      "name": "CoSell_Silver_Pipeline",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/CoSell_Silver_Validate.DataPipeline",
+      "name": "CoSell_Silver_Validate",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/Gold_Pipeline_V2.DataPipeline",
+      "name": "Gold_Pipeline_V2",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/PartnerSharing_Gold_Pipeline.DataPipeline",
+      "name": "PartnerSharing_Gold_Pipeline",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/PartnerSharing_Master_Pipeline.DataPipeline",
+      "name": "PartnerSharing_Master_Pipeline",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/Cosell/Pipelines/SilverNotebooks.DataPipeline",
+      "name": "SilverNotebooks",
+      "area": "Cosell"
+    },
+    {
+      "path": "/Fabric/DRACR Planning/DRACR_Pipeline.DataPipeline",
+      "name": "DRACR_Pipeline",
+      "area": "DRACR Planning"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/pipeline/TPP_Bronze.DataPipeline",
+      "name": "TPP_Bronze",
+      "area": "Joint Planning Reporting"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/pipeline/TPP_Gold.DataPipeline",
+      "name": "TPP_Gold",
+      "area": "Joint Planning Reporting"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/pipeline/TPP_Master_Pipeline.DataPipeline",
+      "name": "TPP_Master_Pipeline",
+      "area": "Joint Planning Reporting"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/pipeline/TPP_Master_Refreshed.DataPipeline",
+      "name": "TPP_Master_Refreshed",
+      "area": "Joint Planning Reporting"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/pipeline/TPP_Publish_Pipeline.DataPipeline",
+      "name": "TPP_Publish_Pipeline",
+      "area": "Joint Planning Reporting"
+    },
+    {
+      "path": "/Fabric/Joint Planning Reporting/pipeline/TPP_Silver.DataPipeline",
+      "name": "TPP_Silver",
+      "area": "Joint Planning Reporting"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Pipeline/AMM_Datapipeline.DataPipeline",
+      "name": "AMM_Datapipeline",
+      "area": "Majors Reporting"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Pipeline/MPR_Bronze.DataPipeline",
+      "name": "MPR_Bronze",
+      "area": "Majors Reporting"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Pipeline/MPR_Gold.DataPipeline",
+      "name": "MPR_Gold",
+      "area": "Majors Reporting"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Pipeline/MPR_Master_Pipeline_V2.DataPipeline",
+      "name": "MPR_Master_Pipeline_V2",
+      "area": "Majors Reporting"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Pipeline/MPR_Master_Refresh_Pipeline.DataPipeline",
+      "name": "MPR_Master_Refresh_Pipeline",
+      "area": "Majors Reporting"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Pipeline/MPR_Publish_Pipeline.DataPipeline",
+      "name": "MPR_Publish_Pipeline",
+      "area": "Majors Reporting"
+    },
+    {
+      "path": "/Fabric/Majors Reporting/Pipeline/MPR_Silver.DataPipeline",
+      "name": "MPR_Silver",
+      "area": "Majors Reporting"
+    },
+    {
+      "path": "/Fabric/Planning/MHR_Planning_Pipeline.DataPipeline",
+      "name": "MHR_Planning_Pipeline",
+      "area": "Planning"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Pipeline/PRACR_Master.DataPipeline",
+      "name": "PRACR_Master",
+      "area": "PRACFlow"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Pipeline/PRACR_ProcessPartnerFiles.DataPipeline",
+      "name": "PRACR_ProcessPartnerFiles",
+      "area": "PRACFlow"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Pipeline/PRACR_Snapshot.DataPipeline",
+      "name": "PRACR_Snapshot",
+      "area": "PRACFlow"
+    },
+    {
+      "path": "/Fabric/PRACFlow/Pipeline/PRACR_Trigger_Email.DataPipeline",
+      "name": "PRACR_Trigger_Email",
+      "area": "PRACFlow"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Gold_Pipeline.DataPipeline",
+      "name": "CoSell_RedCarpet_Gold_Pipeline",
+      "area": "RedCarpet"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Master_Full_Refresh_Pipeline.DataPipeline",
+      "name": "CoSell_RedCarpet_Master_Full_Refresh_Pipeline",
+      "area": "RedCarpet"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Master_Pipeline.DataPipeline",
+      "name": "CoSell_RedCarpet_Master_Pipeline",
+      "area": "RedCarpet"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Publish_Pipeline.DataPipeline",
+      "name": "CoSell_RedCarpet_Publish_Pipeline",
+      "area": "RedCarpet"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Pipeline/Cosell_Redcarpet_Reporting_Shortcut_Creation.DataPipeline",
+      "name": "Cosell_Redcarpet_Reporting_Shortcut_Creation",
+      "area": "RedCarpet"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Silver_Pipeline.DataPipeline",
+      "name": "CoSell_RedCarpet_Silver_Pipeline",
+      "area": "RedCarpet"
+    },
+    {
+      "path": "/Fabric/RedCarpet/Pipeline/RedCarpet_Reset_Flag.DataPipeline",
+      "name": "RedCarpet_Reset_Flag",
+      "area": "RedCarpet"
+    },
+    {
+      "path": "/Fabric/Reset flag.DataPipeline",
+      "name": "Reset flag",
+      "area": "Reset flag.DataPipeline"
+    }
+  ],
+  "models": [
+    "CoMarketingModel",
+    "CoSellSemanticModel",
+    "majorsSemanticModel",
+    "MRoB Model",
+    "Partner Planning and Transition Dataset",
+    "PartnerSharingModel",
+    "PSA_Impact_Dataset",
+    "TPP_Dataset_Model",
+    "UsageMetricReport"
+  ],
+  "reports": [
+    "Co-Marketing Performance Dashboard",
+    "GPS Insights Hub - Sell-With - Referral and Co-Sell",
+    "GPS Insights Hub - Sell-With - Solution Performance",
+    "GPS SingleMPN Sell With",
+    "IP Co-sell",
+    "MPR Dashboard",
+    "MSX Insights - Partner Sharing HBI - Strictly Confidential - Specialist",
+    "MSX Insights - Partner Sharing HBI - Strictly Confidential",
+    "Partner Planning and Transition",
+    "PDM Pipeline Insights",
+    "Pipeline Flow Execution",
+    "Power 5",
+    "PSA Impact Reporting",
+    "Services Co-sell Dashboard"
+  ]
+}

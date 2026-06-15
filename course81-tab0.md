@@ -1,0 +1,106 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - button [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - link "LDP Logo" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "LDP Logo" [ref=e12]
+      - navigation "breadcrumb" [ref=e13]:
+        - list [ref=e14]:
+          - listitem:
+            - link:
+              - /url: /
+          - listitem [ref=e15]: ›
+          - listitem [ref=e16]:
+            - link "Tracks" [ref=e17] [cursor=pointer]:
+              - /url: /tracks
+              - generic [ref=e18]: Tracks
+          - listitem [ref=e19]: ›
+          - listitem [ref=e20]:
+            - link "[AZR-PE102] Developing Solutions for Microsoft Azure" [ref=e21] [cursor=pointer]:
+              - /url: /tracks/specialization/28
+              - generic [ref=e22]: "[AZR-PE102] Developing Solutions for Microsoft Azure"
+          - listitem [ref=e23]: ›
+          - listitem [ref=e24]:
+            - link "AZ - 204" [ref=e25] [cursor=pointer]:
+              - /url: /tracks/specialization/28/course/81
+              - generic [ref=e26]: AZ - 204
+      - button [ref=e28] [cursor=pointer]:
+        - img [ref=e29]
+      - button [ref=e32] [cursor=pointer]:
+        - img [ref=e33]
+  - generic [ref=e37]:
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - heading "AZ - 204" [level=4] [ref=e40]
+        - button "End Course" [ref=e41] [cursor=pointer]: End Course
+      - generic [ref=e42]:
+        - 'heading "Score: 4 out of 48 (8.33%)" [level=6] [ref=e43]'
+        - 'heading "Passing Criteria: 70%" [level=6] [ref=e44]'
+        - 'heading "Attempted Questions: 13/13" [level=6] [ref=e45]'
+    - separator [ref=e46]
+    - group "Question Filters" [ref=e48]:
+      - button "Passed" [ref=e49] [cursor=pointer]: Passed
+      - button "Failed" [ref=e50] [cursor=pointer]: Failed
+      - button "Evaluating" [ref=e51] [cursor=pointer]: Evaluating
+      - button "Unattempted" [ref=e52] [cursor=pointer]: Unattempted
+      - button "Partial" [ref=e53] [cursor=pointer]: Partial
+    - generic [ref=e54]:
+      - generic [ref=e56]:
+        - generic:
+          - img
+        - tablist [ref=e59]:
+          - tab "Implement IaaS solutions" [selected] [ref=e60] [cursor=pointer]: Implement IaaS solutions
+          - tab "Create Azure App Service Web Apps" [ref=e61] [cursor=pointer]: Create Azure App Service Web Apps
+          - tab "Implement Azure functions" [ref=e62] [cursor=pointer]: Implement Azure functions
+          - tab "Develop solutions that use Cosmos DB storage" [ref=e63] [cursor=pointer]: Develop solutions that use Cosmos DB storage
+          - tab "Develop solutions that use blob storage" [ref=e64] [cursor=pointer]: Develop solutions that use blob storage
+          - tab "Implement user authentication and authorization" [ref=e65] [cursor=pointer]: Implement user authentication and authorization
+          - tab "Implement secure cloud solutions" [ref=e66] [cursor=pointer]: Implement secure cloud solutions
+          - tab "Integrate caching and content delivery within solutions" [ref=e67] [cursor=pointer]: Integrate caching and content delivery within solutions
+          - tab "Instrument solutions to support monitoring and logging" [ref=e68] [cursor=pointer]: Instrument solutions to support monitoring and logging
+          - tab "Develop an App Service Logic App" [ref=e69] [cursor=pointer]: Develop an App Service Logic App
+          - tab "Implement API Management" [ref=e70] [cursor=pointer]: Implement API Management
+          - tab "Develop event-based solutions" [ref=e71] [cursor=pointer]: Develop event-based solutions
+          - tab "Develop message-based solutions" [ref=e72] [cursor=pointer]: Develop message-based solutions
+        - img [ref=e75] [cursor=pointer]
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - heading "Problem Statement 1" [level=5] [ref=e80]
+          - generic [ref=e81]:
+            - 'heading "Weightage: 10" [level=6] [ref=e82]'
+            - 'heading "Status: Failed" [level=6] [ref=e83]'
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: Complete the following Microsoft Learning module, and submit your username.
+          - paragraph [ref=e86]
+          - list [ref=e87]:
+            - listitem [ref=e88]:
+              - text: "Provision VMs:"
+              - link "https://docs.microsoft.com/en-us/learn/modules/create-windows-virtual-machine-in-azure/" [ref=e89] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/learn/modules/create-windows-virtual-machine-in-azure/
+            - listitem [ref=e90]:
+              - text: "Configure VMs for remote access:"
+              - link "https://docs.microsoft.com/en-us/learn/modules/manage-virtual-machines-with-azure-cli/" [ref=e91] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/learn/modules/manage-virtual-machines-with-azure-cli/
+            - listitem [ref=e92]:
+              - text: "Create ARM templates:"
+              - link "https://docs.microsoft.com/en-us/learn/modules/build-azure-vm-templates/" [ref=e93] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/learn/modules/build-azure-vm-templates/
+            - listitem [ref=e94]:
+              - text: "Create container images for solutions by using Docker:"
+              - link "https://docs.microsoft.com/en-us/learn/modules/build-and-store-container-images/" [ref=e95] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/learn/modules/build-and-store-container-images/
+            - listitem [ref=e96]:
+              - text: "Publish an image to the Azure Container Registry:"
+              - link "https://docs.microsoft.com/en-us/learn/paths/administer-containers-in-azure/" [ref=e97] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/learn/paths/administer-containers-in-azure/
+            - listitem [ref=e98]:
+              - text: "Run containers by using Azure Container Instance:"
+              - link "https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/" [ref=e99] [cursor=pointer]:
+                - /url: https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/
+          - paragraph
+        - button "Mark as Done" [ref=e101] [cursor=pointer]: Mark as Done
+        - separator [ref=e102]
+    - generic [ref=e103]:
+      - button "submit" [disabled]: Submit

@@ -1,0 +1,20 @@
+## Notebook Checklist:
+- [ ] Check if revision history is updated in the notebook
+- [ ] Check if status flags are implemented
+- [ ] Notebook should not be attached to any lakehouse.
+- [ ] For Notebooks make sure we follow naming convention, <stream_name>_<gold/silver/bronze> as prefix
+- [ ] Remove unused and commented code
+- [ ] Provide markdown in the notebook for describing the specific logic
+- [ ] Check we are not using %%sql in the notebook.
+- [ ] Check we don't have any unused view or variable.
+- [ ] Check if we are not printing unnecessary variables anywhere in the notebook
+- [ ] Check if we are providing proper spacing before and after variables e.g. before and after '+' symbol
+- [ ] Check if we are not reimporting the same assets in the notebook.
+- [ ] Check if we are raising PR for the correct folder and notebook in repo
+- [ ] Check if setNotebookStatus is used at the end of the notebook
+- [ ] Check whether we are creating views for temporary tables
+- [ ] Check whether "tmp" or "vw" in the names of temporary views is not used
+- [ ] Check whether there is no occurrence of “OCP”
+- [ ] Have you reviewed your PR using AI Tools?
+- [ ] Check if we have only proper Tasks added in the Work Items.
+- [ ] Check there are no commented code blocks present.

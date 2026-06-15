@@ -1,0 +1,22 @@
+{
+  "name": "slicer-auto",
+  "version": "0.1.0",
+  "description": "Custom Power BI slicer visual matching the default slicer UI/UX. Supports List, Dropdown, Tile, Hierarchy, Numeric Range and Date Range modes.",
+  "scripts": {
+    "pbiviz": "pbiviz",
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "lint": "eslint src --ext .ts"
+  },
+  "devDependencies": {
+    "@types/node": "~20.12.7",
+    "less": "~4.2.0",
+    "powerbi-visuals-api": "~5.11.0",
+    "powerbi-visuals-tools": "~5.5.1",
+    "powerbi-visuals-utils-formattingmodel": "~6.1.0",
+    "typescript": "~5.4.5"
+  },
+  "dependencies": {
+    "powerbi-models": "^2.0.1"
+  }
+}

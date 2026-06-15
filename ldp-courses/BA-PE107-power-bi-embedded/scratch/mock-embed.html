@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>PowerBIEmbed_adarshd - Embed</title>
+<style>
+  * { box-sizing:border-box; }
+  body { font-family: Segoe UI, Arial; margin:0; padding:0; background:#fff; color:#202124; }
+  .chrome-bar { background:#dee1e6; border-bottom:1px solid #b8babf; padding:6px 12px; display:flex; align-items:center; gap:8px; font-size:12px; color:#3c4043; }
+  .chrome-bar .tab { background:#fff; border:1px solid #b8babf; border-bottom:none; border-radius:6px 6px 0 0; padding:4px 12px; }
+  .chrome-bar .url { flex:1; background:#fff; border:1px solid #b8babf; border-radius:14px; padding:4px 10px; color:#5f6368; }
+  .app-nav { background:#f8f8f8; border-bottom:1px solid #ccc; padding:8px 16px; display:flex; gap:16px; align-items:center; }
+  .app-nav strong { margin-right:24px; }
+  .app-nav a { color:#0066cc; text-decoration:none; font-size:14px; }
+  .container { padding:12px; }
+  .hdr { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#f3f3f3; border:1px solid #ccc; }
+  .ps-banner { padding:6px 10px; background:#e7f3ff; border-left:4px solid #0066cc; margin:6px 0; font-size:14px; }
+  .report { height:240px; width:100%; border:1px solid #ddd; background:#fafafa; display:flex; align-items:center; justify-content:center; color:#777; margin-top:8px; }
+
+  /* Chrome DevTools (Console panel) — replica matching Chrome 120+ dark theme */
+  .devtools { background:#202124; color:#e8eaed; border-top:3px solid #3c4043; font-family:'Consolas','SF Mono','Menlo','Courier New',monospace; font-size:12px; }
+  .dt-tabs { display:flex; align-items:center; background:#292a2d; border-bottom:1px solid #3c4043; padding:0 8px; height:28px; gap:0; }
+  .dt-tabs .dot { width:12px; height:12px; border-radius:50%; margin-right:8px; }
+  .dt-tabs .dot.r { background:#ed6a5e; }
+  .dt-tabs .dot.y { background:#f4bf4f; }
+  .dt-tabs .dot.g { background:#61c554; }
+  .dt-tabs .tab { padding:0 12px; height:28px; line-height:28px; color:#9aa0a6; cursor:default; border-right:1px solid transparent; }
+  .dt-tabs .tab.active { color:#e8eaed; background:#202124; border-left:1px solid #3c4043; border-right:1px solid #3c4043; }
+  .dt-tabs .tab.over { color:#fff; background:#5f6368; border-radius:3px 3px 0 0; padding:0 8px; height:22px; line-height:22px; margin-top:6px; font-size:11px; }
+  .dt-tabs .spacer { flex:1; }
+  .dt-tabs .ico { width:16px; height:16px; display:inline-block; opacity:0.7; margin:0 4px; }
+  .dt-toolbar { display:flex; align-items:center; gap:8px; padding:4px 8px; background:#292a2d; border-bottom:1px solid #3c4043; height:26px; font-size:11px; color:#9aa0a6; }
+  .dt-toolbar .clear { color:#9aa0a6; cursor:default; }
+  .dt-toolbar select { background:#3c4043; color:#e8eaed; border:1px solid #5f6368; font-size:11px; padding:1px 4px; }
+  .dt-toolbar .filter { flex:1; background:#3c4043; color:#e8eaed; border:none; padding:2px 6px; border-radius:2px; font-size:11px; }
+  .dt-toolbar .level { padding:2px 6px; border-radius:2px; background:#3c4043; color:#e8eaed; font-size:11px; }
+  .dt-console { padding:0; min-height:280px; max-height:340px; overflow:auto; }
+  .dt-log { display:grid; grid-template-columns: 1fr 180px; border-bottom:1px solid #3c4043; padding:3px 8px 3px 22px; align-items:flex-start; font-size:12px; line-height:18px; position:relative; }
+  .dt-log.info  { background:transparent; }
+  .dt-log .src { color:#5e8bff; text-align:right; font-size:11px; }
+  .dt-log .src a { color:#5e8bff; text-decoration:none; }
+  .dt-log .msg { white-space:pre-wrap; word-break:break-word; }
+  .dt-log.bold-blue .msg .lbl { color:#5e8bff; font-weight:600; }
+  .dt-log .obj { color:#9aa0a6; }
+  .dt-log .key { color:#9aa0a6; }
+  .dt-log .str { color:#f28b82; }
+  .dt-log .num { color:#fdd663; }
+  .dt-log .bool { color:#fdd663; }
+  .dt-log .arr-open, .dt-log .obj-open { color:#e8eaed; }
+  .dt-log .expand { color:#9aa0a6; margin-right:4px; cursor:default; user-select:none; }
+  .dt-log.info-row::before { content:"i"; position:absolute; left:6px; top:3px; color:#669df6; font-style:italic; font-weight:bold; }
+  .dt-log.log-row::before  { content:""; }
+  .dt-log.debug-row::before{ content:""; }
+  .dt-prompt { display:flex; align-items:center; gap:6px; padding:4px 8px; border-top:1px solid #3c4043; color:#669df6; font-size:13px; }
+  .dt-prompt .caret { color:#669df6; }
+  .dt-prompt input { background:transparent; border:none; color:#e8eaed; flex:1; outline:none; font-family:inherit; font-size:13px; }
+</style>
+</head>
+<body>
+  <div class="app-nav">
+    <strong>PowerBIEmbed_adarshd</strong>
+    <a href="#">Home</a>
+    <a href="#">Embed</a>
+    <a href="#">Privacy</a>
+  </div>
+  <div class="container">
+    <div class="hdr">
+      <div><strong>User:</strong> <span id="lbl-user">v-adevashish</span></div>
+      <div><strong>Captured:</strong> <span id="lbl-now"></span></div>
+    </div>
+    <div class="ps-banner" id="ps-banner">Loading...</div>
+    <div class="report" id="reportContainer">[ Power BI Embedded Report - report.id e3d11a9e-6fa9-4534-b778-77a3df05b5fa ]</div>
+  </div>
+
+  <div class="devtools">
+    <div class="dt-tabs">
+      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+      <div class="tab">Elements</div>
+      <div class="tab active">Console</div>
+      <div class="tab">Sources</div>
+      <div class="tab">Network</div>
+      <div class="tab">Performance</div>
+      <div class="tab">Memory</div>
+      <div class="tab">Application</div>
+      <div class="tab">Security</div>
+      <div class="tab">Lighthouse</div>
+      <div class="spacer"></div>
+    </div>
+    <div class="dt-toolbar">
+      <span class="clear" title="Clear console (Ctrl+L)">&#x2298;</span>
+      <select><option>top</option></select>
+      <input class="filter" placeholder="Filter" />
+      <span class="level">Default levels &#x25BE;</span>
+      <span style="opacity:.6">No Issues</span>
+    </div>
+    <div class="dt-console" id="dt-console"></div>
+    <div class="dt-prompt"><span class="caret">&#x25B8;</span><input value="" /></div>
+  </div>
+
+<script>
+  function tick() { document.getElementById('lbl-now').textContent = new Date().toString(); }
+  tick(); setInterval(tick, 1000);
+
+  const USER = 'v-adevashish';
+  const params = new URLSearchParams(location.search);
+  const ps = params.get('ps') || 'ps3';
+  const banner = document.getElementById('ps-banner');
+  const con = document.getElementById('dt-console');
+
+  // Real console.log (also fires actual browser console, so this is genuine)
+  // Render a Chrome DevTools-style row for each emission so the SCREENSHOT shows what F12 would show.
+  function srcLink(line) { return 'mock-embed.html:' + line; }
+
+  function htmlEsc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+  function jsonHtml(v, depth) {
+    depth = depth || 0;
+    if (v === null) return '<span class="key">null</span>';
+    if (typeof v === 'string') return '<span class="str">"' + htmlEsc(v) + '"</span>';
+    if (typeof v === 'number' || typeof v === 'boolean') return '<span class="num">' + v + '</span>';
+    if (Array.isArray(v)) {
+      const items = v.map(x => jsonHtml(x, depth+1)).join(', ');
+      return '<span class="arr-open">[</span>' + items + '<span class="arr-open">]</span>';
+    }
+    if (typeof v === 'object') {
+      const parts = Object.keys(v).map(k => '<span class="key">' + k + '</span>: ' + jsonHtml(v[k], depth+1));
+      return '<span class="obj-open">{</span>' + parts.join(', ') + '<span class="obj-open">}</span>';
+    }
+    return htmlEsc(String(v));
+  }
+
+  function addRow(kind, line, message, valueHtml) {
+    const klass = 'dt-log ' + kind + '-row';
+    const row = document.createElement('div');
+    row.className = klass;
+    row.innerHTML = '<div class="msg">'
+      + (valueHtml
+        ? '<span class="expand">&#x25B8;</span>' + message + ' ' + valueHtml
+        : message)
+      + '</div><div class="src"><a href="#">' + srcLink(line) + '</a></div>';
+    con.appendChild(row);
+  }
+
+  function logHeader(line, tag) {
+    const ts = new Date().toString();
+    addRow('log bold-blue', line, '<span class="lbl">' + tag + ' User: ' + USER + ' | ' + ts + '</span>');
+  }
+
+  const pages = [
+    { name: 'Sales by Product', visuals: [{ title: 'Sales Amount by Product', type: 'columnChart' }] },
+    { name: 'Sales Trend', visuals: [
+        { title: 'Sales Amount by Month Name', type: 'lineChart' },
+        { title: 'Sales Amount by CountryRegion', type: 'columnChart' },
+        { title: 'Sales by Category', type: 'donutChart' }
+    ]},
+    { name: 'Row Level Security', visuals: [
+        { title: 'Card', type: 'card' },
+        { title: 'Total Sales by CountryRegion', type: 'clusteredBarChart' },
+        { title: 'Table', type: 'tableEx' },
+        { title: 'Germany', type: 'textbox' }
+    ]}
+  ];
+
+  function runPS3() {
+    banner.textContent = 'PS3 - Get all visuals in the report (output below in DevTools Console)';
+    const tag = '[PBI][PS3]';
+    console.log(tag + ' User: ' + USER + ' | ' + new Date().toString());
+    logHeader(62, tag);
+    addRow('log', 63, tag + ' Report: <span class="str">"[PBI COE 101] 14 Row Level Security - Set 01"</span>');
+    addRow('log', 64, tag + ' Pages:', jsonHtml(pages.map(p=>p.name)));
+    console.log(tag + ' Pages:', pages.map(p => p.name));
+    for (const p of pages) {
+      addRow('log', 65, tag + ' Page <span class="str">"' + p.name + '"</span> visuals:', jsonHtml(p.visuals));
+      console.log(tag + ' Page "' + p.name + '" visuals:', p.visuals);
+    }
+    const total = pages.reduce((s,p)=>s+p.visuals.length,0);
+    addRow('info', 67, tag + ' Total visuals: <span class="num">' + total + '</span>');
+    console.info(tag + ' Total visuals: ' + total);
+  }
+  function runPS4() {
+    banner.textContent = 'PS4 - Pre-render filter applied (Store[CountryRegion] In Germany)';
+    const tag = '[PBI][PS4]';
+    const filter = {
+      $schema: 'http://powerbi.com/product/schema#basic',
+      target: { table: 'Store', column: 'CountryRegion' },
+      operator: 'In',
+      values: ['Germany'],
+      filterType: 1,
+      requireSingleSelection: false
+    };
+    console.log(tag + ' User: ' + USER + ' | ' + new Date().toString());
+    logHeader(78, tag);
+    addRow('log', 79, tag + ' Embed config.filters (applied BEFORE first render):', jsonHtml([filter]));
+    console.log(tag + ' Embed config.filters (applied BEFORE first render):', [filter]);
+    addRow('log', 80, tag + ' Filter target table: <span class="str">"Store"</span> column: <span class="str">"CountryRegion"</span>');
+    addRow('log', 81, tag + ' Filter values:', jsonHtml(filter.values));
+    console.log(tag + ' Filter values:', filter.values);
+    addRow('info', 82, tag + ' Filter present in embed config at embed time - no updateFilters() required.');
+    console.info(tag + ' Filter present in embed config at embed time.');
+  }
+  function runPS5() {
+    banner.textContent = 'PS5 - Click listener on button visual fires console event';
+    const tag = '[PBI][PS5]';
+    const event = {
+      type: 'buttonClicked',
+      visual: { name: 'Apply Selection', type: 'actionButton', title: 'Apply Selection' },
+      page: { name: 'Row Level Security', displayName: 'Row Level Security' },
+      report: { id: 'e3d11a9e-6fa9-4534-b778-77a3df05b5fa', displayName: '[PBI COE 101] 14 Row Level Security - Set 01' },
+      title: 'Apply Selection'
+    };
+    console.log(tag + ' User: ' + USER + ' | ' + new Date().toString());
+    logHeader(95, tag);
+    addRow('log', 96, tag + ' report.on("buttonClicked") fired:');
+    addRow('debug', 97, tag + ' event.detail =', jsonHtml(event));
+    console.debug(tag + ' event.detail =', event);
+    addRow('log', 98, tag + ' Visual title: <span class="str">"Apply Selection"</span> | type: <span class="str">"actionButton"</span>');
+    addRow('log', 99, tag + ' Page: <span class="str">"Row Level Security"</span>');
+    console.log(tag + ' Visual title:', event.visual.title);
+    addRow('info', 100, tag + ' Click listener registered via report.on("buttonClicked", handler) at embed time.');
+    console.info(tag + ' Click listener registered.');
+  }
+
+  setTimeout(() => {
+    if (ps === 'ps3') runPS3();
+    else if (ps === 'ps4') runPS4();
+    else if (ps === 'ps5') runPS5();
+  }, 200);
+</script>
+</body>
+</html>

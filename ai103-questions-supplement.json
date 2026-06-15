@@ -1,0 +1,175 @@
+{
+  "section": "Additional AI-103 Questions — Community Exam-Prep Sources (verified topically relevant to AI-103 domains)",
+  "note": "Sourced from public AI-103 exam-prep sites (CertyIQ, Pass4Success, ITExams). Answers marked [source-confirmed] were provided by the source's answer key; answers marked [expert-verified] were determined against Microsoft Learn documentation. HOTSPOT/DRAG-DROP/case-study items were excluded because their answer keys are image-based and do not fit a 4-option format.",
+  "items": [
+    {
+      "id": "ai-103-x-001",
+      "question": "An AI-103 case-study agent (Agent1) ingests product sheets that may contain images with embedded text. The agent must be protected from malicious instructions potentially hidden within those images. Which Azure AI Content Safety capability should you use?",
+      "options": [
+        "Self-harm content filtering",
+        "Prompt Shields",
+        "Personally identifiable information (PII) Detection",
+        "Violence content filtering"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Prompt Shields detect direct jailbreak attempts and indirect (cross-prompt) injection attacks, including malicious instructions hidden in retrieved content and multimodal inputs such as images. [source-confirmed: CertyIQ AI-103 Q2]",
+      "source": "CertyIQ AI-103 Q2"
+    },
+    {
+      "id": "ai-103-x-002",
+      "question": "A Microsoft Foundry project (Project1) contains multiple agents that each access the same Azure AI Search resource. You need to centrally manage the Azure AI Search credentials so the solution applies across all agents. What should you recommend?",
+      "options": [
+        "Enable role-based access control (RBAC) for the Azure AI Search resource",
+        "Disable key-based access control on the Azure AI Search resource",
+        "Add a connection to the Azure AI Search resource",
+        "Create a managed private endpoint that connects to the Azure AI Search resource"
+      ],
+      "correctAnswer": 2,
+      "explanation": "In Microsoft Foundry, a project-level connection centrally stores and manages credentials for external resources (Azure AI Search, Azure OpenAI, Storage, etc.) so every agent in the project can reuse the same connection. [source-confirmed: CertyIQ AI-103 Q3]",
+      "source": "CertyIQ AI-103 Q3"
+    },
+    {
+      "id": "ai-103-x-003",
+      "question": "You need to orchestrate three Foundry agents using a deterministic, step-based process that uses conditional branching and shared state, optionally triggering a ticket action based on the triage result, with minimal development effort. What should you include in the solution?",
+      "options": [
+        "A workflow",
+        "Threads and runs without a workflow",
+        "A multi-agent group chat session",
+        "Separate agent runs coordinated in the application code"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A workflow lets you declaratively define ordered agent steps, pass shared state between steps, apply conditional branching, and invoke actions/tools based on outcomes — orchestrating multiple agents with minimal custom code. [source-confirmed: CertyIQ/ITExams AI-103 Q9]",
+      "source": "CertyIQ / ITExams AI-103 Q9"
+    },
+    {
+      "id": "ai-103-x-004",
+      "question": "An agent uses Azure Speech in Foundry Tools with a fine-tuned, published custom speech-to-text model for the en-us locale. The agent calls the Speech to text REST API and receives an error indicating the project ID is invalid. To what should you set the project property?",
+      "options": [
+        "The project URL",
+        "The custom speech project ID",
+        "The project ID",
+        "The custom speech endpoint URL"
+      ],
+      "correctAnswer": 1,
+      "explanation": "When using a custom Speech-to-Text model, the project property must reference the Custom Speech project ID that contains the trained model — which is distinct from the Foundry project ID. [source-confirmed: CertyIQ AI-103 Q10]",
+      "source": "CertyIQ AI-103 Q10"
+    },
+    {
+      "id": "ai-103-x-005",
+      "question": "An agent uses a custom speech-to-text model deployed to a custom endpoint for real-time recognition. You are approaching the model's expiration date. What is the expected behavior when the custom model expires?",
+      "options": [
+        "Speech recognition requests return a 4xx error until a new custom model is deployed",
+        "Speech recognition requests continue using the expired custom model until it is removed manually",
+        "Speech recognition requests fall back to the most recent base model for the same locale",
+        "The custom model is deleted automatically when it expires"
+      ],
+      "correctAnswer": 2,
+      "explanation": "On expiration, the endpoint keeps serving requests but automatically falls back to the latest Microsoft base model for the same locale, preserving service continuity (though customization quality may differ). [source-confirmed: CertyIQ AI-103 Q12]",
+      "source": "CertyIQ AI-103 Q12"
+    },
+    {
+      "id": "ai-103-x-006",
+      "question": "Developers calling an Azure OpenAI deployment with the Azure OpenAI v1 API and DefaultAzureCredential receive HTTP 403 errors when sending inference requests, even after running az login. Following least privilege, which RBAC role should you assign so they can perform model inference?",
+      "options": [
+        "Cognitive Services User",
+        "Cognitive Services OpenAI User",
+        "Contributor",
+        "Cognitive Services Data Reader"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The Cognitive Services OpenAI User role grants the minimum data-plane permissions required to invoke model deployments (chat completions, embeddings, inference) and follows the principle of least privilege. [source-confirmed: CertyIQ AI-103 Q13]",
+      "source": "CertyIQ AI-103 Q13"
+    },
+    {
+      "id": "ai-103-x-007",
+      "question": "An agent has a Model Context Protocol (MCP) tool that queries a knowledge base in Azure AI Search, but some runs answer from the base model without grounded citations. Which tool_choice value deterministically forces the agent to invoke the MCP tool on every run?",
+      "options": [
+        "tool_choice={\"required\"}",
+        "tool_choice={\"auto\"}",
+        "tool_choice={\"type\":\"knowledge_base\"}",
+        "tool_choice={\"type\":\"mcp\"}"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Setting tool_choice to \"required\" forces the model to invoke at least one tool on every run, removing its option to respond with plain text and ensuring the tool (e.g., the MCP knowledge-base tool) is always called. [source-confirmed: CertyIQ AI-103 Q14]",
+      "source": "CertyIQ AI-103 Q14"
+    },
+    {
+      "id": "ai-103-x-008",
+      "question": "A Foundry agent calls an external weather service via an OpenAPI 3.0 specification that requires a key passed in an HTTP header. The key value is stored as a connection in Project1. What should you configure in the OpenAPI specification so the key is included automatically whenever the tool is invoked?",
+      "options": [
+        "A header parameter defined for each operation",
+        "An Azure Key Vault connection",
+        "An API key security scheme",
+        "A Bearer token security scheme"
+      ],
+      "correctAnswer": 2,
+      "explanation": "An API key security scheme in the OpenAPI spec tells the Foundry agent to automatically inject the connection's stored key into the configured HTTP header on each call. [source-confirmed: CertyIQ AI-103 Q16]",
+      "source": "CertyIQ AI-103 Q16"
+    },
+    {
+      "id": "ai-103-x-009",
+      "question": "A Foundry project serves a high-volume chat app where most requests are simple FAQs but some require advanced reasoning. You must reduce cost and latency for common queries without degrading the quality of responses to complex questions. What should you do?",
+      "options": [
+        "Route all the requests to a smaller model",
+        "Use a model cascade that routes the requests to different models",
+        "Increase the value of the max_tokens parameter for all the requests",
+        "Route all the requests to the most capable model"
+      ],
+      "correctAnswer": 1,
+      "explanation": "A model cascade routes simple, common queries to a small low-cost/low-latency model and escalates only complex queries to a more capable model, optimizing cost and latency while preserving quality where it matters. [source-confirmed: CertyIQ AI-103 Q17]",
+      "source": "CertyIQ AI-103 Q17"
+    },
+    {
+      "id": "ai-103-x-010",
+      "question": "A high-traffic agent's operational costs increase significantly after an update, while user traffic volume is unchanged. You need to determine whether the additional cost is driven by model input size, model output size, or expanded tool usage. Which observability capability should you use?",
+      "options": [
+        "Latency",
+        "Evaluation metrics",
+        "Run success rate",
+        "Token usage"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Token usage breaks down input (prompt) tokens, output (completion) tokens, and tool-call token consumption per run — the direct drivers of token-based model cost. [source-confirmed: CertyIQ/Pass4Success AI-103 Q19]",
+      "source": "CertyIQ / Pass4Success AI-103 Q19"
+    },
+    {
+      "id": "ai-103-x-011",
+      "question": "You are deploying a support agent that lets users upload photos. You need to automatically classify uploaded images for harmful content and block content based on severity levels. What should you do?",
+      "options": [
+        "Implement image moderation",
+        "Enable Prompt Shields",
+        "Apply keyword scanning to OCR output by using Azure Vision in Foundry Tools",
+        "Use blocklists"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Azure AI Content Safety image moderation classifies images across harm categories (hate, sexual, violence, self-harm) with severity levels and can block content that exceeds a configured threshold. Prompt Shields target prompt-injection, and blocklists/keyword scanning target text. [expert-verified against Microsoft Learn; Pass4Success AI-103 Q3]",
+      "source": "Pass4Success AI-103 Q3"
+    },
+    {
+      "id": "ai-103-x-012",
+      "question": "A chat app in a Foundry project uses an Azure AI Search vectorized index. Retrieval must pull information from multiple chunks for complex questions, let multi-turn conversation influence retrieval planning, and run retrievals in parallel to reduce latency. Which retrieval approach should you use?",
+      "options": [
+        "Classic Retrieval Augmented Generation (RAG)",
+        "Chain of thought",
+        "Agentic Retrieval Augmented Generation (RAG)",
+        "Iterative retrieval"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Agentic RAG decomposes a complex query into multiple subqueries, uses conversation history to plan retrieval, and runs those retrievals in parallel before synthesizing an answer — matching all three requirements. [expert-verified against Microsoft Learn; Pass4Success AI-103 Q4]",
+      "source": "Pass4Success AI-103 Q4"
+    },
+    {
+      "id": "ai-103-x-013",
+      "question": "You build a real-time voice agent that must receive continuous audio input, convert it to text for reasoning, support turn-taking (begin generating speech before the user finishes speaking), operate at low latency, and return spoken responses. What should you do?",
+      "options": [
+        "Use an embeddings model to encode the audio, then decode the audio into text and speech",
+        "Use batch transcription to convert the audio input and return text responses",
+        "Use speech translation to convert the audio into another language and return the translated text",
+        "Use real-time speech to text for incoming audio and text to speech for agent responses"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Real-time (streaming) speech-to-text for incoming audio combined with text-to-speech for responses provides the low-latency, bidirectional, turn-taking voice experience required. Batch transcription and speech translation do not meet the real-time/turn-taking requirements. [expert-verified against Microsoft Learn; Pass4Success AI-103 Q5]",
+      "source": "Pass4Success AI-103 Q5"
+    }
+  ]
+}

@@ -1,0 +1,869 @@
+[
+  {
+    "n": 1,
+    "weightage": 2,
+    "status": "UnattemptedWhich",
+    "inputId": ":r3:",
+    "paras": [
+      "Which of the following is true about virtual DOM?",
+      "It updates slowly",
+      "It can be used to update HTML directly",
+      "Memory Consumption is more",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 2,
+    "weightage": 1,
+    "status": "UnattemptedIf",
+    "inputId": ":r4:",
+    "paras": [
+      "If JSX is used in React components, then which of the following statements are true?",
+      "JSX is compiled into HTML",
+      "JSX is compiled in calls of React.createElement",
+      "Both a and b",
+      "None of above"
+    ]
+  },
+  {
+    "n": 3,
+    "weightage": 1,
+    "status": "UnattemptedIn",
+    "inputId": ":r5:",
+    "paras": [
+      "In React, which statement is true in relation to keys?",
+      "Keys are used by developers to traverse react elements",
+      "Keys are used by React to improve performance",
+      "Both a and b",
+      "None of above"
+    ]
+  },
+  {
+    "n": 4,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r6:",
+    "paras": [
+      "Which of the following is true about Uncontrolled Components?",
+      "They do not maintain their own state",
+      "Data is controlled by the parent Component",
+      "Refs are used to get their current values",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 5,
+    "weightage": 1,
+    "status": "UnattemptedState",
+    "inputId": ":r7:",
+    "paras": [
+      "State in React is",
+      "A permanent storage of the component",
+      "Internal storage of the component",
+      "Both a and b",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 6,
+    "weightage": 1,
+    "status": "UnattemptedCan",
+    "inputId": ":r8:",
+    "paras": [
+      "Can Browser read JSX?",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "n": 7,
+    "weightage": 1,
+    "status": "UnattemptedHow",
+    "inputId": ":r9:",
+    "paras": [
+      "How can you create a side effect in a functional component?",
+      "Using componentDidMount",
+      "Using createEffect",
+      "Using useEffect",
+      "Using setEffect"
+    ]
+  },
+  {
+    "n": 8,
+    "weightage": 1,
+    "status": "UnattemptedWhat",
+    "inputId": ":ra:",
+    "paras": [
+      "What is react.js in MVC?",
+      "Controller",
+      "Middleware",
+      "Model",
+      "Router"
+    ]
+  },
+  {
+    "n": 9,
+    "weightage": 2,
+    "status": "UnattemptedPure",
+    "inputId": ":rb:",
+    "paras": [
+      "Pure Components in React.js are? (Multi Select)",
+      "Faster",
+      "Slow",
+      "Simplify the code and increase Performance",
+      "All the above"
+    ]
+  },
+  {
+    "n": 10,
+    "weightage": 1,
+    "status": "UnattemptedWhat",
+    "inputId": ":rc:",
+    "paras": [
+      "What hook is used to access the previous value of a prop or state variable in a functional component?",
+      "usePrevious",
+      "useRef",
+      "useState",
+      "useEffect"
+    ]
+  },
+  {
+    "n": 11,
+    "weightage": 3,
+    "status": "UnattemptedWhich",
+    "inputId": ":rd:",
+    "paras": [
+      "Which of the following are rules of Hooks?",
+      "Only call Hooks at the top level of a component.",
+      "Only call Hooks from React function components.",
+      "Hooks can be called inside loops, conditions, or nested functions.",
+      "Hooks can be called from custom Hooks."
+    ]
+  },
+  {
+    "n": 12,
+    "weightage": 1,
+    "status": "UnattemptedHow",
+    "inputId": ":re:",
+    "paras": [
+      "How do you update lifecycle in Functional Components?",
+      "useEffect()",
+      "useState()",
+      "setState()",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 13,
+    "weightage": 1,
+    "status": "UnattemptedWhat",
+    "inputId": ":rf:",
+    "paras": [
+      "What kind of component import React from ‘react’ is?",
+      "Stateless component",
+      "Stateful component",
+      "Pure component"
+    ]
+  },
+  {
+    "n": 14,
+    "weightage": 1,
+    "status": "UnattemptedHow",
+    "inputId": ":rg:",
+    "paras": [
+      "How do you access the Redux store in a functional component?",
+      "useDispatch()",
+      "useSelector()",
+      "Both useDispatch() and useSelector()",
+      "connect()"
+    ]
+  },
+  {
+    "n": 15,
+    "weightage": 1,
+    "status": "UnattemptedLife",
+    "inputId": ":rh:",
+    "paras": [
+      "Life cycle methods are mainly used to",
+      "keep track of event History",
+      "enhance components",
+      "free up resources",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 16,
+    "weightage": 1,
+    "status": "UnattemptedIn",
+    "inputId": ":ri:",
+    "paras": [
+      "In JSX most of the errors can be caught during",
+      "Interpretation",
+      "Execution",
+      "Compilation",
+      "Build"
+    ]
+  },
+  {
+    "n": 17,
+    "weightage": 1,
+    "status": "UnattemptedIf",
+    "inputId": ":rj:",
+    "paras": [
+      "If our elements are dynamic, react can keep track of the changes using",
+      "State",
+      "Props",
+      "Keys",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 18,
+    "weightage": 2,
+    "status": "UnattemptedRegarding",
+    "inputId": ":rk:",
+    "paras": [
+      "Regarding React components, which of the following statements is true?",
+      "Functional components can have state",
+      "Functional components are light weight",
+      "Class components are light weight",
+      "Class components are faster than functional components"
+    ]
+  },
+  {
+    "n": 19,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":rl:",
+    "paras": [
+      "Which hook should be used to memoize an expensive computation?",
+      "useEffect",
+      "useMemo",
+      "useCallback",
+      "useReducer"
+    ]
+  },
+  {
+    "n": 20,
+    "weightage": 2,
+    "status": "UnattemptedWhich",
+    "inputId": ":rm:",
+    "paras": [
+      "Which of the following hooks are used for data fetching?",
+      "useEffect()",
+      "useState()",
+      "useReducer()",
+      "useContext"
+    ]
+  },
+  {
+    "n": 21,
+    "weightage": 1,
+    "status": "UnattemptedData",
+    "inputId": ":rn:",
+    "paras": [
+      "Data handling in React is done using",
+      "state",
+      "props",
+      "Both a and b",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 22,
+    "weightage": 1,
+    "status": "UnattemptedHow",
+    "inputId": ":ro:",
+    "paras": [
+      "How to pass data to components?",
+      "props",
+      "state",
+      "Both of above",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 23,
+    "weightage": 1,
+    "status": "UnattemptedWhat",
+    "inputId": ":rp:",
+    "paras": [
+      "What does useReducer return?",
+      "The current state and a dispatch function",
+      "A reducer function",
+      "The initial state",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 24,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":rq:",
+    "paras": [
+      "Which hook would you use to persist state across component re-renders?",
+      "useEffect",
+      "useState",
+      "useMemo",
+      "useReducer"
+    ]
+  },
+  {
+    "n": 25,
+    "weightage": 1,
+    "status": "UnattemptedHow",
+    "inputId": ":rr:",
+    "paras": [
+      "How do you access a DOM element directly in a functional component?",
+      "useRef",
+      "getElementById",
+      "querySelector",
+      "useDOM"
+    ]
+  },
+  {
+    "n": 26,
+    "weightage": 1,
+    "status": "UnattemptedJSX",
+    "inputId": ":rs:",
+    "paras": [
+      "JSX is acronym for",
+      "Java Server eXtension",
+      "JavaScript eXtension",
+      "Java Script Extender",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 27,
+    "weightage": 1,
+    "status": "UnattemptedWhat",
+    "inputId": ":rt:",
+    "paras": [
+      "What is the purpose of the useContext hook?",
+      "To create a new context",
+      "To subscribe to a context without introducing nesting",
+      "To dispatch actions to a reducer",
+      "To create a side effect"
+    ]
+  },
+  {
+    "n": 28,
+    "weightage": 1,
+    "status": "Unattemptedvar",
+    "inputId": ":ru:",
+    "paras": [
+      "var MyComponent=(props)=>",
+      "{",
+      "return(",
+      "<div>",
+      "Hello World 1",
+      "</div>",
+      "<div>",
+      "Hello World 2",
+      "</div>",
+      ");",
+      "}",
+      "ReactDOM.render(<MyComponent />,mountNode)",
+      "What will be the output?",
+      "Hello World 1",
+      "Hello World 2",
+      "Hello World 1 Hello World 2",
+      "Error"
+    ]
+  },
+  {
+    "n": 29,
+    "weightage": 2,
+    "status": "UnattemptedisEnabled",
+    "inputId": ":rv:",
+    "paras": [
+      "isEnabled && <div>{Hello}</div>",
+      "Which of the following is true?  (Multi Select)",
+      "If isEnabled is false, it always evaluates to expression after &&",
+      "If isEnabled is false, it always evaluates to false",
+      "If isEnabled is true, it always evaluates to expression after &&",
+      "If isEnabled is false, it always evaluates to true"
+    ]
+  },
+  {
+    "n": 30,
+    "weightage": 2,
+    "status": "UnattemptedConditional",
+    "inputId": ":r10:",
+    "paras": [
+      "Conditional rendering is possible by (Multi Select)",
+      "If-else",
+      "Statement",
+      "While"
+    ]
+  },
+  {
+    "n": 31,
+    "weightage": 1,
+    "status": "UnattemptedIf",
+    "inputId": ":r11:",
+    "paras": [
+      "If we want to hide component even though it was rendered by another component, what would be best approach to do so?  (Multi Select)",
+      "Remove the component from the parent component from which it is rendered",
+      "Return null so that the component doesn't render",
+      "Return undefined, so that the component doesn't render",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 32,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r12:",
+    "paras": [
+      "Which hook can be used to ensure that a function doesn’t get recreated on every render?",
+      "useMemo",
+      "useEffect",
+      "useCallback",
+      "useReducer"
+    ]
+  },
+  {
+    "n": 33,
+    "weightage": 1,
+    "status": "UnattemptedWhen",
+    "inputId": ":r13:",
+    "paras": [
+      "When state or prop value change",
+      "The whole page re-renders",
+      "No change occurs",
+      "Only the component using that state or prop re-renders",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 34,
+    "weightage": 1,
+    "status": "UnattemptedWhat",
+    "inputId": ":r14:",
+    "paras": [
+      "What function allows you to render React content in an HTML page?",
+      "React.mount()",
+      "ReactDOM.start()",
+      "ReactDOM.render()",
+      "React.render()"
+    ]
+  },
+  {
+    "n": 35,
+    "weightage": 1,
+    "status": "UnattemptedReact",
+    "inputId": ":r15:",
+    "paras": [
+      "React Hooks:",
+      "Allows use of state inside a class.",
+      "Allows use of state without writing a class",
+      "Both a and b",
+      "None"
+    ]
+  },
+  {
+    "n": 36,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r16:",
+    "paras": [
+      "Which React hook is used for working with context?",
+      "useEffect",
+      "useContext",
+      "useReducer",
+      "useState"
+    ]
+  },
+  {
+    "n": 37,
+    "weightage": 3,
+    "status": "UnattemptedWhich",
+    "inputId": ":r17:",
+    "paras": [
+      "Which of the following is true about hooks?  (Multi Select)",
+      "Hooks can be called anywhere",
+      "Hooks can be called from other regular JavaScript functions",
+      "Hooks cannot be called inside loops, conditions, nested functions",
+      "Hooks can be called from React function components",
+      "Hooks can be called from top levels"
+    ]
+  },
+  {
+    "n": 38,
+    "weightage": 1,
+    "status": "UnattemptedIs",
+    "inputId": ":r18:",
+    "paras": [
+      "Is it possible to create custom hooks?",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "n": 39,
+    "weightage": 3,
+    "status": "UnattemptedWhat",
+    "inputId": ":r19:",
+    "paras": [
+      "What are the advantages of React Hooks?",
+      "Reusing stateful logic without changing the component hierarchy.",
+      "Hooks work the same across all components, which makes component logic easier to share and manage.",
+      "Hooks can only be used inside class components.",
+      "Hooks allow you to use state and lifecycle features without writing a class."
+    ]
+  },
+  {
+    "n": 40,
+    "weightage": 1,
+    "status": "UnattemptedHooks",
+    "inputId": ":r1a:",
+    "paras": [
+      "Hooks are backward-compatible?",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "n": 41,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1b:",
+    "paras": [
+      "Which is the correct implementation of hook?",
+      "const count = useState(0)",
+      "const count = useState(setCount, 0)",
+      "const [count, setCount] = useState(0)"
+    ]
+  },
+  {
+    "n": 42,
+    "weightage": 1,
+    "status": "UnattemptedRedux",
+    "inputId": ":r1c:",
+    "paras": [
+      "Redux solves this problem by managing the application’s state with a single global object called.",
+      "Directory.",
+      "File.",
+      "Store.",
+      "State"
+    ]
+  },
+  {
+    "n": 43,
+    "weightage": 1,
+    "status": "UnattemptedWhat",
+    "inputId": ":r1d:",
+    "paras": [
+      "What is true about Redux?",
+      "Redux is a predictable state container for JavaScript apps.",
+      "Redux fundamental principles help in maintaining consistency throughout your application.",
+      "Redux makes debugging and testing easier.",
+      "All the Above"
+    ]
+  },
+  {
+    "n": 44,
+    "weightage": 2,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1e:",
+    "paras": [
+      "Which of the following statements are true?  (Multi Select)",
+      "ApplyMiddleware  is a store enhancer.",
+      "Redux-Dev tools are store enhancer.",
+      "Middleware is more powerful than store enhancer.",
+      "All the Above"
+    ]
+  },
+  {
+    "n": 45,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1f:",
+    "paras": [
+      "Which of the following statements are true related to reducer?",
+      "Mutate its arguments",
+      "Perform side effects like API calls and routing transitions",
+      "Call non-pure functions, e.g., Date.now() or Math.random()",
+      "Make async API calls inside a reducer",
+      "None of the above"
+    ]
+  },
+  {
+    "n": 46,
+    "weightage": 1,
+    "status": "UnattemptedCan",
+    "inputId": ":r1g:",
+    "paras": [
+      "Can we use connect without a <Provider/>?",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "n": 47,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1h:",
+    "paras": [
+      "Which method allows you to dispatch an action to change a state in your application?",
+      "getState",
+      "setState",
+      "dispatch",
+      "subscribe"
+    ]
+  },
+  {
+    "n": 48,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1i:",
+    "paras": [
+      "Which of the following is react-Redux helper method?",
+      "help()",
+      "view()",
+      "assist()",
+      "connect()"
+    ]
+  },
+  {
+    "n": 49,
+    "weightage": 1,
+    "status": "UnattemptedCan",
+    "inputId": ":r1j:",
+    "paras": [
+      "Can we use useStore() Hook to Create a new instance of store?",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "n": 50,
+    "weightage": 1,
+    "status": "UnattemptedHow",
+    "inputId": ":r1k:",
+    "paras": [
+      "How to pass mapDispatchToProps without mapStateToProps",
+      "connect(null, mapDispatchToProps)(MyComponent)",
+      "connect(mapDispatchToProps)(MyComponent)",
+      "connect(mapStateToProps: null, mapDispatchToProps)(MyComponent)",
+      "connect(mapStateToProps: null, mapDispatchToProps :mapDispatchToProps)(MyComponent)"
+    ]
+  },
+  {
+    "n": 51,
+    "weightage": 1,
+    "status": "UnattemptedIs",
+    "inputId": ":r1l:",
+    "paras": [
+      "Is it possible to dispatch an action without using mapDispatchToProps?",
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "n": 52,
+    "weightage": 1,
+    "status": "UnattemptedHow",
+    "inputId": ":r1m:",
+    "paras": [
+      "How can you avoid re-renders caused by frequent state updates?",
+      "Using React.memo",
+      "Using useMemo",
+      "Using shouldComponentUpdate",
+      "Both 1 and 2"
+    ]
+  },
+  {
+    "n": 53,
+    "weightage": 2,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1n:",
+    "paras": [
+      "Which of the following is true about redux? (Multi Select)",
+      "Store and change logic are separate",
+      "Has singleton dispatcher",
+      "Container components utilize connect",
+      "All the Above"
+    ]
+  },
+  {
+    "n": 54,
+    "weightage": 1,
+    "status": "UnattemptedThe",
+    "inputId": ":r1o:",
+    "paras": [
+      "The predictability of Redux is determined by.",
+      "Single Source of Truth",
+      "State is Read-only",
+      "Changes are made with pure functions.",
+      "All the above"
+    ]
+  },
+  {
+    "n": 55,
+    "weightage": 1,
+    "status": "UnattemptedIn",
+    "inputId": ":r1p:",
+    "paras": [
+      "In which way saga makes asynchronous calls",
+      "By using Generator functions",
+      "Async Await calls.",
+      "Both a and b",
+      "None of the Above"
+    ]
+  },
+  {
+    "n": 56,
+    "weightage": 2,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1q:",
+    "paras": [
+      "Which is true about generator functions? (Multi Select)",
+      "Are available in ES6.",
+      "Yield Expression is used to pass the function.",
+      "Yield Expression is used to exit the function.",
+      "All the Above"
+    ]
+  },
+  {
+    "n": 57,
+    "weightage": 4,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1r:",
+    "paras": [
+      "Which of the following are redux workflow features? (Multi Select)",
+      "Reset",
+      "Revert",
+      "Sweep",
+      "Commit"
+    ]
+  },
+  {
+    "n": 58,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r1s:",
+    "paras": [
+      "Which of the following makes stores available?",
+      "Component",
+      "Container",
+      "Provider",
+      "Actions"
+    ]
+  },
+  {
+    "n": 59,
+    "weightage": 1,
+    "status": "UnattemptedReact",
+    "inputId": ":r1t:",
+    "paras": [
+      "React.Lazy() is useful for",
+      "Code spliting",
+      "Code Formatting",
+      "Code Reusability",
+      "None of the Above"
+    ]
+  },
+  {
+    "n": 60,
+    "weightage": 1,
+    "status": "UnattemptedgetContext",
+    "inputId": ":r1u:",
+    "paras": [
+      "getContext() is an effect that instructs middleware to return specific property of sagas context",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "n": 61,
+    "weightage": 1,
+    "status": "UnattemptedCan",
+    "inputId": ":r1v:",
+    "paras": [
+      "Can Yield* operator be used to compose multiple Sagas in a sequential way.",
+      "True",
+      "False"
+    ]
+  },
+  {
+    "n": 62,
+    "weightage": 1,
+    "status": "UnattemptedWhen",
+    "inputId": ":r20:",
+    "paras": [
+      "When parallel API calls are running, which effect can be used to check which one failed or succeeded first?",
+      "UseEffect",
+      "Race",
+      "UseContext",
+      "None of the Above"
+    ]
+  },
+  {
+    "n": 63,
+    "weightage": 1,
+    "status": "UnattemptedTo",
+    "inputId": ":r21:",
+    "paras": [
+      "To test failure case of an API call, which method of generator will be used?",
+      "Test",
+      "Throw",
+      "Fail",
+      "Error"
+    ]
+  },
+  {
+    "n": 64,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r22:",
+    "paras": [
+      "Which keyword do we use to dispatch an action in sagas?",
+      "Put",
+      "Take",
+      "Fork",
+      "Cancel"
+    ]
+  },
+  {
+    "n": 65,
+    "weightage": 1,
+    "status": "UnattemptedWhich",
+    "inputId": ":r23:",
+    "paras": [
+      "Which pattern Redux implements?",
+      "MVC",
+      "Flux",
+      "MVP",
+      "MVVM"
+    ]
+  },
+  {
+    "n": 66,
+    "weightage": 2,
+    "status": "UnattemptedWhich",
+    "inputId": ":r24:",
+    "paras": [
+      "Which of the following is true about the fork model in redux saga? (Multi Select)",
+      "Fork is used to create attached forks.",
+      "Fork is used to create detached forks.",
+      "Fork is used for non-blocking calls.",
+      "All the above"
+    ]
+  },
+  {
+    "n": 67,
+    "weightage": 2,
+    "status": "UnattemptedWhich",
+    "inputId": ":r25:",
+    "paras": [
+      "Which is true about takeEvery saga Helper? (Multi Select)",
+      "Spawns a saga on each action dispatched to the Store that matches pattern.",
+      "It is a high-level API built using take and fork.",
+      "It will take the latest saga call.",
+      "None of the above"
+    ]
+  }
+]

@@ -1,0 +1,649 @@
+/Fabric
+/Fabric/ACRValidation
+/Fabric/ACRValidation/CoSell_AHR_Validation.Notebook
+/Fabric/CoMarketing
+/Fabric/CoMarketing/Cosell_Gold_BudgetProgram.Notebook
+/Fabric/CoMarketing/Cosell_Gold_DimCustomerCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_DimFieldGeoCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_DimOpportunityCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_DimTime.Notebook
+/Fabric/CoMarketing/Cosell_Gold_EngagementMilestoneCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_FactEngagementMilestoneCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_FactOpportunityCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_FactPartnerDealCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_FactSolutionCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_ForecastAmount.Notebook
+/Fabric/CoMarketing/Cosell_Gold_FunnelCategory.Notebook
+/Fabric/CoMarketing/Cosell_Gold_FunnelCategory2.Notebook
+/Fabric/CoMarketing/CoSell_Gold_InvBridgeIndustry.Notebook
+/Fabric/CoMarketing/CoSell_Gold_InvBridgeSolutionArea.Notebook
+/Fabric/CoMarketing/Cosell_Gold_InvestBridgeArea.Notebook
+/Fabric/CoMarketing/Cosell_Gold_InvestBridgeGCPSArea.Notebook
+/Fabric/CoMarketing/Cosell_Gold_InvestBridgeSolutionPlay.Notebook
+/Fabric/CoMarketing/Cosell_Gold_InvestmentAsk.Notebook
+/Fabric/CoMarketing/Cosell_Gold_Opportunity_MonthlySnapshot.Notebook
+/Fabric/CoMarketing/Cosell_Gold_PartnerDealCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_ReportingPartnerOneCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_SolutionAreaCD.Notebook
+/Fabric/CoMarketing/Cosell_Gold_SolutionCD.Notebook
+/Fabric/CoMarketing/Pipeline
+/Fabric/CoMarketing/Pipeline/CoMarketing_Master_Pipeline.DataPipeline
+/Fabric/Cosell
+/Fabric/Cosell_XXLarge_Capacity.Environment
+/Fabric/Cosell_XXLarge_Capacity.Environment/.platform
+/Fabric/Cosell_XXLarge_Capacity.Environment/Setting
+/Fabric/Cosell/Notebooks
+/Fabric/Cosell/Notebooks/Bronze
+/Fabric/Cosell/Notebooks/Bronze/Cosell_Bronze_CRP_Solution.Notebook
+/Fabric/Cosell/Notebooks/Bronze/Cosell_Bronze_SellInCountryCatRP.Notebook
+/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_DealRegistrationPII.Notebook
+/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY23.Notebook
+/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY24.Notebook
+/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY25.Notebook
+/Fabric/Cosell/Notebooks/Bronze/Latest_Folder_Path_Bronze_ReferralMasterPIIFY26.Notebook
+/Fabric/Cosell/Notebooks/Gold
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ACR_Pipeline_Table.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_AgencyFeed.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_AHRFeedTable.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Associated_DimPartnerReferral.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_Bridge_CoSellPrioritizedSolutionPracticeAndIndustryCountry.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_BridgeCascadedPartnerOne.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_BusinessHierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ComarketingTPMBudget.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CosellServices.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CSPSolutionInternal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomDueANDCreatedDateReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomerHQAccountsDim.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomerReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomerSecurity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomPartnerSegment.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomSolutionAreaReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_CustomStatusReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DatasetRefresh.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DealPartnerOneMapping.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccount_Monthly.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccountGeographyHierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccountTagsReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimAccoutTag.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimATU.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimBusinessUnit.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCapacityGeography.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimChannelPartner.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCosellPrioritizedPartners.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMAccounts.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMPartnerAccount.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMPartnerAccountReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimCRMsolution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCRMSolutionArea.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomer.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DimCustomerFY26.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimcustomergeography.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomerSegment.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomGTMReadiness.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimCustomOpptyStatus.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimDeliverables.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimEngagementMilestone.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimEngagementMilestoneint.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimEngagementMilestoneReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimFiscalMonthReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimGPSCRMAccount.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIndustry.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimInvoice.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIOPO.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIPCoSell_D365.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIPCosell.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimIPPartner.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimISVConnectApp.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimLead.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimLifecycleStage.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMarketplaceInvoice.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimmarketplaceoffer.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMarketPlacePublisher.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMetric.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXPartnerSharingCategorization.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXPartnerSharingCategorizationReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXSolutionArea.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXWinsWithSolutionAttach.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimMSXWorkload.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunity_Int.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityFeedData.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityMilestoneEstCompletionDate.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityPower5.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityProduct.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimOpportunityReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerdeal_int.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealDuration.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealProfile.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealSolutionAttached.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealSolutionHistory.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDealTeam.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerDesignations.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerExternalContact_PII.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerMAICPPStatus.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerOne.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerReferralReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerReportedACR.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerSharingFlags.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerSharingMetricType.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPartnerSpecializations.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPersonnel.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPINMetric.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPlanProfile.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPricingLevelHierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPrioritizedAndReadyPartnersConsumptionOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPrioritizedAndReadyPartnersOppty.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimPrioritizedPartner.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProduct.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProductHierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProductPFam.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimProductReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DimProject.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRecruitLead.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRedCarpetPartnerDetails.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimReportingPartnerOne_Median.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimReportingPartnerOneSub.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimreportingPartnerOneSubFY26.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRevSumDivision.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimRevSumHierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSalesPlayReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSalesProgram.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSalesProgramReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimScoreCardRecognitionTime.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSegmentHierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSellercosellIncentive.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSellInCountry.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimServiceCompGrouping.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSharingType.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionArea.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionAreaDetailReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionAreaOppty.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionAreaReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimSolutionEngagementPipeline.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DimTask.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechnicalExecutionStrategy.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechServiceRequestOwner.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechTaskActivity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimTechTaskSolutionArea.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_dimtoptiermonthlystatus.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimUserSubsidiary.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_DimWorkloadReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_DirectoryACVFeed.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAccount.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAccountPin.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAHRFeedAudit.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAzureConsumptionCTCG.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactAzureConsumptionP1CGCT.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCosellTargets.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCRMPartner.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCRMUser.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCSPSolutionBilledOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCSPSolutionConsumptionOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactCSPSolutionPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestone.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestonePipeline_int.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestonePipeline.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactEngagementMilestoneReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactFY20AllianceReadiness.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactInvoice.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactIOPO.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactIPCoSell.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactIPCoSellTransition.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactISVConnect.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactLead.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactLessSolutionEngagement.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMarketplaceBilledSales.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMarketPlaceOffer.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_FactMBSCommercialTargets.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMBSCommercialTargetsExcel.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMBSTargets.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactMSXPartnerSharing.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunitiesSalesCycleDuration.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunity_int.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunityProduct_Internal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunityProduct.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactOpportunityReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY20.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY21.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY22.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY23.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY24.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_FY25.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal_int.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerDealDuration.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerOne.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPartnerReferralReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactPRACRTargets.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_FactProject.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactRecruitISVTargets.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionBilledOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionCapacityGeography.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionConsumptionOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FactSolutionPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FinalActualAmount.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FinalInvoiceAmount.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_FinalPartnerMapping.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_GeographySubsidiaryHierarchyDim.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HC360GeographyDim.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HC360PersonnelFact.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Hist_Activity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Hist_Lead.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_hist_solution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoricalRecruitFlags.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccount.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccountHistory.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccountToPersonMapping.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAccountToPersonMappingHistory.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAHRFeedAudit.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_HistoryAHRFeedTable.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_int_dimreportingpartneronesub.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapAccountSolution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapAccountTag.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapCustomPartnerSegment.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapEngagementMilestone.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapIndustrysolution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOfferPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunityPartner.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunityPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunitySalesProgram.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunitySolution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpportunitySolutionArea.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOppty.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapOpptyPartnerAttachAndSolutionAttach.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerDealPartnerAttachAndSolutionAttach.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerDealSolutionNameBasedMapping.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerOneAccountTag.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_MapPartnerOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPartnerSolutionAreaReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPrioritizedDealSharingAndWins.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapPrioritizedOppty.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionEngagement.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPartnerOneReportingPartnerOneSubAccount_Tab.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPartnerOneReportingPartnerOneSubAccount.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPractice.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPracticeIndustryCountry_Capacity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionPracticeIndustryCountry.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionSellerCoSellIncentive_Capacity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionSellInCountry.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MapSolutionSolutionAreaIndustryCapacity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_MarketplaceDealsACV_Snapshot.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_MarketplaceFeed.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_MSXCombinedSnapshot.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_OpportunityDraftIntermediate.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_OpportunityInternal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_OpptyAndMilestoneDate.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerAsEndCustomerReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Partnerdeal_Intermediate.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerDealFact.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerDealPartnerReportedACR.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerDealSolution_Snapshot.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerSecurity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerSharingSolutionArea_Opportunity.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PartnerSharingWeeklySnapshot.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PCDeal_Internal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PDM_PDMM_HierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PipelineFactCurrent.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PipelinePartnerMaster.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PossibleDuplicatesFeed.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ProjectedBaselineCTCG.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ProjectedBaselineP1CGCT.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PS_DimPartnerDeal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_PSCDeal_Internal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReferralCycleTimeUnpivoted.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReferralFeed_int.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReferralMasterPII.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_ReportingPartnerOneSubReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/CoSell_Gold_ResellerFeed.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecAccountProductMapReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecAccountTeamReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecDimSellerReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecDistinctSubsidiaryReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecOpportunityTeamReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecSellerAccountProductmapReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecSellerHierarchyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNAccountTeamReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNDimSellerReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNOpportunityTeamReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUPNUserSubsidiaryReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SecUserSubsidiaryReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SellerCoSellIncentiveSolution.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SnapshotDimOpportunityWeekly.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SnapshotMapSolutionPriorityScenarioIndustryCountry.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_Solution_Internal.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SolutionArea_OpptyReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_SPM_ManagedTopParentAccounts.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TechServiceRequestEventCategoryMapping.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TechServiceRequestStatusMapping.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TPAccountsDim.Notebook
+/Fabric/Cosell/Notebooks/Gold/Cosell_Gold_TrueACRPartnerDeal_int.Notebook
+/Fabric/Cosell/Notebooks/Gold/DimCustomPartnerDealDirectionReporting.Notebook
+/Fabric/Cosell/Notebooks/Gold/FactMSXCombined.Notebook
+/Fabric/Cosell/Notebooks/Gold/Notebook_PartnerDealApprovalDate.Notebook
+/Fabric/Cosell/Notebooks/Gold/PartnerSharing_DAX_Flags.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_ActiveSubRegionFlag.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_Gold_CustomPartnerCategory.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_Gold_DimCreditingGeography.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_Gold_FactAzureConsumptionP1.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_Gold_PartnerSpecialization.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_Gold_SolutionAreaMapping.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_Gold_SolutionPartnerDesignation.Notebook
+/Fabric/Cosell/Notebooks/Gold/PSA_PsaList&Table.Notebook
+/Fabric/Cosell/Notebooks/Init
+/Fabric/Cosell/Notebooks/Init/BVT Framework Cosell
+/Fabric/Cosell/Notebooks/Init/CommonUtilityFunctions.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_CreatePublishSchema.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_Latest_PublishSchema_update.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_Initiate_Refresh.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_RCA_Generation.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_Reset_NotebookStatus.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_Redcarpet_Schema_Switch.Notebook
+/Fabric/Cosell/Notebooks/Init/CoSell_RefreshStatus.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_Reporting_ZOrderImplementation.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_svf_GetCutoffDate.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_svf_GetDate.Notebook
+/Fabric/Cosell/Notebooks/Init/Cosell_Update_SchemaAndDataType.Notebook
+/Fabric/Cosell/Notebooks/Init/Create_DeltaVersionTable_Silver.Notebook
+/Fabric/Cosell/Notebooks/Init/Create_DeltaVersionTable.Notebook
+/Fabric/Cosell/Notebooks/Init/Creation_Shortcut_PS.Notebook
+/Fabric/Cosell/Notebooks/Init/Creation_Shortcut.Notebook
+/Fabric/Cosell/Notebooks/Init/LastCompletedRefreshDate.Notebook
+/Fabric/Cosell/Notebooks/Init/Latest_Folder_Path_Bronze_ReferralMasterPII.Notebook
+/Fabric/Cosell/Notebooks/Init/Latest_Folder_Path_Silver.Notebook
+/Fabric/Cosell/Notebooks/Init/PartnerSharing_Shortcut_Creation.Notebook
+/Fabric/Cosell/Notebooks/Init/RedCarpet_GPSMart_Schema_Switch.Notebook
+/Fabric/Cosell/Notebooks/Init/RedCarpet_GPSMart_Shortcut_Creation.Notebook
+/Fabric/Cosell/Notebooks/Init/Reporting_DataTransfer.Notebook
+/Fabric/Cosell/Notebooks/Init/Reset_Notebook_Status.Notebook
+/Fabric/Cosell/Notebooks/Init/Schema_Switch_Redcarpet_Reporting.Notebook
+/Fabric/Cosell/Notebooks/Init/Schema_Switch_Reporting.Notebook
+/Fabric/Cosell/Notebooks/Init/Schema_Switch.Notebook
+/Fabric/Cosell/Notebooks/Init/Shortcut_Creation_Redcarpet_Reporting.Notebook
+/Fabric/Cosell/Notebooks/Init/Shortcut_Utility_Updated.Notebook
+/Fabric/Cosell/Notebooks/Init/ShortcutCreationPME_CRP.Notebook
+/Fabric/Cosell/Notebooks/Init/ShortCuts_Creation_Bronze.Notebook
+/Fabric/Cosell/Notebooks/Init/ShortCuts_Creation_Silver.Notebook
+/Fabric/Cosell/Notebooks/Init/ShortcutScriptPS.Notebook
+/Fabric/Cosell/Notebooks/Init/Warm_Caching_Temperature_Stats_Cosell.Notebook
+/Fabric/Cosell/Notebooks/Init/Warm_Caching_Temperature_Stats_PartnerSharing.Notebook
+/Fabric/Cosell/Notebooks/Init/Warm_Caching_Temperature_Stats_PSA.Notebook
+/Fabric/Cosell/Notebooks/Silver
+/Fabric/Cosell/Notebooks/Silver/CoSell_CoSellGold_Int_Snapshots.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Account.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_AccountToPersonMapping.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Actual.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_APIFeedData_Markeplace.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_APIFeedData.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_BridgeCascadedPartnerOne.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_BusinessUnit.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_CountryTaxonomy.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_CustomOpptyStatus.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimAccountGeography.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimGeographySubsidiaryHierarchy.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimLead.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimMSXSolution.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimOpportunity_int.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimOpportunity.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimPartnerDealPII.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimPricingLevelHierarchy.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimProductHierarchy.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimReportedSubsegmentHierarchy.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimReportingGeography.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_DimRevenueAccount.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_EMPMtables.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactLead.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactOpportunitySalesProgram.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_factpartnerdeal_snapshot.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactPBP.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_FactPipeline.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Industry.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Invoice.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_MSXCRM_OCPCRM_Mapping.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_OpportunityPartneraccountDraftPartitioned.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_partnerAccount.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PartnerAccountPersonnel.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PartnerImpactNumbers.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PartnerMaster.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_PlanProfile.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Referralmasterpii.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SellInCountryMapping.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_Solution.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionArea.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionIndustryAssociation.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionIndustryPlacement.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionSolutionAreaAssociation.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SolutionSolutionAreaPlacement.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SPM_SalesGroupHierarchy.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_SPMAllAssignments_int.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_TopTierPartners.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_TrueACRPartnerDeal_FY25.Notebook
+/Fabric/Cosell/Notebooks/Silver/Cosell_Silver_TrueACRPartnerDeal_int.Notebook
+/Fabric/Cosell/Notebooks/Silver/PowerApps_DboToSilver.Notebook
+/Fabric/Cosell/Pipelines
+/Fabric/Cosell/Pipelines/CoSell_Bronze_Pipeline.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Bronze_Validate.DataPipeline
+/Fabric/Cosell/Pipelines/Cosell_Gold_Pipeline_V3.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Gold_Pipeline_V4.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Gold_Pipeline.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Gold_Validation.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Master_Pipeline.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Publish_Schema_Pipeline.DataPipeline
+/Fabric/Cosell/Pipelines/Cosell_Reset_Flag.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Silver_Pipeline.DataPipeline
+/Fabric/Cosell/Pipelines/CoSell_Silver_Validate.DataPipeline
+/Fabric/Cosell/Pipelines/Gold_Pipeline_V2.DataPipeline
+/Fabric/Cosell/Pipelines/PartnerSharing_Gold_Pipeline.DataPipeline
+/Fabric/Cosell/Pipelines/PartnerSharing_Master_Pipeline.DataPipeline
+/Fabric/Cosell/Pipelines/SilverNotebooks.DataPipeline
+/Fabric/DRACR Planning
+/Fabric/DRACR Planning/Cosell_Gold_DimReportingPartnerOneSub_Planning_Feed.Notebook
+/Fabric/DRACR Planning/Cosell_Gold_dimtoptiermonthlystatus_Planning_Feed.Notebook
+/Fabric/DRACR Planning/Cosell_Gold_FactIPCoSell_Planning_Feed.Notebook
+/Fabric/DRACR Planning/Cosell_Gold_FactPartnerDeal_Planning_Feed.Notebook
+/Fabric/DRACR Planning/Cosell_Gold_FY27_DimAccountGeographyHierarchyReporting.Notebook
+/Fabric/DRACR Planning/Cosell_Gold_FY27_TPID_Mapping.Notebook
+/Fabric/DRACR Planning/Cosell_Gold_PartnerDealPartnerReportedACR_Planning_Feed.Notebook
+/Fabric/DRACR Planning/Cosell_Gold_PartnerDealSolution_Snapshot_Planning_Feed.Notebook
+/Fabric/DRACR Planning/Cosell_Silver_TopTierPartners_Planning_Feed.Notebook
+/Fabric/DRACR Planning/DRACR_Pipeline.DataPipeline
+/Fabric/DRACR Planning/DRACR_Planning_Feed.Notebook
+/Fabric/DRACR Planning/ShortCut_Creation_DRACR.Notebook
+/Fabric/Flag_Update_for_BannerVisible.Notebook
+/Fabric/Flag_Update_for_BannerVisible.Notebook/.platform
+/Fabric/Flag_Update_for_BannerVisible.Notebook/notebook-content.py
+/Fabric/Gold
+/Fabric/Gold/CoSell_Gold_BridgeCascadedPartnerOne.Notebook
+/Fabric/Joint Planning Reporting
+/Fabric/Joint Planning Reporting/Bronze
+/Fabric/Joint Planning Reporting/Bronze/TPP_Bronze_ImportCRM.Notebook
+/Fabric/Joint Planning Reporting/Bronze/TPP_Create_DeltaVersionTable_Bronze.Notebook
+/Fabric/Joint Planning Reporting/Bronze/TPP_ShortCuts_Creation_Bronze.Notebook
+/Fabric/Joint Planning Reporting/Gold
+/Fabric/Joint Planning Reporting/Gold_Publish
+/Fabric/Joint Planning Reporting/Gold_Publish/TPP_Gold_Publish_All_Tables.Notebook
+/Fabric/Joint Planning Reporting/Gold/Cosell_Gold_TPP_PlanPriority.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Gold_All_Tabels.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolio.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolioAccount.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolioPreLoadedPriority.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Gold_DimPortfolioPriorityTag.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Gold_FactPortfolioPartnerEngagement.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Gold_LatestRefresh.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Silver_DimPartnerAccount.Notebook
+/Fabric/Joint Planning Reporting/Gold/TPP_Silver_ImportCRM.Notebook
+/Fabric/Joint Planning Reporting/init
+/Fabric/Joint Planning Reporting/init/BVT Framework TPP
+/Fabric/Joint Planning Reporting/init/DQA
+/Fabric/Joint Planning Reporting/init/TPP_CreatePublishSchema.Notebook
+/Fabric/Joint Planning Reporting/init/TPP_InitiateConfig_Refresh.Notebook
+/Fabric/Joint Planning Reporting/init/TPP_Latest_PublishSchema_update.Notebook
+/Fabric/Joint Planning Reporting/init/TPP_Prerequisites_Notebook.Notebook
+/Fabric/Joint Planning Reporting/init/TPP_Reporting_Schema_Switch.Notebook
+/Fabric/Joint Planning Reporting/init/TPP_Reset_Notebook_Status.Notebook
+/Fabric/Joint Planning Reporting/init/TPP_ShortCuts_Creation.Notebook
+/Fabric/Joint Planning Reporting/pipeline
+/Fabric/Joint Planning Reporting/pipeline/Status Update Pipeline
+/Fabric/Joint Planning Reporting/pipeline/TPP_Bronze.DataPipeline
+/Fabric/Joint Planning Reporting/pipeline/TPP_Gold.DataPipeline
+/Fabric/Joint Planning Reporting/pipeline/TPP_Master_Pipeline.DataPipeline
+/Fabric/Joint Planning Reporting/pipeline/TPP_Master_Refreshed.DataPipeline
+/Fabric/Joint Planning Reporting/pipeline/TPP_Publish_Pipeline.DataPipeline
+/Fabric/Joint Planning Reporting/pipeline/TPP_Silver.DataPipeline
+/Fabric/Joint Planning Reporting/Silver
+/Fabric/Joint Planning Reporting/Silver/TPP V2
+/Fabric/Joint Planning Reporting/Silver/TPP_Create_DeltaVersionTable_Silver.Notebook
+/Fabric/Joint Planning Reporting/Silver/TPP_ShortCuts_Creation_Silver.Notebook
+/Fabric/Joint Planning Reporting/Silver/TPP_Silver_DimCyAllAccounts.Notebook
+/Fabric/Joint Planning Reporting/Silver/TPP_Silver_DimPortfolioSubPriority.Notebook
+/Fabric/Joint Planning Reporting/Silver/TPP_Silver_DimPortfolioSubPriorityAccount.Notebook
+/Fabric/Joint Planning Reporting/Silver/TPP_Silver_New_DimPortfolioSubPriority.Notebook
+/Fabric/Majors Reporting
+/Fabric/Majors Reporting/Bronze
+/Fabric/Majors Reporting/Bronze/MPR_Bronze_ImportAMM.Notebook
+/Fabric/Majors Reporting/Bronze/MPR_Bronze_ImportPower5.Notebook
+/Fabric/Majors Reporting/Bronze/MPR_Bronze_Shortcut_Creation.Notebook
+/Fabric/Majors Reporting/Bronze/MPR_Bronze_UpdateDeltaVersion.Notebook
+/Fabric/Majors Reporting/Bronze/MPR_Extract_DimCustomer.Notebook
+/Fabric/Majors Reporting/Gold
+/Fabric/Majors Reporting/Gold_Publish
+/Fabric/Majors Reporting/Gold_Publish/MPR_Gold_Publish_All_Tables.Notebook
+/Fabric/Majors Reporting/Gold/MPR_Gold_All_Tables.Notebook
+/Fabric/Majors Reporting/Init
+/Fabric/Majors Reporting/Init/BVT Framework
+/Fabric/Majors Reporting/Init/Majors_Schema_Switch_Reporting.Notebook
+/Fabric/Majors Reporting/Init/MPR DQA
+/Fabric/Majors Reporting/Init/MPR_Create_DeltaVersionTable_Bronze.Notebook
+/Fabric/Majors Reporting/Init/MPR_CreatePublishSchema.Notebook
+/Fabric/Majors Reporting/Init/MPR_Initiate_Refresh.Notebook
+/Fabric/Majors Reporting/Init/MPR_Latest_PublishSchema_update.Notebook
+/Fabric/Majors Reporting/Init/MPR_Prerequisites_Notebook.Notebook
+/Fabric/Majors Reporting/Init/MPR_Reset_Notebook_Status.Notebook
+/Fabric/Majors Reporting/Init/MPR_Set_Refresh_Status_as_Pass.Notebook
+/Fabric/Majors Reporting/Init/MPR_Shortcut_Creation.Notebook
+/Fabric/Majors Reporting/MajorsReporting.Lakehouse
+/Fabric/Majors Reporting/MajorsReporting.Lakehouse/.platform
+/Fabric/Majors Reporting/MajorsReporting.Lakehouse/lakehouse.metadata.json
+/Fabric/Majors Reporting/MajorsReporting.Lakehouse/shortcuts.metadata.json
+/Fabric/Majors Reporting/Pipeline
+/Fabric/Majors Reporting/Pipeline/AMM_Datapipeline.DataPipeline
+/Fabric/Majors Reporting/Pipeline/MPR_Bronze.DataPipeline
+/Fabric/Majors Reporting/Pipeline/MPR_Gold.DataPipeline
+/Fabric/Majors Reporting/Pipeline/MPR_Master_Pipeline_V2.DataPipeline
+/Fabric/Majors Reporting/Pipeline/MPR_Master_Refresh_Pipeline.DataPipeline
+/Fabric/Majors Reporting/Pipeline/MPR_Publish_Pipeline.DataPipeline
+/Fabric/Majors Reporting/Pipeline/MPR_Silver.DataPipeline
+/Fabric/Majors Reporting/Pipeline/Status Update Pipeline
+/Fabric/Majors Reporting/Silver
+/Fabric/Majors Reporting/Silver/MPR_Silver_AMM_Data.Notebook
+/Fabric/Majors Reporting/Silver/MPR_Silver_SnapshotData.Notebook
+/Fabric/Majors Reporting/Silver/MPR_Silver_TransformAndRestrictData.Notebook
+/Fabric/Majors Reporting/Warm_Caching_Temperature_Stats.Notebook
+/Fabric/Majors Reporting/Warm_Caching_Temperature_Stats.Notebook/.platform
+/Fabric/Majors Reporting/Warm_Caching_Temperature_Stats.Notebook/notebook-content.py
+/Fabric/Planning
+/Fabric/Planning/Cosell_Gold_DimMSXCustomer_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_DimPartnerDeal_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_DimPartnerOne_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_DimReportingPartnerOneSub_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_FactCRMPartner_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_FactOpportunity_int_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_FactPartnerDeal_int_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_FactPartnerDeal_Planning.Notebook
+/Fabric/Planning/Cosell_Gold_int_dimreportingpartneronesub_planning.Notebook
+/Fabric/Planning/Cosell_Silver_BridgeCascadedPartnerOne_Planning.Notebook
+/Fabric/Planning/MHR_Planning_Pipeline.DataPipeline
+/Fabric/Planning/Shortcuts_Creation_PMPlanning.Notebook
+/Fabric/POSOT_Cosell.Lakehouse
+/Fabric/POSOT_Cosell.Lakehouse/.platform
+/Fabric/POSOT_Cosell.Lakehouse/lakehouse.metadata.json
+/Fabric/Power apps Dataverse.Dataflow
+/Fabric/Power apps Dataverse.Dataflow/.platform
+/Fabric/Power apps Dataverse.Dataflow/mashup.pq
+/Fabric/Power apps Dataverse.Dataflow/queryMetadata.json
+/Fabric/PRACFlow
+/Fabric/PRACFlow/Cosell_Gold_AnalysisFrameWork.Notebook
+/Fabric/PRACFlow/Cosell_Gold_PRACRImprovementsSendmail.Notebook
+/Fabric/PRACFlow/CoSell_Gold_PRACRSnapshot.Notebook
+/Fabric/PRACFlow/Cosell_PRACR_IndividualFilesCopyFromSharepoint.Notebook
+/Fabric/PRACFlow/Cosell_Silver_TrueACRPartnerDealBase.Notebook
+/Fabric/PRACFlow/Pipeline
+/Fabric/PRACFlow/Pipeline/PRACR_Master.DataPipeline
+/Fabric/PRACFlow/Pipeline/PRACR_ProcessPartnerFiles.DataPipeline
+/Fabric/PRACFlow/Pipeline/PRACR_Snapshot.DataPipeline
+/Fabric/PRACFlow/Pipeline/PRACR_Trigger_Email.DataPipeline
+/Fabric/Readme.md
+/Fabric/RedCarpet
+/Fabric/RedCarpet/Gold
+/Fabric/RedCarpet/Gold/Cosell_Gold_Dim_DigitallyOffboardedPartner.Notebook
+/Fabric/RedCarpet/Gold/Cosell_Gold_DimAccountPersonnel.Notebook
+/Fabric/RedCarpet/Gold/Cosell_Gold_DimPartner.Notebook
+/Fabric/RedCarpet/Gold/Cosell_Gold_DimRedCarpetActivity.Notebook
+/Fabric/RedCarpet/Gold/Cosell_Gold_DimRedCarpetPartner.Notebook
+/Fabric/RedCarpet/Gold/Cosell_Gold_FactPBP.Notebook
+/Fabric/RedCarpet/Gold/Cosell_Gold_Redcarpet_DimMPL.Notebook
+/Fabric/RedCarpet/Gold/Cosell_Gold_Redcarpet_Geography.Notebook
+/Fabric/RedCarpet/Gold/RedCarpet_Flag_Update_for_BannerVisible.Notebook
+/Fabric/RedCarpet/Gold/RedCarpet_RefreshStatus.Notebook
+/Fabric/RedCarpet/Init
+/Fabric/RedCarpet/Init/Cosell_Redcarpet_Create_Publish_Schema.Notebook
+/Fabric/RedCarpet/Init/Create_Redcarpet_DeltaVersionTable_Silver.Notebook
+/Fabric/RedCarpet/Init/RedCarpet DQA
+/Fabric/RedCarpet/Init/Shortcuts_Creation_Redcarpet_Silver.Notebook
+/Fabric/RedCarpet/Pipeline
+/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Gold_Pipeline.DataPipeline
+/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Master_Full_Refresh_Pipeline.DataPipeline
+/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Master_Pipeline.DataPipeline
+/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Publish_Pipeline.DataPipeline
+/Fabric/RedCarpet/Pipeline/Cosell_Redcarpet_Reporting_Shortcut_Creation.DataPipeline
+/Fabric/RedCarpet/Pipeline/CoSell_RedCarpet_Silver_Pipeline.DataPipeline
+/Fabric/RedCarpet/Pipeline/RedCarpet_Reset_Flag.DataPipeline
+/Fabric/RedCarpet/Pipeline/Status Update Pipeline
+/Fabric/RedCarpet/Silver
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_Account.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_AccountToPersonMapping.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_CountryTaxonomy.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_DimMSXSolution.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_DimReportingGeography.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_PartnerAccount.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_PartnerAccountPersonnel.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_PlanProfile&#32;.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_SellInCountryMapping.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_Solution.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_SolutionIndustryPlacement.Notebook
+/Fabric/RedCarpet/Silver/Cosell_RedCarpet_Silver_SolutionSolutionAreaPlacement.Notebook
+/Fabric/RedCarpet/Silver/Cosell_Silver_RedCarpetActivity.Notebook
+/Fabric/RedCarpet/Warm_Caching_Temperature_Stats_RedCarpet.Notebook
+/Fabric/RedCarpet/Warm_Caching_Temperature_Stats_RedCarpet.Notebook/.platform
+/Fabric/RedCarpet/Warm_Caching_Temperature_Stats_RedCarpet.Notebook/notebook-content.py
+/Fabric/Reset flag.DataPipeline
+/Fabric/Reset flag.DataPipeline/.platform
+/Fabric/Reset flag.DataPipeline/pipeline-content.json
+/Model/CoMarketingModel.bim
+/Model/CoSellSemanticModel.bim
+/Model/majorsSemanticModel.bim
+/Model/MRoB Model.bim
+/Model/Partner Planning and Transition Dataset.bim
+/Model/PartnerSharingModel.bim
+/Model/PSA_Impact_Dataset.bim
+/Model/TPP_Dataset_Model.bim
+/Model/UsageMetricReport.bim
+/Reports/Co-Marketing Performance Dashboard.pbix
+/Reports/GPS Insights Hub - Sell-With - Referral and Co-Sell.pbix
+/Reports/GPS Insights Hub - Sell-With - Solution Performance.pbix
+/Reports/GPS SingleMPN Sell With.pbix
+/Reports/IP Co-sell.pbix
+/Reports/MPR Dashboard.pbix
+/Reports/MSX Insights - Partner Sharing HBI - Strictly Confidential - Specialist.pbix
+/Reports/MSX Insights - Partner Sharing HBI - Strictly Confidential.pbix
+/Reports/Partner Planning and Transition.pbix
+/Reports/PDM Pipeline Insights.pbix
+/Reports/Pipeline Flow Execution.pbix
+/Reports/Power 5.pbix
+/Reports/PSA Impact Reporting.pbix
+/Reports/Services Co-sell Dashboard.pbix

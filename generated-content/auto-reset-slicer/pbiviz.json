@@ -1,0 +1,25 @@
+{
+  "visual": {
+    "name": "autoResetSlicer",
+    "displayName": "Auto-Reset Slicer",
+    "guid": "autoResetSlicerA1B2C3D4E5F6",
+    "visualClassName": "AutoResetSlicer",
+    "version": "0.1.0.0",
+    "description": "A categorical slicer that resets and selects all currently-available values whenever an external (non-excepted) filter changes elsewhere on the report.",
+    "supportUrl": "https://example.com/auto-reset-slicer",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "5.11.0",
+  "author": {
+    "name": "WorkFAST",
+    "email": "workfast@example.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": []
+}

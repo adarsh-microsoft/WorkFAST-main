@@ -1,0 +1,3689 @@
+{
+  "name": "CoMarketingModel_NewApproach",
+  "id": "489c2061-d197-4be7-89f4-246ba97a11ab",
+  "compatibilityLevel": 1606,
+  "model": {
+    "culture": "en-US",
+    "description": "Co-Marketing / Co-Sell analytics model (Microsoft Global Partner Solutions). Tracks the partner investment lifecycle Budget -> Investment -> Campaign -> Pipeline -> ROI: Microsoft allocates budget, PMMs submit Investment Asks (FactInvestments) with forecasted outcomes, partners run campaigns and tag deals with #PartnerGTM, and actual results flow through the pipeline (DimPartnerDealCD + DimOpportunityCD, combined in FactPipeline) to compute Shared Referrals, Shared Opportunities, Pipeline Wins and ROI. Geography is reported through two field perspectives: GCPS (Global Channel Partner Solutions) and EPS (Enterprise Partner Solutions).",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "ReportingPartnerOneCD",
+        "description": "Partner master/dimension. One row per reporting partner (PartnerOne) with identity, segment, sub-segment, business model and Distributor/SSP/Invested flags. Used to slice investments and pipeline by partner.",
+        "lineageTag": "2420d9bb-0a92-4682-ae09-b6863c80eb2e",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[ReportingPartnerOneCD]",
+        "columns": [
+          {
+            "name": "PartnerOneId",
+            "dataType": "int64",
+            "description": "Unique reporting-partner key (PartnerOne ID). Joins to FactInvestments[PartnerOneId] and FactPipeline[PartnerOneKey].",
+            "sourceColumn": "PartnerOneId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "052001a2-a48e-4935-a7ad-629fd1feed4b",
+            "sourceLineageTag": "PartnerOneId",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerSegment",
+            "dataType": "string",
+            "description": "Partner segment - high-level partner grouping.",
+            "sourceColumn": "PartnerSegment",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "2fb019da-a7eb-4ba8-b591-66488d40683d",
+            "sourceLineageTag": "PartnerSegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerOneName",
+            "dataType": "string",
+            "description": "Display name of the reporting partner (PartnerOne).",
+            "sourceColumn": "PartnerOneName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "0637a98e-d2c3-4bf8-abca-ba7ea355ffeb",
+            "sourceLineageTag": "PartnerOneName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerOneNameID",
+            "dataType": "string",
+            "description": "Combined partner name + ID string for unambiguous partner display.",
+            "sourceColumn": "PartnerOneNameID",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "4cd8f22b-4ec7-420b-8608-503a80c01954",
+            "sourceLineageTag": "PartnerOneNameID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerSubSegment",
+            "dataType": "string",
+            "description": "Partner sub-segment - finer breakdown within PartnerSegment.",
+            "sourceColumn": "PartnerSubSegment",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "0ce1e150-96eb-4286-b46b-08c63f6bd1f0",
+            "sourceLineageTag": "PartnerSubSegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsDisti",
+            "dataType": "string",
+            "description": "Flag indicating whether the partner is a Distributor (Disti).",
+            "sourceColumn": "IsDisti",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "fb85dba4-0c65-418c-afde-fef0e089fd77",
+            "sourceLineageTag": "IsDisti",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsSSP",
+            "dataType": "string",
+            "description": "Flag indicating whether the partner is a Solution/Sell-through partner (SSP).",
+            "sourceColumn": "IsSSP",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "ca04d9d4-60ec-4670-bcaa-019cc599b455",
+            "sourceLineageTag": "IsSSP",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerBusinessModel",
+            "dataType": "string",
+            "description": "Partner business model - how the partner transacts with Microsoft and customers.",
+            "sourceColumn": "PartnerBusinessModel",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "5eb4abdf-a84e-4aec-bcc5-c663a16fdc51",
+            "sourceLineageTag": "PartnerBusinessModel",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsInvestedPartner",
+            "dataType": "string",
+            "description": "Flag indicating an invested/strategic partner receiving co-marketing investment.",
+            "sourceColumn": "IsInvestedPartner",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "1dff3d70-1c47-4a81-855c-5e0ed74060f6",
+            "sourceLineageTag": "IsInvestedPartner",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ReportingPartnerOneCD",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "ReportingPartnerOneCD",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "FactEngagementMilestoneCD",
+        "description": "Fact table of engagement-milestone metrics for co-sell opportunities - estimated monthly consumption/usage and estimated completion date per milestone. Feeds milestone-based estimated revenue in the pipeline.",
+        "lineageTag": "7b0afc18-ee06-4c31-b013-aa03be3f61d5",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[FactEngagementMilestoneCD]",
+        "columns": [
+          {
+            "name": "EngagementMilestoneKey",
+            "dataType": "int64",
+            "description": "Engagement-milestone key; joins to DimEngagementMilestoneCD.",
+            "sourceColumn": "EngagementMilestoneKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "b3b5a071-23b8-47ec-a876-324ebc1f3fe2",
+            "sourceLineageTag": "EngagementMilestoneKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityKey",
+            "dataType": "int64",
+            "description": "Related opportunity key; joins to DimOpportunityCD.",
+            "sourceColumn": "OpportunityKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "133ab782-68e7-471b-849c-f11e7e9d9c9a",
+            "sourceLineageTag": "OpportunityKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EstimatedMonthlyUsage",
+            "dataType": "double",
+            "description": "Estimated monthly consumption/usage (e.g., Azure) for the milestone; basis for projected annualized revenue.",
+            "sourceColumn": "EstimatedMonthlyUsage",
+            "sourceProviderType": "float",
+            "lineageTag": "4145e6db-581f-48bc-b415-0761e57e81ba",
+            "sourceLineageTag": "EstimatedMonthlyUsage",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "EstimatedCompletionDateKey",
+            "dataType": "int64",
+            "description": "Date key for the milestone's estimated completion date.",
+            "sourceColumn": "EstimatedCompletionDateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "cd949f98-28f1-4b08-93e0-877ce931f582",
+            "sourceLineageTag": "EstimatedCompletionDateKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsMultiPartner",
+            "dataType": "string",
+            "description": "Flag ('yes'/'no') marking milestones shared across multiple partners; measures keep 'no' to avoid double counting.",
+            "sourceColumn": "IsMultiPartner",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "9b164b30-6cbf-4349-ac76-e931c48b0da1",
+            "sourceLineageTag": "IsMultiPartner",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactEngagementMilestoneCD",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FactEngagementMilestoneCD",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DimEngagementMilestoneCD",
+        "description": "Dimension describing engagement milestones (milestone number, recurring vs non-recurring flag, estimated date and fiscal month). A milestone is a defined progress stage in the partner/customer engagement lifecycle. Hosts the milestone estimated-revenue measures.",
+        "lineageTag": "8d8e1727-3e3d-4097-a107-fb19c91d098d",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[DimEngagementMilestoneCD]",
+        "columns": [
+          {
+            "name": "EngagementMilestoneKey",
+            "dataType": "int64",
+            "description": "Business key of the engagement milestone.",
+            "sourceColumn": "EngagementMilestoneKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "62bda9c9-fe8b-480f-aa0e-6d482bf3760b",
+            "sourceLineageTag": "EngagementMilestoneKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MilestoneNumber",
+            "dataType": "string",
+            "description": "Milestone sequence number/identifier within an engagement.",
+            "sourceColumn": "MilestoneNumber",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "3bb2aa05-0e58-46e0-a7b4-6838950f928b",
+            "sourceLineageTag": "MilestoneNumber",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsNonRecurringEngagementMilestone",
+            "dataType": "string",
+            "description": "Flag ('Yes'/'No') - one-time vs recurring milestone; drives the annualization logic in revenue measures.",
+            "sourceColumn": "IsNonRecurringEngagementMilestone",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "afff6ff1-726f-47be-a720-def98de48023",
+            "sourceLineageTag": "IsNonRecurringEngagementMilestone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EstimatedDate",
+            "dataType": "dateTime",
+            "description": "Date the milestone is expected to be reached.",
+            "sourceColumn": "EstimatedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "lineageTag": "deb71e17-76ed-497f-8e41-1ab57f900b14",
+            "sourceLineageTag": "EstimatedDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EstimatedFiscalMonthID",
+            "dataType": "int64",
+            "description": "Microsoft fiscal-month ID of the estimated milestone date; used in annualized-revenue calculations.",
+            "sourceColumn": "EstimatedFiscalMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "1d967042-6ba5-4ea3-bdf8-bcb10de49318",
+            "sourceLineageTag": "EstimatedFiscalMonthID",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimEngagementMilestoneCD",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DimEngagementMilestoneCD",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "FactInvestments",
+        "description": "Core investments fact. One row per Investment Ask - a co-marketing funding request submitted by a PMM with forecasted outcomes. Captures requested vs approved funding, forecasted revenue and SQLs/referrals, partner co-investment, solution area/play, geography and campaign timing. Drives the 'Investment' stage of Budget -> Investment -> Campaign -> Pipeline -> ROI.",
+        "lineageTag": "3ae0f322-3606-4eb5-a4ce-68a260e9cb1c",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[FactInvestments]",
+        "columns": [
+          {
+            "name": "InvestmentAskID",
+            "dataType": "string",
+            "description": "Unique identifier of the Investment Ask (one co-marketing funding request). Table grain.",
+            "sourceColumn": "InvestmentAskID",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "5747d47e-8947-4ad1-b2ef-5a4d8171811a",
+            "sourceLineageTag": "InvestmentAskID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Stage",
+            "dataType": "string",
+            "description": "Workflow stage of the investment ask (e.g., submitted, approved, rejected).",
+            "sourceColumn": "Stage",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "2a7cd7fb-4735-4164-ace8-6ff22f8bd58b",
+            "sourceLineageTag": "Stage",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RequestedAmount",
+            "dataType": "int64",
+            "description": "Funding amount requested in the investment ask.",
+            "sourceColumn": "RequestedAmount",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "8f2b33c3-8566-423c-842f-306139e59676",
+            "sourceLineageTag": "RequestedAmount",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InvestmentSource",
+            "dataType": "string",
+            "description": "Source/program funding the investment.",
+            "sourceColumn": "InvestmentSource",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "164050f4-da36-46f2-bd04-e0ebb8f107ba",
+            "sourceLineageTag": "InvestmentSource",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InvestmentCreatedDate",
+            "dataType": "dateTime",
+            "description": "Date the investment ask was created/submitted.",
+            "sourceColumn": "InvestmentCreatedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "11b0b38b-1129-4d9e-9ea6-28b8f51b1c55",
+            "sourceLineageTag": "InvestmentCreatedDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ApprovedAmount",
+            "dataType": "int64",
+            "description": "Funding amount approved for the investment ask; basis of the ROI denominator.",
+            "sourceColumn": "ApprovedAmount",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "5fa69302-d398-43e3-b705-fe149a9f021d",
+            "sourceLineageTag": "ApprovedAmount",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FocusedIndustries",
+            "dataType": "string",
+            "description": "Industries targeted by the investment/campaign.",
+            "sourceColumn": "FocusedIndustries",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "a628a222-e54e-4b4d-9889-d8fe35f6b08c",
+            "sourceLineageTag": "FocusedIndustries",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ScaleProgramName",
+            "dataType": "string",
+            "description": "Name of the scale program associated with the investment.",
+            "sourceColumn": "ScaleProgramName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "0aa4b9f8-b7e9-44db-9906-eaadec49326b",
+            "sourceLineageTag": "ScaleProgramName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ForecastedRevenue",
+            "dataType": "double",
+            "description": "Forecasted revenue outcome from the investment; underlies the '$ Shared Referrals' measure.",
+            "sourceColumn": "ForecastedRevenue",
+            "sourceProviderType": "decimal(34, 6)",
+            "lineageTag": "00a6f176-a239-4560-8b81-bb30efed495a",
+            "sourceLineageTag": "ForecastedRevenue",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ForecastedSQLs",
+            "dataType": "double",
+            "description": "Forecasted Sales Qualified Leads / shared referrals; underlies the '# Shared Referrals' measure.",
+            "sourceColumn": "ForecastedSQLs",
+            "sourceProviderType": "decimal(34, 6)",
+            "lineageTag": "cfd1895f-4758-44bf-8606-9c9fadaa9dd7",
+            "sourceLineageTag": "ForecastedSQLs",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "CustomerSegment",
+            "dataType": "string",
+            "description": "Targeted customer segment for the investment/campaign.",
+            "sourceColumn": "CustomerSegment",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "02231191-93b6-4add-950d-60aecfa762db",
+            "sourceLineageTag": "CustomerSegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EstimatedCampaignStartDate",
+            "dataType": "dateTime",
+            "description": "Estimated start date of the partner campaign funded by this investment.",
+            "sourceColumn": "EstimatedCampaignStartDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "2d345a40-855a-417b-ae0d-d132756b7470",
+            "sourceLineageTag": "EstimatedCampaignStartDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CreatedBy",
+            "dataType": "string",
+            "description": "User (PMM) who created the investment ask.",
+            "sourceColumn": "CreatedBy",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "af9c1a6c-2cd6-4b29-87b1-ff5408dc7267",
+            "sourceLineageTag": "CreatedBy",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerOneId",
+            "dataType": "int64",
+            "description": "Reporting-partner key; joins to ReportingPartnerOneCD[PartnerOneId].",
+            "sourceColumn": "PartnerOneId",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "826e317e-2765-4b37-9a72-2391261c5bc8",
+            "sourceLineageTag": "PartnerOneId",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Coinvestmentfrompartners",
+            "dataType": "double",
+            "description": "Co-investment amount contributed by the partner(s) alongside Microsoft funding.",
+            "sourceColumn": "Coinvestmentfrompartners",
+            "sourceProviderType": "decimal(34, 6)",
+            "lineageTag": "b7cefe56-860c-44f1-a26a-6129d6466ce0",
+            "sourceLineageTag": "Coinvestmentfrompartners",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "AttachmentLink",
+            "dataType": "string",
+            "description": "URL to the investment ask's supporting attachment/documentation.",
+            "sourceColumn": "AttachmentLink",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "d9b5147b-2906-4ac7-81a2-9b141433608c",
+            "sourceLineageTag": "AttachmentLink",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CampaignStartDateFiscalQuarter",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter of the estimated campaign start date.",
+            "sourceColumn": "CampaignStartDateFiscalQuarter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "5abcec56-c38b-4362-a4bc-6f553b5ac09a",
+            "sourceLineageTag": "CampaignStartDateFiscalQuarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InvestmentRequestFiscalQuarter",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter in which the investment was requested.",
+            "sourceColumn": "InvestmentRequestFiscalQuarter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "e91e3a12-a3ce-4f95-8ad2-8f9e30043f8e",
+            "sourceLineageTag": "InvestmentRequestFiscalQuarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InvestmentSolutionAreas",
+            "dataType": "string",
+            "description": "Solution Area targeted by the investment; joins to DistinctSolutionAreaMapping.",
+            "sourceColumn": "InvestmentSolutionAreas",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "09bfff70-3f8a-44ab-be3d-1cfd9c1eb9fc",
+            "sourceLineageTag": "InvestmentSolutionAreas",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "InvestmentSolutionPlay",
+            "dataType": "string",
+            "description": "Solution Play targeted by the investment; joins to DistinctSolutionPlayMapping.",
+            "sourceColumn": "InvestmentSolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "8decfbca-f1af-408e-b49d-94016cf19fb2",
+            "sourceLineageTag": "InvestmentSolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EPSGeoKey",
+            "dataType": "int64",
+            "description": "EPS (Enterprise Partner Solutions) geography key; joins to EPSGeography.",
+            "sourceColumn": "EPSGeoKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "d61a9356-2a77-469e-9dcc-5fb1bbe810c3",
+            "sourceLineageTag": "EPSGeoKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "GCPSGeoKey",
+            "dataType": "int64",
+            "description": "GCPS (Global Channel Partner Solutions) geography key; joins to GCPSGeography.",
+            "sourceColumn": "GCPSGeoKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "2fc33f26-7c45-4cf3-bfb8-a473d5377e64",
+            "sourceLineageTag": "GCPSGeoKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Area",
+            "dataType": "string",
+            "description": "Field area associated with the investment.",
+            "sourceColumn": "Area",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "f2424a52-7ebb-48fc-b570-fe8db5ac07a9",
+            "sourceLineageTag": "Area",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LowerFieldAccountabilityUnit",
+            "dataType": "string",
+            "description": "Lower Field Accountability Unit (LFAU) - granular field org unit for the investment.",
+            "sourceColumn": "LowerFieldAccountabilityUnit",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "833bb1f3-7e96-41f1-b635-5e60d6d0a21d",
+            "sourceLineageTag": "LowerFieldAccountabilityUnit",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactInvestments",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FactInvestments",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Investment Approved Amount",
+            "description": "Total approved co-marketing funding across Investment Asks (de-duplicated per InvestmentAskID). Removes time and #PartnerGTM filters; denominator of ROI.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'FactInvestments',",
+              "                'FactInvestments'[InvestmentAskID],",
+              "                'FactInvestments'[ApprovedAmount]",
+              "            ),",
+              "            [ApprovedAmount]",
+              "        ),ALL('DimTimeCD'), ALL('DimPartnerDealCD'[IsDealWith#PartnerGTM])",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "044d5c96-0e05-4cf6-bd83-fe9b916773dd",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "Investment Requested Amount",
+            "description": "Total requested co-marketing funding across Investment Asks (de-duplicated per InvestmentAskID), ignoring the #PartnerGTM deal filter.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'FactInvestments',",
+              "                'FactInvestments'[InvestmentAskID],",
+              "                'FactInvestments'[RequestedAmount]",
+              "            ),",
+              "            [RequestedAmount]",
+              "        ), ALL('DimPartnerDealCD'[IsDealWith#PartnerGTM])",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "ba8310f9-9218-4d5a-b740-b882263be6b5",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "# Shared Referrals",
+            "description": "Forecasted shared co-sell referrals (partner-submitted SQLs/leads from joint marketing), de-duplicated per InvestmentAskID. Removes time and #PartnerGTM filters.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'FactInvestments',",
+              "                'FactInvestments'[InvestmentAskID],",
+              "                'FactInvestments'[ForecastedSQLs]",
+              "            ),",
+              "            [ForecastedSQLs]",
+              "        )",
+              "        ,ALL('DimTimeCD'), ALL('DimPartnerDealCD'[IsDealWith#PartnerGTM])",
+              "    )"
+            ],
+            "lineageTag": "8f261615-f7ef-4491-b4a6-0ab15f6cafb2",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "$ Shared Referrals",
+            "description": "Forecasted shared-referral revenue from partner co-marketing investments, de-duplicated per InvestmentAskID. Removes time and #PartnerGTM filters.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'FactInvestments',",
+              "                'FactInvestments'[InvestmentAskID],",
+              "                'FactInvestments'[ForecastedRevenue]",
+              "            ),",
+              "            [ForecastedRevenue]",
+              "        ),ALL('DimTimeCD'), ALL('DimPartnerDealCD'[IsDealWith#PartnerGTM])",
+              "    )"
+            ],
+            "lineageTag": "30160506-aa24-477c-950f-90095e49920b",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DimOpportunityCD",
+        "description": "Opportunity dimension (CoSell). One row per MSX sales opportunity with identity, created/due/close dates (calendar + fiscal), sales stage, billing/consumption status and forecast recommendation. Together with DimPartnerDealCD it represents the 'pipeline', and it hosts the core shared-opportunity, pipeline-win and ROI measures.",
+        "lineageTag": "4379a5e5-d370-4a91-ac80-e2466e611ebd",
+        "sourceLineageTag": "[CoSell].[DimOpportunityCD]",
+        "columns": [
+          {
+            "name": "OpportunityKey",
+            "dataType": "int64",
+            "description": "Surrogate key of the opportunity; joins to FactPipeline and FactEngagementMilestoneCD.",
+            "sourceColumn": "OpportunityKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "19b64237-84a7-4a98-ba94-38c853d76624",
+            "sourceLineageTag": "OpportunityKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityName",
+            "dataType": "string",
+            "description": "Name of the sales opportunity.",
+            "sourceColumn": "OpportunityName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "4199d72d-b73a-429b-9184-b4593f3688e0",
+            "sourceLineageTag": "OpportunityName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityNumber",
+            "dataType": "string",
+            "description": "Business identifier of the opportunity; used to count distinct opportunities.",
+            "sourceColumn": "OpportunityNumber",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "061d463b-1f19-415c-9a49-5df7f730f8aa",
+            "sourceLineageTag": "OpportunityNumber",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityCreatedDate",
+            "dataType": "dateTime",
+            "description": "Date the opportunity was created.",
+            "sourceColumn": "OpportunityCreatedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "5d469da3-0368-43d5-9642-05cb00610a00",
+            "sourceLineageTag": "OpportunityCreatedDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityCreatedFiscalYear",
+            "dataType": "string",
+            "description": "Microsoft fiscal year the opportunity was created.",
+            "sourceColumn": "OpportunityCreatedFiscalYear",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "7e9f3522-ad46-4969-8279-d6c61e252e7b",
+            "sourceLineageTag": "OpportunityCreatedFiscalYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityCreatedFiscalQuarter",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter the opportunity was created.",
+            "sourceColumn": "OpportunityCreatedFiscalQuarter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "d5eaf3ff-8d79-49d6-bc39-2378b6160aef",
+            "sourceLineageTag": "OpportunityCreatedFiscalQuarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityCreatedFiscalMonth",
+            "dataType": "string",
+            "description": "Microsoft fiscal month the opportunity was created.",
+            "sourceColumn": "OpportunityCreatedFiscalMonth",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "43062c9c-d7a2-44d0-b802-fb22df17487d",
+            "sourceLineageTag": "OpportunityCreatedFiscalMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityCreatedFiscalMonthID",
+            "dataType": "int64",
+            "description": "Numeric fiscal-month ID of the opportunity creation date.",
+            "sourceColumn": "OpportunityCreatedFiscalMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "db661629-4d34-4192-9cff-2af150ce62df",
+            "sourceLineageTag": "OpportunityCreatedFiscalMonthID",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityDueDate",
+            "dataType": "dateTime",
+            "description": "Date the opportunity is due / expected to close.",
+            "sourceColumn": "OpportunityDueDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "b4301f17-e7ca-4fe1-8f33-1c798459d307",
+            "sourceLineageTag": "OpportunityDueDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityDueFiscalYear",
+            "dataType": "string",
+            "description": "Internal lineage column used inside measure definitions only. Do NOT use as a filter — use DimTimeCD[FiscalYearName] instead",
+            "isHidden": true,
+            "sourceColumn": "OpportunityDueFiscalYear",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "b67ad905-da03-4e2a-8212-ec854f535dd9",
+            "sourceLineageTag": "OpportunityDueFiscalYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityDueFiscalQuarter",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter the opportunity is due.",
+            "sourceColumn": "OpportunityDueFiscalQuarter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "469c107f-afb0-4454-85b0-c6cf13e7e901",
+            "sourceLineageTag": "OpportunityDueFiscalQuarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityDueFiscalMonth",
+            "dataType": "string",
+            "description": "Microsoft fiscal month the opportunity is due.",
+            "sourceColumn": "OpportunityDueFiscalMonth",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "1d7fec93-4a3e-442a-987e-9a294a1f9da0",
+            "sourceLineageTag": "OpportunityDueFiscalMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityDueFiscalMonthID",
+            "dataType": "int64",
+            "description": "Numeric fiscal-month ID of the opportunity due date.",
+            "sourceColumn": "OpportunityDueFiscalMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "da1fddde-0305-47a9-a205-7fdacd87f9eb",
+            "sourceLineageTag": "OpportunityDueFiscalMonthID",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityURL",
+            "dataType": "string",
+            "description": "Deep link to the opportunity in MSX.",
+            "sourceColumn": "OpportunityURL",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "216eff15-0265-4f6a-8ec8-d6db64241045",
+            "sourceLineageTag": "OpportunityURL",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SolutionArea",
+            "dataType": "string",
+            "description": "Solution Area of the opportunity.",
+            "sourceColumn": "SolutionArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "47f826db-311a-4cfb-83d6-ae722d95ba72",
+            "sourceLineageTag": "SolutionArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SolutionPlay",
+            "dataType": "string",
+            "description": "Solution Play of the opportunity.",
+            "sourceColumn": "SolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "7006edeb-9636-473d-a692-96061f80d1aa",
+            "sourceLineageTag": "SolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "BilledRevenueStatus",
+            "dataType": "string",
+            "description": "Billed-revenue status of the opportunity (e.g., 'Won'); used to identify pipeline wins.",
+            "sourceColumn": "BilledRevenueStatus",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "99eb3c75-108a-4612-b9a1-6aaea20b3b5e",
+            "sourceLineageTag": "BilledRevenueStatus",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ConsumptionStatus",
+            "dataType": "string",
+            "description": "Consumption status of the opportunity (e.g., 'Closed').",
+            "sourceColumn": "ConsumptionStatus",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "2f87ba44-3e62-46bb-bc81-173b8b6e2477",
+            "sourceLineageTag": "ConsumptionStatus",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ConsumptionStatusReason",
+            "dataType": "string",
+            "description": "Reason qualifying the consumption status (e.g., 'Completed').",
+            "sourceColumn": "ConsumptionStatusReason",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "424b7643-1330-4106-b4f4-de1e69527b2f",
+            "sourceLineageTag": "ConsumptionStatusReason",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsBilledOpportunity",
+            "dataType": "string",
+            "description": "Flag ('Yes'/'No') - whether the opportunity is a billed-revenue opportunity.",
+            "sourceColumn": "IsBilledOpportunity",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "5c6ec72e-8883-48b2-ad45-92db85d56433",
+            "sourceLineageTag": "IsBilledOpportunity",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsConsumptionOpportunity",
+            "dataType": "string",
+            "description": "Flag - whether the opportunity is a consumption (usage) opportunity.",
+            "sourceColumn": "IsConsumptionOpportunity",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "d1ff85b9-ece6-4a1a-871a-6c6e85de6a03",
+            "sourceLineageTag": "IsConsumptionOpportunity",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MSXSalesStage",
+            "dataType": "string",
+            "description": "MSX sales stage of the opportunity.",
+            "sourceColumn": "MSXSalesStage",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "216048c8-befb-4743-998e-fbf59bb43703",
+            "sourceLineageTag": "MSXSalesStage",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsOpportunityCloseInTrailing12Months",
+            "dataType": "string",
+            "description": "Flag - whether the opportunity closed within the trailing 12 months.",
+            "sourceColumn": "IsOpportunityCloseInTrailing12Months",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "4e519f85-dd1c-4bb6-a802-03e10c06c24f",
+            "sourceLineageTag": "IsOpportunityCloseInTrailing12Months",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityActualCloseCalendarMonth",
+            "dataType": "string",
+            "description": "Calendar month the opportunity actually closed.",
+            "sourceColumn": "OpportunityActualCloseCalendarMonth",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "bad5e810-dc53-43f6-9029-8e7a93fd56bb",
+            "sourceLineageTag": "OpportunityActualCloseCalendarMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityActualCloseCalendarMonthID",
+            "dataType": "int64",
+            "description": "Numeric calendar-month ID of the actual close date.",
+            "sourceColumn": "OpportunityActualCloseCalendarMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "b33ac728-fa3f-4dc2-9ba8-f88c5f42a73c",
+            "sourceLineageTag": "OpportunityActualCloseCalendarMonthID",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ActualOpportunityCloseDate",
+            "dataType": "dateTime",
+            "description": "Actual close date of the opportunity.",
+            "sourceColumn": "ActualOpportunityCloseDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "9b6ea1a5-425f-4c7b-9d91-012be5b37645",
+            "sourceLineageTag": "ActualOpportunityCloseDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityActualCloseFiscalYear",
+            "dataType": "string",
+            "description": "Microsoft fiscal year of the actual close date.",
+            "sourceColumn": "OpportunityActualCloseFiscalYear",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "f6000704-70f8-4341-b6d4-892181ebb4b2",
+            "sourceLineageTag": "OpportunityActualCloseFiscalYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityActualCloseFiscalQuarter",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter of the actual close date.",
+            "sourceColumn": "OpportunityActualCloseFiscalQuarter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "518029ad-de4b-408c-822e-e19d0d9bc6fd",
+            "sourceLineageTag": "OpportunityActualCloseFiscalQuarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityActualCloseFiscalMonth",
+            "dataType": "string",
+            "description": "Microsoft fiscal month of the actual close date.",
+            "sourceColumn": "OpportunityActualCloseFiscalMonth",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "db06dbf3-2e25-44e2-84cb-c53a851f223d",
+            "sourceLineageTag": "OpportunityActualCloseFiscalMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityActualCloseFiscalMonthID",
+            "dataType": "int64",
+            "description": "Numeric fiscal-month ID of the actual close date.",
+            "sourceColumn": "OpportunityActualCloseFiscalMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "a7d4d66f-64dd-4321-9fff-0791389d32d9",
+            "sourceLineageTag": "OpportunityActualCloseFiscalMonthID",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityOwner",
+            "dataType": "string",
+            "description": "Owner (seller) of the opportunity.",
+            "sourceColumn": "OpportunityOwner",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "fde14ff2-f8cc-4316-9fce-7457fad9ce9a",
+            "sourceLineageTag": "OpportunityOwner",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityStatus",
+            "dataType": "string",
+            "description": "Current status of the opportunity (open/won/lost, etc.).",
+            "sourceColumn": "OpportunityStatus",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "dd5912d8-57d7-445b-b9ec-200123a02f95",
+            "sourceLineageTag": "OpportunityStatus",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ForecastRecommendation",
+            "dataType": "string",
+            "description": "System/AI forecast recommendation for the opportunity.",
+            "sourceColumn": "ForecastRecommendation",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "e874f591-7691-45f5-8e52-fab06bb8a376",
+            "sourceLineageTag": "ForecastRecommendation",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimOpportunityCD",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DimOpportunityCD",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoSell"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "# Shared Opportunities",
+            "description": "Count of distinct partner-shared opportunities (#PartnerGTM deals where the Microsoft referral or partner acceptance sub-status is 'Accepted'). Core co-sell volume KPI.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'DimOpportunityCD',",
+              "                'DimOpportunityCD'[OpportunityNumber],",
+              "                \"Value\",1",
+              "            ),",
+              "            [Value]",
+              "        ),KEEPFILTERS('DimPartnerDealCD'[IsDealWith#PartnerGTM] = 1)",
+              "        ,FILTER('DimPartnerDealCD','DimPartnerDealCD'[ReferralMicrosoftSubStatusPartnerCenter] = \"Accepted\" ",
+              "        || 'DimPartnerDealCD'[PartnerAcceptanceSubStatusPartnerCenter] = \"Accepted\")",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "2d2a2ce5-459d-4f97-9c0e-9525df19a7f7",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "$ Shared Opportunities",
+            "description": "Value of partner-shared opportunities = Billed Opportunity Revenue + Milestone Estimated Annualized Revenue, restricted to #PartnerGTM accepted deals. Core co-sell value KPI.",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Billed Opportunity Revenue] + [Milestone Estimated Annualized Revenue],",
+              "    KEEPFILTERS ( 'DimPartnerDealCD'[IsDealWith#PartnerGTM] = 1 ),",
+              "    KEEPFILTERS (",
+              "        FILTER(",
+              "            'DimPartnerDealCD',",
+              "            'DimPartnerDealCD'[ReferralMicrosoftSubStatusPartnerCenter] = \"Accepted\"",
+              "                || 'DimPartnerDealCD'[PartnerAcceptanceSubStatusPartnerCenter] = \"Accepted\"",
+              "        )",
+              "    )",
+              ")",
+              ""
+            ],
+            "lineageTag": "a4fb3ff6-d1f3-49bc-a09d-66182676faf7",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "Billed Opportunity Revenue",
+            "description": "Opportunity revenue for single-partner, billed opportunities due in FY23-FY26 (de-duplicated by opportunity/product/division). Component of $ Shared Opportunities.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'FactPipeline',",
+              "                'FactPipeline'[OpportunityKey],",
+              "                'FactPipeline'[ProductKey],",
+              "                'FactPipeline'[RevSumDivisionKey],",
+              "                'FactPipeline'[OpportunityRevenue]",
+              "            ),",
+              "            [OpportunityRevenue]",
+              "        ),",
+              "        KEEPFILTERS ( 'FactPipeline'[IsMultiPartner] = \"no\" ),",
+              "        KEEPFILTERS ( 'DimOpportunityCD'[IsBilledOpportunity] = \"Yes\" ),",
+              "        KEEPFILTERS ( 'DimOpportunityCD'[OpportunityDueFiscalYear] IN {\"FY23\",\"FY24\",\"FY25\",\"FY26\"} )",
+              "    )"
+            ],
+            "lineageTag": "e4380dd7-6550-457e-a6d7-09ecd4ea00bd",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Milestone Estimated Annualized Revenue",
+            "description": "Estimated annualized revenue rolled up across engagement milestones (sums the per-milestone base measure).",
+            "expression": "SUMX('DimEngagementMilestoneCD',[Milestone Estimated Annualized Revenue Base])",
+            "lineageTag": "de177295-0d0b-4166-a40f-17db630a6ccf",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "Milestone Estimated Annualized Revenue Base",
+            "description": "Per-milestone estimated annualized revenue. Annualizes recurring milestones over the remaining fiscal months (capped 1-24 months); non-recurring milestones counted once. Uses fiscal-month boundaries varMaxFiscalMonthID / varMaxEstFiscalMonthID (update these as the fiscal window rolls forward).",
+            "expression": [
+              "",
+              "VAR varMaxFiscalMonthID = 432  // FY25-June (This value should be last month of Next fiscal year)",
+              "VAR varMaxEstFiscalMonthID = MIN( CALCULATE ( MAX('DimEngagementMilestoneCD'[EstimatedFiscalMonthID])), 433) //FY26 July (This value should be one month ahead of the previous variable)",
+              "VAR varIsNonRecurringMilestone = CALCULATE ( MAX( 'DimEngagementMilestoneCD'[IsNonRecurringEngagementMilestone] ) )",
+              "RETURN",
+              "    IF ( varIsNonRecurringMilestone = \"No\"",
+              "        ,CALCULATE( [Milestone Estimated Monthly Revenue] * IF( (varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) <= 0 || (varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) > 24",
+              "                                                                ,BLANK()",
+              "                                                                ,(varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) ",
+              "                                                            )",
+              "                       ",
+              "            )",
+              "        ,IF((varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) <= 0 || (varMaxFiscalMonthID - varMaxEstFiscalMonthID + 1) > 24, BLANK(), [Milestone Estimated Monthly Revenue])",
+              "    )   "
+            ],
+            "lineageTag": "517b8d09-02e7-4236-8efe-7f26bbdefd97",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "Milestone Estimated Monthly Revenue",
+            "description": "Estimated monthly milestone usage/revenue for single-partner milestones (IsMultiPartner='no'), de-duplicated per EngagementMilestoneKey.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'FactEngagementMilestoneCD',",
+              "                'FactEngagementMilestoneCD'[EngagementMilestoneKey],",
+              "                'FactEngagementMilestoneCD'[EstimatedMonthlyUsage]",
+              "            ),",
+              "            [EstimatedMonthlyUsage]",
+              "        ),",
+              "        KEEPFILTERS ( 'FactEngagementMilestoneCD'[IsMultiPartner] = \"no\" )",
+              "    )"
+            ],
+            "lineageTag": "69c81827-fcc0-4a0c-b7f3-0f9026fa05d9",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "# Pipeline Wins",
+            "description": "Count of distinct shared opportunities that were won (BilledRevenueStatus='Won', or ConsumptionStatus='Closed' & reason 'Completed') and partner-accepted/won. Volume of co-sell wins.",
+            "expression": [
+              "CALCULATE (",
+              "        SUMX (",
+              "            SUMMARIZE (",
+              "                'DimOpportunityCD',",
+              "                'DimOpportunityCD'[OpportunityNumber],",
+              "                \"Value\",1",
+              "            ),",
+              "            [Value]",
+              "        )",
+              "        ,KEEPFILTERS('DimPartnerDealCD'[IsDealWith#PartnerGTM] = 1)",
+              "        ,FILTER('DimPartnerDealCD','DimPartnerDealCD'[ReferralMicrosoftSubStatusPartnerCenter] = \"Accepted\" ",
+              "            || 'DimPartnerDealCD'[PartnerAcceptanceSubStatusPartnerCenter] = \"Accepted\" || 'DimPartnerDealCD'[PartnerAcceptanceSubStatusPartnerCenter] = \"Won\")",
+              "        ,FILTER('DimOpportunityCD','DimOpportunityCD'[BilledRevenueStatus] = \"Won\" ",
+              "            || ('DimOpportunityCD'[ConsumptionStatus] = \"Closed\" && 'DimOpportunityCD'[ConsumptionStatusReason] = \"Completed\")",
+              "    ))"
+            ],
+            "formatString": "0",
+            "lineageTag": "a2416928-885a-4e7b-ab89-58849cb229b5",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "$ Pipeline Wins",
+            "description": "Value of won shared opportunities (realized co-sell revenue). Numerator of ROI.",
+            "expression": [
+              "",
+              "CALCULATE([$ Shared Opportunities dup],",
+              "            // REMOVEFILTERS('Partner Deal'[Referral SubType]),",
+              "          FILTER('DimOpportunityCD','DimOpportunityCD'[BilledRevenueStatus] = \"Won\" ",
+              "             || ('DimOpportunityCD'[ConsumptionStatus] = \"Closed\" && 'DimOpportunityCD'[ConsumptionStatusReason] = \"Completed\")",
+              "    )",
+              ")"
+            ],
+            "lineageTag": "109c4944-c575-40be-9b81-1051bc6394c1",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ]
+          },
+          {
+            "name": "$ Shared Opportunities dup",
+            "description": "Helper variant of $ Shared Opportunities that removes the Referral SubType filter for 'Partner Led - PC' to avoid under-counting; consumed by $ Pipeline Wins.",
+            "expression": [
+              "",
+              "VAR Base = [$ Shared Opportunities]",
+              "VAR SubType = SELECTEDVALUE('DimPartnerDealCD'[ReferralSubType])",
+              "RETURN",
+              "IF(",
+              "    HASONEVALUE('DimPartnerDealCD'[ReferralSubType])",
+              "        && SubType = \"Partner Led - PC\",",
+              "    CALCULATE(",
+              "        Base,",
+              "        REMOVEFILTERS('DimPartnerDealCD'[ReferralSubType])",
+              "    ),",
+              "    Base",
+              ")",
+              ""
+            ],
+            "lineageTag": "1344f4fb-a9fd-4fd0-9d0b-1becde4a9b39",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ROI",
+            "description": "Return on investment for co-marketing = $ Pipeline Wins / Investment Approved Amount.",
+            "expression": "DIVIDE([$ Pipeline Wins], [Investment Approved Amount])",
+            "lineageTag": "13e489e5-eeac-474d-9170-17dedbe8a0ba",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DimPartnerDealCD",
+        "description": "Partner-deal dimension (CoSell). One row per partner deal / co-sell referral in Partner Center. Tracks deal direction, Microsoft & partner acceptance status/sub-status, referral type/sub-type, marketplace intent and the #PartnerGTM go-to-market flag. Part of the 'pipeline' alongside DimOpportunityCD.",
+        "lineageTag": "5fc54189-ea3e-4b4e-9901-236db9141346",
+        "sourceLineageTag": "[CoSell].[DimPartnerDealCD]",
+        "columns": [
+          {
+            "name": "PartnerDealKey",
+            "dataType": "int64",
+            "description": "Surrogate key of the partner deal; joins to FactPipeline[PartnerDealKey].",
+            "sourceColumn": "PartnerDealKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "da501272-c5f7-492a-912a-054a35515343",
+            "sourceLineageTag": "PartnerDealKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PSXDealID",
+            "dataType": "string",
+            "description": "Partner Center / PSX deal identifier.",
+            "sourceColumn": "PSXDealID",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "1972fb1d-36fb-4b33-9ef2-5e4ed71a8116",
+            "sourceLineageTag": "PSXDealID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PSXDescription",
+            "dataType": "string",
+            "description": "Description of the partner deal from PSX / Partner Center.",
+            "sourceColumn": "PSXDescription",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "d279d94c-9ad6-45f7-8448-f6d765a29718",
+            "sourceLineageTag": "PSXDescription",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealDirection",
+            "dataType": "string",
+            "description": "Direction of the deal - partner-to-Microsoft or Microsoft-to-partner referral.",
+            "sourceColumn": "PartnerDealDirection",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "8c7f42e9-8f96-48b1-8545-41d9c1bf3e76",
+            "sourceLineageTag": "PartnerDealDirection",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealCreatedDate",
+            "dataType": "dateTime",
+            "description": "Date the partner deal was created.",
+            "sourceColumn": "PartnerDealCreatedDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "97f33b7f-e769-4d32-a6c5-c3d7d08757d3",
+            "sourceLineageTag": "PartnerDealCreatedDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealCreatedFiscalMonth",
+            "dataType": "string",
+            "description": "Microsoft fiscal month the partner deal was created.",
+            "sourceColumn": "PartnerDealCreatedFiscalMonth",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "45865526-092e-42a6-8443-a6560781bb85",
+            "sourceLineageTag": "PartnerDealCreatedFiscalMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealCreatedFiscalMonthID",
+            "dataType": "int64",
+            "description": "Numeric fiscal-month ID of deal creation.",
+            "sourceColumn": "PartnerDealCreatedFiscalMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "702559c0-0789-48c8-8d34-1ddc78b07c24",
+            "sourceLineageTag": "PartnerDealCreatedFiscalMonthID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealCreatedFiscalQuarter",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter the partner deal was created.",
+            "sourceColumn": "PartnerDealCreatedFiscalQuarter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "79c81e5c-12ac-4922-8c0d-1611acc4f2d6",
+            "sourceLineageTag": "PartnerDealCreatedFiscalQuarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealCreatedFiscalYear",
+            "dataType": "string",
+            "description": "Microsoft fiscal year the partner deal was created.",
+            "sourceColumn": "PartnerDealCreatedFiscalYear",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "a8903abc-cc2d-421c-8b4f-1cc29cbdeac1",
+            "sourceLineageTag": "PartnerDealCreatedFiscalYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerAcceptanceStatusPartnerCenter",
+            "dataType": "string",
+            "description": "Partner's acceptance status of the deal in Partner Center.",
+            "sourceColumn": "PartnerAcceptanceStatusPartnerCenter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "176948b3-fd22-47b6-8f63-836647df189f",
+            "sourceLineageTag": "PartnerAcceptanceStatusPartnerCenter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerAcceptanceSubStatusPartnerCenter",
+            "dataType": "string",
+            "description": "Partner's acceptance sub-status in Partner Center (e.g., 'Accepted', 'Won'); qualifies shared opportunities/wins.",
+            "sourceColumn": "PartnerAcceptanceSubStatusPartnerCenter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "1da4fa5d-79e1-47ae-a2cb-332d5bd9f452",
+            "sourceLineageTag": "PartnerAcceptanceSubStatusPartnerCenter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ReferralMicrosoftStatusPartnerCenter",
+            "dataType": "string",
+            "description": "Microsoft's referral status for the deal in Partner Center.",
+            "sourceColumn": "ReferralMicrosoftStatusPartnerCenter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "46734380-6293-422b-837d-87812a923c74",
+            "sourceLineageTag": "ReferralMicrosoftStatusPartnerCenter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ReferralMicrosoftSubStatusPartnerCenter",
+            "dataType": "string",
+            "description": "Microsoft's referral sub-status in Partner Center (e.g., 'Accepted'); qualifies shared opportunities.",
+            "sourceColumn": "ReferralMicrosoftSubStatusPartnerCenter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "09ee738f-2c83-46d7-a250-936ddd2cace8",
+            "sourceLineageTag": "ReferralMicrosoftSubStatusPartnerCenter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealName",
+            "dataType": "string",
+            "description": "Name of the partner deal.",
+            "sourceColumn": "PartnerDealName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "c7ef0553-a7c5-4313-b63e-0094bb496737",
+            "sourceLineageTag": "PartnerDealName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealURL",
+            "dataType": "string",
+            "description": "Deep link to the partner deal in Partner Center.",
+            "sourceColumn": "PartnerDealURL",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "fbbe310d-198f-40fd-84b6-3d982fc0a633",
+            "sourceLineageTag": "PartnerDealURL",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CampaignID",
+            "dataType": "string",
+            "description": "Identifier of the co-marketing campaign linked to the deal (ties pipeline back to campaigns).",
+            "sourceColumn": "CampaignID",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "c2c755dc-8a20-41b9-9f22-6b452d418438",
+            "sourceLineageTag": "CampaignID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealDueDate",
+            "dataType": "dateTime",
+            "description": "Due date of the partner deal.",
+            "sourceColumn": "PartnerDealDueDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "eda02259-0144-4d8a-9845-f152e281e61d",
+            "sourceLineageTag": "PartnerDealDueDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealDueFiscalMonth",
+            "dataType": "string",
+            "description": "Microsoft fiscal month the deal is due.",
+            "sourceColumn": "PartnerDealDueFiscalMonth",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "b2b09351-0bf8-4e1b-ab98-ce8f981a543d",
+            "sourceLineageTag": "PartnerDealDueFiscalMonth",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealDueFiscalMonthID",
+            "dataType": "int64",
+            "description": "Numeric fiscal-month ID of the deal due date.",
+            "sourceColumn": "PartnerDealDueFiscalMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "61fc0b6a-77b0-4f39-8e62-0db6b1bc8652",
+            "sourceLineageTag": "PartnerDealDueFiscalMonthID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealDueFiscalQuarter",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter the deal is due.",
+            "sourceColumn": "PartnerDealDueFiscalQuarter",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "14144c20-c15e-4dea-b2ef-7d26a336f3e1",
+            "sourceLineageTag": "PartnerDealDueFiscalQuarter",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerDealDueFiscalYear",
+            "dataType": "string",
+            "description": "Microsoft fiscal year the deal is due.",
+            "sourceColumn": "PartnerDealDueFiscalYear",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "28fe4628-fde3-4e24-97b7-8c98380795fe",
+            "sourceLineageTag": "PartnerDealDueFiscalYear",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MarketplaceIntent",
+            "dataType": "string",
+            "description": "Indicates marketplace transaction intent for the deal.",
+            "sourceColumn": "MarketplaceIntent",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "3570a611-52f3-477e-b149-3e6f8240e45e",
+            "sourceLineageTag": "MarketplaceIntent",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsDealWith#PartnerGTM",
+            "dataType": "int64",
+            "description": "Key flag (1/0) tagging a deal/referral to a co-marketing campaign motion (#PartnerGTM), enabling attribution of pipeline and ROI back to the funding Investment Ask. Central filter for all shared-opportunity, pipeline-win and ROI measures.",
+            "sourceColumn": "IsDealWith#PartnerGTM",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "e10de83f-1fc0-4751-9fdc-dfe6ac9f61be",
+            "sourceLineageTag": "IsDealWith#PartnerGTM",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ReferralType",
+            "dataType": "string",
+            "description": "Type of referral (e.g., partner-led, Microsoft-led).",
+            "sourceColumn": "ReferralType",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "4d011a7f-ed6c-4565-b9f3-3587baf88ec3",
+            "sourceLineageTag": "ReferralType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ReferralSubType",
+            "dataType": "string",
+            "description": "Referral sub-type (e.g., 'Partner Led - PC'); affects de-duplication in pipeline-win measures.",
+            "sourceColumn": "ReferralSubType",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "3dd035e0-34e3-4770-9a38-791e6da97316",
+            "sourceLineageTag": "ReferralSubType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DealSolutionArea",
+            "dataType": "string",
+            "description": "Solution Area of the partner deal.",
+            "sourceColumn": "DealSolutionArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "8ef5416f-fb28-495b-94c8-f266a7c04af6",
+            "sourceLineageTag": "DealSolutionArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DealSolutionPlay",
+            "dataType": "string",
+            "description": "Solution Play of the partner deal.",
+            "sourceColumn": "DealSolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "ebb63f9c-2739-469b-a248-214c087b4475",
+            "sourceLineageTag": "DealSolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsPartnerReportedWon",
+            "dataType": "int64",
+            "description": "Flag (1/0) indicating the partner reported the deal as won.",
+            "sourceColumn": "IsPartnerReportedWon",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "852c7869-9e43-439f-b89c-6ad14b3034c5",
+            "sourceLineageTag": "IsPartnerReportedWon",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimPartnerDealCD",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DimPartnerDealCD",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoSell"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DimTimeCD",
+        "description": "Conformed date/time dimension (CoSell). Provides calendar and Microsoft fiscal attributes (fiscal year/quarter/month names and IDs) plus trailing-12/18-month flags. Canonical table for ALL time filtering on pipeline and investment measures.",
+        "lineageTag": "6c4923ca-93ac-44ba-94a4-7afda4319a2e",
+        "sourceLineageTag": "[CoSell].[DimTimeCD]",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "description": "Date surrogate key (yyyymmdd-style); joins fact date keys to the calendar.",
+            "sourceColumn": "DateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "ae6042fd-10aa-445a-8363-62389bf5d2ce",
+            "sourceLineageTag": "DateKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FiscalMonthID",
+            "dataType": "int64",
+            "description": "Microsoft fiscal-month ID (sequential).",
+            "sourceColumn": "FiscalMonthID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "66fd5208-0881-48be-8705-029a5217743a",
+            "sourceLineageTag": "FiscalMonthID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FiscalQuarterID",
+            "dataType": "int64",
+            "description": "Microsoft fiscal-quarter ID (sequential).",
+            "sourceColumn": "FiscalQuarterID",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "9b6dea26-6006-465a-8413-cb4d1ed8a609",
+            "sourceLineageTag": "FiscalQuarterID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FiscalQuarterName",
+            "dataType": "string",
+            "description": "Microsoft fiscal quarter name (e.g., 'FY25 Q1').",
+            "sourceColumn": "FiscalQuarterName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "72229c28-8363-4e9c-874a-ad80bd546143",
+            "sourceLineageTag": "FiscalQuarterName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FiscalYearName",
+            "dataType": "string",
+            "description": "Canonical fiscal-year column. Use this for ALL time filtering on Pipeline and Opportunity measures ($ Shared Opportunities, # Shared Opportunities, $ Pipeline Wins, # Pipeline Wins etc). Do not filter pipeline measures by any column named 'Opportunity Due Fiscal Year'",
+            "sourceColumn": "FiscalYearName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "88a98934-b861-458a-a15b-f3746f48c42d",
+            "sourceLineageTag": "FiscalYearName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CalendarDate",
+            "dataType": "dateTime",
+            "description": "Calendar date.",
+            "sourceColumn": "CalendarDate",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "lineageTag": "878e3d4b-ab22-4fff-820b-7d8ff7fe8e4a",
+            "sourceLineageTag": "CalendarDate",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FiscalMonthName",
+            "dataType": "string",
+            "description": "Microsoft fiscal month name.",
+            "sourceColumn": "FiscalMonthName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "5cb75764-a292-43d1-abf2-c97bc6478f7a",
+            "sourceLineageTag": "FiscalMonthName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "description": "Month name.",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "10ae7b9e-ab1c-46c6-8b2f-938821d07c2a",
+            "sourceLineageTag": "MonthName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CalendarMonthName",
+            "dataType": "string",
+            "description": "Calendar month name.",
+            "sourceColumn": "CalendarMonthName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "7ea2dc20-fddb-4142-bc36-d423a8c6a30c",
+            "sourceLineageTag": "CalendarMonthName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "description": "Calendar month number (1-12).",
+            "sourceColumn": "Month",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "d22a7c22-5ab4-46c2-9811-072f1c63723c",
+            "sourceLineageTag": "Month",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsTrailing12Months",
+            "dataType": "string",
+            "description": "Flag - whether the date falls within the trailing 12 months.",
+            "sourceColumn": "IsTrailing12Months",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "89f8a7da-974d-448c-949e-517e6e32a6d1",
+            "sourceLineageTag": "IsTrailing12Months",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsTrailing18Months",
+            "dataType": "string",
+            "description": "Flag - whether the date falls within the trailing 18 months.",
+            "sourceColumn": "IsTrailing18Months",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "64f3969a-ce95-451c-bac5-66ba7ff23b96",
+            "sourceLineageTag": "IsTrailing18Months",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimTimeCD",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DimTimeCD",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoSell"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DistinctSolutionPlayMapping",
+        "description": "Conformed lookup of distinct Solution Play values, used as a single deduplicated bridge so investments and pipeline can be sliced by one consistent Solution Play list. A Solution Play is a granular, scenario-based go-to-market motion within a Solution Area.",
+        "lineageTag": "f9479a14-32ae-483b-86c6-b0b45108730a",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[DistinctSolutionPlayMapping]",
+        "columns": [
+          {
+            "name": "SolutionPlay",
+            "dataType": "string",
+            "description": "Distinct Solution Play value used as a conformed slicer across investments and pipeline.",
+            "sourceColumn": "SolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "2c1ef779-5636-4490-856c-c0743a7cd1f0",
+            "sourceLineageTag": "SolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DistinctSolutionPlayMapping",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DistinctSolutionPlayMapping",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DistinctSolutionAreaMapping",
+        "description": "Conformed lookup of distinct Solution Area values, used as a single deduplicated bridge so investments and pipeline can be sliced by one consistent Solution Area list. A Solution Area is a high-level Microsoft offering category (e.g., Cloud, AI, Security).",
+        "lineageTag": "6993b01e-345e-4883-8ff1-b8838482bbc2",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[DistinctSolutionAreaMapping]",
+        "columns": [
+          {
+            "name": "SolutionArea",
+            "dataType": "string",
+            "description": "Distinct Solution Area value used as a conformed slicer across investments and pipeline.",
+            "sourceColumn": "SolutionArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "3e5f71ec-3675-454c-8835-b33bcf942044",
+            "sourceLineageTag": "SolutionArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DistinctSolutionAreaMapping",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DistinctSolutionAreaMapping",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "FactPipeline",
+        "description": "Central pipeline fact - a combined/unioned view of opportunity and partner-deal facts (FactOpportunity + FactPartnerDeal). Grain is opportunity-deal-solution. Carries opportunity revenue, estimated milestone usage, solution area/play (deal/solution/opportunity/pipeline perspectives), geography keys and the multi-partner flag. Foundation for shared-opportunity, pipeline-win and ROI reporting.",
+        "lineageTag": "5536f4cb-9c4c-478f-81fa-f760728b6e82",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[FactPipeline]",
+        "columns": [
+          {
+            "name": "PartnerDealKey",
+            "dataType": "int64",
+            "description": "Partner-deal key; joins to DimPartnerDealCD.",
+            "sourceColumn": "PartnerDealKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "044952e2-d00a-4dca-a5ef-687f8912c5b0",
+            "sourceLineageTag": "PartnerDealKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PSXDealKey",
+            "dataType": "string",
+            "description": "PSX / Partner Center deal key.",
+            "sourceColumn": "PSXDealKey",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "c75a704f-b089-41bc-b66c-438f84bb94db",
+            "sourceLineageTag": "PSXDealKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerOneReportingKey",
+            "dataType": "int64",
+            "description": "Reporting-partner key for the deal.",
+            "sourceColumn": "PartnerOneReportingKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "dd7e0004-49f5-4763-a027-19255cbeb8c8",
+            "sourceLineageTag": "PartnerOneReportingKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityKey",
+            "dataType": "int64",
+            "description": "Opportunity key; joins to DimOpportunityCD.",
+            "sourceColumn": "OpportunityKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "041bf717-5600-4e16-8d99-0f395f337fab",
+            "sourceLineageTag": "OpportunityKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerRevenueCD",
+            "dataType": "int64",
+            "description": "Partner revenue contribution for the pipeline row.",
+            "sourceColumn": "PartnerRevenueCD",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "4fb2f421-7dcf-48c1-9a41-1f187cf6ed10",
+            "sourceLineageTag": "PartnerRevenueCD",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IPPartnerOneReportingKey",
+            "dataType": "int64",
+            "description": "Invested-partner reporting key.",
+            "sourceColumn": "IPPartnerOneReportingKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "b10134aa-b041-42af-820a-758544bf879b",
+            "sourceLineageTag": "IPPartnerOneReportingKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SolutionPartnerDealCompositeKey",
+            "dataType": "int64",
+            "description": "Composite key linking solution and partner deal.",
+            "sourceColumn": "SolutionPartnerDealCompositeKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "dd38af69-993d-4c32-beb0-db79239f00cc",
+            "sourceLineageTag": "SolutionPartnerDealCompositeKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CustomerGeographyKey",
+            "dataType": "int64",
+            "description": "Customer geography key.",
+            "sourceColumn": "CustomerGeographyKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "f9661391-9cc4-440a-a968-a8d2a6a095c8",
+            "sourceLineageTag": "CustomerGeographyKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CustomerSegmentKey",
+            "dataType": "int64",
+            "description": "Customer segment key.",
+            "sourceColumn": "CustomerSegmentKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "02ae62e6-adf2-4f85-9979-1e5f3974d43c",
+            "sourceLineageTag": "CustomerSegmentKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TPAccountKey",
+            "dataType": "int64",
+            "description": "Target-partner / customer account key.",
+            "sourceColumn": "TPAccountKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "9b638e2d-0ac4-408f-b233-9088909ba106",
+            "sourceLineageTag": "TPAccountKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SolutionKey",
+            "dataType": "int64",
+            "description": "Solution key.",
+            "sourceColumn": "SolutionKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "f8e94eaf-d53e-4e3d-8705-8961d60bf261",
+            "sourceLineageTag": "SolutionKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PartnerOneKey",
+            "dataType": "int64",
+            "description": "Reporting-partner key; joins to ReportingPartnerOneCD[PartnerOneId].",
+            "sourceColumn": "PartnerOneKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "cf61c68a-d33c-4188-b258-92c826e759aa",
+            "sourceLineageTag": "PartnerOneKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DueDateKey",
+            "dataType": "int64",
+            "description": "Date key for the deal/opportunity due date.",
+            "sourceColumn": "DueDateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "60974093-f785-484b-96a4-ab7affd0b4ac",
+            "sourceLineageTag": "DueDateKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DealCreatedDateKey",
+            "dataType": "int64",
+            "description": "Date key for deal creation; joins to DimTimeCD[DateKey].",
+            "sourceColumn": "DealCreatedDateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "121c0b60-8f94-4c62-8382-d9a3e2cc2207",
+            "sourceLineageTag": "DealCreatedDateKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsMarketplaceDealReg",
+            "dataType": "string",
+            "description": "Flag - whether the row is a marketplace deal registration.",
+            "sourceColumn": "IsMarketplaceDealReg",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "0470c7e4-49f8-48ab-86c1-41e7a3cd4306",
+            "sourceLineageTag": "IsMarketplaceDealReg",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "description": "Pipeline categorization.",
+            "sourceColumn": "Category",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "15d12131-78ad-4c4e-9d7c-64e2547111da",
+            "sourceLineageTag": "Category",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Category2",
+            "dataType": "string",
+            "description": "Secondary pipeline categorization.",
+            "sourceColumn": "Category2",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "c1115425-8e2e-4102-9d6d-11d633794f7d",
+            "sourceLineageTag": "Category2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsDealAccepted",
+            "dataType": "string",
+            "description": "Flag - whether the deal was accepted.",
+            "sourceColumn": "IsDealAccepted",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "93da3190-5ae5-48bf-8bfd-8878f0387128",
+            "sourceLineageTag": "IsDealAccepted",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsOpportunityWon",
+            "dataType": "string",
+            "description": "Flag - whether the opportunity was won.",
+            "sourceColumn": "IsOpportunityWon",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "6bc14b84-1b73-4a66-b026-5febf7210f5c",
+            "sourceLineageTag": "IsOpportunityWon",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DimAccountGeographyHierarchyKey",
+            "dataType": "int64",
+            "description": "Account geography hierarchy key.",
+            "sourceColumn": "DimAccountGeographyHierarchyKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "1793a895-42bb-41ba-84a2-41c6c1b9a6fb",
+            "sourceLineageTag": "DimAccountGeographyHierarchyKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpportunityRevenue",
+            "dataType": "double",
+            "description": "Opportunity revenue for the pipeline row; basis of the 'Billed Opportunity Revenue' measure.",
+            "sourceColumn": "OpportunityRevenue",
+            "sourceProviderType": "decimal(38, 4)",
+            "lineageTag": "3c609e2f-6c86-42db-a796-e7cde9c7e7f2",
+            "sourceLineageTag": "OpportunityRevenue",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "EngagementMilestoneKey",
+            "dataType": "int64",
+            "description": "Engagement-milestone key; joins to DimEngagementMilestoneCD.",
+            "sourceColumn": "EngagementMilestoneKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "5d76de14-8cc0-4697-9d2d-99ce431f8f2f",
+            "sourceLineageTag": "EngagementMilestoneKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EstimatedMonthlyUsage",
+            "dataType": "double",
+            "description": "Estimated monthly usage/consumption for the row.",
+            "sourceColumn": "EstimatedMonthlyUsage",
+            "sourceProviderType": "float",
+            "lineageTag": "cdd84abc-400d-427e-8166-133ec35550b9",
+            "sourceLineageTag": "EstimatedMonthlyUsage",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "IsMultiPartner",
+            "dataType": "string",
+            "description": "Flag ('yes'/'no') - shared across multiple partners; measures keep 'no' to avoid double counting.",
+            "sourceColumn": "IsMultiPartner",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "7193c50e-8795-44d7-891f-099617d98242",
+            "sourceLineageTag": "IsMultiPartner",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "description": "Product key.",
+            "sourceColumn": "ProductKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "c61ec59d-1755-4575-834d-da494c92bc69",
+            "sourceLineageTag": "ProductKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RevSumDivisionKey",
+            "dataType": "int64",
+            "description": "Revenue-summary division key.",
+            "sourceColumn": "RevSumDivisionKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "67706861-b7bc-4f64-ad8e-5fc530d77df5",
+            "sourceLineageTag": "RevSumDivisionKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpptyDueOREstimatedMilestoneDateKey",
+            "dataType": "int64",
+            "description": "Date key = opportunity due date or estimated milestone date.",
+            "sourceColumn": "OpptyDueOREstimatedMilestoneDateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "8338ab42-bb10-46ff-8506-18e852364c3a",
+            "sourceLineageTag": "OpptyDueOREstimatedMilestoneDateKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpptySolutionAreaKey",
+            "dataType": "int64",
+            "description": "Opportunity solution-area key.",
+            "sourceColumn": "OpptySolutionAreaKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "a12d28f6-d4c1-4b60-9e51-1dbf26a93d59",
+            "sourceLineageTag": "OpptySolutionAreaKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpptyCreatedDateKey",
+            "dataType": "int64",
+            "description": "Date key for opportunity creation.",
+            "sourceColumn": "OpptyCreatedDateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "6cc677e8-b72d-41ab-bfd8-afd50e7e4f4e",
+            "sourceLineageTag": "OpptyCreatedDateKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ActualCloseDateKey",
+            "dataType": "int64",
+            "description": "Date key for actual close.",
+            "sourceColumn": "ActualCloseDateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "3267cabc-dec6-4869-a948-bb5bba36c6af",
+            "sourceLineageTag": "ActualCloseDateKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SharingTypeKey",
+            "dataType": "int64",
+            "description": "Sharing-type key.",
+            "sourceColumn": "SharingTypeKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "3e86ef3b-985f-4b10-8b8c-612276de761d",
+            "sourceLineageTag": "SharingTypeKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SharingType",
+            "dataType": "string",
+            "description": "How the deal/opportunity is shared (sharing type description).",
+            "sourceColumn": "SharingType",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "0948b7d5-f6bb-4173-a03f-4f6d2cbfdc20",
+            "sourceLineageTag": "SharingType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DealSolutionArea",
+            "dataType": "string",
+            "description": "Solution Area sourced from the partner deal.",
+            "sourceColumn": "DealSolutionArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "60808f81-66a8-4a38-9a78-d12708258b87",
+            "sourceLineageTag": "DealSolutionArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DealSolutionPlay",
+            "dataType": "string",
+            "description": "Solution Play sourced from the partner deal.",
+            "sourceColumn": "DealSolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "bfe6ccc3-e98d-42c4-9009-1d9d56b2351e",
+            "sourceLineageTag": "DealSolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SolutionSolutionArea",
+            "dataType": "string",
+            "description": "Solution Area sourced from the solution record.",
+            "sourceColumn": "SolutionSolutionArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "14dc87dd-b13c-43f6-83e5-058072e5f436",
+            "sourceLineageTag": "SolutionSolutionArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SolutionSolutionPlay",
+            "dataType": "string",
+            "description": "Solution Play sourced from the solution record.",
+            "sourceColumn": "SolutionSolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "e443a274-7649-4404-b2cf-0debc2c4529d",
+            "sourceLineageTag": "SolutionSolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpptySolutionArea",
+            "dataType": "string",
+            "description": "Solution Area sourced from the opportunity.",
+            "sourceColumn": "OpptySolutionArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "eb055a3e-2ea6-447d-9661-22e3fe7b3ceb",
+            "sourceLineageTag": "OpptySolutionArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "OpptySolutionPlay",
+            "dataType": "string",
+            "description": "Solution Play sourced from the opportunity.",
+            "sourceColumn": "OpptySolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "daaf63e4-568e-4eae-b2b5-83673d1c1081",
+            "sourceLineageTag": "OpptySolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsSolutionAttached",
+            "dataType": "int64",
+            "description": "Flag (1/0) - whether a solution is attached to the pipeline row.",
+            "sourceColumn": "IsSolutionAttached",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "lineageTag": "35f9e3a8-2d34-4723-84b5-5bb7b4803931",
+            "sourceLineageTag": "IsSolutionAttached",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PipelineSolutionArea",
+            "dataType": "string",
+            "description": "Resolved Solution Area for pipeline reporting; joins to DistinctSolutionAreaMapping.",
+            "sourceColumn": "PipelineSolutionArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "1ac22752-bcbb-4555-9678-eeec38e28113",
+            "sourceLineageTag": "PipelineSolutionArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PipelineSolutionPlay",
+            "dataType": "string",
+            "description": "Resolved Solution Play for pipeline reporting; joins to DistinctSolutionPlayMapping.",
+            "sourceColumn": "PipelineSolutionPlay",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "dcfd59b1-6381-4e7b-af70-f0577e191254",
+            "sourceLineageTag": "PipelineSolutionPlay",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AreaName",
+            "dataType": "string",
+            "description": "Field area name.",
+            "sourceColumn": "AreaName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "e57cd744-aabe-4258-a6c3-98aae6fed477",
+            "sourceLineageTag": "AreaName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LowerFieldAccountabilityUnit",
+            "dataType": "string",
+            "description": "Lower Field Accountability Unit (LFAU) for the row.",
+            "sourceColumn": "LowerFieldAccountabilityUnit",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "d2857311-125b-489e-b14b-c20efc202c0b",
+            "sourceLineageTag": "LowerFieldAccountabilityUnit",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "EPSGeoKey",
+            "dataType": "int64",
+            "description": "EPS geography key; joins to EPSGeography.",
+            "sourceColumn": "EPSGeoKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "ef0ee669-cbb6-4a4d-be11-85b04c36bc70",
+            "sourceLineageTag": "EPSGeoKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "GCPSGeoKey",
+            "dataType": "int64",
+            "description": "GCPS geography key; joins to GCPSGeography.",
+            "sourceColumn": "GCPSGeoKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "59abfb6c-a65c-4f0f-ba33-f754b8e87456",
+            "sourceLineageTag": "GCPSGeoKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DealOpportunityKey",
+            "dataType": "int64",
+            "description": "Key linking deal to opportunity.",
+            "sourceColumn": "DealOpportunityKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "1e8b3670-7b20-4d80-a6d0-6b243343cccc",
+            "sourceLineageTag": "DealOpportunityKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FactOpportunityKey",
+            "dataType": "int64",
+            "description": "Source key from FactOpportunity.",
+            "sourceColumn": "FactOpportunityKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "2a6a6d6e-6401-4e1d-8b08-8e30ac2ee2c2",
+            "sourceLineageTag": "FactOpportunityKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SharedDealOpportunityKey",
+            "dataType": "int64",
+            "description": "Key identifying the shared deal-opportunity pairing.",
+            "sourceColumn": "SharedDealOpportunityKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "c497d808-5633-45fe-83b5-d508c16782cf",
+            "sourceLineageTag": "SharedDealOpportunityKey",
+            "summarizeBy": "count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactPipeline",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FactPipeline",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "GCPSGeography",
+        "description": "Geography dimension for the GCPS (Global Channel Partner Solutions) field perspective - the Microsoft reporting segment focused on partner-led channel growth. Maps GCPS geo key to Lower Field Accountability Unit and Field Area.",
+        "lineageTag": "f54a946e-f8ec-4732-86bd-c8b2adce879a",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[GCPSGeography]",
+        "columns": [
+          {
+            "name": "GCPSGeoKey",
+            "dataType": "int64",
+            "description": "GCPS geography surrogate key.",
+            "sourceColumn": "GCPSGeoKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "5e32e1be-8835-4083-9ac3-2db58c21b19f",
+            "sourceLineageTag": "GCPSGeoKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LowerFieldAccountabilityUnit",
+            "dataType": "string",
+            "description": "Lower Field Accountability Unit within the GCPS perspective.",
+            "sourceColumn": "LowerFieldAccountabilityUnit",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "39adae09-83c8-409f-9e81-03bf13c7c762",
+            "sourceLineageTag": "LowerFieldAccountabilityUnit",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FieldArea",
+            "dataType": "string",
+            "description": "GCPS field area.",
+            "sourceColumn": "FieldArea",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "e4409f6c-5b33-4fe2-bac6-1a5102c86ae0",
+            "sourceLineageTag": "FieldArea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "GCPSGeography",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "GCPSGeography",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "EPSGeography",
+        "description": "Geography dimension for the EPS (Enterprise Partner Solutions) field perspective - the Microsoft reporting segment focused on enterprise-scale partner engagements. Maps EPS geo key to Area name and time zone.",
+        "lineageTag": "e52fba88-16ce-4318-b296-eac414303fab",
+        "sourceLineageTag": "[CoMarketing_NewApproach].[EPSGeography]",
+        "columns": [
+          {
+            "name": "EPSGeoKey",
+            "dataType": "int64",
+            "description": "EPS geography surrogate key.",
+            "sourceColumn": "EPSGeoKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "lineageTag": "f35482b3-f7f0-4611-9b94-b74600ecb104",
+            "sourceLineageTag": "EPSGeoKey",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AreaName",
+            "dataType": "string",
+            "description": "EPS area name.",
+            "sourceColumn": "AreaName",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "efce93f5-073b-4278-ad56-dd2b6323918c",
+            "sourceLineageTag": "AreaName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TimeZone",
+            "dataType": "string",
+            "description": "Time zone of the EPS area.",
+            "sourceColumn": "TimeZone",
+            "sourceProviderType": "varchar(8000)",
+            "lineageTag": "ffce451f-0e28-4ca6-adf7-98350be60df7",
+            "sourceLineageTag": "TimeZone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "EPSGeography",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "EPSGeography",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "CoMarketing_NewApproach"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "2cc6e692-b1f0-554c-88ac-98ad52783b7b",
+        "fromTable": "FactEngagementMilestoneCD",
+        "fromColumn": "EngagementMilestoneKey",
+        "toTable": "DimEngagementMilestoneCD",
+        "toColumn": "EngagementMilestoneKey"
+      },
+      {
+        "name": "b48cbdbf-c633-c768-5b14-f8d82d39a8ef",
+        "fromTable": "FactEngagementMilestoneCD",
+        "fromColumn": "OpportunityKey",
+        "toTable": "DimOpportunityCD",
+        "toColumn": "OpportunityKey"
+      },
+      {
+        "name": "080d51d7-2e46-513e-102d-4394cf5ddfcd",
+        "fromTable": "FactInvestments",
+        "fromColumn": "PartnerOneId",
+        "toTable": "ReportingPartnerOneCD",
+        "toColumn": "PartnerOneId"
+      },
+      {
+        "name": "a7d0c41a-6eb6-2f4a-659a-fa95920591d4",
+        "fromTable": "FactInvestments",
+        "fromColumn": "InvestmentSolutionPlay",
+        "toTable": "DistinctSolutionPlayMapping",
+        "toColumn": "SolutionPlay"
+      },
+      {
+        "name": "10962cdb-69b7-b7e4-afe3-ea54c2122372",
+        "fromTable": "FactInvestments",
+        "fromColumn": "InvestmentSolutionAreas",
+        "toTable": "DistinctSolutionAreaMapping",
+        "toColumn": "SolutionArea"
+      },
+      {
+        "name": "2fe1b197-ec13-f053-f978-67a3cb788d6b",
+        "fromTable": "FactPipeline",
+        "fromColumn": "PartnerOneKey",
+        "toTable": "ReportingPartnerOneCD",
+        "toColumn": "PartnerOneId"
+      },
+      {
+        "name": "757831ba-2c88-d605-1f98-65034522028a",
+        "fromTable": "FactPipeline",
+        "fromColumn": "OpportunityKey",
+        "toTable": "DimOpportunityCD",
+        "toColumn": "OpportunityKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "614aad8d-9e36-3d05-6ff2-91e715ab44bf",
+        "fromTable": "FactPipeline",
+        "fromColumn": "EngagementMilestoneKey",
+        "toTable": "DimEngagementMilestoneCD",
+        "toColumn": "EngagementMilestoneKey"
+      },
+      {
+        "name": "3b2b0984-9934-941f-d76f-6e681c23b475",
+        "fromTable": "FactPipeline",
+        "fromColumn": "PartnerDealKey",
+        "toTable": "DimPartnerDealCD",
+        "toColumn": "PartnerDealKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "d2a01a77-bd9a-7eb4-9f59-a4453544d9eb",
+        "fromTable": "FactPipeline",
+        "fromColumn": "PipelineSolutionArea",
+        "toTable": "DistinctSolutionAreaMapping",
+        "toColumn": "SolutionArea"
+      },
+      {
+        "name": "b3a11dc0-ec00-93b2-8315-99d3eb2f8661",
+        "fromTable": "FactPipeline",
+        "fromColumn": "PipelineSolutionPlay",
+        "toTable": "DistinctSolutionPlayMapping",
+        "toColumn": "SolutionPlay"
+      },
+      {
+        "name": "9b7744db-d35f-d892-f9c3-f8b013e7f9e1",
+        "fromTable": "FactPipeline",
+        "fromColumn": "DealCreatedDateKey",
+        "toTable": "DimTimeCD",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "3f173426-e787-ab1b-f05b-7074626c8a79",
+        "fromTable": "FactPipeline",
+        "fromColumn": "GCPSGeoKey",
+        "toTable": "GCPSGeography",
+        "toColumn": "GCPSGeoKey"
+      },
+      {
+        "name": "3ed70c66-a751-9eb7-16b7-447fc454a448",
+        "fromTable": "FactInvestments",
+        "fromColumn": "GCPSGeoKey",
+        "toTable": "GCPSGeography",
+        "toColumn": "GCPSGeoKey"
+      },
+      {
+        "name": "e413b92b-f0aa-15db-63cb-4f34ed997146",
+        "fromTable": "FactInvestments",
+        "fromColumn": "EPSGeoKey",
+        "toTable": "EPSGeography",
+        "toColumn": "EPSGeoKey"
+      },
+      {
+        "name": "b0c73e6b-6391-57a4-bfa9-013acab46a37",
+        "fromTable": "FactPipeline",
+        "fromColumn": "EPSGeoKey",
+        "toTable": "EPSGeography",
+        "toColumn": "EPSGeoKey"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US"
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": [
+          "let",
+          "    database = Sql.Database(\"X6EPS4XRQ2XUDENLFV6NAEO3I4-JLZFTSW3JYTU5M75VGODJRRZD4.msit-datawarehouse.fabric.microsoft.com\", \"1ec7ec54-e2c0-403b-956f-7f0074c2a289\")",
+          "in",
+          "    database"
+        ],
+        "lineageTag": "4bad571e-06d9-4d65-b926-834ce062bbe3",
+        "annotations": [
+          {
+            "name": "PBI_IncludeFutureArtifacts",
+            "value": "False"
+          },
+          {
+            "name": "PBI_RemovedChildren",
+            "value": "[{\"remoteItemId\":{\"analysisServicesObject\":{\"sourceName\":null,\"sourceLineageTag\":\"[CoMarketing_NewApproach].[DimAccountGeographyHierarchyReporting]\"}},\"objectType\":\"Table\"},{\"remoteItemId\":{\"analysisServicesObject\":{\"sourceName\":null,\"sourceLineageTag\":\"[CoMarketing].[BridgeFieldSubsidiary]\"}},\"objectType\":\"Table\"}]"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DatabaseQuery\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"WebModelingEdit\",\"CopilotTooling_PrepDataForAI\",\"CopilotTooling\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      },
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":true,\"IgnoreInferredProperties\":true,\"IgnoreTimestamps\":true,\"SplitMultilineStrings\":true,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"SortArrays\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Shared Expressions\",\"Perspectives\",\"Relationships\",\"Roles\",\"Tables\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Tables/Calculation Items\",\"Translations\"]}"
+      }
+    ]
+  }
+}

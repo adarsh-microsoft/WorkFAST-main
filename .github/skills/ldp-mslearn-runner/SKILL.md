@@ -1,6 +1,6 @@
 ---
 name: ldp-mslearn-runner
-description: Type-2 LDP module automation. Walks an embedded Microsoft Learn module unit-by-unit (Next button), answers any embedded knowledge-check quiz via LLM reasoning, and clicks Complete on the final unit.
+description: Type-2 LDP module automation. Walks an embedded Microsoft Learn module unit-by-unit (Next button), answers any embedded knowledge-check quiz via LLM reasoning (answering all questions in a unit then checking once), and clicks Complete on the final unit.
 intent-triggers:
   - complete ms learn module
   - run ldp module
@@ -46,12 +46,14 @@ For each unit:
 3. **Detect knowledge check.** A unit with a check has:
    - `form[role="form"]` or `[data-bi-name="knowledge-check"]`
    - One or more `<fieldset>` blocks each with a question + radio/checkbox options + Check answers button.
-4. **Solve knowledge check:**
+4. **Solve knowledge check (batch then check ONCE):**
+   - **Answer ALL questions/fieldsets in the unit FIRST, then click Check ONCE.** MS Learn knowledge checks expose a single **Check your answers** button that grades every question in the unit together — do **not** check one question at a time.
    - For every fieldset, extract question text + options.
    - Reason answer (LLM). Multi-select if options are checkboxes; single if radio.
-   - Click each correct option's `<input>` (use `el.click()` from evaluate).
-   - Click the **Check answers** / **Check my answer** button.
-   - Wait for grading. If wrong, re-read the inline feedback, choose a different option, and re-check until correct OR a 3-attempt cap is hit.
+   - Click each correct option's `<input>` (use `el.click()` from evaluate) for **every** fieldset before checking.
+   - Then click the **Check answers** / **Check my answer** button a single time.
+   - Wait for grading. If any are wrong, re-read the inline feedback for the wrong ones, change only those options, and re-check (still batched) until all correct OR a 3-attempt cap is hit.
+   - If the UI genuinely renders a separate Check button per question (no shared one), fall back to per-question check.
 5. Click **Next** (or **Continue**). If the last unit, click **Complete** (`[data-bi-name="complete-module"]`).
 6. After Complete, the page navigates back to LDP. Confirm the module status shows Completed.
 
@@ -75,6 +77,7 @@ Back on the LDP course page:
 
 ## Guardrails
 
+- **Batch then check once.** When a knowledge check has multiple questions, select answers for ALL of them first, then click **Check your answers** a single time (the button grades the whole unit together). Only fall back to per-question checking if the UI has no shared Check button.
 - **3-attempt cap per knowledge check.** If still wrong after 3 attempts, log to progress.md, reveal answers if the UI offers, and continue.
 - **Never** click "Reset module" or "Restart" without user consent.
 - **Never** click any "Rate this module" survey-only button as if it were Complete.

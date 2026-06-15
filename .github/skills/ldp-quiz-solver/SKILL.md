@@ -1,6 +1,6 @@
 ---
 name: ldp-quiz-solver
-description: Type-1 LDP quiz automation. For every Unattempted question, reason an answer from the question text + numbered options, fill all visible "Your Submission" inputs in one batch per tab, click the Submit FAB, and verify success. Codifies the proven Course-64 Playwright workflow.
+description: Type-1 LDP quiz automation. For every Unattempted question, reason an answer from the question text + numbered options, fill all visible "Your Submission" inputs in one batch. For multi-page/multi-tab quizzes, fill ALL pages first then submit ONCE (the Submit FAB counts across the whole quiz), then verify success. Codifies the proven Course-64 Playwright workflow.
 intent-triggers:
   - solve ldp quiz
   - fill ldp quiz
@@ -23,6 +23,17 @@ Complete every Unattempted question in an LDP quiz item, one tab at a time, unti
 - **No spaces.** No trailing comma.
 - **Count of selected options MUST equal the question's weightage.** A question with `Weightage: 2` requires exactly 2 numbers (e.g. `1,4`).
 - Never leave a textbox in a partially-typed state.
+
+## Multi-Page / Multi-Tab Quizzes — Batch Then Submit Once (HARD RULE)
+
+When a single quiz spans **multiple pages/tabs** (e.g. "Module 1" / "Module 2" tabs within one course):
+
+- **Answer ALL questions across ALL pages/tabs FIRST, then submit ONCE.** Do **not** submit each page individually.
+- The Submit FAB counter (`Submit (N)`) accumulates filled inputs **across the whole quiz**, not just the active tab — so fill every tab, then a single submit commits all of them together.
+- Procedure: for each tab, run Steps 1–6 (filter → open tab → enumerate → reason → fill → verify dirty count), then move to the next tab and repeat the fill **without submitting**. Only after the **last** tab is filled do you run Step 7 (Submit) one time.
+- Before the single submit, verify the FAB count equals the **total** filled inputs summed across all tabs (not just the current tab).
+- Tabs are typically **all visible up front** (not unlock-gated) — enumerate every `button[role="tab"]` before starting so you know the full set.
+- Rationale: fewer submits = fewer chances for a mid-run network drop to credit only a partial subset, and it is faster.
 
 ## Procedure (per tab)
 
@@ -158,7 +169,9 @@ for (const [id, val] of answers) {
 
 ### Step 9 — Loop
 
-Move to next tab/module immediately after `Attempted = Total`. Re-filter to Unattempted (the filter usually persists, but verify). Repeat until inventory shows 0 Unattempted across all tabs. **Never block on `Status: Evaluating`.**
+**Preferred (multi-page/multi-tab quiz):** fill every tab first (Steps 1–6 per tab, no submit), then do a **single** Submit (Step 7) that commits all pages at once. See "Multi-Page / Multi-Tab Quizzes" hard rule above.
+
+If the quiz genuinely uses **independent per-tab submits** (FAB count resets per tab), fall back to: move to the next tab immediately after `Attempted = Total`, re-filter to Unattempted (the filter usually persists, but verify), and repeat until inventory shows 0 Unattempted across all tabs. **Never block on `Status: Evaluating`.**
 
 ## Output Contract
 
@@ -175,4 +188,5 @@ Move to next tab/module immediately after `Attempted = Total`. Re-filter to Unat
 - **Always** persist answers to `answers/<itemId>.json` so we can revisit and update wrong answers later if the manual score comes back below passing.
 - Run `browser_console_messages level=error` whenever the FAB stays at `Submit (N)` for >5s — DNS flakes (`ERR_NAME_NOT_RESOLVED`) drop POSTs silently and only credit a partial subset.
 - **Fill via real keyboard typing only** (`page.keyboard.type` with delay). Native value setters, `.fill()`, and synthetic React events do NOT advance the submit counter.
+- **Multi-page/multi-tab quiz: fill ALL pages/tabs first, then Submit ONCE** — do not submit each page individually (the FAB count accumulates across the whole quiz). Fall back to per-tab submit only if the FAB count resets per tab.
 - Never click End Course.
