@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CoSell Semantic Models &mdash; Source Lineage Report</title>
+<style>
+  :root{
+    --bg:#f3f4f6; --panel:#ffffff; --ink:#1f2328; --muted:#656d76; --line:#d8dee4;
+    --brand:#0a5ad6; --brand-ink:#0a3d8f; --accent:#1a7f37; --warn:#9a6700; --chip:#eef2f7;
+    --shadow:0 1px 2px rgba(31,35,40,.06),0 3px 8px rgba(31,35,40,.06);
+    --radius:12px; --mono:'Cascadia Code',ui-monospace,Consolas,'Courier New',monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
+  a{color:var(--brand);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  header.top{background:linear-gradient(120deg,#0a3d8f,#0a5ad6 55%,#2b8fe6);color:#fff;padding:22px 26px 18px}
+  header.top h1{margin:0;font-size:22px;font-weight:600;letter-spacing:.2px}
+  header.top .sub{margin-top:6px;font-size:13px;opacity:.92}
+  header.top .sub code{background:rgba(255,255,255,.16);padding:1px 7px;border-radius:6px;font-family:var(--mono);font-size:12px}
+
+  .kpis{display:flex;gap:14px;flex-wrap:wrap;padding:18px 26px 4px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 18px;min-width:140px;flex:1}
+  .kpi .n{font-size:26px;font-weight:700;color:var(--brand-ink)}
+  .kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+
+  .toolbar{position:sticky;top:0;z-index:20;background:rgba(243,244,246,.92);backdrop-filter:blur(6px);
+    padding:14px 26px;border-bottom:1px solid var(--line);margin-top:12px}
+  .toolbar .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .search{flex:1;min-width:240px;position:relative}
+  .search input{width:100%;padding:10px 12px 10px 36px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#fff}
+  .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.5}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+  .seg button{border:0;background:#fff;padding:9px 14px;cursor:pointer;font-size:13px;color:var(--muted)}
+  .seg button.active{background:var(--brand);color:#fff;font-weight:600}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px 13px;cursor:pointer;font-size:13px;color:var(--ink)}
+  .btn:hover{background:#f6f8fa}
+  .count{font-size:12px;color:var(--muted);margin-left:auto}
+
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;
+    padding:5px 11px;font-size:12.5px;cursor:pointer;user-select:none;transition:.12s}
+  .chip .dot{width:9px;height:9px;border-radius:50%}
+  .chip.off{opacity:.4;filter:grayscale(.4)}
+  .chip .cnt{color:var(--muted);font-size:11px}
+
+  main{padding:18px 26px 60px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden}
+  .card>.head{display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer}
+  .card>.head:hover{background:#f6f8fa}
+  .card .caret{transition:transform .15s;color:var(--muted);font-size:13px}
+  .card.collapsed .caret{transform:rotate(-90deg)}
+  .card.collapsed .body{display:none}
+  .card .title{font-size:15.5px;font-weight:600}
+  .card .title .mn{font-weight:400;color:var(--muted);font-size:12.5px;margin-left:8px}
+  .card .meta{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .badge{background:var(--chip);border-radius:7px;padding:3px 9px;font-size:12px;color:var(--brand-ink);font-weight:600}
+  .mini-schemas{display:flex;gap:5px;flex-wrap:wrap}
+  .sbadge{font-size:11px;padding:2px 8px;border-radius:6px;color:#fff;font-weight:600;white-space:nowrap}
+
+  table.tbl{width:100%;border-collapse:collapse;font-size:13px}
+  table.tbl th,table.tbl td{text-align:left;padding:8px 12px;border-top:1px solid var(--line);vertical-align:top}
+  table.tbl thead th{background:#f6f8fa;color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;position:sticky;top:0}
+  table.tbl tbody tr:hover{background:#f9fbfd}
+  td.num{color:var(--muted);width:42px;font-variant-numeric:tabular-nums}
+  td.tag code{font-family:var(--mono);font-size:12px;color:var(--brand-ink);background:#f0f4fb;padding:1px 6px;border-radius:5px;white-space:nowrap}
+  td.src{font-family:var(--mono);font-size:12px}
+  .mode{font-size:11px;color:var(--muted);text-transform:capitalize}
+  .pill-calc{font-size:11px;background:#fff4e0;color:var(--warn);padding:2px 8px;border-radius:6px;border:1px solid #f5d9a8}
+  mark{background:#fff3b0;padding:0 1px;border-radius:3px}
+
+  .empty{text-align:center;color:var(--muted);padding:50px;font-size:15px}
+  footer{padding:18px 26px 40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+  .hidden{display:none!important}
+  @media print{.toolbar,.kpis{position:static}.card .head{cursor:default}.btn,.seg{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>CoSell Semantic Models &mdash; Source Lineage Report</h1>
+  <div class="sub">
+    Repo <a href="https://mcapsdataengineering.visualstudio.com/Global%20Partner%20Solutions/_git/CoSell" style="color:#fff;text-decoration:underline">mcapsdataengineering/Global Partner Solutions/CoSell</a>
+    &nbsp;&middot;&nbsp; branch <code>master</code>
+    &nbsp;&middot;&nbsp; folder <code>/Model</code>
+    &nbsp;&middot;&nbsp; source = table-level <code>sourceLineageTag</code> ( [Schema].[Table] )
+    &nbsp;&middot;&nbsp; generated 2026-06-15 15:48
+  </div>
+</header>
+
+<section class="kpis" id="kpis"></section>
+
+<div class="toolbar">
+  <div class="row">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M11.7 10.3a6 6 0 1 0-1.4 1.4l3 3a1 1 0 0 0 1.4-1.4zM3 7a4 4 0 1 1 8 0 4 4 0 0 1-8 0"/></svg>
+      <input id="q" type="search" placeholder="Search models, tables, schemas, source tables&hellip;" autocomplete="off" />
+    </div>
+    <div class="seg" id="viewSeg">
+      <button data-view="model" class="active">By Model</button>
+      <button data-view="schema">By Schema</button>
+    </div>
+    <button class="btn" id="expandAll">Expand all</button>
+    <button class="btn" id="collapseAll">Collapse all</button>
+    <span class="count" id="resultCount"></span>
+  </div>
+  <div class="chips" id="schemaChips"></div>
+</div>
+
+<main>
+  <div id="modelView"></div>
+  <div id="schemaView" class="hidden"></div>
+  <div id="empty" class="empty hidden">No tables match the current search / filters.</div>
+</main>
+
+<footer>
+  Built from <strong>4</strong> <code>.bim</code> files in <code>/Model</code> on branch <code>master</code>.
+  Schema &amp; source table are parsed verbatim from each table&rsquo;s <code>sourceLineageTag</code>.
+  Tables without a <code>sourceLineageTag</code> (calculated / usage-metrics) are shown with a <span class="pill-calc">calculated</span> marker.
+</footer>
+
+<script>
+const DATA = {"meta": {"repo": "CoSell", "project": "Global Partner Solutions", "org": "mcapsdataengineering", "branch": "master", "folder": "/Model", "generated": "2026-06-15 15:48", "repoUrl": "https://mcapsdataengineering.visualstudio.com/Global%20Partner%20Solutions/_git/CoSell", "totals": {"models": 4, "tables": 231, "mapped": 230, "calc": 1, "schemas": 4}, "schemaCounts": {"CoSell": 153, "RedCarpet": 8, "PartnerSharing": 60, "TPP": 9}}, "models": [{"file": "CoSellSemanticModel.bim", "model": "CosellSemanticModel", "compat": 1604, "count": 115, "schemas": ["CoSell"], "tables": [{"table": "Customer", "schema": "CoSell", "sourceTable": "DimMSXCustomer", "tag": "[CoSell].[DimMSXCustomer]", "mode": "directLake", "calc": false}, {"table": "Customer Geography", "schema": "CoSell", "sourceTable": "DimCustomerGeography", "tag": "[CoSell].[DimCustomerGeography]", "mode": "directLake", "calc": false}, {"table": "Reporting PartnerOne", "schema": "CoSell", "sourceTable": "DimReportingPartnerOneSub", "tag": "[CoSell].[DimReportingPartnerOneSub]", "mode": "directLake", "calc": false}, {"table": "Customer Segment", "schema": "CoSell", "sourceTable": "DimCustomerSegment", "tag": "[CoSell].[DimCustomerSegment]", "mode": "directLake", "calc": false}, {"table": "Partner Deal", "schema": "CoSell", "sourceTable": "DimPartnerDeal", "tag": "[CoSell].[DimPartnerDeal]", "mode": "directLake", "calc": false}, {"table": "Time", "schema": "CoSell", "sourceTable": "DimTime", "tag": "[CoSell].[DimTime]", "mode": "directLake", "calc": false}, {"table": "Solution", "schema": "CoSell", "sourceTable": "DimSolution", "tag": "[CoSell].[DimSolution]", "mode": "directLake", "calc": false}, {"table": "Opportunity", "schema": "CoSell", "sourceTable": "DimOpportunity", "tag": "[CoSell].[DimOpportunity]", "mode": "directLake", "calc": false}, {"table": "Engagement Milestone", "schema": "CoSell", "sourceTable": "DimEngagementMilestone", "tag": "[CoSell].[DimEngagementMilestone]", "mode": "directLake", "calc": false}, {"table": "Fact Engagement Milestone", "schema": "CoSell", "sourceTable": "FactOpportunity", "tag": "[CoSell].[FactOpportunity]", "mode": "directLake", "calc": false}, {"table": "Fact Opportunity", "schema": "CoSell", "sourceTable": "FactOpportunity", "tag": "[CoSell].[FactOpportunity]", "mode": "directLake", "calc": false}, {"table": "Fact Partner Deal", "schema": "CoSell", "sourceTable": "FactPartnerDeal", "tag": "[CoSell].[FactPartnerDeal]", "mode": "directLake", "calc": false}, {"table": "Sharing Type", "schema": "CoSell", "sourceTable": "DimSharingType", "tag": "[CoSell].[DimSharingType]", "mode": "directLake", "calc": false}, {"table": "Solution Area", "schema": "CoSell", "sourceTable": "DimSolutionArea", "tag": "[CoSell].[DimSolutionArea]", "mode": "directLake", "calc": false}, {"table": "Solution Area (Oppty)", "schema": "CoSell", "sourceTable": "DimSolutionAreaOppty", "tag": "[CoSell].[DimSolutionAreaOppty]", "mode": "directLake", "calc": false}, {"table": "CustomPartnerReportingGeography", "schema": "CoSell", "sourceTable": "CustomPartnerReportingGeography", "tag": "[CoSell].[CustomPartnerReportingGeography]", "mode": "directLake", "calc": false}, {"table": "BridgeGeography", "schema": "CoSell", "sourceTable": "BridgeGeography", "tag": "[CoSell].[BridgeGeography]", "mode": "directLake", "calc": false}, {"table": "Lead", "schema": "CoSell", "sourceTable": "DimLead", "tag": "[CoSell].[DimLead]", "mode": "directLake", "calc": false}, {"table": "Partner Deal Partner Reported ACR", "schema": "CoSell", "sourceTable": "PartnerDealPartnerReportedACR", "tag": "[CoSell].[PartnerDealPartnerReportedACR]", "mode": "directLake", "calc": false}, {"table": "Duration", "schema": "CoSell", "sourceTable": "DimPartnerDealDuration", "tag": "[CoSell].[DimPartnerDealDuration]", "mode": "directLake", "calc": false}, {"table": "Fact Duration", "schema": "CoSell", "sourceTable": "FactPartnerDealDuration", "tag": "[CoSell].[FactPartnerDealDuration]", "mode": "directLake", "calc": false}, {"table": "Partner Geography", "schema": "CoSell", "sourceTable": "DimSalesReportingGeography", "tag": "[CoSell].[DimSalesReportingGeography]", "mode": "directLake", "calc": false}, {"table": "Solution Incentive", "schema": "CoSell", "sourceTable": "DimSellerCoSellIncentive", "tag": "[CoSell].[DimSellerCoSellIncentive]", "mode": "directLake", "calc": false}, {"table": "Account", "schema": "CoSell", "sourceTable": "DimGPSCRMAccount", "tag": "[CoSell].[DimGPSCRMAccount]", "mode": "directLake", "calc": false}, {"table": "ATU", "schema": "CoSell", "sourceTable": "DimATU", "tag": "[CoSell].[DimATU]", "mode": "directLake", "calc": false}, {"table": "Custom Partner Segment", "schema": "CoSell", "sourceTable": "MapCustomPartnerSegment", "tag": "[CoSell].[MapCustomPartnerSegment]", "mode": "directLake", "calc": false}, {"table": "Reporting PartnerOne Median", "schema": "CoSell", "sourceTable": "DimReportingPartnerOneMedian", "tag": "[CoSell].[DimReportingPartnerOneMedian]", "mode": "directLake", "calc": false}, {"table": "Role Contact", "schema": "CoSell", "sourceTable": "DimReportingPartnerOneSub", "tag": "[CoSell].[DimReportingPartnerOneSub]", "mode": "directLake", "calc": false}, {"table": "Reporting Geography", "schema": "CoSell", "sourceTable": "DimReportingGeography", "tag": "[CoSell].[DimReportingGeography]", "mode": "directLake", "calc": false}, {"table": "Partner Deal Approval Reported Date", "schema": "CoSell", "sourceTable": "DimPartnerDealApprovalReportedDate", "tag": "[CoSell].[DimPartnerDealApprovalReportedDate]", "mode": "directLake", "calc": false}, {"table": "Partner Deal Solution Snapshot", "schema": "CoSell", "sourceTable": "DimPartnerDealSolutionHistory", "tag": "[CoSell].[DimPartnerDealSolutionHistory]", "mode": "directLake", "calc": false}, {"table": "Reporting IP PartnerOne", "schema": "CoSell", "sourceTable": "DimReportingPartnerOneSub", "tag": "[CoSell].[DimReportingPartnerOneSub]", "mode": "directLake", "calc": false}, {"table": "Fact PRACR Targets", "schema": "CoSell", "sourceTable": "FactPRACRTargets", "tag": "[CoSell].[FactPRACRTargets]", "mode": "directLake", "calc": false}, {"table": "CRM Partner Account", "schema": "CoSell", "sourceTable": "DimCRMPartnerAccount", "tag": "[CoSell].[DimCRMPartnerAccount]", "mode": "directLake", "calc": false}, {"table": "Cascaded PartnerOne", "schema": "CoSell", "sourceTable": "Bridge_CascadedPartnerOne", "tag": "[CoSell].[Bridge_CascadedPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Cascaded IP PartnerOne", "schema": "CoSell", "sourceTable": "Bridge_CascadedPartnerOne", "tag": "[CoSell].[Bridge_CascadedPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Fact Solution Partner Deal", "schema": "CoSell", "sourceTable": "FactSolutionPartnerDeal", "tag": "[CoSell].[FactSolutionPartnerDeal]", "mode": "directLake", "calc": false}, {"table": "Fact CoSell Targets", "schema": "CoSell", "sourceTable": "FactCoSellTargets", "tag": "[CoSell].[FactCoSellTargets]", "mode": "directLake", "calc": false}, {"table": "Map Oppty", "schema": "CoSell", "sourceTable": "MapOppty", "tag": "[CoSell].[MapOppty]", "mode": "directLake", "calc": false}, {"table": "Map Partner Sharing", "schema": "CoSell", "sourceTable": "FactMSXPartnerSharing", "tag": "[CoSell].[FactMSXPartnerSharing]", "mode": "directLake", "calc": false}, {"table": "Opportunity + Milestone Est Completion Date", "schema": "CoSell", "sourceTable": "DimOpportunityMilestoneEstCompletionDate", "tag": "[CoSell].[DimOpportunityMilestoneEstCompletionDate]", "mode": "directLake", "calc": false}, {"table": "Rev Sum Division", "schema": "CoSell", "sourceTable": "DimRevSumDivision", "tag": "[CoSell].[DimRevSumDivision]", "mode": "directLake", "calc": false}, {"table": "Map Prioritized Oppty CSE", "schema": "CoSell", "sourceTable": "MapPrioritizedOppty", "tag": "[CoSell].[MapPrioritizedOppty]", "mode": "directLake", "calc": false}, {"table": "Catalog", "schema": "CoSell", "sourceTable": "MapSolutionPracticeIndustryCountry", "tag": "[CoSell].[MapSolutionPracticeIndustryCountry]", "mode": "directLake", "calc": false}, {"table": "Fact CSPSolution Billed Opportunity", "schema": "CoSell", "sourceTable": "FactCSPSolutionBilledOpportunity", "tag": "[CoSell].[FactCSPSolutionBilledOpportunity]", "mode": "directLake", "calc": false}, {"table": "Fact CSPSolution Consumption Opportunity", "schema": "CoSell", "sourceTable": "FactCSPSolutionConsumptionOpportunity", "tag": "[CoSell].[FactCSPSolutionConsumptionOpportunity]", "mode": "directLake", "calc": false}, {"table": "Fact CSPSolution Partner Deal", "schema": "CoSell", "sourceTable": "FactCSPSolutionPartnerDeal", "tag": "[CoSell].[FactCSPSolutionPartnerDeal]", "mode": "directLake", "calc": false}, {"table": "Fact Solution Billed Opportunity", "schema": "CoSell", "sourceTable": "FactSolutionBilledOpportunity", "tag": "[CoSell].[FactSolutionBilledOpportunity]", "mode": "directLake", "calc": false}, {"table": "Fact Solution Build-With", "schema": "CoSell", "sourceTable": "FactSolution", "tag": "[CoSell].[FactSolution]", "mode": "directLake", "calc": false}, {"table": "Fact Solution Consumption Opportunity", "schema": "CoSell", "sourceTable": "FactSolutionConsumptionOpportunity", "tag": "[CoSell].[FactSolutionConsumptionOpportunity]", "mode": "directLake", "calc": false}, {"table": "Industry", "schema": "CoSell", "sourceTable": "DimIndustry", "tag": "[CoSell].[DimIndustry]", "mode": "directLake", "calc": false}, {"table": "MSX Solution Area", "schema": "CoSell", "sourceTable": "DimMSXSolutionArea", "tag": "[CoSell].[DimMSXSolutionArea]", "mode": "directLake", "calc": false}, {"table": "MSX Workload", "schema": "CoSell", "sourceTable": "DimMSXWorkLoad", "tag": "[CoSell].[DimMSXWorkLoad]", "mode": "directLake", "calc": false}, {"table": "Business Unit", "schema": "CoSell", "sourceTable": "DimGPSBusinessUnit", "tag": "[CoSell].[DimGPSBusinessUnit]", "mode": "directLake", "calc": false}, {"table": "Fact Account", "schema": "CoSell", "sourceTable": "FactAccount", "tag": "[CoSell].[FactAccount]", "mode": "directLake", "calc": false}, {"table": "Fact Account PIN", "schema": "CoSell", "sourceTable": "FactAccountPIN", "tag": "[CoSell].[FactAccountPIN]", "mode": "directLake", "calc": false}, {"table": "Fact CRM Partner", "schema": "CoSell", "sourceTable": "FactCRMPartner", "tag": "[CoSell].[FactCRMPartner]", "mode": "directLake", "calc": false}, {"table": "Fact SolutionPriorityScenarioIndustryCountrySnapshot", "schema": "CoSell", "sourceTable": "SnapshotMapSolutionPriorityScenarioIndustryCountry", "tag": "[CoSell].[SnapshotMapSolutionPriorityScenarioIndustryCountry]", "mode": "directLake", "calc": false}, {"table": "PIN Metric", "schema": "CoSell", "sourceTable": "DimPINMetric", "tag": "[CoSell].[DimPINMetric]", "mode": "directLake", "calc": false}, {"table": "Sales Program", "schema": "CoSell", "sourceTable": "DimSalesProgram", "tag": "[CoSell].[DimSalesProgram]", "mode": "directLake", "calc": false}, {"table": "ISV Connect App", "schema": "CoSell", "sourceTable": "DimISVConnectApp", "tag": "[CoSell].[DimISVConnectApp]", "mode": "directLake", "calc": false}, {"table": "Crediting Geography", "schema": "CoSell", "sourceTable": "VWDimGeography", "tag": "[CoSell].[VWDimGeography]", "mode": "directLake", "calc": false}, {"table": "Fact Engagement Milestone Pipeline", "schema": "CoSell", "sourceTable": "FactEngagementMilestonePipeline", "tag": "[CoSell].[FactEngagementMilestonePipeline]", "mode": "directLake", "calc": false}, {"table": "Fact ISV Connect", "schema": "CoSell", "sourceTable": "FactISVConnect", "tag": "[CoSell].[FactISVConnect]", "mode": "directLake", "calc": false}, {"table": "Fact Lead", "schema": "CoSell", "sourceTable": "FactLead", "tag": "[CoSell].[FactLead]", "mode": "directLake", "calc": false}, {"table": "Fact SolutionCapacityGeography", "schema": "CoSell", "sourceTable": "FactSolutionCapacityGeography", "tag": "[CoSell].[FactSolutionCapacityGeography]", "mode": "directLake", "calc": false}, {"table": "Marketplace Billed Sales", "schema": "CoSell", "sourceTable": "FactMarketplaceBilledSales", "tag": "[CoSell].[FactMarketplaceBilledSales]", "mode": "directLake", "calc": false}, {"table": "Marketplace Offer", "schema": "CoSell", "sourceTable": "DimMarketplaceOffer", "tag": "[CoSell].[DimMarketplaceOffer]", "mode": "directLake", "calc": false}, {"table": "MBS GPS Targets", "schema": "CoSell", "sourceTable": "FactMBSTargets", "tag": "[CoSell].[FactMBSTargets]", "mode": "directLake", "calc": false}, {"table": "Solution Engagement Pipeline", "schema": "CoSell", "sourceTable": "DimSolutionEngagementPipeline", "tag": "[CoSell].[DimSolutionEngagementPipeline]", "mode": "directLake", "calc": false}, {"table": "Map Offer PartnerDeal", "schema": "CoSell", "sourceTable": "MapOfferPartnerDeal", "tag": "[CoSell].[MapOfferPartnerDeal]", "mode": "directLake", "calc": false}, {"table": "MBS Commercial Targets", "schema": "CoSell", "sourceTable": "FactMBSCommercialTargets", "tag": "[CoSell].[FactMBSCommercialTargets]", "mode": "directLake", "calc": false}, {"table": "Cascaded IP PartnerOne MBS", "schema": "CoSell", "sourceTable": "Bridge_CascadedPartnerOne", "tag": "[CoSell].[Bridge_CascadedPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Fact Partner One", "schema": "CoSell", "sourceTable": "FactPartnerOne", "tag": "[CoSell].[FactPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Map PartnerDeal Partner Attach And Solution Attach", "schema": "CoSell", "sourceTable": "MapPartnerDealPartnerAttachAndSolutionAttach", "tag": "[CoSell].[MapPartnerDealPartnerAttachAndSolutionAttach]", "mode": "directLake", "calc": false}, {"table": "MSX Wins With Solution Attached", "schema": "CoSell", "sourceTable": "DimMSXWinsWithSolutionAttach", "tag": "[CoSell].[DimMSXWinsWithSolutionAttach]", "mode": "directLake", "calc": false}, {"table": "Partner Deal FY20 Snapshot", "schema": "CoSell", "sourceTable": "FactPartnerDeal_FY20", "tag": "[CoSell].[FactPartnerDeal_FY20]", "mode": "directLake", "calc": false}, {"table": "Partner Deal FY21 Snapshot", "schema": "CoSell", "sourceTable": "FactPartnerDeal_FY21", "tag": "[CoSell].[FactPartnerDeal_FY21]", "mode": "directLake", "calc": false}, {"table": "Partner Deal FY22 Snapshot", "schema": "CoSell", "sourceTable": "FactPartnerDeal_FY22", "tag": "[CoSell].[FactPartnerDeal_FY22]", "mode": "directLake", "calc": false}, {"table": "Partner Deal FY23 Snapshot", "schema": "CoSell", "sourceTable": "FactPartnerDeal_FY23", "tag": "[CoSell].[FactPartnerDeal_FY23]", "mode": "directLake", "calc": false}, {"table": "Partner Deal FY24 Snapshot", "schema": "CoSell", "sourceTable": "FactPartnerDeal_FY24", "tag": "[CoSell].[FactPartnerDeal_FY24]", "mode": "directLake", "calc": false}, {"table": "Partner Sharing Metric Type", "schema": "CoSell", "sourceTable": "DimPartnerSharingMetricType", "tag": "[CoSell].[DimPartnerSharingMetricType]", "mode": "directLake", "calc": false}, {"table": "Top Tier Monthly Status", "schema": "CoSell", "sourceTable": "DimTopTierMonthlyStatus", "tag": "[CoSell].[DimTopTierMonthlyStatus]", "mode": "directLake", "calc": false}, {"table": "Channel PartnerOne", "schema": "CoSell", "sourceTable": "DimPartnerOne", "tag": "[CoSell].[DimPartnerOne]", "mode": "directLake", "calc": false}, {"table": "IP PartnerOne", "schema": "CoSell", "sourceTable": "DimPartnerOne", "tag": "[CoSell].[DimPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Map Oppty CSE Partner Attach And Solution Attach", "schema": "CoSell", "sourceTable": "MapOpptyPartnerAttachAndSolutionAttach", "tag": "[CoSell].[MapOpptyPartnerAttachAndSolutionAttach]", "mode": "directLake", "calc": false}, {"table": "Prioritized and Ready Partners Oppty", "schema": "CoSell", "sourceTable": "DimPrioritizedAndReadyPartnersOppty", "tag": "[CoSell].[DimPrioritizedAndReadyPartnersOppty]", "mode": "directLake", "calc": false}, {"table": "Capacity", "schema": "CoSell", "sourceTable": "MapSolutionPracticeIndustryCountry_Capacity", "tag": "[CoSell].[MapSolutionPracticeIndustryCountry_Capacity]", "mode": "directLake", "calc": false}, {"table": "Product", "schema": "CoSell", "sourceTable": "DimMSXProduct", "tag": "[CoSell].[DimMSXProduct]", "mode": "directLake", "calc": false}, {"table": "Partner Deal Solution Attached", "schema": "CoSell", "sourceTable": "DimPartnerDealSolutionAttached", "tag": "[CoSell].[DimPartnerDealSolutionAttached]", "mode": "directLake", "calc": false}, {"table": "Bridge PartnerOne", "schema": "CoSell", "sourceTable": "DimReportingPartnerOneSub", "tag": "[CoSell].[DimReportingPartnerOneSub]", "mode": "directLake", "calc": false}, {"table": "Bridge Reporting PartnerOne", "schema": "CoSell", "sourceTable": "DimReportingPartnerOneSub", "tag": "[CoSell].[DimReportingPartnerOneSub]", "mode": "directLake", "calc": false}, {"table": "Custom Oppty Status", "schema": "CoSell", "sourceTable": "DimCustomOpptyStatus", "tag": "[CoSell].[DimCustomOpptyStatus]", "mode": "directLake", "calc": false}, {"table": "Partner Designations", "schema": "CoSell", "sourceTable": "DimPartnerDesignation", "tag": "[CoSell].[DimPartnerDesignation]", "mode": "directLake", "calc": false}, {"table": "Partner MAICPP Status", "schema": "CoSell", "sourceTable": "DimPartnerMAICPPStatus", "tag": "[CoSell].[DimPartnerMAICPPStatus]", "mode": "directLake", "calc": false}, {"table": "Partner Sharing Flags", "schema": "CoSell", "sourceTable": "DimPartnerSharingFlags", "tag": "[CoSell].[DimPartnerSharingFlags]", "mode": "directLake", "calc": false}, {"table": "Partner Specializations", "schema": "CoSell", "sourceTable": "FactPartnerSpecialization", "tag": "[CoSell].[FactPartnerSpecialization]", "mode": "directLake", "calc": false}, {"table": "Cosell Services", "schema": "CoSell", "sourceTable": "DimCosellServices", "tag": "[CoSell].[DimCosellServices]", "mode": "directLake", "calc": false}, {"table": "Custom Partner Category", "schema": "CoSell", "sourceTable": "CustomPartnerCategory", "tag": "[CoSell].[CustomPartnerCategory]", "mode": "directLake", "calc": false}, {"table": "Fact Azure Consumption C_T_CG", "schema": "CoSell", "sourceTable": "FactAzureConsumptionCTCG", "tag": "[CoSell].[FactAzureConsumptionCTCG]", "mode": "directLake", "calc": false}, {"table": "Fact Azure Consumption P1_CG_C_T", "schema": "CoSell", "sourceTable": "FactAzureConsumptionP1CGCT", "tag": "[CoSell].[FactAzureConsumptionP1CGCT]", "mode": "directLake", "calc": false}, {"table": "Map CascadingPIN", "schema": "CoSell", "sourceTable": "FactIPT", "tag": "[CoSell].[FactIPT]", "mode": "directLake", "calc": false}, {"table": "Map User Subsidiary", "schema": "CoSell", "sourceTable": "MapUserSubsidiary", "tag": "[CoSell].[MapUserSubsidiary]", "mode": "directLake", "calc": false}, {"table": "Opportunity Weekly Snapshot", "schema": "CoSell", "sourceTable": "SnapshotDimOpportunityWeekly", "tag": "[CoSell].[SnapshotDimOpportunityWeekly]", "mode": "directLake", "calc": false}, {"table": "Partner Sharing Weekly Snapshot", "schema": "CoSell", "sourceTable": "SnapshotPartnerSharingWeekly", "tag": "[CoSell].[SnapshotPartnerSharingWeekly]", "mode": "directLake", "calc": false}, {"table": "PDM DimReportingPartnerOneSub", "schema": "CoSell", "sourceTable": "PDM_PDMM_HierarchyReporting", "tag": "[CoSell].[PDM_PDMM_HierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Projected Baseline P1_CG_C_T", "schema": "CoSell", "sourceTable": "ProjectedBaselineP1CGCT", "tag": "[CoSell].[ProjectedBaselineP1CGCT]", "mode": "directLake", "calc": false}, {"table": "Projected Baseline C_T_CG", "schema": "CoSell", "sourceTable": "ProjectedBaselineCTCG", "tag": "[CoSell].[ProjectedBaselineCTCG]", "mode": "directLake", "calc": false}, {"table": "User Subsidiary", "schema": "CoSell", "sourceTable": "DimUserSubsidiary", "tag": "[CoSell].[DimUserSubsidiary]", "mode": "directLake", "calc": false}, {"table": "Business Summary", "schema": "CoSell", "sourceTable": "BusinessSummary", "tag": "[CoSell].[BusinessSummary]", "mode": "directLake", "calc": false}, {"table": "DimMetric", "schema": "CoSell", "sourceTable": "DimMetric", "tag": "[CoSell].[DimMetric]", "mode": "directLake", "calc": false}, {"table": "DimPINMetric", "schema": "CoSell", "sourceTable": "DimPINMetric", "tag": "[CoSell].[DimPINMetric]", "mode": "directLake", "calc": false}, {"table": "OpportunityFlags", "schema": "CoSell", "sourceTable": "OpportunityFlags", "tag": "[CoSell].[OpportunityFlags]", "mode": "directLake", "calc": false}, {"table": "Cascaded PartnerOne Hidden", "schema": "CoSell", "sourceTable": "Bridge_CascadedPartnerOne", "tag": "[CoSell].[Bridge_CascadedPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Partner Deal FY25 Snapshot", "schema": "CoSell", "sourceTable": "FactPartnerDeal_FY25", "tag": "[CoSell].[FactPartnerDeal_FY25]", "mode": "directLake", "calc": false}]}, {"file": "PartnerSharingModel.bim", "model": "PartnerSharingModel", "compat": 1604, "count": 69, "schemas": ["PartnerSharing", "TPP"], "tables": [{"table": "Workload", "schema": "PartnerSharing", "sourceTable": "DimWorkloadReporting", "tag": "[PartnerSharing].[DimWorkloadReporting]", "mode": "directLake", "calc": false}, {"table": "Engagement Milestone", "schema": "PartnerSharing", "sourceTable": "DimEngagementMilestoneReporting", "tag": "[PartnerSharing].[DimEngagementMilestoneReporting]", "mode": "directLake", "calc": false}, {"table": "Sales Play", "schema": "PartnerSharing", "sourceTable": "DimSalesPlayReporting", "tag": "[PartnerSharing].[DimSalesPlayReporting]", "mode": "directLake", "calc": false}, {"table": "Account Product Map", "schema": "PartnerSharing", "sourceTable": "SecAccountProductMapReporting", "tag": "[PartnerSharing].[SecAccountProductMapReporting]", "mode": "directLake", "calc": false}, {"table": "Segment", "schema": "PartnerSharing", "sourceTable": "DimSegmentHierarchyReporting", "tag": "[PartnerSharing].[DimSegmentHierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Sales Program", "schema": "PartnerSharing", "sourceTable": "DimSalesProgramReporting", "tag": "[PartnerSharing].[DimSalesProgramReporting]", "mode": "directLake", "calc": false}, {"table": "Seller", "schema": "PartnerSharing", "sourceTable": "SecDimSellerReporting", "tag": "[PartnerSharing].[SecDimSellerReporting]", "mode": "directLake", "calc": false}, {"table": "Fiscal Month", "schema": "PartnerSharing", "sourceTable": "DimFiscalMonthReporting", "tag": "[PartnerSharing].[DimFiscalMonthReporting]", "mode": "directLake", "calc": false}, {"table": "Partner Account", "schema": "PartnerSharing", "sourceTable": "DimCRMPartnerAccountReporting", "tag": "[PartnerSharing].[DimCRMPartnerAccountReporting]", "mode": "directLake", "calc": false}, {"table": "Account Tags", "schema": "PartnerSharing", "sourceTable": "DimAccountTagsReporting", "tag": "[PartnerSharing].[DimAccountTagsReporting]", "mode": "directLake", "calc": false}, {"table": "Pricing Level", "schema": "PartnerSharing", "sourceTable": "DimPricingLevelHierarchyReporting", "tag": "[PartnerSharing].[DimPricingLevelHierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Seller Hierarchy", "schema": "PartnerSharing", "sourceTable": "SecSellerHierarchyReporting", "tag": "[PartnerSharing].[SecSellerHierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Account", "schema": "PartnerSharing", "sourceTable": "DimAccountGeographyHierarchyReporting", "tag": "[PartnerSharing].[DimAccountGeographyHierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Sec User Subsidiary", "schema": "PartnerSharing", "sourceTable": "SecUserSubsidiaryReporting", "tag": "[PartnerSharing].[SecUserSubsidiaryReporting]", "mode": "directLake", "calc": false}, {"table": "Product", "schema": "PartnerSharing", "sourceTable": "DimProductReporting", "tag": "[PartnerSharing].[DimProductReporting]", "mode": "directLake", "calc": false}, {"table": "Partner Sharing Direction", "schema": "PartnerSharing", "sourceTable": "DimMSXPartnerSharingCategorizationReporting", "tag": "[PartnerSharing].[DimMSXPartnerSharingCategorizationReporting]", "mode": "directLake", "calc": false}, {"table": "Account Team", "schema": "PartnerSharing", "sourceTable": "SecAccountTeamReporting", "tag": "[PartnerSharing].[SecAccountTeamReporting]", "mode": "directLake", "calc": false}, {"table": "Solution Area Detail", "schema": "PartnerSharing", "sourceTable": "DimSolutionAreaDetailReporting", "tag": "[PartnerSharing].[DimSolutionAreaDetailReporting]", "mode": "directLake", "calc": false}, {"table": "Seller Account Product Map", "schema": "PartnerSharing", "sourceTable": "SecSellerAccountProductMapReporting", "tag": "[PartnerSharing].[SecSellerAccountProductMapReporting]", "mode": "directLake", "calc": false}, {"table": "Product Hierarchy", "schema": "PartnerSharing", "sourceTable": "DimProductHierarchyReporting", "tag": "[PartnerSharing].[DimProductHierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Rev Sum Hierarchy", "schema": "PartnerSharing", "sourceTable": "DimRevSumHierarchyReporting", "tag": "[PartnerSharing].[DimRevSumHierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Subsidiary", "schema": "PartnerSharing", "sourceTable": "SecDistinctSubsidiaryReporting", "tag": "[PartnerSharing].[SecDistinctSubsidiaryReporting]", "mode": "directLake", "calc": false}, {"table": "Opportunity Team", "schema": "PartnerSharing", "sourceTable": "SecOpportunityTeamReporting", "tag": "[PartnerSharing].[SecOpportunityTeamReporting]", "mode": "directLake", "calc": false}, {"table": "DimATU", "schema": "PartnerSharing", "sourceTable": "DimATU", "tag": "[PartnerSharing].[DimATU]", "mode": "directLake", "calc": false}, {"table": "Dim Capacity Geography", "schema": "PartnerSharing", "sourceTable": "DimCapacityGeography", "tag": "[PartnerSharing].[DimCapacityGeography]", "mode": "directLake", "calc": false}, {"table": "Dim Customer Reporting", "schema": "PartnerSharing", "sourceTable": "DimCustomerReporting", "tag": "[PartnerSharing].[DimCustomerReporting]", "mode": "directLake", "calc": false}, {"table": "Custom Created Date", "schema": "PartnerSharing", "sourceTable": "CustomCreatedDateReporting", "tag": "[PartnerSharing].[CustomCreatedDateReporting]", "mode": "directLake", "calc": false}, {"table": "Custom Partner Segment", "schema": "PartnerSharing", "sourceTable": "CustomPartnerSegment", "tag": "[PartnerSharing].[CustomPartnerSegment]", "mode": "directLake", "calc": false}, {"table": "Dim Customer Segment", "schema": "PartnerSharing", "sourceTable": "DimCustomerSegment", "tag": "[PartnerSharing].[DimCustomerSegment]", "mode": "directLake", "calc": false}, {"table": "Custom Solution Area", "schema": "PartnerSharing", "sourceTable": "CustomSolutionAreaReporting", "tag": "[PartnerSharing].[CustomSolutionAreaReporting]", "mode": "directLake", "calc": false}, {"table": "Dim Customer Geography", "schema": "PartnerSharing", "sourceTable": "DimCustomerGeography", "tag": "[PartnerSharing].[DimCustomerGeography]", "mode": "directLake", "calc": false}, {"table": "Dim Prioritized Partner", "schema": "PartnerSharing", "sourceTable": "DimPrioritizedPartnerReporting", "tag": "[PartnerSharing].[DimPrioritizedPartnerReporting]", "mode": "directLake", "calc": false}, {"table": "Map Partner Solution Area", "schema": "PartnerSharing", "sourceTable": "MapPartnerSolutionAreaReporting", "tag": "[PartnerSharing].[MapPartnerSolutionAreaReporting]", "mode": "directLake", "calc": false}, {"table": "Reporting PartnerOne Sub", "schema": "PartnerSharing", "sourceTable": "ReportingPartnerOneSubReporting", "tag": "[PartnerSharing].[ReportingPartnerOneSubReporting]", "mode": "directLake", "calc": false}, {"table": "Dim User Subsidiary", "schema": "PartnerSharing", "sourceTable": "DimUserSubsidiary", "tag": "[PartnerSharing].[DimUserSubsidiary]", "mode": "directLake", "calc": false}, {"table": "Dim Opportunity Milestone Est Completion Date", "schema": "PartnerSharing", "sourceTable": "DimOpportunityMilestoneEstCompletionDate", "tag": "[PartnerSharing].[DimOpportunityMilestoneEstCompletionDate]", "mode": "directLake", "calc": false}, {"table": "Dim Solution", "schema": "PartnerSharing", "sourceTable": "DimSolution", "tag": "[PartnerSharing].[DimSolution]", "mode": "directLake", "calc": false}, {"table": "Custom Due Date", "schema": "PartnerSharing", "sourceTable": "CustomDueDateReporting", "tag": "[PartnerSharing].[CustomDueDateReporting]", "mode": "directLake", "calc": false}, {"table": "Dim Custom Partner Deal Direction", "schema": "PartnerSharing", "sourceTable": "DimCustomPartnerDealDirectionReporting", "tag": "[PartnerSharing].[DimCustomPartnerDealDirectionReporting]", "mode": "directLake", "calc": false}, {"table": "Solution Area Oppty", "schema": "PartnerSharing", "sourceTable": "SolutionArea_OpptyReporting", "tag": "[PartnerSharing].[SolutionArea_OpptyReporting]", "mode": "directLake", "calc": false}, {"table": "Custom Status", "schema": "PartnerSharing", "sourceTable": "CustomStatusReporting", "tag": "[PartnerSharing].[CustomStatusReporting]", "mode": "directLake", "calc": false}, {"table": "Dim Time", "schema": "PartnerSharing", "sourceTable": "DimTime", "tag": "[PartnerSharing].[DimTime]", "mode": "directLake", "calc": false}, {"table": "Partner As End Customer", "schema": "PartnerSharing", "sourceTable": "PartnerAsEndCustomerReporting", "tag": "[PartnerSharing].[PartnerAsEndCustomerReporting]", "mode": "directLake", "calc": false}, {"table": "PDM PDMM Hierarchy", "schema": "PartnerSharing", "sourceTable": "PDM_PDMM_HierarchyReporting", "tag": "[PartnerSharing].[PDM_PDMM_HierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "Map User Subsidiary", "schema": "PartnerSharing", "sourceTable": "DimUserSubsidiary", "tag": "[PartnerSharing].[DimUserSubsidiary]", "mode": "directLake", "calc": false}, {"table": "Bridge Reporting PartnerOne", "schema": "PartnerSharing", "sourceTable": "MapReportingPartnerOne", "tag": "[PartnerSharing].[MapReportingPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Map Reporting PartnerOne", "schema": "PartnerSharing", "sourceTable": "MapReportingPartnerOne", "tag": "[PartnerSharing].[MapReportingPartnerOne]", "mode": "directLake", "calc": false}, {"table": "Solution Area ", "schema": "PartnerSharing", "sourceTable": "DimSolutionArea", "tag": "[PartnerSharing].[DimSolutionArea]", "mode": "directLake", "calc": false}, {"table": "Dataset Refresh", "schema": "PartnerSharing", "sourceTable": "DimAccountTagsReporting", "tag": "[PartnerSharing].[DimAccountTagsReporting]", "mode": "directLake", "calc": false}, {"table": "FactMSXCombined", "schema": "PartnerSharing", "sourceTable": "FactMSXCombined", "tag": "[PartnerSharing].[FactMSXCombined]", "mode": "directLake", "calc": false}, {"table": "Custom Partner Category", "schema": "PartnerSharing", "sourceTable": "CustomPartnerCategory", "tag": "[PartnerSharing].[CustomPartnerCategory]", "mode": "directLake", "calc": false}, {"table": "Opportunity", "schema": "PartnerSharing", "sourceTable": "DimOpportunityReporting", "tag": "[PartnerSharing].[DimOpportunityReporting]", "mode": "directLake", "calc": false}, {"table": "Partner Referral", "schema": "PartnerSharing", "sourceTable": "DimPartnerReferralReporting", "tag": "[PartnerSharing].[DimPartnerReferralReporting]", "mode": "directLake", "calc": false}, {"table": "TeamRLS", "schema": "PartnerSharing", "sourceTable": "SecAccountTeamReporting", "tag": "[PartnerSharing].[SecAccountTeamReporting]", "mode": "directLake", "calc": false}, {"table": "Business Hierarchy", "schema": "PartnerSharing", "sourceTable": "BusinessHierarchyReporting", "tag": "[PartnerSharing].[BusinessHierarchyReporting]", "mode": "directLake", "calc": false}, {"table": "BridgeOpportunity", "schema": "PartnerSharing", "sourceTable": "BridgeOpportunity", "tag": "[PartnerSharing].[BridgeOpportunity]", "mode": "directLake", "calc": false}, {"table": "Fact Partner Referral", "schema": "PartnerSharing", "sourceTable": "FactPartnerDealReporting", "tag": "[PartnerSharing].[FactPartnerDealReporting]", "mode": "directLake", "calc": false}, {"table": "SnapshotFactMSXCombined", "schema": "PartnerSharing", "sourceTable": "SnapshotFactMSXCombined", "tag": "[PartnerSharing].[SnapshotFactMSXCombined]", "mode": "directLake", "calc": false}, {"table": "PlanPriority", "schema": "TPP", "sourceTable": "PlanPriority", "tag": "[TPP].[PlanPriority]", "mode": "directLake", "calc": false}, {"table": "DimPortfolioPreloadedPriority", "schema": "TPP", "sourceTable": "DimPortfolioPreloadedPriority", "tag": "[TPP].[DimPortfolioPreloadedPriority]", "mode": "directLake", "calc": false}, {"table": "DimPartnerDeal", "schema": "TPP", "sourceTable": "DimPartnerDeal", "tag": "[TPP].[DimPartnerDeal]", "mode": "directLake", "calc": false}, {"table": "DimPartnerAccount", "schema": "TPP", "sourceTable": "DimPartnerAccount", "tag": "[TPP].[DimPartnerAccount]", "mode": "directLake", "calc": false}, {"table": "FactPortfolioPartnerEngagement", "schema": "TPP", "sourceTable": "FactPortfolioPartnerEngagement", "tag": "[TPP].[FactPortfolioPartnerEngagement]", "mode": "directLake", "calc": false}, {"table": "LatestRefresh", "schema": "TPP", "sourceTable": "LatestRefresh", "tag": "[TPP].[LatestRefresh]", "mode": "directLake", "calc": false}, {"table": "ACRPipeline", "schema": "PartnerSharing", "sourceTable": "ACRPipeline", "tag": "[PartnerSharing].[ACRPipeline]", "mode": "directLake", "calc": false}, {"table": "DimPortfolio", "schema": "TPP", "sourceTable": "DimPortfolio", "tag": "[TPP].[DimPortfolio]", "mode": "directLake", "calc": false}, {"table": "DimPortfolioAccount", "schema": "TPP", "sourceTable": "DimPortfolioAccount", "tag": "[TPP].[DimPortfolioAccount]", "mode": "directLake", "calc": false}, {"table": "DimPortfolioPriorityTag", "schema": "TPP", "sourceTable": "DimPortfolioPriorityTag", "tag": "[TPP].[DimPortfolioPriorityTag]", "mode": "directLake", "calc": false}, {"table": "DealPartnerOneMapping", "schema": "PartnerSharing", "sourceTable": "DealPartnerOneMapping", "tag": "[PartnerSharing].[DealPartnerOneMapping]", "mode": "directLake", "calc": false}]}, {"file": "CoMarketingModel.bim", "model": "CoMarketingModel", "compat": 1703, "count": 39, "schemas": ["CoSell"], "tables": [{"table": "Fact Partner Deal", "schema": "CoSell", "sourceTable": "FactPartnerDealCD", "tag": "[CoSell].[FactPartnerDealCD]", "mode": "directLake", "calc": false}, {"table": "Solution Area (Oppty)", "schema": "CoSell", "sourceTable": "DimSolutionAreaOppty", "tag": "[CoSell].[DimSolutionAreaOppty]", "mode": "directLake", "calc": false}, {"table": "Customer Geography", "schema": "CoSell", "sourceTable": "DimCustomerGeography", "tag": "[CoSell].[DimCustomerGeography]", "mode": "directLake", "calc": false}, {"table": "Sharing Type", "schema": "CoSell", "sourceTable": "DimSharingType", "tag": "[CoSell].[DimSharingType]", "mode": "directLake", "calc": false}, {"table": "Solution", "schema": "CoSell", "sourceTable": "DimSolutionCD", "tag": "[CoSell].[DimSolutionCD]", "mode": "directLake", "calc": false}, {"table": "Customer", "schema": "CoSell", "sourceTable": "DimCustomerCD", "tag": "[CoSell].[DimCustomerCD]", "mode": "directLake", "calc": false}, {"table": "Solution Area", "schema": "CoSell", "sourceTable": "DimSolutionArea", "tag": "[CoSell].[DimSolutionArea]", "mode": "directLake", "calc": false}, {"table": "Engagement Milestone", "schema": "CoSell", "sourceTable": "DimEngagementMilestoneCD", "tag": "[CoSell].[DimEngagementMilestoneCD]", "mode": "directLake", "calc": false}, {"table": "Opportunity", "schema": "CoSell", "sourceTable": "DimOpportunityCD", "tag": "[CoSell].[DimOpportunityCD]", "mode": "directLake", "calc": false}, {"table": "Time", "schema": "CoSell", "sourceTable": "DimTimeCD", "tag": "[CoSell].[DimTimeCD]", "mode": "directLake", "calc": false}, {"table": "Customer Segment", "schema": "CoSell", "sourceTable": "DimCustomerSegment", "tag": "[CoSell].[DimCustomerSegment]", "mode": "directLake", "calc": false}, {"table": "Fact Solution", "schema": "CoSell", "sourceTable": "FactSolutionCD", "tag": "[CoSell].[FactSolutionCD]", "mode": "directLake", "calc": false}, {"table": "Fact Opportunity", "schema": "CoSell", "sourceTable": "FactOpportunityCD", "tag": "[CoSell].[FactOpportunityCD]", "mode": "directLake", "calc": false}, {"table": "Inv Bridge SolutionPlay", "schema": "CoSell", "sourceTable": "InvBridgeSolutionPlay", "tag": "[CoSell].[InvBridgeSolutionPlay]", "mode": "directLake", "calc": false}, {"table": "Budget Program", "schema": "CoSell", "sourceTable": "BudgetProgram", "tag": "[CoSell].[BudgetProgram]", "mode": "directLake", "calc": false}, {"table": "Comarketing TPM Budget", "schema": "CoSell", "sourceTable": "ComarketingTPMBudget", "tag": "[CoSell].[ComarketingTPMBudget]", "mode": "directLake", "calc": false}, {"table": "Funnel Category", "schema": "CoSell", "sourceTable": "FunnelCategory", "tag": "[CoSell].[FunnelCategory]", "mode": "directLake", "calc": false}, {"table": "Partner Deal", "schema": "CoSell", "sourceTable": "DimPartnerDealCD", "tag": "[CoSell].[DimPartnerDealCD]", "mode": "directLake", "calc": false}, {"table": "Inv Bridge Area", "schema": "CoSell", "sourceTable": "InvBridgeArea", "tag": "[CoSell].[InvBridgeArea]", "mode": "directLake", "calc": false}, {"table": "Fact Engagement Milestone", "schema": "CoSell", "sourceTable": "FactEngagementMilestoneCD", "tag": "[CoSell].[FactEngagementMilestoneCD]", "mode": "directLake", "calc": false}, {"table": "Forecast Amount", "schema": "CoSell", "sourceTable": "ForecastAmount", "tag": "[CoSell].[ForecastAmount]", "mode": "directLake", "calc": false}, {"table": "IOPO", "schema": "CoSell", "sourceTable": "DimIOPO", "tag": "[CoSell].[DimIOPO]", "mode": "directLake", "calc": false}, {"table": "Fact IOPO", "schema": "CoSell", "sourceTable": "FactIOPO", "tag": "[CoSell].[FactIOPO]", "mode": "directLake", "calc": false}, {"table": "Inv Bridge SolutionArea", "schema": "CoSell", "sourceTable": "InvBridgeSolutionArea", "tag": "[CoSell].[InvBridgeSolutionArea]", "mode": "directLake", "calc": false}, {"table": "Inv Bridge Industry", "schema": "CoSell", "sourceTable": "InvBridgeIndustry", "tag": "[CoSell].[InvBridgeIndustry]", "mode": "directLake", "calc": false}, {"table": "Funnel Category 2", "schema": "CoSell", "sourceTable": "FunnelCategory2", "tag": "[CoSell].[FunnelCategory2]", "mode": "directLake", "calc": false}, {"table": "Opportunity Snapshot", "schema": "CoSell", "sourceTable": "Opportunity_MonthlySnapshot", "tag": "[CoSell].[Opportunity_MonthlySnapshot]", "mode": "directLake", "calc": false}, {"table": "Reporting PartnerOne", "schema": "CoSell", "sourceTable": "ReportingPartnerOneCD", "tag": "[CoSell].[ReportingPartnerOneCD]", "mode": "directLake", "calc": false}, {"table": "InvCustomPartnerReportingGeography", "schema": "CoSell", "sourceTable": "CustomPartnerReportingGeography", "tag": "[CoSell].[CustomPartnerReportingGeography]", "mode": "directLake", "calc": false}, {"table": "InvBridgeGeography", "schema": "CoSell", "sourceTable": "BridgeGeography", "tag": "[CoSell].[BridgeGeography]", "mode": "directLake", "calc": false}, {"table": "CustomPartnerReportingGeography", "schema": "CoSell", "sourceTable": "CustomPartnerReportingGeography", "tag": "[CoSell].[CustomPartnerReportingGeography]", "mode": "directLake", "calc": false}, {"table": "BridgeGeography", "schema": "CoSell", "sourceTable": "BridgeGeography", "tag": "[CoSell].[BridgeGeography]", "mode": "directLake", "calc": false}, {"table": "Investment Ask", "schema": "CoSell", "sourceTable": "InvestmentAsk", "tag": "[CoSell].[InvestmentAsk]", "mode": "directLake", "calc": false}, {"table": "Perspective", "schema": "", "sourceTable": "", "tag": "", "mode": "import", "calc": true}, {"table": "BridgeInvestmentSource", "schema": "CoSell", "sourceTable": "BridgeInvestmentSource", "tag": "[CoSell].[BridgeInvestmentSource]", "mode": "directLake", "calc": false}, {"table": "InvBridgeGCPSArea", "schema": "CoSell", "sourceTable": "InvBridgeGCPSArea", "tag": "[CoSell].[InvBridgeGCPSArea]", "mode": "directLake", "calc": false}, {"table": "DimFieldGeography", "schema": "CoSell", "sourceTable": "DimFieldGeography", "tag": "[CoSell].[DimFieldGeography]", "mode": "directLake", "calc": false}, {"table": "BridgeFieldSubsidiary", "schema": "CoSell", "sourceTable": "BridgeFieldSubsidiary", "tag": "[CoSell].[BridgeFieldSubsidiary]", "mode": "directLake", "calc": false}, {"table": "DimAccountGeographyHierarchyReporting", "schema": "CoSell", "sourceTable": "DimAccountGeographyHierarchyReporting", "tag": "[CoSell].[DimAccountGeographyHierarchyReporting]", "mode": "directLake", "calc": false}]}, {"file": "Partner Planning and Transition Dataset.bim", "model": "Partner Planning and Transition Dataset", "compat": 1604, "count": 8, "schemas": ["RedCarpet"], "tables": [{"table": "rc DimMPL", "schema": "RedCarpet", "sourceTable": "DimMPL", "tag": "[RedCarpet].[DimMPL]", "mode": "directLake", "calc": false}, {"table": "rc Geography", "schema": "RedCarpet", "sourceTable": "RCGeography", "tag": "[RedCarpet].[RCGeography]", "mode": "directLake", "calc": false}, {"table": "rc DimRedCarpetActivity", "schema": "RedCarpet", "sourceTable": "DimRedCarpetActivity", "tag": "[RedCarpet].[DimRedCarpetActivity]", "mode": "directLake", "calc": false}, {"table": "Geography", "schema": "RedCarpet", "sourceTable": "DimReportingGeography", "tag": "[RedCarpet].[DimReportingGeography]", "mode": "directLake", "calc": false}, {"table": "Account Personnel", "schema": "RedCarpet", "sourceTable": "DimAccountPersonnel", "tag": "[RedCarpet].[DimAccountPersonnel]", "mode": "directLake", "calc": false}, {"table": "PBP Facts", "schema": "RedCarpet", "sourceTable": "PBPFacts", "tag": "[RedCarpet].[PBPFacts]", "mode": "directLake", "calc": false}, {"table": "Partner", "schema": "RedCarpet", "sourceTable": "DimRedCarpetPartner", "tag": "[RedCarpet].[DimRedCarpetPartner]", "mode": "directLake", "calc": false}, {"table": "rc DimPartner", "schema": "RedCarpet", "sourceTable": "DimPartner", "tag": "[RedCarpet].[DimPartner]", "mode": "directLake", "calc": false}]}]};
+
+// ---- schema color palette ----
+const PALETTE = ['#0a5ad6','#1a7f37','#9a3fb5','#c2410c','#0891b2','#b91c47','#7c3aed','#15803d','#b45309','#0e7490','#be185d','#4338ca'];
+const schemaList = Object.keys(DATA.meta.schemaCounts).sort();
+const schemaColor = {};
+schemaList.forEach((s,i)=> schemaColor[s] = PALETTE[i % PALETTE.length]);
+const activeSchemas = new Set(schemaList);
+let currentView = 'model';
+let query = '';
+
+const esc = s => (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function hl(text){
+  text = esc(text);
+  if(!query) return text;
+  const i = text.toLowerCase().indexOf(query.toLowerCase());
+  if(i<0) return text;
+  return text.slice(0,i)+'<mark>'+text.slice(i,i+query.length)+'</mark>'+text.slice(i+query.length);
+}
+function sbadge(s){ if(!s) return ''; return `<span class="sbadge" style="background:${schemaColor[s]||'#888'}">${esc(s)}</span>`; }
+
+// ---- KPIs ----
+function renderKpis(){
+  const t = DATA.meta.totals;
+  const kpis = [
+    ['Semantic Models', t.models],
+    ['Total Tables', t.tables],
+    ['Source-Mapped Tables', t.mapped],
+    ['Distinct Schemas', t.schemas],
+    ['Calculated / Unmapped', t.calc],
+  ];
+  document.getElementById('kpis').innerHTML = kpis.map(k=>`<div class="kpi"><div class="n">${k[1]}</div><div class="l">${k[0]}</div></div>`).join('');
+}
+
+// ---- schema chips ----
+function renderChips(){
+  const el = document.getElementById('schemaChips');
+  el.innerHTML = schemaList.map(s=>{
+    const c = DATA.meta.schemaCounts[s];
+    return `<span class="chip" data-schema="${esc(s)}"><span class="dot" style="background:${schemaColor[s]}"></span>${esc(s)} <span class="cnt">${c}</span></span>`;
+  }).join('');
+  el.querySelectorAll('.chip').forEach(ch=>{
+    ch.addEventListener('click',()=>{
+      const s = ch.getAttribute('data-schema');
+      if(activeSchemas.has(s)){activeSchemas.delete(s);ch.classList.add('off');}
+      else{activeSchemas.add(s);ch.classList.remove('off');}
+      render();
+    });
+  });
+}
+
+function tableMatches(tb){
+  if(tb.schema && !activeSchemas.has(tb.schema)) return false;
+  if(!query) return true;
+  const q = query.toLowerCase();
+  return (tb.table||'').toLowerCase().includes(q)
+      || (tb.schema||'').toLowerCase().includes(q)
+      || (tb.sourceTable||'').toLowerCase().includes(q)
+      || (tb.tag||'').toLowerCase().includes(q);
+}
+function modelMatchesText(m){
+  if(!query) return true;
+  return (m.file||'').toLowerCase().includes(query.toLowerCase())
+      || (m.model||'').toLowerCase().includes(query.toLowerCase());
+}
+
+// ---- By Model ----
+function renderModelView(){
+  const host = document.getElementById('modelView');
+  let visibleTables = 0, visibleModels = 0;
+  let htmlStr = '';
+  DATA.models.forEach((m,mi)=>{
+    const modelTextHit = modelMatchesText(m);
+    const rows = m.tables.filter(tb=> tableMatches(tb) || (modelTextHit && (!tb.schema || activeSchemas.has(tb.schema))) );
+    if(rows.length===0) return;
+    visibleModels++; visibleTables += rows.length;
+    const miniSchemas = m.schemas.filter(s=>activeSchemas.has(s)).map(sbadge).join('');
+    let body = `<table class="tbl"><thead><tr>
+        <th data-k="idx">#</th><th data-k="table">Table</th><th data-k="schema">Schema</th>
+        <th data-k="sourceTable">Source Table</th><th data-k="tag">sourceLineageTag</th><th data-k="mode">Mode</th>
+      </tr></thead><tbody>`;
+    rows.forEach((tb,i)=>{
+      body += `<tr>
+        <td class="num">${i+1}</td>
+        <td><strong>${hl(tb.table)}</strong>${tb.calc?' <span class="pill-calc">calculated</span>':''}</td>
+        <td>${tb.schema?sbadge(tb.schema):'<span class="mode">&mdash;</span>'}</td>
+        <td class="src">${tb.sourceTable?hl(tb.sourceTable):'<span class="mode">&mdash;</span>'}</td>
+        <td class="tag">${tb.tag?('<code>'+hl(tb.tag)+'</code>'):'<span class="mode">&mdash;</span>'}</td>
+        <td><span class="mode">${esc(tb.mode)||'&mdash;'}</span></td>
+      </tr>`;
+    });
+    body += '</tbody></table>';
+    htmlStr += `<div class="card" data-model="${mi}">
+      <div class="head">
+        <span class="caret">&#9660;</span>
+        <span class="title">${hl(m.file)}<span class="mn">model: ${hl(m.model)}</span></span>
+        <span class="meta">
+          <span class="mini-schemas">${miniSchemas}</span>
+          <span class="badge">${rows.length}${rows.length!==m.count?(' / '+m.count):''} tables</span>
+        </span>
+      </div>
+      <div class="body">${body}</div>
+    </div>`;
+  });
+  host.innerHTML = htmlStr;
+  host.querySelectorAll('.card .head').forEach(h=> h.addEventListener('click',()=> h.parentElement.classList.toggle('collapsed')));
+  return {visibleTables, visibleModels};
+}
+
+// ---- By Schema ----
+function renderSchemaView(){
+  const host = document.getElementById('schemaView');
+  const bySchema = {};
+  DATA.models.forEach(m=>{
+    m.tables.forEach(tb=>{
+      if(!tb.schema) return;
+      if(!tableMatches(tb) && !modelMatchesText(m)) return;
+      if(!activeSchemas.has(tb.schema)) return;
+      (bySchema[tb.schema] = bySchema[tb.schema] || []).push({model:m.file, modelName:m.model, ...tb});
+    });
+  });
+  let visibleTables=0, htmlStr='';
+  Object.keys(bySchema).sort().forEach((s,si)=>{
+    const rows = bySchema[s];
+    visibleTables += rows.length;
+    let body = `<table class="tbl"><thead><tr>
+        <th>#</th><th>Source Table</th><th>Semantic Model</th><th>Model Table</th><th>sourceLineageTag</th>
+      </tr></thead><tbody>`;
+    rows.sort((a,b)=> (a.sourceTable||'').localeCompare(b.sourceTable||''));
+    rows.forEach((r,i)=>{
+      body += `<tr>
+        <td class="num">${i+1}</td>
+        <td class="src"><strong>${hl(r.sourceTable)}</strong></td>
+        <td>${hl(r.model)}</td>
+        <td>${hl(r.table)}</td>
+        <td class="tag"><code>${hl(r.tag)}</code></td>
+      </tr>`;
+    });
+    body += '</tbody></table>';
+    htmlStr += `<div class="card" data-schema="${esc(s)}">
+      <div class="head">
+        <span class="caret">&#9660;</span>
+        <span class="title">${sbadge(s)} <span class="mn">${rows.length} tables consumed</span></span>
+        <span class="meta"><span class="badge">${rows.length}</span></span>
+      </div>
+      <div class="body">${body}</div>
+    </div>`;
+  });
+  host.innerHTML = htmlStr || '';
+  host.querySelectorAll('.card .head').forEach(h=> h.addEventListener('click',()=> h.parentElement.classList.toggle('collapsed')));
+  return {visibleTables};
+}
+
+function render(){
+  let res;
+  if(currentView==='model'){
+    document.getElementById('modelView').classList.remove('hidden');
+    document.getElementById('schemaView').classList.add('hidden');
+    res = renderModelView();
+    document.getElementById('resultCount').textContent = `${res.visibleModels} models &middot; ${res.visibleTables} tables`.replace('&middot;','·');
+    document.getElementById('empty').classList.toggle('hidden', res.visibleTables>0);
+  } else {
+    document.getElementById('modelView').classList.add('hidden');
+    document.getElementById('schemaView').classList.remove('hidden');
+    res = renderSchemaView();
+    document.getElementById('resultCount').textContent = `${res.visibleTables} tables`;
+    document.getElementById('empty').classList.toggle('hidden', res.visibleTables>0);
+  }
+}
+
+// ---- wiring ----
+renderKpis(); renderChips();
+document.getElementById('q').addEventListener('input', e=>{ query = e.target.value.trim(); render(); });
+document.querySelectorAll('#viewSeg button').forEach(b=> b.addEventListener('click',()=>{
+  document.querySelectorAll('#viewSeg button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); currentView = b.getAttribute('data-view'); render();
+}));
+document.getElementById('expandAll').addEventListener('click',()=> document.querySelectorAll('main .card').forEach(c=>c.classList.remove('collapsed')));
+document.getElementById('collapseAll').addEventListener('click',()=> document.querySelectorAll('main .card').forEach(c=>c.classList.add('collapsed')));
+render();
+</script>
+</body>
+</html>

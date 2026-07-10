@@ -1,0 +1,1216 @@
+[
+  {
+    "n": 1,
+    "w": 1,
+    "q": "In this module, we will, / HTML: Create web page layout. / CSS: Style the web page following the guidelines. / JS: Item retrieval/selection/summation of price and all other logic . / Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below. / HTML, CSS, JS basics / Knowledge Check: / What does an HTML tag do?",
+    "o": [
+      "It specifies formatting and layout instructions for your web page.",
+      "It hides programming instructions from view.",
+      "It determines the organizational structure of your Web site.",
+      "It connects your web site to an operating environment."
+    ],
+    "b": []
+  },
+  {
+    "n": 2,
+    "w": 1,
+    "q": "A semantic element describes its meaning to",
+    "o": [
+      "Browser",
+      "Developer",
+      "Both 1 & 2",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 3,
+    "w": 1,
+    "q": "What mode does a browser default to when the declaration is omitted, and how does it affect HTML5 rendering?",
+    "o": [
+      "Standards mode",
+      "Quirks mode",
+      "Strict mode",
+      "Compatibility mode"
+    ],
+    "b": []
+  },
+  {
+    "n": 4,
+    "w": 1,
+    "q": "How do you display hyperlinks without an underline?",
+    "o": [
+      "a:link {text-decoration:no underline;}",
+      "a:link {underline:none;}",
+      "a:link {decoration:no underline;}",
+      "a:link {text-decoration:none;}"
+    ],
+    "b": []
+  },
+  {
+    "n": 5,
+    "w": 1,
+    "q": "How do you insert a comment in CSS?",
+    "o": [
+      "// Comment //",
+      "/*comment*/",
+      "/comment/",
+      "<-comment->"
+    ],
+    "b": []
+  },
+  {
+    "n": 6,
+    "w": 1,
+    "q": "Which is the correct CSS syntax?",
+    "o": [
+      "#body {color: green;}",
+      "#{body;color:green}",
+      "#{body:color=green(body}",
+      "#body:color=green"
+    ],
+    "b": []
+  },
+  {
+    "n": 7,
+    "w": 1,
+    "q": "Which CSS property controls the text size?",
+    "o": [
+      "text-size",
+      "font-size",
+      "text-style",
+      "font-style"
+    ],
+    "b": []
+  },
+  {
+    "n": 8,
+    "w": 1,
+    "q": "Which of the following shows the basic tag structure of an HTML document?",
+    "o": [
+      "< html>< head>< body>< /body>< /html>",
+      "< html>< body>< /body>< /html>",
+      "< html>< head>< /head>< body>< /body>< /html>",
+      "< html>< head>< /head>< /html>"
+    ],
+    "b": []
+  },
+  {
+    "n": 9,
+    "w": 1,
+    "q": "Which of the following attributes is/are related to the <img> tag?",
+    "o": [
+      "Height",
+      "Alt",
+      "Src",
+      "all of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 10,
+    "w": 1,
+    "q": "Choose the correct HTML tag for the largest heading",
+    "o": [
+      "< h6>",
+      "< heading>",
+      "< head>",
+      "< h1>"
+    ],
+    "b": []
+  },
+  {
+    "n": 11,
+    "w": 1,
+    "q": "In this module, we will, / Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below.Video LinkKnowledge Check: / Which event is used to run something after the page has finished loading?",
+    "o": [
+      "Theoretical explanation - introduction to react, why react?",
+      "Set up environment for a sample react app - demo",
+      "Create layout with react component just showing website title.",
+      "Explain how is it different from regular JavaScript app created in the earlier session.",
+      "onchange",
+      "onload",
+      "oncomplete"
+    ],
+    "b": []
+  },
+  {
+    "n": 12,
+    "w": 1,
+    "q": "Can HTML be coded in a text string in JavaScript?",
+    "o": [
+      "Yes",
+      "No"
+    ],
+    "b": []
+  },
+  {
+    "n": 13,
+    "w": 1,
+    "q": "What will be the output of the following code? / var foo = 2 / console.log(`$${foo}`)",
+    "o": [
+      "$2",
+      "${foo}",
+      "2",
+      "Error"
+    ],
+    "b": []
+  },
+  {
+    "n": 14,
+    "w": 1,
+    "q": "Which of the following will be true after executing below JavaScript function? / document.querySelector('#foo').removeChild(document.querySelector('#bar')) / Page will reload after node is removed",
+    "o": [
+      "Node with id='bar' will be removed from the DOM but its child elements won't be removed",
+      "Node with id='bar' along with its child elements will be removed from the DOM",
+      "Node with id='foo' will be removed from the DOM but its child elements won't be removed",
+      "Node with id='foo' along with its child elements will be removed from the DOM"
+    ],
+    "b": []
+  },
+  {
+    "n": 15,
+    "w": 1,
+    "q": "Which method selects the first matching element in the document?",
+    "o": [
+      "document.querySelectorAll()",
+      "document.getElementsByClass()",
+      "document.querySelector()",
+      "document.getElementsByTagName()"
+    ],
+    "b": []
+  },
+  {
+    "n": 16,
+    "w": 1,
+    "q": "Which command creates a new button?",
+    "o": [
+      "let button = document.newElement('button');",
+      "let button = document.createElement('');",
+      "let button = document.createElement('button');",
+      "let button = document.makeElement('{button}');"
+    ],
+    "b": []
+  },
+  {
+    "n": 17,
+    "w": 1,
+    "q": "Which of the following is true about variable naming conventions in JavaScript?",
+    "o": [
+      "Variable names must begin with a letter or the underscore character",
+      "Variable names are case sensitive",
+      "All of the above",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 18,
+    "w": 1,
+    "q": "Which of the following function of Number object formats a number with a specific number of digits to the right of the decimal?",
+    "o": [
+      "toExponential()",
+      "toFixed()",
+      "toPrecision()",
+      "toDecimal()"
+    ],
+    "b": []
+  },
+  {
+    "n": 19,
+    "w": 1,
+    "q": "Everything in React is a _____________",
+    "o": [
+      "Component",
+      "Module",
+      "Package",
+      "Class"
+    ],
+    "b": []
+  },
+  {
+    "n": 20,
+    "w": 1,
+    "q": "____________ is used in React.js to increase performance?",
+    "o": [
+      "Original DOM",
+      "Virtual DOM",
+      "Both Original DOM and Virtual DOM",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 21,
+    "w": 1,
+    "q": "How many parent elements does a react component return?",
+    "o": [
+      "1",
+      "2",
+      "Multiple",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 22,
+    "w": 1,
+    "q": "How many default exports a component can have?",
+    "o": [
+      "1",
+      "2",
+      "Multiple",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 23,
+    "w": 1,
+    "q": "Is React JS a server-side framework?",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 24,
+    "w": 1,
+    "q": "var Helloword=(props)=> / { / return( / <div> Hello World 1 </div> / <div> Hello World 2 </div> / ); / } / ReactDOM.render(<Helloworld/>,root)",
+    "o": [
+      "Hello World 1",
+      "Hello World 2",
+      "Hello World 1 Hello World 2",
+      "Error"
+    ],
+    "b": []
+  },
+  {
+    "n": 25,
+    "w": 1,
+    "q": "In this module, we will, / Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below.Video LinkKnowledge Check / What is the child prop?",
+    "o": [
+      "A property that adds child values to state",
+      "A property that lets you nest components in other components",
+      "A property that lets you pass data to child components",
+      "A property that lets you set an object as a property"
+    ],
+    "b": [
+      "Break the page into modular components and explain.",
+      "Develop products grid reading data from ‘products.json’ file and right pane which always shows default message.",
+      "Style the components explaining different ways of styling in react."
+    ]
+  },
+  {
+    "n": 26,
+    "w": 1,
+    "q": "Which of the following is used to pass data to a component from outside?",
+    "o": [
+      "State",
+      "PropTypes",
+      "Render with arguments",
+      "Props"
+    ],
+    "b": []
+  },
+  {
+    "n": 27,
+    "w": 1,
+    "q": "React component names must begin with an uppercase letter.",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 28,
+    "w": 1,
+    "q": "What props will be available to the following component? / <Car {…props} />",
+    "o": [
+      "Only updated ones",
+      "Only static ones",
+      "All of them",
+      "Children"
+    ],
+    "b": []
+  },
+  {
+    "n": 29,
+    "w": 1,
+    "q": "What is the correct syntax to import a Component from React?",
+    "o": [
+      "import { Component } from 'react'",
+      "import [ Component ] from 'react'",
+      "import React.Component from 'react'",
+      "import Component from react"
+    ],
+    "b": []
+  },
+  {
+    "n": 30,
+    "w": 1,
+    "q": "Why should we not update the props?",
+    "o": [
+      "Because they are of read-only type.",
+      "Because they are immutable.",
+      "Because these values are defined on higher-level.",
+      "All the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 31,
+    "w": 1,
+    "q": "How can a child component communicate with parent component?",
+    "o": [
+      "Using callback method",
+      "Updating props value",
+      "Updating state value",
+      "Cannot communicate"
+    ],
+    "b": []
+  },
+  {
+    "n": 32,
+    "w": 1,
+    "q": "How do you call a CSS class in React JS?",
+    "o": [
+      "<div class=”” />",
+      "<div className=”” />",
+      "<div classNames=”” />",
+      "<div classes=”” />"
+    ],
+    "b": []
+  },
+  {
+    "n": 33,
+    "w": 1,
+    "q": "Which attribute has higher precedence?",
+    "o": [
+      "style",
+      "className",
+      "styles"
+    ],
+    "b": []
+  },
+  {
+    "n": 34,
+    "w": 1,
+    "q": "Can we define CSS styles in JSX/TSX file?",
+    "o": [
+      "true",
+      "false"
+    ],
+    "b": []
+  },
+  {
+    "n": 35,
+    "w": 1,
+    "q": "What is the correct syntax of defining inline styles?",
+    "o": [
+      "<div style= {margin-bottom = 14px; color = red} />",
+      "<div styles= {marginBottom = `14px`; color = `red`} />",
+      "<div style= {marginBottom: `14px`; color: `red`} />",
+      "<div style= {margin-bottom: 14px; color: red} />"
+    ],
+    "b": []
+  },
+  {
+    "n": 36,
+    "w": 1,
+    "q": "In this module, we will, / Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below.Video Link / Knowledge Check: / What is state in React?",
+    "o": [
+      "A persistent storage",
+      "An internal data store (object) of a component"
+    ],
+    "b": [
+      "Create common components - button, grid, grid in shopping cart and call it from the parent component using props. Create few of these components as class components to explain the difference between class and functional components.",
+      "Incorporate add button functionality and show data in cart pane. This should cover event handling and states."
+    ]
+  },
+  {
+    "n": 37,
+    "w": 1,
+    "q": "Which is used to update state in a class?",
+    "o": [
+      "React.useState",
+      "setState",
+      "setnumber",
+      "setNewnumber"
+    ],
+    "b": []
+  },
+  {
+    "n": 38,
+    "w": 1,
+    "q": "How to return multiple elements from a component?",
+    "o": [
+      "Wrap all elements under tag <React.Fragment>",
+      "Wrap all elements under <> </>tag",
+      "Both 1 and 2",
+      "Not possible"
+    ],
+    "b": []
+  },
+  {
+    "n": 39,
+    "w": 1,
+    "q": "A method that sets state in class based component be bound to the instance of that class",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 40,
+    "w": 1,
+    "q": "Which of the following needs to be updated to achieve dynamic UI ?",
+    "o": [
+      "State",
+      "Props",
+      "All of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 41,
+    "w": 1,
+    "q": "The state in react can be updated by call to setState method. These calls are",
+    "o": [
+      "Synchronous",
+      "Asynchronous",
+      "Is asynchronous but can be made synchronous",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 42,
+    "w": 1,
+    "q": "What is the data type of React event?",
+    "o": [
+      "String",
+      "Method",
+      "Object",
+      "No return"
+    ],
+    "b": []
+  },
+  {
+    "n": 43,
+    "w": 1,
+    "q": "Which of the following is correct syntax for a button click event handler, handleClick ?",
+    "o": [
+      "<button onclick={this.handleClick ()}>",
+      "<button onclick={this.handleClick }>",
+      "<button onClick={this.handleClick ()}>",
+      "<button onClick={this.handleClick }>"
+    ],
+    "b": []
+  },
+  {
+    "n": 44,
+    "w": 1,
+    "q": "A method that sets state in class based component be bound to the instance of that class",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 45,
+    "w": 1,
+    "q": "If you want to pass state data from one sibling component to another where should you write the state ?",
+    "o": [
+      "In the sibling that initiates the call",
+      "In the sibling that receives updated props",
+      "In the parent component",
+      "None"
+    ],
+    "b": []
+  },
+  {
+    "n": 46,
+    "w": 1,
+    "q": "If you want to create a component for playing FlappyBird which of the following component declarations ensures, it works?",
+    "o": [
+      "class FlappyBird extends React.Component",
+      "class flappyBird extends React.Component",
+      "class flappy-bird extends React.Component",
+      "class flappybird extends React.Component"
+    ],
+    "b": []
+  },
+  {
+    "n": 47,
+    "w": 1,
+    "q": "How to get the selected value from the dropdown callback event argument ?",
+    "o": [
+      "e.value",
+      "e.target.value",
+      "e.target[0]",
+      "e.value[0]"
+    ],
+    "b": []
+  },
+  {
+    "n": 48,
+    "w": 1,
+    "q": "Which of the following is the correct syntax for parsing an Integer",
+    "o": [
+      "Integer.parseInt()",
+      "parseInt()",
+      "parseInteger()"
+    ],
+    "b": []
+  },
+  {
+    "n": 49,
+    "w": 1,
+    "q": "Which of the below can be used to add CSS styles in react?",
+    "o": [
+      "mergeStyles",
+      "mergeStyleSets",
+      "Both 1 and 2",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 50,
+    "w": 1,
+    "q": "How to set the state of an array in React",
+    "o": [
+      "Using spread and prev state",
+      "Using array.push"
+    ],
+    "b": []
+  },
+  {
+    "n": 51,
+    "w": 1,
+    "q": "In this module, we will, / Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below.Video Link / How many life cycle phases are present in React?",
+    "o": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "b": [
+      "Include summation logic to show total price and item removal.",
+      "Theoretically explain all life cycle methods.",
+      "So far, the data is read from json file. Now, add an ajax call to read data from C# endpoint."
+    ]
+  },
+  {
+    "n": 52,
+    "w": 3,
+    "q": "What are the life cycle phases of React?",
+    "o": [
+      "Mounting",
+      "Initializing",
+      "Updating",
+      "UnMounting"
+    ],
+    "b": []
+  },
+  {
+    "n": 53,
+    "w": 1,
+    "q": "Constructor() will get called only once in the life cycle?",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 54,
+    "w": 1,
+    "q": "ComponentDidUpdate() will get called only once in the life cycle?",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 55,
+    "w": 1,
+    "q": "ComponentDidMount() will get called only once in the life cycle?",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 56,
+    "w": 3,
+    "q": "React component state can be set from following methods?",
+    "o": [
+      "Constructor()",
+      "ComponentDidUpdate()",
+      "ComponentDidMount()",
+      "Render()",
+      "ShouldComponentUpdate()",
+      "ComponentWillUnmount()"
+    ],
+    "b": []
+  },
+  {
+    "n": 57,
+    "w": 1,
+    "q": "What will be returned from shouldComponentUpdate()?",
+    "o": [
+      "boolean",
+      "state",
+      "props"
+    ],
+    "b": []
+  },
+  {
+    "n": 58,
+    "w": 1,
+    "q": "Clean-up activities are generally performed under following life cycle method?",
+    "o": [
+      "ComponentWillUnmount()",
+      "ComponentDidUpdate()",
+      "ComponentWillReceiveProps()",
+      "ComponentWillUpdate()"
+    ],
+    "b": []
+  },
+  {
+    "n": 59,
+    "w": 2,
+    "q": "Which of the following methods are best suited for API calls?",
+    "o": [
+      "ComponentDidUpdate()",
+      "ComponentDidMount()",
+      "Render()",
+      "Constructor()",
+      "ComponentWillUnmount()"
+    ],
+    "b": []
+  },
+  {
+    "n": 60,
+    "w": 1,
+    "q": "Render() can return?",
+    "o": [
+      "JSX Element",
+      "null",
+      "Both"
+    ],
+    "b": []
+  },
+  {
+    "n": 61,
+    "w": 1,
+    "q": "What is the second argument for setState function used for?",
+    "o": [
+      "To invoke code after the setState operation is done",
+      "To replace the state completely instead of the default merge action",
+      "To access the previous state before the setState operation",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 62,
+    "w": 1,
+    "q": "In a React application, where does the Fetch API look for resources when making calls from a component?",
+    "o": [
+      "Exclusively in the public directory of the React application",
+      "Any URL specified in the Fetch request, including external APIs and different directories",
+      "Only within the src directory of the React application",
+      "Only from local storage"
+    ],
+    "b": []
+  },
+  {
+    "n": 63,
+    "w": 1,
+    "q": "Which field can be added in headers when you are trying to accept JSON resource from server?",
+    "o": [
+      "'Content-Type': 'application/json',",
+      "'Accept': 'application/json'",
+      "'Content-Encoding': 'gzip'",
+      "'Allow': 'GET, HEAD, PUT'"
+    ],
+    "b": []
+  },
+  {
+    "n": 64,
+    "w": 2,
+    "q": "To get the actual data from Fetch API, which methods of Response object can be used?",
+    "o": [
+      "response.text()",
+      "response.json()",
+      "Both",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 65,
+    "w": 1,
+    "q": "In this module, we will, / Update the application created so far with HOC and hooks Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below.Video LinkKnowledge Check / Which of the following is not TRUE about HOC’s",
+    "o": [
+      "An HOC is a function that takes a component and returns a new component with additional functionality.",
+      "The component returned by an HOC is a wrapper around the original component, containing enhanced functionality",
+      "An HOC returns the input component exactly as it is, without adding any new functionality.",
+      "HOCs are used to share common functionality between different components."
+    ],
+    "b": []
+  },
+  {
+    "n": 66,
+    "w": 1,
+    "q": "It is recommended to access HOC’s from",
+    "o": [
+      "Inside the render method of component",
+      "Outside the component definition",
+      "Inside a class which inherits HOC",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 67,
+    "w": 1,
+    "q": "We pass a _____ to a container as props in render prop technique",
+    "o": [
+      "Component",
+      "Function",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 68,
+    "w": 2,
+    "q": "Which of the following is the best reason for the statement below: / “Hooks help us avoid duplicate logic in code”",
+    "o": [
+      "By using effect hook",
+      "By using componentDidUpdate()",
+      "By using state hook",
+      "By creating a custom hook for duplicate code"
+    ],
+    "b": []
+  },
+  {
+    "n": 69,
+    "w": 1,
+    "q": "Will the statement below run without errors:",
+    "o": [
+      "Yes",
+      "No"
+    ],
+    "b": []
+  },
+  {
+    "n": 70,
+    "w": 1,
+    "q": "What is the correct sequence of lifecycle methods in hooks:",
+    "o": [
+      "componentWillMount,componentDidMount, componentDidUpdate, componentWillUnmount",
+      "componentDidMount, componentWillMount, componentDidUpdate, componentWillUnmount",
+      "There are no lifecycle methods to react hooks"
+    ],
+    "b": []
+  },
+  {
+    "n": 71,
+    "w": 1,
+    "q": "State hook returns:",
+    "o": [
+      "A state value and a function to update it",
+      "A function which runs after each render",
+      "Any value according to the logic you specify"
+    ],
+    "b": []
+  },
+  {
+    "n": 72,
+    "w": 1,
+    "q": "Which of the following hooks is best suited for handling network requests:",
+    "o": [
+      "useState()",
+      "useEffect()",
+      "A Custom hook",
+      "componentDidMount()"
+    ],
+    "b": []
+  },
+  {
+    "n": 73,
+    "w": 1,
+    "q": "Which of the following allows us to dispose resources when a component unmounts:",
+    "o": [
+      "useState()",
+      "A Custom hook",
+      "An optional return function in useEffect()",
+      "componentWillUnmount()"
+    ],
+    "b": []
+  },
+  {
+    "n": 74,
+    "w": 1,
+    "q": "Which of the following will happen after render() is called for below image:",
+    "o": [
+      "useEffect() will be triggered after each render",
+      "useEffect() will be triggered only once"
+    ],
+    "b": []
+  },
+  {
+    "n": 75,
+    "w": 1,
+    "q": "What is the best method to ensure static methods on a component are accessible when it's wrapped in a Higher Order Component (HOC)?",
+    "o": [
+      "Use the hoist-non-react-statics package",
+      "Static methods are automatically passed through HOCs.",
+      "Manually copy each static function onto the HOC.",
+      "You cannot hoist static methods in React HOCs"
+    ],
+    "b": []
+  },
+  {
+    "n": 76,
+    "w": 1,
+    "q": "Is the Higher Order Component in the image below implemented correctly:",
+    "o": [
+      "true",
+      "false"
+    ],
+    "b": []
+  },
+  {
+    "n": 77,
+    "w": 1,
+    "q": "Which of the following should be used for the scenario below:“Log the value of count if the state variable count changes”",
+    "o": [
+      "useEffect(()=>{console.log(count)});",
+      "componentDidMount(){ console.log(count)}",
+      "useEffect(()=>{console.log(count)},[count]);"
+    ],
+    "b": []
+  },
+  {
+    "n": 78,
+    "w": 1,
+    "q": "How can we get the previous state of a state variable:",
+    "o": [
+      "using useState()",
+      "using useEffect()",
+      "using useRef() and useEffect()"
+    ],
+    "b": []
+  },
+  {
+    "n": 79,
+    "w": 1,
+    "q": "In this module, we will, / Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below. / Video Link / Knowledge Check: / Which of the following is referred as smart component?",
+    "o": [
+      "Class component",
+      "Container component",
+      "Functional component",
+      "Presentational component"
+    ],
+    "b": [
+      "Theoretical explanation",
+      "For a given item if the user added it more than 5 times, hide the button and show a text in red denoting \"Out of Stock\""
+    ]
+  },
+  {
+    "n": 80,
+    "w": 1,
+    "q": "Which of the following is referred as dumb component?",
+    "o": [
+      "Class component",
+      "Container component",
+      "Functional component",
+      "Presentational component"
+    ],
+    "b": []
+  },
+  {
+    "n": 81,
+    "w": 1,
+    "q": "Can a component have both presentational and business logic?",
+    "o": [
+      "Yes",
+      "No"
+    ],
+    "b": []
+  },
+  {
+    "n": 82,
+    "w": 1,
+    "q": "Is it a good practice to have business logic in presentational component?",
+    "o": [
+      "Yes",
+      "No"
+    ],
+    "b": []
+  },
+  {
+    "n": 83,
+    "w": 1,
+    "q": "Component A handles data and internally renders component B. Which of the following is container component?",
+    "o": [
+      "Component A",
+      "Component B",
+      "All of the above",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 84,
+    "w": 1,
+    "q": "Redux and stage management is done in",
+    "o": [
+      "Container component",
+      "Presentational component",
+      "All of the above",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 85,
+    "w": 1,
+    "q": "Which of the following statement is true?",
+    "o": [
+      "Presentational component is concerned about how things work and container components are concerned about how things look.",
+      "Presentational component is concerned about how things look and container components are concerned about how things work.",
+      "Both presentational and container components are concerned about how things look.",
+      "Both presentational and container components are concerned about how things work."
+    ],
+    "b": []
+  },
+  {
+    "n": 86,
+    "w": 1,
+    "q": "There’s a requirement where the user should be navigated to different landing pages based on the role. How can we achieve this?",
+    "o": [
+      "State management",
+      "Conditional rendering",
+      "Prop drilling",
+      "Component architecture"
+    ],
+    "b": []
+  },
+  {
+    "n": 87,
+    "w": 1,
+    "q": "What is conditional rendering?",
+    "o": [
+      "Conditional rendering is a term to describe the ability to render different user interface (UI) markup if a condition is true or false.",
+      "It is an advanced technique in React for reusing component logic.",
+      "All the above",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 88,
+    "w": 1,
+    "q": "Benefits of conditional rendering",
+    "o": [
+      "Rendering external data from an API",
+      "Showing or hiding elements",
+      "Handling authentication and authorization",
+      "All the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 89,
+    "w": 1,
+    "q": "What is the output of the below code snippet when the component is called with props value set to unreadMessages=[] / function Mailbox(props) { / const unreadMessages = props.unreadMessages; / return ( / <div> / <span>Hello!</span> / {unreadMessages.length > 0 && / <span> / You have {unreadMessages.length} unread messages. / </span> / } / </div> / ); / }",
+    "o": [
+      "Hello!",
+      "Hello! You have 0 unread messages.",
+      "Hello ! You have 1 unread messages.",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 90,
+    "w": 1,
+    "q": "What is the output of the below code snippet when the component state value is set to isLoggedIn = true / render() { / const isLoggedIn = this.state.isLoggedIn; / return ( / <div> / The user {isLoggedIn ? ‘condition1’ : ‘condition2’}. / </div> / ); / }",
+    "o": [
+      "The user condition1",
+      "The user condition2",
+      "The user",
+      "The user condition1 condition2"
+    ],
+    "b": []
+  },
+  {
+    "n": 91,
+    "w": 1,
+    "q": "Is the following true for conditional operator? / condition ? expr_if_true : expr_if_false",
+    "o": [
+      "True",
+      "False"
+    ],
+    "b": []
+  },
+  {
+    "n": 92,
+    "w": 1,
+    "q": "Ways to conditionally render in react",
+    "o": [
+      "if and ternary operator",
+      "logical && operator",
+      "switch case operator",
+      "All the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 93,
+    "w": 1,
+    "q": "Which of the following is not an inline conditional expression?",
+    "o": [
+      "If",
+      "ternary",
+      "logical && operator",
+      "Switch case"
+    ],
+    "b": []
+  },
+  {
+    "n": 94,
+    "w": 1,
+    "q": "In this module, we will, / Please go through the following training recording to complete the hands on activity before attempting any of the knowledge checks below.Video LinkKnowledge Check / Redux solves this problem by managing application’s state with a single global object called ?",
+    "o": [
+      "directory",
+      "file",
+      "store",
+      "None of the above"
+    ],
+    "b": [
+      "Change the architecture to redux. Include actions, reducers and sagas/thunx to read data from API"
+    ]
+  },
+  {
+    "n": 95,
+    "w": 1,
+    "q": "What is true about redux?",
+    "o": [
+      "Redux is a predictable state container for JavaScript apps.",
+      "Redux fundamental principles help in maintaining consistency throughout your application",
+      "Redux makes debugging and testing easier",
+      "All of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 96,
+    "w": 1,
+    "q": "Actions and states are held together by a function called?",
+    "o": [
+      "Reducer",
+      "Redux",
+      "suscribe",
+      "view"
+    ],
+    "b": []
+  },
+  {
+    "n": 97,
+    "w": 1,
+    "q": "The ____________ can retrieve updated state and re-render again.",
+    "o": [
+      "state",
+      "store",
+      "view",
+      "action"
+    ],
+    "b": []
+  },
+  {
+    "n": 98,
+    "w": 1,
+    "q": "A store is an ___________ object tree in Redux.",
+    "o": [
+      "immutable",
+      "mutable",
+      "Both A and B",
+      "None of the above"
+    ],
+    "b": []
+  },
+  {
+    "n": 99,
+    "w": 1,
+    "q": "A createStore function can have _________ arguments.",
+    "o": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "b": []
+  },
+  {
+    "n": 100,
+    "w": 1,
+    "q": "Which of the following is react-Redux helper method?",
+    "o": [
+      "help()",
+      "assist()",
+      "view()",
+      "connect()"
+    ],
+    "b": []
+  },
+  {
+    "n": 101,
+    "w": 1,
+    "q": "Reducers are a pure function in Redux.",
+    "o": [
+      "TRUE",
+      "FALSE",
+      "Can be true or false",
+      "Can not say"
+    ],
+    "b": []
+  },
+  {
+    "n": 102,
+    "w": 1,
+    "q": "Which of them provide us debugging platform for Redux apps?",
+    "o": [
+      "Redux-Testing",
+      "Redux-Middleware",
+      "Redux-Devtools",
+      "Redux-suscriber"
+    ],
+    "b": []
+  },
+  {
+    "n": 103,
+    "w": 1,
+    "q": "Which of the following makes stores available?",
+    "o": [
+      "COMPONENT",
+      "CONTAINER",
+      "ACTIONS",
+      "PROVIDER"
+    ],
+    "b": []
+  }
+]

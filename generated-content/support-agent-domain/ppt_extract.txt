@@ -1,0 +1,1459 @@
+====================================================================================================
+FILE: CoSell 301.pptx  (12 slides)
+====================================================================================================
+
+--- Slide 1 ---
+TITLE: GPS 301– Partner Sharing
+TEXT:
+Chetan
+
+--- Slide 2 ---
+TITLE: Agenda
+TEXT:
+2
+TEXT:
+Partner Sharing Report
+Architecture
+Refresh Frequency
+Optimization Techniques
+
+--- Slide 3 ---
+TEXT:
+Partner Sharing
+TEXT:
+Report Link
+
+--- Slide 4 ---
+TITLE: # Billed Oppty -This metric represents the total number of billed opportunities, calculated by filtering for records classified as billed , while preserving all existing repThis metric represents the total number of billed opportunities, calculated by filtering for records classified as billed (TypeID = 1), while preserving all existing report filters to maintain contextual accuracyort filters to maintain contextual accuracy
+TEXT:
+Billed Pipeline
+TEXT:
+Partner Sharing % (Billed Oppty) -Percentage of billed opportunities that include partner sharing, measured against total billed opportunities.
+TEXT:
+Co-Sell Prioritized Sharing % (Billed Oppty)-Percentage of billed co-sell prioritized opportunities that involve partner sharing, relative to total billed co-sell prioritized opportunities.
+
+--- Slide 5 ---
+TITLE: Consumption Pipeline
+TEXT:
+# Consumption Oppty - Total value of consumption opportunities, aggregated across all opportunities classified as consumption.
+TEXT:
+Partner Sharing % (Consumption Oppty)- Percentage of consumption opportunities that include partner sharing, measured against total consumption opportunities.
+TEXT:
+Co-Sell Prioritized Sharing % (Consumption Oppty) - Percentage of consumption opportunities that are completed, co-sell prioritized, and include partner sharing, measured against total completed co-sell prioritized consumption opportunities.
+
+--- Slide 6 ---
+TITLE: Link to latest metric definition: Partner Sharing  (Web view)
+TEXT:
+FY26 Metrics
+TABLE 1:
+  | Partner Sharing % ($) –  It measures the proportion of opportunity value that is shared with partners, across both Billed and Consumption opportunities. | C2C Shared % - It measures how much partner-shared, committed consumption has actually been completed, based on milestone value.
+  | U2C Shared % - It measures the proportion of committed, partner-shared consumption opportunity value relative to qualified in-progress consumption opportunities. | Shared Won/Completed % - This metric measures the proportion of won (billed) and completed (consumption) opportunities that are partner-engaged:
+Partner-engaged = Shared + Associated
+
+--- Slide 7 ---
+TITLE: Summary by Solution Area
+TEXT:
+We report opportunities across different solution areas using a hierarchical structure, which can be expanded to view detailed solution area breakdowns.​
+
+--- Slide 8 ---
+TITLE: Predefined Slicers
+TEXT:
+As per the Partner Sharing requirements, all necessary slicers have already been applied to the report to ensure consistency with the defined metric logic. These slicers filter the data based on key conditions such as qualified pipeline, business type, opportunity status, and account tagging. This ensures that the insights presented are aligned with the Partner Sharing framework and reflect only the relevant subset of opportunities for accurate analysis and reporting.
+
+--- Slide 9 ---
+TITLE: Architecture
+
+--- Slide 10 ---
+TITLE: Partner Sharing Reports Refresh Timeline
+
+--- Slide 11 ---
+TITLE: Reporting Architecture Glossary
+TABLE 1:
+  | Medallion Architecture | A layered data architecture that involves processing data through multiple stages, typically bronze, silver, and gold layers, to ensure data quality and readiness for analysis.
+  | Reporting Lakehouse | A unified data platform that combines the features of data lakes and data warehouses to store and manage data used for reporting and analytics.
+  | Semantic Models | Abstracted representations of data that simplify complex data structures, making it easier for users to understand and analyze data efficiently.
+  | Data Processing | The series of operations performed on raw data to convert it into a usable format for analysis and reporting.
+
+--- Slide 12 ---
+TITLE: Thank you
+====================================================================================================
+FILE: CoSell_Domain_Business_Logic_Guide.pptx  (17 slides)
+====================================================================================================
+
+--- Slide 1 ---
+TEXT:
+CoSell Data Stream
+TEXT:
+Domain Knowledge, Business Logic & Stakeholder Guide
+TEXT:
+Global Partner Solutions  |  MCAPS Data Engineering  |  FY26
+TEXT:
+This deck explains the business meaning behind CoSell — what the domain represents,how key decisions are encoded in data, and the logic that drives every metric.
+
+--- Slide 2 ---
+TEXT:
+Agenda
+TEXT:
+1
+TEXT:
+What is CoSell?
+TEXT:
+The business purpose and who it serves
+TEXT:
+2
+TEXT:
+Key Business Terminology
+TEXT:
+A glossary of CoSell-specific terms every stakeholder should know
+TEXT:
+3
+TEXT:
+The Co-Sell Deal Lifecycle
+TEXT:
+From referral creation to revenue recognition — the end-to-end journey
+TEXT:
+4
+TEXT:
+Deal Directions: Inbound vs Outbound
+TEXT:
+How Microsoft and Partners initiate co-sell deals differently
+TEXT:
+5
+TEXT:
+Currency Conversion Logic
+TEXT:
+The Oct-2018 cutoff rule and dual/triple fallback exchange rate strategy
+TEXT:
+6
+TEXT:
+Deal Classification Rules
+TEXT:
+How deals get flagged: Closed, Accepted, ISV, YTD-eligible, Won
+TEXT:
+7
+TEXT:
+Velocity & Performance Metrics
+TEXT:
+Measuring speed-to-approval, speed-to-close, and inbound response time
+TEXT:
+8
+TEXT:
+Partner Identity Resolution
+TEXT:
+The chain: MPN ID → PartnerMaster → PartnerOne → Sub → ReportingKey
+TEXT:
+9
+TEXT:
+Scorecard Recognition Logic
+TEXT:
+The 3rd-of-month boundary rule that determines fiscal credit
+TEXT:
+10
+TEXT:
+Geography Resolution
+TEXT:
+How customer and partner geography cascade from account data
+TEXT:
+11
+TEXT:
+IP CoSell, ISV Connect & Marketplace
+TEXT:
+Business rules for IP partner deals, bundled ACR, and marketplace ACV
+TEXT:
+12
+TEXT:
+CoMarketing Module
+TEXT:
+Investment bridge analytics and funnel categorization
+TEXT:
+13
+TEXT:
+Data Architecture: Source → Gold
+TEXT:
+What transforms at each Medallion layer and why
+TEXT:
+14
+TEXT:
+Key Business Questions CoSell Answers
+TEXT:
+The reporting scenarios this data powers
+
+--- Slide 3 ---
+TEXT:
+What is CoSell?
+TEXT:
+The business problem it solves and who depends on it
+TEXT:
+The Business Problem
+Microsoft partners (ISVs, SIs, resellers) co-sell Microsoft products alongside their own solutions. Tracking whether a partner referral turned into a real opportunity, whether revenue was recognized, and how fast deals progressed through the funnel requires combining data from multiple disconnected systems (Partner Center, MSX/CRM, currency tables, account hierarchies).
+
+What CoSell Does
+CoSell unifies this data into a single analytical model that answers:
+  •  Did a partner referral convert into a Microsoft sales opportunity?
+  •  How fast did Microsoft respond (inbound velocity)?
+  •  What is the deal worth in USD across 9 different financial measures?
+  •  Was the partner's CRM account co-sell-ready (ISV eligible)?
+  •  Which scorecard month gets fiscal credit for this deal?
+  •  What is the partner's quantitative impact on Microsoft's business (PIN)?
+
+Who Depends on CoSell
+GPS Leadership, Partner Development Managers, Finance (revenue attribution), Field Sellers (scorecard credit), ISV Program (co-sell readiness tracking), CoMarketing (investment ROI).
+TEXT:
+80+ Gold TablesDimensional model covering the full deal lifecycle
+TEXT:
+9 USD Financial MetricsWith sophisticated multi-currency exchange rate logic
+TEXT:
+12 Performance MetricsVelocity, acceptance, ISV engagement, win rates
+TEXT:
+5 Source Systems UnifiedPartner Center, MSX/CRM, Hub, Currency, Revenue Account
+TEXT:
+PIN MetricsPartner Impact Numbers across E5 Security, CSP Copilot, etc.
+
+--- Slide 4 ---
+TEXT:
+Key Business Terminology
+TEXT:
+The language of CoSell — terms every stakeholder must know
+TEXT:
+Co-Sell
+TEXT:
+A joint selling motion where Microsoft and a partner collaborate to sell to a customer. The partner refers a deal (or Microsoft refers to the partner), and both work together through the sales cycle.
+TEXT:
+Referral / Partner Deal
+TEXT:
+A deal initiated in Partner Center by a partner (Outbound from MS perspective) or sent to a partner by Microsoft (Inbound). Each gets a unique PSXDealID. This is the atomic unit of CoSell tracking.
+TEXT:
+PartnerOne ID
+TEXT:
+Microsoft's unified partner identity. A single partner may have multiple MPN IDs, but PartnerOne consolidates them into one hierarchy: PartnerOneID → PartnerOneSubKey (subsidiary level) → PartnerOneReportingKey (rolled-up for reporting).
+TEXT:
+Partner Sales Stage
+TEXT:
+The lifecycle stage of a deal: Support 100%, Deploy 100%, MS Win 100% (positive closures), or Disengaged 0%, Loss 0% (negative closures). A deal is 'Closed' when it reaches any of these terminal stages.
+TEXT:
+ISV Co-Sell Ready
+TEXT:
+A flag on the partner's CRM account (IsCoSellReadyPartnerAccount). Only deals from ISV co-sell-ready partners are counted in ISVDealsReporting. This is an eligibility gate, not a deal attribute.
+TEXT:
+Partner GTM (Go-To-Market)
+TEXT:
+A flag (IsDealWithPartnerGTM) indicating the deal participates in Microsoft's Partner GTM program. Used as a prerequisite for IsDealAccepted and IsOpportunityWon calculations.
+TEXT:
+PIN (Partner Impact Number)
+TEXT:
+A quantitative measure of partner contribution to Microsoft's business. Metrics like E5 Security Usage and CSP Copilot Seats are per-partner (Non-Aggregate); others can be summed across partners (Aggregate).
+TEXT:
+ACR (Azure Consumed Revenue)
+TEXT:
+The actual Azure consumption revenue attributed to partner deals. PartnerReportedACR is self-reported by partners; TrueACRConsumption is system-verified.
+TEXT:
+Scorecard Recognition Month
+TEXT:
+The fiscal month a deal gets credited to. Governed by the 3rd-of-month rule: deals approved after the 3rd → current month; before the 3rd → prior month.
+TEXT:
+ATU (Account Team Unit)
+TEXT:
+Microsoft's internal sales org structure. Mapped via MSSalesID → ATUID from DimRevenueAccount. Connects deals to the field sales team responsible.
+
+--- Slide 5 ---
+TEXT:
+The Co-Sell Deal Lifecycle
+TEXT:
+End-to-end journey from referral to revenue — and the data captured at each stage
+TEXT:
+1. REFERRALCREATION
+TEXT:
+Partner creates a deal inPartner Center (or MSFTrefers to partner).Data: PSXDealID, Direction(Inbound/Outbound),CreatedDate, MPNId
+TEXT:
+▶
+TEXT:
+2. ACCEPTANCE& LINKING
+TEXT:
+MSFT or Partner accepts.Deal linked to MSXOpportunity.Data: AcceptanceStatus,OpportunityID,CRMPartnerAccountKey
+TEXT:
+▶
+TEXT:
+3. REGISTRATION& APPROVAL
+TEXT:
+Deal registered andapproved for scorecard.Oct-2018 cutoff appliesfor FX rates.Data: RegistrationDate,ApprovalDate, Status
+TEXT:
+▶
+TEXT:
+4. DEALPROGRESSION
+TEXT:
+Deal moves throughsales stages. Velocitymetrics computed.Data: PartnerSalesStage,ApprovalVelocity,CloseVelocity
+TEXT:
+▶
+TEXT:
+5. REVENUERECOGNITION
+TEXT:
+Financial values convertedto USD. Won/Closed statusdetermined.Data: DealValueCD,PartnerRevenueCD,BilledRevenueStatus
+TEXT:
+Critical Business Rules Applied During the Lifecycle:
+TEXT:
+•  ClosedPartnerDeals = 1  when  PartnerSalesStage IN ('Support 100%', 'Deploy 100%', 'MS Win 100%', 'Disengaged 0%', 'Loss 0%')
+•  PartnerDealsAcceptance = 1  when  OpportunityID linked + valid PartnerDealID + known CRM Partner + AcceptanceStatus = 'Accepted'
+•  ISVDealsReporting = 1  when  OpportunityID linked + CRM partner's IsCoSellReadyPartnerAccount = 'true'
+•  IsDealAccepted = 'Yes'  when  IsDealWithPartnerGTM = 1 AND (Microsoft or Partner sub-status = 'Accepted')
+•  IsOpportunityWon = 'Yes'  when  IsDealWithPartnerGTM = 1 AND (BilledRevenueStatus = 'Won' OR ConsumptionStatus = 'Closed' + Reason = 'Completed')
+
+--- Slide 6 ---
+TEXT:
+Deal Directions: Inbound vs Outbound
+TEXT:
+How co-sell deals flow between Microsoft and Partners
+TEXT:
+INBOUND  (Partner → Microsoft)
+TEXT:
+The partner identifies a customer opportunity and refers it TO Microsoft through Partner Center.Business meaning: The partner is bringing Microsoft into their deal.Velocity metric: VelocityOfInboundDeals measures how many days it takes Microsoft to create an MSX Opportunity after receiving the partner's referral.Logic from code:  IF Direction = 'Inbound' AND OpportunityCreatedDate IS NOT NULL:    VelocityOfInboundDeals = DATEDIFF(OpportunityCreatedDate, CreatedDate)    (minimum 1 day if same-day)  ELSE: 0 (not applicable)
+TEXT:
+OUTBOUND  (Microsoft → Partner)
+TEXT:
+Microsoft identifies an opportunity and refers it TO a partner through Partner Center.Business meaning: Microsoft is inviting a partner to collaborate on their deal.Velocity metric: Not tracked via VelocityOfInboundDeals (= 0 for outbound). Instead, PartnerDealsAcceptance tracks whether the partner accepted the referral.Key flag:  PartnerDealsAcceptance = 1 when:    • OpportunityID exists (deal was linked)    • PartnerDealID is valid    • CRM Partner is known (PartnerName IS NOT NULL)    • PartnerAcceptanceStatus = 'Accepted'
+TEXT:
+Private deals (ReferralSubType = 'private - pc') have special geography handling: CustomerGeographyKey is forced to 0 and ReportingGeographyKey to -9999. The PartnerOneReportingKey falls back to the Bridge table with SubsidiaryID = -9999.
+
+--- Slide 7 ---
+TEXT:
+Currency Conversion Logic
+TEXT:
+The Oct-2018 cutoff rule and multi-source exchange rate fallback strategy
+TEXT:
+All financial metrics are stored in USD. Because deals originate in local currencies from Partner Center and MSX, the system uses exchange rates from multiple sources with a date-dependent priority order.
+TEXT:
+THE OCT-2018 RULE:  RegistrationDate < 2018-10-01 → Opportunity rate preferred first  |  RegistrationDate >= 2018-10-01 → Partner Deal rate preferred first
+TEXT:
+Simple Conversion Metrics (single source)
+TEXT:
+DealValueCD
+TEXT:
+DealValue / CurrencyExchangeRate (from Currency table by CurrencyID)
+TEXT:
+PartnerDealValueCD
+TEXT:
+PartnerDealValue / rate by PartnerDealCurrencyID
+TEXT:
+MicrosoftDealValueCD
+TEXT:
+MicrosoftDealValue / rate by MicrosoftDealCurrencyID
+TEXT:
+SolutionValueCD
+TEXT:
+SolutionValue / rate by SolutionCurrencyID
+TEXT:
+Date-Dependent Fallback Metrics
+TEXT:
+ProductRevenueCD (Dual fallback)
+TEXT:
+Pre-Oct 2018: Opportunity rate → Partner Deal rate → 1Post-Oct 2018: Partner Deal rate → Opportunity rate → 1
+TEXT:
+PartnerRevenueCD (Triple fallback)
+TEXT:
+Pre-Oct 2018: Opportunity → Partner Deal → Currency table → 1Post-Oct 2018: Partner Deal → Currency table → Opportunity → 1
+TEXT:
+ContractValueCD (Triple fallback)
+TEXT:
+Same as PartnerRevenueCD
+TEXT:
+EstimatedRevenueCD (Dual fallback)
+TEXT:
+Same as ProductRevenueCD
+TEXT:
+WHY THIS MATTERS:  The fallback chain ensures no deal has NULL financial values. If the preferred exchange rate source is missing (e.g., Opportunity has no currency code), the system gracefully falls back to the next source. The Oct-2018 cutoff reflects a historical change in how Partner Center recorded currency vs. how MSX did — older deals trust Opportunity rates more; newer deals trust Partner Deal rates.
+
+--- Slide 8 ---
+TEXT:
+Deal Classification Rules
+TEXT:
+How deals get categorized — the exact business logic behind each flag
+TEXT:
+ClosedPartnerDeals = 1
+TEXT:
+PartnerDealID IS NOT NULL AND PartnerSalesStage IN('Support 100%', 'Deploy 100%', 'MS Win 100%', 'Disengaged 0%', 'Loss 0%')
+TEXT:
+Identifies deals that reached a terminal stage (positive or negative). Used for deal completion counts.
+TEXT:
+PartnerDealsAcceptance = 1
+TEXT:
+OpportunityID IS NOT NULL AND PartnerDealID IS NOT NULLAND CRM.PartnerName IS NOT NULL AND AcceptanceStatus = 'Accepted'
+TEXT:
+Measures partner engagement quality — did the partner formally accept AND link to an opportunity with a known CRM account?
+TEXT:
+ISVDealsReporting = 1
+TEXT:
+OpportunityID IS NOT NULL AND CRM.IsCoSellReadyPartnerAccount = 'true'
+TEXT:
+Gates ISV deal counting. The partner's CRM account must be flagged as co-sell ready. This is a partner-level attribute, not a deal-level one.
+TEXT:
+IsYTDSubSourceDealCount = 'Yes'
+TEXT:
+CustomerSegment IN ('EPG', 'SMS&P') AND RegistrationStatus IN ('Approved', 'Passed')
+TEXT:
+Filters YTD counts to only approved deals in Enterprise (EPG) and SMB (SMS&P) segments.
+TEXT:
+IsDealAccepted = 'Yes'
+TEXT:
+IsDealWithPartnerGTM = 1 AND(ReferralMicrosoftSubStatus = 'Accepted' OR PartnerAcceptanceSubStatus = 'Accepted')
+TEXT:
+GTM-filtered acceptance. Both sides (Microsoft and Partner) can trigger acceptance. This is the SAL (Sales Accepted Lead) gate.
+TEXT:
+IsOpportunityWon = 'Yes'
+TEXT:
+IsDealWithPartnerGTM = 1 AND(BilledRevenueStatus = 'Won' OR (ConsumptionStatus = 'Closed' AND Reason = 'Completed'))
+TEXT:
+Two paths to 'Won': traditional billing (Won) or consumption-based closure. Both require GTM program participation.
+TEXT:
+Category Text
+TEXT:
+IF IsOpportunityWon='Yes' THEN 'Pipeline Wins-SAL-Partner Deals'ELIF IsDealAccepted='Yes' THEN 'SAL-Partner Deals'ELIF IsDealWithPartnerGTM=1 THEN 'Partner Deals'
+TEXT:
+Funnel categorization for pipeline reporting. Each deal falls into exactly one tier based on its furthest progression.
+
+--- Slide 9 ---
+TEXT:
+Velocity & Performance Metrics
+TEXT:
+Measuring speed and effectiveness through the co-sell funnel
+TEXT:
+PartnerDealApprovalVelocity
+TEXT:
+DATEDIFF(ApprovalDate, CreatedDate)[Unit: Days]
+TEXT:
+How many days from deal creation to approval. Zero if not yet approved. Directly measures the internal processing speed of the co-sell workflow. High values signal bottlenecks in deal review.
+TEXT:
+PartnerDealCloseVelocity
+TEXT:
+DATEDIFF(DueDate, CreatedDate)[Unit: Days]
+TEXT:
+Total lifecycle duration from creation to close/due date. Measures end-to-end deal cycle time. Used alongside ApprovalVelocity to identify where time is spent (pre-approval vs. post-approval).
+TEXT:
+AverageMonthsForApproval
+TEXT:
+DATEDIFF(ApprovalDate, CreatedDate) / 30.0[Unit: Months]
+TEXT:
+Same as ApprovalVelocity but in months for trend reporting. Used in monthly aggregation dashboards.
+TEXT:
+VelocityOfInboundDeals
+TEXT:
+DATEDIFF(OpportunityCreatedDate, CreatedDate)[Unit: Days]
+TEXT:
+ONLY for Inbound deals. Measures Microsoft's response time — how quickly an MSX Opportunity was created after partner's referral. Minimum = 1 day (same-day response counts as 1, not 0). Zero for Outbound deals (not applicable).
+TEXT:
+IsAverageApproval / IsAverageClose
+TEXT:
+'Yes' if date exists, 'No' otherwise[Unit: Filter]
+TEXT:
+Guard flags that filter out deals from average calculations. A deal without an ApprovalDate shouldn't pull down the average — these flags ensure only deals with valid dates are included.
+TEXT:
+SharingTypeKey
+TEXT:
+IF OpportunityKey = 0 THEN 3 ELSE 1[Unit: Enum]
+TEXT:
+1 = Deal with linked Opportunity (co-sell with visibility), 3 = Deal without Opportunity (referral only, no MS engagement yet). Drives the MSX Partner Sharing Categorization analysis.
+TEXT:
+TRANCHE LOGIC:  PartnerRevenueCD > $1M → 'High' tranche  |  ≤ $1M → 'Low' tranche  |  PRCD (capped revenue) = MIN(PartnerRevenueCD, $2M) — prevents outlier deals from skewing aggregates
+
+--- Slide 10 ---
+TEXT:
+Partner Identity Resolution
+TEXT:
+The chain that maps a raw MPN ID to a reportable partner entity
+TEXT:
+Partners register with Microsoft using MPN IDs (Microsoft Partner Network). But a single partner organization may have multiple MPN IDs across subsidiaries. The CoSell pipeline resolves this into a unified hierarchy:
+TEXT:
+MPNId(Partner Center)
+TEXT:
+Raw ID from thepartner's referral
+TEXT:
+▶
+TEXT:
+PartnerMasterSourceID lookup
+TEXT:
+Maps MPN toPartnerOneID/SubKey
+TEXT:
+▶
+TEXT:
+CRMPartnerAccountPartnerNumber
+TEXT:
+Fallback: CRM account→ PipelinePartnerMaster→ PartnerOneID
+TEXT:
+▶
+TEXT:
+PartnerOnePartnerOneID
+TEXT:
+Unified org-levelpartner identity
+TEXT:
+▶
+TEXT:
+PartnerOneSubPartnerOneSubKey
+TEXT:
+Subsidiary-level(geography-specific)
+TEXT:
+▶
+TEXT:
+ReportingKeyPartnerOneReportingKey
+TEXT:
+Rolled-up viaBridge_CascadedPartnerOne+ SubsidiaryID
+TEXT:
+Resolution Priority (from actual code):
+TEXT:
+1. PRIMARY PATH:  MPNId_PartnerCenter → PartnerMaster.SourceID → PartnerOneID   If the partner's MPN ID is found in PartnerMaster, use that PartnerOneID directly.2. FALLBACK PATH:  CRMPartnerAccountKey → CRMPartnerAccount.PartnerNumber → PipelinePartnerMaster.SourceID → PartnerOneID   If MPN lookup fails, traverse through the CRM account's partner number.3. SUBSIDIARY MAPPING:  PartnerMaster.SubsidiaryName → VWDimGeography.SubsidiaryID → PartnerOneSubKey   OR CRM path: PipelinePartnerMaster → ReportingPartnerOne.PartnerOneSubID4. REPORTING ROLLUP:  Bridge_CascadedPartnerOne joins on (PartnerOneKey + SubsidiaryID) → PartnerOneReportingKey   This is the final reportable identity used in Power BI.
+
+--- Slide 11 ---
+TEXT:
+Scorecard Recognition Logic
+TEXT:
+The 3rd-of-month boundary rule that determines when a deal gets fiscal credit
+TEXT:
+When a partner deal is approved, it must be credited to a specific fiscal month for scorecard purposes. The recognition month is NOT simply the month of the approval date — a boundary rule applies:
+TEXT:
+THE 3RD-OF-MONTH RULEIF  DAY(ApprovalDate) > 3   OR   MONTH(ApprovalDate) = MONTH(RegistrationDate)    THEN  ScorecardRecognitionMonth = FORMAT(ApprovalDate, 'MMMM, yyyy')           ← Current monthELSE    THEN  ScorecardRecognitionMonth = FORMAT(ApprovalDate - 1 month, 'MMMM, yyyy')  ← Prior month
+TEXT:
+Examples:
+TEXT:
+Deal approved March 15
+TEXT:
+Day(15) > 3 → TRUE
+TEXT:
+March recognized
+TEXT:
+✓ Standard case
+TEXT:
+Deal approved March 2, registered March 1
+TEXT:
+Day(2) ≤ 3 BUT same month as registration
+TEXT:
+March recognized
+TEXT:
+✓ Same-month exception
+TEXT:
+Deal approved March 2, registered February 15
+TEXT:
+Day(2) ≤ 3 AND different month
+TEXT:
+February recognized
+TEXT:
+⚠ Pushed back 1 month
+TEXT:
+Deal approved March 1, registered January 10
+TEXT:
+Day(1) ≤ 3 AND different month
+TEXT:
+February recognized
+TEXT:
+⚠ Pushed back 1 month
+TEXT:
+WHY THIS EXISTS: Prevents gaming of scorecard timing. Deals approved in the first 3 days of a month (that were registered in a prior month) are likely 'carried over' approvals and should credit the prior month. This aligns with Microsoft's fiscal period close procedures.
+
+--- Slide 12 ---
+TEXT:
+Geography Resolution Chain
+TEXT:
+How customer and partner geography is determined with cascading fallbacks
+TEXT:
+Geography is not a single field — it's resolved through a cascade of sources with fallback logic:
+TEXT:
+Customer Geography (CustomerGeographyKey)
+TEXT:
+1. PRIMARY: From TPAccount (HQ account mapping via opportunity)   Opportunity → TPAccountID → CustomerHQAccountsDim → GPSubsidiaryID → DimCustomerGeography2. FALLBACK A: Account Number geography (if TPAccountKey = 0)   MSXCRMAccountNumber → Hub_vw_Account → Country → DimSalesGeography → SubsidiaryID3. FALLBACK B: Partner-reported subsidiary (if no account number)   PartnerDeal.SubsidiaryID → DimCustomerGeography4. EXCEPTION: Private deals (ReferralSubType = 'private - pc')   → CustomerGeographyKey forced to 0 (unknown)
+TEXT:
+Partner Geography (PartnerGeographyKey)
+TEXT:
+1. Resolved via PartnerOneSub mapping:   PartnerMaster.SubsidiaryName → VWDimGeography.SubsidiaryID   OR CRM path → PipelinePartnerMaster → ReportingPartnerOne.PartnerSubsidiaryID2. PartnerGeographyKey = SubsidiaryID from DimGeography_Base3. PartnerCustomerGeographyKey: Cross-reference of customer geography's   SubsidiaryID back through VWDimGeography. Used when partner and customer   geography need to be compared.4. ReportingGeographyKey: Derived from GPSubsidiaryID → DimReportingGeography.   This is the geography used for management reporting rollups.
+TEXT:
+Multi-level hierarchy: SubsidiaryID → Country → Region → Area.  Separate dimensions exist for Customer Geography, Partner Geography, Reporting Geography, and Capacity Geography to support different slicing needs.
+
+--- Slide 13 ---
+TEXT:
+IP CoSell, ISV Connect & Marketplace Deals
+TEXT:
+Partner IP attribution, bundled ACR, and marketplace ACV logic
+TEXT:
+IP CoSell (Intellectual Property Co-Sell)
+TEXT:
+IP CoSell tracks deals where a partner's IP solution (app, service) is part of the deal.• IsIPPartner: From DimIPPartner — flags if the partner has registered IP in the deal• IPCoSellPartnerOneKey: The PartnerOneKey of the IP-providing partner (may differ from the deal partner)• IPPartnerOneReportingKey: Reporting rollup for IP partner, resolved through FactSolution → DimSolution → PartnerMaster chain• IsPrioritizedPartner: From MapSolutionPracticeIndustryCountry — partner has prioritized solutionsSNAPSHOT OVERRIDE: If PartnerDealSolution_Snapshot has data for a deal, its PartnerOneReportingKeytakes precedence over the solution-based mapping (COALESCE logic).
+TEXT:
+Marketplace & Bundled Deals
+TEXT:
+Marketplace deal registration and bundled ACR have special revenue handling:• IsMarketplaceRegisteredDeal = 'Yes':  PartnerRevenueCD uses MarketPlaceACV from snapshot  (instead of standard PartnerRevenueCD calculation)• IsBundledandPartnerReportedACRDeal = 1 when:  Partner reported ACR AND IncentiveType contains 'bundled'  OR deal is marketplace co-sell• D365MonthlyRevenueCD:  PartnerRevenueCD / 12 (monthly spread)  ONLY when: D365 EOP/Pipeline deal + ContractStartDate exists  + NOT a marketplace registered deal• HasD365IncentiveType = 'Yes' when solution has D365 incentive  ('internal biz apps ip co-sell', 'msft internal biz apps standard/premium')
+TEXT:
+ISV Connect:  ISVConnectAppKey links deals to specific ISV Connect apps (DimISVConnectApp). SellerCoSellIncentiveKey tracks seller incentive programs attached to solutions. ResourceGUID uniquely identifies Azure resources within IP CoSell deals for ACR tracking. IsIPSameAsCoSell and IsChannelSameAsCoSell flags identify when the IP/channel partner is the same as the co-sell partner.
+
+--- Slide 14 ---
+TEXT:
+CoMarketing Module
+TEXT:
+Investment bridge analytics, funnel categorization, and budget tracking
+TEXT:
+CoMarketing is a specialized sub-domain tracking joint marketing investments and their ROI across solution areas, industries, and geographies.
+TEXT:
+Budget Allocation
+TEXT:
+BudgetProgram
+TEXT:
+Tracks TPM budget programs for co-marketing investments and partner funding allocations. Links investment dollars to specific programs.
+TEXT:
+Pipeline Forecasting
+TEXT:
+ForecastAmount
+TEXT:
+Forecast amounts for co-sell pipeline and revenue projections across time periods. Used for budget-vs-actual comparisons.
+TEXT:
+Deal Staging
+TEXT:
+FunnelCategory / FunnelCategory2
+TEXT:
+Categorizes deals into funnel stages for pipeline analysis and conversion tracking. Two levels of categorization for different reporting granularities.
+TEXT:
+Partner Funding
+TEXT:
+InvestmentAsk
+TEXT:
+Partner investment requests and approved amounts for co-marketing programs. Tracks the ask-vs-approved gap.
+TEXT:
+Investment Analytics
+TEXT:
+InvestBridge (Area / Industry / SolutionArea / SolutionPlay)
+TEXT:
+Four-dimensional bridge tables that slice co-marketing spend by: geographic area, industry vertical, solution area (Azure/M365/D365/Security), and solution play (granular solution-level).
+TEXT:
+Trend Analysis
+TEXT:
+Opportunity_MonthlySnapshot
+TEXT:
+Monthly point-in-time snapshots of the opportunity pipeline. Enables month-over-month trend analysis without losing historical state.
+TEXT:
+CoMarketing has its own fact tables (FactOpportunityCD, FactEngagementMilestoneCD, FactSolutionCD, FactPartnerDealCD) and dimension copies (DimCustomerCD, DimOpportunityCD, DimTime) that are optimized for investment analysis.
+
+--- Slide 15 ---
+TEXT:
+Data Architecture: Source to Gold
+TEXT:
+What transforms at each Medallion layer and why it matters
+TEXT:
+SOURCE SYSTEMS
+TEXT:
+Partner Center(deals, profiles)
+TEXT:
+MSX / CRM(opportunities, leads)
+TEXT:
+Hub Tables(currency, accounts)
+TEXT:
+Revenue Account(ATU mapping)
+TEXT:
+Partner Master(identity mapping)
+TEXT:
+▶
+TEXT:
+BRONZE
+TEXT:
+Raw ingestionMinimal transformationSchema preservationTables:• Cosell_Bronze_CRP_Solution• Cosell_Bronze_SellInCountryCatRP• PartnerMaster (raw)Purpose:Landing zone. Exact copyof source for auditability.
+TEXT:
+▶
+TEXT:
+SILVER
+TEXT:
+Cleansed & conformedBusiness keys resolvedIntermediate calcsKey tables:• PartnerDeal_Intermediate• DimOpportunity / _int• Currency / ExchangeRate• PartnerMaster (mapped)• PartnerImpactNumberPurpose:Single version of truthfor each source entity.
+TEXT:
+▶
+TEXT:
+GOLD
+TEXT:
+Curated dimensional model80+ tables (Dim + Fact)USD-converted financialsCore tables:• FactPartnerDeal (central fact)• DimPartnerDeal / DimPartnerOne• DimOpportunity / DimCustomer• All classification flags computed• All velocity metrics calculated• CoMarketing module tablesPurpose:Power BI-ready star schema.All business logic applied.
+TEXT:
+Pipeline Orchestration & Environment Management
+TEXT:
+• GetNotebookStatus() — checks if notebook already ran (0=skip, -1=error, 2=conditional skip). Prevents duplicate processing.• GetWorkspaceIDLakehouseID(StreamName) — dynamically resolves workspace + lakehouse IDs per environment. Same code runs in DEV/UAT/PROD.• GetPublishSchema() — returns versioned schema path. Enables blue-green deployments.• writeTable() / getDataframe() — standardized I/O with environment-aware paths.• Z-Order optimization applied to reporting tables for query performance. CI/CD via CoSell_Build_1ES.yml.
+
+--- Slide 16 ---
+TEXT:
+Key Business Questions CoSell Answers
+TEXT:
+The reporting scenarios this data powers
+TEXT:
+Partner Performance
+TEXT:
+• How many deals did each partner close this fiscal year?
+TEXT:
+• What is the average approval velocity by partner segment?
+TEXT:
+• Which partners have the highest deal acceptance rate?
+TEXT:
+• What is the deal value distribution across High vs Low tranches?
+TEXT:
+Revenue & Financial
+TEXT:
+• What is total deal value (USD) by solution area and geography?
+TEXT:
+• How does partner-reported revenue compare to Microsoft-verified ACR?
+TEXT:
+• What is the marketplace ACV contribution to partner revenue?
+TEXT:
+• How do CoMarketing investments correlate with deal pipeline?
+TEXT:
+Operational Efficiency
+TEXT:
+• How fast is Microsoft responding to inbound referrals?
+TEXT:
+• What % of referrals convert to linked MSX opportunities?
+TEXT:
+• How many deals are stuck without opportunities (PartnerDealsWithoutOppty)?
+TEXT:
+• What is the scorecard recognition distribution by fiscal month?
+TEXT:
+Strategic & Program
+TEXT:
+• Which ISV co-sell-ready partners are driving the most deals?
+TEXT:
+• What is the Partner Impact Number (PIN) across product lines?
+TEXT:
+• Are prioritized solution partners outperforming non-prioritized ones?
+TEXT:
+• How does the D365 incentive program affect deal closure rates?
+
+--- Slide 17 ---
+TEXT:
+Summary & Key Takeaways
+TEXT:
+1
+TEXT:
+CoSell is Microsoft's partner co-selling analytics backbone — it answers 'did the partner deal work, and how fast?'
+TEXT:
+2
+TEXT:
+Currency conversion uses a date-dependent fallback strategy (Oct 2018 cutoff) with up to 3 exchange rate sources per metric
+TEXT:
+3
+TEXT:
+Deal classification has 7 distinct flags, each with specific business rules — they are NOT interchangeable
+TEXT:
+4
+TEXT:
+Partner identity resolves through a 6-step chain from raw MPN ID to reportable PartnerOneReportingKey
+TEXT:
+5
+TEXT:
+The 3rd-of-month scorecard rule prevents fiscal gaming and aligns with Microsoft's period-close procedures
+TEXT:
+6
+TEXT:
+Geography cascades through 3 fallback sources with special handling for private (PC) deals
+TEXT:
+7
+TEXT:
+IP CoSell and Marketplace deals have separate revenue attribution logic (snapshot overrides, ACV substitution, D365 monthly spread)
+TEXT:
+8
+TEXT:
+The pipeline is fully environment-portable — same code runs in DEV/UAT/PROD via dynamic workspace resolution
+TEXT:
+Global Partner Solutions  |  MCAPS Data Engineering  |  FY26
+====================================================================================================
+FILE: CRM Cosell Deep dive.pptx  (11 slides)
+====================================================================================================
+
+--- Slide 1 ---
+TITLE: GPS Domain Training – CRM Cosell Deep Dive
+
+--- Slide 2 ---
+TITLE: Agenda
+TEXT:
+2
+TEXT:
+Upstream Sources
+Important Tables/Metrics
+Opportunity
+Milestones
+Partner Deal
+Solution
+Azure IP Co-sell
+Marketplace Billed Sales
+
+--- Slide 3 ---
+TITLE: Upstream Sources
+TEXT:
+3
+
+--- Slide 4 ---
+TITLE: GPS Mart views and Mart Tables
+TEXT:
+4
+TEXT:
+GPS Mart Connection Details:
+Server: gpsmart.database.windows.net, ADW: GPSMart
+TABLE 1:
+  | View Name (Schema: crm) | Table Name | Primary Key
+  | vw_Dim_Opportunity | DimOpportunity | OpportunityKey
+  | vw_Fact_Opportunity | FactOpportunity | Composite Primary Key
+  | vw_Dim_PartnerDeal | DimPartnerDeal | PartnerDealKey
+  | vw_Fact_PartnerDeal | FactPartnerDeal | Composite Primary Key
+  | vw_Dim_Solution | DimSolution | SolutionKey
+  | vw_Fact_Solution | FactSolution | Composite Primary Key
+  | vw_Dim_EngagementMilestone | DimEngagementMilestone | EngagementMilestoneKey
+  | vw_Fact_EngagementMilestone | FactEngagementMilestone | Composite Primary Key
+  | vw_Dim_MarketplaceInvoice | DimMarketplaceInvoice | InvoiceKey
+  | vw_Fact_MarketplaceBilledSales | FactMarketplaceBilledSales | Composite Primary Key
+NOTES:
+Let’s focus on GPSMart for this slide. 
+The GPS Mart is the SQL Endpoint for users to pull data for their adhoc reporting asks and analysis
+
+The connection details is written over here: Server: gpsmart.database.windows.net, ADW: GPSMart
+
+For all the ACR Related data, you will find the views in azure schema in GPS Mart
+
+I have mentioned the views which are mostly used  from azure schema in GPS Mart, and they are as follows: 
+vw_Bridge_AzureConsumptionPartner- This view has the data for ACR partner association. The table which lies under this view Map_Association_Partner_PPR_OCPMart.
+So the table which projects use from ADLS for Map Association Partner and the table which is used in GPS Mart is different.
+The table Map_Association_Partner_PPR_OCPMart has limited columns and some filters which are needed only from PPR Perspective.
+
+2. vw_Fact_AzureConsumption
+This view has the revenue/consumption data along with the keys which are additive for ACR.
+
+The views below these are dimension views which are self explanatory, but we will still go through them
+The first view in dimension is the vw_Dim_AZPricingLevel which has the information for the pricing levels specific to Azure sales, and that is why it is known as AZ Pricing level.
+The next is vw_Dim_AzureFRAGroup which has the data for Azure FRA Group, and we discussed what Azure FRA group means in the previous slides
+The next in the list are Azure Offer, Azure Pricing Level, Azure Service Level, Azure Subscription, and Azure Service Influencer which we have discussed in detail in the previous slide.
+And the primary keys for these tables are mentioned in the  column beside the view name and the table name
+
+--- Slide 5 ---
+TITLE: GPS Mart views ER Diagram
+TEXT:
+5
+TABLE 1:
+  | vw_Dim_Solution
+  | SolutionKey
+  | Other Solution columns…
+TABLE 2:
+  | vw_Dim_Opportunity
+  | OpportunityKey
+  | Other Opportunity columns…
+TABLE 3:
+  | vw_Dim_EngagementMilestone
+  | EngagementMilestoneKey
+  | Other Milestone columns…
+TABLE 4:
+  | vw_Fact_Opportunity
+  | OpportunityKey
+  | EngagementMilestoneKey
+TABLE 5:
+  | vw_Fact_PartnerDeal
+  | PartnerDealKey
+  | OpportunityKey
+  | SolutionKey
+TABLE 6:
+  | vw_Dim_PartnerDeal
+  | PartnerDealKey
+  | Other Partner Deal columns…
+TABLE 7:
+  | vw_Fact_EngagementMilestone
+  | EngagementMilestoneKey
+TABLE 8:
+  | vw_Fact_MarketplaceBilledSale
+  | OfferKey
+  | PartnerDealKey
+TABLE 9:
+  | vw_Dim_MarketplaceOffer
+  | OfferKey
+  | Other Offer columns…
+NOTES:
+Now, once you know what table hold what information, it becomes easy to analyze and see how these tables must be related
+
+This is a standard Star Schema where we the fact table is surrounded and related with the dimension tables around it except the bridge table which is further related for partner related data
+
+All the keys which are there in fact table will have a related dimension and those will be the columns which will be used to take joins while creating the tables
+
+For example, as you can see I want to see the data with AZ pricing level what I will do is that  I have AZ pricing level 2 key and I have the same key in the fact view and what I will do now is that I will join the view based on this key to view the consumption based on AZ pricing level 2 key. 
+The next you can see is vw_Dim_AzureFRAGroup And to see the data for Azure FRA group 2 what will have to do is join the view of dimension and the view of fact based on Azure FRA Group Key and the exactly of the column is Dim_AzureFRAGroupID. 
+The same thing is needed for all the dimension views which are related directly with the fact view
+
+
+Then you can see that we have vw_Bridge_AzureConsumptionPartner which is a bridge view to join with the views which are related to dimensions of partner and partner association which are vw_Dim_PartnerAttachType and vw_ReportingPartnerOne. In order to see the data at partner level, we need to join the fact table with the bridge table and the bridge table with either the DimPartnerAttachType or ReportingPartnerOne based on what you are looking at. 
+
+
+One thing which you must understand is what attributes in a query is additive and what attributes are not additive,
+And this is not something which you should memorize, whatever attributes are related directly to the fact table are always additive, and whatever attributes need a bridge table are never additive. That is the reason of adding the bridge tables in the data model
+
+--- Slide 6 ---
+TITLE: Important Queries
+TEXT:
+-- Marketplace Billed Sales Co-sell
+WITH CTE_MBS AS (
+SELECT DocumentID,
+    ProductID,
+    ServicePeriodDuration,
+    PartnerOneReportingID,
+    TPAccountID,
+    MAX(TotalPriceCDAmountAnnualizedwithCap) AS MBSCosell 
+FROM crm.vw_Fact_MarketplaceBilledSales
+GROUP BY
+    DocumentID,
+    ProductID,
+    ServicePeriodDuration,
+    PartnerOneReportingID,
+    TPAccountID
+)
+SELECT SUM(MBSCosell) FROM CTE_MBS
+TEXT:
+MBS Co-sell
+TEXT:
+-- Total MBS
+
+WITH CTE AS(
+SELECT DISTINCT InvoiceKey,TotalPriceCDAmount
+FROM crm.vw_Fact_MarketplaceBilledSales
+)
+SELECT SUM(TotalPriceCDAmount) AS TotalMBS FROM CTE
+TEXT:
+Total Marketplace Billed Sales
+TEXT:
+6
+
+--- Slide 7 ---
+TITLE: Important Queries
+TEXT:
+--PRACR
+WITH CTE AS(
+SELECT DISTINCT FPD.PartnerDealKey
+       ,FPD.ResourceGUID
+       ,FPD.ApprovalAndReportedDate
+       ,FPD.TrueACRConsumption
+       ,DPD.PSXDealID
+FROM [crm].[vw_Fact_PartnerDeal] FPD
+INNER JOIN [crm].[vw_Dim_PartnerDeal] DPD ON DPD.PartnerDealKey = FPD.PartnerDealKey
+WHERE [IsPartnerReportedACR] = 'Yes' AND FPD.[ApprovalAndReportedFiscalYear] = 'FY24'
+)
+SELECT SUM(TrueACRConsumption) AS PRACR FROM CTE
+TEXT:
+Partner Reported ACR
+TEXT:
+--DRACR
+
+WITH CTE AS(
+SELECT DISTINCT FPD.PartnerDealKey
+       ,FPD.[AzureIPCosellDealReg]
+FROM [crm].[vw_Fact_PartnerDeal] FPD
+INNER JOIN [crm].[vw_Dim_PartnerDeal] DPD 
+ON DPD.PartnerDealKey = FPD.PartnerDealKey
+WHERE DPD.[IsAzurePartnerCosellDealEOP] = 'Yes'
+)
+SELECT SUM([AzureIPCosellDealReg]) AS DRACR FROM CTE
+TEXT:
+Deal Reg ACR
+TEXT:
+7
+
+--- Slide 8 ---
+TITLE: CRM Tabular
+TEXT:
+8
+TEXT:
+CRM Tabular Connection Details:
+Server: GPSInsightsASCRM, Database: CRM Tabular
+TEXT:
+Important Measure groups/dimensions
+Partner Deal
+Opportunity
+Solution
+Marketplace Billed Sales
+Customer
+Partner Sharing
+NOTES:
+Let’s focus on GPSMart for this slide. 
+The GPS Mart is the SQL Endpoint for users to pull data for their adhoc reporting asks and analysis
+
+The connection details is written over here: Server: gpsmart.database.windows.net, ADW: GPSMart
+
+For all the ACR Related data, you will find the views in azure schema in GPS Mart
+
+I have mentioned the views which are mostly used  from azure schema in GPS Mart, and they are as follows: 
+vw_Bridge_AzureConsumptionPartner- This view has the data for ACR partner association. The table which lies under this view Map_Association_Partner_PPR_OCPMart.
+So the table which projects use from ADLS for Map Association Partner and the table which is used in GPS Mart is different.
+The table Map_Association_Partner_PPR_OCPMart has limited columns and some filters which are needed only from PPR Perspective.
+
+2. vw_Fact_AzureConsumption
+This view has the revenue/consumption data along with the keys which are additive for ACR.
+
+The views below these are dimension views which are self explanatory, but we will still go through them
+The first view in dimension is the vw_Dim_AZPricingLevel which has the information for the pricing levels specific to Azure sales, and that is why it is known as AZ Pricing level.
+The next is vw_Dim_AzureFRAGroup which has the data for Azure FRA Group, and we discussed what Azure FRA group means in the previous slides
+The next in the list are Azure Offer, Azure Pricing Level, Azure Service Level, Azure Subscription, and Azure Service Influencer which we have discussed in detail in the previous slide.
+And the primary keys for these tables are mentioned in the  column beside the view name and the table name
+
+--- Slide 9 ---
+TITLE: Marketplace Security Implementation
+TEXT:
+9
+
+--- Slide 10 ---
+TITLE: MBS Security Implementation Example
+TEXT:
+User output
+TEXT:
+10
+TABLE 1:
+  | Sample data |  |  | 
+  | PartnerOne | TPID | Subsidiary | MBS
+  | P1 | T2 | S1 | $1,000
+  | P1 | T1 | S2 | $2,000
+  | P2 | T2 | S5 | $3,000
+  | P3 | T1 | S4 | $4,000
+  | P4 | T2 | S1 | $5,000
+  | P5 | T2 | S3 | $6,000
+  | P5 | T3 | S2 | $7,000
+  | P5 | T5 | S4 | $8,000
+  | P6 | T4 | S5 | $9,000
+TABLE 2:
+  | Users with Customer flagged role | 
+  | User | TPID
+  | U2 | T1
+  | U4 | T2
+TABLE 3:
+  | Users with MS Sales access | 
+  | User | Subsidiary
+  | U3 | S1
+  | U4 | S2
+TABLE 4:
+  | U2 Sees the following data |  |  | 
+  | PartnerOne | TPID | Subsidiary | MBS
+  | P1 | T1 | S2 | $2,000
+  | P3 | T1 | S4 | $4,000
+TABLE 5:
+  | U3 Sees the following data |  |  | 
+  | PartnerOne | TPID | Subsidiary | MBS
+  | P1 | T2 | S1 | $1,000
+  | P4 | T2 | S1 | $5,000
+TABLE 6:
+  | U4 Sees the following data |  |  | 
+  | PartnerOne | TPID | Subsidiary | MBS
+  | P1 | T2 | S1 | $1,000
+  | P2 | T2 | S5 | $3,000
+  | P4 | T2 | S1 | $5,000
+  | P5 | T2 | S3 | $6,000
+
+--- Slide 11 ---
+TITLE: Thank you
+TEXT:
+11
+====================================================================================================
+FILE: GPSCRM Co-sell.pptx  (17 slides)
+====================================================================================================
+
+--- Slide 1 ---
+TITLE: GPS Domain Training - CRM
+
+--- Slide 2 ---
+TITLE: Agenda
+TEXT:
+2
+TEXT:
+Leads and Opportunities
+Microsoft Customer Engagement Methodology (MCEM)
+Co-sell Motion
+Co-sell Requirements
+IP Co-sell Incentive Program
+Marketplace Billed Sales Co-sell (MBS Co-sell)
+
+--- Slide 3 ---
+TITLE: Leads and Opportunities
+TEXT:
+Lead: Leads appear in CRM Online from several sources. Sellers may create them, or one can upload them from marketing campaigns via Worldwide Lead Management or other channels.
+TEXT:
+Billed Opportunity: An opportunity represents an engagement with a customer. Opportunities identify a customer’s business needs, willingness to fund, purchasing timeline, and use of a primary sponsor.    
+Billed Revenue: All monetary transactions of Microsoft’s customers are managed through Billed Opportunity.
+TEXT:
+Consumption Opportunity: It tracks the progress of projects that drive consumed revenue.
+TEXT:
+3
+
+--- Slide 4 ---
+TEXT:
+ACR Pipeline is managed using Consumption Opportunities
+TEXT:
+Billed Revenue Pipeline is managed using Billed Opportunities
+TEXT:
+4
+
+--- Slide 5 ---
+TITLE: Microsoft Customer Engagement Methodology
+TEXT:
+Milestone
+TEXT:
+Milestone
+TEXT:
+Milestone
+TEXT:
+Milestone
+TEXT:
+Licensing Product
+TEXT:
+Licensing Product
+TEXT:
+Support Product
+TEXT:
+Support Product
+TEXT:
+Support Product
+TEXT:
+Consulting Product
+TEXT:
+Consulting Product
+TEXT:
+Consulting Product
+TEXT:
+Opportunity
+TEXT:
+Billed Opportunity
+TEXT:
+Consumption Opportunity
+TEXT:
+5
+
+--- Slide 6 ---
+TEXT:
+LISTEN & CONSULT
+Help qualify and quantify the customer needs 
+Customer believes MSFTcould solve the problem
+Discover Opportunity
+TEXT:
+DRIVE CONTINUOUS INNOVATION
+Monitor, optimize, and expand value
+Customer expectations are met
+Optimize & identify expansion opportunity
+TEXT:
+DELIVER
+Support delivery of the solution aligned to business value
+Customer satisfied with implementation
+Deliver on solution and realize value
+TEXT:
+EMPOWER & ACHIEVE
+Customer has confidence in solution
+Prove business case and technology
+Prove and gain decision on the solution
+TEXT:
+INSPIRE & DESIGN
+Inspire & Design solution with the customer
+Customer has interest in proposed solution
+Define business value and solution
+TEXT:
+Customer Engagement
+TEXT:
+Microsoft Role
+TEXT:
+Intention
+Customer Outcome
+Exit Criteria
+TEXT:
+Value Realization Process is what we will do
+Value Realization Methodology is how we will do it
+TEXT:
+CONTINUOUS ACCOUNT PLAN
+TEXT:
+CONTINUOUS ACCOUNT PLAN
+TEXT:
+Microsoft Confidential
+TEXT:
+Inspire & Design
+TEXT:
+Empower & Achieve
+TEXT:
+Connected Delivery
+TEXT:
+Manage & Optimize
+TEXT:
+Listen & Consult
+
+--- Slide 7 ---
+TEXT:
+Co-selling
+TEXT:
+Co-selling with Microsoft is defined as any collaborative engagement between Microsoft and our partner ecosystem including building demand, sales planning, sharing sales leads, accelerating partner-to-partner empowered selling and delivering marketplace-led commerce for customer transformation.
+TEXT:
+Sell through partner
+Partners sell/resell Microsoft technology through their own sellers
+TEXT:
+Services Co-sell
+Sellers/partners collaborate to sell a partner’s project/managed services with Microsoft technology embedded
+TEXT:
+IP Co-sell
+Sellers/partners collaborate to sell a partner’s repeatable, packaged IP solution
+TEXT:
+Partners selling partners
+Partners sell/resell another partner’s offer or solution to the customer
+TEXT:
+7
+
+--- Slide 8 ---
+TEXT:
+Co-sell Motion
+TEXT:
+Partner Center (A portal for Microsoft Partners)
+TEXT:
+MSX(A portal for Microsoft Sellers)
+TEXT:
+Pipeline is created by Partner first. Deal is created
+TEXT:
+Partner Led: Partner Alone works on a deal
+TEXT:
+Active Co-sell: Partner Shares deal with Microsoft
+TEXT:
+If Seller Does not accept
+TEXT:
+Expired: If Seller doesn't respond within 14 days
+TEXT:
+Pending: If Seller has not responded to the deal yet
+TEXT:
+If Sellers accepts the deal, an Opportunity is created
+TEXT:
+Seller creates Opportunity and select a partner as draft
+TEXT:
+MSFT shares with Partner. Partner Deal is created
+TEXT:
+Inbound
+TEXT:
+Outbound
+TEXT:
+8
+
+--- Slide 9 ---
+TEXT:
+Co-sell requirements
+TEXT:
+9
+TABLE 1:
+  | Offer type | Offer Requirements | Offer status | Channel Enablement
+  | All | Meet the Microsoft commercial marketplace publishing requirements 
+Create a business profile in Partner Center | In Market | Offer is made available in Azure Marketplace and/or AppSource 
+Business profile is made available in Solution Provider 
+Direct customer purchasing and referrals
+  | IP | Provide partner sales contact for each eligible geo 
+Upload bill of materials required: (1) customer one-pager, (2) customer presentation deck Optional (3) solution landing page URL, (4) social media channel URL, or other (for example, a case study) | Co-sell Ready | Offer is made available in Microsoft seller catalog 
+Offer sellable by another partner 
+Ability to share co-sell opportunities with Microsoft or partner sellers
+  | Services | Provide partner sales contact for each eligible geo 
+Upload bill of materials required: (1) customer one-pager, (2) customer presentation deck Optional (3) solution landing page URL, (4) social media channel URL or other (i.e. case study) 
+
+Solution Partner Designation in at least one Solution Area | Co-sell Ready | Offer is made available in Microsoft seller catalog 
+Offer sellable by another partner 
+Ability to share co-sell opportunities with Microsoft or partner sellers
+
+--- Slide 10 ---
+TEXT:
+Co-sell requirements
+TEXT:
+Transactable offers (Get it Now, Free Trial - Azure VMs, Azure Application) are automatically made incentive eligible upon verification of offer type. The technical validation is built into the publication of these offer types and no further manual validation is required.
+
+Non-Transactable offers (List, Contact Me, Test Drive, SaaS) require to undergo manual Azure IP Technical Validation
+TEXT:
+10
+TABLE 1:
+  | Offer type | Offer Requirements | Offer status | Channel Enablement
+  | Azure IP-incentive eligible | Meet or exceed $100k US dollars Azure Consumed Revenue (ACR) TTM (trailing twelve months) threshold at an organizational level OR reach the $100k US dollars billed revenue threshold with a transactable offer 
+Pass the Microsoft technical validation for an Azure-based Solution 
+Provide a reference architecture diagram | Co-sell Incentivized | Microsoft seller receive incentive credit if offer is sold 
+Preferred solution badging in Azure Marketplace and/or AppSource
+  | Business Applications – incentive eligible | Active enrollment in ISV Connect program | Co-sell Incentivized | Microsoft seller receive incentive credit if offer is sold 
+Preferred solution badging in Azure Marketplace and/or AppSource
+
+--- Slide 11 ---
+TEXT:
+IP Co-sell Program
+TEXT:
+Accelerate Azure usage & drive digital transformation
+TEXT:
+Foster long-term 
+partnership
+TEXT:
+Intent of this Program: Encourage collaborative Co-Selling between Microsoft sellers and our IP solution partners
+TEXT:
+Benefits:
+Partners bring industry expertise and the finished solutions that today’s customers are looking for
+Sellers leverage partner-built solutions via the Co-Sell model to continue meeting customer success and Microsoft consumption goals
+TEXT:
+“Leading companies in every industry are partnering with us to build their own digital capability to compete and grow. This is creating broader opportunity for everyone, including our ecosystem” – Satya Nadella
+TEXT:
+11
+
+--- Slide 12 ---
+TEXT:
+Lead Shared Partners or Microsoft sellers initiate the process by sharing opportunities
+TEXT:
+Deal Registered by Partner (after customer contract signature)
+Post signature, deals are set to 100% in Partner Center
+TEXT:
+Azure IP Co-sell Process
+TEXT:
+Scorecard + Incentive Credited
+
+Earn a % or flat rate per deal based on the ACV and where the solution is deployed.
+TEXT:
+Co-sell sales motion
+TEXT:
+Co-sell sales process
+Sales process occurs via 
+Active Co-sell or Partner led Co-sell 
+with Incentive Eligible Solution
+TEXT:
+Partner or field seller
+TEXT:
+Partner
+TEXT:
+Validation & activation
+TEXT:
+Deal Validation + Deal Review
+The deal will go through validation and review
+
+
+*Partners may need to share proof of execution as part of the deal validation process
+TEXT:
+Partner or field seller
+TEXT:
+12
+
+--- Slide 13 ---
+TEXT:
+Metric Definition
+The amount Microsoft invoices customers or CSPs for the Azure IP Co-sell offers purchased through Microsoft Commercial Marketplace.
+
+Annualized and capped at $1M maximum
+Excludes invoices in China and Korea or by partners based in China
+Excludes Billing from US Fed and all EDU and Public Sector/Government segments
+TEXT:
+Marketplace Billed Sales Co-sell (MBS Co-sell) – Metric Definition
+TEXT:
+MBS Co-sell – Commercial
+TEXT:
+MBS Co-sell – GPS
+TEXT:
+Sellers receive quota and credit.
+Only applies to Top-Tier partners.
+Targets are set by Sub Region and Sub Segment
+TEXT:
+PDMs receive quota and credit.
+Only applies to partners included in the MPL.
+Targets are set by PartnerOne ID for the WW MBS driven by each respective partner.
+TEXT:
+IPCS Transition Program
+62 identified partners were granted an extension to transition to Marketplace. Permission was grated to continue the traditional IP Co-sell program through Deal Reg into FY24. This program is expected to retire in FY25. Sellers will receive quota and credit based on a new metric called ARC (Artificial Revenue Credit). See more detail in the Appendix.
+TEXT:
+Microsoft Confidential
+TEXT:
+13
+
+--- Slide 14 ---
+TITLE: Appendix
+
+--- Slide 15 ---
+TEXT:
+MBS Component (IP Co Sell Partners Marketplace Transition)
+TEXT:
+CrossAzure
+TEXT:
+Calculation will be based on:
+SaaS:
+ARC of 30% of ACV or $15K, whichever is higher, payout rates.
+ARC will be capped at $300K maximum per deal.
+BYOL:
+ARC of 5% capped at $50K
+TEXT:
+Microsoft Internal Only
+TEXT:
+FY24 Metric Deck
+Section 1 – Definition and Scope
+TEXT:
+READY
+TEXT:
+15
+TABLE 1:
+  | 1.1 | Metric Definition |  |  |  | 
+  | One Line Definition
+
+$ Deal Registration ACR 
+
+Limited co-sell program retires ACR comp bucket as artificial revenue credit & with related quota to all eligible sellers (Mechanics similar to FY23) |  | Detailed Definition
+Artificial Revenue Credit (ARC) as calculated from Annual Contract Value (ACV) from won Enterprise & SMC-Corporate segment deals incorporating an Azure incentive eligible repeatable IP solution, registered by a partner using Partner Center. 
+Must have a minimum deal size of $25,000 (USD) of contract value within the first year of the deal. ACV will automatically be calculated for multi-year contracts.
+Approved ARC will be determined by the Sales Operations team through deal validation and reviews following established program rules. The ACV is determined and 30% of that value or $15k (whichever is higher, capped at $300K) is the approved ARC for bundled deals and 5% of ACV (capped at $50K) for BYOL deals. | Business Objective & Alignment to Solution Area Priority 
+Business objectives is to preserve and safeguard revenue by providing our highest ACV value Top Tier partners a 6-month transition period wherein sellers will continue to receive ACR retirement for co-selling outside of MP. | In Scope Products / Workloads
+
+End-customer must be Enterprise segment or SMC – Corporate.  In scope deals are those where the co-sell is occurring outside of Marketplace.
+
+Solutions must be listed on Marketplace (they do not have to be transactable) and have the “IPCS Incentivized” designation, which shows that the solution has been technically reviewed and drives material Azure consumption across partner and customer tenants. | YoY Changes
+
+New Metric Component
+
+Scope limited to select list of  top performing ACV partners, a subsegment of Top Tier.
+  | Upstream Actual Data Source
+
+Starlight/AHR |  |  |  | Out of Scope Products / Workloads
+Total Contract Value excludes MSFT first party licenses, non- related services or any hardware. Renewal of subscriptions/licenses are also excluded. | 
+TABLE 2:
+  | 1.2 | Segment Scope |  |  | 
+  | Enterprise |  |  | SMC | 
+  | Major Commercial |  | ✓ | Enterprise Growth (China only) | ✓
+  | Strategic Commercial |  | ✓ | SM&C Commercial - Corporate | ✓
+  | Major Public Sector |  | ✓ | SM&C Education – Corporate | ✓
+  | Strategic Public Sector |  | ✓ | SM&C Government – Corporate | ✓
+  | Education (under Major Public Sector) |  | ✓ | SM&C Commercial – SMB | X
+  |  |  |  | SM&C Education – SMB | X
+  |  |  |  | SM&C Government - SMB | X
+TABLE 3:
+  | 1.3 | Compensation Alignment
+  | Metric Owner: Laurie Viault/Mason McCoy   Finance Contact:  Avi Ardon    WWIC: Brenda Bruce | 
+
+--- Slide 16 ---
+TITLE: Marketplace Billed Sales
+TEXT:
+FY24 Metric Deck
+Section 1 – Definition and Scope
+TEXT:
+CrossAzure
+TEXT:
+Not applicable
+TEXT:
+READY
+TEXT:
+16
+TABLE 1:
+  | 1.1 | Metric Definition |  |  |  | 
+  | One line Definition:
+The amount Microsoft invoices customers or CSPs for the Azure IP co-sell offers purchased through Microsoft Commercial Marketplace. |  | Detailed Definition: 
+After customers or CSPs purchase Azure IP Co-Sell tagged solutions in Microsoft Commercial Marketplace, Microsoft invoices them. Marketplace Billed Sales will appear only once Microsoft issues an invoice to the customer/CSP. 
+
+The MBS metric includes all Azure IP Co-sell tagged solutions from partners with Top Tier designation that are transactable and where Microsoft invoices the customer.  It includes Azure applications (Virtual Machine Images", "Solution Templates", "SaaS”)
+
+Seller Credit Calculation 
+Marketplace Billed Sales annualized value 1x credit for Top Tier with $1M Cap. Non-Top Tier partners will be prompted to achieve Top Tier designation.
+Cap per deal applied after modifier for Annualized & Monthly
+Sellers receive quota and actuals | Business Objective & Alignment to Solution Area Priority 
+Measures the sale of 3rd party IP co-sell tagged solutions that run on Microsoft Cloud, thus growing Azure cloud consumption. Providing sellers with an incentive is a key MCPP benefit for Top Tier designated IP Partners to gain increased opportunities via access to our Managed Account Teams.
+Limiting to Top Tier partners incents partners to take action to meet the criteria and join the Top Tier list. | In Scope Products / Workloads
+All 3rd party software applications that are Azure IP Co-sell incentivized from partners with Top Tier designation, which are transactable in Microsoft Commercial Marketplace.  Includes direct, channel and field MBS. 
+Out of Scope Products / Workloads
+All products outside of Azure IP Co-Sell solution tag. 
+IP Software only. No services offers in scope.  Non-SaaS Teams Any contact me, BYOL (Bring your own 3rd party license).
+
+Out of Scope Segments
+Azure Gov
+
+Out of Scope Geos
+China, South Korea (Marketplace commerce only available for non-EA customer. IPCS transactions with EA-customers will not be covered via MBS.) | YoY Changes
+New Metric
+  | Upstream Actuals Data Source: 
+
+MHR - planning
+MECH – comp
+
+Credited Geo based on Partner Geo |  |  |  |  | 
+TABLE 2:
+  | 1.2 | Partner Association Methods |  |  | 
+  | Marketplace Billed Revenue |  | ✓ | All else excluded | 
+TABLE 3:
+  | 1.3 | Business Guidance
+  | We want to encourage the use of Marketplace as the standard platform for going to market with Microsoft, where partners publish their offers and customers can purchase them.
+
+Metric Owner: Laurie Viault/Mason McCoy  Finance Contact:  Avi Ardon  WWIC: Brenda Bruce | 
+
+--- Slide 17 ---
+TITLE: Thank you
+TEXT:
+17

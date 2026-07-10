@@ -1,0 +1,107 @@
+{
+  "BusinessSummary": {
+    "stream": "CoSell",
+    "schema": "MSSalesSecurity",
+    "table": "UserBusiness"
+  },
+  "FactIPT": {
+    "stream": "CoSell",
+    "schema": "Silver",
+    "table": "CustomPartnerCategory"
+  },
+  "CustomPartnerCategory": {
+    "stream": "Cosell_Reporting",
+    "schema": "Gold",
+    "table": "DimSalesGeography"
+  },
+  "VWDimGeography": {
+    "stream": "CoSell",
+    "schema": "Silver",
+    "table": "DimReportingGeography"
+  },
+  "DimReportingGeography": {
+    "stream": "Cosell_Reporting",
+    "schema": "Silver",
+    "table": "DimReportingGeography"
+  },
+  "DimSalesReportingGeography": {
+    "stream": "Cosell_Reporting",
+    "schema": "ASP",
+    "table": "FactPartnerSpecialization"
+  },
+  "FactPartnerSpecialization": {
+    "stream": "CoSell",
+    "schema": "CoSellGold_Int",
+    "table": "DimCRMPartnerAccount"
+  },
+  "DimCRMPartnerAccount": {
+    "stream": "CoSell",
+    "schema": "CoSellGold_Int",
+    "table": "DimCRMPartnerAccount"
+  },
+  "MapUserSubsidiary": {
+    "stream": "CoSell",
+    "schema": "Silver",
+    "table": "DimCustomer_FY26"
+  },
+  "DimMSXCustomer": {
+    "stream": "CoSell",
+    "schema": "Silver",
+    "table": "DimReportingPartnerOneSub_FY26"
+  },
+  "DimReportingPartnerOneSub": {
+    "stream": "Cosell_Reporting",
+    "schema": "Silver",
+    "table": "DimReportingPartnerOneSub_FY26"
+  },
+  "PDM_PDMM_HierarchyReporting": {
+    "stream": "Cosell_Reporting",
+    "schema": "PartnerMastering",
+    "table": "ReportingPartnerOne"
+  },
+  "ReportingPartnerOne": {
+    "stream": "CoSell",
+    "schema": "PartnerMastering",
+    "table": "ReportingPartnerOne"
+  },
+  "FactAzureConsumption": {
+    "stream": "Cosell_Reporting",
+    "schema": "Gold",
+    "table": "DimAzureServiceLevelWorkload"
+  },
+  "DimAzureServiceLevelWorkload": {
+    "stream": "Cosell_Reporting",
+    "schema": "Gold",
+    "table": "DimAzureStrategicPillar"
+  },
+  "DimAzureStrategicPillar": {
+    "stream": "Cosell_Reporting",
+    "schema": "Gold",
+    "table": "BridgeAzureAssociationPartner"
+  },
+  "BridgeAzureAssociationPartner": {
+    "stream": "Cosell_Reporting",
+    "schema": "Gold",
+    "table": "DimAZPricingLevel"
+  },
+  "DimAZPricingLevel": {
+    "stream": "Cosell_Reporting",
+    "schema": "Gold",
+    "table": "MapAzureAssociationPartner"
+  },
+  "MapAzureAssociationPartner": {
+    "stream": "Cosell_Reporting",
+    "schema": "Gold",
+    "table": "MapAzureAssociationPartner"
+  },
+  "DimTime": {
+    "stream": "CoSell",
+    "schema": "Silver",
+    "table": "Dir_PartnerAccount"
+  },
+  "Dir_PartnerAccount": {
+    "stream": "Cosell_Reporting",
+    "schema": "Silver",
+    "table": "Dir_PartnerAccount"
+  }
+}

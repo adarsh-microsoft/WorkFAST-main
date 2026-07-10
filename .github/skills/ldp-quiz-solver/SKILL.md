@@ -19,10 +19,27 @@ Complete every Unattempted question in an LDP quiz item, one tab at a time, unti
 
 ## Submission Format (HARD RULE)
 
-- Comma-separated **option numbers only**.
+- Comma-separated **option numbers only** — e.g. `3` or `2,5`. NEVER the option text (do not type "Yes"/"No" or the answer sentence — only its number).
 - **No spaces.** No trailing comma.
-- **Count of selected options MUST equal the question's weightage.** A question with `Weightage: 2` requires exactly 2 numbers (e.g. `1,4`).
+- **Count of selected options MUST equal the question's weightage.** A question with `Weightage: 2` requires exactly 2 numbers (e.g. `1,4`); `Weightage: 3` requires exactly 3.
+- **Option numbers are 1-based positions within the ANSWER-OPTIONS list only** — see the "Options vs scenario bullets" rule below. Numbering does NOT include scenario bullets.
 - Never leave a textbox in a partially-typed state.
+
+## Options vs Scenario Bullets (HARD RULE — common failure)
+
+Each question card renders **two** kinds of lists, and only one is the answer choices:
+
+- **Answer options** = the `<ol>` with `list-style-type: decimal` (rendered as `1. 2. 3.`). These are what you number and submit.
+- **Scenario bullets** = a `<ul>` with `list-style-type: disc` (config snippets, requirements, exhibit lines). These are part of the *question*, NOT answer choices. **Never number or count these.**
+
+If you flatten `card.querySelectorAll('li')` you will merge both lists and mis-number every option (e.g. a 4-option question with 3 scenario bullets looks like it has 7 "options"). Always read options from the decimal `<ol>` only:
+
+```js
+const ol = card.querySelector('ol');
+const options = ol ? Array.from(ol.querySelectorAll(':scope > li')).map(li => li.textContent.trim()) : [];
+// option number = index+1 within `options`
+```
+Also capture weightage from `card.textContent.match(/Weightage:\s*(\d+)/)` so `answer.split(',').length === weightage`.
 
 ## Multi-Page / Multi-Tab Quizzes — Batch Then Submit Once (HARD RULE)
 
@@ -71,7 +88,7 @@ const items = cards.map(c => {
 
 ### Step 4 — Reason answers (LLM)
 
-For each item, parse the question text + numbered options out of `card.querySelectorAll('p')` and produce an answer string. Validate: `answer.split(',').length === weightage` AND every token matches `/^\d+$/`.
+For each item, parse the question text out of `card.querySelectorAll('p')` and the **answer options out of the decimal `card.querySelector('ol')`** (NOT a flat `li` query — see "Options vs scenario bullets" hard rule; scenario `<ul disc>` bullets must be excluded). Produce an answer string of **option numbers**. Validate: `answer.split(',').length === weightage` AND every token matches `/^\d+$/`.
 
 Per user policy: **LLM reasoning every time** (no KB lookup). Optionally write the answer to `ldp-answer-kb` for audit.
 

@@ -1,11 +1,11 @@
 ---
 name: 'daily-status-mail-drafter'
-description: 'Draft (DO NOT SEND) the daily Co-Marketing status update email in the user''s Outlook inbox using the canonical CoMarketing template. Auto-fills today''s date in the subject, queries today''s ADO tasks for Adarsh, Prince, and Chetan to populate Task IDs, reads the Discussion tab on each task to synthesize one-liner Executive Summary bullets, then asks the user a single confirming question on those bullets before creating the draft.'
+description: 'Draft (DO NOT SEND) the daily Co-Marketing status update email in the user''s Outlook inbox using the canonical CoMarketing template. Auto-fills today''s date in the subject, queries today''s ADO tasks for Adarsh, Prince, Arham, Chetan, and Harshit to populate Task IDs, reads the Discussion tab on each task to synthesize one-liner Executive Summary bullets, then asks the user a single confirming question on those bullets before creating the draft.'
 ---
 
 # Daily Status Mail Drafter
 
-Creates an Outlook **draft** (never sends) of the Co-Marketing Daily Status Update email using a fixed reference template. Only the subject date, the Today's Task table Task IDs, and the Executive Summary bullets are dynamic — every other section of the template HTML is preserved verbatim.
+Creates an Outlook **draft** (never sends) of the CoSell daily status email using a fixed reference template. Dynamic sections: the subject date, the Today's Task table (Task IDs + statuses), the Executive Summary bullets, the KPI metrics, and the Business Scenario table — every other section of the template HTML is preserved verbatim.
 
 ## Version History
 
@@ -30,6 +30,12 @@ Creates an Outlook **draft** (never sends) of the Co-Marketing Daily Status Upda
 | 2026-05-21 | 3.3 | Added **Business Scenario ancestry filter** — only tasks whose hierarchy ancestor is Business Scenario **#40568** ("Co-Marketing v1.2 — Investment & Pipeline Reporting Enhancements") are considered. Implemented as new **Step 2.6** (traverse parent chain via `System.Parent` until a `Business Scenario` work item is found; accept iff its ID == 40568). Tasks under other Business Scenarios (e.g., "FY26 Adhoc Items" Project 23009) are dropped with a one-line skip note. KPIs and Exec Summary use only tasks that pass this filter. |
 | 2026-05-21 | 3.4 | Tightened **Step 4** with a mandatory consolidation self-check — merge bullets that share the same artifact / noun phrase / sub-step relationship before presenting in Step 5; drop pure training/workshop attendance items. |
 | 2026-05-21 | 3.5 | Added **Scenario Details Status** section below Business Scenario Status. New **Step 2.7** fetches all `Scenario Detail` children under Business Scenario #40568 and renders them as a table with columns Stream / Title / Assigned To / SPs allocated / SPs completed / Status. New template token `{{SCENARIO_DETAILS_ROWS}}`. Active state is styled with the **On Track** legend pill colors (`#DFF6DD` bg / `#107C10` text). |
+| 2026-06-29 | 3.6 | **Tracked-assignee swap Chetan → Arham** (`v-arhamshah@microsoft.com`) across all steps/tokens; Prince display name corrected to "Prince Barad". **Subject → `[DRACR & PRACR]: Status mail as on {{LongDate}}`.** **Business Scenario table is now dynamic** — built from each accepted task's `task → Scenario Detail → Business Scenario` chain (distinct BSes); hard-coded BS #40568 row replaced by `{{BUSINESS_SCENARIO_ROWS}}`; handles tasks whose parent is the Business Scenario directly (no Scenario Detail layer). **RCA fixes (wrong-task defect):** discovery hardened (WIQL / `wit_my_work_items` primary; relevance-ranked `search_workitem` is NOT a completeness source); `When:=today` is the hard authority with **no** stale "most-recent-closed" substitution; per-assignee completeness flag added. Doc fix: compose param is `-BodyFile` (not `-BodyHtmlPath`). Scenario Details section remains disabled. |
+| 2026-06-29 | 3.7 | **Recipients now use `Display Name <email>`** (To + all CC) instead of bare SMTP — bare emails made New Outlook render chips as `email <email>` instead of resolving to names. Resolved the 9 directory display names via Graph and updated both the Recipients table and `compose-draft-v4.ps1` `$To`/`$Cc` defaults. |
+| 2026-06-30 | 3.8 | **Tracked assignees → four** — added **Chetan Gandhi** (`v-cgandhi@microsoft.com`) alongside Adarsh, Prince, Arham; new tokens `{{CHETAN_TASK_ROW_INNER}}` / `{{CHETAN_TASK_STATUS}}` and a fourth grid row. **Recipient added:** Apurv Joshi (`v-apurvjoshi@microsoft.com`) to CC. **Subject → `[CoSell]: Status mail as on {{LongDate}}`.** **Date authority changed:** the task's **Start Date** field (`Microsoft.VSTS.Scheduling.StartDate`) is now the primary today-filter; the `When:` line in the description is used only as a fallback when Start Date is empty. Discovery WIQL now also gathers `StartDate`-in-window candidates. Steps 1, 2, 2.5, 3, 3.5, 4, 5, 6a, 7 updated to handle four assignees. |
+| 2026-06-30 | 3.9 | **Legend-accurate status colors.** Fixed two rendering bugs: (1) Today's Tasks **Status cells were hard-coded grey** — now colored per the Status Legend via 8 new companion tokens (`*_TASK_STATUS_BG` / `*_TASK_STATUS_FG`), so `Closed`/`Resolved` → **Completed** (blue `#DEF0FD`/`#005A9E`), `Active` → **On Track** (green), `New` → **Not Started** (grey). (2) Business Scenario **milestone pills used ad-hoc `Done`/`In Progress` labels & off-legend colors** — now must use the exact legend labels/colors (`Completed`, `On Track`, `Not Started`, `Recoverable Delay`, `Irrecoverable Delay`, `On Hold`). Added the canonical Status Legend mapping table; tokenized template status cells; token count 16 → 24. |
+| 2026-07-06 | 4.0 | **Tracked assignees → five** — added **Harshit Singh** (`v-harshitsi@microsoft.com`) as a fifth tracked assignee alongside Adarsh, Prince, Arham, and Chetan. Four new tokens `{{HARSHIT_TASK_ROW_INNER}}` / `{{HARSHIT_TASK_STATUS}}` / `{{HARSHIT_TASK_STATUS_BG}}` / `{{HARSHIT_TASK_STATUS_FG}}` and a fifth Today's-Tasks grid row (white / no-zebra). Steps 1, 2, 3.5, 4, 5, 6a, 7 and the no-task guardrails updated to handle five assignees; token count 24 → 28. **Identity note:** the user supplied `harshitsi@microsoft.com`, but ADO verification on 2026-07-06 showed that prefix-less address returns zero tasks — the authoritative identity is `v-harshitsi@microsoft.com` (matches the fixed CC list and the comment-author `uniqueName`). |
+| 2026-07-06 | 4.1 | **NA-omit rule + dynamic Today's-Tasks grid.** Assignees with no selected task are now **removed from the grid entirely** (no `NA` row), per user rule. Refactored the Today's-Tasks table from five hard-coded per-assignee rows to a single dynamic `{{TODAYS_TASKS_ROWS}}` token, retiring the 20 per-assignee row/status tokens; rows are built in roster order for present assignees only and zebra-striped by render position. Token count 28 → 9. Step 6a, the token table, and the no-task guardrail updated. |
 
 ---
 
@@ -56,28 +62,32 @@ Do **not** invoke for the generic `create-daily-status-email` skill (different f
 | **DO NOT embed a signature** | Outlook injects the user's default signature when the compose window opens. Never add a sign-off, name, or signature block to the body HTML. |
 | **New Outlook ONLY** | Process `olk.exe`, window `ClassName='Outlook Host'`. Never target classic `outlook.exe`. Never open `webLink`. |
 | **Warmup before every compose** | Always open a `__warmup_<hex>` mailto, wait 3–4 s, close it, then compose the real draft. Skipping warmup causes empty-body drafts because WebView2 enters stale states between sessions. |
-| **Placeholder when no tasks** | If no ADO tasks for an assignee → `NA` in their row. If all three rows are `NA` and there are no comments → use placeholder bullet `No status updates available for today — placeholder draft.` and proceed without confirmation. |
-| **Business Scenario scope** | Only tasks whose ancestor chain leads to Business Scenario **#40568** (`Co-Marketing v1.2 — Investment & Pipeline Reporting Enhancements`) are eligible. Tasks under any other Business Scenario (or under non‑Business‑Scenario roots like a Project) are dropped in **Step 2.6**, even if `When:` matches today. |
+| **Omit assignees with no task (grid)** | If an assignee has no selected task for the day, they are **removed from the Today's Tasks grid entirely** — never render an `NA` placeholder row (rule added 2026-07-06 / v4.1). The grid shows only assignees with a genuine today-dated or user-selected task. If **every** tracked assignee is empty and there are no comments → the grid renders a single `No tasks logged today` row and the Executive Summary uses placeholder bullet `No status updates available for today — placeholder draft.`, proceeding without confirmation. |
+| **Business Scenario table is dynamic** | The Business Scenario table is built from the **distinct** Business Scenarios that today's accepted tasks roll up to (`task → Scenario Detail → Business Scenario`, or `task → Business Scenario` directly). There is **no** hard-coded Business-Scenario filter — every assignee's genuine today-dated task is in scope regardless of which Business Scenario it belongs to. |
+| **Discovery must be complete** | Resolve each assignee's task via WIQL (`wit_query_by_wiql`) or, for the authenticated user, `wit_my_work_items`. A relevance-ranked `search_workitem` text result is **NEVER** treated as a complete list — it silently drops newly-created tasks (this caused the 2026-06-29 wrong-task defect). If only text search is available, enumerate completely (current-sprint ID cluster / iteration / Scenario-Detail children) before selecting. |
+| **Task date authority: Start Date → `When:` fallback** | A task represents today's work **iff** its **Start Date** (`Microsoft.VSTS.Scheduling.StartDate`) equals today (PST). If Start Date is empty, fall back to the `When:` line in the description; if both are empty/unparseable, the task is dropped. Tasks merely bulk-closed today with a non-today Start Date / `When:` are NOT today's work. NEVER substitute the "most recently changed closed task" when the date filter yields none — that assignee is `NA`, with a completeness flag. |
 | **Background-delete warmup** | After the real draft is visible, silently delete `__warmup_*` items from Drafts via Graph. |
 
 ---
 
-## Recipients (fixed)
+## Recipients (fixed — use `Display Name <email>`, NOT bare email)
 
-| Field | Addresses |
+> **Critical:** pass each recipient as `Display Name <email>`. Bare SMTP addresses make New Outlook render the chip as `email <email>` instead of resolving to the person's name. The compose mailto carries these strings verbatim, so the display name must be included.
+
+| Field | Addresses (`Display Name <email>`) |
 |-------|-----------|
-| **To** | `v-sbutala@microsoft.com` |
-| **CC** | `v-abhim@microsoft.com`, `v-masaip@microsoft.com`, `v-skandwal@microsoft.com`, `v-cgandhi@microsoft.com`, `v-harshitsi@microsoft.com`, `v-pbarad@microsoft.com`, `v-arhamshah@microsoft.com`, `v-adevashish@microsoft.com` |
+| **To** | `Soham Kishor Butala <v-sbutala@microsoft.com>` |
+| **CC** | `Abhishek Mahapatro <v-abhim@microsoft.com>`, `Saipavan Manikanta <v-masaip@microsoft.com>`, `Sumit Kandwal <v-skandwal@microsoft.com>`, `Chetan Gandhi <v-cgandhi@microsoft.com>`, `Harshit Singh <v-harshitsi@microsoft.com>`, `Prince Barad <v-pbarad@microsoft.com>`, `Arham Shah <v-arhamshah@microsoft.com>`, `Adarsh Devashish <v-adevashish@microsoft.com>`, `Apurv Joshi <v-apurvjoshi@microsoft.com>` |
 
 ---
 
 ## Subject Format
 
 ```
-Co-Marketing Daily Status Update as of {{LongDate}}
+[CoSell]: Status mail as on {{LongDate}}
 ```
 
-Where `{{LongDate}}` is **today's date** in `Month D, YYYY` format (e.g., `April 29, 2026`). Note: single trailing space matches the original template.
+Where `{{LongDate}}` is **today's date** in `Month D, YYYY` format (e.g., `June 29, 2026`). No trailing space.
 
 ---
 
@@ -88,20 +98,27 @@ The canonical HTML body lives at `assets/email-template.html`. It contains these
 | Token | Replaced With |
 |-------|---------------|
 | `{{EXEC_SUMMARY_LIS}}` | Concatenated `<li>…</li>` items, one per confirmed executive summary bullet, using the same `style="font-family:Aptos,sans-serif; font-size:12pt; color:rgb(36,36,36)"`. |
-| `{{ADARSH_TASK_ROW_INNER}}` | Inner HTML for the Adarsh row's first cell (Task ID + title link). If no task found today, write `NA` in plain text. |
-| `{{PRINCE_TASK_ROW_INNER}}` | Inner HTML for the Prince row's first cell (Task ID + title link). If no task found today, write `NA` in plain text. |
-| `{{CHETAN_TASK_ROW_INNER}}` | Inner HTML for the Chetan row's first cell (Task ID + title link). If no task found today, write `NA` in plain text. |
-| `{{ADARSH_TASK_STATUS}}` | ADO `System.State` of Adarsh's task (e.g., `Active`, `Closed`, `New`). |
-| `{{PRINCE_TASK_STATUS}}` | ADO `System.State` of Prince's task. |
-| `{{CHETAN_TASK_STATUS}}` | ADO `System.State` of Chetan's task. |
+| `{{TODAYS_TASKS_ROWS}}` | Concatenated `<tr>…</tr>` rows for the Today's Tasks grid — **one row per assignee who has a selected task**. Assignees with no selected task (NA) are **omitted entirely**; no NA row is ever rendered (see the NA-omit rule in Guardrails and the row template in Step 6a). Rows follow roster order (Adarsh, Prince, Arham, Chetan, Harshit), skipping the absent ones, and are zebra-striped (white / `rgb(250,250,250)`) by render position. Each row's Status cell is colored per the Status Legend mapping (`Closed`/`Resolved` → Completed `#DEF0FD`/`#005A9E`; `Active` → On Track `#DFF6DD`/`#107C10`; `New` → Not Started `#E8E8E8`/`#595959`). |
 | `{{SP_TODAY}}` | KPI — distinct Scenario Detail parent count (see Step 3.5). |
 | `{{TASKS_CLOSED}}` | KPI — count of today's tasks in `Closed` state. |
 | `{{TASKS_ACTIVE}}` | KPI — count of today's tasks in `Active` state. |
 | `{{AI_HOURS_SAVED}}` | KPI — `SUM(OriginalEstimate) − SUM(CompletedWork)` across today's tasks, formatted as `<n>h` (e.g., `6h`). |
 | `{{EFFICIENCY_PCT}}` | KPI — `(AI_HOURS_SAVED / SUM(CompletedWork)) × 100`, 2 decimals, formatted as `<n.nn>%` (e.g., `35.29%`). |
+| `{{BUSINESS_SCENARIO_ROWS}}` | Concatenated `<tr>…</tr>` rows, one per **distinct** Business Scenario that today's accepted tasks roll up to (see Step 2.6). Columns: Stream (proposed label, e.g. DRACR / PRACR / POSOT), Title (BS work-item link), then milestone pills Story Clear / Approach Accepted / Dev/Test Complete / UAT Ready / Go-Live. Each pill must render with an **exact Status Legend** label/color (`Completed` / `On Track` / `Not Started` / `Recoverable Delay` / `Irrecoverable Delay` / `On Hold`). Milestone states are **not** in ADO — proposed and confirmed with the user in Step 5. |
 | `{{SCENARIO_DETAILS_ROWS}}` | Concatenated `<tr>…</tr>` rows, one per `Scenario Detail` child of Business Scenario #40568 — see Step 2.7. Columns: Stream (always `Co-Marketing`), Title (work item link), Assigned To (display name), SPs allocated, SPs completed, Status. |
 
-Status cell background colors stay as in the template; only the inner text is substituted.
+**Status Legend (canonical — drives both Task status cells AND Business Scenario milestone pills):**
+
+| Legend pill | Background | Text | Used for |
+|-------------|-----------|------|----------|
+| **Not Started** | `#E8E8E8` | `#595959` | task `New`; a milestone not yet begun |
+| **On Track** | `#DFF6DD` | `#107C10` | task `Active`; a milestone in progress / on schedule |
+| **Recoverable Delay** | `#FFF4CE` | `#87640F` | a milestone slipping but recoverable |
+| **Irrecoverable Delay** | `#FDE7E9` | `#A80000` | a milestone missed |
+| **Completed** | `#DEF0FD` | `#005A9E` | task `Closed`/`Resolved`; a milestone done |
+| **On Hold** | `#FCE4CE` | `#8E562E` | a milestone paused |
+
+Task status cells **and** Business-Scenario milestone pills must use these **exact** labels and colors. Never invent labels (e.g. `Done`, `In Progress`) or off-legend colors — that was the v3.9 bug fix.
 
 All other content (color legend table, Stream/Title/Go-Live row, Build Details — POSOT CoSell table, Blocker/Open Question line, signature) is left untouched.
 
@@ -113,14 +130,16 @@ All other content (color legend table, Stream/Title/Go-Live row, Build Details �
 
 Read `config/user-context.yaml`:
 - `user.email` → Adarsh's identity (default `v-adevashish@microsoft.com`).
-- Prince's identity is hard-coded → `v-pbarad@microsoft.com` (display name "Badard Prince Bharatbhai").
-- Chetan's identity is hard-coded → `v-cgandhi@microsoft.com` (display name "Gandhi Chetan").
+- Prince's identity is hard-coded → `v-pbarad@microsoft.com` (display name "Prince Barad").
+- Arham's identity is hard-coded → `v-arhamshah@microsoft.com` (display name "Arham Shah").
+- Chetan's identity is hard-coded → `v-cgandhi@microsoft.com` (display name "Chetan Gandhi").
+- Harshit's identity is hard-coded → `v-harshitsi@microsoft.com` (display name "Harshit Singh").
 - `ado.organization` → `MCAPSDataEngineering`
 - `ado.projects.taskCreation.name` → `Global Partner Solutions`
 
-### Step 2 — Query candidate ADO Tasks for all three assignees (wide window, PST-anchored)
+### Step 2 — Query candidate ADO Tasks for all five assignees (wide window, PST-anchored)
 
-> **Timezone rule (critical):** ADO stores `ChangedDate` in UTC and `@Today` resolves against the **caller's local timezone**, which on this workstation is IST (UTC+5:30). The team operates in **Pacific Time (PST/PDT, UTC-8/-7)** but tasks are often **authored from IST**, so a task whose `When: <today PST>` may have a UTC `ChangedDate` that falls **just before** the strict PST midnight boundary. To avoid missing those, the WIQL window is widened to **PST day ± 12h** and the authoritative "is this today's task?" decision is made by the `When:` field check in Step 2.5.
+> **Timezone rule (critical):** ADO stores `ChangedDate` in UTC and `@Today` resolves against the **caller's local timezone**, which on this workstation is IST (UTC+5:30). The team operates in **Pacific Time (PST/PDT, UTC-8/-7)** but tasks are often **authored from IST**, so a task whose `When: <today PST>` may have a UTC `ChangedDate` that falls **just before** the strict PST midnight boundary. To avoid missing those, the WIQL window is widened to **PST day ± 12h** and the authoritative "is this today's task?" decision is made by the Start Date check (with `When:` fallback) in Step 2.5.
 
 **Compute the candidate window:**
 
@@ -140,62 +159,66 @@ Use `mcp_microsoft_azu_wit_query_by_wiql` once per assignee with `timePrecision:
 WIQL template (substitute the **candidate** UTC timestamps):
 
 ```sql
-SELECT [System.Id], [System.Title], [System.State], [System.AssignedTo]
+SELECT [System.Id], [System.Title], [System.State], [System.AssignedTo], [Microsoft.VSTS.Scheduling.StartDate]
 FROM WorkItems
 WHERE [System.TeamProject] = 'Global Partner Solutions'
   AND [System.WorkItemType] = 'Task'
   AND [System.AssignedTo] = '<email>'
-  AND [System.ChangedDate] >= '{candidateStartUtc}'
-  AND [System.ChangedDate] <  '{candidateEndUtc}'
+  AND ( ( [System.ChangedDate] >= '{candidateStartUtc}' AND [System.ChangedDate] < '{candidateEndUtc}' )
+        OR ( [Microsoft.VSTS.Scheduling.StartDate] >= '{candidateStartUtc}' AND [Microsoft.VSTS.Scheduling.StartDate] < '{candidateEndUtc}' ) )
 ORDER BY [System.ChangedDate] DESC
 ```
 
-This returns **candidates only** — do not pick a winner yet. Filter `Removed`-state items out, then hand all surviving candidates to Step 2.5 for the `When:` check (the authoritative filter).
+This returns **candidates only** — do not pick a winner yet. Filter `Removed`-state items out, then hand all surviving candidates to Step 2.5 for the date check (Start Date → `When:` fallback, the authoritative filter).
+
+> **Gather by Start Date too:** because Start Date is now the authoritative filter, the WIQL above also matches tasks whose `StartDate` falls in the candidate window — this captures a task dated for today that wasn't otherwise touched today.
 
 > **Why this matters:** A strict PST-only `ChangedDate` window misses IST-authored tasks whose UTC stamp lands ~1–6h before PST midnight (e.g., a task created at 11 AM IST = 05:30 UTC = 10:30 PM PDT prior PST day). Widening to ±12h captures those, and Step 2.5's `When:` check guarantees only true today-tasks are accepted.
 
-### Step 2.5 — Safety check: validate task's `When:` date matches today (PST)
+### Step 2.5 — Safety check: validate task's date matches today (PST) — Start Date → `When:` fallback
 
-A task may surface in Step 2 simply because someone touched it today (state change, link edit, comment on an old task). To make sure the task actually represents **today's work**, verify its description's `When:` field against today's PST date.
+A task may surface in Step 2 simply because someone touched it today (state change, link edit, comment on an old task). To make sure the task actually represents **today's work**, verify its date against today's PST date using a two-tier rule: the **Start Date** field first, then the description's `When:` line only as a fallback.
 
-1. For each candidate task from Step 2, fetch the work item via `mcp_microsoft_azu_wit_get_work_item` with `fields: ['System.Description']` (HTML body).
-2. Strip HTML to plain text and locate a line matching (case-insensitive):
+1. For each candidate task from Step 2, fetch the work item via `mcp_microsoft_azu_wit_get_work_item` with `fields: ['Microsoft.VSTS.Scheduling.StartDate', 'System.Description']`.
+2. **Primary — Start Date field.** Read `Microsoft.VSTS.Scheduling.StartDate`. If it is **present and non-empty**:
+   - Take its **date component** and compare against `pstStartLocal.Date` (today in PST).
+   - **Match** → accept the task; proceed to Step 3. *(Do not consult `When:`.)*
+   - **Mismatch** → **discard the task** and treat that assignee's row as `NA`. Log: `Skipped Task {ID} — Start Date {startDate} ≠ today ({pstToday}).`
+3. **Fallback — `When:` line.** Only if `Microsoft.VSTS.Scheduling.StartDate` is **empty/null**, strip the description HTML to plain text and locate a line matching (case-insensitive):
 
    ```
    When:\s*(.+)
    ```
 
-   Examples that should match: `When: April 29, 2026`, `When: 2026-04-29`, `When: 29 Apr 2026`, `When : Apr 29 2026`.
-3. Parse the captured value as a date. Compare against `pstStartLocal.Date` (today in PST).
-4. Decision:
+   Examples that should match: `When: June 30, 2026`, `When: 2026-06-30`, `When: 30 Jun 2026`, `When : Jun 30 2026`.
+   - Parse the captured value as a date and compare against `pstStartLocal.Date`.
    - **Match** → accept the task; proceed to Step 3.
-   - **Mismatch** (When-date is yesterday, tomorrow, or any other day) → **discard the task** and treat that assignee's row as `NA`. Log a one-line note for the post-draft summary: `Skipped Task {ID} — When: {parsedDate} ≠ today ({pstToday}).`
-   - **No `When:` line found** or **unparseable date** → discard the task with note: `Skipped Task {ID} — no valid When: date in description.`
-5. If multiple candidate tasks remain after filtering, keep using the "most recently changed, not Removed" rule from Step 2.
+   - **Mismatch** → discard the task with note: `Skipped Task {ID} — When: {parsedDate} ≠ today ({pstToday}).`
+   - **No `When:` line found** or **unparseable date** → discard with note: `Skipped Task {ID} — no Start Date and no valid When: date.`
+4. If multiple candidate tasks remain after filtering, keep using the "most recently changed, not Removed" rule from Step 2.
 
-### Step 2.6 — Business Scenario ancestry filter (BS #40568 only)
+### Step 2.6 — Business Scenario ancestry (dynamic — build the BS table)
 
-The Co-Marketing daily status reports **only** on work belonging to Business Scenario **#40568** — `Co-Marketing v1.2 — Investment & Pipeline Reporting Enhancements`. Tasks that pass Step 2.5 but live under a different Business Scenario (e.g., the `FY26 Adhoc Items` Project) must be excluded.
+There is **no** fixed Business-Scenario filter (the old BS #40568 lock was removed 2026-06-29). Every assignee's genuine today-dated task is in scope, and the **Business Scenario table is built from whatever Business Scenarios those tasks roll up to**.
 
 For each task that survived Step 2.5:
 
 1. Walk the parent chain upward using `System.Parent`:
    - Start at the task itself.
-   - Repeatedly fetch the parent via `mcp_microsoft_azu_wit_get_work_items_batch_by_ids` (or `get_work_item`) with `fields: ['System.Id', 'System.WorkItemType', 'System.Parent']`.
+   - Repeatedly fetch the parent via `mcp_microsoft_azu_wit_get_work_items_batch_by_ids` (or `get_work_item`) with `fields: ['System.Id', 'System.WorkItemType', 'System.Parent', 'System.Title']`.
    - Stop when one of:
-     - The current item's `System.WorkItemType` is **`Business Scenario`** — record its ID.
+     - The current item's `System.WorkItemType` is **`Business Scenario`** — record its ID + Title.
      - The current item has **no parent** (top of chain) — record `None`.
      - You exceed **8** hops (safety cap against pathological loops) — record `None`.
+   - **Note:** a task's parent may be the Business Scenario **directly** (no Scenario Detail layer) — that's valid (e.g., a task under a `POSOT Backlog` BS). Record the BS as usual.
 2. Batch-fetch parents to minimize round-trips: collect the unique parent IDs across all today's tasks first, fetch them in one batch, then climb level-by-level until every chain terminates.
-3. Decision:
-   - Ancestor Business Scenario ID **== 40568** → keep the task.
-   - Ancestor Business Scenario ID **!= 40568** or `None` → **discard** the task. Log: `Skipped Task {ID} — ancestor BS {found or 'none'} ≠ 40568.`
-4. After this step, the **"today's accepted tasks"** set used by Step 3 (comments), Step 3.5 (KPIs), Step 5 (grid + confirmation), and Step 6a (template substitution) is the **post-Step-2.6** set.
-5. If an assignee has zero tasks left after Step 2.6, their row in Step 6a is `NA` (same behavior as Step 2.5 dropout).
+3. **Build the BS set:** collect the **distinct** Business Scenarios recorded across all accepted tasks (by ID). This distinct set populates `{{BUSINESS_SCENARIO_ROWS}}` in Step 6a — one row per Business Scenario, ordered by ID ascending. Tasks with ancestor `None` contribute no BS row (note them in the skip log).
+4. The **"today's accepted tasks"** set used by Step 3 (comments), Step 3.5 (KPIs), Step 5 (grid + confirmation), and Step 6a (template substitution) is the full Step-2.5 set — **no task is dropped for which Business Scenario it belongs to**.
+5. If an assignee has zero today-dated tasks, their row in Step 6a is `NA`. Per the RCA guardrail, do **not** substitute a stale task that was merely closed today with an older date.
 
-> **Why fixed to #40568:** the CoMarketing daily status email is scoped to the v1.2 Investment & Pipeline Reporting Enhancements scenario. Adhoc/cross-project tasks (e.g., Partner Sharing banner work under Project #23009) belong in different status streams and must not bleed into this email. If the scope changes, update this Business Scenario ID **and** the version-history row — do not silently widen the filter.
+> **Milestone pills are a proposal:** the BS table's milestone columns (Story Clear / Approach Accepted / Dev/Test Complete / UAT Ready / Go-Live) are **not** stored in ADO. Derive a sensible default from the BS state + child progress and confirm/adjust with the user in Step 5. **Each pill must render with an exact Status Legend label and color** — `Completed` (`#DEF0FD`/`#005A9E`), `On Track` (`#DFF6DD`/`#107C10`), `Not Started` (`#E8E8E8`/`#595959`), `Recoverable Delay` (`#FFF4CE`/`#87640F`), `Irrecoverable Delay` (`#FDE7E9`/`#A80000`), or `On Hold` (`#FCE4CE`/`#8E562E`) — never ad-hoc labels like "Done" or "In Progress". Stream labels (e.g., DRACR / PRACR / POSOT) are likewise proposed from the task tags / BS title.
 
-> **Why:** ADO `ChangedDate` reflects any field touch — links, state, area path. The `When:` line in the description is the team's authoritative "this is the day this work belongs to" marker. Trust `When:` over `ChangedDate` for status-email accuracy.
+> **Why:** ADO `ChangedDate` reflects any field touch — links, state, area path. The **Start Date** field (with the `When:` line as fallback) is the team's authoritative "this is the day this work belongs to" marker. Trust Start Date / `When:` over `ChangedDate` for status-email accuracy.
 
 **Reference computation snippet (PowerShell, for clarity):**
 
@@ -212,9 +235,9 @@ $candidateStartUtc = [System.TimeZoneInfo]::ConvertTimeToUtc($candidateStart, $t
 $candidateEndUtc   = [System.TimeZoneInfo]::ConvertTimeToUtc($candidateEnd,   $tz).ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ")
 ```
 
-### Step 2.7 — Fetch Scenario Details (children) under BS #40568
+### Step 2.7 — (Optional) Scenario Details table — currently DISABLED
 
-The **Scenario Details Status** table reports every `Scenario Detail` work item that is a **child of Business Scenario #40568** — independent of today's task activity. Render the full list every time the email is drafted.
+> The **Scenario Details Status** section is currently **commented out** in `assets/email-template.html` (wrapped in `BEGIN_SCENARIO_DETAILS_DISABLED`). If re-enabled, it lists every `Scenario Detail` child of the **distinct Business Scenarios discovered in Step 2.6** (not a fixed BS) — independent of today's task activity. Until then, `{{SCENARIO_DETAILS_ROWS}}` renders to empty and this step is skipped.
 
 1. Fetch Business Scenario #40568 with relations:
    - `mcp_microsoft_azu_wit_get_work_item` with `id: 40568`, `expand: 'Relations'`.
@@ -256,7 +279,7 @@ For each Task ID accepted by Step 2.5 **and** Step 2.6:
 
 ### Step 3.5 — Compute KPI Metrics
 
-Using the same set of today's accepted tasks for Adarsh, Prince, **and** Chetan (the union of all three assignees' tasks that passed Step 2.5 **and** Step 2.6):
+Using the same set of today's accepted tasks for Adarsh, Prince, Arham, Chetan, **and** Harshit (the union of all five assignees' tasks that passed Step 2.5):
 
 1. Re-fetch each task with fields:
    - `System.State`
@@ -276,7 +299,7 @@ Using the same set of today's accepted tasks for Adarsh, Prince, **and** Chetan 
    | **AI Hours Saved** | `SUM(OriginalEstimate) − SUM(CompletedWork)`. Treat missing fields as `0`. If the result is negative, clamp to `0`. | `<n>h` — drop trailing `.0`; keep up to 2 decimals otherwise (e.g. `6h`, `2.5h`). |
    | **Efficiency %** | `(AI_HOURS_SAVED / SUM(CompletedWork)) × 100`, rounded to **2 decimals**. If `SUM(CompletedWork) == 0`, emit `0.00%`. | `<n.nn>%` (e.g. `35.29%`). |
 
-3. **No-tasks fallback**: if all three assignees are `NA` (no accepted tasks at all), substitute every KPI token with `-` (single dash) — matches the unfilled template look.
+3. **No-tasks fallback**: if all five assignees are `NA` (no accepted tasks at all), substitute every KPI token with `-` (single dash) — matches the unfilled template look.
 
 4. Carry the five computed values into Step 6a where they replace the new tokens `{{SP_TODAY}}`, `{{TASKS_CLOSED}}`, `{{TASKS_ACTIVE}}`, `{{AI_HOURS_SAVED}}`, `{{EFFICIENCY_PCT}}`.
 
@@ -284,14 +307,14 @@ Using the same set of today's accepted tasks for Adarsh, Prince, **and** Chetan 
 
 ### Step 4 — Synthesize Executive Summary bullets
 
-From the combined comments across all three assignees' tasks:
+From the combined comments across all five assignees' tasks:
 
 - Produce **one-liner** bullets (no multi-clause sentences).
 - **Consolidate** related points (e.g., two comments both about "fixed UI bug X" → one bullet). This is **mandatory**, not optional.
 - Keep tone executive: outcome-focused, past tense, no jargon padding.
 - Target 3–6 bullets. Never exceed 8.
 - Do **not** prefix with names — these are accomplishments of the team for the day.
-- **No-activity fallback**: if all three assignees are `NA` AND there are no comments at all, emit exactly one bullet: `No status updates available for today — placeholder draft.` Then SKIP Step 5 (no confirmation needed) and proceed directly to Step 6.
+- **No-activity fallback**: if all five assignees are `NA` AND there are no comments at all, emit exactly one bullet: `No status updates available for today — placeholder draft.` Then SKIP Step 5 (no confirmation needed) and proceed directly to Step 6.
 
 #### Consolidation self-check (run before presenting bullets in Step 5)
 
@@ -317,7 +340,9 @@ Here is what I'll put into today's status email — please confirm both sections
 Tasks for the grid:
   • Adarsh: Task <ID> — <Title> (<State>)   ← or "NA"
   • Prince: Task <ID> — <Title> (<State>)   ← or "NA"
+  • Arham: Task <ID> — <Title> (<State>)   ← or "NA"
   • Chetan: Task <ID> — <Title> (<State>)   ← or "NA"
+  • Harshit: Task <ID> — <Title> (<State>)   ← or "NA"
 
 Executive Summary bullets:
   1. <bullet 1>
@@ -343,16 +368,20 @@ Wait for the user's reply.
 #### 6a — Render the body HTML
 
 1. Load `assets/email-template.html`.
-2. Substitute the thirteen tokens (`EXEC_SUMMARY_LIS`, `ADARSH_TASK_ROW_INNER`, `PRINCE_TASK_ROW_INNER`, `CHETAN_TASK_ROW_INNER`, `ADARSH_TASK_STATUS`, `PRINCE_TASK_STATUS`, `CHETAN_TASK_STATUS`, `SP_TODAY`, `TASKS_CLOSED`, `TASKS_ACTIVE`, `AI_HOURS_SAVED`, `EFFICIENCY_PCT`, `SCENARIO_DETAILS_ROWS`).
-3. Task link pattern for the row tokens:
+2. Substitute the nine tokens (`EXEC_SUMMARY_LIS`, `TODAYS_TASKS_ROWS`, `SP_TODAY`, `TASKS_CLOSED`, `TASKS_ACTIVE`, `AI_HOURS_SAVED`, `EFFICIENCY_PCT`, `BUSINESS_SCENARIO_ROWS`, `SCENARIO_DETAILS_ROWS`).
+3. **Build `{{TODAYS_TASKS_ROWS}}` dynamically — one `<tr>` per assignee WHO HAS a selected task**, in roster order (Adarsh → Prince → Arham → Chetan → Harshit), **skipping any assignee with no task** (the NA-omit rule; never emit an `NA` row). Zebra-stripe by render position: the status `<td>` always keeps its legend color, and for **even** rows (2nd, 4th, …) prepend `background-color:rgb(250,250,250); ` to the other three `<td>` style attributes (odd rows stay white). White-row template (substitute `{TASK_INNER}`, `{NAME}`, `{STATE}`, `{BG}`, `{FG}`):
+
+   ```html
+   <tr><td style="padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:13px; color:rgb(51,51,51); text-align:left; vertical-align:top; width:55%">{TASK_INNER}</td><td bgcolor="{BG}" style="background-color:{BG}; mso-background-themecolor:none; color:{FG}; mso-color-alt:none; padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:12px; font-weight:600; text-align:center; vertical-align:middle; width:15%"><font color="{FG}">{STATE}</font></td><td style="padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:13px; color:rgb(51,51,51); text-align:center; vertical-align:top; width:15%">{NAME}</td><td style="padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:13px; color:rgb(51,51,51); text-align:center; vertical-align:top; width:15%">NA</td></tr>
+   ```
+
+   `{TASK_INNER}` = Task ID + title link:
 
    ```html
    <a href="https://dev.azure.com/MCAPSDataEngineering/Global%20Partner%20Solutions/_workitems/edit/{ID}" target="_blank" style="color:rgb(0,120,212); text-decoration:none"><b>Task {ID}</b></a>: {TITLE}
    ```
 
-   If no task found → just plain text `NA`.
-
-4. Status tokens (`ADARSH_TASK_STATUS`, `PRINCE_TASK_STATUS`, `CHETAN_TASK_STATUS`) → write the ADO `System.State` string verbatim (`Active`, `Closed`, `New`, etc.). The neutral cell palette in the template is kept; do not attempt to modify the bgcolor through the token.
+4. `{STATE}` = ADO `System.State`; map `{BG}`/`{FG}` via the **Status Legend**: `Closed`/`Resolved` → Completed (`#DEF0FD`/`#005A9E`), `Active` → On Track (`#DFF6DD`/`#107C10`), `New` → Not Started (`#E8E8E8`/`#595959`). NA assignees are omitted, so no `—`/grey NA cell is produced. If **every** assignee is empty, emit one full-width row instead: `<tr><td colspan="4" style="padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:13px; color:rgb(120,120,120); text-align:center">No tasks logged today</td></tr>`.
 5. **Scenario Details row template** (one per child Scenario Detail from Step 2.7). Substitute `{ID}`, `{TITLE}`, `{ASSIGNED}`, `{SP_ALLOC}`, `{SP_DONE}`, `{STATE}`, `{BG}`, `{FG}` per the Step 2.7 mapping. Missing numeric fields → render `-`. Missing assignee → `Unassigned`.
 
    ```html
@@ -363,7 +392,7 @@ Wait for the user's reply.
 
 #### 6b — Build the subject
 
-`Co-Marketing Daily Status Update as of {LongDate}` (no trailing space — New Outlook strips it from the window title and `compose-draft-v4.ps1` does a strict equality match).
+`[CoSell]: Status mail as on {LongDate}` (no trailing space — New Outlook strips it from the window title and `compose-draft-v4.ps1` does a strict equality match).
 
 #### 6c — Warmup → close warmup → compose the real draft (UI automation)
 
@@ -380,7 +409,7 @@ Run, in order, via `run_in_terminal` with PowerShell `-STA`:
 ```pwsh
 pwsh -STA -NoProfile -File $env:TEMP\close-compose.ps1
 pwsh -STA -NoProfile -File $env:TEMP\warmup-outlook.ps1
-pwsh -STA -NoProfile -File $env:TEMP\compose-draft-v4.ps1 -Subject "<built subject>" -To "<to;list>" -Cc "<cc;list>" -BodyHtmlPath "$env:TEMP\draft-body-with-sig.html"
+pwsh -STA -NoProfile -File $env:TEMP\compose-draft-v4.ps1 -Subject "<built subject>" -To "<to;list>" -Cc "<cc;list>" -BodyFile "$env:TEMP\draft-body-with-sig.html"
 ```
 
 If the compose script fails (e.g., `Compose window not found` or empty body), close any stragglers via `close-compose.ps1` and re-run warmup + compose once. Do not loop indefinitely.
@@ -422,7 +451,9 @@ Include a small summary table of what was filled in:
 | Subject date | {LongDate} |
 | Adarsh task | Task {ID} — {state} (or `NA`) |
 | Prince task | Task {ID} — {state} (or `NA`) |
+| Arham task | Task {ID} — {state} (or `NA`) |
 | Chetan task | Task {ID} — {state} (or `NA`) |
+| Harshit task | Task {ID} — {state} (or `NA`) |
 | Exec bullets | {N} |
 
 ---
@@ -432,7 +463,7 @@ Include a small summary table of what was filled in:
 | Failure | Behavior |
 |---------|----------|
 | WIQL returns no tasks for an assignee | Use `NA` in that row, continue. |
-| Task has no Discussion comments today | Skip that task in synthesis; if all three have none, ask user to provide bullets manually before drafting. |
+| Task has no Discussion comments today | Skip that task in synthesis; if all five have none, ask user to provide bullets manually before drafting. |
 | Mail tool fails | Report the error verbatim; do not retry automatically; do not send. |
 | Template asset missing | Abort with a clear message: `Template missing at assets/email-template.html — restore the file before drafting.` |
 | Helper script missing in `%TEMP%` (`close-compose.ps1`, `warmup-outlook.ps1`, `compose-draft-v4.ps1`) | Abort with a clear message naming the missing file; do not attempt to recreate silently. The scripts encode hard-won WebView2/UIA quirks; ask the user to restore them from the daily-status-mail-drafter conversation transcript. |
@@ -448,6 +479,7 @@ Include a small summary table of what was filled in:
 | Step | Tool |
 |------|------|
 | 2 | `mcp_microsoft_azu_wit_query_by_wiql`, `mcp_microsoft_azu_wit_get_work_items_batch_by_ids` |
+| 2.5 | `mcp_microsoft_azu_wit_get_work_item` (fields: `Microsoft.VSTS.Scheduling.StartDate`, `System.Description`) — Start Date primary, `When:` fallback |
 | 2.6 | `mcp_microsoft_azu_wit_get_work_items_batch_by_ids` (fields: `System.WorkItemType`, `System.Parent`) — climb parent chain until `Business Scenario` or root |
 | 3 | `mcp_microsoft_azu_wit_list_work_item_comments` |
 | 3.5 | `mcp_microsoft_azu_wit_get_work_items_batch_by_ids` (fields: `System.State`, `System.Parent`, `Microsoft.VSTS.Scheduling.OriginalEstimate`, `Microsoft.VSTS.Scheduling.CompletedWork`) |

@@ -1,0 +1,1212 @@
+- generic [ref=e3]:
+  - list [ref=e5]:
+    - listitem
+    - listitem
+    - listitem [ref=e6]:
+      - generic [ref=e8] [cursor=pointer]: Skip to main content
+  - banner [ref=e12]:
+    - generic [ref=e13]:
+      - button "App launcher" [ref=e15] [cursor=pointer]:
+        - img [ref=e18]
+      - link "Go to your default landing page" [ref=e21] [cursor=pointer]
+      - button "Cosell_Gold_HistoryAHRFeedAudit, Confidential\\Internal Only" [ref=e23] [cursor=pointer]:
+        - generic [ref=e24]: Cosell_Gold_HistoryAHRFeedAudit
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - img [ref=e32]
+            - img [ref=e35]
+          - generic [ref=e37]: Confidential\Internal Only
+        - img [ref=e40]: 
+    - generic [ref=e42]:
+      - img [ref=e44]
+      - textbox "Global search" [ref=e46]:
+        - /placeholder: Search
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - button "Focus mode" [ref=e50] [cursor=pointer]:
+          - img [ref=e53]
+        - button "Notifications" [ref=e55] [cursor=pointer]:
+          - img [ref=e58]
+          - generic [ref=e60]: "13"
+        - button "Settings" [ref=e61] [cursor=pointer]:
+          - img [ref=e64]
+        - button "Download" [ref=e66] [cursor=pointer]:
+          - img [ref=e69]
+        - button "Help & Support" [ref=e219] [cursor=pointer]:
+          - img [ref=e222]
+        - button "Help improve Fabric (preview)" [ref=e224] [cursor=pointer]:
+          - img [ref=e227]
+      - button "Account manager for" [ref=e78] [cursor=pointer]
+  - generic [ref=e87]:
+    - navigation [ref=e90]:
+      - menu "Sidebar" [ref=e91]:
+        - generic [ref=e92]:
+          - menuitem "Home" [ref=e94] [cursor=pointer]:
+            - generic [ref=e95]:
+              - img [ref=e97]
+              - generic [ref=e99]: Home
+          - generic [ref=e100]:
+            - menuitem "Copilot" [ref=e101] [cursor=pointer]:
+              - generic [ref=e104]: Copilot
+            - menuitem "Unpin Copilot" [ref=e105] [cursor=pointer]:
+              - img [ref=e108]
+          - generic [ref=e110]:
+            - menuitem "Create" [ref=e111] [cursor=pointer]:
+              - generic [ref=e112]:
+                - img [ref=e114]
+                - generic [ref=e116]: Create
+            - menuitem "Unpin Create" [ref=e117] [cursor=pointer]:
+              - img [ref=e120]
+          - generic [ref=e122]:
+            - menuitem "OneLake catalog" [ref=e123] [cursor=pointer]:
+              - generic [ref=e124]:
+                - img [ref=e126]
+                - generic [ref=e128]: OneLake catalog
+            - menuitem "Unpin OneLake catalog" [ref=e129] [cursor=pointer]:
+              - img [ref=e132]
+          - generic [ref=e134]:
+            - menuitem "Apps" [ref=e135] [cursor=pointer]:
+              - generic [ref=e136]:
+                - img [ref=e138]
+                - generic [ref=e140]: Apps
+            - menuitem "Unpin Apps" [ref=e141] [cursor=pointer]:
+              - img [ref=e144]
+          - generic [ref=e146]:
+            - menuitem "Scorecards" [ref=e147] [cursor=pointer]:
+              - generic [ref=e148]:
+                - img [ref=e150]
+                - generic [ref=e152]: Scorecards
+            - menuitem "Unpin Scorecards" [ref=e153] [cursor=pointer]:
+              - img [ref=e156]
+          - separator [ref=e158]
+          - menuitem "Workspaces" [ref=e161] [cursor=pointer]:
+            - generic [ref=e162]:
+              - img [ref=e164]
+              - generic [ref=e166]: Workspaces
+          - menuitem "GPS_CoSell_Dev_Processing" [ref=e169] [cursor=pointer]:
+            - generic [ref=e173]: GPS_CoSell_Dev_Processing
+          - generic [ref=e174]:
+            - separator [ref=e175]
+            - menuitem "Cosell_Gold_HistoryAHRFeedAudit - GPS_CoSell_Dev_Processing" [ref=e178] [cursor=pointer]:
+              - generic [ref=e179]:
+                - button [ref=e180]:
+                  - generic "Close" [ref=e181]:
+                    - img [ref=e183]
+                - img [ref=e236]
+                - generic [ref=e186]: Cosell_Gold_HistoryAHRFeedAudit
+            - menuitem "More options" [ref=e188] [cursor=pointer]:
+              - img [ref=e191]
+        - menuitem "Power BI" [ref=e196] [cursor=pointer]:
+          - generic [ref=e199]: Power BI
+    - main [ref=e201]:
+      - iframe [active] [ref=e207]:
+        - generic [ref=f21e1]:
+          - generic [ref=f21e9]:
+            - generic [ref=f21e11]:
+              - generic [ref=f21e12]:
+                - tablist [ref=f21e13]:
+                  - tab "Home" [selected] [ref=f21e15] [cursor=pointer]:
+                    - generic [ref=f21e16]: Home
+                  - tab "Edit" [ref=f21e17] [cursor=pointer]:
+                    - generic [ref=f21e18]: Edit
+                  - tab "AI tools" [ref=f21e19] [cursor=pointer]:
+                    - generic [ref=f21e20]: AI tools
+                  - tab "Run" [ref=f21e21] [cursor=pointer]:
+                    - generic [ref=f21e22]: Run
+                  - tab "View" [ref=f21e23] [cursor=pointer]:
+                    - generic [ref=f21e24]: View
+                - generic [ref=f21e29]:
+                  - button "Comments" [ref=f21e30]:
+                    - img [ref=f21e32]
+                    - text: Comments
+                  - button "History" [ref=f21e34]:
+                    - img [ref=f21e36]
+                    - text: History
+                  - button "Develop" [ref=f21e38]:
+                    - button "Develop" [ref=f21e39]:
+                      - img [ref=f21e41]
+                      - text: Develop
+                      - img [ref=f21e44]
+                  - button "Share" [ref=f21e46]:
+                    - img [ref=f21e48]
+                    - text: Share
+                  - generic [ref=f21e52]:
+                    - generic:
+                      - generic [ref=f21e53]: To move through the items use left and right arrow keys
+                      - generic:
+                        - list "List of collaborators"
+                    - button "Co-editing Collaborate in real time automatically when two or more people open the same notebook." [ref=f21e54] [cursor=pointer]:
+                      - generic [ref=f21e56]: 
+              - toolbar [ref=f21e58]:
+                - button "Save as" [ref=f21e60]:
+                  - img [ref=f21e62]
+                - button "Download as" [ref=f21e65]:
+                  - img [ref=f21e67]
+                - button "Settings" [ref=f21e69]:
+                  - img [ref=f21e71]
+                - separator [ref=f21e73]
+                - button "Cancel all" [ref=f21e3126]:
+                  - button "Cancel all" [ref=f21e3127]:
+                    - img [ref=f21e3128]
+                    - text: Cancel all
+                  - button "Cancel all" [ref=f21e3130]:
+                    - img [ref=f21e82]
+                - separator [ref=f21e84]
+                - button "Standard session" [ref=f21e86]:
+                  - img [ref=f21e88]
+                  - generic [ref=f21e90]: Standard session
+                  - img [ref=f21e92]
+                - button "Stop session" [ref=f21e94]:
+                  - img [ref=f21e96]
+                - separator [ref=f21e98]
+                - button "Language" [ref=f21e100]:
+                  - img [ref=f21e102]
+                  - text: PySpark (Python)
+                  - img [ref=f21e105]
+                - generic "Environment" [ref=f21e107]:
+                  - generic [ref=f21e108]: Environment
+                  - button "Set default environment" [ref=f21e109]:
+                    - generic [ref=f21e110]: Workspace default
+                    - img [ref=f21e112]
+                - separator [ref=f21e114]
+                - button "Data Wrangler" [ref=f21e117]:
+                  - img [ref=f21e119]
+                  - text: Data Wrangler
+                  - img [ref=f21e123]
+                - separator [ref=f21e125]
+                - button "New AutoML run" [ref=f21e126]:
+                  - img [ref=f21e128]
+                - button "Add to pipeline" [ref=f21e131]:
+                  - img [ref=f21e133]
+                - button "Open in VS Code" [ref=f21e135]:
+                  - button "Open in VS Code" [ref=f21e136]:
+                    - button "Open in VS Code" [ref=f21e138]:
+                      - img [ref=f21e140]
+                - separator [ref=f21e142]
+                - button "Notebook Copilot" [ref=f21e143]:
+                  - img [ref=f21e145]
+                  - text: Copilot
+            - generic [ref=f21e153]:
+              - button
+              - generic [ref=f21e154]:
+                - generic [ref=f21e155]:
+                  - generic [ref=f21e157]:
+                    - generic [ref=f21e158]:
+                      - generic [ref=f21e159]: Explorer
+                      - button "Collapse" [ref=f21e161]:
+                        - img [ref=f21e163]
+                    - tablist [ref=f21e165]:
+                      - tab "Data items" [selected] [ref=f21e167] [cursor=pointer]:
+                        - img [ref=f21e169]
+                        - generic [ref=f21e171]: Data items
+                      - button "Resources" [ref=f21e172] [cursor=pointer]:
+                        - img [ref=f21e174]
+                        - generic [ref=f21e176]: Resources
+                      - tab "Connections" [ref=f21e177] [cursor=pointer]:
+                        - img [ref=f21e179]
+                        - generic [ref=f21e181]: Connections
+                    - generic [ref=f21e188]:
+                      - img [ref=f21e190]
+                      - generic [ref=f21e196]: No data sources added
+                      - button "Add data items" [ref=f21e197]:
+                        - text: Add data items
+                        - img [ref=f21e199]
+                  - separator [ref=f21e202]
+                  - generic [ref=f21e207]:
+                    - region "Notebook content. Press Ctrl + Alt + B to use shortcuts optimized for screen readers" [ref=f21e226]:
+                      - region "Code cell at position 1 of 23" [ref=f21e2914]:
+                        - generic [ref=f21e2925]:
+                          - progressbar [ref=f21e3135]
+                          - generic [ref=f21e2928]:
+                            - generic [ref=f21e2931]:
+                              - generic [ref=f21e2933]:
+                                - group "Cancel cell" [ref=f21e3136]:
+                                  - generic [ref=f21e2937]:
+                                    - button "Cancel cell" [ref=f21e3137] [cursor=pointer]:
+                                      - generic [ref=f21e3141]: 
+                                    - button "Additional commands" [ref=f21e2940] [cursor=pointer]:
+                                      - generic [ref=f21e2942]: 
+                                - generic "This cell is running" [ref=f21e3142]: "[*]"
+                              - generic [ref=f21e2945]:
+                                - code [ref=f21e2953]:
+                                  - generic [ref=f21e2954]:
+                                    - textbox "Editor content;Press Alt+F1 in a cell to get a list of accessibility options" [active] [ref=f21e2955]: ad.format('delta').load(base+'/Config/sourcetabledeltaversion').where("TableLocation='Silver/HistoryAHRFeedAuditHistory'").collect()) print('=== SILVER latest coverage ===') spark.read.format('delta').load(base+'/Silver/HistoryAHRFeedAuditHistory').groupBy('FMCloseDate').count().orderBy('FMCloseDate').show(200, False) print('=== GOLD coverage @ '+gps+' ===') spark.read.format('delta').load(base+'/'+gps+'/HistoryAHRFeedAudit').groupBy('FMCloseDate').count().orderBy('FMCloseDate').show(200, False)
+                                    - generic [ref=f21e2958]:
+                                      - generic [ref=f21e3038]: "1"
+                                      - generic [ref=f21e3040]: "2"
+                                      - generic [ref=f21e3042]: "3"
+                                      - generic [ref=f21e3044]: "4"
+                                      - generic [ref=f21e3046]: "5"
+                                      - generic [ref=f21e3048]: "6"
+                                      - generic [ref=f21e3050]: "7"
+                                      - generic [ref=f21e3052]: "8"
+                                      - generic [ref=f21e3054]: "9"
+                                      - generic [ref=f21e3056]: "10"
+                                      - generic [ref=f21e3058]: "11"
+                                      - generic [ref=f21e3061]: "12"
+                                    - generic [ref=f21e2964]:
+                                      - generic [ref=f21e3100]: wsid='58a8f3f2-8d21-4130-9fc9-b862cdb1d0dd'
+                                      - generic [ref=f21e3102]: lhid='5357a9dd-0c50-4742-81fc-9f5e53c2aea0'
+                                      - generic [ref=f21e3104]: base='abfss://'+wsid+'@msit-onelake.dfs.fabric.microsoft.com/'+lhid+'/Tables'
+                                      - generic [ref=f21e3106]: import sempy.fabric as fabric
+                                      - generic [ref=f21e3108]: print('WORKSPACE_NAME=', fabric.resolve_workspace_name(wsid))
+                                      - generic [ref=f21e3110]: gps=spark.read.format('delta').load(base+'/CoSellGold/PublishSchema').select('PublishSchema').collect()[0][0]
+                                      - generic [ref=f21e3112]: print('GOLD_PUBLISH_SCHEMA=', gps)
+                                      - generic [ref=f21e3114]: print('PINNED_VER=', spark.read.format('delta').load(base+'/Config/sourcetabledeltaversion').where("TableLocation='Silver/HistoryAHRFeedAuditHistory'").collect())
+                                      - generic [ref=f21e3092]: print('=== SILVER latest coverage ===')
+                                      - generic [ref=f21e3116]: spark.read.format('delta').load(base+'/Silver/HistoryAHRFeedAuditHistory').groupBy('FMCloseDate').count().orderBy('FMCloseDate').show(200, False)
+                                      - generic [ref=f21e3118]: print('=== GOLD coverage @ '+gps+' ===')
+                                      - generic [ref=f21e3123]: spark.read.format('delta').load(base+'/'+gps+'/HistoryAHRFeedAudit').groupBy('FMCloseDate').count().orderBy('FMCloseDate').show(200, False)
+                                - generic [ref=f21e2969]:
+                                  - generic [ref=f21e3143]:
+                                    - generic [ref=f21e3144]:
+                                      - img "Running" [ref=f21e3145]: 
+                                      - generic [ref=f21e3146]: 52 sec
+                                    - generic [ref=f21e3151]: "- Running"
+                                  - button "PySpark (Python)" [ref=f21e2972] [cursor=pointer]:
+                                    - generic [ref=f21e2973]:
+                                      - generic [ref=f21e2975]: PySpark (Python)
+                                      - generic [ref=f21e2976]: 
+                                - menubar "Use left and right arrow keys to navigate between commands" [ref=f21e2981]:
+                                  - group [ref=f21e2982]:
+                                    - menuitem "Ask help from Copilot (preview)" [ref=f21e2983] [cursor=pointer]:
+                                      - img [ref=f21e2986]
+                                    - menuitem "Expand this cell to fill the notebook screen" [ref=f21e2988] [cursor=pointer]:
+                                      - generic [ref=f21e2990]: 
+                                    - menuitem "Convert to markdown cell" [ref=f21e2991] [cursor=pointer]:
+                                      - generic [ref=f21e2993]: 
+                                    - menuitem "Clear output" [ref=f21e2994] [cursor=pointer]:
+                                      - generic [ref=f21e2996]: 
+                                    - menuitem "Save as view" [disabled] [ref=f21e2997]:
+                                      - generic [ref=f21e2999]: 
+                                    - menuitem "More commands" [ref=f21e3001] [cursor=pointer]:
+                                      - generic [ref=f21e3003]: 
+                                  - group [ref=f21e3004]:
+                                    - menuitem "Delete cell" [ref=f21e3005] [cursor=pointer]:
+                                      - generic [ref=f21e3007]: 
+                            - generic [ref=f21e3152]:
+                              - generic [ref=f21e3162]:
+                                - button "Button Collapsed" [ref=f21e3164]:
+                                  - img [ref=f21e3166]
+                                - menubar [ref=f21e3190]:
+                                  - menuitem "Spark jobs (9 of 9 succeeded)" [ref=f21e3228]:
+                                    - img [ref=f21e3193]
+                                    - generic [ref=f21e3213]: Spark jobs (9 of 9 succeeded)
+                                  - menuitem "Resources" [ref=f21e3214]:
+                                    - img [ref=f21e3216]
+                                    - generic [ref=f21e3218]: Resources
+                                  - menuitem "Log" [ref=f21e3219]:
+                                    - img [ref=f21e3221]
+                                    - generic [ref=f21e3223]: Log
+                                  - menuitem "More actions" [ref=f21e3225] [cursor=pointer]:
+                                    - generic [ref=f21e3227]: 
+                              - generic [ref=f21e3168]:
+                                - button "Output menu" [ref=f21e3171] [cursor=pointer]:
+                                  - generic [ref=f21e3173]: 
+                                - code [ref=f21e3178]: WORKSPACE_NAME= GPS_CoSell_Prod_Processing GOLD_PUBLISH_SCHEMA= CoSellGold2026070201 PINNED_VER= [Row(TableLocation='Silver/HistoryAHRFeedAuditHistory', Version=0)] === SILVER latest coverage === +-----------+-------+ |FMCloseDate|count | +-----------+-------+ |2023-07-31 |108343 | |2023-08-31 |220517 | |2023-09-30 |383175 | |2023-10-31 |533023 | |2023-11-30 |689471 | |2023-12-31 |823871 | |2024-01-31 |999819 | |2024-02-29 |1202982| |2024-03-31 |1393900| |2024-04-30 |1581547| |2024-05-31 |1791662| |2024-07-31 |202874 | |2024-09-30 |660676 | |2024-10-31 |2644134| |2024-11-30 |1119014| |2024-12-31 |4079254| |2025-01-31 |3213778| |2025-02-28 |3674348| |2025-03-31 |5912056| |2025-04-30 |4661507| |2025-05-31 |1277334| |2025-06-30 |5902550| +-----------+-------+ === GOLD coverage @ CoSellGold2026070201 ===
+                      - region "Markdown cell at position 2 of 23" [ref=f21e3012]:
+                        - generic [ref=f21e243]:
+                          - button "Folding toggle" [expanded] [ref=f21e247] [cursor=pointer]:
+                            - generic [ref=f21e249]: 
+                          - iframe [ref=f21e258]:
+                            - generic [ref=f22e4]:
+                              - heading "Revision History:" [level=6] [ref=f22e5]
+                              - table [ref=f22e6]:
+                                - rowgroup [ref=f22e7]:
+                                  - row "Date Author Description Execution Time" [ref=f22e8]:
+                                    - columnheader "Date" [ref=f22e9]
+                                    - columnheader "Author" [ref=f22e10]
+                                    - columnheader "Description" [ref=f22e11]
+                                    - columnheader "Execution Time" [ref=f22e12]
+                                - rowgroup [ref=f22e13]:
+                                  - row "April 22, 2026 v-skandwal Added readHeavyForPBI resource profile config 2 mins" [ref=f22e14]:
+                                    - cell "April 22, 2026" [ref=f22e15]
+                                    - cell "v-skandwal" [ref=f22e16]
+                                    - cell "Added readHeavyForPBI resource profile config" [ref=f22e17]
+                                    - cell "2 mins" [ref=f22e18]
+                      - region "Code cell at position 3 of 23" [ref=f21e3013]:
+                        - generic [ref=f21e309]:
+                          - generic [ref=f21e316]:
+                            - code [ref=f21e324]:
+                              - generic [ref=f21e325]:
+                                - textbox "Editor content" [ref=f21e326]
+                                - generic [ref=f21e332]: "1"
+                                - generic [ref=f21e337]: spark.conf.set("spark.fabric.resourceProfile", "readHeavyForPBI")
+                            - generic [ref=f21e339]:
+                              - generic [ref=f21e345]: "- Command executed in 217 ms by Adarsh Devashish (MAQ LLC) on 7/3/2026, 11:24:47 AM"
+                              - button "PySpark (Python)" [ref=f21e348] [cursor=pointer]:
+                                - generic [ref=f21e349]:
+                                  - generic [ref=f21e351]: PySpark (Python)
+                                  - generic [ref=f21e352]: 
+                          - generic [ref=f21e363]:
+                            - button "Button Collapsed" [ref=f21e365]:
+                              - img [ref=f21e367]
+                            - menubar [ref=f21e373]:
+                              - menuitem "Log" [ref=f21e374]:
+                                - img [ref=f21e376]
+                                - generic [ref=f21e378]: Log
+                              - menuitem "More actions" [ref=f21e380] [cursor=pointer]:
+                                - generic [ref=f21e382]: 
+                      - region "Code cell at position 4 of 23" [ref=f21e3014]:
+                        - generic [ref=f21e409]:
+                          - generic [ref=f21e412]:
+                            - generic "This cell has an execution count of 2" [ref=f21e416]: "[2]"
+                            - generic [ref=f21e417]:
+                              - code [ref=f21e425]:
+                                - generic [ref=f21e426]:
+                                  - textbox "Editor content" [ref=f21e427]
+                                  - generic [ref=f21e433]: "1"
+                                  - generic [ref=f21e438]: "%run CommonUtilityFunctions"
+                              - generic [ref=f21e440]:
+                                - generic [ref=f21e441]:
+                                  - img "Finished" [ref=f21e443]: 
+                                  - generic [ref=f21e448]: "- Command executed in 47 sec 729 ms by Adarsh Devashish (MAQ LLC) on 7/3/2026, 11:13:27 AM"
+                                - button "PySpark (Python)" [ref=f21e451] [cursor=pointer]:
+                                  - generic [ref=f21e452]:
+                                    - generic [ref=f21e454]: PySpark (Python)
+                                    - generic [ref=f21e455]: 
+                          - generic [ref=f21e456]:
+                            - generic [ref=f21e466]:
+                              - button "Button Collapsed" [ref=f21e468]:
+                                - img [ref=f21e470]
+                              - menubar [ref=f21e476]:
+                                - menuitem "Spark jobs (14 of 14 succeeded)" [ref=f21e477]:
+                                  - img [ref=f21e479]
+                                  - generic [ref=f21e499]: Spark jobs (14 of 14 succeeded)
+                                - menuitem "Resources" [ref=f21e500]:
+                                  - img [ref=f21e502]
+                                  - generic [ref=f21e504]: Resources
+                                - menuitem "More actions" [ref=f21e506] [cursor=pointer]:
+                                  - generic [ref=f21e508]: 
+                            - generic [ref=f21e514]:
+                              - generic [ref=f21e521]:
+                                - generic [ref=f21e522]:
+                                  - generic [ref=f21e524]:
+                                    - tablist [ref=f21e525]:
+                                      - tab "Table" [selected] [ref=f21e527] [cursor=pointer]:
+                                        - img [ref=f21e529]
+                                        - generic [ref=f21e532]: Table
+                                    - status [ref=f21e534]
+                                  - button "New chart" [ref=f21e535]:
+                                    - img [ref=f21e537]
+                                    - text: New chart
+                                  - generic [ref=f21e540]:
+                                    - button "Filter" [ref=f21e541]:
+                                      - img [ref=f21e543]
+                                    - generic [ref=f21e546]: 2 columns, 1 rows
+                                - generic [ref=f21e547]:
+                                  - generic [ref=f21e548]:
+                                    - generic [ref=f21e549]:
+                                      - heading "Table view" [level=2] [ref=f21e551]
+                                      - generic [ref=f21e552]:
+                                        - button "Download" [ref=f21e553]:
+                                          - img [ref=f21e555]
+                                          - text: Download
+                                          - img [ref=f21e558]
+                                        - generic [ref=f21e561]:
+                                          - img [ref=f21e563]
+                                          - textbox "Filter by keyword" [ref=f21e565]
+                                    - grid [ref=f21e566]:
+                                      - generic:
+                                        - rowgroup:
+                                          - row "key value":
+                                            - generic [ref=f21e569]:
+                                              - columnheader [ref=f21e570]:
+                                                - img [ref=f21e575]
+                                                - separator [ref=f21e577]
+                                              - columnheader "key" [ref=f21e578]:
+                                                - generic [ref=f21e580]:
+                                                  - button "key" [ref=f21e581]:
+                                                    - img [ref=f21e583]
+                                                    - generic "key" [ref=f21e585]
+                                                  - menu [ref=f21e586]:
+                                                    - menuitem "key" [ref=f21e587]:
+                                                      - img [ref=f21e589]
+                                                - separator [ref=f21e591]
+                                              - columnheader "value" [ref=f21e592]:
+                                                - generic [ref=f21e594]:
+                                                  - button "value" [ref=f21e595]:
+                                                    - img [ref=f21e597]
+                                                    - generic "value" [ref=f21e599]
+                                                  - menu [ref=f21e600]:
+                                                    - menuitem "value" [ref=f21e601]:
+                                                      - img [ref=f21e603]
+                                                - separator [ref=f21e605]
+                                        - rowgroup:
+                                          - generic [ref=f21e607]:
+                                            - row "1 spark.gluten.sql.parquet.timestampType.scan.fallback.enabled true":
+                                              - gridcell "1" [ref=f21e608]:
+                                                - generic [ref=f21e611]: "1"
+                                              - gridcell "spark.gluten.sql.parquet.timestampType.scan.fallback.enabled" [ref=f21e612]:
+                                                - generic [ref=f21e615]: spark.gluten.sql.parquet.timestampType.scan.fallback.enabled
+                                              - gridcell "true" [ref=f21e616]:
+                                                - generic [ref=f21e619]: "true"
+                                  - generic [ref=f21e623]:
+                                    - button "Expand inspect panel" [ref=f21e625]:
+                                      - img [ref=f21e627]
+                                    - generic [ref=f21e630]: Inspect
+                              - generic [ref=f21e637]:
+                                - generic [ref=f21e638]:
+                                  - generic [ref=f21e640]:
+                                    - tablist [ref=f21e641]:
+                                      - tab "Table" [selected] [ref=f21e643] [cursor=pointer]:
+                                        - img [ref=f21e645]
+                                        - generic [ref=f21e648]: Table
+                                    - status [ref=f21e650]
+                                  - button "New chart" [ref=f21e651]:
+                                    - img [ref=f21e653]
+                                    - text: New chart
+                                  - generic [ref=f21e656]:
+                                    - button "Filter" [ref=f21e657]:
+                                      - img [ref=f21e659]
+                                    - generic [ref=f21e662]: 2 columns, 1 rows
+                                - generic [ref=f21e663]:
+                                  - generic [ref=f21e664]:
+                                    - generic [ref=f21e665]:
+                                      - heading "Table view" [level=2] [ref=f21e667]
+                                      - generic [ref=f21e668]:
+                                        - button "Download" [ref=f21e669]:
+                                          - img [ref=f21e671]
+                                          - text: Download
+                                          - img [ref=f21e674]
+                                        - generic [ref=f21e677]:
+                                          - img [ref=f21e679]
+                                          - textbox "Filter by keyword" [ref=f21e681]
+                                    - grid [ref=f21e682]:
+                                      - generic:
+                                        - rowgroup:
+                                          - row "key value":
+                                            - generic [ref=f21e685]:
+                                              - columnheader [ref=f21e686]:
+                                                - img [ref=f21e691]
+                                                - separator [ref=f21e693]
+                                              - columnheader "key" [ref=f21e694]:
+                                                - generic [ref=f21e696]:
+                                                  - button "key" [ref=f21e697]:
+                                                    - img [ref=f21e699]
+                                                    - generic "key" [ref=f21e701]
+                                                  - menu [ref=f21e702]:
+                                                    - menuitem "key" [ref=f21e703]:
+                                                      - img [ref=f21e705]
+                                                - separator [ref=f21e707]
+                                              - columnheader "value" [ref=f21e708]:
+                                                - generic [ref=f21e710]:
+                                                  - button "value" [ref=f21e711]:
+                                                    - img [ref=f21e713]
+                                                    - generic "value" [ref=f21e715]
+                                                  - menu [ref=f21e716]:
+                                                    - menuitem "value" [ref=f21e717]:
+                                                      - img [ref=f21e719]
+                                                - separator [ref=f21e721]
+                                        - rowgroup:
+                                          - generic [ref=f21e723]:
+                                            - row "1 spark.gluten.sql.parquet.dateType.scan.fallback.enabled true":
+                                              - gridcell "1" [ref=f21e724]:
+                                                - generic [ref=f21e727]: "1"
+                                              - gridcell "spark.gluten.sql.parquet.dateType.scan.fallback.enabled" [ref=f21e728]:
+                                                - generic [ref=f21e731]: spark.gluten.sql.parquet.dateType.scan.fallback.enabled
+                                              - gridcell "true" [ref=f21e732]:
+                                                - generic [ref=f21e735]: "true"
+                                  - generic [ref=f21e739]:
+                                    - button "Expand inspect panel" [ref=f21e741]:
+                                      - img [ref=f21e743]
+                                    - generic [ref=f21e746]: Inspect
+                              - code [ref=f21e747]: "GetPipelineStatus: (PipelineName: String, StreamName: String, Stage: String, workspaceid: String, lakehouseid: String)List[Int]"
+                              - code [ref=f21e748]: "SetPipelineStatus: (PipelineName: String, StreamName: String, Stage: String, workspaceid: String, lakehouseid: String)Unit"
+                      - region "Code cell at position 5 of 23" [ref=f21e3015]:
+                        - generic [ref=f21e770]:
+                          - generic [ref=f21e773]:
+                            - generic "This cell has an execution count of 49" [ref=f21e777]: "[49]"
+                            - generic [ref=f21e778]:
+                              - code [ref=f21e786]:
+                                - generic [ref=f21e787]:
+                                  - textbox "Editor content" [ref=f21e788]
+                                  - generic [ref=f21e791]:
+                                    - generic [ref=f21e794]: "1"
+                                    - generic [ref=f21e796]: "2"
+                                    - generic [ref=f21e798]: "3"
+                                    - generic [ref=f21e800]: "4"
+                                    - generic [ref=f21e802]: "5"
+                                  - generic [ref=f21e809]:
+                                    - generic [ref=f21e811]: "# Run mode for the snapshot/history publish (overridable by the pipeline Notebook activity's"
+                                    - generic [ref=f21e813]: "# base parameters):"
+                                    - generic [ref=f21e815]: "# \"UpdateSnapshot\" -> incremental refresh of the current fiscal-month slice (default)"
+                                    - generic [ref=f21e817]: "# \"IstSnapshot\" -> one-time initial full seed"
+                                    - generic [ref=f21e819]: AHRSnapshotVariable = "UpdateSnapshot"
+                              - generic [ref=f21e821]:
+                                - img "Finished" [ref=f21e824]: 
+                                - button "PySpark (Python)" [ref=f21e827] [cursor=pointer]:
+                                  - generic [ref=f21e828]:
+                                    - generic [ref=f21e830]: PySpark (Python)
+                                    - generic [ref=f21e831]: 
+                          - generic [ref=f21e842]:
+                            - button "Button Collapsed" [ref=f21e844]:
+                              - img [ref=f21e846]
+                            - menubar [ref=f21e852]:
+                              - menuitem "Log" [ref=f21e853]:
+                                - img [ref=f21e855]
+                                - generic [ref=f21e857]: Log
+                              - menuitem "More actions" [ref=f21e859] [cursor=pointer]:
+                                - generic [ref=f21e861]: 
+                      - region "Code cell at position 6 of 23" [ref=f21e3016]:
+                        - generic [ref=f21e891]:
+                          - generic "This cell has an execution count of 3" [ref=f21e895]: "[3]"
+                          - code [ref=f21e904]:
+                            - generic [ref=f21e905]:
+                              - textbox "Editor content" [ref=f21e906]
+                              - generic [ref=f21e913]: "1"
+                              - generic [ref=f21e918]: "# Initializes variables for the CoSell stream and Gold stage layer."
+                      - region "Code cell at position 7 of 23" [ref=f21e3017]:
+                        - generic [ref=f21e960]: "# # Retrieves the workspace and lakehouse IDs based on the StreamName for use in later steps. # WorkspaceId = GetWorkspaceIDLakehouseID(StreamName)['WorkspaceID'] # LakehouseId = GetWorkspaceIDLakehouseID(StreamName)['LakehouseID']"
+                      - region "Code cell at position 8 of 23" [ref=f21e3018]:
+                        - generic [ref=f21e994]: "# # Checks the notebook's status and exits based on specific status codes. # NotebookName = fabric.resolve_item_name(notebookutils.runtime.context['currentNotebookId']) # Result = GetNotebookStatus(NotebookName, StreamName, StageLayer) # if '0' in Result: # mssparkutils.notebook.exit(\"0\") # elif '-1' in Result: # System.exit(-1) # elif '2' in Result: # mssparkutils.notebook.exit(\"2\")"
+                      - region "Code cell at position 9 of 23" [ref=f21e3019]:
+                        - generic [ref=f21e1028]: "# # Fetches the publish schema for the CoSell stream in the Gold stage layer. # GoldPublishSchema = GetPublishSchema(WorkspaceId,LakehouseId,StreamName,StageLayer)"
+                      - region "Code cell at position 10 of 23" [ref=f21e3020]:
+                        - generic [ref=f21e1053]:
+                          - generic "This cell has an execution count of 31" [ref=f21e1057]: "[31]"
+                          - generic [ref=f21e1063]: WorkspaceId = '58a8f3f2-8d21-4130-9fc9-b862cdb1d0dd' LakehouseId = '5357a9dd-0c50-4742-81fc-9f5e53c2aea0' GoldPublishSchema = 'CoSellGold2026062601'
+                      - region "Code cell at position 11 of 23" [ref=f21e3021]:
+                        - generic [ref=f21e1096]:
+                          - generic "This cell has an execution count of 40" [ref=f21e1100]: "[40]"
+                          - generic [ref=f21e1106]: "getDataframe(WorkspaceId, LakehouseId, f\"{GoldPublishSchema}/FactAHRFeedAudit\").createOrReplaceTempView(\"Gold_FactAHRFeedAudit\") getDataframe(WorkspaceId, LakehouseId, \"Silver/HistoryAHRFeedAuditHistory\").createOrReplaceTempView(\"Hist_AHRFeed_Audit_History\")"
+                      - region "Code cell at position 12 of 23" [ref=f21e3022]:
+                        - generic [ref=f21e1139]:
+                          - generic "This cell has an execution count of 41" [ref=f21e1143]: "[41]"
+                          - generic [ref=f21e1149]: "import os # DBTITLE 1, Create new variable named AHRSnapshotVariable os.environ[\"AHRSnapshotVariable\"] = \"IstSnapshot\" # Set the environment variable # Access the variable Variable = os.getenv(\"AHRSnapshotVariable\", \"DefaultValue\") # Retrieve the variable with a default fallback"
+                      - region "Code cell at position 13 of 23" [ref=f21e3023]:
+                        - generic [ref=f21e1182]:
+                          - generic "This cell has an execution count of 50" [ref=f21e1186]: "[50]"
+                          - generic [ref=f21e1187]:
+                            - code [ref=f21e1674]:
+                              - generic [ref=f21e1675]:
+                                - textbox "Editor content" [ref=f21e1676]
+                                - generic [ref=f21e1679]:
+                                  - generic [ref=f21e1682]: "1"
+                                  - generic [ref=f21e1684]: "2"
+                                  - generic [ref=f21e1686]: "3"
+                                  - generic [ref=f21e1688]: "4"
+                                  - generic [ref=f21e1690]: "5"
+                                - generic [ref=f21e1697]:
+                                  - generic [ref=f21e1699]: "# Run mode comes from the AHRSnapshotVariable parameters cell above (overridable by the pipeline"
+                                  - generic [ref=f21e1701]: "# Notebook activity base parameters). Previously this was hardcoded via"
+                                  - generic [ref=f21e1703]: "# os.environ[\"AHRSnapshotVariable\"] = \"IstSnapshot\", which permanently forced initial-seed mode"
+                                  - generic [ref=f21e1705]: "# and made the UpdateSnapshot refresh path dead code, so the table stopped updating after migration."
+                                  - generic [ref=f21e1707]: Variable = AHRSnapshotVariable
+                            - generic [ref=f21e1708]:
+                              - generic [ref=f21e1709]:
+                                - img "Finished" [ref=f21e1711]: 
+                                - generic [ref=f21e1716]: "- Command executed in 226 ms by Adarsh Devashish (MAQ LLC) on 7/2/2026, 4:18:10 PM"
+                              - button "PySpark (Python)" [ref=f21e1719] [cursor=pointer]:
+                                - generic [ref=f21e1720]:
+                                  - generic [ref=f21e1722]: PySpark (Python)
+                                  - generic [ref=f21e1723]: 
+                      - region "Code cell at position 14 of 23" [ref=f21e3024]:
+                        - generic [ref=f21e1225]:
+                          - generic "This cell has an execution count of 51" [ref=f21e1229]: "[51]"
+                          - generic [ref=f21e1230]:
+                            - code [ref=f21e1731]:
+                              - generic [ref=f21e1732]:
+                                - textbox "Editor content" [ref=f21e1733]
+                                - generic [ref=f21e1736]:
+                                  - generic [ref=f21e1737]:
+                                    - generic [ref=f21e1739] [cursor=pointer]: 
+                                    - generic [ref=f21e1740]: "1"
+                                  - generic [ref=f21e1742]: "2"
+                                  - generic [ref=f21e1744]: "3"
+                                  - generic [ref=f21e1746]: "4"
+                                  - generic [ref=f21e1748]: "5"
+                                  - generic [ref=f21e1750]: "6"
+                                  - generic [ref=f21e1752]: "7"
+                                  - generic [ref=f21e1753]:
+                                    - generic [ref=f21e1754] [cursor=pointer]: 
+                                    - generic [ref=f21e1755]: "8"
+                                  - generic [ref=f21e1757]: "9"
+                                  - generic [ref=f21e1759]: "10"
+                                  - generic [ref=f21e1761]: "11"
+                                  - generic [ref=f21e1763]: "12"
+                                  - generic [ref=f21e1765]: "13"
+                                  - generic [ref=f21e1767]: "14"
+                                  - generic [ref=f21e1769]: "15"
+                                  - generic [ref=f21e1771]: "16"
+                                - generic [ref=f21e1789]:
+                                  - generic [ref=f21e1791]: from pyspark.sql import functions as F
+                                  - generic [ref=f21e1793]: from pyspark.sql.functions import expr
+                                  - generic [ref=f21e1796]: "# Get the current date"
+                                  - generic [ref=f21e1798]: current_date = F.current_date()
+                                  - generic [ref=f21e1801]: "# Compute FMCloseDate using PySpark expressions"
+                                  - generic [ref=f21e1803]: FMCloseDate = spark.sql("""
+                                  - generic [ref=f21e1805]: SELECT CASE
+                                  - generic [ref=f21e1807]: WHEN MONTH(CURRENT_DATE()) IN (1,3,5,7,8,10,12)
+                                  - generic [ref=f21e1809]: THEN TO_DATE(TO_UTC_TIMESTAMP(ADD_MONTHS(LAST_DAY(CURRENT_DATE()), -1), 'PST'))
+                                  - generic [ref=f21e1811]: WHEN MONTH(CURRENT_DATE()) IN (4,6,9,11)
+                                  - generic [ref=f21e1813]: THEN TO_DATE(TO_UTC_TIMESTAMP(DATE_ADD(ADD_MONTHS(LAST_DAY(CURRENT_DATE()), -1), 1), 'PST'))
+                                  - generic [ref=f21e1815]: ELSE CAST(CONCAT(YEAR(CURRENT_DATE()), '-01-31') AS DATE)
+                                  - generic [ref=f21e1817]: END AS FMCloseDate
+                                  - generic [ref=f21e1819]: "\"\"\").collect()[0][0]"
+                            - generic [ref=f21e1820]:
+                              - generic [ref=f21e1821]:
+                                - img "Finished" [ref=f21e1823]: 
+                                - generic [ref=f21e1828]: "- Command executed in 187 ms by Adarsh Devashish (MAQ LLC) on 7/2/2026, 4:18:11 PM"
+                              - button "PySpark (Python)" [ref=f21e1831] [cursor=pointer]:
+                                - generic [ref=f21e1832]:
+                                  - generic [ref=f21e1834]: PySpark (Python)
+                                  - generic [ref=f21e1835]: 
+                      - region "Code cell at position 15 of 23" [ref=f21e3025]:
+                        - generic [ref=f21e1268]:
+                          - generic "This cell has an execution count of 52" [ref=f21e1272]: "[52]"
+                          - generic [ref=f21e1273]:
+                            - code [ref=f21e1839]:
+                              - generic [ref=f21e1840]:
+                                - textbox "Editor content" [ref=f21e1841]
+                                - generic [ref=f21e1844]:
+                                  - generic [ref=f21e1847]: "1"
+                                  - generic [ref=f21e1849]: "2"
+                                  - generic [ref=f21e1851]: "3"
+                                  - generic [ref=f21e1853]: "4"
+                                  - generic [ref=f21e1855]: "5"
+                                  - generic [ref=f21e1857]: "6"
+                                  - generic [ref=f21e1859]: "7"
+                                  - generic [ref=f21e1861]: "8"
+                                - generic [ref=f21e1871]:
+                                  - generic [ref=f21e1873]: "# Import datetime package"
+                                  - generic [ref=f21e1875]: import datetime
+                                  - generic [ref=f21e1878]: "# Get current time"
+                                  - generic [ref=f21e1880]: d = datetime.datetime.utcnow()
+                                  - generic [ref=f21e1883]: "# Get the day of month"
+                                  - generic [ref=f21e1885]: day_part_value = int(d.strftime("%d"))
+                            - generic [ref=f21e1886]:
+                              - generic [ref=f21e1887]:
+                                - img "Finished" [ref=f21e1889]: 
+                                - generic [ref=f21e1894]: "- Command executed in 196 ms by Adarsh Devashish (MAQ LLC) on 7/2/2026, 4:18:13 PM"
+                              - button "PySpark (Python)" [ref=f21e1897] [cursor=pointer]:
+                                - generic [ref=f21e1898]:
+                                  - generic [ref=f21e1900]: PySpark (Python)
+                                  - generic [ref=f21e1901]: 
+                      - region "Code cell at position 16 of 23" [ref=f21e3026]:
+                        - generic [ref=f21e1311]:
+                          - generic "This cell has an execution count of 53" [ref=f21e1315]: "[53]"
+                          - generic [ref=f21e1316]:
+                            - code [ref=f21e1905]:
+                              - generic [ref=f21e1906]:
+                                - textbox "Editor content" [ref=f21e1907]
+                                - generic [ref=f21e1910]:
+                                  - generic [ref=f21e1911]:
+                                    - generic [ref=f21e1913] [cursor=pointer]: 
+                                    - generic [ref=f21e1914]: "1"
+                                  - generic [ref=f21e1916]: "2"
+                                  - generic [ref=f21e1918]: "3"
+                                  - generic [ref=f21e1920]: "4"
+                                  - generic [ref=f21e1922]: "5"
+                                  - generic [ref=f21e1924]: "6"
+                                  - generic [ref=f21e1926]: "7"
+                                  - generic [ref=f21e1928]: "8"
+                                  - generic [ref=f21e1930]: "9"
+                                  - generic [ref=f21e1932]: "10"
+                                  - generic [ref=f21e1934]: "11"
+                                  - generic [ref=f21e1936]: "12"
+                                  - generic [ref=f21e1938]: "13"
+                                  - generic [ref=f21e1940]: "14"
+                                  - generic [ref=f21e1942]: "15"
+                                  - generic [ref=f21e1944]: "16"
+                                  - generic [ref=f21e1946]: "17"
+                                  - generic [ref=f21e1948]: "18"
+                                  - generic [ref=f21e1950]: "19"
+                                  - generic [ref=f21e1952]: "20"
+                                  - generic [ref=f21e1954]: "21"
+                                  - generic [ref=f21e1956]: "22"
+                                  - generic [ref=f21e1958]: "23"
+                                  - generic [ref=f21e1960]: "24"
+                                  - generic [ref=f21e1962]: "25"
+                                  - generic [ref=f21e1964]: "26"
+                                  - generic [ref=f21e1966]: "27"
+                                  - generic [ref=f21e1968]: "28"
+                                  - generic [ref=f21e1970]: "29"
+                                  - generic [ref=f21e1972]: "30"
+                                - generic [ref=f21e2004]:
+                                  - generic [ref=f21e2006]: spark.sql(f"""
+                                  - generic [ref=f21e2008]: SELECT
+                                  - generic [ref=f21e2010]: ACR
+                                  - generic [ref=f21e2012]: ",ApprovalDate"
+                                  - generic [ref=f21e2014]: ",ApprovalFiscalMonth"
+                                  - generic [ref=f21e2016]: ",InvalidEligibility_Audit"
+                                  - generic [ref=f21e2018]: ",MSXCRMAccountID"
+                                  - generic [ref=f21e2020]: ",MSXCRMAccountName"
+                                  - generic [ref=f21e2022]: ",GPSCRMPartnerID"
+                                  - generic [ref=f21e2024]: ",GPSCRMPartnerID_Audit"
+                                  - generic [ref=f21e2026]: ",GPSCRMPartnerName"
+                                  - generic [ref=f21e2028]: ",PartnerOneSubID"
+                                  - generic [ref=f21e2030]: ",PartnerOneSubID_Audit"
+                                  - generic [ref=f21e2032]: ",PartnerTPID"
+                                  - generic [ref=f21e2034]: ",PartnerTPIDName"
+                                  - generic [ref=f21e2036]: ",PartnerTPIDSegment"
+                                  - generic [ref=f21e2038]: ",PartnerTPIDSubsidiary"
+                                  - generic [ref=f21e2040]: ",PSXDealID"
+                                  - generic [ref=f21e2042]: ",'Yes' AS ScorecardEligible"
+                                  - generic [ref=f21e2044]: "--,ServiceCompGrouping"
+                                  - generic [ref=f21e2046]: ",ServiceCompGroupName"
+                                  - generic [ref=f21e2048]: ",TPAccountID"
+                                  - generic [ref=f21e2050]: ",TPAccountName"
+                                  - generic [ref=f21e2052]: ",TPAccountSegment"
+                                  - generic [ref=f21e2054]: ",TPAccountSubsidiary"
+                                  - generic [ref=f21e2056]: ",IsPartnerReportedACR"
+                                  - generic [ref=f21e2058]: ",IsMarketplaceDealReg"
+                                  - generic [ref=f21e2060]: ",ResourceGUID"
+                                  - generic [ref=f21e2062]: ",'{FMCloseDate}' AS FMCloseDate"
+                                  - generic [ref=f21e2064]: FROM Gold_FactAHRFeedAudit""").createOrReplaceTempView("AHRFeed_Audit_TimeStamp")
+                            - generic [ref=f21e2065]:
+                              - generic [ref=f21e2066]:
+                                - img "Finished" [ref=f21e2068]: 
+                                - generic [ref=f21e2073]: "- Command executed in 178 ms by Adarsh Devashish (MAQ LLC) on 7/2/2026, 4:18:16 PM"
+                              - button "PySpark (Python)" [ref=f21e2076] [cursor=pointer]:
+                                - generic [ref=f21e2077]:
+                                  - generic [ref=f21e2079]: PySpark (Python)
+                                  - generic [ref=f21e2080]: 
+                      - region "Code cell at position 17 of 23" [ref=f21e3027]:
+                        - generic [ref=f21e1351]:
+                          - generic [ref=f21e1354]:
+                            - generic "This cell has an execution count of 55" [ref=f21e1358]: "[55]"
+                            - generic [ref=f21e1359]:
+                              - code [ref=f21e2084]:
+                                - generic [ref=f21e2085]:
+                                  - textbox "Editor content" [ref=f21e2086]
+                                  - generic [ref=f21e2089]:
+                                    - generic [ref=f21e2090]:
+                                      - generic [ref=f21e2092] [cursor=pointer]: 
+                                      - generic [ref=f21e2093]: "1"
+                                    - generic [ref=f21e2094]:
+                                      - generic [ref=f21e2095] [cursor=pointer]: 
+                                      - generic [ref=f21e2096]: "2"
+                                    - generic [ref=f21e2098]: "3"
+                                    - generic [ref=f21e2099]:
+                                      - generic [ref=f21e2100] [cursor=pointer]: 
+                                      - generic [ref=f21e2101]: "4"
+                                    - generic [ref=f21e2103]: "5"
+                                    - generic [ref=f21e2105]: "6"
+                                    - generic [ref=f21e2107]: "7"
+                                    - generic [ref=f21e2109]: "8"
+                                    - generic [ref=f21e2111]: "9"
+                                    - generic [ref=f21e2112]:
+                                      - generic [ref=f21e2113] [cursor=pointer]: 
+                                      - generic [ref=f21e2114]: "10"
+                                    - generic [ref=f21e2116]: "11"
+                                    - generic [ref=f21e2118]: "12"
+                                    - generic [ref=f21e2120]: "13"
+                                    - generic [ref=f21e2121]:
+                                      - generic [ref=f21e2122] [cursor=pointer]: 
+                                      - generic [ref=f21e2123]: "14"
+                                    - generic [ref=f21e2125]: "15"
+                                    - generic [ref=f21e2127]: "16"
+                                    - generic [ref=f21e2128]:
+                                      - generic [ref=f21e2129] [cursor=pointer]: 
+                                      - generic [ref=f21e2130]: "17"
+                                    - generic [ref=f21e2132]: "18"
+                                    - generic [ref=f21e2134]: "19"
+                                    - generic [ref=f21e2136]: "20"
+                                    - generic [ref=f21e2138]: "21"
+                                    - generic [ref=f21e2139]:
+                                      - generic [ref=f21e2140] [cursor=pointer]: 
+                                      - generic [ref=f21e2141]: "22"
+                                    - generic [ref=f21e2143]: "23"
+                                    - generic [ref=f21e2145]: "24"
+                                    - generic [ref=f21e2147]: "25"
+                                    - generic [ref=f21e2149]: "26"
+                                    - generic [ref=f21e2150]:
+                                      - generic [ref=f21e2151] [cursor=pointer]: 
+                                      - generic [ref=f21e2152]: "27"
+                                    - generic [ref=f21e2154]: "28"
+                                    - generic [ref=f21e2156]: "29"
+                                    - generic [ref=f21e2158]: "30"
+                                    - generic [ref=f21e2160]: "31"
+                                    - generic [ref=f21e2161]:
+                                      - generic [ref=f21e2162] [cursor=pointer]: 
+                                      - generic [ref=f21e2163]: "32"
+                                    - generic [ref=f21e2165]: "33"
+                                    - generic [ref=f21e2167]: "34"
+                                    - generic [ref=f21e2169]: "35"
+                                    - generic [ref=f21e2171]: "36"
+                                    - generic [ref=f21e2173]: "37"
+                                    - generic [ref=f21e2175]: "38"
+                                    - generic [ref=f21e2177]: "39"
+                                    - generic [ref=f21e2179]: "40"
+                                    - generic [ref=f21e2181]: "41"
+                                    - generic [ref=f21e2183]: "42"
+                                    - generic [ref=f21e2185]: "43"
+                                    - generic [ref=f21e2187]: "44"
+                                    - generic [ref=f21e2188]:
+                                      - generic [ref=f21e2189] [cursor=pointer]: 
+                                      - generic [ref=f21e2190]: "45"
+                                    - generic [ref=f21e2192]: "46"
+                                    - generic [ref=f21e2193]:
+                                      - generic [ref=f21e2194] [cursor=pointer]: 
+                                      - generic [ref=f21e2195]: "47"
+                                    - generic [ref=f21e2197]: "48"
+                                    - generic [ref=f21e2198]:
+                                      - generic [ref=f21e2199] [cursor=pointer]: 
+                                      - generic [ref=f21e2200]: "49"
+                                    - generic [ref=f21e2202]: "50"
+                                    - generic [ref=f21e2203]:
+                                      - generic [ref=f21e2204] [cursor=pointer]: 
+                                      - generic [ref=f21e2205]: "51"
+                                    - generic [ref=f21e2207]: "52"
+                                    - generic [ref=f21e2209]: "53"
+                                    - generic [ref=f21e2211]: "54"
+                                    - generic [ref=f21e2212]:
+                                      - generic [ref=f21e2213] [cursor=pointer]: 
+                                      - generic [ref=f21e2214]: "55"
+                                    - generic [ref=f21e2216]: "56"
+                                    - generic [ref=f21e2218]: "57"
+                                    - generic [ref=f21e2220]: "58"
+                                    - generic [ref=f21e2221]:
+                                      - generic [ref=f21e2222] [cursor=pointer]: 
+                                      - generic [ref=f21e2223]: "59"
+                                    - generic [ref=f21e2225]: "60"
+                                    - generic [ref=f21e2227]: "61"
+                                    - generic [ref=f21e2228]:
+                                      - generic [ref=f21e2229] [cursor=pointer]: 
+                                      - generic [ref=f21e2230]: "62"
+                                    - generic [ref=f21e2232]: "63"
+                                    - generic [ref=f21e2234]: "64"
+                                    - generic [ref=f21e2235]:
+                                      - generic [ref=f21e2236] [cursor=pointer]: 
+                                      - generic [ref=f21e2237]: "65"
+                                    - generic [ref=f21e2239]: "66"
+                                    - generic [ref=f21e2241]: "67"
+                                    - generic [ref=f21e2243]: "68"
+                                    - generic [ref=f21e2245]: "69"
+                                    - generic [ref=f21e2247]: "70"
+                                    - generic [ref=f21e2248]:
+                                      - generic [ref=f21e2249] [cursor=pointer]: 
+                                      - generic [ref=f21e2250]: "71"
+                                    - generic [ref=f21e2252]: "72"
+                                    - generic [ref=f21e2254]: "73"
+                                  - generic [ref=f21e2329]:
+                                    - generic [ref=f21e2331]: "if Variable == 'IstSnapshot':"
+                                    - generic [ref=f21e2333]: "if day_part_value > 4 and day_part_value < 10:"
+                                    - generic [ref=f21e2335]: "# Check the third condition using SQL in PySpark"
+                                    - generic [ref=f21e2337]: exists = spark.sql(f"""
+                                    - generic [ref=f21e2339]: SELECT COUNT(*)
+                                    - generic [ref=f21e2341]: FROM Hist_AHRFeed_Audit_History--adls
+                                    - generic [ref=f21e2343]: "WHERE FMCloseDate = '{FMCloseDate}'"
+                                    - generic [ref=f21e2345]: "\"\"\")"
+                                    - generic [ref=f21e2347]: "# Check if the result is not empty before accessing it"
+                                    - generic [ref=f21e2349]: "if exists.count() > 0:"
+                                    - generic [ref=f21e2351]: exists_count = exists.collect()[0][0]
+                                    - generic [ref=f21e2353]: print(exists_count)
+                                    - generic [ref=f21e2356]: "if exists_count == 0:"
+                                    - generic [ref=f21e2358]: "# Take a snapshot or perform other actions here"
+                                    - generic [ref=f21e2360]: "# For example, you can create a backup table"
+                                    - generic [ref=f21e2362]: spark.sql("""
+                                    - generic [ref=f21e2364]: SELECT *
+                                    - generic [ref=f21e2366]: FROM AHRFeed_Audit_TimeStamp
+                                    - generic [ref=f21e2368]: "\"\"\").createOrReplaceTempView(\"Hist_AHRFeed_Audit_History\")"
+                                    - generic [ref=f21e2371]: "elif Variable == 'UpdateSnapshot':"
+                                    - generic [ref=f21e2373]: "# Fabric-safe incremental refresh: replace only the current FMCloseDate slice on the"
+                                    - generic [ref=f21e2375]: "# persistent Gold history table so all prior periods are preserved. Replaces the previous"
+                                    - generic [ref=f21e2377]: "# DELETE-on-temp-view logic (Hist_AHRFeed_Audit_History was a Spark temp view, not a Delta"
+                                    - generic [ref=f21e2379]: "# table, so DELETE FROM was invalid on Fabric and the table never advanced past its seed)."
+                                    - generic [ref=f21e2381]: from delta.tables import DeltaTable
+                                    - generic [ref=f21e2383]: from pyspark.sql import Window
+                                    - generic [ref=f21e2385]: from pyspark.sql.types import IntegerType, LongType, ShortType, StringType
+                                    - generic [ref=f21e2387]: "_gold_history_path = f\"abfss://{WorkspaceId}@msit-onelake.dfs.fabric.microsoft.com/{LakehouseId}/Tables/{GoldPublishSchema}/HistoryAHRFeedAudit\""
+                                    - generic [ref=f21e2389]: _current_snapshot = spark.table("AHRFeed_Audit_TimeStamp")
+                                    - generic [ref=f21e2391]: "if DeltaTable.isDeltaTable(spark, _gold_history_path):"
+                                    - generic [ref=f21e2393]: "# Align the fresh snapshot to the LIVE target schema before writing. The target was seeded"
+                                    - generic [ref=f21e2395]: "# from the ADLS shortcut and can carry columns the Fact-derived snapshot does not project"
+                                    - generic [ref=f21e2397]: "# (notably a non-nullable \"Id\" surrogate). Without alignment, mergeSchema back-fills NULLs"
+                                    - generic [ref=f21e2399]: "# and the NOT NULL invariant fails per-row at write time ([TASK_WRITE_FAILED]). Match by"
+                                    - generic [ref=f21e2401]: "# name (case-insensitive), cast to the target type, fill missing nullable columns with typed"
+                                    - generic [ref=f21e2403]: "# NULLs, generate non-colliding surrogate keys for missing non-nullable integer columns, and"
+                                    - generic [ref=f21e2405]: "# drop snapshot-only extras. No mergeSchema is needed once the schema matches."
+                                    - generic [ref=f21e2407]: _target = spark.read.format("delta").load(_gold_history_path)
+                                    - generic [ref=f21e2409]: "_src_by_name = {f.name.lower(): f.name for f in _current_snapshot.schema.fields}"
+                                    - generic [ref=f21e2411]: "_tgt_names = {tf.name.lower() for tf in _target.schema.fields}"
+                                    - generic [ref=f21e2413]: _select_exprs = []
+                                    - generic [ref=f21e2415]: _filled_defaults = []
+                                    - generic [ref=f21e2417]: "for _tf in _target.schema.fields:"
+                                    - generic [ref=f21e2419]: _k = _tf.name.lower()
+                                    - generic [ref=f21e2421]: "if _k in _src_by_name:"
+                                    - generic [ref=f21e2423]: "_select_exprs.append(F.col(f\"`{_src_by_name[_k]}`\").cast(_tf.dataType).alias(_tf.name))"
+                                    - generic [ref=f21e2425]: "elif _tf.nullable:"
+                                    - generic [ref=f21e2427]: _select_exprs.append(F.lit(None).cast(_tf.dataType).alias(_tf.name))
+                                    - generic [ref=f21e2429]: "elif isinstance(_tf.dataType, (IntegerType, LongType, ShortType)):"
+                                    - generic [ref=f21e2431]: "_max_key = _target.agg(F.coalesce(F.max(F.col(f\"`{_tf.name}`\")), F.lit(0)).alias(\"m\")).collect()[0][\"m\"]"
+                                    - generic [ref=f21e2433]: _select_exprs.append((F.lit(_max_key) + F.row_number().over(Window.orderBy(F.monotonically_increasing_id()))).cast(_tf.dataType).alias(_tf.name))
+                                    - generic [ref=f21e2435]: "print(f\"[align] generated surrogate for missing NOT NULL key '{_tf.name}' (base {_max_key})\")"
+                                    - generic [ref=f21e2437]: "else:"
+                                    - generic [ref=f21e2439]: _default = F.lit("").cast(_tf.dataType) if isinstance(_tf.dataType, StringType) else F.lit(None).cast(_tf.dataType)
+                                    - generic [ref=f21e2441]: _filled_defaults.append(_tf.name)
+                                    - generic [ref=f21e2443]: _select_exprs.append(_default.alias(_tf.name))
+                                    - generic [ref=f21e2445]: "if _filled_defaults:"
+                                    - generic [ref=f21e2447]: "print(f\"[align] WARNING: filled NOT NULL non-key columns with defaults (review): {_filled_defaults}\")"
+                                    - generic [ref=f21e2449]: _extras = [f.name for f in _current_snapshot.schema.fields if f.name.lower() not in _tgt_names]
+                                    - generic [ref=f21e2451]: "if _extras:"
+                                    - generic [ref=f21e2453]: "print(f\"[align] dropped snapshot-only columns: {_extras}\")"
+                                    - generic [ref=f21e2455]: _aligned = _current_snapshot.select(*_select_exprs)
+                                    - generic [ref=f21e2457]: (_aligned.write
+                                    - generic [ref=f21e2459]: .format("delta")
+                                    - generic [ref=f21e2461]: .mode("overwrite")
+                                    - generic [ref=f21e2463]: ".option(\"replaceWhere\", f\"FMCloseDate = '{FMCloseDate}'\")"
+                                    - generic [ref=f21e2465]: .save(_gold_history_path))
+                                    - generic [ref=f21e2467]: _update_written = True
+                                    - generic [ref=f21e2469]: "else:"
+                                    - generic [ref=f21e2471]: "# First-ever run (table does not exist yet): seed via the standard writer below."
+                                    - generic [ref=f21e2473]: _current_snapshot.createOrReplaceTempView("Hist_AHRFeed_Audit_History")
+                              - generic [ref=f21e2474]:
+                                - img "Failed" [ref=f21e2477]: 
+                                - button "PySpark (Python)" [ref=f21e2480] [cursor=pointer]:
+                                  - generic [ref=f21e2481]:
+                                    - generic [ref=f21e2483]: PySpark (Python)
+                                    - generic [ref=f21e2484]: 
+                          - generic [ref=f21e1373]:
+                            - code [ref=f21e1374]: "[align] dropped snapshot-only columns: ['ServiceCompGroupName']"
+                            - group "Notebook cell error" [ref=f21e1375]:
+                              - generic [ref=f21e1376]:
+                                - generic [ref=f21e1377]: Py4JJavaError
+                                - generic [ref=f21e1378]: "An error occurred while calling o8066.save. : org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 57.0 failed 4 times, most recent failure: Lost task 0.3 in stage 57.0 (TID 789) (vm-65a53947 executor 2): org.apache.spark.SparkException: [TASK_WRITE_FAILED] Task failed while writing rows to abfss://58a8f3f2-8d21-4130-9fc9-b862cdb1d0dd@msit-onelake.dfs.fabric.microsoft.com/5357a9dd-0c50-4742-81fc-9f5e53c2aea0/Tables/CoSellGold2026063001/HistoryAHRFeedAudit."
+                              - generic "Error actions" [ref=f21e1379]:
+                                - button "Investigate cell execution failures" [ref=f21e2489]:
+                                  - img [ref=f21e2491]
+                                  - text: Diagnose with Copilot
+                                - button "Show traceback" [ref=f21e1380] [cursor=pointer]:
+                                  - generic [ref=f21e1383]: Show traceback
+                                - button "Copy traceback" [ref=f21e1384] [cursor=pointer]:
+                                  - generic [ref=f21e1386]: 
+                      - region "Code cell at position 18 of 23" [ref=f21e3028]:
+                        - generic [ref=f21e1408]:
+                          - generic [ref=f21e1411]:
+                            - generic "This cell has an execution count of 38" [ref=f21e1415]: "[38]"
+                            - generic [ref=f21e1416]:
+                              - code [ref=f21e2501]:
+                                - generic [ref=f21e2502]:
+                                  - textbox "Editor content" [ref=f21e2503]
+                                  - generic [ref=f21e2506]:
+                                    - generic [ref=f21e2509]: "1"
+                                    - generic [ref=f21e2511]: "2"
+                                    - generic [ref=f21e2513]: "3"
+                                  - generic [ref=f21e2518]:
+                                    - generic [ref=f21e2520]: "%%sql"
+                                    - generic [ref=f21e2522]: "-- DATE: CoSellGold2026062601"
+                                    - generic [ref=f21e2524]: SELECT count(*) FROM Hist_AHRFeed_Audit_History
+                              - generic [ref=f21e2525]:
+                                - generic [ref=f21e2526]:
+                                  - img "Finished" [ref=f21e2528]: 
+                                  - generic [ref=f21e2533]: "- Command executed in 1 sec 144 ms by Adarsh Devashish (MAQ LLC) on 7/2/2026, 11:13:54 AM"
+                                - button "Spark SQL" [ref=f21e2536] [cursor=pointer]:
+                                  - generic [ref=f21e2537]:
+                                    - generic [ref=f21e2539]: Spark SQL
+                                    - generic [ref=f21e2540]: 
+                          - generic [ref=f21e2548]:
+                            - generic [ref=f21e2549]:
+                              - generic [ref=f21e2551]:
+                                - tablist [ref=f21e2552]:
+                                  - tab "Table" [selected] [ref=f21e2554] [cursor=pointer]:
+                                    - img [ref=f21e2556]
+                                    - generic [ref=f21e2559]: Table
+                                - status [ref=f21e2561]
+                              - button "New chart" [ref=f21e2562]:
+                                - img [ref=f21e2564]
+                                - text: New chart
+                              - generic [ref=f21e2567]:
+                                - button "Filter" [ref=f21e2568]:
+                                  - img [ref=f21e2570]
+                                - generic [ref=f21e2573]: 1 columns, 1 rows
+                            - generic [ref=f21e2574]:
+                              - generic [ref=f21e2575]:
+                                - generic [ref=f21e2576]:
+                                  - heading "Table view" [level=2] [ref=f21e2578]
+                                  - generic [ref=f21e2579]:
+                                    - button "Download" [ref=f21e2580]:
+                                      - img [ref=f21e2582]
+                                      - text: Download
+                                      - img [ref=f21e2585]
+                                    - generic [ref=f21e2588]:
+                                      - img [ref=f21e2590]
+                                      - textbox "Filter by keyword" [ref=f21e2592]
+                                - grid [ref=f21e2593]:
+                                  - generic:
+                                    - rowgroup:
+                                      - row "count(1)":
+                                        - generic [ref=f21e2596]:
+                                          - columnheader [ref=f21e2597]:
+                                            - img [ref=f21e2602]
+                                            - separator [ref=f21e2604]
+                                          - columnheader "count(1)" [ref=f21e2605]:
+                                            - generic [ref=f21e2607]:
+                                              - button "count(1)" [ref=f21e2608]:
+                                                - img [ref=f21e2610]
+                                                - generic "count(1)" [ref=f21e2614]
+                                              - menu [ref=f21e2615]:
+                                                - menuitem "count(1)" [ref=f21e2616]:
+                                                  - img [ref=f21e2618]
+                                            - separator [ref=f21e2620]
+                                    - rowgroup:
+                                      - generic [ref=f21e2622]:
+                                        - row "1 43075835":
+                                          - gridcell "1" [ref=f21e2623]:
+                                            - generic [ref=f21e2626]: "1"
+                                          - gridcell "43075835" [ref=f21e2627]:
+                                            - generic [ref=f21e2630]: "43075835"
+                              - generic [ref=f21e2634]:
+                                - button "Expand inspect panel" [ref=f21e2636]:
+                                  - img [ref=f21e2638]
+                                - generic [ref=f21e2641]: Inspect
+                      - region "Code cell at position 19 of 23" [ref=f21e3029]:
+                        - generic [ref=f21e1458]:
+                          - code [ref=f21e2645]:
+                            - generic [ref=f21e2646]:
+                              - textbox "Editor content" [ref=f21e2647]
+                              - generic [ref=f21e2650]:
+                                - generic [ref=f21e2653]: "1"
+                                - generic [ref=f21e2655]: "2"
+                                - generic [ref=f21e2657]: "3"
+                              - generic [ref=f21e2662]:
+                                - generic [ref=f21e2664]: "%%sql"
+                                - generic [ref=f21e2666]: "-- DATE: CoSellGold2026063001"
+                                - generic [ref=f21e2668]: SELECT count(*) FROM Hist_AHRFeed_Audit_History
+                          - generic [ref=f21e2669]:
+                            - generic [ref=f21e2675]: "- Canceled by Adarsh Devashish (MAQ LLC) on 7/2/2026, 4:19:40 PM"
+                            - button "Spark SQL" [ref=f21e2678] [cursor=pointer]:
+                              - generic [ref=f21e2679]:
+                                - generic [ref=f21e2681]: Spark SQL
+                                - generic [ref=f21e2682]: 
+                      - region "Code cell at position 20 of 23" [ref=f21e3030]:
+                        - generic [ref=f21e1500]:
+                          - code [ref=f21e2686]:
+                            - generic [ref=f21e2687]:
+                              - textbox "Editor content" [ref=f21e2688]
+                              - generic [ref=f21e2691]:
+                                - generic [ref=f21e2694]: "1"
+                                - generic [ref=f21e2696]: "2"
+                              - generic [ref=f21e2700]:
+                                - generic [ref=f21e2702]: "%%sql"
+                                - generic [ref=f21e2704]: SELECT max(ApprovalDate) FROM Hist_AHRFeed_Audit_History
+                          - generic [ref=f21e2705]:
+                            - generic [ref=f21e2711]: "- Canceled by Adarsh Devashish (MAQ LLC) on 7/2/2026, 4:19:40 PM"
+                            - button "Spark SQL" [ref=f21e2714] [cursor=pointer]:
+                              - generic [ref=f21e2715]:
+                                - generic [ref=f21e2717]: Spark SQL
+                                - generic [ref=f21e2718]: 
+                      - region "Code cell at position 21 of 23" [ref=f21e3031]:
+                        - generic [ref=f21e1535]:
+                          - generic [ref=f21e1538]:
+                            - generic "This cell has an execution count of 48" [ref=f21e1542]: "[48]"
+                            - generic [ref=f21e1543]:
+                              - code [ref=f21e2722]:
+                                - generic [ref=f21e2723]:
+                                  - textbox "Editor content" [ref=f21e2724]
+                                  - generic [ref=f21e2727]:
+                                    - generic [ref=f21e2730]: "1"
+                                    - generic [ref=f21e2732]: "2"
+                                  - generic [ref=f21e2736]:
+                                    - generic [ref=f21e2738]: "%%sql"
+                                    - generic [ref=f21e2740]: SELECT max(ApprovalDate) FROM Hist_AHRFeed_Audit_History
+                              - generic [ref=f21e2741]:
+                                - generic [ref=f21e2742]:
+                                  - img "Finished" [ref=f21e2744]: 
+                                  - generic [ref=f21e2749]: "- Command executed in 1 sec 316 ms by Adarsh Devashish (MAQ LLC) on 7/2/2026, 2:20:35 PM"
+                                - button "Spark SQL" [ref=f21e2752] [cursor=pointer]:
+                                  - generic [ref=f21e2753]:
+                                    - generic [ref=f21e2755]: Spark SQL
+                                    - generic [ref=f21e2756]: 
+                          - generic [ref=f21e2764]:
+                            - generic [ref=f21e2765]:
+                              - generic [ref=f21e2767]:
+                                - tablist [ref=f21e2768]:
+                                  - tab "Table" [selected] [ref=f21e2770] [cursor=pointer]:
+                                    - img [ref=f21e2772]
+                                    - generic [ref=f21e2775]: Table
+                                - status [ref=f21e2777]
+                              - button "New chart" [ref=f21e2778]:
+                                - img [ref=f21e2780]
+                                - text: New chart
+                              - generic [ref=f21e2783]:
+                                - button "Filter" [ref=f21e2784]:
+                                  - img [ref=f21e2786]
+                                - generic [ref=f21e2789]: 1 columns, 1 rows
+                            - generic [ref=f21e2790]:
+                              - generic [ref=f21e2791]:
+                                - generic [ref=f21e2792]:
+                                  - heading "Table view" [level=2] [ref=f21e2794]
+                                  - generic [ref=f21e2795]:
+                                    - button "Download" [ref=f21e2796]:
+                                      - img [ref=f21e2798]
+                                      - text: Download
+                                      - img [ref=f21e2801]
+                                    - generic [ref=f21e2804]:
+                                      - img [ref=f21e2806]
+                                      - textbox "Filter by keyword" [ref=f21e2808]
+                                - grid [ref=f21e2809]:
+                                  - generic:
+                                    - rowgroup:
+                                      - row "max(ApprovalDate)":
+                                        - generic [ref=f21e2812]:
+                                          - columnheader [ref=f21e2813]:
+                                            - img [ref=f21e2818]
+                                            - separator [ref=f21e2820]
+                                          - columnheader "max(ApprovalDate)" [ref=f21e2821]:
+                                            - generic [ref=f21e2823]:
+                                              - button "max(ApprovalDate)" [ref=f21e2824]:
+                                                - img [ref=f21e2826]
+                                                - generic "max(ApprovalDate)" [ref=f21e2828]
+                                              - menu [ref=f21e2829]:
+                                                - menuitem "max(ApprovalDate)" [ref=f21e2830]:
+                                                  - img [ref=f21e2832]
+                                            - separator [ref=f21e2834]
+                                    - rowgroup:
+                                      - generic [ref=f21e2836]:
+                                        - row "1 2025-06-30":
+                                          - gridcell "1" [ref=f21e2837]:
+                                            - generic [ref=f21e2840]: "1"
+                                          - gridcell "2025-06-30" [ref=f21e2841]:
+                                            - generic [ref=f21e2844]: 2025-06-30
+                              - generic [ref=f21e2848]:
+                                - button "Expand inspect panel" [ref=f21e2850]:
+                                  - img [ref=f21e2852]
+                                - generic [ref=f21e2855]: Inspect
+                      - region "Code cell at position 22 of 23" [ref=f21e3032]:
+                        - generic [ref=f21e1585]:
+                          - code [ref=f21e2859]:
+                            - generic [ref=f21e2860]:
+                              - textbox "Editor content" [ref=f21e2861]
+                              - generic [ref=f21e2867]: "1"
+                              - generic [ref=f21e2872]: "writeTable(\"Hist_AHRFeed_Audit_History\", f\"{GoldPublishSchema}/HistoryAHRFeedAudit\", WorkspaceId, LakehouseId)"
+                          - button "PySpark (Python)" [ref=f21e2876] [cursor=pointer]:
+                            - generic [ref=f21e2877]:
+                              - generic [ref=f21e2879]: PySpark (Python)
+                              - generic [ref=f21e2880]: 
+                      - region "Code cell at position 23 of 23" [ref=f21e3033]:
+                        - generic [ref=f21e1619]:
+                          - code [ref=f21e2884]:
+                            - generic [ref=f21e2885]:
+                              - textbox "Editor content" [ref=f21e2886]
+                              - generic [ref=f21e2889]:
+                                - generic [ref=f21e2892]: "1"
+                                - generic [ref=f21e2894]: "2"
+                              - generic [ref=f21e2898]:
+                                - generic [ref=f21e2900]: "# Sets the status of the notebook based on the current notebook name, stream, and stage layer."
+                                - generic [ref=f21e2902]: SetNotebookStatus(NotebookName, StreamName, StageLayer)
+                          - button "PySpark (Python)" [ref=f21e2906] [cursor=pointer]:
+                            - generic [ref=f21e2907]:
+                              - generic [ref=f21e2909]: PySpark (Python)
+                              - generic [ref=f21e2910]: 
+                    - separator [ref=f21e1632]
+                - generic [ref=f21e1634]:
+                  - generic [ref=f21e1635]:
+                    - button "Running Cell 1" [ref=f21e3181]:
+                      - progressbar [ref=f21e3182]
+                      - generic [ref=f21e1640]: Running Cell 1
+                    - button "The notebook is saved automatically. To save changes manually, navigate to the Edit tab and change your save options." [ref=f21e1641]:
+                      - img [ref=f21e1643]
+                      - generic [ref=f21e1645]: "AutoSave: On"
+                    - button "When enabled, Copilot automatically suggests code completions as you type." [ref=f21e1646]:
+                      - img [ref=f21e1648]
+                      - generic [ref=f21e1650]: "Copilot completions: On"
+                  - button "Selected Cell 1 of 23 cells" [ref=f21e3034]:
+                    - img [ref=f21e1653]
+                    - text: Selected Cell 1 of 23 cells
+          - generic [ref=f21e1656]:
+            - alert [ref=f21e3121]: df = spark.read.format('delta').load(base+'/'+gps+'/HistoryAHRFeedAudit')
+            - alert
+          - alert [ref=f21e3035]: New code cell created at position 1
+          - status [ref=f21e3185]: Cell running

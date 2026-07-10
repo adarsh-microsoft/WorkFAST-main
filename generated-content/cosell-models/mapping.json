@@ -1,0 +1,2084 @@
+{
+  "shortcuts_found": 24,
+  "rows": [
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "BridgeFieldSubsidiary",
+      "reporting_schema": "CoSell",
+      "reporting_table": "BridgeFieldSubsidiary",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "BridgeGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "BridgeGeography",
+      "proc_stream": "SalesPowerBIReporting",
+      "proc_schema": "Gold",
+      "proc_table": "BridgeGeography"
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "BridgeInvestmentSource",
+      "reporting_schema": "CoSell",
+      "reporting_table": "BridgeInvestmentSource",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Budget Program",
+      "reporting_schema": "CoSell",
+      "reporting_table": "BudgetProgram",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Comarketing TPM Budget",
+      "reporting_schema": "CoSell",
+      "reporting_table": "ComarketingTPMBudget",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Customer",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCustomerCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Customer Geography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCustomerGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Customer Segment",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCustomerSegment",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "CustomPartnerReportingGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "CustomPartnerReportingGeography",
+      "proc_stream": "SalesPowerBIReporting",
+      "proc_schema": "Gold",
+      "proc_table": "CustomPartnerReportingGeography"
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "DimAccountGeographyHierarchyReporting",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimAccountGeographyHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "DimFieldGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimFieldGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Engagement Milestone",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimEngagementMilestoneCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Fact Engagement Milestone",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactEngagementMilestoneCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Fact IOPO",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactIOPO",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Fact Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactOpportunityCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Fact Partner Deal",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDealCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Fact Solution",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactSolutionCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Forecast Amount",
+      "reporting_schema": "CoSell",
+      "reporting_table": "ForecastAmount",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Funnel Category",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FunnelCategory",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Funnel Category 2",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FunnelCategory2",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Inv Bridge Area",
+      "reporting_schema": "CoSell",
+      "reporting_table": "InvBridgeArea",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Inv Bridge Industry",
+      "reporting_schema": "CoSell",
+      "reporting_table": "InvBridgeIndustry",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Inv Bridge SolutionArea",
+      "reporting_schema": "CoSell",
+      "reporting_table": "InvBridgeSolutionArea",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Inv Bridge SolutionPlay",
+      "reporting_schema": "CoSell",
+      "reporting_table": "InvBridgeSolutionPlay",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "InvBridgeGCPSArea",
+      "reporting_schema": "CoSell",
+      "reporting_table": "InvBridgeGCPSArea",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "InvBridgeGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "BridgeGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "InvCustomPartnerReportingGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "CustomPartnerReportingGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Investment Ask",
+      "reporting_schema": "CoSell",
+      "reporting_table": "InvestmentAsk",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "IOPO",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimIOPO",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimOpportunityCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Opportunity Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "Opportunity_MonthlySnapshot",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Partner Deal",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerDealCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Perspective",
+      "reporting_schema": "\u2014",
+      "reporting_table": "\u2014",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Reporting PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "ReportingPartnerOneCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Sharing Type",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSharingType",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Solution",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSolutionCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Solution Area",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSolutionArea",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Solution Area (Oppty)",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSolutionAreaOppty",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CoMarketingModel",
+      "model_table": "Time",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimTimeCD",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Account",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimGPSCRMAccount",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "ATU",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimATU",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Bridge PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimReportingPartnerOneSub",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Bridge Reporting PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimReportingPartnerOneSub",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "BridgeGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "BridgeGeography",
+      "proc_stream": "SalesPowerBIReporting",
+      "proc_schema": "Gold",
+      "proc_table": "BridgeGeography"
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Business Summary",
+      "reporting_schema": "CoSell",
+      "reporting_table": "BusinessSummary",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Business Unit",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimGPSBusinessUnit",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Capacity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapSolutionPracticeIndustryCountry_Capacity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Cascaded IP PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "Bridge_CascadedPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Cascaded IP PartnerOne MBS",
+      "reporting_schema": "CoSell",
+      "reporting_table": "Bridge_CascadedPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Cascaded PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "Bridge_CascadedPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Cascaded PartnerOne Hidden",
+      "reporting_schema": "CoSell",
+      "reporting_table": "Bridge_CascadedPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Catalog",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapSolutionPracticeIndustryCountry",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Channel PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Cosell Services",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCosellServices",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Crediting Geography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "VWDimGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "CRM Partner Account",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCRMPartnerAccount",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Custom Oppty Status",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCustomOpptyStatus",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Custom Partner Category",
+      "reporting_schema": "CoSell",
+      "reporting_table": "CustomPartnerCategory",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Custom Partner Segment",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapCustomPartnerSegment",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Customer",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimMSXCustomer",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Customer Geography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCustomerGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Customer Segment",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimCustomerSegment",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "CustomPartnerReportingGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "CustomPartnerReportingGeography",
+      "proc_stream": "SalesPowerBIReporting",
+      "proc_schema": "Gold",
+      "proc_table": "CustomPartnerReportingGeography"
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "DimMetric",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimMetric",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "DimPINMetric",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPINMetric",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Duration",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerDealDuration",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Engagement Milestone",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimEngagementMilestone",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Account",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactAccount",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Account PIN",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactAccountPIN",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Azure Consumption C_T_CG",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactAzureConsumptionCTCG",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Azure Consumption P1_CG_C_T",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactAzureConsumptionP1CGCT",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact CoSell Targets",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactCoSellTargets",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact CRM Partner",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactCRMPartner",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact CSPSolution Billed Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactCSPSolutionBilledOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact CSPSolution Consumption Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactCSPSolutionConsumptionOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact CSPSolution Partner Deal",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactCSPSolutionPartnerDeal",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Duration",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDealDuration",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Engagement Milestone",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Engagement Milestone Pipeline",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactEngagementMilestonePipeline",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact ISV Connect",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactISVConnect",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Lead",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactLead",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Partner Deal",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDeal",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Partner One",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact PRACR Targets",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPRACRTargets",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Solution Billed Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactSolutionBilledOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Solution Build-With",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactSolution",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Solution Consumption Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactSolutionConsumptionOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact Solution Partner Deal",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactSolutionPartnerDeal",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact SolutionCapacityGeography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactSolutionCapacityGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Fact SolutionPriorityScenarioIndustryCountrySnapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "SnapshotMapSolutionPriorityScenarioIndustryCountry",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Industry",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimIndustry",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "IP PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "ISV Connect App",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimISVConnectApp",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Lead",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimLead",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map CascadingPIN",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactIPT",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map Offer PartnerDeal",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapOfferPartnerDeal",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map Oppty",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapOppty",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map Oppty CSE Partner Attach And Solution Attach",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapOpptyPartnerAttachAndSolutionAttach",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map Partner Sharing",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactMSXPartnerSharing",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map PartnerDeal Partner Attach And Solution Attach",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapPartnerDealPartnerAttachAndSolutionAttach",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map Prioritized Oppty CSE",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapPrioritizedOppty",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Map User Subsidiary",
+      "reporting_schema": "CoSell",
+      "reporting_table": "MapUserSubsidiary",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Marketplace Billed Sales",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactMarketplaceBilledSales",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Marketplace Offer",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimMarketplaceOffer",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "MBS Commercial Targets",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactMBSCommercialTargets",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "MBS GPS Targets",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactMBSTargets",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "MSX Solution Area",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimMSXSolutionArea",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "MSX Wins With Solution Attached",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimMSXWinsWithSolutionAttach",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "MSX Workload",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimMSXWorkLoad",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Opportunity",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Opportunity + Milestone Est Completion Date",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimOpportunityMilestoneEstCompletionDate",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Opportunity Weekly Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "SnapshotDimOpportunityWeekly",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "OpportunityFlags",
+      "reporting_schema": "CoSell",
+      "reporting_table": "OpportunityFlags",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerDeal",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal Approval Reported Date",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerDealApprovalReportedDate",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal FY20 Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDeal_FY20",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal FY21 Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDeal_FY21",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal FY22 Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDeal_FY22",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal FY23 Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDeal_FY23",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal FY24 Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDeal_FY24",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal FY25 Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerDeal_FY25",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal Partner Reported ACR",
+      "reporting_schema": "CoSell",
+      "reporting_table": "PartnerDealPartnerReportedACR",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal Solution Attached",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerDealSolutionAttached",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Deal Solution Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerDealSolutionHistory",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Designations",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerDesignation",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Geography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSalesReportingGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner MAICPP Status",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerMAICPPStatus",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Sharing Flags",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerSharingFlags",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Sharing Metric Type",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPartnerSharingMetricType",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Sharing Weekly Snapshot",
+      "reporting_schema": "CoSell",
+      "reporting_table": "SnapshotPartnerSharingWeekly",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Partner Specializations",
+      "reporting_schema": "CoSell",
+      "reporting_table": "FactPartnerSpecialization",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "PDM DimReportingPartnerOneSub",
+      "reporting_schema": "CoSell",
+      "reporting_table": "PDM_PDMM_HierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "PIN Metric",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPINMetric",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Prioritized and Ready Partners Oppty",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimPrioritizedAndReadyPartnersOppty",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Product",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimMSXProduct",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Projected Baseline C_T_CG",
+      "reporting_schema": "CoSell",
+      "reporting_table": "ProjectedBaselineCTCG",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Projected Baseline P1_CG_C_T",
+      "reporting_schema": "CoSell",
+      "reporting_table": "ProjectedBaselineP1CGCT",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Reporting Geography",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimReportingGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Reporting IP PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimReportingPartnerOneSub",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Reporting PartnerOne",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimReportingPartnerOneSub",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Reporting PartnerOne Median",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimReportingPartnerOneMedian",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Rev Sum Division",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimRevSumDivision",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Role Contact",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimReportingPartnerOneSub",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Sales Program",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSalesProgram",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Sharing Type",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSharingType",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Solution",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSolution",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Solution Area",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSolutionArea",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Solution Area (Oppty)",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSolutionAreaOppty",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Solution Engagement Pipeline",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSolutionEngagementPipeline",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Solution Incentive",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimSellerCoSellIncentive",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Time",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimTime",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "Top Tier Monthly Status",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimTopTierMonthlyStatus",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "CosellSemanticModel",
+      "model_table": "User Subsidiary",
+      "reporting_schema": "CoSell",
+      "reporting_table": "DimUserSubsidiary",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "Account Personnel",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "DimAccountPersonnel",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "Geography",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "DimReportingGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "Partner",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "DimRedCarpetPartner",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "PBP Facts",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "PBPFacts",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "rc DimMPL",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "DimMPL",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "rc DimPartner",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "DimPartner",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "rc DimRedCarpetActivity",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "DimRedCarpetActivity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "Partner Planning and Transition Dataset",
+      "model_table": "rc Geography",
+      "reporting_schema": "RedCarpet",
+      "reporting_table": "RCGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Account",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimAccountGeographyHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Account Product Map",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecAccountProductMapReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Account Tags",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimAccountTagsReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Account Team",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecAccountTeamReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "ACRPipeline",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "ACRPipeline",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Bridge Reporting PartnerOne",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "MapReportingPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "BridgeOpportunity",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "BridgeOpportunity",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Business Hierarchy",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "BusinessHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Custom Created Date",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "CustomCreatedDateReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Custom Due Date",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "CustomDueDateReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Custom Partner Category",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "CustomPartnerCategory",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Custom Partner Segment",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "CustomPartnerSegment",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Custom Solution Area",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "CustomSolutionAreaReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Custom Status",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "CustomStatusReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dataset Refresh",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimAccountTagsReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DealPartnerOneMapping",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DealPartnerOneMapping",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Capacity Geography",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimCapacityGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Custom Partner Deal Direction",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimCustomPartnerDealDirectionReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Customer Geography",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimCustomerGeography",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Customer Reporting",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimCustomerReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Customer Segment",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimCustomerSegment",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Opportunity Milestone Est Completion Date",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimOpportunityMilestoneEstCompletionDate",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Prioritized Partner",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimPrioritizedPartnerReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Solution",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimSolution",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim Time",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimTime",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Dim User Subsidiary",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimUserSubsidiary",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DimATU",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimATU",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DimPartnerAccount",
+      "reporting_schema": "TPP",
+      "reporting_table": "DimPartnerAccount",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DimPartnerDeal",
+      "reporting_schema": "TPP",
+      "reporting_table": "DimPartnerDeal",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DimPortfolio",
+      "reporting_schema": "TPP",
+      "reporting_table": "DimPortfolio",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DimPortfolioAccount",
+      "reporting_schema": "TPP",
+      "reporting_table": "DimPortfolioAccount",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DimPortfolioPreloadedPriority",
+      "reporting_schema": "TPP",
+      "reporting_table": "DimPortfolioPreloadedPriority",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "DimPortfolioPriorityTag",
+      "reporting_schema": "TPP",
+      "reporting_table": "DimPortfolioPriorityTag",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Engagement Milestone",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimEngagementMilestoneReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Fact Partner Referral",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "FactPartnerDealReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "FactMSXCombined",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "FactMSXCombined",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "FactPortfolioPartnerEngagement",
+      "reporting_schema": "TPP",
+      "reporting_table": "FactPortfolioPartnerEngagement",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Fiscal Month",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimFiscalMonthReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "LatestRefresh",
+      "reporting_schema": "TPP",
+      "reporting_table": "LatestRefresh",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Map Partner Solution Area",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "MapPartnerSolutionAreaReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Map Reporting PartnerOne",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "MapReportingPartnerOne",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Map User Subsidiary",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimUserSubsidiary",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Opportunity",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimOpportunityReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Opportunity Team",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecOpportunityTeamReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Partner Account",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimCRMPartnerAccountReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Partner As End Customer",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "PartnerAsEndCustomerReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Partner Referral",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimPartnerReferralReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Partner Sharing Direction",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimMSXPartnerSharingCategorizationReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "PDM PDMM Hierarchy",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "PDM_PDMM_HierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "PlanPriority",
+      "reporting_schema": "TPP",
+      "reporting_table": "PlanPriority",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Pricing Level",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimPricingLevelHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Product",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimProductReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Product Hierarchy",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimProductHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Reporting PartnerOne Sub",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "ReportingPartnerOneSubReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Rev Sum Hierarchy",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimRevSumHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Sales Play",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimSalesPlayReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Sales Program",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimSalesProgramReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Sec User Subsidiary",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecUserSubsidiaryReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Segment",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimSegmentHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Seller",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecDimSellerReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Seller Account Product Map",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecSellerAccountProductMapReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Seller Hierarchy",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecSellerHierarchyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "SnapshotFactMSXCombined",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SnapshotFactMSXCombined",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Solution Area ",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimSolutionArea",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Solution Area Detail",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimSolutionAreaDetailReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Solution Area Oppty",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SolutionArea_OpptyReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Subsidiary",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecDistinctSubsidiaryReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "TeamRLS",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "SecAccountTeamReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    },
+    {
+      "model_name": "PartnerSharingModel",
+      "model_table": "Workload",
+      "reporting_schema": "PartnerSharing",
+      "reporting_table": "DimWorkloadReporting",
+      "proc_stream": "",
+      "proc_schema": "",
+      "proc_table": ""
+    }
+  ]
+}

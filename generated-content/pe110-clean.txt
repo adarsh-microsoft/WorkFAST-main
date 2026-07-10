@@ -1,0 +1,223 @@
+===== PS 15 | inputId :rg: | Weightage 1 =====
+Q: Scenario:  You have an Azure SQL Database database that contains a table named Sales.Customer. The Sales.Customer table contains the following columns:  CustomerId FullName Email TaxID RegionId  You also have a database role named AppSupport that is used by a support application. You need to implement a security solution for AppSupport that meets the following requirements:  Prevent AppSupport from viewing the TaxID column. Allow AppSupport to query the Sales.Customer table for troubleshooting. Allow AppSupport to run a stored procedure named Sales.usp_GetCustomerByCustomerId. You need to prevent AppSupport from viewing the TaxID column while still allowing access to the remaining columns in the table. Which Transact-SQL statement should you use?
+OPTIONS (number within OL):
+  1) DENY SELECT ON OBJECT::Sales.Customer TO AppSupport;
+  2) REVOKE SELECT ON OBJECT::Sales.Customer(TaxID) FROM AppSupport;
+  3) DENY SELECT ON OBJECT::Sales.Customer(TaxID) TO AppSupport;
+  4) GRANT SELECT ON OBJECT::Sales.Customer(TaxID) TO AppSupport;
+
+===== PS 19 | inputId :rk: | Weightage 1 =====
+Q: Scenario: You have an Azure SQL database named ProductsDB. You deploy Data API builder (DAB) to Azure Container Apps by using the mcr.microsoft.com/azure-databases/data-api-builder:latest image. The container app has the following configurations: You confirm that the SQL login in the connection string is correct and the database exists. You need to ensure that the container app can establish connections to the Azure SQL logical server without changing the container app deployment settings or the DAB configuration file. Task: What should you do on the Azure SQL logical server?
+  (scenario bullets: Secrets: mssql-connection-string, dab-config-base64 | Environment variables: o MSSQL_CONNECTION_STRING=secretref:mssql-connection-string o DAB_CONFIG_BASE64=secretref:dab-config-base64 | Ingress: External on port 5000 Users report that the /health endpoint returns a healthy response, but all requests that query an entity named Products fail and generate a connection error.)
+OPTIONS (number within OL):
+  1) Create an auto-failover group for ProductsDB
+  2) Enable FORCE_LAST_GOOD_PLAN automatic tuning for ProductsDB
+  3) Create a firewall rule that allows a start and end IP address of 0.0.0.0
+  4) Run DBCC CHECKDB on ProductsDB.
+
+===== PS 43 | inputId :r1c: | Weightage 1 =====
+Q: You have a SQL database in Microsoft Fabric that contains a table named dbo.Orders. dbo.Orders has a clustered index, contains three years of data, and is partitioned by a column named OrderDate by month. You need to remove all the rows for the oldest month. The solution must minimize the impact on other queries that access the data in dbo.Orders. Solution: Run the following Transact-SQL statement: TRUNCATE TABLE dbo.Orders; Does this meet the goal?
+OPTIONS (number within OL):
+  1) Yes
+  2) No
+
+===== PS 44 | inputId :r1d: | Weightage 1 =====
+Q: You have a SQL database in Microsoft Fabric that contains a table named dbo.Orders. dbo.Orders has a clustered index, contains three years of data, and is partitioned by a column named OrderDate by month. You need to remove all the rows for the oldest month. The solution must minimize the impact on other queries that access the data in dbo.Orders. Solution: Run the following Transact-SQL statement: DELETE FROM dbo.Orders WHERE OrderDate < DATEADD(month, -36, SYSUTCDATETIME()); Does this meet the goal?
+OPTIONS (number within OL):
+  1) Yes
+  2) No
+
+===== PS 45 | inputId :r1e: | Weightage 1 =====
+Q: You have a SQL database in Microsoft Fabric that contains a table named dbo.Orders. dbo.Orders has a clustered index, contains three years of data, and is partitioned by a column named OrderDate by month. You need to remove all the rows for the oldest month. The solution must minimize the impact on other queries that access the data in dbo.Orders. Solution: Identify the partition number for the oldest month, and then run the following Transact-SQL statement: TRUNCATE TABLE dbo.Orders WITH (PARTITIONS (partition number)); Does this meet the goal?
+OPTIONS (number within OL):
+  1) Yes
+  2) No
+
+===== PS 46 | inputId :r1f: | Weightage 1 =====
+Q: You have an SDK-style SQL database project stored in a Git repository. The project targets an Azure SQL Database. The CI build fails with unresolved reference errors when the project references system objects. You need to update the SQL database project to ensure that dotnet build validates successfully by including the correct system objects in the database model for Azure SQL Database. Solution: Build the project by running dotnet build -bl -flp:v=diag. Does this meet the goal?
+OPTIONS (number within OL):
+  1) Yes
+  2) No
+
+===== PS 47 | inputId :r1g: | Weightage 1 =====
+Q: You have an SDK-style SQL database project stored in a Git repository. The project targets an Azure SQL Database. The CI build fails with unresolved reference errors when the project references system objects. You need to update the SQL database project to ensure that dotnet build validates successfully by including the correct system objects in the database model for Azure SQL Database. Solution: Add the Microsoft.SqlServer.Dacpacs.Master NuGet package to the project. Does this meet the goal?
+OPTIONS (number within OL):
+  1) Yes
+  2) No
+
+===== PS 48 | inputId :r1h: | Weightage 1 =====
+Q: You have a SQL database in Microsoft Fabric that contains a table named dbo.Orders. dbo.Orders has a clustered index, contains three years of data, and is partitioned by a column named OrderDate by month. You need to remove all the rows for the oldest month. The solution must minimize the impact on other queries that access the data in dbo.Orders. Solution: Identify the partition scheme for the oldest month, and then run the following Transact-SQL statement: ALTER TABLE dbo.Orders DROP PARTITION SCHEME (partition_scheme_name); Does this meet the goal?
+OPTIONS (number within OL):
+  1) Yes
+  2) No
+
+===== PS 49 | inputId :r1i: | Weightage 1 =====
+Q: Scenario: You have an Azure SQL database named SalesDB. You have a Data API builder (DAB) instance that exposes the following entities in SalesDB: The DAB runtime configuration includes the following permissions: JSON { "entities": { "Order": { "source": "dbo.Orders", "permissions": [ { "role": "authenticated", "actions": ["read"] } ] }, "FinalizeOrder": { "source": "dbo.usp_FinalizeOrder", "permissions": [ { "role": "operations", "actions": ["execute"], "policy": { "database": "TenantId = @claims.tenantId" } } ] } } } Client requests include a Microsoft Entra access token. The client also sends HTTP header X-MS-API-ROLE: operations for both REST and GraphQL requests. Which of the following statements is true?
+  (scenario bullets: A table entity named Order mapped to a table named dbo.Orders. | A stored procedure entity named FinalizeOrder mapped to a stored procedure named dbo.usp_FinalizeOrder.)
+OPTIONS (number within OL):
+  1) A REST GET request to the Order entity that includes the access token and X-MS-API-ROLE: operations will return data
+  2) When DAB runs the stored procedure, the database policy defined on the FinalizeOrder entity will be enforced.
+  3) If the client omits the X-MS-API-ROLE header but still sends the same access token, the Order entity read...
+
+===== PS 50 | inputId :r1j: | Weightage 3 =====
+Q: Scenario: You have a database named db1. The schema is stored in a Git repository as an SDK-style SQL database project. The repository contains the following GitHub Action workflow. Workflow Snippet: YAML name: Database CI/CD on: push: branches: [ main ] pull_request: branches: [ main ] jobs: build-and-deploy: runs-on: ubuntu-latest steps: - name: Checkout code uses: actions/checkout@v3 - name: Setup .NET uses: actions/setup-dotnet@v3 with: dotnet-version: '8.x' - name: Build run: dotnet build db1.sqlproj --configuration Release - name: Deploy run: | SqlPackage /Action:Publish \ /SourceFile:./bin/Release/db1.dacpac \ /TargetConnectionString:"${{ secrets.Target_Connection_String }}" unit-tests: runs-on: ubuntu-latest needs: build-and-deploy if: github.ref == 'refs/heads/main' steps: - name: Checkout code uses: actions/checkout@v3 - name: Setup .NET uses: actions/setup-dotnet@v3 with: dotnet-version: '8.x' - name: Run unit tests run: dotnet test UnitTests.csproj --configuration Release  Which of the following statements is true?
+OPTIONS (number within OL):
+  1) Unit tests run automatically whenever changes are pushed to main.
+  2) Schema validation occurs during the Build step.
+  3) Schema validation occurs during the Deploy step.
+
+===== PS 51 | inputId :r1k: | Weightage 1 =====
+Q: Scenario: You have an Azure SQL database that supports a customer-facing API. The API calls a stored procedure named dbo.GetCustomerOrders thousands of times per hour. After a deployment that updated indexes and statistics, users report that the API endpoint is slower. In Query Store, the same query now has two persisted execution plans. During the last hour, the newer plan had a significantly higher average duration and CPU time than the older plan. You need to restore the previous performance quickly, without changing the API code. Which Transact-SQL command should you run?
+OPTIONS (number within OL):
+  1) EXEC sys.sp_query_store_set_hints
+  2) ALTER DATABASE
+  3) DBCC FREEPROCCACHE
+  4) EXEC sp_query_store_force_plan
+
+===== PS 52 | inputId :r1l: | Weightage 2 =====
+Q: Scenario: You have an Azure SQL database named AdventureWorksDB that contains a table named dbo.Employee. You have a C# Azure Functions app that uses an HTTP-triggered function with an Azure SQL input binding to query dbo.Employee. You are adding a second function that will react to row changes in dbo.Employee and write structured logs. Requirements: Which two database configurations should you perform?
+  (scenario bullets: Changes to dbo.Employee must trigger the new function within five seconds. | Each invocation must process no more than 100 changes.)
+OPTIONS (number within OL):
+  1) Enable change data capture (CDC) for dbo.Employee table changes.
+  2) Enable change tracking on the dbo.Employee table.
+  3) Create an AFTER trigger on dbo.Employee for Data Manipulation Language (DML).
+  4) Set Sql_Trigger_MaxBatchSize to 100.
+  5) Enable change tracking at the database level.
+  6) Set Sql_Trigger_PollingIntervalMs to 5000.
+
+===== PS 53 | inputId :r1m: | Weightage 2 =====
+Q: Scenario: You have an Azure SQL database that has Query Store enabled. Query Performance Insight shows that one stored procedure has the longest runtime. The procedure runs the following parameterized query: SQL CREATE OR ALTER PROCEDURE dbo.GetRecentOrders @CustomerId int, @SinceDate datetime2 AS SELECT TOP (50) o.OrderId, o.OrderDate, o.Status, o.TotalAmount FROM dbo.Orders AS o WHERE o.CustomerId = @CustomerId AND o.OrderDate >= @SinceDate ORDER BY o.OrderDate DESC; The dbo.Orders table has approximately 120 million rows. CustomerId is highly selective, and OrderDate is used for range filtering and sorting. You have the following indexes: Which of the following statements are true?
+  (scenario bullets: Clustered index: PK_Orders ON (OrderId) | Nonclustered index: IX_Orders_OrderDate ON (OrderDate) with no included columns An actual execution plan captured from Query Store for slow runs shows the following: | An index seek on IX_Orders_OrderDate followed by a Key Lookup (Clustered) on PK_Orders for CustomerId, Status, and TotalAmount. | A sort operator before TOP (50), because the results are ordered by OrderDate DESC.)
+OPTIONS (number within OL):
+  1) To avoid the explicit sort for the query, create a nonclustered index on (CustomerId, OrderDate DESC) that includes (Status, TotalAmount)
+  2) To eliminate the sort and make the query use an ordered seek, add CustomerId as an included column to IX_Orders_OrderDate
+  3) The plan indicates a bottleneck from a suboptimal query plan, rather than locking or blocking
+
+===== PS 54 | inputId :r1n: | Weightage 3 =====
+Q: You have a database named DB1. The schema is stored in a GitHub repository as an SDK-style SQL database project. You use a feature branch workflow to deploy changes to DB1. You need to update the local feature branch with the latest changes to main, and then create a pull request to merge the feature branch into main for review. Instruction: How should you complete the GitHub CLI script? To answer, drag the appropriate values to the correct targets. Each value may be used once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content. NOTE: Each correct selection is worth one point. Values:
+  (scenario bullets: gh pr create | gh pr merge | gh pr ready | git checkout main | git fetch origin | git merge origin/main | git pull origin main Answer Area: Bash git checkout feature/db1-add-staticdata [Value] [Value] [Value] \ --title "Feature Update: DB1" \ --body "Apply latest improvements and updates for review" \ --head feature/db1-add-staticdata \ --base main \ --repo /DB1 \ --web)
+OPTIONS (number within OL):
+  1) git fetch origin
+  2) git merge origin/main
+  3) gh pr create
+  4) gh pr ready
+  5) git pull origin main
+
+===== PS 55 | inputId :r1o: | Weightage 1 =====
+Q: You have an Azure subscription. The subscription contains an Azure SQL database named SalesDB and an Azure App Service app named sales-api. sales-api uses virtual network integration to a subnet named vnet-prod/subnet-app and reads from SalesDB. You need to configure authentication and network access to meet the following requirements: The solution must minimize administrative effort. Instruction: What should you configure for Authentication for sales-api?
+  (scenario bullets: Ensure that sales-api connects to SalesDB by using passwordless authentication. | Ensure that all the database traffic remains within the subscription.)
+OPTIONS (number within OL):
+  1) Configure client certificate authentication for sales-api
+  2) Use a connection string with rotated SQL credentials weekly
+  3) Enable a managed identity and use Microsoft Entra authentication
+  4) Create a SQL login and store the SQL credentials in Azure Key Vault
+
+===== PS 56 | inputId :r1p: | Weightage 1 =====
+Q: You have an Azure subscription. The subscription contains an Azure SQL database named SalesDB and an Azure App Service app named sales-api. sales-api uses virtual network integration to a subnet named vnet-prod/subnet-app and reads from SalesDB. You need to configure authentication and network access to meet the following requirements: The solution must minimize administrative effort. Instruction: What should you configure for Network access for SalesDB?
+  (scenario bullets: Ensure that sales-api connects to SalesDB by using passwordless authentication. | Ensure that all the database traffic remains within the subscription.)
+OPTIONS (number within OL):
+  1) Allow Azure services and keep the public endpoint enabled
+  2) Create a private endpoint and disable public network access
+  3) Add IP firewall rules for the App Service outbound IP addresses
+  4) Configure a database-level firewall rule for support IP addresses
+
+===== PS 57 | inputId :r1q: | Weightage 1 =====
+Q: You have an Azure SQL database. You deploy Data API builder (DAB) to Azure Container Apps by using the mcr.microsoft.com/azure-databases/data-api-builder:latest image. You have the following Container Apps secrets: Instruction: Which command should you run?
+  (scenario bullets: MSSQL_CONNECTION_STRING that maps to the SQL connection string | DAB_CONFIG_BASE64 that maps to the DAB configuration You need to initialize the DAB configuration to read the SQL connection string.)
+OPTIONS (number within OL):
+  1) dab init --database-type mssql --connection-string "@env(''DAB_CONFIG_BASE64'')" --host-mode Production --config dab-config.json
+  2) dab init --database-type mssql --connection-string "secretref:mssql-connection-string" --host-mode Production --config dab-config.json
+  3) dab init --database-type mssql --connection-string "@env(''MSSQL_CONNECTION_STRING'')" --host-mode Production --config dab-config.json
+  4) dab init --database-type mssql --connection-string "secretref:DAB_CONFIG_BASE64" --host-mode Production --config dab-config.json
+
+===== PS 58 | inputId :r1r: | Weightage 1 =====
+Q: You have a database named DB1. The schema is stored in a Git repository as an SDK-style SQL database project. You have a GitHub Actions workflow that already runs dotnet build and produces a database artifact. You need to add a deployment step that publishes the .dacpac file to an Azure SQL database by using the secrets stored in GitHub repository secrets. Instruction: What should you include in the workflow?
+OPTIONS (number within OL):
+  1) yaml name: Publish run: | dotnet build db1.sqlproj /p:TargetConnectionString="${{ secrets.SQL_CONNECTION_STRING }}"
+  2) yaml name: Publish uses: azure/sql-action@v2 with: action: extract path: bin/Debug/db1.dacpac connection-string: ${{ secrets.SQL_CONNECTION_STRING }}
+  3) yaml name: Publish uses: azure/sql-action@v2 with: action: publish path: bin/Debug/db1.dacpac connection-string: ${{ secrets.SQL_CONNECTION_STRING }}
+  4) yaml env: SQL_CONNECTION_STRING: Server=tcp:myserver.database.windows.net; ... steps: name: Publish uses: azure/sql-action@v2 with: action: publish path: bin/Debug/db1.dacpac connection-string: ${{ env.SQL_CONNECTION_STRING }}
+
+===== PS 59 | inputId :r1s: | Weightage 1 =====
+Q: You have a Microsoft Fabric workspace named Workspace1 that contains a SQL database named SalesDB and an API for GraphQL item named SalesApi. You have a Microsoft Entra group named SqlUsers. From Workspace1, you assign permission to SalesApi as shown in the following exhibit: Which of the following statements is true?
+  (scenario bullets: Group: SqlUsers | Additional permissions: [Checked] View and Edit GraphQL item | Notification Options: [Checked] Notify recipients by email The connection to SalesDB has the connectivity option configured as shown in the following exhibit: | [Selected] Connect to Fabric data sources with single sign-on (SSO) authentication SqlUsers has the Viewer role for Workspace1.)
+OPTIONS (number within OL):
+  1) The members of SqlUsers can modify the data in SalesDB via SalesApi.
+  2) The members of SqlUsers can view the data in SalesDB via SalesApi.
+  3) The members of SqlUsers can change the field mappings of SalesApi.
+
+===== PS 60 | inputId :r1t: | Weightage 1 =====
+Q: You have an Azure SQL database named SalesDB on a logical server named sales-sql01. You have an Azure App Service web app named OrderApi that connects to SalesDB by using SQL authentication. You enable a user-assigned managed identity named OrderApi-Id for OrderApi. You need to configure OrderApi to connect to SalesDB by using Microsoft Entra authentication. The managed identity must have read and write permissions to SalesDB. Which Transact-SQL statements should you run in SalesDB?
+OPTIONS (number within OL):
+  1) CREATE LOGIN [OrderApi-Id] FROM EXTERNAL PROVIDER; ALTER ROLE db_datareader ADD MEMBER [OrderApi-Id]; ALTER ROLE db_datawriter ADD MEMBER [OrderApi-Id];
+  2) CREATE LOGIN [OrderApi-Id] WITH PASSWORD = ''P@ssw0rd!''; ALTER SERVER ROLE sysadmin ADD MEMBER [OrderApi-Id];
+  3) CREATE USER [OrderApi-Id] WITH PASSWORD = ''P@ssw0rd!''; ALTER ROLE db_datareader ADD MEMBER [OrderApi-Id]; ALTER ROLE db_datawriter ADD MEMBER [OrderApi-Id];
+  4) CREATE USER [OrderApi-Id] FROM EXTERNAL PROVIDER; ALTER ROLE db_datareader ADD MEMBER [OrderApi-Id]; ALTER ROLE db_datawriter ADD MEMBER [OrderApi-Id];
+
+===== PS 61 | inputId :r1u: | Weightage 1 =====
+Q: You have an Azure SQL database that supports the OLTP workload of an order-processing application. During a 10-minute incident window, you run a dynamic management view query and discover the following: Users report that updates to Sales.Orders intermittently time out during the incident window. The timeouts stop only after you manually terminate session 72. What is a possible cause of the blocking?
+  (scenario bullets: Session 72 is sleeping with open_transaction_count = 1. | Multiple other sessions show blocking_session_id = 72 in sys.dm_exec_requests. | sys.dm_exec_input_buffer(72, NULL) returns only BEGIN TRANSACTION UPDATE Sales.Orders.)
+OPTIONS (number within OL):
+  1) A lock escalation occurred.
+  2) A long-running SELECT statement is blocking writers.
+  3) Session 72 caused a deadlock.
+  4) An explicit transaction was started but not committed or rolled back.
+
+===== PS 62 | inputId :r1v: | Weightage 1 =====
+Q: You have an Azure SQL database that contains a column named Notes. A security review discovers that Notes contains sensitive data. You need to ensure that the data is protected so that neither the stored values nor the query inputs reveal information about the actual data. The solution must prevent a user from inferring relationships or repetitions in the data based on the encrypted output. Which should you use?
+OPTIONS (number within OL):
+  1) Always Encrypted with secure enclaves
+  2) Always Encrypted with randomized encryption
+  3) Always Encrypted with deterministic encryption
+  4) row-level security (RLS)
+
+===== PS 63 | inputId :r20: | Weightage 1 =====
+Q: You have an Azure SQL database that contains the following SQL graph tables: Which Transact-SQL query should you use?
+  (scenario bullets: A NODE table named dbo.Person | An EDGE table named dbo.Knows Each row in dbo.Person contains the following columns: | PersonId (int) | DisplayName (nvarchar(100)) You need to use a MATCH operator and exactly two directed Knows relationships to return the PersonId and DisplayName of people that are reachable from the person identified by an input parameter named @StartPersonId.)
+OPTIONS (number within OL):
+  1) SELECT p3.PersonId, p3.DisplayName FROM dbo.Person AS p1 JOIN dbo.Knows AS k1 ON 1 = 1 JOIN dbo.Person AS p2 ON 1 = 1 JOIN dbo.Knows AS k2 ON 1 = 1 JOIN dbo.Person AS p3 ON 1 = 1 WHERE p1.PersonId = @StartPersonId AND MATCH(p3<-(k2)-p2<-(k1)-p1);
+  2) SELECT p3.PersonId, p3.DisplayName FROM dbo.Person AS p1, dbo.Knows AS k1, dbo.Person AS p2, dbo.Knows AS k2, dbo.Person AS p3 WHERE p1.PersonId = @StartPersonId AND MATCH(p1-(k1)->p2) AND MATCH(p2-(k2)- >p3);
+  3) SELECT p3.PersonId, p3.DisplayName FROM dbo.Person AS p1, dbo.Knows AS k1, dbo.Person AS p2, dbo.Knows AS k2, dbo.Person AS p3 WHERE p1.PersonId = @StartPersonId AND MATCH(p1-(k1)->p2-(k2)->p3);
+  4) SELECT p2.PersonId, @StartPersonId FROM dbo.Person AS p1, dbo.Knows AS k1, dbo.Person AS p2, dbo.Knows AS k2, dbo.Person AS p3 WHERE p1.DisplayName = p2.DisplayName AND MATCH(p1-(k1)->p2-(k2)->p3);
+
+===== PS 64 | inputId :r21: | Weightage 1 =====
+Q: You have an Azure SQL database that stores order data. A reporting query aggregates monthly revenue per customer runs frequently. You need to reduce how long it takes to retrieve the calculated values. The solution must NOT alter any underlying table structure. What should you do?
+OPTIONS (number within OL):
+  1) Create a view by using ORDER BY without TOP, and then create a unique clustered index on the view.
+  2) Create a view by using GROUP BY, and then create a unique clustered index on the view.
+  3) Create a view without using WITH SCHEMABINDING, and then create a nonclustered index on the view.
+  4) Create a view by using WITH SCHEMABINDING, include COUNT_BIG(*), and then create a unique clustered index on the view.
+
+===== PS 65 | inputId :r22: | Weightage 1 =====
+Q: You have a GitHub Codespaces environment that has GitHub Copilot Chat installed and is connected to a SQL database in Microsoft Fabric named DB1. DB1 contains tables named Sales.Orders and Sales.Customers. You use GitHub Copilot Chat in the context of DB1. A company policy prohibits sharing customer Personally Identifiable Information (PII), secrets, and query result sets with any AI service. You need to use GitHub Copilot Chat to write and review Transact-SQL code for a new stored procedure that will join Sales.Orders to Sales.Customers and return customer names and email addresses. The solution must NOT share the actual data in the tables with GitHub Copilot Chat. What should you do?
+OPTIONS (number within OL):
+  1) Run a SELECT statement that returns customer names and email addresses and provide the result set to GitHub Copilot Chat so that GitHub Copilot Chat can generate the stored procedure.
+  2) From Sales.Customers, paste several rows that include email addresses into a chat, so that GitHub Copilot Chat can infer edge cases.
+  3) Ask GitHub Copilot Chat to generate the stored procedure by using schema details only.
+  4) Provide the database connection string to GitHub Copilot Chat so that GitHub Copilot Chat can validate the stored procedure.
+
+===== PS 66 | inputId :r23: | Weightage 1 =====
+Q: Your development team uses GitHub Copilot Chat in Microsoft SQL Server Management Studio (SSMS) to generate and run Transact-SQL queries against an Azure SQL database named DB1. DB1 contains tables that store sensitive customer data. You need to ensure that any Transact-SQL queries that run from GitHub Copilot Chat in SSMS are restricted by the same permissions as the developer's database login. What prevents the GitHub Copilot Chat-run queries from accessing data beyond the developer's access?
+OPTIONS (number within OL):
+  1) GitHub Copilot Chat filters query results on the client side to remove rows the developer is unauthorized to see.
+  2) GitHub Copilot Chat runs queries in a read-only sandbox that is isolated from production database permissions.
+  3) GitHub Copilot Chat uses different row-level security (RLS) policies than the developer.
+  4) GitHub Copilot Chat runs queries by using the developer''s database identity and permissions.
+
+===== PS 67 | inputId :r24: | Weightage 1 =====
+Q: Scenario: You have an Azure SQL database that supports an AI-enabled product catalog API. The database contains a table named Sales.Orders. Sales.Orders contains 20 million rows and has a nonclustered index on a column named CreateDate. The API passes a date parameter named @OrderDate. You have a stored procedure named get_latest_day_orders that filters by running the following query: WHERE CAST(CreateDate AS date) = @OrderDate A review of the query execution reveals that the query causes an index scan. You need to modify the predicate to ensure that Microsoft SQL Server can use an index seek on CreateDate for a single day. Question: Which WHERE clause should you use?
+OPTIONS (number within OL):
+  1) WHERE CONVERT(char(10), CreateDate, 121) = CONVERT(char(10), @OrderDate, 121)
+  2) WHERE LEFT(CONVERT(varchar(30), CreateDate, 121), 10) = CONVERT(char(10), @OrderDate, 121)
+  3) WHERE CreateDate >= @OrderDate AND CreateDate < DATEADD(day, 1, @OrderDate)
+  4) WHERE CreateDate LIKE CONVERT(char(10), @OrderDate, 121) + ''%''
+
+===== PS 68 | inputId :r25: | Weightage 1 =====
+Q: You have an Azure SQL table that contains the following data. You need to retrieve data to be used as context for a large language model (LLM). The  solution must minimize token usage. Which format should you use to send the data to the LLM?
+OPTIONS (number within OL):
+  1) JSON [ { "ProductName": "Laptop Pro", "Question": "Does it support USB-C charging?", "Answer": "Yes, it supports USB-C charging." }, { "ProductName": "Tablet X", "Question": "Does it support a stylus?", "Answer": "It supports the Active Pen stylus." } ]
+  2) JSON [ { "FaqId": 1, "ProductName": "Laptop Pro", "Question": "Does it support USB-C charging?", "Answer": "Yes, it supports USB-C charging." }, { "FaqId": 2, "ProductName": "Tablet X", "Question": "Does it support a stylus?", "Answer": "It supports the Active Pen stylus." } ]
+  3) JSON [ { "Prompt": "Yes, it supports USB-C charging." }, { "Prompt": "It supports the Active Pen stylus." } ]
+  4) JSON [ { "FaqId": 1, "Question": "Does it support USB-C charging?", "Answer": "Yes, it supports USB-C charging." }, { "FaqId": 2, "Question": "Does it support a stylus?", "Answer": "It supports the Active Pen stylus." } ]
+
+

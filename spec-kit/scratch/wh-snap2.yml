@@ -1,0 +1,609 @@
+- iframe [active] [ref=e254]:
+  - generic [active] [ref=f1e1]:
+    - generic [ref=f1e4]:
+      - generic [ref=f1e5]:
+        - toolbar "Ribbon" [ref=f1e7]:
+          - generic [ref=f1e11]:
+            - generic "Ribbon Tabs" [ref=f1e14]:
+              - tablist [ref=f1e15]:
+                - tab "Home" [selected] [ref=f1e16]:
+                  - generic [ref=f1e19]: Home
+                - tab "Management" [ref=f1e21]:
+                  - generic [ref=f1e24]: Management
+                - tab "Help" [ref=f1e25]:
+                  - generic [ref=f1e28]: Help
+            - button "SQL analytics endpoint" [ref=f1e213]:
+              - img [ref=f1e215]
+              - text: SQL analytics endpoint
+              - img [ref=f1e227]
+          - tabpanel "Home" [ref=f1e30]:
+            - generic [ref=f1e35]:
+              - group "Manage" [ref=f1e39]:
+                - button "Sync metadata from the Lakehouse" [disabled]:
+                  - generic:
+                    - generic:
+                      - img
+                - button "Settings" [ref=f1e229]:
+                  - img [ref=f1e232]
+                - button "Feedback" [ref=f1e40]:
+                  - img [ref=f1e43]
+              - group "Query" [ref=f1e50]:
+                - group [ref=f1e51]:
+                  - button "New SQL query" [ref=f1e52]:
+                    - img [ref=f1e55]
+                    - generic [ref=f1e58]: New SQL query
+                  - button [ref=f1e59]:
+                    - img [ref=f1e62]
+                - button "Monitor" [disabled]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic: Monitor
+              - group "Semantic model" [ref=f1e69]:
+                - button "New semantic model" [ref=f1e70]:
+                  - img [ref=f1e73]
+                  - generic [ref=f1e75]: New semantic model
+                - button "New API for GraphQL" [disabled]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic: New API for GraphQL
+              - group "Tools" [ref=f1e81]:
+                - button "Download SQL database project" [disabled]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic: Download SQL database project
+                - button "Open in" [ref=f1e83]:
+                  - img [ref=f1e86]
+                  - generic [ref=f1e88]: Open in
+                  - img [ref=f1e91]
+              - group "Copilot" [ref=f1e236]:
+                - button "Copilot" [ref=f1e237]:
+                  - img [ref=f1e240]
+                  - generic [ref=f1e247]: Copilot
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - group "More Options"
+        - generic [ref=f1e98]:
+          - generic [ref=f1e100]:
+            - button "Hide Object Explorer" [ref=f1e101]:
+              - img [ref=f1e103]
+            - generic [ref=f1e106]:
+              - generic [ref=f1e107]:
+                - heading "Explorer" [level=2] [ref=f1e108]
+                - generic [ref=f1e109]:
+                  - group [ref=f1e248]:
+                    - img [ref=f1e250]
+                    - generic "3 errors occurred while syncing" [ref=f1e253]
+                    - button "Details" [ref=f1e255]
+                    - button "dismiss" [ref=f1e257]:
+                      - img [ref=f1e259]
+                  - generic [ref=f1e110]:
+                    - button "Add warehouse" [ref=f1e111]:
+                      - img [ref=f1e113]
+                      - text: Warehouses
+                    - button "Search" [ref=f1e115]:
+                      - img [ref=f1e117]
+              - generic [ref=f1e120]:
+                - 'treeitem "Name: GPSMart Type: SQL analytics endpoint" [expanded] [level=1] [ref=f1e261] [cursor=pointer]':
+                  - 'generic "Name: GPSMart Type: SQL analytics endpoint" [ref=f1e262]':
+                    - img [ref=f1e264]
+                    - generic [ref=f1e267]: GPSMart
+                - treeitem "Schemas" [level=2] [ref=f1e273] [cursor=pointer]:
+                  - generic "Schemas" [ref=f1e274]:
+                    - img [ref=f1e276]
+                    - img [ref=f1e280]
+                    - generic [ref=f1e282]: Schemas
+                - treeitem "Security" [level=2] [ref=f1e284] [cursor=pointer]:
+                  - generic "Security" [ref=f1e285]:
+                    - img [ref=f1e287]
+                    - img [ref=f1e291]
+                    - generic [ref=f1e293]: Security
+                - treeitem "Queries" [expanded] [level=1] [ref=f1e295] [cursor=pointer]:
+                  - generic "Queries" [ref=f1e296]:
+                    - img [ref=f1e298]
+                    - generic [ref=f1e301]: Queries
+                - treeitem "My queries" [expanded] [level=2] [ref=f1e303] [cursor=pointer]:
+                  - generic "My queries" [ref=f1e304]:
+                    - img [ref=f1e306]
+                    - img [ref=f1e310]
+                    - generic [ref=f1e312]: My queries
+                - treeitem "SQL query 1" [level=3] [ref=f1e325] [cursor=pointer]:
+                  - generic "SQL query 1" [ref=f1e326]:
+                    - img [ref=f1e329]
+                    - generic [ref=f1e332]: SQL query 1
+                - treeitem "SQL query 2" [level=3] [ref=f1e334] [cursor=pointer]:
+                  - generic "SQL query 2" [ref=f1e335]:
+                    - img [ref=f1e338]
+                    - generic [ref=f1e341]: SQL query 2
+                - treeitem "SQL query 3" [level=3] [ref=f1e343] [cursor=pointer]:
+                  - generic "SQL query 3" [ref=f1e344]:
+                    - img [ref=f1e347]
+                    - generic [ref=f1e350]: SQL query 3
+                - treeitem "SQL query 4" [level=3] [ref=f1e352] [cursor=pointer]:
+                  - generic "SQL query 4" [ref=f1e353]:
+                    - img [ref=f1e356]
+                    - generic [ref=f1e359]: SQL query 4
+                - treeitem "Shared queries" [level=2] [ref=f1e361] [cursor=pointer]:
+                  - generic "Shared queries" [ref=f1e362]:
+                    - img [ref=f1e364]
+                    - img [ref=f1e368]
+                    - generic [ref=f1e370]: Shared queries
+          - generic [ref=f1e372]:
+            - generic [ref=f1e373]:
+              - tablist [ref=f1e374]:
+                - generic [ref=f1e377] [cursor=pointer]:
+                  - tab "SQL query 4" [selected] [ref=f1e378]:
+                    - img [ref=f1e380]
+                    - generic "SQL query 4" [ref=f1e383]
+                  - button "Close" [ref=f1e1055]:
+                    - generic [ref=f1e1057]: 
+              - button "Manage Tabs" [ref=f1e388]:
+                - img [ref=f1e1558]
+            - generic [ref=f1e394]:
+              - toolbar [ref=f1e395]:
+                - button "Run" [ref=f1e1089]:
+                  - img [ref=f1e1092]
+                  - text: Run
+                - separator [ref=f1e402]
+                - button "Save as" [ref=f1e403]:
+                  - img [ref=f1e406]
+                  - text: Save as
+                - separator [ref=f1e408]
+                - button "Save as view" [ref=f1e409]:
+                  - img [ref=f1e1037]
+                  - text: Save as view
+                - button "Copy the query text, results, or a link to open the query in another app." [ref=f1e1040]:
+                  - img [ref=f1e418]
+                  - text: Copy query
+                - button "Create a rule to trigger an action when data changes." [ref=f1e1094]:
+                  - img [ref=f1e422]
+                  - text: Create rule
+                - separator [ref=f1e424]
+                - button "Explain query" [ref=f1e425]:
+                  - img [ref=f1e428]
+                  - text: Explain query
+                - button "Fix query errors" [disabled] [ref=f1e430]:
+                  - img [ref=f1e433]
+                  - text: Fix query errors
+              - code [ref=f1e441]:
+                - generic [ref=f1e442]:
+                  - generic [ref=f1e1018]: "1"
+                  - generic [ref=f1e1044]: SELECT TABLE_NAME, ORDINAL_POSITION, COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE, IS_NULLABLE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'CoSellT' ORDER BY TABLE_NAME, ORDINAL_POSITION;
+                  - textbox "Editor content;Press Alt+F1 for Accessibility Options." [ref=f1e455]: SELECT TABLE_NAME, ORDINAL_POSITION, COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE, IS_NULLABLE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'CoSellT' ORDER BY TABLE_NAME, ORDINAL_POSITION;
+              - generic [ref=f1e525]:
+                - generic [ref=f1e527]:
+                  - tablist [ref=f1e528]:
+                    - tab "Messages" [ref=f1e530] [cursor=pointer]:
+                      - generic [ref=f1e531]: Messages
+                    - tab "Results" [selected] [ref=f1e1095] [cursor=pointer]:
+                      - generic [ref=f1e1096]: Results
+                  - separator [ref=f1e1097]
+                  - menubar "queryResultsActions" [ref=f1e1102]:
+                    - group [ref=f1e1103]:
+                      - button "Open in Excel. Get the full current results in an Excel worksheet." [ref=f1e1104]:
+                        - img [ref=f1e1106]
+                      - button "Explore this data (preview). View the full current results graphically." [ref=f1e1108]:
+                        - img [ref=f1e1110]
+                      - button "Visualize results" [ref=f1e1112]:
+                        - img [ref=f1e1114]
+                    - group [ref=f1e1116]:
+                      - button "Copy" [ref=f1e1560]:
+                        - img [ref=f1e1562]
+                        - img [ref=f1e1565]
+                      - generic [ref=f1e1567]:
+                        - img [ref=f1e1569]
+                        - textbox "Search" [ref=f1e1571]
+                      - button "Maximize" [ref=f1e1572]:
+                        - img [ref=f1e1574]
+                      - button "Close" [ref=f1e1576]:
+                        - img [ref=f1e1578]
+                - grid "Rich Data Grid" [ref=f1e1137]:
+                  - rowgroup [ref=f1e1138]:
+                    - row "Row number String TABLE_NAME Int ORDINAL_POSITION String COLUMN_NAME String DATA_TYPE Int CHARACTER_MAXIMUM_LENGTH Int NUMERIC_PRECISION Int NUMERIC_SCALE String IS_NULLABLE" [ref=f1e1139]:
+                      - columnheader "Row number" [ref=f1e1140]:
+                        - button "Row number" [ref=f1e1143]:
+                          - generic "Row number" [ref=f1e1144]:
+                            - img [ref=f1e1145]
+                      - columnheader "String TABLE_NAME" [ref=f1e1147] [cursor=pointer]:
+                        - generic [ref=f1e1149]:
+                          - button "String" [ref=f1e1150]:
+                            - img [ref=f1e1151]
+                          - button "TABLE_NAME" [ref=f1e1153]:
+                            - generic [ref=f1e1155]: TABLE_NAME
+                      - columnheader "Int ORDINAL_POSITION" [ref=f1e1156] [cursor=pointer]:
+                        - generic [ref=f1e1158]:
+                          - button "Int" [ref=f1e1159]:
+                            - img [ref=f1e1160]
+                          - button "ORDINAL_POSITION" [ref=f1e1162]:
+                            - generic [ref=f1e1164]: ORDINAL_POSITION
+                      - columnheader "String COLUMN_NAME" [ref=f1e1165] [cursor=pointer]:
+                        - generic [ref=f1e1167]:
+                          - button "String" [ref=f1e1168]:
+                            - img [ref=f1e1169]
+                          - button "COLUMN_NAME" [ref=f1e1171]:
+                            - generic [ref=f1e1173]: COLUMN_NAME
+                      - columnheader "String DATA_TYPE" [ref=f1e1174] [cursor=pointer]:
+                        - generic [ref=f1e1176]:
+                          - button "String" [ref=f1e1177]:
+                            - img [ref=f1e1178]
+                          - button "DATA_TYPE" [ref=f1e1180]:
+                            - generic [ref=f1e1182]: DATA_TYPE
+                      - columnheader "Int CHARACTER_MAXIMUM_LENGTH" [ref=f1e1183] [cursor=pointer]:
+                        - generic [ref=f1e1185]:
+                          - button "Int" [ref=f1e1186]:
+                            - img [ref=f1e1187]
+                          - button "CHARACTER_MAXIMUM_LENGTH" [ref=f1e1189]:
+                            - generic [ref=f1e1191]: CHARACTER_MAXIMUM_LENGTH
+                      - columnheader "Int NUMERIC_PRECISION" [ref=f1e1192] [cursor=pointer]:
+                        - generic [ref=f1e1194]:
+                          - button "Int" [ref=f1e1195]:
+                            - img [ref=f1e1196]
+                          - button "NUMERIC_PRECISION" [ref=f1e1198]:
+                            - generic [ref=f1e1200]: NUMERIC_PRECISION
+                      - columnheader "Int NUMERIC_SCALE" [ref=f1e1201] [cursor=pointer]:
+                        - generic [ref=f1e1203]:
+                          - button "Int" [ref=f1e1204]:
+                            - img [ref=f1e1205]
+                          - button "NUMERIC_SCALE" [ref=f1e1207]:
+                            - generic [ref=f1e1209]: NUMERIC_SCALE
+                      - columnheader "String IS_NULLABLE" [ref=f1e1210] [cursor=pointer]:
+                        - generic [ref=f1e1212]:
+                          - button "String" [ref=f1e1213]:
+                            - img [ref=f1e1214]
+                          - button "IS_NULLABLE" [ref=f1e1216]:
+                            - generic [ref=f1e1218]: IS_NULLABLE
+                  - generic [ref=f1e1219]:
+                    - rowgroup [ref=f1e1220]:
+                      - row "1 Associated_DimPartnerDeal 1 DimPartnerReferralKey bigint NULL 19 0 YES" [ref=f1e1221]:
+                        - gridcell "1" [ref=f1e1222] [cursor=pointer]:
+                          - generic "1" [ref=f1e1223]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1224] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1225]
+                        - gridcell "1" [ref=f1e1226] [cursor=pointer]:
+                          - generic "1" [ref=f1e1227]
+                        - gridcell "DimPartnerReferralKey" [ref=f1e1228] [cursor=pointer]:
+                          - generic "DimPartnerReferralKey" [ref=f1e1229]
+                        - gridcell "bigint" [ref=f1e1230] [cursor=pointer]:
+                          - generic "bigint" [ref=f1e1231]
+                        - gridcell "NULL" [ref=f1e1232] [cursor=pointer]:
+                          - generic [ref=f1e1233]: "NULL"
+                        - gridcell "19" [ref=f1e1234] [cursor=pointer]:
+                          - generic "19" [ref=f1e1235]
+                        - gridcell "0" [ref=f1e1236] [cursor=pointer]:
+                          - generic "0" [ref=f1e1237]
+                        - gridcell "YES" [ref=f1e1238] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1239]
+                      - row "2 Associated_DimPartnerDeal 2 PartnerCenterReferralId varchar 8000 NULL NULL YES" [ref=f1e1240]:
+                        - gridcell "2" [ref=f1e1241] [cursor=pointer]:
+                          - generic "2" [ref=f1e1242]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1243] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1244]
+                        - gridcell "2" [ref=f1e1245] [cursor=pointer]:
+                          - generic "2" [ref=f1e1246]
+                        - gridcell "PartnerCenterReferralId" [ref=f1e1247] [cursor=pointer]:
+                          - generic "PartnerCenterReferralId" [ref=f1e1248]
+                        - gridcell "varchar" [ref=f1e1249] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1250]
+                        - gridcell "8000" [ref=f1e1251] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1252]
+                        - gridcell "NULL" [ref=f1e1253] [cursor=pointer]:
+                          - generic [ref=f1e1254]: "NULL"
+                        - gridcell "NULL" [ref=f1e1255] [cursor=pointer]:
+                          - generic [ref=f1e1256]: "NULL"
+                        - gridcell "YES" [ref=f1e1257] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1258]
+                      - row "3 Associated_DimPartnerDeal 3 ReferralName varchar 8000 NULL NULL YES" [ref=f1e1259]:
+                        - gridcell "3" [ref=f1e1260] [cursor=pointer]:
+                          - generic "3" [ref=f1e1261]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1262] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1263]
+                        - gridcell "3" [ref=f1e1264] [cursor=pointer]:
+                          - generic "3" [ref=f1e1265]
+                        - gridcell "ReferralName" [ref=f1e1266] [cursor=pointer]:
+                          - generic "ReferralName" [ref=f1e1267]
+                        - gridcell "varchar" [ref=f1e1268] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1269]
+                        - gridcell "8000" [ref=f1e1270] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1271]
+                        - gridcell "NULL" [ref=f1e1272] [cursor=pointer]:
+                          - generic [ref=f1e1273]: "NULL"
+                        - gridcell "NULL" [ref=f1e1274] [cursor=pointer]:
+                          - generic [ref=f1e1275]: "NULL"
+                        - gridcell "YES" [ref=f1e1276] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1277]
+                      - row "4 Associated_DimPartnerDeal 4 PartnerCenterReferralStatus varchar 8000 NULL NULL YES" [ref=f1e1278]:
+                        - gridcell "4" [ref=f1e1279] [cursor=pointer]:
+                          - generic "4" [ref=f1e1280]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1281] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1282]
+                        - gridcell "4" [ref=f1e1283] [cursor=pointer]:
+                          - generic "4" [ref=f1e1284]
+                        - gridcell "PartnerCenterReferralStatus" [ref=f1e1285] [cursor=pointer]:
+                          - generic "PartnerCenterReferralStatus" [ref=f1e1286]
+                        - gridcell "varchar" [ref=f1e1287] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1288]
+                        - gridcell "8000" [ref=f1e1289] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1290]
+                        - gridcell "NULL" [ref=f1e1291] [cursor=pointer]:
+                          - generic [ref=f1e1292]: "NULL"
+                        - gridcell "NULL" [ref=f1e1293] [cursor=pointer]:
+                          - generic [ref=f1e1294]: "NULL"
+                        - gridcell "YES" [ref=f1e1295] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1296]
+                      - row "5 Associated_DimPartnerDeal 5 PartnerCenterReferralSubStatus varchar 8000 NULL NULL YES" [ref=f1e1297]:
+                        - gridcell "5" [ref=f1e1298] [cursor=pointer]:
+                          - generic "5" [ref=f1e1299]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1300] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1301]
+                        - gridcell "5" [ref=f1e1302] [cursor=pointer]:
+                          - generic "5" [ref=f1e1303]
+                        - gridcell "PartnerCenterReferralSubStatus" [ref=f1e1304] [cursor=pointer]:
+                          - generic "PartnerCenterReferralSubStatus" [ref=f1e1305]
+                        - gridcell "varchar" [ref=f1e1306] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1307]
+                        - gridcell "8000" [ref=f1e1308] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1309]
+                        - gridcell "NULL" [ref=f1e1310] [cursor=pointer]:
+                          - generic [ref=f1e1311]: "NULL"
+                        - gridcell "NULL" [ref=f1e1312] [cursor=pointer]:
+                          - generic [ref=f1e1313]: "NULL"
+                        - gridcell "YES" [ref=f1e1314] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1315]
+                      - row "6 Associated_DimPartnerDeal 6 PartnerCenterEngagementId varchar 8000 NULL NULL YES" [ref=f1e1316]:
+                        - gridcell "6" [ref=f1e1317] [cursor=pointer]:
+                          - generic "6" [ref=f1e1318]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1319] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1320]
+                        - gridcell "6" [ref=f1e1321] [cursor=pointer]:
+                          - generic "6" [ref=f1e1322]
+                        - gridcell "PartnerCenterEngagementId" [ref=f1e1323] [cursor=pointer]:
+                          - generic "PartnerCenterEngagementId" [ref=f1e1324]
+                        - gridcell "varchar" [ref=f1e1325] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1326]
+                        - gridcell "8000" [ref=f1e1327] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1328]
+                        - gridcell "NULL" [ref=f1e1329] [cursor=pointer]:
+                          - generic [ref=f1e1330]: "NULL"
+                        - gridcell "NULL" [ref=f1e1331] [cursor=pointer]:
+                          - generic [ref=f1e1332]: "NULL"
+                        - gridcell "YES" [ref=f1e1333] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1334]
+                      - row "7 Associated_DimPartnerDeal 7 RecordType varchar 8000 NULL NULL YES" [ref=f1e1335]:
+                        - gridcell "7" [ref=f1e1336] [cursor=pointer]:
+                          - generic "7" [ref=f1e1337]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1338] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1339]
+                        - gridcell "7" [ref=f1e1340] [cursor=pointer]:
+                          - generic "7" [ref=f1e1341]
+                        - gridcell "RecordType" [ref=f1e1342] [cursor=pointer]:
+                          - generic "RecordType" [ref=f1e1343]
+                        - gridcell "varchar" [ref=f1e1344] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1345]
+                        - gridcell "8000" [ref=f1e1346] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1347]
+                        - gridcell "NULL" [ref=f1e1348] [cursor=pointer]:
+                          - generic [ref=f1e1349]: "NULL"
+                        - gridcell "NULL" [ref=f1e1350] [cursor=pointer]:
+                          - generic [ref=f1e1351]: "NULL"
+                        - gridcell "YES" [ref=f1e1352] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1353]
+                      - row "8 Associated_DimPartnerDeal 8 ReferralProgram varchar 8000 NULL NULL YES" [ref=f1e1354]:
+                        - gridcell "8" [ref=f1e1355] [cursor=pointer]:
+                          - generic "8" [ref=f1e1356]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1357] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1358]
+                        - gridcell "8" [ref=f1e1359] [cursor=pointer]:
+                          - generic "8" [ref=f1e1360]
+                        - gridcell "ReferralProgram" [ref=f1e1361] [cursor=pointer]:
+                          - generic "ReferralProgram" [ref=f1e1362]
+                        - gridcell "varchar" [ref=f1e1363] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1364]
+                        - gridcell "8000" [ref=f1e1365] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1366]
+                        - gridcell "NULL" [ref=f1e1367] [cursor=pointer]:
+                          - generic [ref=f1e1368]: "NULL"
+                        - gridcell "NULL" [ref=f1e1369] [cursor=pointer]:
+                          - generic [ref=f1e1370]: "NULL"
+                        - gridcell "YES" [ref=f1e1371] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1372]
+                      - row "9 Associated_DimPartnerDeal 9 ReferralQualification varchar 8000 NULL NULL YES" [ref=f1e1373]:
+                        - gridcell "9" [ref=f1e1374] [cursor=pointer]:
+                          - generic "9" [ref=f1e1375]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1376] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1377]
+                        - gridcell "9" [ref=f1e1378] [cursor=pointer]:
+                          - generic "9" [ref=f1e1379]
+                        - gridcell "ReferralQualification" [ref=f1e1380] [cursor=pointer]:
+                          - generic "ReferralQualification" [ref=f1e1381]
+                        - gridcell "varchar" [ref=f1e1382] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1383]
+                        - gridcell "8000" [ref=f1e1384] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1385]
+                        - gridcell "NULL" [ref=f1e1386] [cursor=pointer]:
+                          - generic [ref=f1e1387]: "NULL"
+                        - gridcell "NULL" [ref=f1e1388] [cursor=pointer]:
+                          - generic [ref=f1e1389]: "NULL"
+                        - gridcell "YES" [ref=f1e1390] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1391]
+                      - row "10 Associated_DimPartnerDeal 10 ReferralType varchar 8000 NULL NULL YES" [ref=f1e1392]:
+                        - gridcell "10" [ref=f1e1393] [cursor=pointer]:
+                          - generic "10" [ref=f1e1394]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1395] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1396]
+                        - gridcell "10" [ref=f1e1397] [cursor=pointer]:
+                          - generic "10" [ref=f1e1398]
+                        - gridcell "ReferralType" [ref=f1e1399] [cursor=pointer]:
+                          - generic "ReferralType" [ref=f1e1400]
+                        - gridcell "varchar" [ref=f1e1401] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1402]
+                        - gridcell "8000" [ref=f1e1403] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1404]
+                        - gridcell "NULL" [ref=f1e1405] [cursor=pointer]:
+                          - generic [ref=f1e1406]: "NULL"
+                        - gridcell "NULL" [ref=f1e1407] [cursor=pointer]:
+                          - generic [ref=f1e1408]: "NULL"
+                        - gridcell "YES" [ref=f1e1409] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1410]
+                      - row "11 Associated_DimPartnerDeal 11 ReferralSubType varchar 8000 NULL NULL YES" [ref=f1e1411]:
+                        - gridcell "11" [ref=f1e1412] [cursor=pointer]:
+                          - generic "11" [ref=f1e1413]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1414] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1415]
+                        - gridcell "11" [ref=f1e1416] [cursor=pointer]:
+                          - generic "11" [ref=f1e1417]
+                        - gridcell "ReferralSubType" [ref=f1e1418] [cursor=pointer]:
+                          - generic "ReferralSubType" [ref=f1e1419]
+                        - gridcell "varchar" [ref=f1e1420] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1421]
+                        - gridcell "8000" [ref=f1e1422] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1423]
+                        - gridcell "NULL" [ref=f1e1424] [cursor=pointer]:
+                          - generic [ref=f1e1425]: "NULL"
+                        - gridcell "NULL" [ref=f1e1426] [cursor=pointer]:
+                          - generic [ref=f1e1427]: "NULL"
+                        - gridcell "YES" [ref=f1e1428] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1429]
+                      - row "12 Associated_DimPartnerDeal 12 SolutionId varchar 8000 NULL NULL YES" [ref=f1e1430]:
+                        - gridcell "12" [ref=f1e1431] [cursor=pointer]:
+                          - generic "12" [ref=f1e1432]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1433] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1434]
+                        - gridcell "12" [ref=f1e1435] [cursor=pointer]:
+                          - generic "12" [ref=f1e1436]
+                        - gridcell "SolutionId" [ref=f1e1437] [cursor=pointer]:
+                          - generic "SolutionId" [ref=f1e1438]
+                        - gridcell "varchar" [ref=f1e1439] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1440]
+                        - gridcell "8000" [ref=f1e1441] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1442]
+                        - gridcell "NULL" [ref=f1e1443] [cursor=pointer]:
+                          - generic [ref=f1e1444]: "NULL"
+                        - gridcell "NULL" [ref=f1e1445] [cursor=pointer]:
+                          - generic [ref=f1e1446]: "NULL"
+                        - gridcell "YES" [ref=f1e1447] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1448]
+                      - row "13 Associated_DimPartnerDeal 13 PartnerIntent varchar 8000 NULL NULL YES" [ref=f1e1449]:
+                        - gridcell "13" [ref=f1e1450] [cursor=pointer]:
+                          - generic "13" [ref=f1e1451]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1452] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1453]
+                        - gridcell "13" [ref=f1e1454] [cursor=pointer]:
+                          - generic "13" [ref=f1e1455]
+                        - gridcell "PartnerIntent" [ref=f1e1456] [cursor=pointer]:
+                          - generic "PartnerIntent" [ref=f1e1457]
+                        - gridcell "varchar" [ref=f1e1458] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1459]
+                        - gridcell "8000" [ref=f1e1460] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1461]
+                        - gridcell "NULL" [ref=f1e1462] [cursor=pointer]:
+                          - generic [ref=f1e1463]: "NULL"
+                        - gridcell "NULL" [ref=f1e1464] [cursor=pointer]:
+                          - generic [ref=f1e1465]: "NULL"
+                        - gridcell "YES" [ref=f1e1466] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1467]
+                      - row "14 Associated_DimPartnerDeal 14 PartnerAcceptanceStatus varchar 8000 NULL NULL YES" [ref=f1e1468]:
+                        - gridcell "14" [ref=f1e1469] [cursor=pointer]:
+                          - generic "14" [ref=f1e1470]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1471] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1472]
+                        - gridcell "14" [ref=f1e1473] [cursor=pointer]:
+                          - generic "14" [ref=f1e1474]
+                        - gridcell "PartnerAcceptanceStatus" [ref=f1e1475] [cursor=pointer]:
+                          - generic "PartnerAcceptanceStatus" [ref=f1e1476]
+                        - gridcell "varchar" [ref=f1e1477] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1478]
+                        - gridcell "8000" [ref=f1e1479] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1480]
+                        - gridcell "NULL" [ref=f1e1481] [cursor=pointer]:
+                          - generic [ref=f1e1482]: "NULL"
+                        - gridcell "NULL" [ref=f1e1483] [cursor=pointer]:
+                          - generic [ref=f1e1484]: "NULL"
+                        - gridcell "YES" [ref=f1e1485] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1486]
+                      - row "15 Associated_DimPartnerDeal 15 PartnerAccountId varchar 8000 NULL NULL YES" [ref=f1e1487]:
+                        - gridcell "15" [ref=f1e1488] [cursor=pointer]:
+                          - generic "15" [ref=f1e1489]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1490] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1491]
+                        - gridcell "15" [ref=f1e1492] [cursor=pointer]:
+                          - generic "15" [ref=f1e1493]
+                        - gridcell "PartnerAccountId" [ref=f1e1494] [cursor=pointer]:
+                          - generic "PartnerAccountId" [ref=f1e1495]
+                        - gridcell "varchar" [ref=f1e1496] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1497]
+                        - gridcell "8000" [ref=f1e1498] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1499]
+                        - gridcell "NULL" [ref=f1e1500] [cursor=pointer]:
+                          - generic [ref=f1e1501]: "NULL"
+                        - gridcell "NULL" [ref=f1e1502] [cursor=pointer]:
+                          - generic [ref=f1e1503]: "NULL"
+                        - gridcell "YES" [ref=f1e1504] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1505]
+                      - row "16 Associated_DimPartnerDeal 16 PartnerCenterAcceptedDate datetime2 NULL NULL NULL YES" [ref=f1e1506]:
+                        - gridcell "16" [ref=f1e1507] [cursor=pointer]:
+                          - generic "16" [ref=f1e1508]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1509] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1510]
+                        - gridcell "16" [ref=f1e1511] [cursor=pointer]:
+                          - generic "16" [ref=f1e1512]
+                        - gridcell "PartnerCenterAcceptedDate" [ref=f1e1513] [cursor=pointer]:
+                          - generic "PartnerCenterAcceptedDate" [ref=f1e1514]
+                        - gridcell "datetime2" [ref=f1e1515] [cursor=pointer]:
+                          - generic "datetime2" [ref=f1e1516]
+                        - gridcell "NULL" [ref=f1e1517] [cursor=pointer]:
+                          - generic [ref=f1e1518]: "NULL"
+                        - gridcell "NULL" [ref=f1e1519] [cursor=pointer]:
+                          - generic [ref=f1e1520]: "NULL"
+                        - gridcell "NULL" [ref=f1e1521] [cursor=pointer]:
+                          - generic [ref=f1e1522]: "NULL"
+                        - gridcell "YES" [ref=f1e1523] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1524]
+                      - row "17 Associated_DimPartnerDeal 17 PartnerCenterAccountId varchar 8000 NULL NULL YES" [ref=f1e1525]:
+                        - gridcell "17" [ref=f1e1526] [cursor=pointer]:
+                          - generic "17" [ref=f1e1527]
+                        - gridcell "Associated_DimPartnerDeal" [ref=f1e1528] [cursor=pointer]:
+                          - generic "Associated_DimPartnerDeal" [ref=f1e1529]
+                        - gridcell "17" [ref=f1e1530] [cursor=pointer]:
+                          - generic "17" [ref=f1e1531]
+                        - gridcell "PartnerCenterAccountId" [ref=f1e1532] [cursor=pointer]:
+                          - generic "PartnerCenterAccountId" [ref=f1e1533]
+                        - gridcell "varchar" [ref=f1e1534] [cursor=pointer]:
+                          - generic "varchar" [ref=f1e1535]
+                        - gridcell "8000" [ref=f1e1536] [cursor=pointer]:
+                          - generic "8000" [ref=f1e1537]
+                        - gridcell "NULL" [ref=f1e1538] [cursor=pointer]:
+                          - generic [ref=f1e1539]: "NULL"
+                        - gridcell "NULL" [ref=f1e1540] [cursor=pointer]:
+                          - generic [ref=f1e1541]: "NULL"
+                        - gridcell "YES" [ref=f1e1542] [cursor=pointer]:
+                          - generic "YES" [ref=f1e1543]
+                    - status [ref=f1e1544]
+        - generic [ref=f1e456]:
+          - generic [ref=f1e457]:
+            - button [ref=f1e458]:
+              - img [ref=f1e460]
+            - 'button "AutoSave: On (Saved)" [ref=f1e1077]':
+              - img [ref=f1e465]
+              - generic [ref=f1e467]: "AutoSave: On (Saved)"
+            - img [ref=f1e1545]
+            - generic [ref=f1e568]: Succeeded (11 sec 182 ms)
+            - 'button "Copilot completions: On" [ref=f1e569]':
+              - img [ref=f1e571]
+              - generic [ref=f1e573]: "Copilot completions: On"
+            - generic [ref=f1e574]:
+              - img [ref=f1e1547]
+              - generic [ref=f1e579]: "Copilot completions: Ready"
+            - generic [ref=f1e1549]:
+              - progressbar [ref=f1e1551]
+              - generic [ref=f1e1554]: "Code assistance: refreshing objects"
+          - generic [ref=f1e1557]: "Columns: 8 Rows: 5343"
+      - status [ref=f1e211]
+    - generic [ref=f1e484]:
+      - alert
+      - alert
+      - complementary
+      - complementary

@@ -1,0 +1,127 @@
+<!--
+  CoSell Weekly AI Metric — email body template.
+  Consumed by the `cosell-weekly-ai-metric-data-maildrafter` skill.
+  Replace ONLY the ten {{TOKENS}} below; leave all other markup verbatim.
+  Tokens: PERIOD_RANGE, KPI_TASKS_WITH_AI, KPI_TOTAL_TASKS, KPI_SUM_ESTIMATE,
+          KPI_SUM_COMPLETED, KPI_EFFICIENCY_HOURS, KPI_EFFICIENCY_PCT,
+          TOP_TOOLS_ROWS, AI_USAGE_SECTIONS, CONTRIBUTORS_LINE
+  Outlook-safe: table layout + inline styles; gradients/radius/shadow degrade gracefully.
+-->
+<div style="margin:0; padding:0; background-color:#EEF3F8;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF3F8; padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0" style="width:680px; max-width:680px; background-color:#FFFFFF; border:1px solid #E1E8EF; border-radius:10px; overflow:hidden; font-family:'Segoe UI',Aptos,Calibri,Arial,sans-serif;">
+
+          <!-- Header band -->
+          <tr>
+            <td bgcolor="#0F3D5E" style="background-color:#0F3D5E; background-image:linear-gradient(135deg,#0F3D5E 0%,#106EBE 100%); padding:26px 32px;">
+              <div style="font-size:12px; letter-spacing:2px; color:#9FD0F5; text-transform:uppercase; font-weight:600;">CoSell &nbsp;&bull;&nbsp; Weekly AI Metrics</div>
+              <div style="font-size:23px; color:#FFFFFF; font-weight:700; margin-top:6px;">Weekly AI Metric Data</div>
+              <div style="font-size:13px; color:#CFE6FA; margin-top:8px;">Reporting period: {{PERIOD_RANGE}}</div>
+            </td>
+          </tr>
+
+          <!-- Greeting -->
+          <tr>
+            <td style="padding:22px 32px 4px 32px;">
+              <p style="margin:0; font-size:14px; color:#242424; line-height:1.55;">Hi Apurv,</p>
+              <p style="margin:10px 0 0 0; font-size:14px; color:#242424; line-height:1.55;">Below is the consolidated <b>team-wide AI efficiency</b> snapshot for the CoSell team this week, aggregated across all tracked contributors.</p>
+            </td>
+          </tr>
+
+          <!-- KPI cards (2x2) -->
+          <tr>
+            <td style="padding:14px 24px 4px 24px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <!-- KPI 1: Tasks with AI / Total -->
+                  <td width="50%" valign="top" style="padding:6px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F7FBFF" style="background-color:#F7FBFF; border:1px solid #DCEBF9; border-radius:8px;">
+                      <tr><td style="padding:16px 18px;">
+                        <div style="font-size:11px; letter-spacing:1px; color:#5A6B7B; text-transform:uppercase; font-weight:600;">Tasks with AI Uses</div>
+                        <div style="font-size:30px; color:#0F3D5E; font-weight:700; margin-top:4px;">{{KPI_TASKS_WITH_AI}} <span style="font-size:18px; color:#7A8794; font-weight:600;">of</span> {{KPI_TOTAL_TASKS}}</div>
+                        <div style="font-size:12px; color:#7A8794; margin-top:2px;">tasks used AI this week</div>
+                      </td></tr>
+                    </table>
+                  </td>
+                  <!-- KPI 2: Effort -->
+                  <td width="50%" valign="top" style="padding:6px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F7FBFF" style="background-color:#F7FBFF; border:1px solid #DCEBF9; border-radius:8px;">
+                      <tr><td style="padding:16px 18px;">
+                        <div style="font-size:11px; letter-spacing:1px; color:#5A6B7B; text-transform:uppercase; font-weight:600;">Effort (Est vs Done)</div>
+                        <div style="font-size:26px; color:#0F3D5E; font-weight:700; margin-top:4px;">{{KPI_SUM_ESTIMATE}}h <span style="color:#B7C4D0; font-weight:400;">/</span> {{KPI_SUM_COMPLETED}}h</div>
+                        <div style="font-size:12px; color:#7A8794; margin-top:2px;">estimated / completed</div>
+                      </td></tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <!-- KPI 3: # AI Efficiency -->
+                  <td width="50%" valign="top" style="padding:6px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F1FAF1" style="background-color:#F1FAF1; border:1px solid #C9E7C9; border-radius:8px;">
+                      <tr><td style="padding:16px 18px;">
+                        <div style="font-size:11px; letter-spacing:1px; color:#4A6B4A; text-transform:uppercase; font-weight:600;"># AI Efficiency</div>
+                        <div style="font-size:30px; color:#107C10; font-weight:700; margin-top:4px;">{{KPI_EFFICIENCY_HOURS}}h</div>
+                        <div style="font-size:12px; color:#6E8B6E; margin-top:2px;">hours saved</div>
+                      </td></tr>
+                    </table>
+                  </td>
+                  <!-- KPI 4: % AI Efficiency -->
+                  <td width="50%" valign="top" style="padding:6px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EEF6FE" style="background-color:#EEF6FE; border:1px solid #C6E2F7; border-radius:8px;">
+                      <tr><td style="padding:16px 18px;">
+                        <div style="font-size:11px; letter-spacing:1px; color:#3F5F7D; text-transform:uppercase; font-weight:600;">% AI Efficiency</div>
+                        <div style="font-size:30px; color:#106EBE; font-weight:700; margin-top:4px;">{{KPI_EFFICIENCY_PCT}}%</div>
+                        <div style="font-size:12px; color:#6E8394; margin-top:2px;">efficiency gain</div>
+                      </td></tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Top 3 AI tools -->
+          <tr>
+            <td style="padding:16px 32px 4px 32px;">
+              <div style="font-size:13px; font-weight:700; color:#0F3D5E; border-left:3px solid #106EBE; padding-left:9px;">Top 3 AI Tools Used</div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">
+                {{TOP_TOOLS_ROWS}}
+              </table>
+            </td>
+          </tr>
+
+          <!-- AI usage details -->
+          <tr>
+            <td style="padding:16px 32px 6px 32px;">
+              <div style="font-size:13px; font-weight:700; color:#0F3D5E; border-left:3px solid #106EBE; padding-left:9px;">AI Usage Details</div>
+              <div style="margin-top:12px;">{{AI_USAGE_SECTIONS}}</div>
+            </td>
+          </tr>
+
+          <!-- Footnote / basis -->
+          <tr>
+            <td style="padding:6px 32px 4px 32px;">
+              <div style="font-size:11px; color:#9AA7B4; line-height:1.55; border-top:1px solid #EDF1F5; padding-top:12px;">
+                Basis: {{CONTRIBUTORS_LINE}}. Metrics aggregate up to one task per contributor per working day (max 5/week).
+                <b>#&nbsp;AI Efficiency</b> = &Sigma;&nbsp;Original&nbsp;Estimate &minus; &Sigma;&nbsp;Completed;
+                <b>%&nbsp;AI Efficiency</b> = (#&nbsp;AI&nbsp;Efficiency &divide; &Sigma;&nbsp;Completed) &times; 100.
+              </div>
+            </td>
+          </tr>
+
+          <!-- Signature -->
+          <tr>
+            <td style="padding:14px 32px 26px 32px;">
+              <p style="margin:0; font-size:14px; color:#242424;">Best regards,</p>
+              <p style="margin:3px 0 0 0; font-size:14px; color:#242424; font-weight:600;">Adarsh Devashish</p>
+              <p style="margin:1px 0 0 0; font-size:12px; color:#7A8794;">CoSell &nbsp;&bull;&nbsp; Global Partner Solutions</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

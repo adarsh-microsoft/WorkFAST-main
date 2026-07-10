@@ -1,0 +1,86 @@
+Total messages: 4 (Errors: 4, Warnings: 0)
+Returning 83 messages for level "error"
+
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://login.microsoftonline.com/favicon.ico:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/training/GetTrainingData?email=adarshd%40maqsoftware.com:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/details/GetSpecializationAndCourseNames:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/details/GetNotifications:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/details/GetSpecializationAndCourseNames:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ldp.maqsoftware.com/tracks/GetTracksAndSpecializations:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/details/GetUserDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/specializations/GetSpecializationDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ldp.maqsoftware.com/courses/GetCourseDetails:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0
+[ERROR] Failed to load resource: the server responded with a status of 400 () @ https://dc.services.visualstudio.com/v2/track:0

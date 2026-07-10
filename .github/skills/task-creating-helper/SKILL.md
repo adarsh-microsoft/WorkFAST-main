@@ -1,11 +1,11 @@
 ---
 name: 'task-creating-helper'
-description: 'Streamlined ADO Task helper that (1) CREATES tasks by asking 4 questions (Title, Description, Original Estimate, and an optional "Anything else?" for per-task overrides) and auto-fills everything else — including a Target 1/2/3/4 tag classified from the Description — from a config-driven template, and (2) UPDATES an existing task by either ID/URL or by querying with assignee + created-date, then prompting for every updatable field (blank input = no change). Auto-enriches short description bullets into 1–2 detailed sentences and auto-generates the discussion comment. Defaults to a configured parent for creates but supports overriding via chat.'
+description: 'Streamlined ADO Task helper that (1) CREATES tasks by asking 4 questions (Title, Description, Original Estimate, and an optional "Anything else?" for per-task overrides) and auto-fills everything else — including a Target 1/2/3/4 tag classified from the Description — from a config-driven template, and (2) UPDATES an existing task by either ID/URL or by querying with assignee + created-date, then prompting for every updatable field (blank input = no change). Auto-enriches short description bullets into 1–2 detailed sentences and auto-generates the discussion comment. On create, always asks the user to pick a New/Active Scenario Detail (child of the configured Business Scenario #49754 — FY27 IP Co-Sell Transition) as the task parent, unless an explicit #ID/URL override is supplied.'
 ---
 
 # Task Creating Helper
 
-Quickly create an Azure DevOps Task using a fixed template structure. The skill prompts the user for **4 inputs** — 3 required (Title, Description, Original Estimate) and 1 optional ("Anything else?" for per-task overrides). Everything else (project, area path, iteration, activity, priority, assignee, state, parent, tags, description HTML, discussion comment) comes from `config/task-template.yaml`.
+Quickly create an Azure DevOps Task using a fixed template structure. The skill prompts the user for **4 content inputs** — 3 required (Title, Description, Original Estimate) and 1 optional ("Anything else?" for per-task overrides) — **plus a Scenario Detail picker**: on every create the user selects which New/Active **Scenario Detail** (child of Business Scenario **#49754** — _FY27 IP Co-Sell Transition_) the task is parented under (unless an explicit `#ID`/URL override is given). Everything else (project, area path, iteration, activity, priority, assignee, state, tags, description HTML, discussion comment) comes from `config/task-template.yaml`.
 
 > **Q4 is optional in CONTENT, not in PROMPTING.** Always ask all 4 questions in the same `vscode_askQuestions` batch. The user may leave Q4 blank — but you must give them the chance to fill it. Skipping the Q4 prompt is a skill violation.
 
@@ -37,6 +37,10 @@ Version-history notes describe historical behaviour and never override the curre
 
 | Date | Version | Description |
 |------|---------|-------------|
+| 2026-07-06 | 1.10 | **Timezone rule HARDENED — literal IST, no calculations.** Start/Target are stamped as the LITERAL wall-clock `<date>T09:00:00+05:30` / `<date>T17:00:00+05:30` — the agent must **never** convert timezones, compute a UTC `Z` value, read the machine/ADO-profile clock, or follow any memory/notes claiming the user is Pacific or any non-IST zone (all such notes are stale; the user's ADO profile is **IST**, confirmed 2026-07-06). Only Q4 may change the date/time; the `+05:30` offset is immutable. |
+| 2026-07-03 | 1.9 | **Added mandatory always-on `FY27` tag.** `FY27` is now applied unconditionally to every created task via `config.tags.alwaysInclude` (alongside PRACR, Copilot, WorkFAST). The final tag string becomes `PRACR; Copilot; WorkFAST; FY27; Target N`. No prompt, no condition — always added. |
+| 2026-07-01 | 1.8 | **Timezone pinned to IST (UTC+05:30).** Start/Target are now **always** stamped with an explicit `+05:30` offset (09:00 → 17:00 IST), removing the earlier per-viewer / `"local"` / machine-clock ambiguity. `config.defaults.timezoneOffset` is fixed at `+05:30`; the fallback-lookup wording in Steps 1 & 8 was replaced with a single fixed rule. A Q4 date/time override still wins, but the offset stays `+05:30`. |
+| 2026-06-17 | 1.7 | **Destination changed to Business Scenario #49754** (_FY27 IP Co-Sell Transition — Compensation Framework & DRACR Updates_). On create, the skill now **always asks a Scenario Detail picker** — it lists the **New/Active** `Scenario Detail` children of #49754 and the user picks one as the task parent (an explicit `#ID`/URL override still bypasses the picker). Replaced the fixed `parent.defaultId` with `parent.businessScenarioId` + `parent.scenarioDetailPicker`. Changed the default **title prefix** from `[CoMarketing]` to `[PRACR]` and the always-on **tag** from `CoMarketing` to `PRACR`. |
 | 2026-06-05 | 1.6 | **Iteration is now always date-derived** from the task date (today) — the sprint whose range contains the task date — and is **never inherited from the parent**. Removed `iterationPath` from `parent.inheritFromParent` (area path only). Step 3 now validates the resolved sprint contains the task date and falls back to a full-iteration lookup for backdated/future Q4 dates. An explicit Q4 iteration override still wins. |
 | 2026-06-04 | 1.5 | Added auto **Start Date** and **Target Date** on create — both use the task date (the `{{WHEN}}` date), with Start at `09:00` and Target at `17:00` **local** time. End time maps to `Microsoft.VSTS.Scheduling.TargetDate` (the field shown in the Task Planning panel), **not** `FinishDate`. Times are sent with an explicit **UTC offset** (`defaults.timezoneOffset`, default `"local"`) so ADO stores/displays them correctly — a naive time would be mis-read as UTC and shown shifted. Added Start/Target Date to the Update field list. |
 | 2026-05-07 | 1.4 | Added optional **"Anything else?"** 4th question for free-form per-task customizations (state/tags/parent/extra bullets/etc.). Made discussion **AI Efficiency** dynamic — `Tool Used` rotates between **GitHub Copilot** and **WorkFast** per task, and `Value Added` is picked from a varied pool so each task reads differently. |
@@ -97,7 +101,7 @@ Read [`config/task-template.yaml`](./config/task-template.yaml) at runtime. Key 
 
 ### Step 1: Prompt the User (in this exact order)
 
-Ask **all four questions** in a single `vscode_askQuestions` batch (Q1–Q3 are required, Q4 is optional but MUST still be presented to the user). Do not ask anything else unless the user explicitly mentioned a parent override (Step 2).
+Ask **all four questions** in a single `vscode_askQuestions` batch (Q1–Q3 are required, Q4 is optional but MUST still be presented to the user). **Also include the Scenario Detail picker (Step 2b) as a selection question in the same batch** — unless the user already gave an explicit parent override, in which case the picker is omitted. Resolve the picker's options (query the New/Active Scenario Details under Business Scenario #49754) _before_ showing the batch.
 
 **Never drop Q4 from the prompt batch.** "Optional answer" ≠ "optional question" — the user must always see the Q4 field so they can attach per-task overrides if they want to.
 
@@ -116,17 +120,17 @@ If the user cancels or skips Q1, Q2, or Q3 (the three required inputs), abort th
 
 | # | Question | Notes |
 |---|----------|-------|
-| 1 | **Title:** | If it doesn't start with `[Prefix]:`, auto-prepend `config.title.defaultPrefix` (e.g., `[CoMarketing]:`) |
+| 1 | **Title:** | If it doesn't start with `[Prefix]:`, auto-prepend `config.title.defaultPrefix` (e.g., `[PRACR]:`) |
 | 2 | **Description:** | Free text. Split into bullets by newline OR by sentence-terminator. Each bullet becomes one `<li>` in the description HTML and one "Updates" bullet in the discussion |
 | 3 | **Original estimate (hours):** | Numeric. Also sets `Microsoft.VSTS.Scheduling.OriginalEstimate`. `CompletedWork` defaults to `config.defaults.completedWork` (8), **but is capped at the Original Estimate when the estimate is smaller** — see note below. |
 
 > **Completed-work cap:** `Microsoft.VSTS.Scheduling.CompletedWork` defaults to `config.defaults.completedWork` (8). If the user-supplied Original Estimate is **less than** that default (e.g., a 2h task), set `CompletedWork = OriginalEstimate` so completed never exceeds the estimate. A Q4 override (e.g., "completed 4h") still wins over this rule.
 
-> **Start Date / Target Date (auto):** Always set `Microsoft.VSTS.Scheduling.StartDate` and `Microsoft.VSTS.Scheduling.TargetDate` on create. Both use the **task date** — the same date rendered in the description `{{WHEN}}` token (today's date, or a Q4-backdated date). Only the time differs: **Start Date = task date at `config.defaults.startTime` (09:00 local)** and **Target Date = task date at `config.defaults.targetTime` (17:00 local)**.
+> **Start Date / Target Date (auto):** Always set `Microsoft.VSTS.Scheduling.StartDate` and `Microsoft.VSTS.Scheduling.TargetDate` on create. Both use the **task date** — the same date rendered in the description `{{WHEN}}` token (today's date, or a Q4-backdated date). Only the time differs: **Start Date = task date at `config.defaults.startTime` (09:00)** and **Target Date = task date at `config.defaults.targetTime` (17:00)**, both stamped in **IST (UTC+05:30)** — the fixed timezone for this skill (see the Timezone note below).
 >
 > **Field mapping note:** The Task Planning panel shows **Start Date** and **Target Date** — the end time maps to `Microsoft.VSTS.Scheduling.TargetDate`, **not** `FinishDate` (FinishDate is not rendered on Tasks, so setting it leaves Target Date blank).
 >
-> **⚠️ Timezone (critical):** ADO stores dates in **UTC** and displays them in the viewer's **local** timezone. `startTime`/`targetTime` are **local wall-clock** times, so you MUST send them with an **explicit UTC offset** from `config.defaults.timezoneOffset`. With `timezoneOffset: "local"`, compute the machine's current offset at the task date (this handles DST). Example for a UTC-7 user: `2026-06-04T09:00:00-07:00` and `2026-06-04T17:00:00-07:00`. **Never** send a naive `...T09:00:00` (no offset) — ADO treats it as 9:00 **UTC**, which renders shifted (e.g. 2:00 AM in UTC-7). A Q4 override of either date/time still wins.
+> **⚠️ Timezone (IST — fixed rule):** Start/Target are **always** authored in **IST (UTC+05:30)** and stamped with an **explicit `+05:30` offset** — never a naive time, never the machine clock, never a per-viewer profile lookup. Send exactly **Start = `<task date>T09:00:00+05:30`** and **Target = `<task date>T17:00:00+05:30`** (e.g. `2026-07-01T09:00:00+05:30` and `2026-07-01T17:00:00+05:30`). ADO stores these as UTC (`03:30Z` / `11:30Z`) and, because the user's ADO profile timezone is IST, the Planning panel shows them back as **9:00 AM → 5:00 PM**. **Why fixed:** a naive `...T09:00:00` (no offset) is read as UTC and shifts the time; a non-IST offset displays the times shifted, possibly onto the previous/next day. The offset is `config.defaults.timezoneOffset`, **pinned to `+05:30`**. A Q4 date/time override still wins, but the **offset stays `+05:30`**. **NO TIME CALCULATIONS — author the literal wall-clock only:** write `09:00:00+05:30` / `17:00:00+05:30` exactly; do **not** convert to another timezone, do **not** compute the UTC `Z` value yourself, do **not** read the machine or ADO-profile timezone, and **ignore any agent memory/notes claiming the user is Pacific/PDT/PST or any non-IST zone — they are stale.** The user's ADO profile is **IST**, confirmed 2026-07-06.
 | 4 | **Anything else?** | **Optional.** Free text. If blank, use all defaults from this skill. If filled, parse and apply per-task customizations on top of the defaults — see Step 1a. |
 
 > Use `vscode_askQuestions` to ask all four questions at once if the user hasn't already provided some answers in the original prompt. If the user provided answers inline (e.g., "create a task titled X with description Y, est 5h"), skip prompting and use the values.
@@ -160,19 +164,39 @@ If the user filled Q4: interpret it as a free-form set of overrides and apply th
 - The Title, Description, and Estimate from Q1–Q3 are still authoritative — Q4 cannot replace them, only refine them.
 - If Q4 contradicts itself or is ambiguous, surface a one-line clarification before proceeding.
 
-### Step 2: Detect Parent Override
+### Step 2: Resolve the Parent (Scenario Detail Picker — always ask)
 
-If the user's request contains an **explicit parent-override signal**:
+The new task is parented under a **Scenario Detail** chosen from the children of the configured **Business Scenario** (`config.parent.businessScenarioId` = **#49754**, _FY27 IP Co-Sell Transition — Compensation Framework & DRACR Updates_). The task is **never** parented to the Business Scenario directly.
 
-- A `#`-prefixed ADO ID (e.g., `#40737`)
+**Step 2a — Explicit override check (bypasses the picker).** If the user's request contains an **explicit parent-override signal**:
+
+- A `#`-prefixed ADO ID (e.g., `#49761`)
 - An ADO URL (`.../_workitems/edit/<id>`)
 - Phrases: `"under [ID]"`, `"as child of [ID]"`, `"parent it to [ID]"`, `"in scenario detail [ID]"`
 
-→ Use that ID as the parent. Otherwise use `config.parent.defaultId`.
+→ Use that ID as the parent and **skip the picker**.
 
-> **Scope guard (no false positives):** Only treat a number as a parent ID when it comes from one of the explicit override signals above. **Never** harvest a bare number from the **Title (Q1)** or **Description (Q2)** as a parent ID — those frequently contain data values (e.g., `"Remove 8 partner deals with PartnerOneId=-9999"`), which are NOT work-item IDs. If no explicit override signal is present, fall back to `config.parent.defaultId` without guessing.
+> **Scope guard (no false positives):** Only treat a number as a parent ID when it comes from one of the explicit override signals above. **Never** harvest a bare number from the **Title (Q1)** or **Description (Q2)** as a parent ID — those frequently contain data values (e.g., `"Remove 8 partner deals with PartnerOneId=-9999"`), which are NOT work-item IDs. If no explicit override signal is present, fall through to the Scenario Detail picker (Step 2b) — never guess a parent.
 
-**When parent is overridden:** fetch the parent via `wit_get_work_item` and inherit `System.AreaPath` **only** (per `config.parent.inheritFromParent`). **Do NOT inherit `System.IterationPath` from the parent** — iteration is always date-derived (see Step 3).
+**Step 2b — Scenario Detail picker (default path, ALWAYS ask).** When there is no explicit override, query the Scenario Detail children of the Business Scenario and offer the **New/Active** ones as a selection list:
+
+```sql
+SELECT [System.Id], [System.Title], [System.State]
+FROM WorkItems
+WHERE [System.TeamProject] = '<defaults.project>'
+  AND [System.WorkItemType] = '<config.parent.scenarioDetailPicker.childWorkItemType>'   -- "Scenario Detail"
+  AND [System.Parent]       = <config.parent.businessScenarioId>                          -- 49754
+  AND [System.State] IN ('New', 'Active')                                                 -- config.parent.scenarioDetailPicker.includeStates
+ORDER BY [System.Title] ASC
+```
+
+> **If `[System.Parent]` is not queryable** in this ADO instance, fetch the Business Scenario via `wit_get_work_item` (`expand: relations`), collect the `Hierarchy-Forward` (Child) IDs, batch-fetch them with `wit_get_work_items_batch_by_ids`, and filter client-side to `System.WorkItemType = "Scenario Detail"` and `System.State ∈ {New, Active}`.
+
+Present the results with `vscode_askQuestions` as an **options** list — one option per Scenario Detail, `label = "#<id> — <title>"`, `description = "<state>"`. Include this picker **in the same prompt batch** as the four content questions (Step 1) so the user answers everything at once. The selected Scenario Detail becomes the parent.
+
+> **Empty result:** If no New/Active Scenario Detail exists under #49754, do **not** parent the Task directly under the Business Scenario (that breaks the BS → Scenario Detail → Task hierarchy). Per `config.parent.scenarioDetailPicker.emptyResultBehavior` (`askForExplicitParent`), ask the user for an explicit parent ID instead.
+
+**On resolve (picked or overridden):** fetch the parent via `wit_get_work_item` and inherit `System.AreaPath` **only** (per `config.parent.inheritFromParent`). **Do NOT inherit `System.IterationPath` from the parent** — iteration is always date-derived (see Step 3).
 
 ### Step 3: Resolve Iteration Path
 
@@ -210,7 +234,7 @@ The discussion is where rephrasing/enrichment happens. For each bullet in the us
 
 1. **Rephrase into a detailed past-tense update** (1–2 sentences, target 15–35 words) that reads like a status report. Include:
    - **What was done** (past tense — "Worked on", "Added", "Refreshed", etc.).
-   - **Where / on which artifact** — pull project context from `config/user-context.yaml` `domain.exampleEntities` and the user's wording (e.g., "co-marketing UAT build", "InvestmentAsk dataset").
+   - **Where / on which artifact** — pull project context from `config/user-context.yaml` `domain.exampleEntities` and the user's wording (e.g., "FY27 IP Co-Sell credit pipeline", "FactIPCoSell dataset").
    - **Outcome / intent** — a brief clause about why or what it enables.
    - **Do not invent facts.** Only enrich with context already provided.
 2. If the bullet starts with a verb covered by `config.discussion.pastTenseRules`, apply that rule for the opening verb; otherwise prepend `"Worked on "`.
@@ -220,22 +244,22 @@ The discussion is where rephrasing/enrichment happens. For each bullet in the us
 
 | User input bullet | Detailed discussion bullet |
 |-------------------|----------------------------|
-| `work on validation new measures in co-marketing report` | `Validated the newly added measures in the Co-Marketing report by cross-checking calculated values against the underlying semantic model to confirm parity before sign-off.` |
+| `work on validation new measures in IP Co-Sell report` | `Validated the newly added measures in the IP Co-Sell report by cross-checking calculated values against the underlying semantic model to confirm parity before sign-off.` |
 | `Add Investment Details for mismatching subsidiaries in the excel` | `Added Investment Details into the tracking Excel for the subsidiaries flagged as mismatching during reconciliation, so the partner-to-subsidiary mapping is now complete and aligned with the source.` |
 4. Substitute into `config.discussion.template`:
    - `{{UPDATE_BULLETS}}` → concatenated update `<li>` HTML
    - `{{RISKS}}`, `{{KNOWN_ISSUES}}`, `{{SPELL_CHECK}}`, `{{ACTION_ITEMS}}` → from `config.discussion.defaults` (or Q4 overrides)
    - `{{AI_TOOL}}` → **dynamically pick one** from `config.discussion.aiToolPool` per task. Default rotation: if the task is being created via the WorkFast agent / a multi-agent orchestration, pick **`WorkFast`**; if it is a direct, single-step Copilot Chat creation, pick **`GitHub Copilot`**. If neither signal is clear, pick at random from the pool. Q4 override wins over this logic.
    - `{{AI_VALUE}}` → **dynamically WRITE a fresh 1-sentence, 15–20 word value-added note grounded in the Updates bullets you just generated for this task.** Do NOT pick from `config.discussion.aiValueAddedPool` (the pool is now a fallback only — use it solely if you cannot synthesize a grounded sentence). Rules:
-     - Reference the actual work — e.g., the artifact (FactPipeline, Co-Marketing semantic model), the activity (merging, designing, validating), or the outcome.
+     - Reference the actual work — e.g., the artifact (FactIPCoSell, IP Co-Sell semantic model), the activity (merging, designing, validating), or the outcome.
      - Phrase it as "Helped <do X> while <Y>" / "Assisted in <X> by <Y>" / "Sped up <X> so <Y>" — natural AI-assist language, not a status restatement.
      - Stay general enough to be honest (don't claim AI did the actual fact-table merge), but specific enough that a reader sees it ties to THIS task's work.
      - Target 15–20 words. Single sentence. No "I" / no "the user". Past or present tense both fine.
      - Q4 override (`aiValueAdded`) wins over this logic.
 
-     **Examples (for a task with bullets about merging FactPartnerDealCD + FactOpportunityCD and designing a new Co-Marketing semantic model):**
-     - ✅ "Helped reason through the merge logic for FactPipeline and outline the table-relationship shape for the new Co-Marketing semantic model."
-     - ✅ "Sped up the design pass for the Co-Marketing semantic model by suggesting how the merged FactPipeline should connect to existing dimensions."
+     **Examples (for a task with bullets about merging FactPartnerDealCD + FactOpportunityCD and designing a new IP Co-Sell semantic model):**
+     - ✅ "Helped reason through the merge logic for FactIPCoSell and outline the table-relationship shape for the new IP Co-Sell semantic model."
+     - ✅ "Sped up the design pass for the IP Co-Sell semantic model by suggesting how the merged FactIPCoSell should connect to existing dimensions."
      - ❌ "Helped iterate on the solution faster by suggesting alternatives and catching small mistakes early." (generic — this is the old pool behaviour)
 
 ### Step 6: Build the Final Tag String (auto — no user input)
@@ -244,7 +268,7 @@ The final tag set is built entirely from config + Description content:
 
 ```
 finalTags = config.tags.alwaysInclude + [ pickTargetTag(description) ]
-         => "CoMarketing; Copilot; WorkFAST; Target X"
+         => "PRACR; Copilot; WorkFAST; FY27; Target X"
 ```
 
 #### Target Tag Auto-Classifier
@@ -277,7 +301,7 @@ Exactly **one** of `Target 1` / `Target 2` / `Target 3` / `Target 4` must be add
 
 After picking, join with `config.tags.alwaysInclude` using `config.tags.separator`:
 ```
-CoMarketing; Copilot; WorkFAST; Target 3
+PRACR; Copilot; WorkFAST; FY27; Target 3
 ```
 
 ### Step 7: Pre-Flight Confirmation (Write Gate)
@@ -287,7 +311,7 @@ Show a one-screen summary before creating:
 ```
 ⚠️ Create Task — Pre-Flight
 - Title:        [final title]
-- Parent:       #[parent ID] — [parent title]   (default | overridden)
+- Parent:       #[parent ID] — [parent title]   (picked Scenario Detail | overridden)
 - Project:      [project]
 - Area Path:    [area path]
 - Iteration:    [iteration path]
@@ -332,11 +356,11 @@ Args:
     - Microsoft.VSTS.Common.Priority:                defaults.priority
     - Microsoft.VSTS.Scheduling.OriginalEstimate:    <user-supplied>
     - Microsoft.VSTS.Scheduling.CompletedWork:       min(defaults.completedWork, <user-supplied estimate>)   # capped — see Step 1 completed-work cap
-    - Microsoft.VSTS.Scheduling.StartDate:           <task date>T<defaults.startTime>:00<offset>   # e.g. 2026-06-04T09:00:00-07:00
-    - Microsoft.VSTS.Scheduling.TargetDate:          <task date>T<defaults.targetTime>:00<offset>  # e.g. 2026-06-04T17:00:00-07:00  (Planning panel "Target Date")
+    - Microsoft.VSTS.Scheduling.StartDate:           <task date>T<defaults.startTime>:00+05:30   # IST, e.g. 2026-07-01T09:00:00+05:30
+    - Microsoft.VSTS.Scheduling.TargetDate:          <task date>T<defaults.targetTime>:00+05:30  # IST, e.g. 2026-07-01T17:00:00+05:30  (Planning panel "Target Date")
 ```
 
-> `<offset>` = the resolved UTC offset from `config.defaults.timezoneOffset` (local machine offset at the task date when set to `"local"`). Sending without an offset will mis-store the time — see the Step 1 timezone note.
+> **Offset is fixed: `+05:30` (IST) — NO time calculations.** Stamp Start/Target with the **literal** IST wall-clock: `<task date>T09:00:00+05:30` and `<task date>T17:00:00+05:30`. Do **not** convert timezones, do **not** compute the UTC `Z` value yourself, do **not** derive the offset from the machine clock or the ADO-profile timezone, and **ignore any memory/notes claiming the user is Pacific or any non-IST zone — they are stale (the user's ADO profile is IST, confirmed 2026-07-06).** Never send a naive time (no offset). See the Step 1 timezone note.
 
 > **Note:** Do NOT set `System.State` in the create call — many ADO project templates reject creating directly into a closed state. Set state in Step 10.
 
@@ -397,18 +421,19 @@ Return a result table:
 
 ## Examples
 
-### Example 1 — Default parent, all 3 inputs
+### Example 1 — Scenario Detail picker, all 3 inputs
 
 **User:** `create a task`
 
-**Skill prompts:**
+**Skill prompts (one batch):**
 1. Title: → `Validate Investment-by-Area grid measures`
 2. Description: → `Validate measures backend vs report` `\n` `Document mismatches found`
 3. Original estimate: → `9`
+4. Scenario Detail: → user picks `#49761 — [DRACR M7] UAT — Stakeholder Validation` from the New/Active children of BS #49754
 
-**Auto-resolved tags:** `CoMarketing; Copilot; WorkFAST; Target 3` (matched on `measure`/`mismatch` keywords).
+**Auto-resolved tags:** `PRACR; Copilot; WorkFAST; FY27; Target 3` (matched on `measure`/`mismatch` keywords).
 
-**Result:** Task created under default parent `#40737`, area `Global Partner Solutions\Co-sell`, current iteration, state=Closed. Discussion auto-generated with "Validated measures backend vs report" + "Documented mismatches found".
+**Result:** Task created under the picked Scenario Detail `#49761`, area `Global Partner Solutions\Co-sell`, current iteration, state=Closed. Discussion auto-generated with "Validated measures backend vs report" + "Documented mismatches found".
 
 ### Example 2 — Override parent via URL
 
@@ -420,7 +445,7 @@ Return a result table:
 
 **User:** `create a task titled "Fix DRACR -9999 rows" desc "Remove 8 partner deals with PartnerOneId=-9999, share deal keys" est 4`
 
-**Skill:** Skips prompts. Auto-tags as `Target 1` (matches `partner` deal data fix / pipeline-adjacent context — falls back to default since no Target 2/3/4 keywords are stronger). Creates task immediately under default parent.
+**Skill:** Title/Description/Estimate come from the inline text, so those three prompts are skipped — but since no explicit parent override was given, the skill **still shows the Scenario Detail picker** (New/Active children of #49754) for the user to choose the parent. Auto-tags as `Target 1` (matches `partner` deal data fix / pipeline-adjacent context — falls back to default since no Target 2/3/4 keywords are stronger).
 
 ---
 
@@ -430,7 +455,7 @@ These guardrails apply to the **Create Task flow** (Steps 1–11). The Update Ta
 
 - **Never** ask for fields beyond the 4 questions (Title, Description, Estimate, Anything else?) unless the user supplied an unparseable parent override.
 - **Q4 "Anything else?" is optional.** Blank → use defaults. Filled → apply per Step 1a; never silently ignore it.
-- **Never** ask for Tags during create — they are fully derived (always-on `CoMarketing; Copilot; WorkFAST` + auto-classified `Target N`), unless overridden via Q4.
+- **Never** ask for Tags during create — they are fully derived (always-on `PRACR; Copilot; WorkFAST; FY27` + auto-classified `Target N`), unless overridden via Q4.
 - **On create, always** apply exactly **one** Target tag (1, 2, 3, or 4) using the keyword classifier (or the Q4 override). Never omit it. Never include more than one. _(On update, the user owns tags — see Update Guardrails.)_
 - **AI Efficiency is dynamic per task.** Always pick `Tool Used` from `aiToolPool`. For `Value Added`, **synthesize a fresh 15–20 word sentence grounded in this task's Updates bullets** (per Step 5) — do not pick from `aiValueAddedPool` unless synthesis genuinely fails. Q4 overrides win.
 - **Always** preserve the exact HTML structure from `config.description.template` and `config.discussion.template` — these match the reference task's rendering.
@@ -491,8 +516,8 @@ Present the candidates as a numbered selection list using `vscode_askQuestions` 
 
 ```
 Found N tasks. Pick one to update:
-  1. #43610 — [CoMarketing]: Work on data validation for the new measures   (Closed, 04/29)
-  2. #43578 — [CoMarketing]: Refresh DimGeography mappings                  (Active, 04/27)
+  1. #43610 — [PRACR]: Work on data validation for the new measures   (Closed, 04/29)
+  2. #43578 — [PRACR]: Refresh DimGeography mappings                  (Active, 04/27)
   3. ...
 ```
 
@@ -550,7 +575,7 @@ Show a diff-style summary listing **only changed fields**:
 ⚠️ Update Task #<id> — Pre-Flight
 - Title:       <old>  →  <new>
 - State:       Active  →  Closed
-- Tags:        CoMarketing; Copilot; WorkFAST; Target 3  →  CoMarketing; Copilot; WorkFAST; Target 4
+- Tags:        PRACR; Copilot; WorkFAST; FY27; Target 3  →  PRACR; Copilot; WorkFAST; FY27; Target 4
 - Comment:     (will be added)
 
 Proceed? (y/n)

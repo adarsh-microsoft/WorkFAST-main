@@ -2,14 +2,17 @@
 # Task Creating Helper — Template Config
 # =============================================================================
 # This config defines the canonical structure used when creating ADO tasks
-# via the `task-creating-helper` skill. The skill asks for FOUR inputs:
+# via the `task-creating-helper` skill. The skill asks for FOUR content inputs:
 #   1. Title
 #   2. Description (free text — gets formatted into the HTML template below)
 #   3. Original estimate (hours)
 #   4. Anything else? (OPTIONAL — free-form per-task overrides; blank = use defaults)
+# PLUS a Scenario Detail picker: on every create the skill lists the New/Active
+# Scenario Detail children of the Business Scenario (parent.businessScenarioId)
+# and the user picks one as the new task's parent (see the `parent` section).
 #
 # Tags are NOT asked. They are auto-resolved as:
-#   - Always-on:  CoMarketing, Copilot, WorkFAST
+#   - Always-on:  PRACR, Copilot, WorkFAST, FY27
 #   - Auto-picked: ONE of Target 1 / Target 2 / Target 3 / Target 4
 #                  selected by scoring the Description against the
 #                  keyword lists in `tags.targetClassifier`.
@@ -22,7 +25,7 @@
 # https://dev.azure.com/MCAPSDataEngineering/Global%20Partner%20Solutions/_workitems/edit/43370
 # =============================================================================
 
-version: 1.6
+version: 1.10
 
 # ── Static defaults applied to every new task ─────────────
 defaults:
@@ -40,35 +43,68 @@ defaults:
   # ── Scheduling dates ──────────────────────────────────
   # Start Date and Target Date both use the TASK DATE (the same date rendered in
   # the description {{WHEN}} token — today's date, or a Q4-backdated date).
-  # Only the time-of-day differs: Start = 09:00, Target = 17:00 (LOCAL time).
+  # Only the time-of-day differs: Start = 09:00, Target = 17:00.
   #
-  # IMPORTANT (timezone): ADO stores dates in UTC and renders them in the
-  # viewer's local timezone. The times below are LOCAL wall-clock times, so
-  # they MUST be sent with an explicit UTC offset (see `timezoneOffset`), e.g.
-  # "2026-06-04T09:00:00-07:00". Sending a naive "...T09:00:00" makes ADO treat
-  # it as 9:00 UTC, which then displays shifted (e.g. 2:00 AM in UTC-7).
+  # IMPORTANT (timezone — FIXED to IST): Start/Target are ALWAYS authored as
+  # 09:00/17:00 IST and stamped with an explicit "+05:30" offset (see
+  # timezoneOffset below). ADO stores them as UTC (03:30Z / 11:30Z) and, because
+  # the ADO profile timezone is IST, the Planning panel shows 9:00 AM - 5:00 PM.
+  # e.g. "2026-07-01T09:00:00+05:30". Never send a naive "...T09:00:00" (no
+  # offset) — ADO reads it as UTC and shifts it. Do NOT derive the offset from
+  # the machine clock or a per-viewer profile lookup; it is pinned to IST.
   #
   # FIELD MAPPING (Task work item Planning panel):
   #   Start Date  -> Microsoft.VSTS.Scheduling.StartDate
   #   Target Date -> Microsoft.VSTS.Scheduling.TargetDate   (NOT FinishDate —
   #                  FinishDate is not shown in the Task Planning panel).
-  startTime: "09:00"                 # Start Date time-of-day (9:00 AM, local)
-  targetTime: "17:00"               # Target Date time-of-day (5:00 PM, local)
-  # UTC offset for the user's local timezone. Use "local" to have the skill
-  # compute the machine's current offset at the task date (handles DST), or
-  # pin an explicit offset like "-07:00". User is currently UTC-7 (Pacific).
-  timezoneOffset: "local"
+  startTime: "09:00"                 # Start Date time-of-day (9:00 AM IST)
+  targetTime: "17:00"               # Target Date time-of-day (5:00 PM IST)
+  # Explicit UTC offset to stamp Start/Target with. PINNED to IST (UTC+05:30):
+  # Start/Target are ALWAYS authored as 09:00/17:00 IST and stamped "+05:30".
+  # ── ABSOLUTE RULE — NO TIME CALCULATIONS / NO CONVERSIONS ──
+  # Author the LITERAL wall-clock only: Start = "<date>T09:00:00+05:30",
+  # Target = "<date>T17:00:00+05:30". DO NOT convert to another timezone, DO NOT
+  # compute a UTC "Z" value yourself, DO NOT read the machine clock or the ADO
+  # profile timezone, and IGNORE any agent memory/notes claiming the user is
+  # Pacific/PDT/PST or any non-IST zone — they are STALE. The user's ADO profile
+  # IS IST — confirmed 2026-07-06. Only Q4 may change the date/time, never +05:30.
+  timezoneOffset: "+05:30"           # FIXED — IST. Never recompute/convert/override.
 
-# ── Default parent (override via chat) ────────────────────
-# If the user says: "create child task under [ID]" or "parent it to [ID]"
-# OR provides a Scenario Detail / User Story URL, that ID overrides this default.
+# ── Parent / destination (Scenario Detail picker) ─────────
+# DESTINATION = Business Scenario #49754 (FY27 IP Co-Sell Transition —
+# Compensation Framework & DRACR Updates). New tasks are NOT parented to the
+# Business Scenario directly; they are parented under one of its SCENARIO
+# DETAIL children, chosen by the user at create time.
 parent:
-  defaultId: 44959                   # [CMD M7] UAT Reviews - II
-  defaultTitle: "[CMD M7] UAT Reviews - II"
-  # Override behaviour:
-  #   - User can specify a numeric work item ID
-  #   - User can paste an ADO URL — extract the trailing /edit/<id>
-  #   - When overridden, inherit Area Path from the new parent ONLY.
+  businessScenarioId: 49754
+  businessScenarioTitle: "FY27 IP Co-Sell Transition — Compensation Framework & DRACR Updates"
+  businessScenarioUrl: "https://dev.azure.com/MCAPSDataEngineering/Global%20Partner%20Solutions/_workitems/edit/49754"
+
+  # ── Scenario Detail picker (ALWAYS ask on create) ───────
+  # On every create (unless an explicit parent override is supplied), query the
+  # Scenario Detail children of `businessScenarioId`, filter to the states in
+  # `includeStates`, and present them as a selection list. The chosen Scenario
+  # Detail becomes the new task's parent.
+  scenarioDetailPicker:
+    alwaysAsk: true
+    childWorkItemType: "Scenario Detail"
+    includeStates:                 # only offer Scenario Details in these states
+      - "New"
+      - "Active"
+    # If the picker returns ZERO matching Scenario Details, do NOT parent the
+    # Task directly under the Business Scenario (that breaks the BS → Scenario
+    # Detail → Task hierarchy). Instead, ask the user for an explicit parent ID.
+    emptyResultBehavior: "askForExplicitParent"
+
+  # Explicit override still wins: a #ID, an ADO URL, or phrases like
+  # "under <ID>" / "in scenario detail <ID>" bypass the picker and use that ID.
+  allowExplicitOverride: true
+
+  # Override / resolve behaviour:
+  #   - User can specify a numeric work item ID or paste an ADO URL
+  #     (extract the trailing /edit/<id>).
+  #   - When the parent is resolved (picked OR overridden), inherit Area Path
+  #     from it ONLY.
   #   - Iteration Path is NEVER inherited from the parent — it is always
   #     date-derived (the current sprint containing today's date). This keeps
   #     new tasks in the live sprint even when the parent lives in an older/
@@ -77,21 +113,23 @@ parent:
     - areaPath
 
 # ── Title prefix convention ───────────────────────────────
-# The reference task uses a "[CoMarketing]:" prefix. If the user-supplied
-# Title already starts with a "[...]:" prefix, leave it alone. Otherwise
-# prepend the default prefix below.
+# New tasks use a "[PRACR]:" prefix. If the user-supplied Title already starts
+# with a "[...]:" prefix, leave it alone. Otherwise prepend the default prefix
+# below.
 title:
-  defaultPrefix: "[CoMarketing]"
+  defaultPrefix: "[PRACR]"
   autoPrependIfMissing: true
 
 # ── Tags ──────────────────────────────────────────────────
-# Tags are NOT asked from the user. Two always-on tags + one auto-selected
+# Tags are NOT asked from the user. Four always-on tags (PRACR, Copilot,
+# WorkFAST, FY27 — all mandatory/unconditional) + one auto-selected
 # Target tag (1..4) classified from the Description content.
 tags:
   alwaysInclude:
-    - "CoMarketing"
+    - "PRACR"
     - "Copilot"
     - "WorkFAST"
+    - "FY27"
   separator: "; "
   # ── Target tag auto-classifier ──────────────────────────
   # Exactly ONE Target tag must be added per task. The skill scores the

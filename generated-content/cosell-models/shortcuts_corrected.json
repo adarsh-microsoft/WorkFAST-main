@@ -1,0 +1,1654 @@
+{
+  "BusinessSummary": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMSXProduct",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMSXProduct"
+  },
+  "DimMSXProduct": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimATU",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimATU"
+  },
+  "DimATU": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCapacityGeography",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCapacityGeography"
+  },
+  "FactMSXPartnerSharing": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimEngagementMilestone",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimEngagementMilestone"
+  },
+  "DimEngagementMilestone": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactOpportunity"
+  },
+  "FactOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapOppty",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapOppty"
+  },
+  "MapOppty": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimOpportunity"
+  },
+  "DimOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimOpportunityMilestoneEstCompletionDate",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimOpportunityMilestoneEstCompletionDate"
+  },
+  "DimOpportunityMilestoneEstCompletionDate": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimOpportunityReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimOpportunityReporting"
+  },
+  "DimPartnerDeal": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerReportedACR",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerReportedACR"
+  },
+  "DimPartnerReportedACR": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimRevSumDivision",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimRevSumDivision"
+  },
+  "DimRevSumDivision": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSolution",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSolution"
+  },
+  "DimSolution": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSolutionArea",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/LatestPublishedSchemaName/DimSolutionArea"
+  },
+  "DimSolutionArea": {
+    "stream": "CoSell",
+    "schema": "Gold",
+    "table": "DimSalesTime",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/Gold/DimSalesTime"
+  },
+  "DimSellerCoSellIncentive": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSellerCoSellIncentive",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSellerCoSellIncentive"
+  },
+  "FactIPT": {
+    "stream": "PPRReporting",
+    "schema": "Silver",
+    "table": "CustomPartnerCategory",
+    "workspace_var": "workspaceId_PPRReporting",
+    "path": "Tables/Silver/CustomPartnerCategory"
+  },
+  "CustomPartnerCategory": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "BridgeOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/BridgeOpportunity"
+  },
+  "VWDimGeography": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Silver",
+    "table": "DimReportingGeography",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Silver/DimReportingGeography"
+  },
+  "DimReportingGeography": {
+    "stream": "PartnerPrograms_Reporting",
+    "schema": "Gold",
+    "table": "DimSalesReportingGeography",
+    "workspace_var": "workspaceId_PartnerProgramsReporting",
+    "path": "Tables/Gold/DimSalesReportingGeography"
+  },
+  "DimSalesReportingGeography": {
+    "stream": "CoSell",
+    "schema": "ASP",
+    "table": "FactPartnerSpecialization",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/ASP/FactPartnerSpecialization"
+  },
+  "FactPartnerSpecialization": {
+    "stream": "CoSell",
+    "schema": "CoSellGold_Int",
+    "table": "DimCRMPartnerAccount",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/CoSellGold_Int/DimCRMPartnerAccount"
+  },
+  "DimCRMPartnerAccount": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimUserSubsidiary",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimUserSubsidiary"
+  },
+  "MapUserSubsidiary": {
+    "stream": "CoSell",
+    "schema": "Silver",
+    "table": "DimCustomer_FY26",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/Silver/DimCustomer_FY26"
+  },
+  "DimMSXCustomer": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Silver",
+    "table": "DimReportingPartnerOneSub_FY26",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Silver/DimReportingPartnerOneSub_FY26"
+  },
+  "DimReportingPartnerOneSub": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSolution",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSolution"
+  },
+  "BridgeGeography": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Gold",
+    "table": "CustomPartnerReportingGeography",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Gold/CustomPartnerReportingGeography"
+  },
+  "BusinessHierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SnapshotFactMSXCombined",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SnapshotFactMSXCombined"
+  },
+  "SnapshotFactMSXCombined": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "ACRPipeline",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/ACRPipeline"
+  },
+  "BridgeOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "CustomSolutionAreaReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/CustomSolutionAreaReporting"
+  },
+  "CustomSolutionAreaReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DatasetRefresh",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DatasetRefresh"
+  },
+  "DimAreaFlags": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimATU",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimATU"
+  },
+  "DimCapacityGeography": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCRMPartnerAccountReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCRMPartnerAccountReporting"
+  },
+  "DimCRMPartnerAccountReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCustomerGeography",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCustomerGeography"
+  },
+  "DimCustomerGeography": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCustomerReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCustomerReporting"
+  },
+  "DimCustomerReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCustomerSegment",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCustomerSegment"
+  },
+  "DimCustomerSegment": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimOpportunityMilestoneEstCompletionDate",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimOpportunityMilestoneEstCompletionDate"
+  },
+  "DimOpportunityReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerOne",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerOne"
+  },
+  "DimPartnerOne": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerReferralReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerReferralReporting"
+  },
+  "DimPartnerReferralReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimReportingPartnerOneSub",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimReportingPartnerOneSub"
+  },
+  "DimTime": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Silver",
+    "table": "Dir_PartnerAccount",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Silver/Dir_PartnerAccount"
+  },
+  "DimUserSubsidiary": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactMSXCombined",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactMSXCombined"
+  },
+  "FactMSXCombined": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerReferralReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerReferralReporting"
+  },
+  "FactPartnerReferralReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapPartnerSolutionAreaReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapPartnerSolutionAreaReporting"
+  },
+  "MapPartnerSolutionAreaReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapReportingPartnerOne",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapReportingPartnerOne"
+  },
+  "MapReportingPartnerOne": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "PDM_PDMM_HierarchyReporting",
+    "workspace_var": "workspaceId_PMReporting",
+    "path": "Tables/LatestPublishedSchemaName/PDM_PDMM_HierarchyReporting"
+  },
+  "PDM_PDMM_HierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "PartnerMastering",
+    "table": "ReportingPartnerOne",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/PartnerMastering/ReportingPartnerOne"
+  },
+  "ReportingPartnerOne": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "ReportingPartnerOneSubReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/ReportingPartnerOneSubReporting"
+  },
+  "ReportingPartnerOneSubReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SolutionArea_OpptyReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SolutionArea_OpptyReporting"
+  },
+  "SolutionArea_OpptyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimFiscalMonthReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimFiscalMonthReporting"
+  },
+  "DimFiscalMonthReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimAccountTagsReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimAccountTagsReporting"
+  },
+  "DimAccountTagsReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "CustomCreatedDateReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/CustomCreatedDateReporting"
+  },
+  "CustomCreatedDateReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSalesPlayReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSalesPlayReporting"
+  },
+  "DimSalesPlayReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "CustomStatusReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/CustomStatusReporting"
+  },
+  "CustomStatusReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCustomPartnerDealDirectionReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCustomPartnerDealDirectionReporting"
+  },
+  "DimCustomPartnerDealDirectionReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimAccountGeographyHierarchyReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimAccountGeographyHierarchyReporting"
+  },
+  "DimAccountGeographyHierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSegmentHierarchyReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSegmentHierarchyReporting"
+  },
+  "DimSegmentHierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSalesProgramReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSalesProgramReporting"
+  },
+  "DimSalesProgramReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimProductReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimProductReporting"
+  },
+  "DimProductReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPrioritizedPartnerReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPrioritizedPartnerReporting"
+  },
+  "DimPrioritizedPartnerReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimEngagementMilestoneReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimEngagementMilestoneReporting"
+  },
+  "DimEngagementMilestoneReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimProductHierarchyReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimProductHierarchyReporting"
+  },
+  "DimProductHierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMSXPartnerSharingCategorizationReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMSXPartnerSharingCategorizationReporting"
+  },
+  "DimMSXPartnerSharingCategorizationReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "CustomPartnerSegment",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/CustomPartnerSegment"
+  },
+  "CustomPartnerSegment": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPricingLevelHierarchyReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPricingLevelHierarchyReporting"
+  },
+  "DimPricingLevelHierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimRevSumHierarchyReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimRevSumHierarchyReporting"
+  },
+  "DimRevSumHierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "CustomDueDateReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/CustomDueDateReporting"
+  },
+  "CustomDueDateReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSolutionAreaDetailReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSolutionAreaDetailReporting"
+  },
+  "DimSolutionAreaDetailReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSolutionAreaReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSolutionAreaReporting"
+  },
+  "DimSolutionAreaReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimWorkloadReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimWorkloadReporting"
+  },
+  "DimWorkloadReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecSellerAccountProductMapReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecSellerAccountProductMapReporting"
+  },
+  "SecSellerAccountProductMapReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "PartnerAsEndCustomerReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/PartnerAsEndCustomerReporting"
+  },
+  "PartnerAsEndCustomerReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecDimSellerReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecDimSellerReporting"
+  },
+  "SecDimSellerReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecDistinctSubsidiaryReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecDistinctSubsidiaryReporting"
+  },
+  "SecDistinctSubsidiaryReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecUPNOpportunityTeamReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecUPNOpportunityTeamReporting"
+  },
+  "SecUPNOpportunityTeamReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecSellerHierarchyReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecSellerHierarchyReporting"
+  },
+  "SecSellerHierarchyReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecAccountProductMapReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecAccountProductMapReporting"
+  },
+  "SecAccountProductMapReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecUPNDimSellerReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecUPNDimSellerReporting"
+  },
+  "SecUPNDimSellerReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecOpportunityTeamReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecOpportunityTeamReporting"
+  },
+  "SecOpportunityTeamReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecUPNAccountTeamReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecUPNAccountTeamReporting"
+  },
+  "SecUPNAccountTeamReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecUserSubsidiaryReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecUserSubsidiaryReporting"
+  },
+  "SecUserSubsidiaryReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecUPNUserSubsidiaryReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecUPNUserSubsidiaryReporting"
+  },
+  "SecUPNUserSubsidiaryReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SecAccountTeamReporting",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SecAccountTeamReporting"
+  },
+  "SecAccountTeamReporting": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DealPartnerOneMapping",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DealPartnerOneMapping"
+  },
+  "DealPartnerOneMapping": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "RefreshStatus",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/RefreshStatus"
+  },
+  "RefreshStatus": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "RefreshStatus",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/RefreshStatus"
+  },
+  "FactAzureConsumption": {
+    "stream": "PPRReporting",
+    "schema": "Gold",
+    "table": "DimAzureServiceLevelWorkload",
+    "workspace_var": "workspaceId_PPRReporting",
+    "path": "Tables/Gold/DimAzureServiceLevelWorkload"
+  },
+  "DimAzureServiceLevelWorkload": {
+    "stream": "AzureReporting",
+    "schema": "Gold",
+    "table": "DimAzureStrategicPillar",
+    "workspace_var": "workspaceId_AzureReporting",
+    "path": "Tables/Gold/DimAzureStrategicPillar"
+  },
+  "DimAzureStrategicPillar": {
+    "stream": "PPRReporting",
+    "schema": "Gold",
+    "table": "BridgeAzureAssociationPartner",
+    "workspace_var": "workspaceId_PPRReporting",
+    "path": "Tables/Gold/BridgeAzureAssociationPartner"
+  },
+  "BridgeAzureAssociationPartner": {
+    "stream": "AzureReporting",
+    "schema": "Gold",
+    "table": "DimAZPricingLevel",
+    "workspace_var": "workspaceId_AzureReporting",
+    "path": "Tables/Gold/DimAZPricingLevel"
+  },
+  "DimAZPricingLevel": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Gold",
+    "table": "MapAzureAssociationPartner",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Gold/MapAzureAssociationPartner"
+  },
+  "MapAzureAssociationPartner": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Gold",
+    "table": "DimOrganizationSubSegment",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Gold/DimOrganizationSubSegment"
+  },
+  "DimOrganizationSubSegment": {
+    "stream": "CoSell",
+    "schema": "Gold",
+    "table": "DimSalesTime",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/Gold/DimSalesTime"
+  },
+  "Dir_PartnerAccount": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Gold",
+    "table": "CustomPartnerReportingGeography",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Gold/CustomPartnerReportingGeography"
+  },
+  "CustomPartnerReportingGeography": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "Gold",
+    "table": "BridgeGeography",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables/Gold/BridgeGeography"
+  },
+  "BudgetProgram": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "BudgetProgram",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//BudgetProgram"
+  },
+  "BridgeInvestmentSource": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "BridgeInvestmentSource",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//BridgeInvestmentSource"
+  },
+  "RevenueCategory": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "RevenueCategory",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//RevenueCategory"
+  },
+  "ComarketingTPMBudget": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "ComarketingTPMBudget",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//ComarketingTPMBudget"
+  },
+  "DimCustomerCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimCustomerCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimCustomerCD"
+  },
+  "DimEngagementMilestoneCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimEngagementMilestoneCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimEngagementMilestoneCD"
+  },
+  "FactEngagementMilestoneCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FactEngagementMilestoneCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FactEngagementMilestoneCD"
+  },
+  "FactIOPO": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FactIOPO",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FactIOPO"
+  },
+  "FactOpportunityCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FactOpportunityCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FactOpportunityCD"
+  },
+  "FactPartnerDealCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FactPartnerDealCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FactPartnerDealCD"
+  },
+  "DimTimeCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimTimeCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimTimeCD"
+  },
+  "FactSolutionCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FactSolutionCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FactSolutionCD"
+  },
+  "ForecastAmount": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "ForecastAmount",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//ForecastAmount"
+  },
+  "FunnelCategory": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FunnelCategory",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FunnelCategory"
+  },
+  "FunnelCategory2": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FunnelCategory2",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FunnelCategory2"
+  },
+  "InvBridgeArea": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "InvBridgeArea",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//InvBridgeArea"
+  },
+  "InvBridgeIndustry": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "InvBridgeIndustry",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//InvBridgeIndustry"
+  },
+  "InvBridgeSolutionArea": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "InvBridgeSolutionArea",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//InvBridgeSolutionArea"
+  },
+  "InvBridgeSolutionPlay": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "InvBridgeSolutionPlay",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//InvBridgeSolutionPlay"
+  },
+  "InvestmentAsk": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "InvestmentAsk",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//InvestmentAsk"
+  },
+  "DimIOPO": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimIOPO",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimIOPO"
+  },
+  "DimOpportunityCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimOpportunityCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimOpportunityCD"
+  },
+  "Opportunity_MonthlySnapshot": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "Opportunity_MonthlySnapshot",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//Opportunity_MonthlySnapshot"
+  },
+  "DimPartnerDealCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimPartnerDealCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimPartnerDealCD"
+  },
+  "DimSharingType": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimSharingType",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimSharingType"
+  },
+  "DimSolutionCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimSolutionCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimSolutionCD"
+  },
+  "DimSolutionAreaCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimSolutionAreaCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimSolutionAreaCD"
+  },
+  "DimSolutionAreaOppty": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimSolutionAreaOppty",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimSolutionAreaOppty"
+  },
+  "ReportingPartnerOneCD": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "ReportingPartnerOneCD",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//ReportingPartnerOneCD"
+  },
+  "BridgeFieldSubsidiary": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "BridgeFieldSubsidiary",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//BridgeFieldSubsidiary"
+  },
+  "DimFieldGeography": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimFieldGeography",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimFieldGeography"
+  },
+  "InvBridgeGCPSArea": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "InvBridgeGCPSArea",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//InvBridgeGCPSArea"
+  },
+  "Bridge_CascadedPartnerOne": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "Bridge_CascadedPartnerOne",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/Bridge_CascadedPartnerOne"
+  },
+  "CustomerSecurity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "CustomerSecurity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/CustomerSecurity"
+  },
+  "DimCustomgtmReadiness": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCustomgtmReadiness",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCustomgtmReadiness"
+  },
+  "DimGPSBusinessUnit": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimGPSBusinessUnit",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimGPSBusinessUnit"
+  },
+  "DimGPSCRMAccount": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimGPSCRMAccount",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimGPSCRMAccount"
+  },
+  "DimIndustry": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimIndustry",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimIndustry"
+  },
+  "DimISVConnectApp": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimISVConnectApp",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimISVConnectApp"
+  },
+  "DimLead": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimLead",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimLead"
+  },
+  "DimMarketplaceInvoice": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMarketplaceInvoice",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMarketplaceInvoice"
+  },
+  "DimMarketplaceOffer": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMarketplaceOffer",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMarketplaceOffer"
+  },
+  "DimMarketPlacePublisher": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMarketPlacePublisher",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMarketPlacePublisher"
+  },
+  "DimMSXSolutionArea": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMSXSolutionArea",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMSXSolutionArea"
+  },
+  "DimMSXWinsWithSolutionAttach": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMSXWinsWithSolutionAttach",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMSXWinsWithSolutionAttach"
+  },
+  "DimMSXWorkLoad": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMSXWorkLoad",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMSXWorkLoad"
+  },
+  "DimPartnerDealDuration": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerDealDuration",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerDealDuration"
+  },
+  "DimPartnerDealProfile": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerDealProfile",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerDealProfile"
+  },
+  "DimPartnerDealSolutionAttached": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerDealSolutionAttached",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerDealSolutionAttached"
+  },
+  "DimPartnerDealSolutionHistory": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerDealSolutionHistory",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerDealSolutionHistory"
+  },
+  "DimPartnerSharingMetricType": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerSharingMetricType",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerSharingMetricType"
+  },
+  "DimPINMetric": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPINMetric",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPINMetric"
+  },
+  "DimPlanProfile": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPlanProfile",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPlanProfile"
+  },
+  "DimPrioritizedAndReadyPartnersConsumptionOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPrioritizedAndReadyPartnersConsumptionOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPrioritizedAndReadyPartnersConsumptionOpportunity"
+  },
+  "DimPrioritizedAndReadyPartnersOppty": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPrioritizedAndReadyPartnersOppty",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPrioritizedAndReadyPartnersOppty"
+  },
+  "DimReportingPartnerOneMedian": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimReportingPartnerOneMedian",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimReportingPartnerOneMedian"
+  },
+  "DimSalesProgram": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSalesProgram",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSalesProgram"
+  },
+  "DimScoreCardRecognitionTime": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimScoreCardRecognitionTime",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimScoreCardRecognitionTime"
+  },
+  "DimSellInCountry": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSellInCountry",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSellInCountry"
+  },
+  "DimServiceCompGrouping": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimServiceCompGrouping",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimServiceCompGrouping"
+  },
+  "DimSolutionEngagementPipeline": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimSolutionEngagementPipeline",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimSolutionEngagementPipeline"
+  },
+  "DimTopTierMonthlyStatus": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimTopTierMonthlyStatus",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimTopTierMonthlyStatus"
+  },
+  "FactAccount": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactAccount",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactAccount"
+  },
+  "FactAccountPIN": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactAccountPIN",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactAccountPIN"
+  },
+  "FactCoSellTargets": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactCoSellTargets",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactCoSellTargets"
+  },
+  "FactCRMPartner": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactCRMPartner",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactCRMPartner"
+  },
+  "FactCSPSolutionBilledOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactCSPSolutionBilledOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactCSPSolutionBilledOpportunity"
+  },
+  "FactCSPSolutionConsumptionOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactCSPSolutionConsumptionOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactCSPSolutionConsumptionOpportunity"
+  },
+  "FactCSPSolutionPartnerDeal": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactCSPSolutionPartnerDeal",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactCSPSolutionPartnerDeal"
+  },
+  "FactEngagementMilestonePipeline": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactEngagementMilestonePipeline",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactEngagementMilestonePipeline"
+  },
+  "FactFY20AllianceReadiness": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactFY20AllianceReadiness",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactFY20AllianceReadiness"
+  },
+  "FactISVConnect": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactISVConnect",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactISVConnect"
+  },
+  "FactLead": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactLead",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactLead"
+  },
+  "MapEngagementMilestone": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapEngagementMilestone",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapEngagementMilestone"
+  },
+  "FactMarketplaceBilledSales": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactMarketplaceBilledSales",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactMarketplaceBilledSales"
+  },
+  "FactMBSCommercialTargets": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactMBSCommercialTargets",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactMBSCommercialTargets"
+  },
+  "FactMBSTargets": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactMBSTargets",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactMBSTargets"
+  },
+  "FactPartnerDeal": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDeal",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDeal"
+  },
+  "FactPartnerDeal_FY20": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDeal_FY20",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDeal_FY20"
+  },
+  "FactPartnerDeal_FY21": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDeal_FY21",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDeal_FY21"
+  },
+  "FactPartnerDeal_FY22": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDeal_FY22",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDeal_FY22"
+  },
+  "FactPartnerDeal_FY23": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDeal_FY23",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDeal_FY23"
+  },
+  "FactPartnerDeal_FY24": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDeal_FY24",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDeal_FY24"
+  },
+  "FactPartnerDeal_FY25": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDeal_FY25",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDeal_FY25"
+  },
+  "FactPartnerDealDuration": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerDealDuration",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerDealDuration"
+  },
+  "FactPartnerOne": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPartnerOne",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPartnerOne"
+  },
+  "FactPRACRTargets": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPRACRTargets",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPRACRTargets"
+  },
+  "FactSolution": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactSolution",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactSolution"
+  },
+  "FactSolutionBilledOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactSolutionBilledOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactSolutionBilledOpportunity"
+  },
+  "FactSolutionCapacityGeography": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactSolutionCapacityGeography",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactSolutionCapacityGeography"
+  },
+  "FactSolutionConsumptionOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactSolutionConsumptionOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactSolutionConsumptionOpportunity"
+  },
+  "FactSolutionPartnerDeal": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactSolutionPartnerDeal",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactSolutionPartnerDeal"
+  },
+  "MapSolutionPracticeIndustryCountry": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapSolutionPracticeIndustryCountry",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapSolutionPracticeIndustryCountry"
+  },
+  "MapAccountSolution": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapAccountSolution",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapAccountSolution"
+  },
+  "MapAccountTag": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapAccountTag",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapAccountTag"
+  },
+  "MapCustomPartnerSegment": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapCustomPartnerSegment",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapCustomPartnerSegment"
+  },
+  "MapIndustrySolution": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapIndustrySolution",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapIndustrySolution"
+  },
+  "MapOfferPartnerDeal": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapOfferPartnerDeal",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapOfferPartnerDeal"
+  },
+  "MapOpportunitySalesProgram": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapOpportunitySalesProgram",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapOpportunitySalesProgram"
+  },
+  "MapOpportunitySolution": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapOpportunitySolution",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapOpportunitySolution"
+  },
+  "MapOpptyPartnerAttachAndSolutionAttach": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapOpptyPartnerAttachAndSolutionAttach",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapOpptyPartnerAttachAndSolutionAttach"
+  },
+  "MapPartnerDeal": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapPartnerDeal",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapPartnerDeal"
+  },
+  "MapPartnerDealPartnerAttachAndSolutionAttach": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapPartnerDealPartnerAttachAndSolutionAttach",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapPartnerDealPartnerAttachAndSolutionAttach"
+  },
+  "MapPartnerOneAccountTag": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapPartnerOneAccountTag",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapPartnerOneAccountTag"
+  },
+  "MapPartnerOpportunity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapPartnerOpportunity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapPartnerOpportunity"
+  },
+  "MapPrioritizedDealSharingAndWins": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapPrioritizedDealSharingAndWins",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapPrioritizedDealSharingAndWins"
+  },
+  "MapPrioritizedOppty": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapPrioritizedOppty",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapPrioritizedOppty"
+  },
+  "MapSolutionPartnerOneReportingPartnerOneSubAccount": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapSolutionPartnerOneReportingPartnerOneSubAccount",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapSolutionPartnerOneReportingPartnerOneSubAccount"
+  },
+  "MapSolutionPracticeIndustryCountry_Capacity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapSolutionPracticeIndustryCountry_Capacity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapSolutionPracticeIndustryCountry_Capacity"
+  },
+  "MapSolutionSellerCoSellIncentive_Capacity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapSolutionSellerCoSellIncentive_Capacity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapSolutionSellerCoSellIncentive_Capacity"
+  },
+  "MapSolutionSellInCountry": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapSolutionSellInCountry",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapSolutionSellInCountry"
+  },
+  "MapSolutionSolutionAreaIndustryCapacity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "MapSolutionSolutionAreaIndustryCapacity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/MapSolutionSolutionAreaIndustryCapacity"
+  },
+  "PartnerSecurity": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "PartnerSecurity",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/PartnerSecurity"
+  },
+  "SnapshotMapSolutionPriorityScenarioIndustryCountry": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SnapshotMapSolutionPriorityScenarioIndustryCountry",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SnapshotMapSolutionPriorityScenarioIndustryCountry"
+  },
+  "DimPartnerSharingFlags": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerSharingFlags",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerSharingFlags"
+  },
+  "DimPartnerMAICPPStatus": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerMAICPPStatus",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerMAICPPStatus"
+  },
+  "DimCustomOpptyStatus": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCustomOpptyStatus",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCustomOpptyStatus"
+  },
+  "FactAzureConsumptionCTCG": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactAzureConsumptionCTCG",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactAzureConsumptionCTCG"
+  },
+  "FactAzureConsumptionP1CGCT": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactAzureConsumptionP1CGCT",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactAzureConsumptionP1CGCT"
+  },
+  "ProjectedBaselineCTCG": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "ProjectedBaselineCTCG",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/ProjectedBaselineCTCG"
+  },
+  "ProjectedBaselineP1CGCT": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "ProjectedBaselineP1CGCT",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/ProjectedBaselineP1CGCT"
+  },
+  "SnapshotDimOpportunityWeekly": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SnapshotDimOpportunityWeekly",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SnapshotDimOpportunityWeekly"
+  },
+  "SnapshotPartnerSharingWeekly": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "SnapshotPartnerSharingWeekly",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/SnapshotPartnerSharingWeekly"
+  },
+  "FactPipelineCurrent": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "FactPipelineCurrent",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/FactPipelineCurrent"
+  },
+  "DimPartnerDealApprovalReportedDate": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerDealApprovalReportedDate",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerDealApprovalReportedDate"
+  },
+  "PartnerDealPartnerReportedACR": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "PartnerDealPartnerReportedACR",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/PartnerDealPartnerReportedACR"
+  },
+  "DimPartnerDesignation": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimPartnerDesignation",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimPartnerDesignation"
+  },
+  "DimCosellServices": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimCosellServices",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimCosellServices"
+  },
+  "OpportunityFlags": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "OpportunityFlags",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/OpportunityFlags"
+  },
+  "DimMetric": {
+    "stream": "CoSell",
+    "schema": "CoSellGold",
+    "table": "DimMetric",
+    "workspace_var": "WorkspaceId_Stream",
+    "path": "Tables/LatestPublishedSchemaName/DimMetric"
+  },
+  "PartnerSpecialization": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "PartnerSpecialization",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//PartnerSpecialization"
+  },
+  "DimProjectTask": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimProjectTask",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimProjectTask"
+  },
+  "DimProjectDeliverables": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimProjectDeliverables",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimProjectDeliverables"
+  },
+  "DimProject": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimProject",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimProject"
+  },
+  "SolutionPartnerDesignation": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "SolutionPartnerDesignation",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//SolutionPartnerDesignation"
+  },
+  "PSAList": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "PSAList",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//PSAList"
+  },
+  "FactAzureConsumptionP1": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "FactAzureConsumptionP1",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//FactAzureConsumptionP1"
+  },
+  "PSA_Table": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "PSA_Table",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//PSA_Table"
+  },
+  "DimCreditingGeography": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "DimCreditingGeography",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//DimCreditingGeography"
+  },
+  "LatestRefresh_PSA": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "LatestRefresh_PSA",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//LatestRefresh_PSA"
+  },
+  "ActiveSubRegionFlag": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "ActiveSubRegionFlag",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//ActiveSubRegionFlag"
+  },
+  "SolutionAreaMapping": {
+    "stream": "SalesPowerBIReporting",
+    "schema": "",
+    "table": "SolutionAreaMapping",
+    "workspace_var": "workspaceId_SalesReporting",
+    "path": "Tables//SolutionAreaMapping"
+  }
+}
