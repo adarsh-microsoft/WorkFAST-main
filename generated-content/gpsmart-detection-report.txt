@@ -1,0 +1,22 @@
+Affected CoSell views: 15
+  with Deprecate: 9  Rename: 1  NewColumn: 10
+====================================================================================================
+Affected views NOT found in PROD script: []
+====================================================================================================
+
+VIEWS WITH POTENTIAL EDIT ISSUES (need special handling):
+  NONE - all deprecate/rename targets are single simple lines.
+
+BRANCH COUNTS >1 among affected (UNION views):
+
+NEW COLUMN (Conversation) target views:
+  vw_DimPartnerReferral: add ['Conversation']  (in PROD: True)
+  vw_Bridge_CoSellPrioritizedSolutionPracticeCountry: add ['Conversation']  (in PROD: True)
+  vw_CosellPrioritizedPartners: add ['Conversation']  (in PROD: True)
+  vw_DimMSXSolutionArea: add ['Conversation']  (in PROD: True)
+  vw_DimMSXWorkload: add ['Conversation']  (in PROD: True)
+  vw_DimOpportunity: add ['Conversation']  (in PROD: True)
+  vw_DimProject: add ['Conversation']  (in PROD: True)
+  vw_DimSolutionArea: add ['Conversation']  (in PROD: True)
+  vw_DimSolutionAreaOppty: add ['Conversation']  (in PROD: True)
+  vw_FactSolution: add ['Conversation']  (in PROD: True)

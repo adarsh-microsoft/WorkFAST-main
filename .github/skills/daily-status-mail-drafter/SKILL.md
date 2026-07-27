@@ -1,6 +1,6 @@
 ---
 name: 'daily-status-mail-drafter'
-description: 'Draft (DO NOT SEND) the daily Co-Marketing status update email in the user''s Outlook inbox using the canonical CoMarketing template. Auto-fills today''s date in the subject, queries today''s ADO tasks for Adarsh, Prince, Arham, Chetan, and Harshit to populate Task IDs, reads the Discussion tab on each task to synthesize one-liner Executive Summary bullets, then asks the user a single confirming question on those bullets before creating the draft.'
+description: 'Draft (DO NOT SEND) the daily Co-Marketing status update email in the user''s Outlook inbox using the canonical CoMarketing template. Auto-fills today''s date in the subject, queries today''s ADO tasks for Adarsh, Prince, Arham, Chetan, Harshit, and Vinayak to populate Task IDs, reads the Discussion tab on each task to synthesize one-liner Executive Summary bullets, then asks the user a single confirming question on those bullets before creating the draft.'
 ---
 
 # Daily Status Mail Drafter
@@ -36,6 +36,7 @@ Creates an Outlook **draft** (never sends) of the CoSell daily status email usin
 | 2026-06-30 | 3.9 | **Legend-accurate status colors.** Fixed two rendering bugs: (1) Today's Tasks **Status cells were hard-coded grey** — now colored per the Status Legend via 8 new companion tokens (`*_TASK_STATUS_BG` / `*_TASK_STATUS_FG`), so `Closed`/`Resolved` → **Completed** (blue `#DEF0FD`/`#005A9E`), `Active` → **On Track** (green), `New` → **Not Started** (grey). (2) Business Scenario **milestone pills used ad-hoc `Done`/`In Progress` labels & off-legend colors** — now must use the exact legend labels/colors (`Completed`, `On Track`, `Not Started`, `Recoverable Delay`, `Irrecoverable Delay`, `On Hold`). Added the canonical Status Legend mapping table; tokenized template status cells; token count 16 → 24. |
 | 2026-07-06 | 4.0 | **Tracked assignees → five** — added **Harshit Singh** (`v-harshitsi@microsoft.com`) as a fifth tracked assignee alongside Adarsh, Prince, Arham, and Chetan. Four new tokens `{{HARSHIT_TASK_ROW_INNER}}` / `{{HARSHIT_TASK_STATUS}}` / `{{HARSHIT_TASK_STATUS_BG}}` / `{{HARSHIT_TASK_STATUS_FG}}` and a fifth Today's-Tasks grid row (white / no-zebra). Steps 1, 2, 3.5, 4, 5, 6a, 7 and the no-task guardrails updated to handle five assignees; token count 24 → 28. **Identity note:** the user supplied `harshitsi@microsoft.com`, but ADO verification on 2026-07-06 showed that prefix-less address returns zero tasks — the authoritative identity is `v-harshitsi@microsoft.com` (matches the fixed CC list and the comment-author `uniqueName`). |
 | 2026-07-06 | 4.1 | **NA-omit rule + dynamic Today's-Tasks grid.** Assignees with no selected task are now **removed from the grid entirely** (no `NA` row), per user rule. Refactored the Today's-Tasks table from five hard-coded per-assignee rows to a single dynamic `{{TODAYS_TASKS_ROWS}}` token, retiring the 20 per-assignee row/status tokens; rows are built in roster order for present assignees only and zebra-striped by render position. Token count 28 → 9. Step 6a, the token table, and the no-task guardrail updated. |
+| 2026-07-21 | 4.2 | **Tracked assignees → six** — added **Vinayak Sharma** (`v-svinayak@microsoft.com`) as a sixth tracked assignee alongside Adarsh, Prince, Arham, Chetan, and Harshit, and added him to the fixed **CC** list. Roster order is now Adarsh → Prince → Arham → Chetan → Harshit → Vinayak. Steps 1, 2, 3.5, 4, 5, 7 and the no-task guardrails updated to handle six assignees; `compose-draft-v4.ps1` `$Cc` default updated. |
 
 ---
 
@@ -77,7 +78,7 @@ Do **not** invoke for the generic `create-daily-status-email` skill (different f
 | Field | Addresses (`Display Name <email>`) |
 |-------|-----------|
 | **To** | `Soham Kishor Butala <v-sbutala@microsoft.com>` |
-| **CC** | `Abhishek Mahapatro <v-abhim@microsoft.com>`, `Saipavan Manikanta <v-masaip@microsoft.com>`, `Sumit Kandwal <v-skandwal@microsoft.com>`, `Chetan Gandhi <v-cgandhi@microsoft.com>`, `Harshit Singh <v-harshitsi@microsoft.com>`, `Prince Barad <v-pbarad@microsoft.com>`, `Arham Shah <v-arhamshah@microsoft.com>`, `Adarsh Devashish <v-adevashish@microsoft.com>`, `Apurv Joshi <v-apurvjoshi@microsoft.com>` |
+| **CC** | `Abhishek Mahapatro <v-abhim@microsoft.com>`, `Saipavan Manikanta <v-masaip@microsoft.com>`, `Sumit Kandwal <v-skandwal@microsoft.com>`, `Chetan Gandhi <v-cgandhi@microsoft.com>`, `Harshit Singh <v-harshitsi@microsoft.com>`, `Prince Barad <v-pbarad@microsoft.com>`, `Arham Shah <v-arhamshah@microsoft.com>`, `Adarsh Devashish <v-adevashish@microsoft.com>`, `Vinayak Sharma <v-svinayak@microsoft.com>`, `Apurv Joshi <v-apurvjoshi@microsoft.com>` |
 
 ---
 
@@ -98,7 +99,7 @@ The canonical HTML body lives at `assets/email-template.html`. It contains these
 | Token | Replaced With |
 |-------|---------------|
 | `{{EXEC_SUMMARY_LIS}}` | Concatenated `<li>…</li>` items, one per confirmed executive summary bullet, using the same `style="font-family:Aptos,sans-serif; font-size:12pt; color:rgb(36,36,36)"`. |
-| `{{TODAYS_TASKS_ROWS}}` | Concatenated `<tr>…</tr>` rows for the Today's Tasks grid — **one row per assignee who has a selected task**. Assignees with no selected task (NA) are **omitted entirely**; no NA row is ever rendered (see the NA-omit rule in Guardrails and the row template in Step 6a). Rows follow roster order (Adarsh, Prince, Arham, Chetan, Harshit), skipping the absent ones, and are zebra-striped (white / `rgb(250,250,250)`) by render position. Each row's Status cell is colored per the Status Legend mapping (`Closed`/`Resolved` → Completed `#DEF0FD`/`#005A9E`; `Active` → On Track `#DFF6DD`/`#107C10`; `New` → Not Started `#E8E8E8`/`#595959`). |
+| `{{TODAYS_TASKS_ROWS}}` | Concatenated `<tr>…</tr>` rows for the Today's Tasks grid — **one row per assignee who has a selected task**. Assignees with no selected task (NA) are **omitted entirely**; no NA row is ever rendered (see the NA-omit rule in Guardrails and the row template in Step 6a). Rows follow roster order (Adarsh, Prince, Arham, Chetan, Harshit, Vinayak), skipping the absent ones, and are zebra-striped (white / `rgb(250,250,250)`) by render position. Each row's Status cell is colored per the Status Legend mapping (`Closed`/`Resolved` → Completed `#DEF0FD`/`#005A9E`; `Active` → On Track `#DFF6DD`/`#107C10`; `New` → Not Started `#E8E8E8`/`#595959`). |
 | `{{SP_TODAY}}` | KPI — distinct Scenario Detail parent count (see Step 3.5). |
 | `{{TASKS_CLOSED}}` | KPI — count of today's tasks in `Closed` state. |
 | `{{TASKS_ACTIVE}}` | KPI — count of today's tasks in `Active` state. |
@@ -134,10 +135,11 @@ Read `config/user-context.yaml`:
 - Arham's identity is hard-coded → `v-arhamshah@microsoft.com` (display name "Arham Shah").
 - Chetan's identity is hard-coded → `v-cgandhi@microsoft.com` (display name "Chetan Gandhi").
 - Harshit's identity is hard-coded → `v-harshitsi@microsoft.com` (display name "Harshit Singh").
+- Vinayak's identity is hard-coded → `v-svinayak@microsoft.com` (display name "Vinayak Sharma").
 - `ado.organization` → `MCAPSDataEngineering`
 - `ado.projects.taskCreation.name` → `Global Partner Solutions`
 
-### Step 2 — Query candidate ADO Tasks for all five assignees (wide window, PST-anchored)
+### Step 2 — Query candidate ADO Tasks for all six assignees (wide window, PST-anchored)
 
 > **Timezone rule (critical):** ADO stores `ChangedDate` in UTC and `@Today` resolves against the **caller's local timezone**, which on this workstation is IST (UTC+5:30). The team operates in **Pacific Time (PST/PDT, UTC-8/-7)** but tasks are often **authored from IST**, so a task whose `When: <today PST>` may have a UTC `ChangedDate` that falls **just before** the strict PST midnight boundary. To avoid missing those, the WIQL window is widened to **PST day ± 12h** and the authoritative "is this today's task?" decision is made by the Start Date check (with `When:` fallback) in Step 2.5.
 
@@ -279,7 +281,7 @@ For each Task ID accepted by Step 2.5 **and** Step 2.6:
 
 ### Step 3.5 — Compute KPI Metrics
 
-Using the same set of today's accepted tasks for Adarsh, Prince, Arham, Chetan, **and** Harshit (the union of all five assignees' tasks that passed Step 2.5):
+Using the same set of today's accepted tasks for Adarsh, Prince, Arham, Chetan, Harshit, **and** Vinayak (the union of all six assignees' tasks that passed Step 2.5):
 
 1. Re-fetch each task with fields:
    - `System.State`
@@ -299,7 +301,7 @@ Using the same set of today's accepted tasks for Adarsh, Prince, Arham, Chetan, 
    | **AI Hours Saved** | `SUM(OriginalEstimate) − SUM(CompletedWork)`. Treat missing fields as `0`. If the result is negative, clamp to `0`. | `<n>h` — drop trailing `.0`; keep up to 2 decimals otherwise (e.g. `6h`, `2.5h`). |
    | **Efficiency %** | `(AI_HOURS_SAVED / SUM(CompletedWork)) × 100`, rounded to **2 decimals**. If `SUM(CompletedWork) == 0`, emit `0.00%`. | `<n.nn>%` (e.g. `35.29%`). |
 
-3. **No-tasks fallback**: if all five assignees are `NA` (no accepted tasks at all), substitute every KPI token with `-` (single dash) — matches the unfilled template look.
+3. **No-tasks fallback**: if all six assignees are `NA` (no accepted tasks at all), substitute every KPI token with `-` (single dash) — matches the unfilled template look.
 
 4. Carry the five computed values into Step 6a where they replace the new tokens `{{SP_TODAY}}`, `{{TASKS_CLOSED}}`, `{{TASKS_ACTIVE}}`, `{{AI_HOURS_SAVED}}`, `{{EFFICIENCY_PCT}}`.
 
@@ -307,14 +309,14 @@ Using the same set of today's accepted tasks for Adarsh, Prince, Arham, Chetan, 
 
 ### Step 4 — Synthesize Executive Summary bullets
 
-From the combined comments across all five assignees' tasks:
+From the combined comments across all six assignees' tasks:
 
 - Produce **one-liner** bullets (no multi-clause sentences).
 - **Consolidate** related points (e.g., two comments both about "fixed UI bug X" → one bullet). This is **mandatory**, not optional.
 - Keep tone executive: outcome-focused, past tense, no jargon padding.
 - Target 3–6 bullets. Never exceed 8.
 - Do **not** prefix with names — these are accomplishments of the team for the day.
-- **No-activity fallback**: if all five assignees are `NA` AND there are no comments at all, emit exactly one bullet: `No status updates available for today — placeholder draft.` Then SKIP Step 5 (no confirmation needed) and proceed directly to Step 6.
+- **No-activity fallback**: if all six assignees are `NA` AND there are no comments at all, emit exactly one bullet: `No status updates available for today — placeholder draft.` Then SKIP Step 5 (no confirmation needed) and proceed directly to Step 6.
 
 #### Consolidation self-check (run before presenting bullets in Step 5)
 
@@ -343,6 +345,7 @@ Tasks for the grid:
   • Arham: Task <ID> — <Title> (<State>)   ← or "NA"
   • Chetan: Task <ID> — <Title> (<State>)   ← or "NA"
   • Harshit: Task <ID> — <Title> (<State>)   ← or "NA"
+  • Vinayak: Task <ID> — <Title> (<State>)   ← or "NA"
 
 Executive Summary bullets:
   1. <bullet 1>
@@ -369,7 +372,7 @@ Wait for the user's reply.
 
 1. Load `assets/email-template.html`.
 2. Substitute the nine tokens (`EXEC_SUMMARY_LIS`, `TODAYS_TASKS_ROWS`, `SP_TODAY`, `TASKS_CLOSED`, `TASKS_ACTIVE`, `AI_HOURS_SAVED`, `EFFICIENCY_PCT`, `BUSINESS_SCENARIO_ROWS`, `SCENARIO_DETAILS_ROWS`).
-3. **Build `{{TODAYS_TASKS_ROWS}}` dynamically — one `<tr>` per assignee WHO HAS a selected task**, in roster order (Adarsh → Prince → Arham → Chetan → Harshit), **skipping any assignee with no task** (the NA-omit rule; never emit an `NA` row). Zebra-stripe by render position: the status `<td>` always keeps its legend color, and for **even** rows (2nd, 4th, …) prepend `background-color:rgb(250,250,250); ` to the other three `<td>` style attributes (odd rows stay white). White-row template (substitute `{TASK_INNER}`, `{NAME}`, `{STATE}`, `{BG}`, `{FG}`):
+3. **Build `{{TODAYS_TASKS_ROWS}}` dynamically — one `<tr>` per assignee WHO HAS a selected task**, in roster order (Adarsh → Prince → Arham → Chetan → Harshit → Vinayak), **skipping any assignee with no task** (the NA-omit rule; never emit an `NA` row). Zebra-stripe by render position: the status `<td>` always keeps its legend color, and for **even** rows (2nd, 4th, …) prepend `background-color:rgb(250,250,250); ` to the other three `<td>` style attributes (odd rows stay white). White-row template (substitute `{TASK_INNER}`, `{NAME}`, `{STATE}`, `{BG}`, `{FG}`):
 
    ```html
    <tr><td style="padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:13px; color:rgb(51,51,51); text-align:left; vertical-align:top; width:55%">{TASK_INNER}</td><td bgcolor="{BG}" style="background-color:{BG}; mso-background-themecolor:none; color:{FG}; mso-color-alt:none; padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:12px; font-weight:600; text-align:center; vertical-align:middle; width:15%"><font color="{FG}">{STATE}</font></td><td style="padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:13px; color:rgb(51,51,51); text-align:center; vertical-align:top; width:15%">{NAME}</td><td style="padding:8px 10px; border:1px solid rgb(221,221,221); font-family:&quot;Segoe UI&quot;,Calibri,Arial,sans-serif; font-size:13px; color:rgb(51,51,51); text-align:center; vertical-align:top; width:15%">NA</td></tr>
@@ -454,6 +457,7 @@ Include a small summary table of what was filled in:
 | Arham task | Task {ID} — {state} (or `NA`) |
 | Chetan task | Task {ID} — {state} (or `NA`) |
 | Harshit task | Task {ID} — {state} (or `NA`) |
+| Vinayak task | Task {ID} — {state} (or `NA`) |
 | Exec bullets | {N} |
 
 ---
@@ -463,7 +467,7 @@ Include a small summary table of what was filled in:
 | Failure | Behavior |
 |---------|----------|
 | WIQL returns no tasks for an assignee | Use `NA` in that row, continue. |
-| Task has no Discussion comments today | Skip that task in synthesis; if all five have none, ask user to provide bullets manually before drafting. |
+| Task has no Discussion comments today | Skip that task in synthesis; if all six have none, ask user to provide bullets manually before drafting. |
 | Mail tool fails | Report the error verbatim; do not retry automatically; do not send. |
 | Template asset missing | Abort with a clear message: `Template missing at assets/email-template.html — restore the file before drafting.` |
 | Helper script missing in `%TEMP%` (`close-compose.ps1`, `warmup-outlook.ps1`, `compose-draft-v4.ps1`) | Abort with a clear message naming the missing file; do not attempt to recreate silently. The scripts encode hard-won WebView2/UIA quirks; ask the user to restore them from the daily-status-mail-drafter conversation transcript. |

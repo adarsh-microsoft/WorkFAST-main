@@ -1,0 +1,62 @@
+{
+ "vw_Bridge_CoSellPrioritizedSolutionPracticeCountry": {
+  "branches": 1,
+  "ncols": 16
+ },
+ "vw_CosellPrioritizedPartners": {
+  "branches": 1,
+  "ncols": 9
+ },
+ "vw_DimGPSCRMAccount": {
+  "branches": 1,
+  "ncols": 48
+ },
+ "vw_DimIPPartner": {
+  "branches": 1,
+  "ncols": 60
+ },
+ "vw_DimMSXSolutionArea": {
+  "branches": 1,
+  "ncols": 5
+ },
+ "vw_DimMSXWorkload": {
+  "branches": 1,
+  "ncols": 5
+ },
+ "vw_DimOpportunity": {
+  "branches": 1,
+  "ncols": 94
+ },
+ "vw_DimPartnerOne": {
+  "branches": 1,
+  "ncols": 39
+ },
+ "vw_DimPartnerReferral": {
+  "branches": 1,
+  "ncols": 221
+ },
+ "vw_DimProject": {
+  "branches": 1,
+  "ncols": 68
+ },
+ "vw_DimReportingPartnerOneSub": {
+  "branches": 1,
+  "ncols": 178
+ },
+ "vw_DimSolutionArea": {
+  "branches": 1,
+  "ncols": 3
+ },
+ "vw_DimSolutionAreaOppty": {
+  "branches": 1,
+  "ncols": 6
+ },
+ "vw_FactSolution": {
+  "branches": 1,
+  "ncols": 9
+ },
+ "vw_SPM_ManagedTopParentAccounts_int": {
+  "branches": 1,
+  "ncols": 75
+ }
+}

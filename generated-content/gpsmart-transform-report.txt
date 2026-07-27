@@ -1,0 +1,176 @@
+Total CoSell CREATE VIEW lines in PROD: 127
+
+==========================================================================================
+PLANNED CHANGES: 158  | deletions: 145  replacements: 3  insertions: 10
+ERRORS: 0
+==========================================================================================
+  DEPRECATE vw_Bridge_CoSellPrioritizedSolutionPracticeCountry.SolutionPlay  -> removed: ,[BPS].[SolutionPlay]
+  NEWCOL    vw_Bridge_CoSellPrioritizedSolutionPracticeCountry.Conversation  replace(anchor deprecated): ',[BPS].[Conversation]'  [anchor: ,[BPS].[SolutionPlay]]
+  DEPRECATE vw_CosellPrioritizedPartners.SolutionPlay  -> removed: ,[SolutionPlay]
+  NEWCOL    vw_CosellPrioritizedPartners.Conversation  replace(anchor deprecated): ',[Conversation]'  [anchor: ,[SolutionPlay]]
+  DEPRECATE vw_DimGPSCRMAccount.IsCalcMastered  -> removed: ,DA.[IsCalcMastered]
+  DEPRECATE vw_DimIPPartner.IsAG  -> removed: ,DPO.[IsAG]
+  DEPRECATE vw_DimIPPartner.IsAGIPartner  -> removed: ,DPO.[IsAGIPartner]
+  DEPRECATE vw_DimIPPartner.IsAGIPartner_Order  -> removed: ,DPO.[IsAGIPartner_Order]
+  DEPRECATE vw_DimIPPartner.IsBPGI  -> removed: ,DPO.[IsBPGI]
+  DEPRECATE vw_DimIPPartner.IsDigitalNative  -> removed: ,DPO.[IsDigitalNative]
+  DEPRECATE vw_DimIPPartner.IsEnterpriseSI  -> removed: ,DPO.[IsEnterpriseSI]
+  DEPRECATE vw_DimIPPartner.IsHyperscaler  -> removed: ,DPO.[IsHyperscaler]
+  DEPRECATE vw_DimIPPartner.IsLEGOPartner  -> removed: ,DPO.[IsLEGOPartner]
+  DEPRECATE vw_DimIPPartner.IsLEGOPartner_Order  -> removed: ,DPO.[IsLEGOPartner_Order]
+  DEPRECATE vw_DimIPPartner.IsP200Partner  -> removed: ,DPO.[IsP200Partner]
+  DEPRECATE vw_DimIPPartner.IsP200Partner_Order  -> removed: ,DPO.[IsP200Partner_Order]
+  DEPRECATE vw_DimIPPartner.IsP200PilotPartner  -> removed: ,DPO.[IsP200PilotPartner]
+  DEPRECATE vw_DimIPPartner.IsP200PilotPartner_Order  -> removed: ,DPO.[IsP200PilotPartner_Order]
+  DEPRECATE vw_DimIPPartner.IsRecruitServices  -> removed: ,DPO.[IsRecruitServices]
+  DEPRECATE vw_DimIPPartner.IsSMCSI  -> removed: ,DPO.[IsSMCSI]
+  DEPRECATE vw_DimIPPartner.IsSMCSIAzurePartners  -> removed: ,DPO.[IsSMCSIAzurePartners]
+  DEPRECATE vw_DimIPPartner.IsSMCSIBPGIPartners  -> removed: ,DPO.[IsSMCSIBPGIPartners]
+  DEPRECATE vw_DimIPPartner.IsSMCSIBizAppsPartners  -> removed: ,DPO.[IsSMCSIBizAppsPartners]
+  DEPRECATE vw_DimIPPartner.IsSMCSIMWSPartners  -> removed: ,DPO.[IsSMCSIMWSPartners]
+  DEPRECATE vw_DimIPPartner.IsStrategicDistributor  -> removed: ,DPO.[IsStrategicDistributor]
+  DEPRECATE vw_DimIPPartner.IsStrategicDistributor_Order  -> removed: ,DPO.[IsStrategicDistributor_Order]
+  DEPRECATE vw_DimIPPartner.IsStrategicGlobalISV  -> removed: ,DPO.[IsStrategicGlobalISV]
+  DEPRECATE vw_DimIPPartner.IsStrategicISV  -> removed: ,DPO.[IsStrategicISV]
+  DEPRECATE vw_DimIPPartner.IsStrategicISV_Order  -> removed: ,DPO.[IsStrategicISV_Order]
+  DEPRECATE vw_DimIPPartner.IsStrategicLSP  -> removed: ,DPO.[IsStrategicLSP]
+  DEPRECATE vw_DimIPPartner.IsStrategicLSP_Order  -> removed: ,DPO.[IsStrategicLSP_Order]
+  DEPRECATE vw_DimIPPartner.IsStrategicPartnerOne  -> removed: ,DPO.[IsStrategicPartnerOne]
+  DEPRECATE vw_DimIPPartner.IsStrategicPartnerOne_Order  -> removed: ,DPO.IsStrategicPartnerOne_Order
+  DEPRECATE vw_DimIPPartner.IsStrategicRecruitGISV  -> removed: ,DPO.[IsStrategicRecruitGISV]
+  DEPRECATE vw_DimIPPartner.IsStrategicRecruitISV  -> removed: ,DPO.[IsStrategicRecruitISV]
+  DEPRECATE vw_DimIPPartner.IsStrategicServices  -> removed: ,DPO.[IsStrategicServices]
+  DEPRECATE vw_DimIPPartner.IsStrategicServices_Order  -> removed: ,DPO.[IsStrategicServices_Order]
+  DEPRECATE vw_DimIPPartner.PartnerOneProgramName  -> removed: ,DPO.[PartnerOneProgramName]
+  DEPRECATE vw_DimIPPartner.ReportingProgramTier  -> removed: ,DPO.[ReportingProgramTier]
+  NEWCOL    vw_DimMSXSolutionArea.Conversation  insert after (anchor kept): ',[Conversation]'  [anchor: ,[SolutionPlay]]
+  NEWCOL    vw_DimMSXWorkload.Conversation  insert after (anchor kept): ',[Conversation]'  [anchor: ,[SolutionPlay]]
+  NEWCOL    vw_DimOpportunity.Conversation  insert after (anchor kept): ',[DO].[Conversation]'  [anchor: ,[DO].[SolutionPlay] AS [Solution Play (Seller Tagged)]]
+  DEPRECATE vw_DimPartnerOne.IsAG  -> removed: ,DPO.[IsAG]
+  DEPRECATE vw_DimPartnerOne.IsAGIPartner  -> removed: ,DPO.[IsAGIPartner]
+  DEPRECATE vw_DimPartnerOne.IsBusinessAndProductivityGlobalImpact  -> removed: ,DPO.[IsBPGI] AS IsBusinessAndProductivityGlobalImpact
+  DEPRECATE vw_DimPartnerOne.IsDigitalNative  -> removed: ,DPO.[IsDigitalNative]
+  DEPRECATE vw_DimPartnerOne.IsEnterpriseService  -> removed: ,DPO.[IsEnterpriseSI] AS IsEnterpriseService
+  DEPRECATE vw_DimPartnerOne.IsHyperscaler  -> removed: ,DPO.[IsHyperscaler]
+  DEPRECATE vw_DimPartnerOne.IsLEGOPartner  -> removed: ,DPO.[IsLEGOPartner]
+  DEPRECATE vw_DimPartnerOne.IsP200Partner  -> removed: ,DPO.[IsP200Partner]
+  DEPRECATE vw_DimPartnerOne.IsRecruitServices  -> removed: ,DPO.[IsRecruitServices]
+  DEPRECATE vw_DimPartnerOne.IsSMCSI  -> removed: ,DPO.[IsSMCSI]
+  DEPRECATE vw_DimPartnerOne.IsSMCSIAzurePartners  -> removed: ,DPO.[IsSMCSIAzurePartners]
+  DEPRECATE vw_DimPartnerOne.IsSMCSIBizAppsPartners  -> removed: ,DPO.[IsSMCSIBizAppsPartners]
+  DEPRECATE vw_DimPartnerOne.IsSMCSIBusinessAndProductivityGlobalImpactPartners  -> removed: ,DPO.[IsSMCSIBPGIPartners] AS IsSMCSIBusinessAndProductivityGlobalImpactPartners
+  DEPRECATE vw_DimPartnerOne.IsSMCSIModernWorkSecurityPartners  -> removed: ,DPO.[IsSMCSIMWSPartners] AS IsSMCSIModernWorkSecurityPartners
+  DEPRECATE vw_DimPartnerOne.IsStrategicDistributor  -> removed: ,DPO.[IsStrategicDistributor]
+  DEPRECATE vw_DimPartnerOne.IsStrategicGlobalIndependentSoftwareVendor  -> removed: ,DPO.[IsStrategicGlobalISV] AS IsStrategicGlobalIndependentSoftwareVendor
+  DEPRECATE vw_DimPartnerOne.IsStrategicIndependentSoftwareVendor  -> removed: ,DPO.[IsStrategicISV] AS IsStrategicIndependentSoftwareVendor
+  DEPRECATE vw_DimPartnerOne.IsStrategicLicensingSolutionProvider  -> removed: ,DPO.[IsStrategicLSP] AS IsStrategicLicensingSolutionProvider
+  DEPRECATE vw_DimPartnerOne.IsStrategicPartnerOne  -> removed: ,DPO.[IsStrategicPartnerOne]
+  DEPRECATE vw_DimPartnerOne.IsStrategicRecruitGlobalIndependentSoftwareVendor  -> removed: ,DPO.[IsStrategicRecruitGISV] AS IsStrategicRecruitGlobalIndependentSoftwareVendor
+  DEPRECATE vw_DimPartnerOne.IsStrategicRecruitIndependentSoftwareVendor  -> removed: ,DPO.[IsStrategicRecruitISV] AS IsStrategicRecruitIndependentSoftwareVendor
+  DEPRECATE vw_DimPartnerOne.IsStrategicServices  -> removed: ,DPO.[IsStrategicServices]
+  DEPRECATE vw_DimPartnerOne.PartnerOneProgramName  -> removed: ,DPO.[PartnerOneProgramName]
+  DEPRECATE vw_DimPartnerOne.ReportingProgramTier  -> removed: ,DPO.[ReportingProgramTier]
+  DEPRECATE vw_DimPartnerReferral.DealSolutionPlay  -> removed: ,[DPD].[DealSolutionPlay]
+  NEWCOL    vw_DimPartnerReferral.Conversation  replace(anchor deprecated): ',[DPD].[Conversation]'  [anchor: ,[DPD].[DealSolutionPlay]]
+  NEWCOL    vw_DimProject.Conversation  insert after (anchor kept): '[Conversation],'  [anchor: [SolutionPlay],]
+  DEPRECATE vw_DimReportingPartnerOneSub.IsAG  -> removed: ,DRP.IsAG
+  DEPRECATE vw_DimReportingPartnerOneSub.IsAGIPartner  -> removed: ,DRP.IsAGIPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsAGIPartner_Order  -> removed: ,DRP.IsAGIPartner_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsAG_Order  -> removed: ,DRP.IsAG_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsAdvisory  -> removed: ,DRP.IsAdvisory
+  DEPRECATE vw_DimReportingPartnerOneSub.IsArea  -> removed: ,DRP.IsArea
+  DEPRECATE vw_DimReportingPartnerOneSub.IsAreaDownstreamManaged  -> removed: ,DRP.IsAreaDownstreamManaged
+  DEPRECATE vw_DimReportingPartnerOneSub.IsAreaDownstreamManaged_Order  -> removed: ,DRP.IsAreaDownstreamManaged_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsArea_Order  -> removed: ,DRP.IsArea_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsBGIPartner  -> removed: ,DRP.IsBGIPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsBGIPartner_Order  -> removed: ,DRP.IsBGIPartner_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsBPGI  -> removed: ,DRP.IsBPGI
+  DEPRECATE vw_DimReportingPartnerOneSub.IsBPGI_Order  -> removed: ,DRP.IsBPGI_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsCALCMastered  -> removed: ,DRP.IsCALCMastered
+  DEPRECATE vw_DimReportingPartnerOneSub.IsCALCMastered_Order  -> removed: ,DRP.IsCALCMastered_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsDigitalAgency  -> removed: ,DRP.IsDigitalAgency
+  DEPRECATE vw_DimReportingPartnerOneSub.IsDigitalNative  -> removed: ,DRP.IsDigitalNative
+  DEPRECATE vw_DimReportingPartnerOneSub.IsDigitalNative_Order  -> removed: ,DRP.IsDigitalNative_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsEnterpriseSI  -> removed: ,DRP.IsEnterpriseSI
+  DEPRECATE vw_DimReportingPartnerOneSub.IsEnterpriseSI_Order  -> removed: ,DRP.IsEnterpriseSI_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsGlobalPMA  -> removed: ,DRP.IsGlobalPMA
+  DEPRECATE vw_DimReportingPartnerOneSub.IsHyperscaler  -> removed: ,DRP.IsHyperscaler
+  DEPRECATE vw_DimReportingPartnerOneSub.IsHyperscaler_Order  -> removed: ,DRP.IsHyperscaler_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsITESPartner  -> removed: ,DRP.IsITESPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsITESPartner_Order  -> removed: ,DRP.IsITESPartner_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsIndirectProvider  -> removed: ,DRP.IsIndirectProvider
+  DEPRECATE vw_DimReportingPartnerOneSub.IsLEGOPartner  -> removed: ,DRP.IsLEGOPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsLEGOPartner_Order  -> removed: ,DRP.IsLEGOPartner_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsLegoITES  -> removed: ,DRP.IsLegoITES
+  DEPRECATE vw_DimReportingPartnerOneSub.IsLocal  -> removed: ,DRP.IsLocal
+  DEPRECATE vw_DimReportingPartnerOneSub.IsLocal_Order  -> removed: ,DRP.IsLocal_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsP200Partner  -> removed: ,DRP.IsP200Partner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsP200Partner_Order  -> removed: ,DRP.IsP200Partner_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsP200PilotPartner  -> removed: ,DRP.IsP200PilotPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsP200PilotPartner_Order  -> removed: ,DRP.IsP200PilotPartner_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsPERCPartner  -> removed: ,DRP.IsPERCPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsPERCRehabPartner  -> removed: ,DRP.IsPERCRehabPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsPERCTopPartner  -> removed: ,DRP.IsPERCTopPartner
+  DEPRECATE vw_DimReportingPartnerOneSub.IsRecruitServices  -> removed: ,DRP.IsRecruitServices
+  DEPRECATE vw_DimReportingPartnerOneSub.IsRecruitServices_Order  -> removed: ,DRP.IsRecruitServices_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsRegion  -> removed: ,DRP.IsRegion
+  DEPRECATE vw_DimReportingPartnerOneSub.IsRegionDownstreamManaged  -> removed: ,DRP.IsRegionDownstreamManaged
+  DEPRECATE vw_DimReportingPartnerOneSub.IsRegionDownstreamManaged_Order  -> removed: ,DRP.IsRegionDownstreamManaged_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSI  -> removed: ,DRP.IsSI
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSI  -> removed: ,DRP.IsSMCSI
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIAzurePartners  -> removed: ,DRP.IsSMCSIAzurePartners
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIAzurePartners_Order  -> removed: ,DRP.IsSMCSIAzurePartners_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIBPGIPartners  -> removed: ,DRP.IsSMCSIBPGIPartners
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIBPGIPartners_Order  -> removed: ,DRP.IsSMCSIBPGIPartners_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIBizAppsPartners  -> removed: ,DRP.IsSMCSIBizAppsPartners
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIBizAppsPartners_Order  -> removed: ,DRP.IsSMCSIBizAppsPartners_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIMWSPartners  -> removed: ,DRP.IsSMCSIMWSPartners
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSIMWSPartners_Order  -> removed: ,DRP.IsSMCSIMWSPartners_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSMCSI_Order  -> removed: ,DRP.IsSMCSI_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicDistributor  -> removed: ,DRP.IsStrategicDistributor
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicDistributor_Order  -> removed: ,DRP.IsStrategicDistributor_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicGlobalISV  -> removed: ,DRP.IsStrategicGlobalISV
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicGlobalISV_Order  -> removed: ,DRP.IsStrategicGlobalISV_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicISV  -> removed: ,DRP.IsStrategicISV
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicISV_Order  -> removed: ,DRP.IsStrategicISV_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicLSP  -> removed: ,DRP.IsStrategicLSP
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicLSP_Order  -> removed: ,DRP.IsStrategicLSP_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicPartnerOne  -> removed: ,DRP.IsStrategicPartnerOne
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicPartnerOne_Order  -> removed: ,DRP.IsStrategicPartnerOne_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicRecruitGISV  -> removed: ,DRP.IsStrategicRecruitGISV
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicRecruitGISV_Order  -> removed: ,DRP.IsStrategicRecruitGISV_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicRecruitISV  -> removed: ,DRP.IsStrategicRecruitISV
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicRecruitISV_Order  -> removed: ,DRP.IsStrategicRecruitISV_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicServices  -> removed: ,DRP.IsStrategicServices
+  DEPRECATE vw_DimReportingPartnerOneSub.IsStrategicServices_Order  -> removed: ,DRP.IsStrategicServices_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSubRegionDownstreamManaged  -> removed: ,DRP.IsSubRegionDownstreamManaged
+  DEPRECATE vw_DimReportingPartnerOneSub.IsSubRegionDownstreamManaged_Order  -> removed: ,DRP.IsSubRegionDownstreamManaged_Order
+  DEPRECATE vw_DimReportingPartnerOneSub.IsTelcoOperator  -> removed: ,DRP.IsTelcoOperator
+  RENAME    vw_DimReportingPartnerOneSub.IsMSP -> IsSMECSI  : ',DRP.IsMSP' => ',DRP.IsSMECSI'
+  RENAME    vw_DimReportingPartnerOneSub.IsHoster -> IsHCP  : ',DRP.IsHoster' => ',DRP.IsHCP'
+  RENAME    vw_DimReportingPartnerOneSub.IsLSP -> IsSSP  : ',DRP.IsLSP' => ',DRP.IsSSP'
+  DEPRECATE vw_DimSolutionArea.SolutionPlay  -> removed: ,[DSA].[SolutionAreaLevel2] as SolutionPlay
+  NEWCOL    vw_DimSolutionArea.Conversation  replace(anchor deprecated): ',[DSA].[Conversation]'  [anchor: ,[DSA].[SolutionAreaLevel2] as SolutionPlay]
+  NEWCOL    vw_DimSolutionAreaOppty.Conversation  insert after (anchor kept): ',[DSA].[Conversation]'  [anchor: ,[DSA].[SolutionPlay]]
+  NEWCOL    vw_FactSolution.Conversation  appended after last col: ',[FS].[Conversation]'
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.CLAID  -> removed: ,[CLAID]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.CurrencyCode  -> removed: ,[CurrencyCode]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.Fax  -> removed: ,[Fax]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.IsOemManaged  -> removed: ,[IsOemManaged]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.PCCount  -> removed: ,[PCCount]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.ServerCount  -> removed: ,[ServerCount]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.SmartPhoneCount  -> removed: ,[SmartPhoneCount]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.TabletCount  -> removed: ,[TabletCount]
+  DEPRECATE vw_SPM_ManagedTopParentAccounts_int.TaxID  -> removed: ,[TaxID]
+
+##########################################################################################
+VALIDATION
+  View defs: old=133 new=133  OK
+  Lines: old=4192 new=4057 delta=-135 (expect -135)
+  Problems found: 0
+  Paren balance whole file: old open-close=0 new=0
+  Single-quote count: old=574 new=574 (delta 0, expect 0)
+
+RESULT: PASS
+
+WROTE: c:\WorkFAST-main\in\DEV_usp_CreateViews_CoSell_Update.txt

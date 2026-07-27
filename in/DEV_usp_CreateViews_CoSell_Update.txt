@@ -1,0 +1,4058 @@
+/* =================================================
+Project Name: CoSell
+Purpose     : Create Views in GPSMast
+								
+Parameter Info:  NA
+
+Return Info: NA
+
+Test Scripts
+   EXEC [dbo].[usp_CreateViews_CoSell_Update]
+
+Execution Time: ~1 min
+
+Code Check:
+Date			 Updated By    Previous Errors/Warnings    Current Errors/Warnings
+Aug 3,2025       v-aamahajan			0/0						    0/0
+
+
+Revision History:
+Date			Author			 Description
+==================================================================================================
+Aug 3,2025     v-aamahajan     Created usp_CreateViews_CoSell_Update for CoSell
+Sept 22,2025   v-lnutanmay    Updated the view
+Apr 3,2026      Rahman           Added dimsolution view
+Jul 20,2026    v-adevashish   FY27 (per GPSMart_views_FY27 tracker): removed 145 deprecated columns; renamed 3 columns in vw_DimReportingPartnerOneSub (IsMSP->IsSMECSI, IsHoster->IsHCP, IsLSP->IsSSP); added new [Conversation] column to 10 views (SolutionPlay retained where not deprecated)
+==================================================================================================
+*/
+
+CREATE OR ALTER PROCEDURE [dbo].[usp_CreateViews_CoSell_Update] AS
+BEGIN TRY
+    DECLARE @DatabaseName VARCHAR(MAX) = CONVERT(VARCHAR(MAX) , DB_NAME());
+    DECLARE @ProcName VARCHAR(MAX) = OBJECT_NAME(@@SPID);
+    CREATE TABLE #CreateViews_CoSell_Definitions
+    (
+        [ID]                INT,
+        [ViewName]          VARCHAR(MAX) NULL ,
+        [ViewDefinition]    VARCHAR(MAX) NULL ,
+        [RowInsertedDate]   DATETIME2(0) NULL
+    )
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    1, N'[CoSell].[vw_AccountToPersonMappingHistory]', 
+    N' CREATE VIEW [CoSell].[vw_AccountToPersonMappingHistory]
+AS
+SELECT A.[AccountKey]
+  ,A.[AccountPersonKey]
+  ,A.[RoleType]
+  ,A.[ModifiedOn] AS [CrmModifiedOn]
+  ,A.[ValidFrom] AS [ValidDateFrom]
+  ,A.[ValidTo] AS [ValidDateTo]
+FROM [CoSellT].[HistoryAccountToPersonMapping] A
+UNION ALL
+			  
+			 SELECT AH.[AccountKey]
+			    ,AH.[AccountPersonKey]
+			    ,AH.[RoleType]
+				  ,AH.[ModifiedOn] AS [CrmModifiedOn]
+			    ,AH.[ValidFrom] AS [ValidDateFrom]
+			    ,AH.[ValidTo] AS [ValidDateTo]
+			  FROM [CoSellT].[HistoryAccountToPersonMappingHistory] AH'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    2, N'[CoSell].[vw_Bridge_PrioritizedDealSharingAndWins]', 
+    N' CREATE VIEW [CoSell].[vw_Bridge_PrioritizedDealSharingAndWins]
+AS
+SELECT PDSAW.[ATUKey]
+  ,PDSAW.[CustomerSegmentKey]
+  ,PDSAW.[TPAccountKey]
+  ,PDSAW.[CapacityGeographyKey]
+  ,PDSAW.[CRMPartnerAccountKey]
+  ,PDSAW.[EngagementMilestoneKey]
+  ,PDSAW.[MSXRevSumDivisionKey]
+  ,PDSAW.[MSXWorkloadKey]
+  ,PDSAW.[PartnerOneKey]
+  ,PDSAW.[ReportingGeographyKey]
+  ,PDSAW.[PartnerDealKey]
+  ,PDSAW.[SolutionKey]
+  ,PDSAW.[CustomerGeographyKey]
+  ,PDSAW.[CustomerSubsidiary] AS [ReportedSubsidiary]
+  ,PDSAW.[IndustryKey]
+  ,PDSAW.[BilledOpptyRevenue]
+  ,PDSAW.[ConsumptionOpptyRevenue]
+  ,PDSAW.[ConsumptionOpptySeats]
+  ,PDSAW.[IsOpptyWithPartnerDeal]
+  ,PDSAW.[IsOpptySalesStageWinORStatusComplete]
+  ,PDSAW.[IsTPAccountMALANDSegmentEnterpriseORCorporate]
+  ,PDSAW.[IsOpptyStatusPipelineorInProgress]
+  ,PDSAW.[OpptyDueOREstimatedDateKey]
+  ,PDSAW.[OpptyID_Number]
+  ,PDSAW.[OpptyKey]
+  ,PDSAW.[RevSumDivisionKey]
+  ,PDSAW.[SolutionAreaKey]
+  ,PDSAW.[Subsidiary]
+  ,PDSAW.[TPAccountID]
+  ,PDSAW.[Type]
+  ,PDSAW.[SharingTypeKey]
+  ,PDSAW.[IsMultiPartner]
+FROM [CoSellT].[MapPrioritizedDealSharingAndWins] AS PDSAW'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    3, N'[CoSell].[vw_CosellPrioritizedPartners]', 
+    N' CREATE VIEW [CoSell].[vw_CosellPrioritizedPartners]
+AS
+SELECT [PartnerOneID]
+  ,[Area]
+  ,[Region]
+  ,[SubRegion]
+  ,[Subsidiary]
+  ,[SolutionArea]
+  ,[Conversation]
+  ,[Industry]
+  ,[Vertical]
+FROM [CoSellT].[DimCosellPrioritizedPartners]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    4, N'[CoSell].[vw_DimATU]', 
+    N' CREATE VIEW [CoSell].[vw_DimATU]
+AS
+SELECT [DATU].[ATUID] AS AccountTeamUnitID
+  ,[DATU].[ATUGroupManager] AS AccountTeamUnitGroupManager
+  ,[DATU].[ATUGroupName] AS AccountTeamUnitGroupName
+  ,[DATU].[ATUManager] AS AccountTeamUnitManager
+  ,[DATU].[ATUName] AS AccountTeamUnitName
+FROM [CoSellT].[DimATU] AS [DATU]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    5, N'[CoSell].[vw_DimCRMAccounts]', 
+    N' CREATE VIEW [CoSell].[vw_DimCRMAccounts]
+AS
+SELECT [CRMAccountKey]
+  ,[CRMAccountID]
+  ,[AccountID]
+  ,[TPAccountID]
+  ,[AccountName]
+  ,[AccountNumber]
+  ,[BigAreaName]
+  ,[AreaName]
+  ,[RegionName]
+  ,[SubRegionName]
+  ,[SubsidiaryName]
+  ,[SegmentName]
+  ,[CurrentFYSubSegmentName]
+  ,[AccountOwner]
+  ,[ParentingLevel]
+  ,[AM]
+FROM [CoSellT].[DimCRMAccounts]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    6, N'[CoSell].[vw_DimCRMPartnerAccount]', 
+    N' CREATE VIEW [CoSell].[vw_DimCRMPartnerAccount]
+AS
+SELECT [DCPA].[CRMPartnerAccountKey]
+  ,[DCPA].[PartnerOneId]
+  ,[DCPA].[PartnerOneName]
+  ,[DCPA].[MojaEnabled]
+  ,[DCPA].[PartnerType]
+  ,[DCPA].[PartnerSubsidiary]
+  ,[DCPA].[MSSalesTPID]
+  ,[DCPA].[PartnerName]
+  ,[DCPA].[OwnerAlias]
+  ,[DCPA].[PartnerAccountId]
+  ,[DCPA].[PartnerNumber]
+  ,[DCPA].[SourceType]
+  ,[DCPA].[AccountSource]
+FROM [CoSellT].[DimCRMPartnerAccount] AS [DCPA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    7, N'[CoSell].[vw_DimCapacityGeography]', 
+    N' CREATE VIEW [CoSell].[vw_DimCapacityGeography]
+AS
+SELECT [DCG].[CapacityGeographyKey]
+      ,[DCG].[Area]
+      ,[DCG].[AreaID]
+      ,[DCG].[BigArea]
+      ,[DCG].[BigAreaID]
+      ,[DCG].[Region]
+      ,[DCG].[RegionID]
+      ,[DCG].[SubRegion]
+      ,[DCG].[SubRegionID]
+      ,[DCG].[Subsidiary]
+      ,[DCG].[SubsidiaryID]
+      ,[DCG].[Country]
+FROM [CoSellT].[DimCapacityGeography] AS [DCG]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    8, N'[CoSell].[vw_DimChannelPartner]', 
+    N' CREATE VIEW [CoSell].[vw_DimChannelPartner]
+AS
+SELECT [DCP].[PartnerDealKey]
+  ,[DCP].[DealPartnerOneKey]
+  ,[DCP].[SolutionPartnerOneKey]
+  ,[DCP].[ChannelPartnerOneKey]
+  ,[DCP].[IsIPSameAsCoSell]
+  ,[DCP].[IsChannelSameAsCoSell]
+FROM [CoSellT].[DimChannelPartner] AS [DCP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    9, N'[CoSell].[vw_DimCustomGTMReadiness]', 
+    N' CREATE VIEW [CoSell].[vw_DimCustomGTMReadiness]
+AS
+SELECT [DCG].[GTMReadinessKey]
+  ,[DCG].[GTMReadiness]
+FROM [CoSellT].[DimCustomgtmReadiness] AS [DCG]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    10, N'[CoSell].[vw_DimCustomerGeography]', 
+    N' CREATE VIEW [CoSell].[vw_DimCustomerGeography]
+AS
+SELECT [DCG].[CustomerGeographyKey]
+  ,[DCG].[AreaName]
+  ,[DCG].[DistrictName]
+  ,[DCG].[RegionName]
+  ,[DCG].[SubRegionID]
+  ,[DCG].[SubRegionName]
+  ,[DCG].[SubsidiaryName]
+  ,[DCG].[TimeZone]
+FROM [CoSellT].[DimCustomerGeography] AS [DCG]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    11, N'[CoSell].[vw_DimCustomerSegment]', 
+    N' CREATE VIEW [CoSell].[vw_DimCustomerSegment]
+AS
+SELECT [DCS].[CustomerSegmentKey]
+  ,[DCS].[IsStrategic]
+  ,[DCS].[IsMajor]
+  ,[DCS].[ReportedCustomSegment]
+  ,[DCS].[ReportedSummarySegmentName]
+  ,[DCS].[SegmentID]
+  ,[DCS].[SegmentName]
+  ,[DCS].[SubSegmentID]
+  ,[DCS].[SubSegmentName]
+  ,[DCS].[SummarySegmentName]
+FROM [CoSellT].[DimCustomerSegment] AS [DCS]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID], [ViewName], [ViewDefinition] )
+VALUES 
+(
+  12, N'[CoSell].[vw_DimDeliverables]', 
+  N'CREATE VIEW [CoSell].[vw_DimDeliverables]
+AS
+SELECT [EDLPExtractId],
+    [CreatedBy],
+    [CreatedByName],
+    [CreatedByYomiName],
+    [CreatedOn],
+    [CreatedOnBehalfBy],
+    [CreatedOnBehalfByName],
+    [CreatedOnBehalfByYomiName],
+    [Comments],
+    [DeliverablesId],
+    [DeliverableType],
+    [DeliverableTypeName],
+    [DeliveryMethod],
+    [DueDate],
+    [DeliverableName] as PMXName,
+    [Project],
+    [ProjectName],
+    [ImportSequenceNumber],
+    [ModifiedBy],
+    [ModifiedByName],
+    [ModifiedByYomiName],
+    [ModifiedOn],
+    [ModifiedOnBehalfBy],
+    [Modified] as ModifiedOnBehalfByName,
+    [ModifiedOnBehalfByYomiName],
+    [OverriddenCreatedOn],
+    [OwnerId],
+    [OwnerIdName],
+    [OwnerIdType],
+    [OwnerIdYomiName],
+    [OwningBusinessUnit],
+    [OwningBusinessUnitName],
+    [OwningTeam],
+    [OwningUser],
+    [StateCode],
+    [StatusCode],
+    [TimeZoneRuleVersionNumber],
+    [UTCConversionTimeZoneCode],
+    [VersionNumber],
+    [EDLPExtractDateTime],
+    [EDLPLoadTS],
+    [EDLPModifiedDateTime],
+    [EDLPDeltaActionCode],
+    [DeliverymethodValue],
+    [Status]
+FROM [CoSellT].[DimDeliverables]'
+);
+
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    13, N'[CoSell].[vw_DimEngagementMilestone]', 
+    N' CREATE VIEW [CoSell].[vw_DimEngagementMilestone]
+AS
+SELECT DEM.[CommitmentRecommendation]
+  ,DEM.[EngagementMilestoneId]
+  ,DEM.[EngagementMilestoneKey]
+  ,DEM.[EstDate]
+  ,DEM.[EstimatedFiscalMonth]
+  ,DEM.[EstimatedFiscalQuarter]
+  ,DEM.[EstimatedFiscalYear]
+  ,DEM.[IsCustomerCommitted]
+  ,DEM.[IsNonRecurringEngagementMilestone]
+  ,DEM.[MilestoneCategory]
+  ,DEM.[MilestoneCompletionDateEstimated]
+  ,DEM.[MilestoneNumber]
+  ,DEM.[MilestoneStatus]
+  ,DEM.[MilestoneStatusReason]
+  ,DEM.[MilestoneName]
+  ,DEM.[OpportunityId] AS [OpportunityID]
+  ,DEM.[TransactionCurrencyId]
+  ,DEM.Workload AS [WorkLoad]
+  ,DEM.WorkLoadType AS [WorkloadType]
+  ,DEM.[DeliverySpecifiedField] AS [Delivered By]
+  ,DEM.[IsMigrationWorkload]
+FROM [CoSellT].[DimEngagementMilestone] DEM'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    14, N'[CoSell].[vw_DimGPSBusinessUnit]', 
+    N' CREATE VIEW [CoSell].[vw_DimGPSBusinessUnit]
+AS
+SELECT [BusinessUnitKey]
+  ,[BusinessUnitId] AS [BusinessUnitID]
+  ,[BusinessUnitName]
+  ,[BusinessUnitPath]
+  ,[BusinessUnitLevels] AS BusinessUnitLevels
+  ,[MSBusiness] AS [MSBusiness]
+FROM [CoSellT].[DimGPSBusinessUnit]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    15, N'[CoSell].[vw_DimGPSCRMAccount]', 
+    N' CREATE VIEW [CoSell].[vw_DimGPSCRMAccount]
+AS
+SELECT DA.[AccountKey]
+  ,DA.[AccountID]
+  ,DA.[AccountName]
+  ,DA.[AccountStatus]
+  ,DA.[Area]
+  ,DA.[BusinessUnit]
+  ,DA.[Country]
+  ,DA.[CreatedOn] AS [CreatedOnDate]
+  ,DA.[CreatedOnFiscalMonthID]
+  ,DA.[CreatedOnFiscalMonthName]
+  ,DA.[CreatedOnFiscalQuarter]
+  ,DA.[CreatedOnFiscalYear]
+  ,DA.[PMXAccountURL] as CRMAccountURL
+  ,DA.[Custom1]
+  ,DA.[Custom2]
+  ,DA.[Custom3]
+  ,DA.[Custom4]
+  ,DA.[GTMReadiness]
+  ,DA.[HasBusinessPlan]
+  ,DA.[HasSolutionOrEngagement]
+  ,DA.[HasTechDevPlan]
+  ,DA.[HasPrimaryContact]
+  ,DA.[IsCoSellReadyPartner] AS [IsCosellReadyPartner]
+  ,DA.[IsRecruitAccount]
+  ,DA.[ManagementLevel]
+  ,DA.[PartnerOneID]
+  ,DA.[PartnerOneName]
+  ,DA.[PartnerOneNameID]
+  ,DA.[PartnerOneSubID]
+  ,DA.[PartnerSegment]
+  ,DA.[PartnerOneURL]
+  ,DA.[PartnerSubSegment]
+  ,DA.[PrimaryAccountOwner]
+  ,DA.[PrimaryAccountOwnerPartnerAccountPersonnelId]
+  ,DA.[Region]
+  ,DA.[SubRegion]
+  ,DA.[Subsidiary]
+  ,DA.[Tags]
+  ,DA.[TotalAccounts]
+  ,DA.[GPSCRMID]
+  ,DA.startupFoundedFiscalMonthID AS [StartupFoundedFiscalMonthID]
+  ,DA.startupFoundedFiscalMonthName AS [StartupFoundedFiscalMonthName]
+  ,DA.startupFoundedFiscalQuarter AS [StartupFoundedFiscalQuarter]
+  ,DA.startupFoundedFiscalYear AS [StartupFoundedFiscalYear]
+  ,DA.[IsFY24RecruitPartner]
+  ,DA.[IsFY25RecruitPartner]
+  ,DA.[IsFY26RecruitPartner]
+FROM [CoSellT].[DimGPSCRMAccount] DA'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    16, N'[CoSell].[vw_DimGPSCRMAccountMonthly]', 
+    N' CREATE VIEW [CoSell].[vw_DimGPSCRMAccountMonthly]
+AS
+SELECT DISTINCT [AccountKey] AS [GPSCRMAccountKey]
+  ,[AccountID]
+  ,[AccountName]
+  ,[AccountStatus]
+  ,[Area]
+  ,[Country]
+  ,[CreatedOn]
+  ,[CreatedOnFiscalMonthID]
+  ,[CreatedOnFiscalMonthName]
+  ,[CreatedOnFiscalQuarter]
+  ,[CreatedOnFiscalYear]
+  ,[PMXAccountURL]
+  ,[IsCoSellReadyPartner]
+  ,[IsCurrent]
+  ,[IsValid]
+  ,[ManagementLevel]
+  ,[MonthSnapshotDateKey]
+  ,[MPLManagedDate] AS [ManagedPracticeListManagedDate]
+  ,[GPSCRMID]
+  ,[PartnerOneID]
+  ,[PartnerOneName]
+  ,[PartnerOneNameID]
+  ,[Region]
+  ,[SubRegion]
+  ,[Subsidiary]
+  ,[TotalAccounts]
+FROM [CoSellT].[DimGPSCRMAccount_Monthly]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    17, N'[CoSell].[vw_DimGPSCRMAccountTag]', 
+    N' CREATE VIEW [CoSell].[vw_DimGPSCRMAccountTag]
+AS
+SELECT [AccountTagKey]
+  ,[AccountTag]
+FROM [CoSellT].[DimGPSCRMAccountTag]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    18, N'[CoSell].[vw_DimGPSCRMSolution]', 
+    N' CREATE VIEW [CoSell].[vw_DimGPSCRMSolution]
+AS
+SELECT [DS].[SolutionKey]
+  ,[DS].[SolutionID]
+  ,[DS].[SolutionName]
+  ,[DS].[AzurePlatform]
+  ,[DS].[AzurePlatform_Order]
+  ,[DS].[CRMSolutionURL]
+  ,[DS].IsDynamicsPlatform AS [DynamicsPlatform]
+  ,[DS].[DynamicsPlatform_Order] AS [DynamicsPlatformOrder]
+  ,[DS].[GTMReadiness]
+  ,[DS].[GTMReadiness] AS [GTMReadiness_Hidden]
+  ,[DS].[ISO365Platform]
+  ,[DS].[O365Platform_Order]
+  ,[DS].[GPSCRMSolutionID]
+  ,[DS].[SolutionURL]
+  ,[DS].[IsSQLPlatform]
+  ,[DS].[SQLPlatform_Order]
+  ,[DS].[IsWindowsPlatform]
+  ,[DS].[WindowsPlatform_Order]
+  ,[DS].[SolutionType]
+  ,[DS].[IsCoSell] AS [IsCo-Sell]
+  ,[DS].[IsCoSell_Order] AS [IsCo-Sell_Order]
+  ,[DS].[Description]
+  ,[DS].[IsValid]
+  ,[DS].[AccountName]
+  ,[DS].[PartnerOneID]
+  ,[DS].[PartnerOneName]
+  ,[DS].[CatalogURL]
+  ,[DS].[IsGDPR]
+  ,[DS].[IsGDPR_Order]
+  ,[DS].[Platforms] AS [Platform(s)]
+  ,[DS].[EnterpriseCustomerSegment_Order] AS [EnterpriseCustomerSegmentOrder]
+  ,[DS].[SMBCustomerSegment_Order]
+  ,[DS].[CorporateCustomerSegment_Order]
+  ,[DS].[IsEnterpriseCustomerSegment] NEED
+  ,[DS].[IsSMBCustomerSegment] AS [IsSmallAndMediumBusinessCustomerSegment]
+  ,[DS].[IsCorporateCustomerSegment]
+  ,[DS].[SellerCosellIncentives]
+  ,[DS].[HasSellerCoSellIncentives]
+  ,[DS].[IsIncentiveEligible_Order]
+  ,[DS].[IsAttached]
+  ,[DS].[CreatedOnFiscalMonthName]
+  ,[DS].[CreatedOnFiscalQuarter]
+  ,[DS].[CreatedOnFiscalYear]
+  ,[DS].[CreatedOnFiscalMonthID]
+  ,TRY_CAST([DS].[CreatedOn] AS DATE) AS [CreatedOn]
+  ,[DS].[InMarketplaceBasedonURL] AS [InMarketplace(basedonURL)]
+  ,CASE 
+    WHEN [DS].[IsPartnerCenterMastered] = 1
+      THEN ''Yes''
+    ELSE ''No''
+    END AS [IsPartnerCenterMastered]
+  ,[DS].[IsPartnerCenterMastered_Order]
+  ,CASE 
+    WHEN [DS].[IsPartnerCenterWhitelisted] = 1
+      THEN ''Yes''
+    ELSE ''No''
+    END AS [IsPartnerCenterWhitelisted]
+  ,[DS].[IsPartnerCenterWhitelisted_Order]
+  ,[DS].[PartnerID]
+  ,[DS].[cppPublisherId]
+  ,[DS].[cppOfferId]
+  ,[DS].[CoSellReadyDateFiscalYear]
+  ,[DS].[CoSellReadyDateFiscalQuarter]
+  ,[DS].[CoSellReadyDateFiscalMonth]
+  ,[DS].[CoSellReadyDateFiscalMonth_Order]
+  ,[DS].[CoSellReadyDate]
+  ,CONCAT (
+    ''https :// msit.powerbi.com / groups / be4af5f0 - 770e - 4e90 - b7f0 - 9e04c864d7a8 / reports / 08554cb5 - cb66 - 4d4e - 93d1 - c2a28609db6c / ReportSection4db2095397d3853d4347?filter = Solution / OCP_x0020_CRM_x0020_Solution_x0020_IDeq''
+    ,''''
+    ,DS.GPSCRMSolutionID
+    ,''''
+    ) AS [CoSellReady_PrioritizedURL]
+  ,''https :// appsource.microsoft.com / en - us / marketplace / co - sell /'' + DS.GPSCRMSolutionID + ''?tab = Overview'' AS [CoSellFinerURL]
+  ,[DS].[OfferType]
+  ,[DS].[IsTransactableInMarketplace]
+  ,[DS].[IsAvailableInMarketplace]
+  ,[DS].[IsAvailableInAppSource]
+  ,[DS].[IsISVConnectSolution] AS [IsIndependentSoftwareVendorConnectSolution]
+  ,[DS].[IsISVConnectSolutionOrder] AS [IsIndependentSoftwareVendorConnectSolutionOrder]
+  ,[DS].AccountKey AS [GPSCRMAccountKey]
+  ,[DS].GPSCRMAccountID
+  ,[DS].[LastModifiedDateInCatRP]
+FROM [CoSellT].[DimCRMSolution] AS [DS]'
+  );
+
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID], [ViewName], [ViewDefinition] )
+VALUES 
+(
+  21, N'[CoSell].[vw_DimIOPO]', 
+  N'CREATE VIEW [CoSell].[vw_DimIOPO]
+AS
+SELECT 
+    [IOPOKey],
+    [IONumber],
+    [IOOwner],
+    [PoNumber],
+    [IoNoDescription],
+    [PartnerOneID],
+    [CompanyCode]
+FROM [CoSellT].[DimIOPO]'
+);
+
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    22, N'[CoSell].[vw_DimIPPartner]', 
+    N' CREATE VIEW [CoSell].[vw_DimIPPartner]
+AS
+WITH CTE_IPCosellPartnerOne
+AS (
+  SELECT DISTINCT [Partneronekey]
+  FROM [CoSellT].[DimIPPartner]
+  )
+SELECT DPO.[PartnerOneID]
+  ,DPO.[PartnerOneName]
+  ,DPO.[PartnerOneNameID]
+  ,DPO.[IsPartnerMastered]
+  ,0 AS [PartnerOneProgramKey]
+  ,CONCAT (
+    ''https :// ocpinsights.microsoft.com / SinglePartnerOverview?partneroneid =''
+    ,DPO.[PartnerOneID]
+    ,''& tab = SPOSWPartnerDeals''
+    ) AS PartnerDealURL
+  ,DPO.[IsManaged]
+  ,DPO.[IsCoSellReadyPartner]
+  ,DPO.[IsCoSellReadyPartner_Order]
+  ,DPO.[InGPSCatalog]
+  ,DPO.[InGPSCatalog_Order]
+  ,DPO.[PartnerMaxGTMReadiness]
+  ,DPO.[PartnerGroupName]
+  ,DPO.[IsAzureExpertMSP]
+  ,DPO.[IsAzureExpertMSP_Order]
+  ,DPO.[IsGSI]
+  ,DPO.[IsGSI_Order]
+  ,DPO.[IsGlobalISV]
+  ,DPO.[IsGlobalISV_Order]
+  ,DPO.[IsGlobalChannel]
+  ,DPO.[IsGlobalChannel_Order]
+  ,DPO.[IsEMPMPartner]
+  ,DPO.[IsEMPMPartner_Order]
+  ,DPO.[IsQuestionablePartner]
+  ,DPO.[IsQuestionablePartner_Order]
+  ,DPO.[IsTopTierPartner]
+FROM [CoSellT].[DimPartnerOneReporting] DPO
+INNER JOIN CTE_IPCosellPartnerOne CC ON CC.[Partneronekey] = DPO.[PartnerOneID]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    23, N'[CoSell].[vw_DimISVConnectApp]', 
+    N' CREATE VIEW [CoSell].[vw_DimISVConnectApp]
+AS
+SELECT [DIA].SolutionKey
+  ,[DIA].StatusDetailOrderKey
+  ,[DIA].Appkey
+  ,[DIA].AccountID
+  ,[DIA].AppID
+  ,[DIA].AppName
+  ,[DIA].ApplicableProducts
+  ,[DIA].CertificationAttemptCount
+  ,[DIA].CertificationResult
+  ,[DIA].CreatedDate
+  ,[DIA].CreatedFiscalMonth
+  ,[DIA].CreatedFiscalQuarter
+  ,[DIA].CreatedFiscalYear
+  ,[DIA].FirstCertifiedDate
+  ,[DIA].FirstCertifiedFiscalMonth
+  ,[DIA].FirstCertifiedFiscalQuarter
+  ,[DIA].FirstCertifiedFiscalYear
+  ,[DIA].FirstSubmittedDate
+  ,[DIA].FirstSubmittedFiscalMonth
+  ,[DIA].FirstSubmittedFiscalQuarter
+  ,[DIA].FirstSubmittedFiscalYear
+  ,[DIA].IncentiveEligibility
+  ,[DIA].IsAppCertified
+  ,[DIA].LastCertifiedDate
+  ,[DIA].LastCertifiedFiscalMonth
+  ,[DIA].LastCertifiedFiscalQuarter
+  ,[DIA].LastCertifiedFiscalYear
+  ,[DIA].LastSubmittedDate
+  ,[DIA].LastSubmittedFiscalMonth
+  ,[DIA].LastSubmittedFiscalQuarter
+  ,[DIA].LastSubmittedFiscalYear
+  ,[DIA].GPSCRMSolutionID
+  ,[DIA].ReportingIncentiveEligibility
+  ,[DIA].ReportingOfferType
+  ,[DIA].Status
+  ,[DIA].StatusDetail
+  ,[DIA].StatusOrder
+  ,[DIA].Tier
+  ,[DIA].Type
+FROM [CoSellT].[DimISVConnectApp] AS [DIA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    24, N'[CoSell].[vw_DimIndustry]', 
+    N' CREATE VIEW [CoSell].[vw_DimIndustry]
+AS
+SELECT [DI].[IndustryLevel1]
+  ,[DI].[IndustrySKID]
+  ,[DI].[IndustryLevel2]
+FROM [CoSellT].[DimIndustry] AS [DI]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    25, N'[CoSell].[vw_DimMPL]', 
+    N' CREATE VIEW [CoSell].[vw_DimMPL]
+AS
+SELECT [DM].[IPDM] AS InsidePartnerDevelopmentManager
+  ,[DM].[IPDMR] AS InsidePartnerDevelopmentManagerRole
+  ,[DM].[ManagementLevel]
+  ,[DM].[MPLYear] AS ManagedPracticeListYear
+  ,[DM].[PMXCRMLink] AS GPSCRMURL
+  ,[DM].[GPSCRMID]
+  ,[DM].[PartnerOneName]
+  ,[DM].[PartnerOneID]
+  ,[DM].[PartnerSegment]
+  ,[DM].[PartnerSubSegment]
+  ,[DM].[PDM] AS PartnerDevelopmentManager
+  ,[DM].[PDMM] AS PartnerDevelopmentManagerManager
+  ,[DM].[PDMR] AS PartnerDevelopmentManagerRole
+  ,[DM].[PrimaryAlias]
+  ,[DM].[PrimaryManagerAlias]
+  ,[DM].[PrimaryRole]
+  ,[DM].[PTS]
+  ,[DM].[SegmentName]
+FROM [CoSellT].[DimMPL] AS [DM]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    26, N'[CoSell].[vw_DimMSXCustomer]', 
+    N' CREATE VIEW [CoSell].[vw_DimMSXCustomer]
+AS
+SELECT [DC].[TPAccountKey]
+  ,[DC].[DistrictName]
+  ,[DC].[HQ/DS]
+  ,[DC].[IndustryName]
+  ,[DC].[AssignedHyperSalesGroup]
+  ,[DC].[AssignedSalesUnit]
+  ,[DC].[ATUName] AS [AccountTeamUnitName]
+  ,[DC].[IsHIPOAccount]
+  ,[DC].[IsS500Customer]
+  ,[DC].[MALFlagName]
+  ,[DC].[SalesTerritoryID]
+  ,[DC].[SalesGroup]
+  ,[DC].[SalesTerritory]
+  ,[DC].[SalesUnitName]
+  ,[DC].[SubDistrictID]
+  ,[DC].[SubDistrictName]
+  ,[DC].[SubSegmentID]
+  ,[DC].[SubSegmentName]
+  ,[DC].[USSubSegmentName]
+  ,[DC].[USSegmentName]
+  ,[DC].[USEOU]
+  ,[DC].[SubsidiaryID]
+  ,[DC].[SubVertical]
+  ,[DC].[VerticalCategory]
+  ,[DC].[TPAccountID]
+  ,[DC].[TPAccountName]
+  ,[DC].[IsTopIAPMigrationAccount]
+  ,[DC].[VerticalName]
+  ,[DC].[GSI1800Customers] AS [IsGSI1800Customers]
+FROM [CoSellT].[DimMSXCustomer] AS [DC]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    27, N'[CoSell].[vw_DimMSXProduct]', 
+    N' CREATE VIEW [CoSell].[vw_DimMSXProduct]
+AS
+SELECT [DP].[ProductKey]
+  ,[DP].[BusinessUnitName]
+  ,[DP].[DynamicsWorkload]
+  ,[DP].[ProductDivisionName]
+  ,[DP].[ProductFamilyCode]
+  ,[DP].[productFamilyName]
+  ,[DP].[ProductUnitName]
+  ,[DP].[SuperDivisionName]
+FROM [CoSellT].[DimMSXProduct] AS [DP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    28, N'[CoSell].[vw_DimMSXSolutionArea]', 
+    N' CREATE VIEW [CoSell].[vw_DimMSXSolutionArea]
+AS
+SELECT [MSXRevSumDivisionKey]
+  ,[RevSumDivisionKey]
+  ,[RevSumCategory]
+  ,[SolutionPlay]
+  ,[Conversation]
+  ,[SolutionArea]
+FROM [CoSellT].[DimMSXSolutionArea]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    29, N'[CoSell].[vw_DimMSXWorkload]', 
+    N' CREATE VIEW [CoSell].[vw_DimMSXWorkload]
+AS
+SELECT [MSXWorkloadKey]
+  ,[EngagementMilestoneKey]
+  ,[SolutionPlay]
+  ,[Conversation]
+  ,[SolutionArea]
+  ,[Workload]
+FROM [CoSellT].[DimMSXWorkLoad]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    30, N'[CoSell].[vw_DimMarketPlaceOffer]', 
+    N' CREATE VIEW [CoSell].[vw_DimMarketPlaceOffer]
+AS
+SELECT [MarketplaceOfferKey]
+  ,[AppId]
+  ,[OfferId]
+  ,[PublisherId]
+  ,[OfferDisplayName]
+  ,[StorefrontName]
+  ,[CoSellGTMReadinessName]
+  ,[CoSellIncentivesEligibleName]
+  ,[ActionType]
+  ,[GTMType]
+  ,[OfferStatus]
+  ,[OfferType]
+  ,[HasTestDrive]
+  ,[HasPrivateSku]
+  ,[IsTransactableInclusivePrivate]
+  ,[IsTransactableExcludingPrivate]
+  ,[IsCoSellEnabled]
+  ,[MACCEligible] AS MicrosoftAzureConsumptionCommitmentEligible
+  ,[MACCEligibilityStatusName] AS MicrosoftAzureConsumptionCommitmentEligibilityStatusName
+  ,[MACCEligibilityStatusStartDate] AS MicrosoftAzureConsumptionCommitmentEligibilityStatusStartDate
+  ,[AzureIPCoSellIncentivized]
+  ,[ProductClassificationName]
+  ,[ProductClassificationNameList]
+  ,[FirstEventDate]
+  ,[SecondEventDate]
+  ,[FirstLivePublishDate]
+  ,[DraftOfferCreatedDate]
+  ,[DetailedSubCategoryAltNameList]
+  ,[HasBringYourOwnLicense]
+  ,[LinkedProductIdList]
+  ,[LinkedProductServiceFamilyNameList]
+  ,[LinkTypeList]
+  ,[PlanTypeNameList]
+  ,[ProductOwnershipSellingMotion]
+  ,[ServiceFamilyName]
+  ,[CategoryList]
+  ,[PublishDate]
+  ,[PartnerGlobalID]
+  ,[ProductId]
+  ,[NegotiatedTermsList]
+  ,[IsTeams]
+FROM [CoSellT].[DimMarketplaceOffer] AS [DMO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    31, N'[CoSell].[vw_DimMarketPlacePublisher]', 
+    N' CREATE VIEW [CoSell].[vw_DimMarketPlacePublisher]
+AS
+SELECT [PublisherKey]
+  ,[PublisherId]
+  ,[SellerId]
+  ,[SellerMPNId]
+  ,[AccountMPNId] AS SellerMicrosoftPartnerNetworkId
+  ,[PublisherName]
+  ,[PublisherTypeName]
+  ,[SellerStatusName]
+  ,[VettingStatusName]
+  ,[SellerCountryCode]
+  ,[PublisherCountryCode]
+  ,[PublishersFirstPublishDate]
+  ,[AzureDeveloperAgreementVersion]
+  ,[CompositeCountryCode]
+FROM [CoSellT].[DimMarketPlacePublisher]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    32, N'[CoSell].[vw_DimOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_DimOpportunity]
+AS
+SELECT [DO].[OpportunityKey]
+  ,[DO].[BusinessType]
+  ,[DO].[Campaign]
+  ,[DO].[CoSell]
+  ,[DO].[CRMOpportunityID]
+  ,[DO].[ActualOpportunityCloseDate]
+  ,[DO].[OpportunityActualCloseFiscalYear]
+  ,[DO].[OpportunityActualCloseFiscalQuarter]
+  ,[DO].[OpportunityActualCloseFiscalMonth]
+  ,[DO].[OpportunityActualCloseFiscalMonthID]
+  ,[DO].[DaysInCurrentSalesCycleGroup]
+  ,[DO].[IsDueDateTrailing3Month]
+  ,[DO].[IsMWSurface] AS IsModernWorkSurface
+  ,[DO].[IsPartnerAttached]
+  ,[DO].[IsPartnerDealPresent]
+  ,[DO].[IsPartnerGeneratedFlag]
+  ,[DO].[IsQualifiedWin]
+  ,[DO].[IsQualifiedOrOpenISV] AS IsQualifiedOrOpenIndependentSoftwareVendor
+  ,[DO].[IsSolutionAttached]
+  ,[DO].[LicensingProgram]
+  ,[DO].[LicensingProgramSubTypeName]
+  ,[DO].[LicensingSubType]
+  ,[DO].[MSXCRMAccountName]
+  ,[DO].[MSXCRMAccountNumber]
+  ,[DO].[MSXCustomOpportunitySource]
+  ,[DO].[MSXOpportunitySource]
+  ,[DO].[MSXSalesStage]
+  ,[DO].[MSXSourceSubType]
+  ,[DO].[MSXStatus]
+  ,[DO].[OpportunityCreatedBy]
+  ,[DO].[OpportunityCreatedDate]
+  ,[DO].[OpportunityCreatedFiscalMonth]
+  ,[DO].[OpportunityCreatedFiscalMonthID]
+  ,[DO].[OpportunityCreatedFiscalQuarter]
+  ,[DO].[OpportunityCreatedFiscalYear]
+  ,[DO].[IsOpportunityDueInNext12Months]
+  ,[DO].[IsEstimatedCompletionInNext12Months]
+  ,[DO].[IsEstimatedCompletionInTrailing12Months]
+  ,[DO].[IsEstimatedStartDateTillLatestClosedMonth]
+  ,[DO].[OpportunityDueDate]
+  ,[DO].[OpportunityDueFiscalMonth]
+  ,[DO].[OpportunityDueFiscalMonthID]
+  ,[DO].[OpportunityDueFiscalQuarter]
+  ,[DO].[OpportunityDueFiscalYear]
+  ,[DO].[OpportunityEstimatedCompletionDate]
+  ,[DO].[OpportunityEstimatedCompletionDateFiscalMonth]
+  ,[DO].[OpportunityEstimatedCompletionDateFiscalMonthID]
+  ,[DO].[OpportunityEstimatedCompletionDateFiscalQuarter]
+  ,[DO].[OpportunityEstimatedCompletionDateFiscalYear]
+  ,[DO].[OpportunityEstimatedStartDate]
+  ,[DO].[OpportunityEstimatedStartDateFiscalMonth]
+  ,[DO].[OpportunityEstimatedStartDateFiscalMonthID]
+  ,[DO].[OpportunityEstimatedStartDateFiscalQuarter]
+  ,[DO].[OpportunityEstimatedStartDateFiscalYear]
+  ,[DO].[OpportunityID]
+  ,[DO].[OpportunityModifiedDate]
+  ,[DO].[OpportunityModifiedFiscalMonth]
+  ,[DO].[OpportunityModifiedFiscalMonthID]
+  ,[DO].[OpportunityModifiedFiscalQuarter]
+  ,[DO].[OpportunityModifiedFiscalYear]
+  ,[DO].[IsOpportunityDueInTrailing12Months]
+  ,[DO].[OpportunityName]
+  ,[DO].[OpportunityNumber]
+  ,[DO].[OpportunityOwner]
+  ,[DO].[OpportunitySourceType]
+  ,[DO].[OpportunityStatus]
+  ,[DO].[OpportunityType]
+  ,[DO].[StandardOwnerTitle] AS [OwnerRoleSummary]
+  ,[DO].[PriceLevelName]
+  ,[DO].[PriceListType]
+  ,[DO].[Recommendation] AS [ForecastRecommendation]
+  ,[DO].[SolutionArea] AS [Solution Area (Seller Tagged)]
+  ,[DO].[SolutionPlay] AS [Solution Play (Seller Tagged)]
+  ,[DO].[Conversation]
+  ,[DO].[TechnicalCapability] [Technical Capability (Seller Tagged)]
+  ,[DO].[Status]
+  ,[DO].[TPAccountID]
+  ,[DO].[TPAccountName]
+  ,[DO].[PromotionCode]
+  ,[DO].[IsOpportunityDueInNext6Months]
+  ,[DO].[IsOpportunityClosedInTrailing6Months]
+  ,[DO].[BilledRevenueStatus]
+  ,[DO].[ConsumptionStatus]
+  ,[DO].[ConsumptionStatusReason]
+  ,[DO].[OpportunityURL]
+  ,[DO].[EngagementNextSteps]
+  ,[DO].[EngagementNarrative]
+  ,[DO].[PartnerAccountId]
+  ,[DO].[MilestonesFlag]
+  ,[DO].[ProductFlags]
+  ,[DO].[IsBilledOpportunity]
+  ,[DO].[IsConsumptionOpportunity]
+  ,[DO].[IsBilledQualifiedPipeline]
+  ,[DO].[IsConsumptionQualifiedPipeline]
+  ,[DO].MACCFlag AS [CommitToConsume]
+FROM [CoSellT].[DimOpportunity] AS [DO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    33, N'[CoSell].[vw_DimPartnerDealProfile]', 
+    N' CREATE VIEW [CoSell].[vw_DimPartnerDealProfile]
+AS
+SELECT [AccountID]
+  ,[AutoCreateEndorsements]
+  ,[City_PartnerCenter] AS [City_PartnerCenter]
+  ,[Country_PartnerCenter] AS [Country_PartnerCenter]
+  ,[IndustryFocusEndorsements]
+  ,[IndustryFocus]
+  ,[IsPublished]
+  ,[OrganizationID]
+  ,[OrganizationName]
+  ,[PartnerOneID]
+  ,[Product]
+  ,[ProductEndorsements]
+  ,[ProfileCreatedDate]
+  ,[ProfileDescription]
+  ,[ProfileID]
+  ,[ProfileKey]
+  ,[ProfileName]
+  ,[Region_PartnerCenter] AS RegionPartnerCenter
+  ,[ServiceType]
+  ,[ServiceTypeEndorsements]
+  ,[Solutions]
+  ,[SolutionsEndorsements]
+  ,[State_PartnerCenter] AS [State_PartnerCenter]
+  ,[TargetCustomerCompanySizes]
+FROM [CoSellT].[DimPartnerDealProfile]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    34, N'[CoSell].[vw_DimPartnerDealSolutionSnapshot]', 
+    N' CREATE VIEW [CoSell].[vw_DimPartnerDealSolutionSnapshot]
+AS
+SELECT [SolutionPartnerDealCompositeKey]
+  ,[SolutionID]
+  ,[SolutionName]
+  ,[PartnerDealWonDate]
+  ,[PartnerDealRegistrationDate]
+  ,[PartnerOneID]
+  ,[GPSCRMID]
+  ,[RowInsertedDate]
+  ,[ReportedCustomSegment]
+  ,[MALFlagName]
+FROM [CoSellT].[DimPartnerDealSolutionHistory]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    35, N'[CoSell].[vw_DimPartnerOne]', 
+    N' CREATE VIEW [CoSell].[vw_DimPartnerOne]
+AS
+SELECT DPO.[PartnerOneID]
+  ,DPO.[InGPSCatalog]
+  ,DPO.[IsAzureExpertMSP] AS IsAzureExpertManagedServiceProvider
+  ,DPO.[IsCoSellReadyPartner]
+  ,DPO.[IsManaged]
+  ,DPO.[IsGlobalISV] AS IsGlobalIndependentSoftwareVendor
+  ,DPO.[IsGlobalChannel]
+  ,DPO.[IsGSI]
+  ,DPO.[IsPartnerMastered]
+  ,DPO.[IsQuestionablePartner]
+  ,DPO.[IsTopTierPartner]
+  ,DPO.[PartnerMaxGTMReadiness]
+  ,DPO.[PartnerOneName]
+  ,DPO.[PartnerOneNameID]
+  ,DPO.[PartnerOneProgramKey]
+FROM [CoSellT].[DimPartnerOneReporting] AS [DPO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    36, N'[CoSell].[vw_DimPartnerReferral]', 
+    N' CREATE VIEW [CoSell].[vw_DimPartnerReferral]
+AS
+SELECT [DPD].[PartnerDealKey]
+  ,[DPD].[PartnerCenterAcceptedDate] AS [AcceptedDateTime]
+  ,[DPD].[AppPlatform]
+  ,[DPD].[PSXDealId]
+  ,[DPD].[AuditGPSCRMMapping]
+  ,[DPD].[ApprovalQuarterTrailing4Quarters]
+  ,[DPD].[BusinessProfileIDPartnerCenter]
+  ,[DPD].[CampaignId]
+  ,[DPD].[CityPartnerCenter]
+  ,[DPD].[CloseReason]
+  ,[DPD].[ConsentToToShareInfoWithOthers]
+  ,[DPD].[ConsentToContact]
+  ,[DPD].[ConsentToMicrosoftToContactSpecificPartners]
+  ,[DPD].[ConsentToShareReferralWithMicrosoftSellers]
+  ,[DPD].[ContractSignedDate]
+  ,[DPD].[ContractSignedDateFiscalMonth]
+  ,[DPD].[ContractSignedDateFiscalQuarter]
+  ,[DPD].[ContractSignedDateFiscalYear]
+  ,[DPD].[ContractStartDate]
+  ,[DPD].[ContractStartDateFiscalMonth]
+  ,[DPD].[ContractStartDateFiscalMonthID]
+  ,[DPD].[ContractStartDateFiscalQuarter]
+  ,[DPD].[ContractStartDateFiscalYear]
+  ,[DPD].[ContractEndDate]
+  ,[DPD].[ContractEndDateFiscalMonth]
+  ,[DPD].[ContractEndDateFiscalMonthID]
+  ,[DPD].[ContractEndDateFiscalQuarter]
+  ,[DPD].[ContractEndDateFiscalYear]
+  ,[DPD].[ContractTerm]
+  ,[DPD].[CoSell]
+  ,ISNULL([DPD].[CoSellType], ''Unknown'') AS [CoSellType]
+  ,[DPD].[CountryCodePartnerCenter]
+  ,[DPD].[CreatedDate]
+  ,[DPD].[CreatedFiscalMonth]
+  ,[DPD].[CreatedFiscalMonthID]
+  ,[DPD].[CoSellOrder]
+  ,[DPD].[CreatedFiscalQuarter]
+  ,[DPD].[CreatedFiscalYear]
+  ,[DPD].[CallToAction]
+  ,[DPD].[CallToActionPrimaryRole]
+  ,[DPD].[CustomerAccountOwner]
+  ,[DPD].[CustomerDunsIdPartnerCenter]
+  ,[DPD].[CreatedDateTime]
+  ,[DPD].[CustomerName]
+  ,[DPD].[CustomerOrgSize]
+  ,[DPD].[CustomerRequestedContact]
+  ,[DPD].[DaysfromCreatedtoApproved]
+  ,[DPD].[DaysfromCreatedtoDue]
+  ,[DPD].[DealPartnerOne]
+  ,[DPD].[DealRole]
+  ,[DPD].[DealSignToRegGap]
+  ,[DPD].[DealVelocity]
+  ,[DPD].[DueDate]
+  ,[DPD].[DueFiscalMonth]
+  ,[DPD].[DueFiscalMonthID]
+  ,[DPD].[DueFiscalQuarter]
+  ,[DPD].[DueFiscalYear]
+  ,[DPD].[DueFiscalMonthPartnerDevelopmentManagerInsights]
+  ,[DPD].[DueQuarterTrailing4Quarters]
+  ,[DPD].[DueDateTime]
+  ,[DPD].[ExceptionDealCommentsAzure]
+  ,[DPD].[ExceptionDealRejectionReasonAzure]
+  ,[DPD].[ExpirationDatePartnerCenter]
+  ,[DPD].[ExpirationDateFiscalMonthPartnerCenter]
+  ,[DPD].ExpirationDateFiscalMonthIdPartnerCenter AS [ExpirationDateFiscalMonthIDPartnerCenter]
+  ,[DPD].[ExpirationDateFiscalQuarterPartnerCenter]
+  ,[DPD].[ExpirationDateFiscalYearPartnerCenter]
+  ,[DPD].[EstimatedProjectSignatureDate]
+  ,[DPD].[EstimatedProjectSignatureDateFiscalMonth]
+  ,[DPD].[EstimatedProjectSignatureDateFiscalMonthID]
+  ,[DPD].[EstimatedProjectSignatureDateFiscalQuarter]
+  ,[DPD].[EstimatedProjectSignatureDateFiscalYear]
+  ,[DPD].[IncentiveLevelPartnerCenter]
+  ,[DPD].[IncentiveType]
+  ,[DPD].[IncentiveTypeGroup]
+  ,[DPD].[Industries]
+  ,[DPD].[InviteContextNotes]
+  ,[DPD].[InvitedByOrganizationName]
+  ,[DPD].[BMXStatus]
+  ,[DPD].[IPPartner]
+  ,[DPD].[IsApproved]
+  ,[DPD].[IsCreatedinlast12Months]
+  ,[DPD].[IsPartnerCoSellDealAzure] AS [IsAzurePartnerCosellDeal]
+  ,[DPD].[IsPartnerCoSellDealClosedMonthAzure] AS [IsAzurePartnerCosellDealClosedMonth]
+  ,[DPD].[IsPartnerCoSellDealEOPAzure] AS [IsAzurePartnerCosellDealEOP]
+  ,[DPD].[IsPartnerCoSellDealD365] AS [IsD365PartnerCosellDeal]
+  ,[DPD].[IsPartnerCoSellDealClosedMonthD365] AS [IsD365PartnerCosellDealClosedMonth]
+  ,[DPD].[IsPartnerCoSellDealEOPD365] AS [IsD365PartnerCosellDealEOP]
+  ,[DPD].IsDealInPipelineWithoutSolutionAzure
+  ,[DPD].[IsPartnerCoSellDealMarketPlace] AS [IsMarketplacePartnerCosellDeal]
+  ,[DPD].[IsMarketplaceRegisteredDeal]
+  ,[DPD].[IsCoSellReadyPartnerAccount]
+  ,[DPD].[IsCurrentAndLastRegistrationDateFiscalYear]
+  ,[DPD].[IsDealInPipelineAzure] AS [IsAzureDealInPipeline]
+  ,[DPD].[IsDealInPipelineD365] AS [IsD365DealInPipeline]
+  ,[DPD].[IsDealWithoutOpportunity]
+  ,[DPD].[IsExceptionDealAzure] AS [IsAzureExceptionDeal]
+  ,[DPD].[IsPartner2Partner]
+  ,[DPD].[IsPartnerReportedAzureConsumptionRevenueDeal]
+  ,[DPD].[CoSellBase]
+  ,[DPD].[IsPrivateOfferAttached]
+  ,[DPD].[IsRegistrationDateTrailing3Month]
+  ,[DPD].[IsSlippedDeal]
+  ,[DPD].[IsSolutionAttached]
+  ,[DPD].[IsStalledDeal]
+  ,[DPD].[IsIPCoSellWithFY19Logic]
+  ,[DPD].[IsCurrentAndLastCreatedDateFiscalYear]
+  ,[DPD].[IsCurrentDueDateFiscalYear]
+  ,[DPD].[IsOpportunityAttached]
+  ,[DPD].[IsPartnerOpportunity]
+  ,[DPD].[IsLastFullDueFiscalMonth]
+  ,[DPD].[IsMarketplaceBilledSalesDeal]
+  ,[DPD].[IsLastFullCreatedFiscalMonth]
+  ,[DPD].[IsIPCoSellWithFY20Logic]
+  ,[DPD].[IsIPCoSellWithFY21Logic]
+  ,[DPD].[IsIPCoSellWithFY22Logic]
+  ,[DPD].[IsIPCoSellWithFY23Logic]
+  ,[DPD].[IsIPCoSellWithFY24Logic]
+  ,[DPD].[IsIPCoSellWithFY25Logic]
+  ,[DPD].[IotPartnerCenter]
+  ,[DPD].[LeadID] AS [LeadNumber]
+  ,[DPD].[LeadOwner]
+  ,ISNULL([DPD].[MarketplaceIntent], ''Unknown'') AS [Marketplace Intent]
+  ,[DPD].[MarketplaceTransactionDate]
+  ,[DPD].[MarketplaceTransactionDateFiscalMonth]
+  ,[DPD].[MarketplaceTransactionDateFiscalMonthID]
+  ,[DPD].[MarketplaceTransactionDateFiscalQuarter]
+  ,[DPD].[MarketplaceTransactionDateFiscalYear]
+  ,[DPD].[MicrosoftIncentiveComments]
+  ,[DPD].[MigratedPSXDealID]
+  ,[DPD].[WonDate]
+  ,[DPD].[WonDateFiscalMonth] AS [ModifiedDateFiscalMonth]
+  ,[DPD].[WonDateFiscalMonthID] AS [ModifiedDateFiscalMonthID]
+  ,[DPD].[WonDateFiscalQuarter] AS [ModifiedDateFiscalQuarter]
+  ,[DPD].[WonDateFiscalYear] AS [ModifiedDateFiscalYear]
+  ,[DPD].[MicrosoftPartnerNetworkIdPartnerCenter]
+  ,[DPD].[PartnerIDPartnerCenter]
+  ,[DPD].[MSFTReferralID]
+  ,[DPD].[MSXCRMAccountNumber]
+  ,[DPD].[MSXCRMAccountName]
+  ,[DPD].[GPSCRMPartnerID]
+  ,[DPD].[OpportunityNumber]
+  ,[DPD].[OpportunityOwner]
+  ,[DPD].[OpportunityURL]
+  ,[DPD].[OwnerEmail]
+  ,[DPD].[PartnerAcceptanceDetail]
+  ,[DPD].[PartnerAcceptanceStatus]
+  ,[DPD].[PartnerAcceptanceStatusPartnerCenter]
+  ,[DPD].[PartnerAcceptanceSubStatusPartnerCenter]
+  ,[DPD].[PartnerAccountId]
+  ,[DPD].[AccountID]
+  ,[DPD].[ActualCloseDate]
+  ,[DPD].[PartnerAccountName]
+  ,[DPD].[ContractSignedDateFiscalMonthID]
+  ,[DPD].[ContractSignedDateTime]
+  ,[DPD].[ApprovalDate]
+  ,[DPD].[ApprovalDateFiscalMonth] AS [PartnerDealApprovalDateFiscalMonth]
+  ,[DPD].[ApprovalDateFiscalMonthID] AS [PartnerDealApprovalDateFiscalMonthID]
+  ,[DPD].[ApprovalDateFiscalQuarter] AS [PartnerDealApprovalDateFiscalQuarter]
+  ,[DPD].[ApprovalDateFiscalYear] AS [PartnerDealApprovalDateFiscalYear]
+  ,[DPD].[PartnerDealDirection]
+  ,[DPD].[PartnerDealExpirationDateRange]
+  ,[DPD].[PartnerDealID]
+  ,[DPD].[PartnerCenterAcceptedDate]
+  ,[DPD].[PartnerCenterAcceptedDateFiscalMonth] AS [PartnerDealAcceptedDateFiscalMonth]
+  ,[DPD].[PartnerCenterAcceptedDateFiscalMonthID] AS [PartnerDealAcceptedDateFiscalMonthID]
+  ,[DPD].[PartnerCenterAcceptedDateFiscalQuarter] AS [PartnerDealAcceptedDateFiscalQuarter]
+  ,[DPD].[PartnerCenterAcceptedDateFiscalYear] AS [PartnerDealAcceptedDateFiscalYear]
+  ,[DPD].[RegistrationDate]
+  ,[DPD].[RegistrationDateFiscalMonth] AS [PartnerDealRegistrationDateFiscalMonth]
+  ,[DPD].[RegistrationDateFiscalMonthID] AS [PartnerDealRegistrationDateFiscalMonthID]
+  ,[DPD].[RegistrationDateFiscalQuarter] AS [PartnerDealRegistrationDateFiscalQuarter]
+  ,[DPD].[RegistrationDateFiscalYear] AS [PartnerDealRegistrationDateFiscalYear]
+  ,[DPD].[DealRejectedDate]
+  ,[DPD].[DealRejectedDateFiscalMonth] AS [PartnerDealRejectedDateFiscalMonth]
+  ,[DPD].[DealRejectedDateFiscalMonthID] AS [PartnerDealRejectedDateFiscalMonthID]
+  ,[DPD].[DealRejectedDateFiscalQuarter] AS [PartnerDealRejectedDateFiscalQuarter]
+  ,[DPD].[DealRejectedDateFiscalYear] AS [PartnerDealRejectedDateFiscalYear]
+  ,[DPD].[WonDateFiscalMonth] AS [PartnerDealWonDateFiscalMonth]
+  ,[DPD].[WonDateFiscalMonthID] AS [PartnerDealWonDateFiscalMonthID]
+  ,[DPD].[WonDateFiscalQuarter] AS [PartnerDealWonDateFiscalQuarter]
+  ,[DPD].[WonDateFiscalYear] AS [PartnerDealWonDateFiscalYear]
+  ,[DPD].[PartnerDealRevenueSize]
+  ,[DPD].[PartnerDealURL]
+  ,[DPD].[PartnerNotes]
+  ,[DPD].[PartnerOneID]
+  ,[DPD].[PartnerProgram]
+  ,[DPD].[PartnerRole]
+  ,[DPD].[PartnerSalesRepEmail]
+  ,[DPD].[PartnerSalesStage]
+  ,[DPD].[PostalCodePartnerCenter]
+  ,[DPD].[Products]
+  ,[DPD].[EngagementID]
+  ,[DPD].[PSXDescription]
+  ,[DPD].[RangeofCreatedtoApproved]
+  ,[DPD].[RangeofCreatedtoDue]
+  ,[DPD].[Recommendation] AS [Recommendation(PSC)]
+  ,[DPD].[ReferralProgramCode]
+  ,[DPD].[ReferralProgram]
+  ,[DPD].[RevenueTranche]
+  ,[DPD].[ReferralMicrosoftStatusPartnerCenter]
+  ,[DPD].[ReferralMicrosoftStatusReasonPartnerCenter]
+  ,[DPD].[ReferralMicrosoftSubStatusPartnerCenter]
+  ,[DPD].[ReferralType]
+  ,[DPD].[ReferralSubType]
+  ,[DPD].[RegistrationApprover]
+  ,[DPD].[RegistrationStatus]
+  ,[DPD].[RegistrationVerificationStatus]
+  ,[DPD].[ResponseRequestedBy]
+  ,[DPD].[SalesStage]
+  ,[DPD].[ServiceDescription]
+  ,[DPD].[SourceType]
+  ,[DPD].[StatePartnerCenter]
+  ,[DPD].[Status]
+  ,[DPD].[StatusComments]
+  ,[DPD].[StatusReason]
+  ,[DPD].[TagsPartnerCenter]
+  ,[DPD].[Topic]
+  ,[DPD].[ReferralQualification]
+  ,[DPD].[DealSolutionArea]
+  ,[DPD].[Conversation]
+FROM [CoSellT].[DimPartnerDeal] AS [DPD]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID], [ViewName], [ViewDefinition] )
+VALUES 
+(
+  37, N'[CoSell].[vw_DimProject]', 
+  N'CREATE VIEW [CoSell].[vw_DimProject]
+AS
+SELECT 
+    [EDLPExtractId],
+    [CreatedBy],
+    [CreatedByName],
+    [CreatedByYomiName],
+    [CreatedOn],
+    [CreatedOnBehalfBy],
+    [CreatedOnBehalfByName],
+    [CreatedOnBehalfByYomiName],
+    [ExchangeRate],
+    [BusinessObjective],
+    [BusinessObjectiveName],
+    [DeliverableSPCF],
+    [Industry],
+    [IndustryName],
+    [PMXName],
+    [Notes],
+    [Objective],
+    [PartnerAccount],
+    [PartnerAccountName],
+    [Priority],
+    [ProjectId],
+    [ProjectPhase],
+    [ProjectTeamContact],
+    [ProjectType],
+    [SelectedRecords],
+    [SolutionPlay],
+    [Conversation],
+    [ImportSequenceNumber],
+    [ModifiedBy],
+    [ModifiedByName],
+    [ModifiedByYomiName],
+    [ModifiedOn],
+    [ModifiedOnBehalfBy],
+    [ModifiedOnBehalfByName],
+    [ModifiedOnBehalfByYomiName],
+    [OverriddenCreatedOn],
+    [OwningBusinessUnit],
+    [OwningBusinessUnitName],
+    [OwningTeam],
+    [OwningUser],
+    [StateCode],
+    [StatusCode],
+    [TimeZoneRuleVersionNumber],
+    [TransactionCurrencyId],
+    [TransactionCurrencyIdName],
+    [EDLPExtractDateTime],
+    [EDLPLoadTS],
+    [EDLPModifiedDateTime],
+    [EstimatedConsumptionStartDate],
+    [estMonthlyAcr],
+    [solutionId],
+    [EstMonthlyAcrBase],
+    [FinancialYear],
+    [OpportunityId],
+    [OpportunityIdName],
+    [OwnerId],
+    [OwnerIdName],
+    [OwnerIdType],
+    [OwnerIdYomiName],
+    [UTCConversionTimeZoneCode],
+    [VersionNumber],
+    [OfferType],
+    [ProjectEndDate],
+    [ProjectStatus],
+    [EDLPDeltaActionCode],
+    [ProjectTypeNameValue],
+    [PriorityeValue],
+    [projectPhaseValue],
+    [SolutionPlayValue]
+FROM [CoSellT].[DimProject]'
+);
+
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    38, N'[CoSell].[vw_DimRedCarpetActivity]', 
+    N' CREATE VIEW [CoSell].[vw_DimRedCarpetActivity]
+AS
+SELECT [RCA].[CloseDate]
+  ,[RCA].[CloseMonth]
+  ,[RCA].[CloseQuarter]
+  ,[RCA].[CloseYear]
+  ,[RCA].[ContactID]
+  ,[RCA].[CreatedDate]
+  ,[RCA].[CreatedMonth]
+  ,[RCA].[CreatedQuarter]
+  ,[RCA].[CreatedYear]
+  ,[RCA].[DueDate]
+  ,[RCA].[LastRefreshTime_PST]
+  ,[RCA].[GPSCRMID]
+  ,[RCA].[Owner]
+  ,[RCA].[PartnerOneName]
+  ,[RCA].[PartnerOneID]
+  ,[RCA].[PartnerSegment]
+  ,[RCA].[PartnerSubSegment]
+  ,[RCA].[PreviousOwner]
+  ,[RCA].[RedCarpetKey]
+  ,[RCA].[Status]
+  ,[RCA].[Title]
+  ,[RCA].[TransitionType]
+FROM [CoSellT].[DimRedCarpetActivity] AS [RCA]'
+  );
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    40, N'[CoSell].[vw_DimRevSumDivision]', 
+    N' CREATE VIEW [CoSell].[vw_DimRevSumDivision]
+AS
+SELECT [DRD].[RevSumDivisionKey]
+  ,[DRD].[E5RSD]
+  ,[DRD].[ReportingSummaryRevSumDivisionName]
+  ,[DRD].[RevSumCategoryName] AS [RevSumCategory]
+  ,[DRD].[RevSumDivisionName]
+  ,[DRD].[RevSumCategoryID]
+  ,[DRD].[RevSumDivisionID]
+  ,[DRD].[SuperRevSumDivisionName]
+FROM [CoSellT].[DimRevSumDivision] AS [DRD]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    41, N'[CoSell].[vw_DimSalesProgram]', 
+    N' CREATE VIEW [CoSell].[vw_DimSalesProgram]
+AS
+SELECT [SP].[SalesProgramKey]
+  ,[SP].[Level]
+  ,[SP].[OwnerName]
+  ,[SP].[ProgramName]
+  ,[SP].[ProgramSubType]
+  ,[SP].[ProgramType]
+  ,[SP].[SalesProgramEndDate]
+  ,[SP].[SalesProgramEndFiscalMonth]
+  ,[SP].[SalesProgramEndFiscalMonthID]
+  ,[SP].[SalesProgramEndFiscalQuarter]
+  ,[SP].[SalesProgramEndFiscalYear]
+  ,[SP].[SalesProgramStartDate]
+  ,[SP].[SalesProgramStartFiscalMonth]
+  ,[SP].[SalesProgramStartFiscalMonthID]
+  ,[SP].[SalesProgramStartFiscalQuarter]
+  ,[SP].[SalesProgramStartFiscalYear]
+  ,[SP].[SalesProgramURL]
+  ,[SP].[IsPriorityScenario]
+FROM [CoSellT].[DimSalesProgram] AS [SP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    42, N'[CoSell].[vw_DimScorecardRecognitionTime]', 
+    N' CREATE VIEW [CoSell].[vw_DimScorecardRecognitionTime]
+AS
+SELECT SRT.[ScorecardRecognitionKey]
+  ,SRT.[ScorecardRecognitionMonth]
+  ,SRT.[ScorecardRecognitionQuarter]
+  ,SRT.[ScorecardRecognitionYear]
+FROM [CoSellT].[DimScoreCardRecognitionTime] SRT'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    43, N'[CoSell].[vw_DimSellInCountry]', 
+    N' CREATE VIEW [CoSell].[vw_DimSellInCountry]
+AS
+SELECT DSC.[SellInCountryKey]
+  ,DSC.[SellInCountry]
+  ,DSC.[SellInCountryID]
+FROM [CoSellT].[DimSellInCountry] DSC'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    44, N'[CoSell].[vw_DimSellerCoSellIncentive]', 
+    N' CREATE VIEW [CoSell].[vw_DimSellerCoSellIncentive]
+AS
+SELECT [DSCI].[SellerCoSellIncentiveKey]
+  ,[DSCI].[SellerCoSellIncentiveName]
+  ,[DSCI].[ClassifiedSellerCoSellIncentives]
+FROM [CoSellT].[DimSellerCoSellIncentive] AS [DSCI]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    45, N'[CoSell].[vw_DimServiceCompGrouping]', 
+    N' CREATE VIEW [CoSell].[vw_DimServiceCompGrouping]
+AS
+SELECT ServiceCompGroupingKey
+  ,ServiceCompGroupName
+FROM [CoSellT].[DimServiceCompGrouping]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    46, N'[CoSell].[vw_DimSolutionArea]', 
+    N' CREATE VIEW [CoSell].[vw_DimSolutionArea]
+AS
+SELECT [DSA].[SolutionAreaSKID]
+  ,[DSA].[SolutionAreaLevel1] as SolutionArea
+  ,[DSA].[Conversation]
+FROM [CoSellT].[DimSolutionArea] AS [DSA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    47, N'[CoSell].[vw_DimSolutionAreaOppty]', 
+    N' CREATE VIEW [CoSell].[vw_DimSolutionAreaOppty]
+AS
+SELECT [DSA].[OpptySolutionAreaKey]
+  ,[DSA].[SolutionArea]
+  ,[DSA].[SolutionPlay]
+  ,[DSA].[Conversation]
+  ,[DSA].[Workload]
+  ,[DSA].[RevSumCategory]
+  ,[DSA].[RevSumDivision]
+FROM [CoSellT].[DimSolutionAreaOppty] AS [DSA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID], [ViewName], [ViewDefinition] )
+VALUES 
+(
+  48, N'[CoSell].[vw_DimTask]', 
+  N'CREATE VIEW [CoSell].[vw_DimTask]
+AS
+SELECT 
+    [EDLPExtractId],
+    [CreatedBy],
+    [CreatedByName],
+    [CreatedByYomiName],
+    [CreatedOn],
+    [CreatedOnBehalfBy],
+    [CreatedOnBehalfByName],
+    [CreatedOnBehalfByYomiName],
+    [AssignTo],
+    [AssignToName],
+    [AssignToYomiName],
+    [AttachmentName],
+    [Comments],
+    [Deliverable],
+    [DeliverableName],
+    [DueDate],
+    [PMXName],
+    [Priority],
+    [ProgressState],
+    [Project],
+    [ProjectName],
+    [StartDate],
+    [TaskId],
+    [PartnerAccount],
+    [PartnerAccountName],
+    [SolutionArea],
+    [SpentHours],
+    [ImportSequenceNumber],
+    [ModifiedBy],
+    [ModifiedByName],
+    [ModifiedByYomiName],
+    [ModifiedOn],
+    [ModifiedOnBehalfBy],
+    [ModifiedOnBehalfByName],
+    [ModifiedOnBehalfByYomiName],
+    [OverriddenCreatedOn],
+    [ownerId],
+    [OwnerIdName],
+    [OwnerIdType],
+    [OwnerIdYomiName],
+    [OwningBusinessUnit],
+    [OwningBusinessUnitName],
+    [OwningTeam],
+    [OwningUser],
+    [StateCode],
+    [StatusCode],
+    [TimeZoneRuleVersionNumber],
+    [UTCConversionTimeZoneCode],
+    [VersionNumber],
+    [EDLPExtractDateTime],
+    [EDLPLoadTS],
+    [EDLPModifiedDateTime],
+    [EDLPDeltaActionCode],
+    [DueFiscalMonth],
+    [StartFiscalMonth],
+    [DueDateTimeKey],
+    [StartDateTimeKey],
+    [FiscalMonthID],
+    [IsPSA],
+    [isTaskUnassignedOrOverdue],
+    [PriorityValue],
+    [ProgressstateValue],
+    [SolutionAreaValue],
+    [isPSALinkedProject]
+FROM [CoSellT].[DimTask]'
+);
+
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    49, N'[CoSell].[vw_DimTopTierMonthlyStatus]', 
+    N' CREATE VIEW [CoSell].[vw_DimTopTierMonthlyStatus]
+AS
+SELECT PTT.PartnerOneId AS [PartnerOneID]
+  ,PTT.StartDate
+  ,PTT.MarketplaceTransitionPartners
+  ,PTT.FiscalQuarterName
+  ,PTT.FiscalYear
+  ,PTT.FiscalYearMonthName
+  ,PTT.MonthKey
+FROM [CoSellT].[DimTopTierMonthlyStatus] PTT'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    50, N'[CoSell].[vw_Dim_DigitallyOffboardedPartner]', 
+    N' CREATE VIEW [CoSell].[vw_Dim_DigitallyOffboardedPartner]
+AS
+SELECT [DOFBP].[IsDigitallyOffboarded]
+  ,[DOFBP].[GPSCRMID]
+  ,[DOFBP].[PartnerOneID]
+  ,[DOFBP].[RedCarpetKey]
+FROM [CoSellT].[DimDigitallyOffboardedPartner] AS [DOFBP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    51, N'[CoSell].[vw_Dim_MSXWinsWithSolutionAttach]', 
+    N' CREATE VIEW [CoSell].[vw_Dim_MSXWinsWithSolutionAttach]
+AS
+SELECT [PROR].[ATUKey] AS [AccountTeamUnitKey]
+  ,[PROR].[CapacityGeographyKey]
+  ,[PROR].[CRMPartnerAccountKey]
+  ,[PROR].[CustomerGeographyKey]
+  ,[PROR].[CustomerSegmentKey]
+  ,[PROR].[EngagementMilestoneKey]
+  ,[PROR].[MSXRevSumDivisionKey]
+  ,[PROR].[MSXWorkloadKey]
+  ,[PROR].[PartnerOneKey]
+  ,[PROR].[SolutionKey]
+  ,[PROR].[TPAccountKey]
+  ,[PROR].[CustomerSubsidiary]
+  ,[PROR].[IndustryKey]
+  ,[PROR].[IsPrioritizedSolution]
+  ,[PROR].[IsSolutionConsideredWithWin]
+  ,[PROR].[OpptyCSEDealDueOREstimatedDateKey] AS [OpportunityDealDueOREstimatedDateKey]
+  ,[PROR].[OpptyCSEDealID_Number] AS [OpportunityDealIDNumber]
+  ,[PROR].[OpptyCSEDealKey] AS [OpportunityDealKey]
+  ,[PROR].[RevSumDivisionKey]
+  ,[PROR].[SolutionAreaKey]
+  ,[PROR].[Subsidiary]
+  ,[PROR].[Type]
+  ,[PROR].[Calc_PartnerOneGPSCRMID] AS [CustomerAccountLifeCyclePartnerOneGPSCRMID]
+  ,[PROR].[IsOpptyCSEDealDueOREstimatedInTrailing12Months] AS [IsOpportunityDealDueOREstimatedInTrailing12Months]
+FROM [CoSellT].[DimMSXWinsWithSolutionAttach] AS [PROR]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    52, N'[CoSell].[vw_Dim_MarketPlaceInvoice]', 
+    N' CREATE VIEW [CoSell].[vw_Dim_MarketPlaceInvoice]
+AS
+SELECT [InvoiceKey]
+  ,[CustomerId] AS [CustomerID]
+  ,[DealId] AS [DealID]
+  ,[EnrollmentNumber]
+  ,[ActionName]
+  ,[CSPName] AS [CloudSolutionProviderName]
+  ,[CSPTierName] AS [CloudSolutionProviderTierName]
+  ,[DocumentDisplayNumber]
+  ,[DocumentTypeName]
+  ,[PaymentFamilyName]
+  ,[PaymentTypeName]
+  ,[TermDescription]
+  ,[CSPChannelName] AS [CloudSolutionProviderChannelName]
+  ,[IsConsumption]
+  ,[IsCSPTransaction] AS [IsCloudSolutionProviderTransaction]
+  ,[BillingPeriodEndDateTime]
+  ,[BillingPeriodStartDateTime]
+  ,[DocumentCreatedDateTime]
+  ,[EventDateTime]
+  ,[PaymentDueDateTime]
+  ,[StoreFront]
+  ,[ServicePeriodEndDateTime]
+  ,[ServicePeriodStartDateTime]
+  ,[PrivateOfferIsvPartnerFlag] AS [PrivateOfferIndependentSoftwareVendorPartnerFlag]
+  ,[DocumentId] AS [DocumentID]
+  ,[LineItemId] AS [LineItemID]
+  ,[CSPMPNId] AS [CSPMPNID]
+  ,[ProductId] AS [ProductID]
+  ,[SkuId] AS [SkuID]
+  ,[PurchaserTPID]
+  ,[PurchaserTPName]
+  ,[CountryCode]
+  ,[CurrencyCode]
+  ,[ServicePeriodDuration]
+  ,[TopTierTransactionFlag]
+  ,[RefreshDateTime]
+  ,[ISCosellDeal]
+FROM [CoSellT].[DimMarketplaceInvoice]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    53, N'[CoSell].[vw_Dim_PartnerDealSolutionAttached]', 
+    N' CREATE VIEW [CoSell].[vw_Dim_PartnerDealSolutionAttached]
+AS
+SELECT [PartnerDealSolutionAttachedKey]
+  ,[IsSolutionAttached_Deal] AS [IsSolutionAttachedDeal]
+  ,[IsSolutionAttached_Oppty] AS [IsSolutionAttachedOpportunity]
+FROM [CoSellT].[DimPartnerDealSolutionAttached] [DPDSA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    54, N'[CoSell].[vw_Dim_PartnerDeal_Duration]', 
+    N' CREATE VIEW [CoSell].[vw_Dim_PartnerDeal_Duration]
+AS
+SELECT DSC.[DurationTypeId] AS [DurationTypeKey]
+  ,DSC.[DurationType]
+FROM [CoSellT].[DimPartnerDealDuration] AS DSC'
+  );
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    55, N'[CoSell].[vw_DimLead]', 
+    N' CREATE VIEW [CoSell].[vw_DimLead]
+AS
+SELECT *
+FROM [CoSellT].[DimLead]'
+  );
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    56, N'[CoSell].[vw_FactAHRFeedAudit]', 
+    N' CREATE VIEW [CoSell].[vw_FactAHRFeedAudit]
+AS
+(
+    SELECT [AHRA].[ACR]
+      ,[AHRA].[ApprovalDate]
+      ,[AHRA].[ApprovalFiscalMonth]
+      ,[AHRA].[InvalidEligibility_Audit]
+      ,[AHRA].[MSXCRMAccountID]
+      ,[AHRA].[MSXCRMAccountName]
+      ,[AHRA].[GPSCRMPartnerID]
+      ,[AHRA].[GPSCRMPartnerID_Audit]
+      ,[AHRA].[GPSCRMPartnerName]
+      ,[AHRA].[PartnerOneSubID]
+      ,[AHRA].[PartnerOneSubID_Audit]
+      ,[AHRA].[PartnerTPID]
+      ,[AHRA].[PartnerTPIDName]
+      ,[AHRA].[PartnerTPIDSegment]
+      ,[AHRA].[PartnerTPIDSubsidiary]
+      ,[AHRA].[PSXDealId]
+      ,''Yes'' AS [ScorecardEligible]
+      ,[AHRA].[ServiceCompGroupName] AS ServiceCompGrouping
+      ,[AHRA].[TPAccountID]
+      ,[AHRA].[TPAccountName]
+      ,[AHRA].[TPAccountSegment]
+      ,[AHRA].[TPAccountSubsidiary]
+      ,[AHRA].[IsPartnerReportedACR]
+      ,[AHRA].[IsMarketplaceDealReg]
+      ,[AHRA].[ResourceGUID]
+    FROM [CoSellT].[FactAHRFeedAudit] AS [AHRA]
+    )'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    57, N'[CoSell].[vw_FactAHRFeedTable]', 
+    N' CREATE VIEW [CoSell].[vw_FactAHRFeedTable]
+AS
+SELECT [AHR].[FiscalMonth]
+  ,[AHR].[PartnerOneSubID]
+  ,[AHR].[PartnerTPID]
+  ,''Yes'' AS [ScorecardEligible]
+  ,[AHR].[ServiceCompGroupName]
+  ,[AHR].[SubDistrict]
+  ,[AHR].[SubSegment]
+  ,[AHR].[Subsidiary]
+  ,[AHR].[TotalACR] AS [TotalAzureConsumptionRevenue]
+  ,[AHR].[TPAccountName]
+  ,[AHR].[TPID]
+  ,[AHR].[IsPartnerReportedACR] AS [IsPartnerReportedAzureConsumptionRevenue]
+  ,[AHR].[IsMarketplaceDealReg]
+  ,[AHR].[SnapshotDate]
+  ,[AHR].[ResourceGUID]
+FROM [CoSellT].[FactAHRFeedTable] AS [AHR]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    58, N'[CoSell].[vw_FactAccount]', 
+    N' CREATE VIEW [CoSell].[vw_FactAccount]
+AS
+SELECT [FA].[AccountKey]
+  ,[FA].[AccountTagKey]
+  ,[FA].[BusinessUnitKey]
+  ,[FA].[CapacityGeographyKey]
+  ,[FA].[PartnerOneKey]
+  ,[FA].[HasAlias]
+  ,[FA].[PartnerGeographyKey]
+  ,[FA].[PartnerOneReportingKey]
+  ,[FA].[ReportingGeographyKey]
+FROM [CoSellT].[FactAccount] AS [FA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    59, N'[CoSell].[vw_FactLead]', 
+    N' CREATE VIEW [CoSell].[vw_FactLead]
+AS
+SELECT *
+FROM [CoSellT].[FactLead]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    61, N'[CoSell].[vw_FactMBSCommercialTargets]', 
+    N' CREATE VIEW [CoSell].[vw_FactMBSCommercialTargets]
+AS
+SELECT [SubRegionID]
+  ,[CustomerSegmentKey]
+  ,[DateKey]
+  ,[AssignedSalesUnit]
+  ,[Targets]
+FROM [CoSellT].[FactMBSCommercialTargets]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    62, N'[CoSell].[vw_FactMBSTargets]', 
+    N' CREATE VIEW [CoSell].[vw_FactMBSTargets]
+AS
+SELECT [CustomPartnerSegmentKey]
+  ,[AreaID]
+  ,[DateKey]
+  ,[Targets]
+FROM [CoSellT].[FactMBSTargets]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    63, N'[CoSell].[vw_FactMarketPlaceBilledSales]', 
+    N' CREATE VIEW [CoSell].[vw_FactMarketPlaceBilledSales]
+AS
+SELECT FMBS.[RelativeYear]
+  ,FMBS.[InvoiceKey]
+  ,FMBS.[TPAccountID]
+  ,FMBS.[PublisherKey]
+  ,FMBS.[MarketplaceOfferKey]
+  ,FMBS.[DocumentCreatedDateKey]
+  ,FMBS.PartnerOneSubId_FI AS [PartnerOneSubID_FI]
+  ,FMBS.[TotalPriceCDAmount]
+  ,FMBS.[TotalPriceCDAmountBeforeTax]
+  ,FMBS.[TotalPriceUSDAmount]
+  ,FMBS.[CustomerSubsidiaryId]
+  ,FMBS.[IsCoSellDeal]
+  ,FMBS.[PartnerDealKey]
+  ,FMBS.[OpportunityKey]
+  ,FMBS.[AzureIPCoSellIncentivized]
+  ,FMBS.[TotalPriceCDAmountAnnualized]
+  ,FMBS.[TotalPriceCDAmountAnnualized_Purchase] AS [TotalPriceCDAmountAnnualizedPurchase]
+  ,FMBS.[TotalPriceCDAmountAnnualizedwithCap]
+  ,FMBS.[TotalPriceCDAmountAnnualizedBeforeTax]
+  ,FMBS.[TotalPriceCDAmountAnnualized_PurchaseBeforeTax] AS [TotalPriceCDAmountAnnualizedPurchaseBeforeTax]
+  ,FMBS.[TotalPriceCDAmountAnnualizedwithCapBeforeTax]
+  ,FMBS.[dc_tpaccountid] AS DataCenterTPAccountId
+  ,FMBS.tpaccountkey AS [TPAccountKey]
+  ,FMBS.[CSPMPNID] AS [CloudSolutionProviderMicrosoftPartnerNetworkId]
+  ,FMBS.[PartnerOneReportingID]
+  ,FMBS.[PartnerOneReportingKey]
+  ,FMBS.[PartnerSubsidiaryId]
+  ,FMBS.[PartnerOneID]
+  ,FMBS.[CustomerGeographyKey]
+  ,FMBS.customersubsidiary AS [CustomerSubsidiary]
+  ,FMBS.[SolutionKey]
+  ,FMBS.[PartnerGeographyKey]
+  ,FMBS.[CustomerSegmentKey]
+  ,FMBS.[DocumentID]
+  ,FMBS.[ProductID]
+  ,FMBS.[ATUKey] AS [AccountTeamUnitKey]
+  ,FMBS.[ServicePeriodDuration]
+  ,FMBS.[EngagementMilestoneKey]
+FROM [CoSellT].[FactMarketplaceBilledSales] AS FMBS'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    64, N'[CoSell].[vw_FactOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_FactOpportunity]
+AS
+SELECT [FO].[ATUKey] AS [AccountTeamUnitKey]
+  ,[FO].[ActualCloseDateKey]
+  ,[FO].[CRMPartnerAccountKey]
+  ,[FO].[CustomerGeographyKey]
+  ,[FO].[CustomerSegmentKey]
+  ,[FO].[EstimatedAnnualUsage]
+  ,[FO].[EstimatedMonthlyUsage]
+  ,[FO].[EstNoOfActivations] AS EstimatedNumberOfActivations
+  ,[FO].[EstNoOfActivations_MW] AS EstimatedNumberOfActivationsModernWork
+  ,[FO].[EstimatedStartDateKey]
+  ,[FO].[EstimatedCompletionDateKey]
+  ,[FO].EngagementMilestoneKey
+  ,[FO].[LeadKey]
+  ,[FO].[MSXRevSumDivisionKey]
+  ,[FO].[MSXWorkloadKey]
+  ,[FO].[OpportunityKey]
+  ,[FO].[OpptySolutionAreaKey]
+  ,[FO].[PartnerDealKey]
+  ,[FO].[PartnerOneKey]
+  ,[FO].[PartnerOneReportingKey]
+  ,[FO].[ReportingGeographyKey]
+  ,[FO].[DueDateKey]
+  ,[FO].[ProductKey]
+  ,[FO].[RevSumDivisionKey]
+  ,[FO].[TPAccountKey]
+  ,[FO].[CreatedDateKey]
+  ,[FO].[DaysInCloseSalesCycleCount]
+  ,[FO].[DaysinInspireSalesCycleCount]
+  ,[FO].[DaysinEmpowerSalesCycleCount]
+  ,[FO].[DaysinSolutionSalesCycleCount]
+  ,[FO].[OpportunityProductRevenueCDAmount]
+  ,[FO].[OpportunityRevenue]
+  ,[FO].[PartnerGeographyKey]
+  ,[FO].[DetailPricingLevelID]
+  ,[FO].[DraftCRMPartnerAccountKey]
+  ,[FO].[DraftPartnerOneKey]
+  ,[FO].[DraftPartnerOneReportingKey]
+  ,[FO].[EstimatedValue]
+  ,[FO].[DraftPartnerGeographyKey]
+  ,[FO].[SolutionKey]
+  ,[FO].[SharingTypeKey]
+  ,[FO].[IsMultiPartner]
+  ,[FO].[OpportunityReportingGeographyKey]
+  ,[FO].[OpptyDueOREstimatedMilestoneDateKey]
+  ,[FO].[OpptySolutionAreaKey] AS [OpportunitySolutionAreaKey]
+FROM [CoSellT].[FactOpportunity] AS [FO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    65, N'[CoSell].[vw_FactOpportunityProduct]', 
+    N' CREATE VIEW [CoSell].[vw_FactOpportunityProduct]
+AS
+SELECT [A].[OpportunityKey]
+  ,[A].[ExtendedAmount]
+  ,[A].[OpportunityID]
+  ,[A].[ProductId] AS [ProductID]
+  ,[A].[Quantity]
+  ,[A].[ProductName]
+FROM [CoSellT].[FactOpportunityProduct] AS [A]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    66, N'[CoSell].[vw_FactPRACRTargets]', 
+    N' CREATE VIEW [CoSell].[vw_FactPRACRTargets]
+AS
+SELECT [FPT].[DateKey]
+  ,[FPT].[SubRegionID]
+  ,[FPT].[SubSegmentID]
+  ,[FPT].[Targets]
+FROM [CoSellT].[FactPRACRTargets] AS [FPT]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    67, N'[CoSell].[vw_FactPartnerDealDuration]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerDealDuration]
+AS
+SELECT DSC.[DurationTypeId] AS [DurationTypeKey]
+  ,DSC.[PartnerDealKey]
+  ,DSC.[Duration]
+FROM [CoSellT].[FactPartnerDealDuration] DSC'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    68, N'[CoSell].[vw_FactPartnerDealFY20]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerDealFY20]
+AS
+SELECT [FPF].[Approval_ReportedDateKey]
+  ,[FPF].[ApprovalDateKey]
+  ,[FPF].[CustomerGeographyKey]
+  ,[FPF].[CustomerSegmentKey]
+  ,[FPF].[IsPartnerReportedACR]
+  ,[FPF].[ServiceCompGroupingKey]
+  ,[FPF].[TPAccountKey]
+  ,[FPF].[IPCoSellDealReg_Azure]
+  ,[FPF].[EstimatedRevenueCD]
+  ,[FPF].[IsPartnerCoSellDeal_Azure_ACR]
+  ,[FPF].[IsPartnerCoSellDeal_ClosedMonth_Azure_ACR]
+  ,[FPF].[PartnerReportedACR_Azure]
+  ,[FPF].[TrueACRConsumption]
+  ,[FPF].[PartnerDealKey]
+  ,[FPF].[ATUKey]
+  ,[FPF].[ChannelPartnerOneKey]
+  ,[FPF].[CRMPartnerAccountKey]
+  ,[FPF].[IPCoSellPartnerOneKey]
+  ,[FPF].[LeadKey]
+  ,[FPF].[OpportunityKey]
+  ,[FPF].[PartnerGeographyKey]
+  ,[FPF].[CreatedDateKey]
+  ,[FPF].[IPPartnerOneKey]
+  ,[FPF].[ReportingGeographyKey]
+  ,[FPF].[PartnerOneReportingKey]
+  ,[FPF].[ScoreCardRecognitionKey]
+  ,[FPF].[PartnerOneKey]
+  ,[FPF].[PSXDealKey]
+  ,rank() OVER (
+    ORDER BY [PartnerDealKey]
+      ,[IsPartnerReportedACR]
+      ,[Approval_ReportedDateKey]
+    ) AS [rank]
+  ,[FPF].[SolutionKey]
+  ,[FPF].SolutionPartnerDealCompositeKe AS [SolutionPartnerDealCompositeKey]
+  ,ISNULL([FPF].[SellerCoSellIncentiveKey], 0) AS [SellerCoSellIncentiveKey]
+  ,[FPF].[SharingTypeKey]
+FROM [CoSellT].[FactPartnerDeal_FY20] AS [FPF]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    69, N'[CoSell].[vw_FactPartnerDealFY21]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerDealFY21]
+AS
+SELECT [FPF].[Approval_ReportedDateKey]
+  ,[FPF].[ApprovalDateKey]
+  ,[FPF].[CustomerGeographyKey]
+  ,[FPF].[CustomerSegmentKey]
+  ,[FPF].[IsPartnerReportedACR]
+  ,[FPF].[ServiceCompGroupingKey]
+  ,[FPF].[TPAccountKey]
+  ,[FPF].[IPCoSellDealReg_Azure]
+  ,[FPF].[EstimatedRevenueCD]
+  ,[FPF].[IsPartnerCoSellDeal_Azure_ACR]
+  ,[FPF].[IsPartnerCoSellDeal_ClosedMonth_Azure_ACR]
+  ,[FPF].[PartnerReportedACR_Azure]
+  ,[FPF].[TrueACRConsumption]
+  ,[FPF].[PartnerDealKey]
+  ,[FPF].[ATUKey]
+  ,[FPF].[ChannelPartnerOneKey]
+  ,[FPF].[CRMPartnerAccountKey]
+  ,[FPF].[IPCoSellPartnerOneKey]
+  ,[FPF].[LeadKey]
+  ,[FPF].[OpportunityKey]
+  ,[FPF].[PartnerGeographyKey]
+  ,[FPF].[CreatedDateKey]
+  ,[FPF].[IPPartnerOneKey]
+  ,[FPF].[ReportingGeographyKey]
+  ,[FPF].[PartnerOneReportingKey]
+  ,[FPF].[ScoreCardRecognitionKey]
+  ,[FPF].[PartnerOneKey]
+  ,[FPF].[PSXDealKey]
+  ,rank() OVER (
+    ORDER BY [PartnerDealKey]
+      ,[IsPartnerReportedACR]
+      ,[Approval_ReportedDateKey]
+    ) AS [rank]
+  ,[FPF].[SolutionKey]
+  ,[FPF].[SolutionPartnerDealCompositeKey]
+  ,ISNULL([FPF].[SellerCoSellIncentiveKey], 0) AS [SellerCoSellIncentiveKey]
+  ,[FPF].[SharingTypeKey]
+FROM [CoSellT].[FactPartnerDeal_FY21] AS [FPF]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    70, N'[CoSell].[vw_FactPartnerDealFY22]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerDealFY22]
+AS
+SELECT FPF.Approval_ReportedDateKey AS [ApprovalReportedDateKey]
+  ,FPF.ApprovalDateKey
+  ,FPF.CustomerGeographyKey
+  ,FPF.CustomerSegmentKey
+  ,FPF.IsPartnerReportedACR
+  ,FPF.ServiceCompGroupingKey
+  ,FPF.TPAccountKey
+  ,FPF.IPCoSellDealReg_Azure AS [IPCoSellDealRegAzure]
+  ,FPF.EstimatedRevenueCD
+  ,FPF.IsPartnerCoSellDeal_Azure_ACR AS [IsPartnerCoSellDealAzure_AzureConsumptionRevenue]
+  ,FPF.IsPartnerCoSellDeal_ClosedMonth_Azure_ACR AS [IsPartnerCoSellDealClosedMonthAzure_AzureConsumptionRevenue]
+  ,FPF.PartnerReportedACR_Azure AS [PartnerReportedAzureConsumptionRevenueAzure]
+  ,FPF.TrueACRConsumption AS [TrueAzureConsumptionRevenueConsumption]
+  ,FPF.PartnerDealKey
+  ,FPF.ATUKey AS [AccountTeamUnitKey]
+  ,FPF.ChannelPartnerOneKey
+  ,FPF.CRMPartnerAccountKey
+  ,FPF.IPCoSellPartnerOneKey
+  ,FPF.LeadKey
+  ,FPF.OpportunityKey
+  ,FPF.PartnerGeographyKey
+  ,FPF.PartnerOneKey
+  ,FPF.PSXDealKey
+  ,FPF.SolutionKey
+  ,FPF.SolutionPartnerDealComposite AS [SolutionPartnerDealCompositeKey]
+  ,FPF.CreatedDateKey
+  ,FPF.IPPartnerOneKey
+  ,FPF.ReportingGeographyKey
+  ,FPF.PartnerOneReportingKey
+  ,FPF.ScoreCardRecognitionKey
+  ,FPF.SharingTypeKey
+FROM [CoSellT].[FactPartnerDeal_FY22] FPF'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    71, N'[CoSell].[vw_FactPartnerOne]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerOne]
+AS
+SELECT [FPA].[HasCoSellReadySolutions]
+  ,[FPA].[HasPartnerDealCoSellReadySolutions]
+  ,[FPA].[PartnerOneID]
+  ,[FPA].[PartnerOneKeyHavingAccountTag]
+  ,[FPA].[SolutionKey]
+FROM [CoSellT].[FactPartnerOne] AS [FPA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    72, N'[CoSell].[vw_FactPartnerReferral]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerReferral]
+AS
+SELECT [FPD].[ATUKey]
+  ,[FPD].[Approval_ReportedDate] AS [ApprovalAndReportedDate]
+  ,[FPD].[Approval_ReportedFiscalMonth] AS [ApprovalAndReportedFiscalMonth]
+  ,[FPD].[Approval_ReportedFiscalMonthID] AS [ApprovalAndReportedFiscalMonthID]
+  ,[FPD].[Approval_ReportedFiscalQuarter] AS [ApprovalAndReportedFiscalQuarter]
+  ,[FPD].[Approval_ReportedFiscalYear] AS [ApprovalAndReportedFiscalYear]
+  ,[FPD].[AverageMonthsForApproval]
+  ,[FPD].[CRMPartnerAccountKey]
+  ,[FPD].[ChannelPartnerOneKey]
+  ,[FPD].[CustomerGeographyKey]
+  ,[FPD].[CustomerSegmentKey]
+  ,[FPD].[LeadKey]
+  ,[FPD].[OpportunityKey]
+  ,[FPD].[PartnerDealKey]
+  ,[FPD].[PartnerOneKey]
+  ,[FPD].[ScorecardRecognitionKey]
+  ,[FPD].[TPAccountKey]
+  ,[FPD].[ApprovalDateKey]
+  ,[FPD].[IPCoSellDealReg_Azure]
+  ,[FPD].[OpptyWithPartnerCoSell_Azure] AS [OpportunityWithPartnerCoSell_Azure]
+  ,[FPD].[PartnerReportedACR_Azure] AS [PartnerReportedAzureConsumptionRevenue_Azure]
+  ,[FPD].[ClosedPartnerDeals]
+  ,[FPD].[CreatedDateKey]
+  ,[FPD].[DealValueCD]
+  ,[FPD].[EstimatedRevenueCD]
+  ,[FPD].[IsAverageApproval]
+  ,[FPD].[IsAverageClose]
+  ,[FPD].[IsChannelSameAsCoSell]
+  ,[FPD].[IPCoSellPartnerOneKey]
+  ,[FPD].[IsIPPartner]
+  ,[FPD].[IsIPSameAsCoSell]
+  ,[FPD].[ISVDealsReporting] AS [IndependentSoftwareVendorDealsReporting]
+  ,[FPD].[IsYTDSubSourceDealCount]
+  ,[FPD].[IsMarketPlaceDealReg]
+  ,[FPD].[IsPartnerReportedACR] AS [IsPartnerReportedAzureConsumptionRevenue]
+  ,[FPD].[IsPartnerCoSellDeal_ClosedMonth_Azure_ACR] AS [IsPartnerCoSellDealClosedMonthAzure_AzureConsumptionRevenue]
+  ,[FPD].[IsPartnerCoSellDeal_Azure_ACR] AS [IsPartnerCoSellDealAzure_AzureConsumptionRevenue]
+  ,[FPD].[IsPrioritizedPartner]
+  ,[FPD].[PartnerOneReportingkey]
+  ,[FPD].[IPPartnerOneReportingKey]
+  ,[FPD].[ProfileKey]
+  ,[FPD].[ReportingGeographyKey]
+  ,[FPD].[ResourceGUID]
+  ,[FPD].[DueDateKey]
+  ,[FPD].[LocalTPAccountKey]
+  ,[FPD].[RegistrationDateKey]
+  ,[FPD].[DealRejectedDateKey]
+  ,[FPD].[IPPartnerOneKey]
+  ,[FPD].[ISVConnectAppKey] AS [IndependentSoftwareVendorConnectAppKey]
+  ,[FPD].[PartnerKey]
+  ,[FPD].[PartnerDealApprovalVelocity]
+  ,[FPD].[PartnerDealCloseVelocity]
+  ,[FPD].[PartnerDealsAcceptance]
+  ,[FPD].[PartnerDealsWithoutOppty] AS [PartnerDealsWithoutOpportunity]
+  ,[FPD].[PartnerGeographykey]
+  ,[FPD].[PartnerRevenueCD]
+  ,[FPD].[ProductRevenueCD]
+  ,[FPD].[PSXDealKey]
+  ,[FPD].[PRCD]
+  ,[FPD].[Tranche]
+  ,[FPD].[TotalERP]
+  ,[FPD].[VelocityOfInboundDeals]
+  ,[FPD].[SellerCoSellIncentiveKey]
+  ,[FPD].[ServiceCompGroupingKey]
+  ,[FPD].[SolutionKey]
+  ,[FPD].[SolutionPartnerDealCompositeKey]
+  ,[FPD].[SolutionValueCD]
+  ,[FPD].[ContractValueCD]
+  ,[FPD].[D365MonthlyRevenueCD]
+  ,[FPD].[TrueACRConsumption] AS [TrueAzureConsumptionRevenueConsumption]
+  ,[FPD].[TotalContractValueCD]
+  ,[FPD].[SharingTypeKey]
+FROM [CoSellT].[FactPartnerDeal] AS [FPD]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID], [ViewName], [ViewDefinition] )
+VALUES 
+(
+  73, N'[CoSell].[vw_FactProject]', 
+  N'CREATE VIEW [CoSell].[vw_FactProject]
+AS
+SELECT 
+    [EDLPExtractId],
+    [EstimatedMonthlyACR],
+    [EstimatedMonthlyACR_Base],
+    [FinancialYear],
+    [OpportunityId],
+    [OpportunityIdName],
+    [ProjectId],
+    [OwnerId],
+    [OwnerIdName],
+    [OwnerIdType],
+    [TransactionCurrencyId],
+    [TransactionCurrencyIdName],
+    [UTCConversionTimeZoneCode],
+    [VersionNumber],
+    [EDLPDeltaActionCode],
+    [OwnerIdYomiName],
+    [DeliverablesId],
+    [TaskId],
+    [PartnerAccount],
+    [SolutionArea]
+FROM [CoSellT].[FactProject]'
+);
+
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    74, N'[CoSell].[vw_FactRecruitISVTargets]', 
+    N' CREATE VIEW [CoSell].[vw_FactRecruitISVTargets]
+AS
+SELECT ISV.[Area]
+  ,ISV.[Country]
+  ,ISV.[DeliverablesFTEXVendor] AS [Deliverables]
+  ,ISV.[ACRIPDMR] AS IndependentSoftwareVendorAzureConsumptionRevenueInsidePartnerDevelopmentManagerRole
+  ,ISV.[ACRPDMR] AS IndependentSoftwareVendorAzureConsumptionRevenuePartnerDevelopmentManagerRole
+  ,ISV.[PartnerIPDMR] AS IndependentSoftwareVendorAMPInsidePartnerDevelopmentManagerRole
+  ,ISV.[MPNIPDMR] AS IndependentSoftwareVendorAMPPartnerDevelopmentManagerRole
+  ,ISV.[IPDMR] AS IndependentSoftwareVendorInsidePartnerDevelopmentManagerRole
+  ,ISV.[IPDMRRatio] AS IndependentSoftwareVendorInsidePartnerDevelopmentManagerRoleRatio
+  ,ISV.[ISR] AS IndependentSoftwareVendorISR
+  ,ISV.[MPNIPDMR] AS IndependentSoftwareVendorMicrosoftPartnerNetworkInsidePartnerDevelopmentManagerRole
+  ,ISV.[PartnerIPDMR] AS IndependentSoftwareVendorPartnerInsidePartnerDevelopmentManagerRole
+  ,ISV.[ISVEngagementbyPDMR] AS IndependentSoftwareVendorMicrosoftPartnerNetworkPartnerDevelopmentManagerRole
+  ,ISV.[PartnerPDMR] AS IndependentSoftwareVendorPartnerPartnerDevelopmentManagerRole
+  ,ISV.[ISVPDMR] AS IndependentSoftwareVendorPartnerDevelopmentManagerRole
+  ,ISV.[PDMRRatio] AS IndependentSoftwareVendorPartnerDevelopmentManagerRoleRatio
+  ,ISV.[OpenQuestionComment]
+FROM [CoSellT].[FactRecruitISVTargets] AS [ISV]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    75, N'[CoSell].[vw_FactSolution]', 
+    N' CREATE VIEW [CoSell].[vw_FactSolution]
+AS
+SELECT [FS].[PartnerOneKey]
+  ,[FS].[Solutionkey]
+  ,[FS].[CoSellReadyDateKey]
+  ,[FS].[CreatedDateKey]
+  ,[FS].[IndustryKey]
+  ,[FS].[ISVConnectAppKey] AS IndependentSoftwareVendorConnectAppKey
+  ,[FS].[SolutionAreaKey]
+  ,[FS].[Calc_PartnerOneGPSCRMID] AS CustomerAccountLifeCyclePartnerOneGPSCRMID
+  ,[FS].[PartnerOneKeyHavingAccountTag]
+  ,[FS].[Conversation]
+FROM [CoSellT].[FactSolution] AS [FS]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    76, N'[CoSell].[vw_FactSolutionBilledOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_FactSolutionBilledOpportunity]
+AS
+SELECT [FSBO].[ATUKey] AS AccountTeamUnitKey
+  ,[FSBO].[CRMPartnerAccountKey]
+  ,[FSBO].[CustomerGeographyKey]
+  ,[FSBO].[CustomerSegmentKey]
+  ,[FSBO].[MSXRevSumDivisionKey]
+  ,[FSBO].[OpportunityKey]
+  ,[FSBO].[PartnerDealKey]
+  ,[FSBO].[PartnerOneKey]
+  ,[FSBO].[ProductKey]
+  ,[FSBO].[RevSumDivisionKey]
+  ,[FSBO].[SolutionKey]
+  ,[FSBO].[TPAccountKey]
+  ,[FSBO].[IndustryKey]
+  ,[FSBO].[IsSolutionAttached] AS [IsCloudSolutionProviderSolutionAttached]
+  ,[FSBO].[GPSCRMSolutionID] AS [GPSCRMSolutionID]
+  ,[FSBO].[OpportunityDueDateKey]
+  ,[FSBO].[OpportunityRevenue]
+  ,[FSBO].[SellerCoSellIncentiveKey]
+  ,[FSBO].[SolutionAreaKey]
+  ,[FSBO].[Calc_PartnerOneGPSCRMID] AS CustomerAccountLifeCyclePartnerOneGPSCRMID
+FROM [CoSellT].[FactSolutionBilledOpportunity] AS [FSBO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    77, N'[CoSell].[vw_FactSolutionConsumptionOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_FactSolutionConsumptionOpportunity]
+AS
+SELECT [FSCO].[ATUKey] AS AccountTeamUnitKey
+  ,[FSCO].[CRMPartnerAccountKey]
+  ,[FSCO].[CustomerGeographyKey]
+  ,[FSCO].[CustomerSegmentKey]
+  ,[FSCO].[OpportunityKey]
+  ,[FSCO].[EngagementMilestoneKey]
+  ,[FSCO].[MSXWorkloadKey]
+  ,[FSCO].[PartnerDealKey]
+  ,[FSCO].[PartnerOneKey]
+  ,[FSCO].[SolutionKey]
+  ,[FSCO].[TPAccountKey]
+  ,[FSCO].[EstimatedCompletionDateKey]
+  ,[FSCO].[EstimatedMonthlyUsage]
+  ,[FSCO].[EstimatedAnnualUsageMilestone]
+  ,[FSCO].[IndustryKey]
+  ,[FSCO].[IsSolutionAttached] AS [IsCloudSolutionProviderSolutionAttached]
+  ,[FSCO].[GPSCRMSolutionID] AS [GPSCRMSolutionID]
+  ,[FSCO].[SellerCoSellIncentiveKey]
+  ,[FSCO].[SolutionAreaKey]
+FROM [CoSellT].[FactSolutionConsumptionOpportunity] AS [FSCO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    78, N'[CoSell].[vw_FactSolutionPartnerDeal]', 
+    N' CREATE VIEW [CoSell].[vw_FactSolutionPartnerDeal]
+AS
+SELECT FSPD.ATUKey AS AccountTeamUnitKey
+  ,FSPD.CRMPartnerAccountKey
+  ,FSPD.CustomerGeographyKey
+  ,FSPD.CustomerSegmentKey
+  ,FSPD.OpportunityKey
+  ,FSPD.PartnerDealKey
+  ,FSPD.PartnerDealSolutionAttachedKey
+  ,FSPD.PartnerOneKey
+  ,FSPD.SolutionKey
+  ,FSPD.TPAccountKey
+  ,FSPD.ApprovalDateKey
+  ,FSPD.Approval_ReportedDateKey AS Approval_ReportedDateKey
+  ,FSPD.IPCoSellDealReg_Azure
+  ,FSPD.DealSourceType
+  ,FSPD.IndustryKey
+  ,FSPD.IsPartnerReportedACR AS IsPartnerReportedAzureConsumptionRevenue
+  ,FSPD.IsSolutionAttached
+  ,FSPD.IsSolutionAttached_Deal
+  ,FSPD.IsSolutionAttached_Oppty AS IsSolutionAttached_Opportunity
+  ,FSPD.GPSCRMSolutionID
+  ,FSPD.PartnerRevenueCD
+  ,FSPD.PartnerReportedACR_Azure AS PartnerReportedAzureConsumptionRevenue_Azure
+  ,FSPD.PSXDealID
+  ,FSPD.SolutionAreaKey
+  ,FSPD.SellerCoSellIncentiveKey
+  ,FSPD.ServiceCompGroupingKey
+  ,FSPD.Calc_PartnerOneGPSCRMID AS CustomerAccountLifeCyclePartnerOneOCPCRMID
+FROM [CoSellT].[FactSolutionPartnerDeal] FSPD'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    79, N'[CoSell].[vw_FactSolutionPracticeIndustryCountry]', 
+    N' CREATE VIEW [CoSell].[vw_FactSolutionPracticeIndustryCountry]
+AS
+SELECT [CapacityGeographyKey]
+  ,[IndustryKey]
+  ,[PartnerOneKey]
+  ,[SolutionKey]
+  ,[SolutionAreaKey]
+  ,[IsPrioritizedSolution]
+  ,[Source]
+  ,[Calc_PartnerOneGPSCRMID] AS CustomerAccountLifeCyclePartnerOneGPSCRMID
+FROM [CoSellT].[MapSolutionPracticeIndustryCountry]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    80, N'[CoSell].[vw_Fact_AzureConsumedRevenuePipeline]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_AzureConsumedRevenuePipeline]
+AS
+SELECT FEM.[ATUKey]
+  ,[FEM].[CustomerGeographyKey]
+  ,[FEM].[CustomerSegmentKey]
+  ,[FEM].[EngagementMilestoneKey]
+  ,[FEM].[EstimatedDateKey]
+  ,[FEM].[MSXWorkloadKey]
+  ,[FEM].[LeadKey]
+  ,[FEM].[OpportunityKey]
+  ,[FEM].[PartnerNumber]
+  ,[FEM].[PartnerNumberKey]
+  ,[FEM].[PartnerOneKey]
+  ,[FEM].[PartnerOneReportingKey]
+  ,[FEM].[ReportingGeographyKey]
+  ,[FEM].[PartnerGeographyKey]
+  ,[FEM].[TPAccountKey]
+  ,[FEM].[EstimatedMonthlyUsage]
+  ,[FEM].[SharingTypeKey]
+  ,[FEM].[IsMultiPartner]
+FROM [CoSellT].[FactEngagementMilestonePipeline] AS [FEM]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    81, N'[CoSell].[vw_Fact_CRMPartner]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_CRMPartner]
+AS
+SELECT [FCP].[CRMPartnerAccountKey]
+  ,[FCP].[PartnerOneKey]
+  ,[FCP].[PartnerOneReportingKey]
+  ,[FCP].[ReportingGeographyKey]
+  ,[FCP].[GeographyKey]
+FROM [CoSellT].[FactCRMPartner] AS [FCP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    82, N'[CoSell].[vw_Fact_CSPSolutionBilledOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_CSPSolutionBilledOpportunity]
+AS
+SELECT [FCSO].[ATUKey] AS [AccountTeamUnitKey]
+  ,[FCSO].[CapacityGeographyKey]
+  ,[FCSO].[CRMPartnerAccountKey]
+  ,[FCSO].[CustomerGeographyKey]
+  ,[FCSO].[CustomerSegmentKey]
+  ,[FCSO].[MSXRevSumDivisionKey]
+  ,[FCSO].[OpportunityKey]
+  ,[FCSO].[PartnerDealKey]
+  ,[FCSO].[PartnerOneKey]
+  ,[FCSO].[ProductKey]
+  ,[FCSO].[RevSumDivisionKey]
+  ,[FCSO].[SolutionKey]
+  ,[FCSO].[TPAccountKey]
+  ,[FCSO].[IndustryKey]
+  ,[FCSO].[IsCSPSolutionAttached] AS [IsCloudSolutionProviderSolutionAttached]
+  ,[FCSO].[GPSCRMSolutionID]
+  ,[FCSO].[OpportunityDueDateKey]
+  ,[FCSO].[OpportunityRevenue]
+  ,[FCSO].[SolutionAreaKey]
+  ,[FCSO].[SellerCoSellIncentiveKey]
+  ,[FCSO].[Calc_PartnerOneGPSCRMID] AS [CustomerAccountLifeCyclePartnerOneGPSCRMID]
+FROM [CoSellT].[FactCSPSolutionBilledOpportunity] [FCSO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    83, N'[CoSell].[vw_Fact_CSPSolutionConsumptionOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_CSPSolutionConsumptionOpportunity]
+AS
+SELECT [FCSCO].[ATUKey] AS [AccountTeamUnitKey]
+  ,[FCSCO].[CapacityGeographyKey]
+  ,[FCSCO].[CRMPartnerAccountKey]
+  ,[FCSCO].[CustomerGeographyKey]
+  ,[FCSCO].[CustomerSegmentKey]
+  ,[FCSCO].[OpportunityKey]
+  ,[FCSCO].[EngagementMilestoneKey]
+  ,[FCSCO].[MSXWorkloadKey]
+  ,[FCSCO].[PartnerDealKey]
+  ,[FCSCO].[PartnerOneKey]
+  ,[FCSCO].[SolutionKey]
+  ,[FCSCO].[TPAccountKey]
+  ,[FCSCO].[EstimatedCompletionDateKey]
+  ,[FCSCO].[EstNoOfActivations_MW] AS [EstNoOfActivations_ModernWork]
+  ,[FCSCO].[EstimatedMonthlyUsage]
+  ,[FCSCO].[EstimatedAnnualUsageMilestone]
+  ,[FCSCO].[IndustryKey]
+  ,[FCSCO].[IsCSPSolutionAttached] AS [IsCloudSolutionProviderSolutionAttached]
+  ,[FCSCO].[GPSCRMSolutionID]
+  ,[FCSCO].[SellerCoSellIncentiveKey]
+  ,[FCSCO].[SolutionAreaKey]
+  ,[FCSCO].[Calc_PartnerOneGPSCRMID] AS [CustomerAccountLifeCyclePartnerOneGPSCRMID]
+FROM [CoSellT].[FactCSPSolutionConsumptionOpportunity] [FCSCO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    84, N'[CoSell].[vw_Fact_CSPSolutionPartnerDeal]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_CSPSolutionPartnerDeal]
+AS
+SELECT [FCSPD].[PartnerDealCSPSolutionAttachedKey] AS [PartnerDealCloudSolutionProviderSolutionAttachedKey]
+  ,ISNULL([FCSPD].[PartnerDealKey], 0) AS [PartnerDealKey]
+  ,ISNULL([FCSPD].[PSXDealID], 0) AS [PSXDealID]
+  ,ISNULL([FCSPD].[PartnerRevenueCD], 0) AS [PartnerRevenueCD]
+  ,[FCSPD].PartnerReportedACR_Azure AS [AzurePartnerReportedACR]
+  ,ISNULL([FCSPD].[IPCoSellDealReg_Azure], 0) AS [IPCoSellDealReg_Azure]
+  ,ISNULL([FCSPD].[DealSourceType], 0) AS [DealSourceType]
+  ,ISNULL([FCSPD].[ApprovalDateKey], 0) AS [ApprovalDateKey]
+  ,FCSPD.Approval_ReportedDateKey AS [ApprovalandReportedDateKey]
+  ,ISNULL([FCSPD].[CRMPartnerAccountKey], 0) AS [CRMPartnerAccountKey]
+  ,ISNULL([FCSPD].[CustomerSegmentKey], 0) AS [CustomerSegmentKey]
+  ,ISNULL([FCSPD].[TPAccountKey], 0) AS [TPAccountKey]
+  ,ISNULL([FCSPD].[CustomerGeographyKey], 0) AS [CustomerGeographyKey]
+  ,ISNULL([FCSPD].[OpportunityKey], 0) AS [OpportunityKey]
+  ,ISNULL([FCSPD].[ATUKey], 0) AS [AccountTeamUnitKey]
+  ,ISNULL([FCSPD].[SolutionKey], 0) AS [SolutionKey]
+  ,ISNULL([FCSPD].[GPSCRMSolutionID], ''Unknown'') AS [GPSCRMSolutionID]
+  ,ISNULL([FCSPD].[PartnerOneKey], 0) AS [PartnerOneKey]
+  ,ISNULL([FCSPD].[SolutionAreaKey], 0) AS [SolutionAreaKey]
+  ,[FCSPD].[ServiceCompGroupingKey]
+  ,[FCSPD].[SellerCoSellIncentiveKey]
+  ,ISNULL([FCSPD].[IndustryKey], 0) AS [IndustryKey]
+  ,ISNULL([FCSPD].[CapacityGeographyKey], 0) AS [CapacityGeographyKey]
+  ,FCSPD.IsPartnerReportedACR AS [IsPartnerReportedAzureConsumptionRevenue]
+  ,ISNULL([FCSPD].[IsSolutionAttached], 0) AS [IsSolutionAttached]
+  ,ISNULL([FCSPD].[IsSolutionAttached_Oppty], 0) AS [IsSolutionAttached_Opportunity]
+  ,ISNULL([FCSPD].[IsSolutionAttached_Deal], 0) AS [IsSolutionAttached_Deal]
+  ,[FCSPD].[Calc_PartnerOneGPSCRMID] AS [CustomerAccountLifeCyclePartnerOneGPSCRMID]
+FROM [CoSellT].[FactCSPSolutionPartnerDeal] [FCSPD]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    85, N'[CoSell].[vw_Fact_ISVConnect]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_ISVConnect]
+AS
+SELECT FISV.SellerKey
+  ,FISV.AppKey
+  ,FISV.PartnerKey
+  ,FISV.PartnerOneReportingKey
+  ,FISV.PartnerGeographyKey
+  ,FISV.StatusDateKey
+  ,FISV.SolutionKey
+  ,FISV.SolutionAreaKey
+  ,FISV.IndustryKey
+FROM [CoSellT].[FactISVConnect] FISV'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    86, N'[CoSell].[vw_Fact_Lead]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_Lead]
+AS
+SELECT [FL].[ATUKey] AS [AccountTeamUnitKey]
+  ,[FL].[CustomerGeographyKey]
+  ,[FL].[CustomerSegmentKey]
+  ,[FL].[LeadKey]
+  ,[FL].[TPAccountKey]
+  ,[FL].[ConvertedLead]
+  ,[FL].[CreatedDateKey]
+  ,[FL].PartnerOneReportingkey AS [PartnerOneReportingKey]
+  ,[FL].[ReportingGeographyKey]
+  ,[FL].[LeadEstimatedCloseDateKey]
+  ,[FL].[LeadRevenue]
+FROM [CoSellT].[FactLead] AS [FL]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    87, N'[CoSell].[vw_SolutionHistory]', 
+    N' CREATE VIEW [CoSell].[vw_SolutionHistory]
+AS
+SELECT S.AccountKey
+  ,S.SolutionKey
+  ,S.AccountID
+  ,S.CoSellReadyDate
+  ,S.CRMSolutionURL AS CustomerRelationshipManagementSolutionURL
+  ,S.CustomerIsCorporate
+  ,S.CustomerIsEnterprise
+  ,S.CustomerIsSMB AS CustomerIsSmallAndMediumBusiness
+  ,S.Description
+  ,S.GTMQualifiedReadiness AS GoToMarketQualifiedReadiness
+  ,S.GTMQualifiedReadinessType AS GoToMarketQualifiedReadinessType
+  ,S.GTMReadiness AS GoToMarketReadiness
+  ,S.IsPartnerCenterWhitelisted
+  ,S.RunsOnAzure
+  ,S.RunsOnDynamics
+  ,S.RunsOnSQL
+  ,S.RunsOnSurface
+  ,S.RunsOnWindows
+  ,S.SolutionID
+  ,S.SolutionName
+  ,S.SolutionType
+  ,S.PartnerOneID
+  ,S.sellerCosellIncentives as SellerCosellIncentives
+  ,S.ValidFrom
+FROM [CoSellT].[HistorySolution] AS S
+UNION ALL
+SELECT 
+   HS.AccountKey
+  ,HS.SolutionKey
+  ,HS.AccountID
+  ,HS.CoSellReadyDate
+  ,HS.CRMSolutionURL AS CustomerRelationshipManagementSolutionURL
+  ,HS.CustomerIsCorporate
+  ,HS.CustomerIsEnterprise
+  ,HS.CustomerIsSMB AS CustomerIsSmallAndMediumBusiness
+  ,HS.Description
+  ,HS.GTMQualifiedReadiness AS GoToMarketQualifiedReadiness
+  ,HS.GTMQualifiedReadinessType AS GoToMarketQualifiedReadinessType
+  ,HS.GTMReadiness AS GoToMarketReadiness
+  ,HS.IsPartnerCenterWhitelisted
+  ,HS.RunsOnAzure
+  ,HS.RunsOnDynamics
+  ,HS.RunsOnSQL
+  ,HS.RunsOnSurface
+  ,HS.RunsOnWindows
+  ,HS.SolutionID
+  ,HS.SolutionName
+  ,HS.SolutionType
+  ,HS.PartnerOneID
+  ,HS.sellerCosellIncentives as SellerCosellIncentives
+  ,HS.ValidFrom
+FROM [CoSellT].[HistorySolutionHistory] AS HS'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    88, N'[CoSell].[vw_Fact_OpptyPartnerAttachAndSolutionAttach]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_OpptyPartnerAttachAndSolutionAttach]
+AS
+SELECT [OCPASA].[ATUKey] AS [AccountTeamUnitKey]
+  ,[OCPASA].[CapacityGeographyKey]
+  ,[OCPASA].[CRMPartnerAccountKey]
+  ,[OCPASA].[CustomerGeographyKey]
+  ,[OCPASA].[CustomerSegmentKey]
+  ,[OCPASA].[DateKey]
+  ,[OCPASA].EngagementMilestoneKey AS [EngagementMileStoneKey]
+  ,[OCPASA].[IndustryKey]
+  ,[OCPASA].[MSXRevSumDivisionKey]
+  ,[OCPASA].[MSXWorkloadKey]
+  ,[OCPASA].[OpportunityKey]
+  ,[OCPASA].[PartnerDealKey]
+  ,[OCPASA].[PartnerOneKey]
+  ,[OCPASA].[PartnerGeographyKey]
+  ,[OCPASA].Productkey AS [ProductKey]
+  ,[OCPASA].[RevSumDivisionKey]
+  ,[OCPASA].[SolutionAreaKey]
+  ,[OCPASA].[SolutionKey]
+  ,[OCPASA].[TPAccountKey]
+  ,[OCPASA].[IsConsumptionStatusInProgress]
+  ,[OCPASA].[IsOpptyWithPartnerDeal] AS [IsOpportunityWithPartnerDeal]
+  ,[OCPASA].[IsPartnerAttach]
+  ,[OCPASA].[IsBilledConsumptionQualifiedPipeline]
+  ,[OCPASA].[IsSolutionAttach]
+  ,[OCPASA].[IsReportingSalesStage3EmpowerAndAchieveOrLater]
+  ,[OCPASA].[Type]
+  ,[OCPASA].[SharingTypeKey]
+  ,[OCPASA].[IsMultiPartner]
+FROM [CoSellT].[MapOpptyPartnerAttachAndSolutionAttach] AS [OCPASA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    89, N'[CoSell].[vw_Fact_PartnerDealPartnerAttachAndSolutionAttach]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_PartnerDealPartnerAttachAndSolutionAttach]
+AS
+SELECT [PDPASA].[ATUKey] AS [AccountTeamUnitKey]
+  ,[PDPASA].[CRMPartnerAccountKey]
+  ,[PDPASA].[CapacityGeographyKey]
+  ,[PDPASA].[CustomerGeographyKey]
+  ,[PDPASA].[CustomerSegmentKey]
+  ,[PDPASA].[DateKey]
+  ,[PDPASA].EngagementMileStonekey AS [EngagementMilestoneKey]
+  ,[PDPASA].[IndustryKey]
+  ,[PDPASA].[MSXRevSumDivisionKey]
+  ,[PDPASA].[MSXWorkloadKey]
+  ,[PDPASA].[OpportunityKey]
+  ,[PDPASA].[PartnerDealKey]
+  ,[PDPASA].[PartnerOneKey]
+  ,[PDPASA].Productkey AS [ProductKey]
+  ,[PDPASA].[RevSumDivisionKey]
+  ,[PDPASA].[SolutionAreaKey]
+  ,[PDPASA].[SolutionKey]
+  ,[PDPASA].[TPAccountKey]
+  ,[PDPASA].[IsPartnerAttach]
+  ,[PDPASA].[IsOpptySolutionAreaM365OrD365OrAzure] AS [IsOpportunityWithPartnerDeal]
+  ,[PDPASA].[IsSolutionAreaM365D365OrAzure]
+  ,[PDPASA].[IsWorkLoadTypeM365OrD365OrAzure]
+  ,[PDPASA].[IsSolutionAttach]
+  ,[PDPASA].[PartnerDealDirection]
+  ,[PDPASA].[Type]
+  ,[PDPASA].[Calc_PartnerOneGPSCRMID] AS [CustomerAccountLifeCyclePartnerOneGPSCRMID]
+  ,[PDPASA].[SharingTypeKey]
+  ,[PDPASA].[IsMultiPartner]
+FROM [CoSellT].[MapPartnerDealPartnerAttachAndSolutionAttach] AS [PDPASA]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    90, N'[CoSell].[vw_Fact_PartnerSharing]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_PartnerSharing]
+AS
+SELECT MPS.[OpportunityType]
+  ,MPS.[OpportunityKey]
+  ,MPS.OpptyDueOrEstimatedMilestoneDateKey AS [OpptyDueOREstimatedMilestoneDateKey]
+  ,MPS.OpptyActualClosedOrEstimatedMilestoneDateKey AS [OpptyActualClosedOREstimatedMilestoneDateKey]
+  ,MPS.[TPAccountKey]
+  ,MPS.[PartnerDealKey]
+  ,MPS.[ReportingGeographyKey]
+  ,MPS.[CustomerGeographyKey]
+  ,MPS.[PartnerGeographyKey]
+  ,MPS.[CustomerSegmentKey]
+  ,MPS.[CRMPartnerAccountKey]
+  ,MPS.[PartnerOneKey]
+  ,MPS.[PartnerOneReportingKey]
+  ,MPS.AtuKey AS [ATUKey]
+  ,MPS.[RevSumDivisionKey]
+  ,MPS.[OpptySolutionAreaKey] AS [OpportunitySolutionAreaKey]
+  ,MPS.BilledOpptyRevenueOrConsumptionOpptyEstimatedMonthlyUsage AS [BilledOpptyRevenueORConsumptionOpptyEstimatedMonthlyUsage]
+  ,MPS.[SharingTypeKey]
+  ,MPS.[IsMultiPartner]
+  ,MPS.OpportunityStatus AS [BilledConsumptionOpptyStatus]
+  ,MPS.IsCseClosedCompleted AS [IsCSEClosedCompleted]
+  ,MPS.IsCseClosedCancelled AS [IsCSEClosedCancelled]
+  ,MPS.[EstNoOfActivations]
+  ,MPS.[EngagementMilestoneKey]
+  ,MPS.OpportunityCount AS [Value]
+  ,MPS.[Opportunity_CalculationKey]
+  ,MPS.MetricSharingNumerator AS [PartnerSharing_PipelineNumerator]
+  ,MPS.MetricSharingDenominator AS [PartnerSharing_PipelineDenominator]
+  ,MPS.WinsPartnerSharingNumerator AS [PartnerSharing_WinsNumerator]
+  ,MPS.WinsPartnerSharingDenominator AS [PartnerSharing_WinsDenominator]
+  ,MPS.[PartnerSharingTypeKey]
+  ,MPS.MsxRevSumDivisionKey AS [MSXRevSumDivisionKey]
+  ,MPS.MsxWorkloadKey AS [MSXWorkloadkey]
+  ,MPS.[IsQualifiedPipe]
+  ,MPS.IsAzureIpCoSell AS [IsAzureIPCosell]
+  ,MPS.MetricIsMetricEligible AS [IsMetricEligible]
+FROM [CoSellT].[FactMSXPartnerSharing] MPS'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    91, N'[CoSell].[vw_Fact_PrioritizedOppty]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_PrioritizedOppty]
+AS
+SELECT [Type]
+  ,[OpportunityKey]
+  ,[OpptyDueOREstimatedMilestoneDateKey] AS [OpportunityDueOREstimatedMilestoneDateKey]
+  ,[SolutionKey]
+  ,[SolutionAreaKey]
+  ,[IndustryKey]
+  ,[PartnerOneKey]
+  ,[PartnerOneReportingKey]
+  ,[ReportingGeographyKey]
+  ,[PartnerGeographyKey]
+  ,[CRMPartnerAccountKey]
+  ,[CapacityGeographyKey]
+  ,[PartnerDealKey]
+  ,[TPAccountKey]
+  ,[CustomerSegmentKey]
+  ,[CustomerGeographyKey]
+  ,[ATUKey] AS [AccountTeamUnitKey]
+  ,[OpportunityRevenue]
+  ,[EstimatedMonthlyUsage]
+  ,[EstNoOfActivations] AS [EstimatedNumberOfActivations]
+  ,[IsOpptyWithPartnerDeal] AS [IsOpportunityWithPartnerDeal]
+  ,[EngagementMilestoneKey]
+  ,[RevSumDivisionKey]
+  ,[Opportunity_CalculationKey] AS [OpportunityCalculationKey]
+  ,[OpptySolutionAreaKey] AS [OpportunitySolutionAreaKey]
+  ,[Value]
+  ,[SharingTypeKey]
+  ,[IsMultiPartner]
+FROM [CoSellT].[MapPrioritizedOppty] [BT]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    92, N'[CoSell].[vw_Fact_SolutionCapacityGeography]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_SolutionCapacityGeography]
+AS
+SELECT [FS].[SolutionKey]
+  ,[FS].[SolutionAreaKey]
+  ,[FS].[IndustryKey]
+  ,[FS].[CreatedDateKey]
+  ,[FS].[SellerCoSellIncentiveKey]
+  ,[FS].[PartnerOneKey]
+  ,[FS].[Calc_PartnerOneOCPCRMID] AS [Calc_PartnerOneGPSCRMID]
+  ,[FS].[PartnerOneKeyHavingAccountTag]
+  ,[FS].[CoSellReadyDateKey]
+  ,[FS].[CapacityGeographyKey]
+  ,[FS].[SellInCountryCount]
+  ,[FS].[SolutionEngagementPipelineKey]
+  ,[FS].[Value]
+FROM [CoSellT].[FactSolutionCapacityGeography] AS [FS]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    93, N'[CoSell].[vw_Fact_SolutionPracticeIndustryCountry_Capacity]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_SolutionPracticeIndustryCountry_Capacity]
+AS
+SELECT [CapacityGeographyKey]
+  ,industryKey AS [IndustryKey]
+  ,[PartnerOneKey]
+  ,[SolutionKey]
+  ,[SolutionAreaKey]
+  ,[IsPrioritizedSolution]
+FROM [CoSellT].[MapSolutionPracticeIndustryCountry_Capacity]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    94, N'[CoSell].[vw_Fact_SolutionPriorityScenarioIndustryCountrySnapshot]', 
+    N' CREATE VIEW [CoSell].[vw_Fact_SolutionPriorityScenarioIndustryCountrySnapshot]
+AS
+SELECT [MAP].[PartnerOneKey]
+  ,[MAP].[SolutionKey]
+  ,[MAP].[CapacityGeographyKey]
+  ,[MAP].[SolutionAreaKey]
+  ,[MAP].[IndustryKey]
+  ,[MAP].[GTMReadinessKey]
+  ,[MAP].[IsPrioritizedSolution]
+  ,[MAP].[FiscalMonthID]
+  ,[MAP].[DateKey]
+  ,[MAP].[IsFiscalMonthEnd]
+  ,[MAP].[Calc_PartnerOneGPSCRMID] AS [CustomerAccountLifeCyclePartnerOneGPSCRMID]
+FROM [CoSellT].[SnapshotMapSolutionPriorityScenarioIndustryCountry] MAP'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    95, N'[CoSell].[vw_HistoricalRecruitFlags]', 
+    N' CREATE VIEW [CoSell].[vw_HistoricalRecruitFlags]
+AS
+SELECT [HRF].[AccountKey]
+  ,[HRF].[GPSCRMID]
+  ,[HRF].[PartnerOneID]
+  ,[HRF].[IsFY24RecruitPartner]
+  ,[HRF].[IsFY25RecruitPartner]
+  ,[HRF].[IsFY26RecruitPartner]
+  ,[HRF].[PDMRAssignedFrom] AS PartnerDevelopmentManagerRoleAssignedFrom
+  ,[HRF].[PDMRAssignedTo] AS PartnerDevelopmentManagerRoleAssignedTo
+FROM [CoSellT].[HistoricalRecruitFlags] AS [HRF]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    96, N'[CoSell].[vw_HistoryAccount]', 
+    N' CREATE VIEW [CoSell].[vw_HistoryAccount]
+AS
+SELECT A.[Accountkey] AS GPSCRMAccountKey
+  ,A.[AccountName]
+  ,A.[AccountStatus]
+  ,A.[AddressLine1]
+  ,A.[AddressLine2]
+  ,A.[AddressLine3]
+  ,A.[BusinessUnit]
+  ,A.[City]
+  ,A.[CountryCode]
+  ,A.[Created]
+  ,A.[CreatedByUserId]
+  ,A.[PMXAccountURL]
+  ,A.[ModifiedByUserId]
+  ,A.[Custom1]
+  ,A.[Custom2]
+  ,A.[Custom3]
+  ,A.[Custom4]
+  ,A.[ManagementLevel]
+  ,A.[GPSCRMID]
+  ,A.[PartnerOneID]
+  ,A.[PartnerOneName]
+  ,A.[PartnerSegment]
+  ,A.[PartnerSubSegment]
+  ,A.[PostalCode]
+  ,A.[RoleType]
+  ,A.[RowInsertedDateTime]
+  ,A.[StateOrProvince]
+  ,A.[Tags]
+  ,A.[ValidFrom]
+  ,A.[ValidTo]
+  ,A.[Website]
+  ,A.[ModifiedOn] AS [CrmModifiedOn]
+FROM [CoSellT].[HistoryAccount] AS A'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    97, N'[CoSell].[vw_HistoryAccountToPersonMappingHistory]', 
+    N' CREATE VIEW [CoSell].[vw_HistoryAccountToPersonMappingHistory]
+AS
+SELECT A.[AccountKey] AS GPSCRMAccountKey
+  ,A.[AccountPersonKey]
+  ,A.[ModifiedOn] AS [CrmModifiedOn]
+  ,A.[ValidFrom] AS [ValidDateFrom]
+  ,A.[ValidTo] AS [ValidDateTo]
+FROM [CoSellT].[HistoryAccountToPersonMappingHistory] A'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    98, N'[CoSell].[vw_MapAccountTag]', 
+    N' CREATE VIEW [CoSell].[vw_MapAccountTag]
+AS
+SELECT [AccountKey]
+  ,[AccountTagKey]
+FROM [CoSellT].[MapAccountTag]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    99, N'[CoSell].[vw_MapIndustrySolution]', 
+    N' CREATE VIEW [CoSell].[vw_MapIndustrySolution]
+AS
+SELECT [FIS].[SolutionKey]
+  ,[FIS].[IndustrySKID]
+FROM [CoSellT].[MapIndustrySolution] AS [FIS]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    100, N'[CoSell].[vw_MapOfferPartnerDeal]', 
+    N' CREATE VIEW [CoSell].[vw_MapOfferPartnerDeal]
+AS
+SELECT PartnerDealkey AS [PartnerDealKey]
+  ,[MarketplaceOfferKey]
+FROM [CoSellT].[MapOfferPartnerDeal]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    101, N'[CoSell].[vw_MapOpportunityPartner]', 
+    N' CREATE VIEW [CoSell].[vw_MapOpportunityPartner]
+AS
+SELECT [OpportunityKey]
+  ,[OpportunityNumber]
+  ,[PartnerDealKey]
+  ,[PSXDealID]
+  ,[CRMPartnerAccountKey]
+FROM [CoSellT].[MapOpportunityPartner]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    102, N'[CoSell].[vw_MapOpportunityPartnerDeal]', 
+    N' CREATE VIEW [CoSell].[vw_MapOpportunityPartnerDeal]
+AS
+SELECT [FOPD].[OpportunityKey]
+  ,[FOPD].[PartnerDealKey]
+FROM [CoSellT].[MapOpportunityPartnerDeal] AS [FOPD]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    103, N'[CoSell].[vw_MapOpportunitySalesProgram]', 
+    N' CREATE VIEW [CoSell].[vw_MapOpportunitySalesProgram]
+AS
+SELECT [FSP].[OpportunityKey]
+  ,[FSP].[SalesProgramKey]
+FROM [CoSellT].[MapOpportunitySalesProgram] AS [FSP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    104, N'[CoSell].[vw_MapOpportunitySolution]', 
+    N' CREATE VIEW [CoSell].[vw_MapOpportunitySolution]
+AS
+SELECT [OpportunityKey]
+  ,[SolutionKey]
+FROM [CoSellT].[MapOpportunitySolution]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    105, N'[CoSell].[vw_MapPartnerDeal]', 
+    N' CREATE VIEW [CoSell].[vw_MapPartnerDeal]
+AS
+SELECT [FPD].[CRMPartnerAccountKey]
+  ,[FPD].[PartnerDealKey]
+FROM [CoSellT].[MapPartnerDeal] AS [FPD]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    106, N'[CoSell].[vw_MapPartnerOneAccountTag]', 
+    N' CREATE VIEW [CoSell].[vw_MapPartnerOneAccountTag]
+AS
+SELECT PartnerOneKey
+  ,AccountTagKey
+FROM [CoSellT].[MapPartnerOneAccountTag]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    107, N'[CoSell].[vw_MapPartnerOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_MapPartnerOpportunity]
+AS
+SELECT [FPO].[CRMPartnerAccountKey]
+  ,[FPO].[OpportunityKey]
+FROM [CoSellT].[MapPartnerOpportunity] AS [FPO]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    108, N'[CoSell].[vw_MapPrioritizedAndReadyPartnersConsumptionOpportunity]', 
+    N' CREATE VIEW [CoSell].[vw_MapPrioritizedAndReadyPartnersConsumptionOpportunity]
+AS
+SELECT [DPRP].[CapacityGeographyKey]
+  ,[DPRP].[CustomerGeographyKey]
+  ,[DPRP].[CustomerSegmentKey]
+  ,[DPRP].[PartnerOneKey]
+  ,[DPRP].[SolutionKey]
+  ,[DPRP].[TPAccountKey]
+  ,[DPRP].[CustomerSubsidiary]
+  ,[DPRP].[OpportunityCreatedDateKey]
+  ,[DPRP].[OpportunityKey]
+  ,[DPRP].[OpportunityNumber]
+  ,[DPRP].[EstimatedCompletionDateKey]
+  ,[DPRP].[EstimatedStartDateKey]
+  ,[DPRP].[IndustryKey]
+  ,[DPRP].IsPartnerDealPresent AS [IsOpportunitySharedWithPartner]
+  ,[DPRP].[IsPrioritizedSolution]
+  ,[DPRP].[Partnerkey]
+  ,[DPRP].[PartnerGeographyKey]
+  ,[DPRP].[SolutionAreaKey]
+  ,[DPRP].[Subsidiary]
+  ,[DPRP].[PartnerOneReportingKey]
+  ,[DPRP].[ReportingGeographyKey]
+  ,[DPRP].[SharingTypeKey]
+  ,[DPRP].[IsMultiPartner]
+FROM [CoSellT].[DimPrioritizedAndReadyPartnersConsumptionOpportunity] AS [DPRP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    109, N'[CoSell].[vw_MapPrioritizedAndReadyPartnersOppty]', 
+    N' CREATE VIEW [CoSell].[vw_MapPrioritizedAndReadyPartnersOppty]
+AS
+SELECT [DPAR].[CapacityGeographyKey]
+  ,[DPAR].[CustomerGeographyKey]
+  ,[DPAR].[CustomerSegmentKey]
+  ,[DPAR].[MSXRevSumDivisionKey]
+  ,[DPAR].[OpportunityKey]
+  ,[DPAR].[PartnerOneKey]
+  ,[DPAR].[ProductKey]
+  ,[DPAR].[RevSumDivisionKey]
+  ,[DPAR].[SolutionKey]
+  ,[DPAR].[TPAccountKey]
+  ,[DPAR].[CustomerSubsidiary]
+  ,[DPAR].[Industrykey]
+  ,[DPAR].[IsPartnerDealPresent]
+  ,[DPAR].[IsPrioritizedSolution]
+  ,[DPAR].[OpportunityNumber]
+  ,[DPAR].[OpptyCreatedDateKey]
+  ,[DPAR].[OpptyDueDateKey]
+  ,[DPAR].[PartnerGeographyKey]
+  ,[DPAR].SolutionAreaLevel1 AS [SolutionArea]
+  ,[DPAR].[SolutionAreaKey]
+  ,[DPAR].[SolutionID]
+  ,[DPAR].PrioritizedPartnerOpptykey AS [SolutionOpportunityMapKey]
+  ,[DPAR].[Subsidiary]
+  ,[DPAR].[PartnerOneReportingKey]
+  ,[DPAR].[ReportingGeographyKey]
+  ,[DPAR].[SharingTypeKey]
+  ,[DPAR].[IsMultiPartner]
+FROM [CoSellT].[DimPrioritizedAndReadyPartnersOppty] AS [DPAR]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    110, N'[CoSell].[vw_MapSolutionPartnerOneReportingPartnerOneSubAccountTab]', 
+    N' CREATE VIEW [CoSell].[vw_MapSolutionPartnerOneReportingPartnerOneSubAccountTab]
+AS
+SELECT [Calc_PartnerOneGPSCRMID] AS [MapPartnerOneAccountKey]
+  ,[AccountKey] AS GPSCRMAccountKey
+  ,[PartnerOneReportingKey]
+  ,[PartnerOneKey]
+  ,[ReportingGeographyKey]
+  ,[PartnerGeographyKey]
+FROM [CoSellT].[MapSolutionPartnerOneReportingPartnerOneSubAccount_Tab]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    111, N'[CoSell].[vw_MapSolutionPractice]', 
+    N' CREATE VIEW [CoSell].[vw_MapSolutionPractice]
+AS
+SELECT [FSP].[SolutionAreaKey]
+  ,[FSP].[SolutionKey]
+FROM [CoSellT].[MapSolutionPractice] AS [FSP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    112, N'[CoSell].[vw_MapSolutionSellInCountry]', 
+    N' CREATE VIEW [CoSell].[vw_MapSolutionSellInCountry]
+AS
+SELECT FSC.[SellInCountryKey]
+  ,FSC.[SolutionKey]
+FROM [CoSellT].[MapSolutionSellInCountry] AS FSC'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    113, N'[CoSell].[vw_MapSolutionSellerCoSellIncentiveCapacity]', 
+    N' CREATE VIEW [CoSell].[vw_MapSolutionSellerCoSellIncentiveCapacity]
+AS
+SELECT ISNULL(SolutionKey, 0) AS [SolutionKey]
+  ,ISNULL(SellerCoSellIncentiveKey, 0) AS [SellerCoSellIncentiveKey]
+FROM [CoSellT].[MapSolutionSellerCoSellIncentive_Capacity]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    114, N'[CoSell].[vw_Opportunity_MilestoneEstCompletionDate]', 
+    N' CREATE VIEW [CoSell].[vw_Opportunity_MilestoneEstCompletionDate]
+AS
+SELECT [OEMD].[OpptyMilestoneEstCompletionDateKey]
+  ,[OEMD].[EstimatedCompletionDate]
+  ,[OEMD].[EstimatedCompletionMonth]
+  ,[OEMD].[EstimatedCompletionMonthID] AS [EstimatedCompletionMonthId]
+  ,[OEMD].[EstimatedCompletionQuarter]
+  ,[OEMD].[EstimatedCompletionQuarterID] AS [EstimatedCompletionQuarterId]
+  ,[OEMD].[EstimatedCompletionYear]
+  ,[OEMD].[EstimatedCompletionYearID] AS [EstimatedCompletionYearId]
+  ,[OEMD].[IsEstimatedCompletionInNext12Months]
+  ,[OEMD].[IsEstimatedCompletionInTrailing12Months]
+  ,[OEMD].[IsEstimatedCompletionInNext6Months]
+  ,[OEMD].[IsEstimatedCompletionInTrailing6Months]
+FROM [CoSellT].[DimOpportunityMilestoneEstCompletionDate] [OEMD]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    115, N'[CoSell].[vw_PartnerDealSolution_Snapshot]', 
+    N' CREATE VIEW [CoSell].[vw_PartnerDealSolution_Snapshot]
+AS
+SELECT [SolutionID]
+  ,[SolutionName]
+  ,[PartnerOneID]
+  ,[GPSCRMID]
+  ,[RowInsertedDate]
+  ,[ReportedCustomSegment]
+  ,[MALFlagName]
+FROM [CoSellT].[PartnerDealSolution_Snapshot]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    116, N'[CoSell].[vw_SPM_ManagedTopParentAccounts_int]', 
+    N' CREATE VIEW [CoSell].[vw_SPM_ManagedTopParentAccounts_int]
+AS
+SELECT [MSSalesAccountID]
+  ,[MSSalesAccountName]
+  ,[CRMAccountID] AS ManagementAccountID
+  ,[CRMAccountName] AS ManagementAccountName
+  ,[GPID]
+  ,[GPName]
+  ,[HQ/DS]
+  ,[SegmentGroup]
+  ,[Segment]
+  ,[SubSegment]
+  ,[Vertical]
+  ,[SubVertical]
+  ,[VerticalCategory]
+  ,[AreaID]
+  ,[AreaName]
+  ,[RegionID]
+  ,[RegionName]
+  ,[SubRegionID]
+  ,[SubRegionName]
+  ,[SubsidiaryGUID]
+  ,[SubsidiaryName]
+  ,[SalesGroupID]
+  ,[SalesGroup]
+  ,[SalesUnitID]
+  ,[SalesUnit]
+  ,[ATUGroupID] AS AccountTeamUnitGroupId
+  ,[ATUGroup] AS AccountTeamUnitGroup
+  ,[ATUID] AS AccountTeamUnitID
+  ,[ATUName] AS AccountTeamUnitName
+  ,[SalesTerritoryGUID]
+  ,[SalesTerritoryName]
+  ,[AM]
+  ,[ATS]
+  ,[ATUManager] AS AccountTeamUnitManager
+  ,[ATUGroupManager] AS AccountTeamUnitGroupManager
+  ,[AddressLine1]
+  ,[AddressLine2]
+  ,[AddressLine3]
+  ,[City]
+  ,[StateOrProvince]
+  ,[Country]
+  ,[PostalCode]
+  ,[MainPhone]
+  ,[WebsiteURL]
+  ,[GovernmentLevel]
+  ,[IsTopSMB]
+  ,[SMBMALReason] AS SmallAndMediumBusinessMALReason
+  ,[ISDPresence]
+  ,[IsServiceEngagementAccount]
+  ,[ITGovernance]
+  ,[DunsNumber]
+  ,[EmployeeCount]
+  ,[Description]
+  ,[AccountGUID]
+  ,[ParentAccountGUID]
+  ,[IsRevenueAccount]
+  ,[OemOrganizationType]
+  ,[OemSummarySegment]
+  ,[MDMOrganizationID]
+  ,[AccountStatus]
+  ,[AccountType]
+  ,[IsManagedAccount]
+  ,[CreatedOn]
+  ,[CreatedBy]
+  ,[ModifiedOn]
+  ,[ModifiedBy]
+FROM [CoSellT].[SPM_ManagedTopParentAccounts_int]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    117, N'[CoSell].[vw_SnapshotDimOpportunityWeekly]', 
+    N' CREATE VIEW [CoSell].[vw_SnapshotDimOpportunityWeekly]
+AS
+SELECT OpportunityNumber
+  ,OpportunityName
+  ,OpportunityType
+  ,OpportunityCreatedDate
+FROM [CoSellT].[SnapshotDimOpportunityWeekly]'
+  );
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    118, N'[CoSell].[vw_FactPartnerDealFY23]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerDealFY23]
+AS
+SELECT FPF.Approval_ReportedDateKey AS [ApprovalReportedDateKey]
+  ,FPF.ApprovalDateKey
+  ,FPF.CustomerGeographyKey
+  ,FPF.CustomerSegmentKey
+  ,FPF.IsPartnerReportedACR
+  ,FPF.ServiceCompGroupingKey
+  ,FPF.TPAccountKey
+  ,FPF.IPCoSellDealReg_Azure AS [IPCoSellDealRegAzure]
+  ,FPF.EstimatedRevenueCD
+  ,FPF.IsPartnerCoSellDeal_Azure_ACR AS [IsPartnerCoSellDealAzure_AzureConsumptionRevenue]
+  ,FPF.IsPartnerCoSellDeal_ClosedMonth_Azure_ACR AS [IsPartnerCoSellDealClosedMonthAzure_AzureConsumptionRevenue]
+  ,FPF.PartnerReportedACR_Azure AS [PartnerReportedAzureConsumptionRevenueAzure]
+  ,FPF.TrueACRConsumption AS [TrueAzureConsumptionRevenueConsumption]
+  ,FPF.PartnerDealKey
+  ,FPF.ATUKey AS [AccountTeamUnitKey]
+  ,FPF.ChannelPartnerOneKey
+  ,FPF.CRMPartnerAccountKey
+  ,FPF.IPCoSellPartnerOneKey
+  ,FPF.LeadKey
+  ,FPF.OpportunityKey
+  ,FPF.PartnerGeographyKey
+  ,FPF.PartnerOneKey
+  ,FPF.PSXDealKey
+  ,FPF.SolutionKey
+  ,FPF.SolutionPartnerDealCompositeKey AS [SolutionPartnerDealCompositeKey]
+  ,FPF.CreatedDateKey
+  ,FPF.IPPartnerOneKey
+  ,FPF.ReportingGeographyKey
+  ,FPF.PartnerOneReportingKey
+  ,FPF.ScoreCardRecognitionKey
+  ,FPF.SharingTypeKey
+FROM [CoSellT].[FactPartnerDeal_FY23] FPF'
+  );
+
+  INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    119, N'[CoSell].[vw_FactPartnerDealFY24]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerDealFY24]
+AS
+SELECT FPF.Approval_ReportedDateKey AS [ApprovalReportedDateKey]
+  ,FPF.ApprovalDateKey
+  ,FPF.CustomerGeographyKey
+  ,FPF.CustomerSegmentKey
+  ,FPF.IsPartnerReportedACR
+  ,FPF.ServiceCompGroupingKey
+  ,FPF.TPAccountKey
+  ,FPF.IPCoSellDealReg_Azure AS [IPCoSellDealRegAzure]
+  ,FPF.EstimatedRevenueCD
+  ,FPF.IsPartnerCoSellDeal_Azure_ACR AS [IsPartnerCoSellDealAzure_AzureConsumptionRevenue]
+  ,FPF.IsPartnerCoSellDeal_ClosedMonth_Azure_ACR AS [IsPartnerCoSellDealClosedMonthAzure_AzureConsumptionRevenue]
+  ,FPF.PartnerReportedACR_Azure AS [PartnerReportedAzureConsumptionRevenueAzure]
+  ,FPF.TrueACRConsumption AS [TrueAzureConsumptionRevenueConsumption]
+  ,FPF.PartnerDealKey
+  ,FPF.ATUKey AS [AccountTeamUnitKey]
+  ,FPF.ChannelPartnerOneKey
+  ,FPF.CRMPartnerAccountKey
+  ,FPF.IPCoSellPartnerOneKey
+  ,FPF.LeadKey
+  ,FPF.OpportunityKey
+  ,FPF.PartnerGeographyKey
+  ,FPF.PartnerOneKey
+  ,FPF.PSXDealKey
+  ,FPF.SolutionKey
+  ,FPF.SolutionPartnerDealCompositeKey AS [SolutionPartnerDealCompositeKey]
+  ,FPF.CreatedDateKey
+  ,FPF.IPPartnerOneKey
+  ,FPF.ReportingGeographyKey
+  ,FPF.PartnerOneReportingKey
+  ,FPF.ScoreCardRecognitionKey
+  ,FPF.SharingTypeKey
+FROM [CoSellT].[FactPartnerDeal_FY24] FPF'
+  );
+
+  INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    120, N'[CoSell].[vw_FactPartnerDealFY25]', 
+    N' CREATE VIEW [CoSell].[vw_FactPartnerDealFY25]
+AS
+SELECT FPF.Approval_ReportedDateKey AS [ApprovalReportedDateKey]
+  ,FPF.ApprovalDateKey
+  ,FPF.CustomerGeographyKey
+  ,FPF.CustomerSegmentKey
+  ,FPF.IsPartnerReportedACR
+  ,FPF.ServiceCompGroupingKey
+  ,FPF.TPAccountKey
+  ,FPF.IPCoSellDealReg_Azure AS [IPCoSellDealRegAzure]
+  ,FPF.EstimatedRevenueCD
+  ,FPF.IsPartnerCoSellDeal_Azure_ACR AS [IsPartnerCoSellDealAzure_AzureConsumptionRevenue]
+  ,FPF.IsPartnerCoSellDeal_ClosedMonth_Azure_ACR AS [IsPartnerCoSellDealClosedMonthAzure_AzureConsumptionRevenue]
+  ,FPF.PartnerReportedACR_Azure AS [PartnerReportedAzureConsumptionRevenueAzure]
+  ,FPF.TrueACRConsumption AS [TrueAzureConsumptionRevenueConsumption]
+  ,FPF.PartnerDealKey
+  ,FPF.ATUKey AS [AccountTeamUnitKey]
+  ,FPF.ChannelPartnerOneKey
+  ,FPF.CRMPartnerAccountKey
+  ,FPF.IPCoSellPartnerOneKey
+  ,FPF.LeadKey
+  ,FPF.OpportunityKey
+  ,FPF.PartnerGeographyKey
+  ,FPF.PartnerOneKey
+  ,FPF.PSXDealKey
+  ,FPF.SolutionKey
+  ,FPF.SolutionPartnerDealCompositeKey AS [SolutionPartnerDealCompositeKey]
+  ,FPF.CreatedDateKey
+  ,FPF.IPPartnerOneKey
+  ,FPF.ReportingGeographyKey
+  ,FPF.PartnerOneReportingKey
+  ,FPF.ScoreCardRecognitionKey
+  ,FPF.SharingTypeKey
+FROM [CoSellT].[FactPartnerDeal_FY25] FPF'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    121, N'[CoSell].[vw_SPMAllAssignmentDefinition]', 
+    N' CREATE VIEW [CoSell].[vw_SPMAllAssignmentDefinition]
+AS
+SELECT [MSSalesAccountID]
+      ,[CRMAccountID]
+      ,[AssignmentStartDate]
+      ,[AssignmentEndDate]
+      ,[Alias]
+      ,[PositionNumber]
+      ,[PersonnelNumber]
+      ,[AssignmentStatus]
+      ,[RolePlayed]
+      ,[RoleType]
+      ,[Org]
+      ,[RoleSummary]
+      ,[Qualifier1]
+      ,[Qualifier2]
+      ,[AssignmentDefinitionGUID]
+      ,[AssignmentType]
+      ,[AssignmentValue]
+      ,[JustificationCategory]
+      ,[JustificationDescription]
+      ,[DoNotAssignToAccount]
+      ,[CreatedBy]
+      ,[CreatedOn]
+      ,[ModifiedBy]
+      ,[ModifiedOn]
+      ,[SellerAssignmentGUID]
+      ,[RequesterAlias]
+      ,[ReviewerAlias]
+      ,[AccountOrgType]
+      ,[SellerCountryName]
+      ,[EDLPModifiedDateTime]
+      ,[SellerSalesDistrictGUID]
+      ,[SellerSalesDistrictName]
+  FROM [CoSellT].[SPMAllAssignmentDefinition]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    122, N'[CoSell].[vw_DimPartnerDeal_Team]', 
+    N' CREATE VIEW [CoSell].[vw_DimPartnerDeal_Team]
+AS
+SELECT DPT.[ReferralID]
+    ,DPT.[PartnerDealKey]
+    ,DPT.[Alias]
+    ,DPT.[Name]
+  FROM [CoSellT].[DimPartnerDealTeam] AS [DPT]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    123, N'[CoSell].[vw_DimReportingPartnerOneSub]', 
+    N' CREATE VIEW [CoSell].[vw_DimReportingPartnerOneSub]
+AS
+SELECT DRP.PartnerOneID
+,DRP.PartnerOneName
+,DRP.PartnerOneNameID
+,DRP.PartnerOneSubID
+,DRP.PartnerOneReportingKey
+,DRP.IsManaged
+,DRP.IsManaged_Order
+,DRP.PartnerSegment
+,DRP.PartnerSubSegment
+,DRP.PrimaryRoleType
+,DRP.ReportingArea
+,DRP.ReportingRegion
+,DRP.ReportingSubRegion
+,DRP.PartnerSubsidiaryID
+,DRP.IsGlobalChannel
+,DRP.IsGlobalChannel_Order
+,DRP.IsGlobalISV
+,DRP.IsGlobalISV_Order
+,DRP.IsGSI
+,DRP.IsGSI_Order
+,DRP.IsAzureExpertMSP
+,DRP.IsAzureExpertMSP_Order
+,DRP.IsPDMPresentInSub
+,DRP.IsPDMPresentInSub_Order
+,DRP.IsGlobal
+,DRP.IsGlobal_Order
+,DRP.IsRegion_Order
+,DRP.IsSubRegion
+,DRP.IsSubRegion_Order
+,DRP.IsGlobalDownstreamManaged
+,DRP.IsGlobalDownstreamManaged_Order
+,DRP.IsQuestionablePartner
+,DRP.IsQuestionablePartner_Order
+,DRP.InGPSCatalog
+,DRP.InGPSCatalog_Order
+,DRP.HasPCXOffer
+,DRP.HasPCXOffer_Order
+,DRP.IsCoSellReadyPartner
+,DRP.IsCoSellReadyPartner_Order
+,DRP.PartnerMaxGTMReadiness
+,DRP.ReportingProgramTier
+,DRP.CurrentMembershipLevel
+,DRP.IsEMPMPartner
+,DRP.IsEMPMPartner_Order
+,DRP.PartnerGroupName
+,DRP.IsPartnerMastered
+,DRP.PartnerCategoryName
+,DRP.PartnerCategorySubName
+,DRP.IsFY24RecruitPartner
+,DRP.IsFY25RecruitPartner
+,DRP.IsFY26RecruitPartner
+,DRP.IsCoSellReady
+,DRP.IsCoSellReadyORPrioritized
+,DRP.IsAzureEligiblePartner
+,DRP.IsBizappsEligiblePartner
+,DRP.IsBizappsPremiumEligiblePartner
+,DRP.IsAnyPartner
+,DRP.CountofDeals
+,DRP.IsWonDealsGreaterThan10
+,DRP.IsWonDealsGreaterThan6
+,DRP.IsWonDealsGreaterThan4
+,DRP.IsWonDealsGreaterThan1
+,DRP.IsDealsGreaterThan1
+,DRP.CascadedRole
+,DRP.CascadedAlias
+,DRP.CascadedContactName
+,DRP.CascadedM1Alias
+,DRP.CascadedM1Name
+,DRP.CascadedM2Alias
+,DRP.CascadedM2Name
+,DRP.IsPrimary
+,DRP.IsCascaded
+,DRP.IsSMECSI
+,DRP.IsHCP
+,DRP.IsMWGoDaddy
+,DRP.IsMWTop1TPartner
+,DRP.MWTop1TPartnerType
+,DRP.IsMWTopDistiPartner
+,DRP.IsToptierPartner
+,DRP.TopTierStartDate
+,DRP.TopTierEndDate
+,DRP.IsMarketplaceTransitionPartner
+,DRP.IsSSP
+,DRP.IsTelcoPartner
+,DRP.IsDistributor
+,DRP.ManagementIndicator
+,DRP.ManagementIndicator_Order
+,DRP.IsRegionTZInstance
+,DRP.IsRegionTZPlaceholder
+,DRP.IsTransitionGISV
+,DRP.CustomManagementLevel
+,DRP.IsCosellPrioritized
+,DRP.SubsidiaryID
+,DRP.IsAzurePrioritizedPartner
+,DRP.IsBizAppsPrioritizedPartner
+,DRP.IsMWPrioritizedPartner
+,DRP.IsSecurityPrioritizedPartner
+,DRP.PDM
+,DRP.PDMM
+,DRP.PDMR
+,DRP.PTS
+,DRP.PTSM
+,DRP.PMA
+,DRP.Value
+,DRP.PartnerOneNameID
+FROM [CoSellT].[DimReportingPartnerOneSubReporting] AS [DRP]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions ( [ID], [ViewName], [ViewDefinition] )
+VALUES
+(
+  124, N'[CoSell].[vw_Associated_DimPartnerReferral]', 
+  N'CREATE VIEW [CoSell].[vw_Associated_DimPartnerReferral]
+AS
+SELECT 
+    [DimPartnerReferralKey],
+    [PartnerCenterReferralId],
+    [ReferralName],
+    [PartnerCenterReferralStatus],
+    [PartnerCenterReferralSubStatus],
+    [PartnerCenterEngagementId],
+    [RecordType],
+    [ReferralProgram],
+    [ReferralQualification],
+    [ReferralType],
+    [ReferralSubType],
+    [SolutionId],
+    [PartnerIntent],
+    [PartnerAcceptanceStatus],
+    [PartnerAccountId],
+    [PartnerCenterAcceptedDate],
+    [PartnerCenterAccountId],
+    [PartnerCenterAccountName],
+    [PartnerCenterCampaignId],
+    [PartnerCenterClosingDate],
+    [PartnerCenterConsentToContact],
+    [PartnerCenterConsentToMicrosoftToContactSpecificPartners],
+    [PartnerCenterConsentToShareInfoWithOthers],
+    [PartnerCenterConsentToShareReferralWithMicrosoftSellers],
+    [PartnerCenterCreatedDate],
+    [PartnerCenterCurrency],
+    [PartnerCenterDealValue],
+    [PartnerCenterExpirationDate],
+    [PartnerCenterInviteContextNotes],
+    [PartnerCenter_Notes],
+    [PartnerCenterStatusComments],
+    [PartnerCenterStatusReason],
+    [PartnerOneId],
+    [PartnerReferralURL],
+    [PartnerRevenueCD],
+    [LeadId],
+    [LeadNumber],
+    [MicrosoftAcceptedDate],
+    [MicrosoftCampaignId],
+    [MicrosoftClosingDate],
+    [MicrosoftCreatedDate],
+    [MicrosoftCurrency],
+    [MicrosoftDealValue],
+    [MicrosoftExpirationDate],
+    [MicrosoftFinalStatus],
+    [MicrosoftFinalSubStatus],
+    [MicrosoftInviteContextNotes],
+    [MicrosoftNotes],
+    [MicrosoftReferralId],
+    [MicrosoftReferralStatus],
+    [MicrosoftReferralSubStatus],
+    [MicrosoftStatusComments],
+    [MicrosoftStatusReason],
+    [PartnerID],
+    [MSXCRMAccountName],
+    [MSXCRMAccountNumber],
+    [OpportunityId],
+    [OpportunityNumber],
+    [OpportunityType],
+    [OrganizationId],
+    [OrganizationName],
+    [CreatedBy],
+    [CTA],
+    [CustomerCity],
+    [CustomerCountryCode],
+    [CustomerDunsId],
+    [CustomerName],
+    [CustomerOrgSize],
+    [CustomerPostalCode],
+    [CustomerState],
+    [DealDirection],
+    [DimAccountGeographyHierarchyKey],
+    [DimOpportunityKey],
+    [DimPartnerAccountKey],
+    [DimSegmentHierarchyKey],
+    [AssociatedPartnerAccountId],
+    [ExternalReferenceId],
+    [IncentiveLevel],
+    [IncentiveType],
+    [Industries],
+    [InitiatedBy],
+    [IOTAttachServices],
+    [IOTAzureCertifiedDevice],
+    [IOTCustomerLicenseAgreementNumber],
+    [IOTDeviceCategory],
+    [IOTSiliconType],
+    [IsAzureIPCosell],
+    [IsCreatedByAgent],
+    [IsNoOptyCSE],
+    [IsPartnerAccepted],
+    [IsSellerAccepted],
+    [IsTest],
+    [Products],
+    [SalesStage],
+    [SellerAcceptanceStatus],
+    [ServiceDescription],
+    [Solutions],
+    [Tags],
+    [TPAccountId],
+    [TPAccountName],
+    [TypeOfDeal],
+    [TypeOfReferral],
+    [UpdatedDate],
+    [SellerDaysToExpiration],
+    [SellerDaysToExpirationBucket],
+    [SellerDaysToExpirationBucketOrder],
+    [PartnerDaysToExpiration],
+    [PartnerDaysToExpirationBucket],
+    [PartnerDaysToExpirationBucketOrder],
+    [AzureIPCosellNumerator],
+    [AzureIPCosellDenominator],
+    [PartnerAcceptanceNumerator],
+    [PartnerAcceptanceDenominator],
+    [SellerAcceptanceNumerator],
+    [SellerAcceptanceDenominator],
+    [PartnerResponseNumerator],
+    [PartnerResponseDenominator],
+    [SellerResponseNumerator],
+    [SellerResponseDenominator],
+    [PartnerExpirationNumerator],
+    [PartnerExpirationDenominator],
+    [SellerExpirationNumerator],
+    [SellerExpirationDenominator],
+    [CustomerMarketplaceIntent],
+    [POSOTDataProcessedDate]
+FROM [CoSellT].[Associated_DimPartnerReferral] AS [ADPR]'
+);
+
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    125, N'[CoSell].[vw_DimCustomPartnerDealDirectionReporting]', 
+    N' CREATE VIEW [CoSell].[vw_DimCustomPartnerDealDirectionReporting]
+AS
+SELECT [CustomDealDirectionKey]
+  ,[CustomDealDirection]
+  ,[UniversalSharingType]
+  ,[PartnerEngaged]
+  ,[OrderKey]
+FROM [CoSellT].[DimCustomPartnerDealDirectionReporting] AS [DCPDR]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    126, N'[CoSell].[vw_Hub_vw_stringmap]', 
+    N' CREATE VIEW [CoSell].[vw_Hub_vw_stringmap]
+      AS
+      SELECT SM.EDLPExtractId
+        ,SM.AttributeName
+        ,SM.AttributeValue
+        ,SM.EntityId
+        ,SM.EntityName
+        ,SM.IsActive
+        ,SM.OdsModifiedDate
+        ,SM.PreviousAttributeValue
+        ,SM.PreviousValue
+        ,SM.StringMapId
+        ,SM.StringMapSeqNo
+        ,SM.TenantId
+        ,SM.Value
+        ,SM.ViewAttributeName
+        ,SM.ViewName
+        ,SM.EDLPExtractDateTime
+        ,SM.EDLPLoadTS
+        ,SM.EDLPModifiedDateTime
+        ,SM.EDLPDeltaActionCode
+      FROM [CoSellT].[hub_vw_stringmap] AS [SM]'
+  );
+
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    127, N'[CoSell].[vw_DimAccountGeographyHierarchyReporting]', 
+    N' CREATE VIEW [CoSell].[vw_DimAccountGeographyHierarchyReporting]
+      AS
+      SELECT DimAccountGeographyHierarchyKey,
+          DGR.DimManagedTpAccountKey,
+          DGR.DimSalesGeographyHierarchyKey,
+          DGR.Level,
+          DGR.BigAreaId,
+          DGR.BigAreaName,
+          DGR.AreaId,
+          DGR.AreaName,
+          DGR.RegionId,
+          DGR.RegionName,
+          DGR.SubRegionId,
+          DGR.SubsidiaryName,
+          DGR.SubsidiaryId,
+          DGR.SubsidiaryName,
+          DGR.SalesGroupId,
+          DGR.SalesGroupName,
+          DGR.SalesUnitId,
+          DGR.SalesUnitName,
+          DGR.SalesTeamId,
+          DGR.SalesTeamName,
+          DGR.AtuId,
+          DGR.AtuName,
+          DGR.SalesTerritoryId,
+          DGR.SalesTerritoryName,
+          DGR.A14FlagName,
+          DGR.AssignedSalesUnit,
+          DGR.AssignedSalesGroup,
+          DGR.AssignedSuperSalesGroup,
+          DGR.AssignedHyperSalesGroup,
+          DGR.Segment,
+          DGR.TpAccountId,
+          DGR.TpAccountName,
+          DGR.TimeZone,
+          DGR.FieldAccountabilityUnit,
+          DGR.LowerFieldAccountabilityUnit,
+          DGR.FieldArea,
+          DGR.FieldRegion,
+          DGR.FieldSubRegion,
+          DGR.FieldSubsidiary,
+          DGR.POSOTDataProcessedDate,
+          DGR.GETDATE() AS DataSolutionProcessedDate
+      FROM [CoSellT].[DimAccountGeographyHierarchyReporting] AS [DGR]'
+  );
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    128, N'[CoSell].[vw_BridgeCoSellPrioritizedSolutionIndustryCountry]', 
+    N' CREATE VIEW [CoSell].[vw_BridgeCoSellPrioritizedSolutionIndustryCountry]
+      AS
+      SELECT [BPS].[Area]
+            ,[BPS].[Country]
+					  ,[BPS].[CountryGTMReadiness]
+		        ,[BPS].[Industry]
+					  ,[BPS].[IndustryPriorityScenario]
+		        ,[BPS].[PartnerOneID]
+		        ,[BPS].[PartnerOneName]
+					  ,[BPS].[Region]
+			      ,[BPS].[SolutionID]
+					  ,[BPS].[GPSCRMSolutionID]
+					  ,[BPS].[SolutionMaxGTMReadiness]
+			      ,[BPS].[SolutionName]
+			      ,[BPS].[SolutionType]
+					  ,[BPS].[SubRegion]
+			      ,[BPS].[Subsidiary]
+			      ,[BPS].[Vertical]		
+		FROM [CoSellT].[BridgeCoSellPrioritizedSolutionIndustryCountry] AS [DGR]'
+	);
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    129, N'[CoSell].[vw_Bridge_CoSellPrioritizedSolutionPracticeCountry]', 
+    N' CREATE VIEW [CoSell].[vw_Bridge_CoSellPrioritizedSolutionPracticeCountry]
+      AS
+       SELECT DISTINCT
+            [BPS].[Area]
+           ,[BPS].[Country]
+           ,[BPS].[CountryGTMReadiness]
+           ,[BPS].[PartnerOneID]
+           ,[BPS].[PartnerOneName]
+           ,[BPS].[Conversation]
+           ,[BPS].[Region]
+           ,[BPS].[SolutionArea]
+           ,[BPS].[SolutionID]
+           ,[BPS].[GPSCRMSolutionID]
+           ,[BPS].[SolutionMaxGTMReadiness]
+           ,[BPS].[SolutionName]
+           ,[BPS].[SolutionType]
+           ,[BPS].[SubRegion]
+           ,[BPS].[Subsidiary]
+        FROM [CoSellT].[BridgeCoSellPrioritizedSolutionPracticeCountry] AS [BPS]'
+	);
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    130, N'[CoSell].[vw_SnapshotFactMSXCombined]', 
+    N' CREATE VIEW [CoSell].[vw_SnapshotFactMSXCombined]
+      AS
+       SELECT [SFMC].OpportunityKey
+          ,[SFMC].DimAccountGeographyHierarchyKey
+          ,[SFMC].DimProductHierarchyKey
+          ,[SFMC].DimProductKey
+          ,[SFMC].DimRevSumHierarchyKey
+          ,[SFMC].DimPricingLevelHierarchyKey
+          ,[SFMC].DimBusinessHierarchyKey
+          ,[SFMC].DimSegmentHierarchyKey
+          ,[SFMC].DimSalesDateKey
+          ,[SFMC].DimFiscalMonthKey
+          ,[SFMC].DimPrimaryProductGroupingKey
+          ,[SFMC].SecAccountProductKey
+          ,[SFMC].HqGeographyKey
+          ,[SFMC].DimCloudProductKey
+          ,[SFMC].DimSolutionAreaKey
+          ,[SFMC].DimSolutionAreaDetailKey
+          ,[SFMC].DimSalesPlayKey
+          ,[SFMC].TPAccountKey
+          ,[SFMC].CustomerGeographyKey
+          ,[SFMC].CustomerSegmentKey
+          ,[SFMC].ATUKey
+          ,[SFMC].PartnerOneKey
+          ,[SFMC].SharingTypekey
+          ,[SFMC].Opportunity_CalculationKey
+          ,[SFMC].SolutionKey
+          ,[SFMC].OpptyDueOREstimatedMilestoneDateKey
+          ,[SFMC].CreatedDateKey
+          ,[SFMC].DueDateKey
+          ,[SFMC].PartnerOneReportingKey
+          ,[SFMC].PartnerReferralKey
+          ,[SFMC].DimPartnerAccountKey
+          ,[SFMC].CustomDealDirectionKey
+          ,[SFMC].EstNoOfActivations
+          ,[SFMC].BilledRevenue
+          ,[SFMC].SecurityBilledRevenue
+          ,[SFMC].MWBilledRevenue
+          ,[SFMC].EstMonthlyUsage
+          ,[SFMC].TotalOpportunityRevenue
+          ,[SFMC].IsMSFTOriginatedDealAccepted
+          ,[SFMC].IsPrioritizedPartner
+          ,[SFMC].TotalContractValueCD
+          ,[SFMC].PartnerRevenueCD
+          ,[SFMC].IsMultiPartner
+          ,[SFMC].IsQualifiedPipe
+          ,[SFMC].PipelineCategory
+          ,[SFMC].IsProductBundleAllocated
+          ,[SFMC].ProductAllocationView
+          ,[SFMC].Workloads
+          ,[SFMC].ChildPartNumber
+          ,[SFMC].PriceListType
+          ,[SFMC].PriceList
+          ,[SFMC].ProductType
+          ,[SFMC].SolutionArea
+          ,[SFMC].SolutionAreaDetail
+          ,[SFMC].ExtendedAmountUsd
+          ,[SFMC].CurrentRevenueUsd
+          ,[SFMC].EstimatedPipelineRevenueUsd
+          ,[SFMC].PipelineWonLostRevenueUsd
+          ,[SFMC].ExtendedAmountCd
+          ,[SFMC].ProductQuantity
+          ,[SFMC].CommittedRevenue
+          ,[SFMC].CommittedAtRiskRevenue
+          ,[SFMC].QualifiedPipeline
+          ,[SFMC].CloudMixesRevenue
+          ,[SFMC].EngagementMilestoneKey
+          ,[SFMC].DimConsumptionFiscalMonthKey
+          ,[SFMC].DimWorkLoadKey
+          ,[SFMC].MilestoneReportingWorkload
+          ,[SFMC].EstMonthlyUsageCD
+          ,[SFMC].MilestoneUsageEstimatedMonthly
+          ,[SFMC].EstimatedRev
+          ,[SFMC].ActiveUsersEstimated
+          ,[SFMC].MilestoneActiveUsersEstimated
+          ,[SFMC].ReportingGeographyKey
+          ,[SFMC].OpptySolutionAreaKey
+          ,[SFMC].OpportunityID
+          ,[SFMC].IsSMBOpportunity
+          ,[SFMC].Type
+          ,[SFMC].TypeID
+          ,[SFMC].defaultflag
+          ,[SFMC].POSOTDataProcessedDate
+          ,[SFMC].DataSolutionProcessedDate
+          ,[SFMC].SecurityQualifiedPipeline
+          ,[SFMC].MWQualifiedPipeline
+          ,[SFMC].ReferralCount
+          ,[SFMC].AssociatedCount
+          ,[SFMC].AzureIpCosellCount
+          ,[SFMC].InboundCount
+          ,[SFMC].OutboundCount
+          ,[SFMC].BilledPipelineHardwareCneDevicesCount
+          ,[SFMC].BilledPipelineConsultingSupportCount
+          ,[SFMC].MetricSharingNumerator
+          ,[SFMC].MetricSharingDenominator
+          ,[SFMC].TotalPartnerSharingNumerator
+          ,[SFMC].TotalPartnerSharingDenominator
+          ,[SFMC].TotalPartnerNotSharingNumerator
+          ,[SFMC].TotalPartnerNotSharingDenominator
+          ,[SFMC].MetricEligiblePartnerSharingNumerator
+          ,[SFMC].MetricEligiblePartnerSharingDenominator
+          ,[SFMC].WinsPartnerSharingNumerator
+          ,[SFMC].WinsPartnerSharingDenominator
+          ,[SFMC].CoSellPrioritizedTotalPartnerSharingNumerator
+          ,[SFMC].CoSellPrioritizedTotalPartnerSharingDenominator
+          ,[SFMC].CoSellPrioritizedMetricEligiblePartnerSharingNumerator
+          ,[SFMC].CoSellPrioritizedMetricEligiblePartnerSharingDenominator
+          ,[SFMC].CoSellPrioritizedWinsPartnerSharingNumerator
+          ,[SFMC].CoSellPrioritizedWinsPartnerSharingDenominator
+          ,[SFMC].InboundTotalPartnerSharingNumerator
+          ,[SFMC].InboundTotalPartnerSharingDenominator
+          ,[SFMC].InboundMetricEligiblePartnerSharingNumerator
+          ,[SFMC].InboundMetricEligiblePartnerSharingDenominator
+          ,[SFMC].InboundWinsPartnerSharingNumerator
+          ,[SFMC].InboundWinsPartnerSharingDenominator
+          ,[SFMC].OutboundTotalPartnerSharingNumerator
+          ,[SFMC].OutboundTotalPartnerSharingDenominator
+          ,[SFMC].OutboundMetricEligiblePartnerSharingNumerator
+          ,[SFMC].OutboundMetricEligiblePartnerSharingDenominator
+          ,[SFMC].OutboundWinsPartnerSharingNumerator
+          ,[SFMC].OutboundWinsPartnerSharingDenominator
+          ,[SFMC].CoSellPrioritizedInboundTotalPartnerSharingNumerator
+          ,[SFMC].CoSellPrioritizedInboundTotalPartnerSharingDenominator
+          ,[SFMC].CoSellPrioritizedInboundMetricEligiblePartnerSharingNumerator
+          ,[SFMC].CoSellPrioritizedInboundMetricEligiblePartnerSharingDenominator
+          ,[SFMC].CoSellPrioritizedOutboundTotalPartnerSharingNumerator
+          ,[SFMC].CoSellPrioritizedOutboundTotalPartnerSharingDenominator
+          ,[SFMC].CoSellPrioritizedOutboundMetricEligiblePartnerSharingNumerator
+          ,[SFMC].CoSellPrioritizedOutboundMetricEligiblePartnerSharingDenominator
+          ,[SFMC].AzureIpCosellTotalPartnerSharingNumerator
+          ,[SFMC].AzureIpCosellTotalPartnerSharingDenominator
+          ,[SFMC].AzureIpCosellMetricEligiblePartnerSharingNumerator
+          ,[SFMC].AzureIpCosellMetricEligiblePartnerSharingDenominator
+          ,[SFMC].NoAssociatedPartnerSharingNumerator
+          ,[SFMC].NoAssociatedPartnerSharingDenominator
+          ,[SFMC].AssociatedPartnerSharingNumerator
+          ,[SFMC].AssociatedPartnerSharingDenominator
+          ,[SFMC].PartnerEngagedNumerator
+          ,[SFMC].SolutionAreaSKID
+          ,[SFMC].MSXSalesStage
+          ,[SFMC].PartnerDealDirection
+          ,[SFMC].PartnerReferralCreatedDate
+          ,[SFMC].OpportunityType
+          ,[SFMC].SnapShotDate
+          ,[SFMC].BilledRevenueStatus
+          ,[SFMC].ConsumptionStatus
+          ,[SFMC].CustomerCommitment
+          ,[SFMC].MilestoneDeliveredBy
+          ,[SFMC].MilestoneStatus
+          ,[SFMC].MilestoneCompletionDateEstimated
+          ,[SFMC].PartnerSharingStatus
+          ,[SFMC].ForecastRecommendation
+          ,[SFMC].CustomDealDirection
+        FROM [CoSellT].[SnapshotFactMSXCombined] AS [SFMC]'
+	);
+INSERT INTO #CreateViews_CoSell_Definitions  ( [ID] ,[ViewName] , [ViewDefinition])
+VALUES 
+  (
+    131, N'[CoSell].[vw_Dim_Solution]', 
+    N' CREATE VIEW [CoSell].[vw_Dim_Solution]
+      AS
+       SELECT [DS].[SolutionKey]
+          ,[DS].[AccountName]
+          ,[DS].[AccountKey]
+          ,[DS].[AzurePlatform]
+          ,[DS].[CatalogURL]
+          ,[DS].[GPSCRMAccountID]
+          ,[DS].[CoSellReadyDate]
+          ,[DS].[CoSellReadyDateFiscalMonth]
+          ,[DS].[CoSellReadyDateFiscalYear]
+          ,[DS].[CoSellReadyDateFiscalQuarter]
+          ,[DS].[CoSellReadyDateFiscalMonth_Order]
+          ,[DS].[cppOfferId]
+          ,[DS].[cppPublisherId]
+          ,[DS].[CreatedOn]	
+          ,[DS].[CreatedOnFiscalMonthID]					
+          ,[DS].[CreatedOnFiscalMonthName]					
+          ,[DS].[CreatedOnFiscalQuarter]					
+          ,[DS].[CreatedOnFiscalYear]		
+          ,[DS].[CRMSolutionURL]
+          ,[DS].[Description]
+          ,[DS].[GTMReadiness]
+          ,[DS].[LastModifiedDateInCatRP]
+          ,[DS].[SellerCosellIncentives] 
+          ,[DS].[IsAvailableInAppSource]
+          ,[DS].[IsAvailableInMarketplace]
+          ,[DS].[IsCoSell]
+          ,[DS].[IsCorporateCustomerSegment]
+          ,[DS].[IsEnterpriseCustomerSegment]
+          ,[DS].[IsGDPR]
+          ,[DS].[IsPartnerCenterMastered]
+          ,[DS].[IsPartnerCenterWhitelisted]
+          ,[DS].[IsTransactableInMarketplace]
+          ,[DS].[IsISVConnectSolution]
+          ,[DS].[IsISVConnectSolutionOrder]
+          ,[DS].[IsSMBCustomerSegment]
+          ,[DS].[IsO365Platform]
+          ,[DS].[IsDynamicsPlatform]
+          ,[DS].[IsSQLPlatform]
+          ,[DS].[IsWindowsPlatform]
+          ,[DS].[IsActiveInCatalogRP]
+          ,[DS].[HasSellerCoSellIncentives]
+          ,[DS].[MSXSolutionID]  
+          ,[DS].[PartnerID]
+          ,[DS].[GPSCRMSolutionID]
+          ,[DS].[OfferType]
+          ,[DS].[PartnerOneID]
+          ,[DS].[PartnerOneName]
+          ,[DS].[Platforms] 
+          ,[DS].[SolutionID]
+          ,[DS].[SolutionName] 
+          ,[DS].[SolutionType]
+          ,[DS].[SolutionURL]	
+        FROM [CoSellT].[DimSolution] AS [DS]'
+	);
+
+EXEC [dbo].[usp_Deploy_Views] @SchemaName='CoSell';
+END TRY
+BEGIN CATCH
+    DECLARE @DBName VARCHAR(MAX) = DB_NAME();
+    DECLARE @ERROR_NUMBER INT= ERROR_NUMBER();
+    DECLARE @ERROR_SEVERITY INT= ERROR_SEVERITY();
+    DECLARE @ERROR_STATE INT= ERROR_STATE();
+    DECLARE @ERROR_MESSAGE VARCHAR(MAX)= ERROR_MESSAGE();
+END CATCH;   
